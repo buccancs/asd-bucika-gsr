@@ -43,7 +43,6 @@ import com.topdon.lms.sdk.bean.FeedBackBean
 import com.topdon.lms.sdk.feedback.activity.FeedbackActivity
 import com.topdon.lms.sdk.utils.LanguageUtil
 import com.topdon.module.user.R
-import com.topdon.module.user.activity.LanguageActivity
 import com.topdon.module.user.activity.MoreActivity
 import com.zoho.salesiqembed.ZohoSalesIQ
 import kotlinx.android.synthetic.main.fragment_mine.*
@@ -75,7 +74,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
     override fun initView() {
         iv_winter.setOnClickListener(this)
-        setting_item_language.setOnClickListener(this)
         setting_item_version.setOnClickListener(this)
         setting_item_clear.setOnClickListener(this)
         setting_user_lay.setOnClickListener(this)
@@ -88,10 +86,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         drag_customer_view.setOnClickListener(this)
 
         view_winter_point.isVisible = !SharedManager.hasClickWinter
-
-        if (BaseApplication.instance.isDomestic()) {//国内版不给切换语言
-            setting_item_language.visibility = View.GONE
-        }
 
         viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
             override fun onResume(owner: LifecycleOwner) {
@@ -122,16 +116,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         if (isNeedRefreshLogin) {
             isNeedRefreshLogin = false
             checkLoginResult()
-        }
-    }
-
-
-    private val languagePickResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        if (it.resultCode == Activity.RESULT_OK) {
-            val localeStr: String = it.data?.getStringExtra("localeStr") ?: return@registerForActivityResult
-            SharedManager.setLanguage(requireContext(), localeStr)
-            LanguageUtils.applyLanguage(AppLanguageUtils.getLocaleByLanguage(localeStr))
-            ToastTools.showShort(R.string.tip_save_success)
         }
     }
 
@@ -194,9 +178,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             }
             setting_item_version -> {//版本
                 ARouter.getInstance().build(RouterConfig.VERSION).navigation(requireContext())
-            }
-            setting_item_language -> {//语言
-                languagePickResult.launch(Intent(requireContext(), LanguageActivity::class.java))
             }
             setting_item_clear -> {//清除缓存，实际已隐藏
                 clearCache()
