@@ -9,6 +9,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.media.MediaScannerConnection;
+import android.os.Environment;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -371,5 +372,165 @@ public class BitmapUtils {
         }
         canvas.restore();
         return newBmp;
+    }
+
+    // Additional methods consolidated from libir-demo BitmapUtils
+
+    /**
+     * Save bitmap to gallery
+     * @param context Android context
+     * @param bmp Bitmap to save
+     * @param picName Picture name without extension
+     * @return File object of saved image
+     */
+    public static File saveBmp2Gallery(Context context, Bitmap bmp, String picName) {
+        // Storage directory, user can customize
+        String Path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                + File.separator + "infisense";
+        File galleryPath = new File(Path);
+        if (!galleryPath.exists()) {
+            galleryPath.mkdir();
+        }
+        // Declare file object
+        File file = null;
+        // Declare output stream
+        FileOutputStream outStream = null;
+
+        try {
+            // Create file with picName
+            file = new File(galleryPath, picName + ".jpg");
+            
+            // Create output stream
+            outStream = new FileOutputStream(file);
+            // Compress bitmap to JPEG format with 90% quality
+            bmp.compress(Bitmap.CompressFormat.JPEG, 90, outStream);
+            outStream.flush();
+            outStream.close();
+            
+            // Notify media scanner
+            MediaScannerConnection.scanFile(context, 
+                new String[]{file.getAbsolutePath()}, 
+                new String[]{"image/jpeg"}, null);
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+            file = null;
+        } finally {
+            if (outStream != null) {
+                try {
+                    outStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return file;
+    }
+
+    /**
+     * Save raw file data (from libir-demo)
+     */
+    public static void saveRawFile(byte[] bytes, byte[] bytes2) {
+        try {
+            String fileName = "raw_" + System.currentTimeMillis() + ".dat";
+            File file = new File(FileConfig.getExternalCachePath(), fileName);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(bytes);
+            if (bytes2 != null) {
+                fos.write(bytes2);
+            }
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Save IR file data
+     */
+    public static void saveIRFile(byte[] bytes) {
+        try {
+            String fileName = "ir_" + System.currentTimeMillis() + ".dat";
+            File file = new File(FileConfig.getExternalCachePath(), fileName);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(bytes);
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Save temperature file data
+     */
+    public static void saveTempFile(byte[] bytes) {
+        try {
+            String fileName = "temp_" + System.currentTimeMillis() + ".dat";
+            File file = new File(FileConfig.getExternalCachePath(), fileName);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(bytes);
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Save byte array to file with custom title
+     */
+    public static void saveByteFile(byte[] bytes, String fileTitle) {
+        try {
+            String fileName = fileTitle + "_" + System.currentTimeMillis() + ".dat";
+            File file = new File(FileConfig.getExternalCachePath(), fileName);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(bytes);
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Save short array to file with custom title
+     */
+    public static void saveShortFile(short[] shorts, String fileTitle) {
+        try {
+            String fileName = fileTitle + "_" + System.currentTimeMillis() + ".dat";
+            File file = new File(FileConfig.getExternalCachePath(), fileName);
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(toByteArray(shorts));
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Convert short array to byte array
+     * @param src source short array
+     * @return byte array
+     */
+    public static byte[] toByteArray(short[] src) {
+        int count = src.length;
+        byte[] dest = new byte[count << 1];
+        for (int i = 0; i < count; i++) {
+            dest[i * 2] = (byte) ((src[i] >> 8) & 0xFF);
+            dest[i * 2 + 1] = (byte) (src[i] & 0xFF);
+        }
+        return dest;
+    }
+
+    /**
+     * Convert byte array to short array
+     * @param src source byte array
+     * @return short array
+     */
+    public static short[] toShortArray(byte[] src) {
+        int count = src.length >> 1;
+        short[] dest = new short[count];
+        for (int i = 0; i < count; i++) {
+            dest[i] = (short) (((src[i * 2] & 0xFF) << 8) | (src[i * 2 + 1] & 0xFF));
+        }
+        return dest;
     }
 }
