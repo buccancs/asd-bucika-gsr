@@ -22,7 +22,6 @@ import androidx.core.util.Pair;
 import com.topdon.ble.callback.RequestCallback;
 import com.topdon.ble.callback.ScanListener;
 import com.topdon.ble.util.HexUtil;
-import com.topdon.ble.util.Logger;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;

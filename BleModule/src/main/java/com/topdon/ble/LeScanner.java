@@ -10,7 +10,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.topdon.ble.callback.ScanListener;
-import com.topdon.ble.util.Logger;
 
 /**
  * 蓝牙搜索器

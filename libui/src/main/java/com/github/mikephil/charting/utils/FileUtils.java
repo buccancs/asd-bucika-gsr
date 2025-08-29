@@ -26,8 +26,6 @@ import java.util.List;
  */
 public class FileUtils {
 
-    private static final String LOG = "MPChart-FileUtils";
-
     /**
      * Loads a an Array of Entries from a textfile from the sd-card.
      * 
@@ -65,7 +63,7 @@ public class FileUtils {
                 }
             }
         } catch (IOException e) {
-            Log.e(LOG, e.toString());
+            // Error reading file
         }
 
         return entries;
@@ -92,7 +90,7 @@ public class FileUtils {
         // Integer.parseInt(split[1])));
         // }
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
+        // // Error handling
         // }
         //
         // DataSet ds = new DataSet(entries, label);
@@ -136,7 +134,7 @@ public class FileUtils {
                 line = reader.readLine();
             }
         } catch (IOException e) {
-            Log.e(LOG, e.toString());
+            // Error handling
 
         } finally {
 
@@ -144,7 +142,7 @@ public class FileUtils {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    Log.e(LOG, e.toString());
+                    // Error handling
                 }
             }
         }
@@ -171,7 +169,7 @@ public class FileUtils {
         // line = reader.readLine();
         // }
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
+        // // Error handling
         //
         // } finally {
         //
@@ -179,7 +177,7 @@ public class FileUtils {
         // try {
         // reader.close();
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
+        // // Error handling
         // }
         // }
         // }
@@ -206,7 +204,7 @@ public class FileUtils {
                 saved.createNewFile();
             } catch (IOException e)
             {
-                Log.e(LOG, e.toString());
+                // Error handling
             }
         }
         try
@@ -223,7 +221,7 @@ public class FileUtils {
             buf.close();
         } catch (IOException e)
         {
-            Log.e(LOG, e.toString());
+            // Error handling
         }
     }
 
@@ -247,7 +245,7 @@ public class FileUtils {
                 line = reader.readLine();
             }
         } catch (IOException e) {
-            Log.e(LOG, e.toString());
+            // Error handling
 
         } finally {
 
@@ -255,7 +253,7 @@ public class FileUtils {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    Log.e(LOG, e.toString());
+                    // Error handling
                 }
             }
         }
@@ -282,7 +280,7 @@ public class FileUtils {
         // line = reader.readLine();
         // }
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
+        // // Error handling
         //
         // } finally {
         //
@@ -290,7 +288,7 @@ public class FileUtils {
         // try {
         // reader.close();
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
+        // // Error handling
         // }
         // }
         // }

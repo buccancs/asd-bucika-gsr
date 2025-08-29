@@ -115,10 +115,7 @@ public class HorizontalBarChart extends BarChart {
                 Math.max(minOffset, offsetBottom));
 
         if (mLogEnabled) {
-            Log.i(LOG_TAG, "offsetLeft: " + offsetLeft + ", offsetTop: " + offsetTop + ", offsetRight: " +
-                    offsetRight + ", offsetBottom: "
-                    + offsetBottom);
-            Log.i(LOG_TAG, "Content: " + mViewPortHandler.getContentRect().toString());
+            // Debug logging removed
         }
 
         prepareOffsetMatrix();
@@ -202,7 +199,7 @@ public class HorizontalBarChart extends BarChart {
 
         if (mData == null) {
             if (mLogEnabled)
-                Log.e(LOG_TAG, "Can't select by touch. No data set.");
+                // Logging removed
             return null;
         } else
             return getHighlighter().getHighlight(y, x); // switch x and y

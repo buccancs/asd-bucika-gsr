@@ -18,8 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.topdon.ble.callback.ScanListener;
-import com.topdon.ble.util.DefaultLogger;
-import com.topdon.ble.util.Logger;
 import com.topdon.commons.observer.Observable;
 import com.topdon.commons.poster.MethodInfo;
 import com.topdon.commons.poster.PosterDispatcher;

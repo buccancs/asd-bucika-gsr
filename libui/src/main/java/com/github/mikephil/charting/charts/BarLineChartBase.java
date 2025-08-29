@@ -329,11 +329,11 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
 
         if (mData == null) {
             if (mLogEnabled)
-                Log.i(LOG_TAG, "Preparing... DATA NOT SET.");
+                // Logging removed
             return;
         } else {
             if (mLogEnabled)
-                Log.i(LOG_TAG, "Preparing...");
+                // Logging removed
         }
 
         if (mRenderer != null)
@@ -520,7 +520,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
             if (mLogEnabled) {
                 Log.i(LOG_TAG, "offsetLeft: " + offsetLeft + ", offsetTop: " + offsetTop
                         + ", offsetRight: " + offsetRight + ", offsetBottom: " + offsetBottom);
-                Log.i(LOG_TAG, "Content: " + mViewPortHandler.getContentRect().toString());
+                // Logging removed
             }
         }
 

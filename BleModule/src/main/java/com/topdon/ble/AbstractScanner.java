@@ -23,7 +23,6 @@ import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 
 import com.topdon.ble.callback.ScanListener;
-import com.topdon.ble.util.Logger;
 
 import java.lang.reflect.Method;
 import java.util.List;
