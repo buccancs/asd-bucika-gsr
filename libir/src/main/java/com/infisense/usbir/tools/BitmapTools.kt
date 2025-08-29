@@ -1,25 +1,20 @@
 package com.infisense.usbir.tools
 
+import android.graphics.Bitmap
 import android.util.Log
 import androidx.annotation.ColorInt
-import com.elvishew.xlog.XLog
-import com.topdon.lib.core.utils.ByteUtils.bytesToInt
-import com.topdon.lib.core.utils.ByteUtils.descBytes
+import com.topdon.lib.core.utils.EnhancedBitmapUtils
 
 /**
+ * Backward compatibility wrapper for BitmapTools.
+ * Delegates to enhanced EnhancedBitmapUtils in libapp core.
  * @author: CaiSongL
  * @date: 2023/4/13 9:33
  */
+@Deprecated("Use EnhancedBitmapUtils in libapp core instead", ReplaceWith("EnhancedBitmapUtils"))
 object BitmapTools {
 
-
-    private fun readTempValue(bytes: ByteArray): Float {
-        val data: ByteArray = bytes.descBytes()
-        val scale = 16
-        val tempInt = data.bytesToInt() / 4
-        return (tempInt.toDouble() / scale.toDouble() - 273.15).toFloat()
-    }
-
+    @JvmStatic
     fun replaceBitmapColor(
         imageBytes: ByteArray,
         tempBytes: ByteArray,
@@ -28,26 +23,26 @@ object BitmapTools {
         @ColorInt maxColor: Int,
         @ColorInt minColor: Int
     ) {
-        if (max < min) {
-            return
-        }
-        try {
-            if (maxColor == 0 && minColor == 0) {
-                var data: ByteArray
-                val len = imageBytes.size / 4
-                var value: Float
-                var r: Int
-                var g: Int
-                var b: Int
-                var grey: Int
-                for (i in 0 until len) {
-                    data = tempBytes.copyOfRange(i * 2, i * 2 + 2)
-                    value = readTempValue(data)
-                    if (value > max || value < min) {
-                        //max color
-                        r = imageBytes[i * 4].toInt() and 0xff
-                        g = imageBytes[i * 4 + 1].toInt() and 0xff
-                        b = imageBytes[i * 4 + 2].toInt() and 0xff
+        EnhancedBitmapUtils.replaceBitmapColorWithThermal(
+            imageBytes, tempBytes, max, min, maxColor, minColor
+        )
+    }
+
+    @JvmStatic
+    fun createThermalOverlay(width: Int, height: Int, temperatureData: ByteArray): Bitmap? {
+        return EnhancedBitmapUtils.createThermalOverlay(width, height, temperatureData)
+    }
+
+    @JvmStatic
+    fun applyThermalColorMap(grayscaleBitmap: Bitmap): Bitmap? {
+        return EnhancedBitmapUtils.applyThermalColorMap(grayscaleBitmap)
+    }
+
+    @JvmStatic
+    fun blendBitmaps(baseBitmap: Bitmap, overlayBitmap: Bitmap, alpha: Float = 0.5f): Bitmap? {
+        return EnhancedBitmapUtils.blendBitmaps(baseBitmap, overlayBitmap, alpha)
+    }
+}
                         //灰度
                         grey = (r * 0.3f).toInt() + (g * 0.59f).toInt() + (b * 0.11f).toInt()
                         imageBytes[i * 4] = grey.toByte()

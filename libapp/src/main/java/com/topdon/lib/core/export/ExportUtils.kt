@@ -1,11 +1,17 @@
 package com.topdon.lib.core.export
 
 import android.content.ContentValues
+import android.graphics.*
+import android.graphics.drawable.Drawable
+import android.graphics.pdf.PdfDocument
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
+import android.widget.ScrollView
+import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.TimeUtils
 import com.blankj.utilcode.util.UriUtils
 import com.blankj.utilcode.util.Utils
@@ -24,7 +30,8 @@ import java.io.OutputStream
 
 /**
  * Consolidated export utilities for various data formats.
- * Combines functionality from libcom ExcelUtil and similar export utilities.
+ * Combines functionality from libcom ExcelUtil, PDFHelp and similar export utilities.
+ * Supports Excel, PDF, and CSV export with comprehensive thermal data formatting.
  */
 object ExportUtils {
 
@@ -54,9 +61,94 @@ object ExportUtils {
      */
     @JvmStatic
     fun exportToPDF(thermalList: List<ThermalEntity>, fileName: String = generateDefaultFileName()): Uri? {
-        // Implementation for PDF export
-        // TODO: Add PDF export functionality when needed
-        return null
+        return try {
+            val document = createPdfDocument(thermalList)
+            val uri = savePdfDocument(document, fileName)
+            document.close()
+            uri
+        } catch (e: Exception) {
+            Log.e(TAG, "PDF export failed", e)
+            null
+        }
+    }
+
+    /**
+     * Save PDF file from view list (consolidated from libcom PDFHelp).
+     * Creates paginated PDF with proper A4 formatting.
+     */
+    @JvmStatic
+    fun savePdfFromViews(
+        name: String, 
+        containerView: ScrollView, 
+        viewList: MutableList<View>, 
+        watermarkView: View
+    ): String {
+        val onePageHeight: Int = (containerView.width * 297f / 210f).toInt() // A4 aspect ratio 210:297
+        var onePageContentHeight = 0f
+
+        val pdfDocument = PdfDocument()
+        var page: PdfDocument.Page? = null
+        var canvas: Canvas? = null
+
+        val paint = Paint().apply {
+            color = 0xff16131e.toInt()
+        }
+
+        for (index in 0 until viewList.size) {
+            val contentHeight = viewList[index].measuredHeight
+            
+            if (onePageContentHeight + contentHeight > onePageHeight) {
+                // Content exceeds page height, start new page
+                onePageContentHeight = 0f
+                page?.let { pdfDocument.finishPage(it) }
+                page = null
+            }
+            
+            if (page == null) {
+                val pageInfo = PdfDocument.PageInfo.Builder(containerView.width, onePageHeight, 1)
+                    .setContentRect(Rect(0, 0, containerView.width, onePageHeight))
+                    .create()
+                page = pdfDocument.startPage(pageInfo)
+                canvas = page.canvas
+                canvas.drawRect(0f, 0f, containerView.width.toFloat(), onePageHeight.toFloat(), paint)
+
+                // Draw background for first page
+                if (index == 0) {
+                    try {
+                        val bgDrawableId = containerView.context.resources.getIdentifier(
+                            "ic_report_create_bg_top", "drawable", containerView.context.packageName
+                        )
+                        if (bgDrawableId != 0) {
+                            val bgTopDrawable: Drawable? = ContextCompat.getDrawable(containerView.context, bgDrawableId)
+                            bgTopDrawable?.setBounds(0, 0, containerView.width, (containerView.width * 1026 / 1125f).toInt())
+                            bgTopDrawable?.draw(canvas)
+                        }
+                    } catch (e: Exception) {
+                        // Ignore if resource not found
+                    }
+                }
+
+                // Draw watermark
+                canvas.save()
+                watermarkView.draw(canvas)
+                canvas.restore()
+            }
+
+            // Draw content view
+            canvas?.save()
+            canvas?.translate((containerView.width - viewList[index].measuredWidth) / 2f, 0f)
+            viewList[index].draw(canvas!!)
+            canvas?.restore()
+
+            canvas?.translate(0f, contentHeight.toFloat())
+            onePageContentHeight += contentHeight
+            
+            if (page != null && index == viewList.size - 1) {
+                pdfDocument.finishPage(page)
+            }
+        }
+
+        return savePdfDocumentToFile(pdfDocument, name)
     }
 
     /**
@@ -150,6 +242,98 @@ object ExportUtils {
         } catch (e: IOException) {
             Log.e(TAG, "Failed to save thermal matrix workbook", e)
             null
+        }
+    }
+
+    private fun createPdfDocument(thermalList: List<ThermalEntity>): PdfDocument {
+        val document = PdfDocument()
+        // Basic PDF document creation - can be enhanced as needed
+        val pageInfo = PdfDocument.PageInfo.Builder(595, 842, 1).create() // A4 size
+        val page = document.startPage(pageInfo)
+        val canvas = page.canvas
+        
+        val paint = Paint().apply {
+            textSize = 12f
+            color = Color.BLACK
+        }
+        
+        // Simple text-based thermal data export
+        var yPosition = 50f
+        canvas.drawText("Thermal Data Export", 50f, yPosition, paint)
+        yPosition += 30f
+        
+        for ((index, entity) in thermalList.withIndex()) {
+            if (yPosition > 800) break // Stay within page bounds
+            canvas.drawText("Entry ${index + 1}: Temp ${entity.centerTemp}°C", 50f, yPosition, paint)
+            yPosition += 20f
+        }
+        
+        document.finishPage(page)
+        return document
+    }
+
+    private fun savePdfDocument(document: PdfDocument, fileName: String): Uri? {
+        return try {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                val pdfFile = File(FileConfig.getPdfDir(), "$fileName.pdf")
+                val fos = FileOutputStream(pdfFile)
+                document.writeTo(fos)
+                fos.close()
+                Uri.fromFile(pdfFile)
+            } else {
+                val values = ContentValues().apply {
+                    put(MediaStore.MediaColumns.DISPLAY_NAME, "$fileName.pdf")
+                    put(MediaStore.MediaColumns.MIME_TYPE, "application/pdf")
+                    put(MediaStore.MediaColumns.RELATIVE_PATH, FileConfig.getPdfDir())
+                }
+                val contentUri = MediaStore.Files.getContentUri("external")
+                val uri = Utils.getApp().contentResolver.insert(contentUri, values)
+                uri?.let { 
+                    Utils.getApp().contentResolver.openOutputStream(it)?.use { stream ->
+                        document.writeTo(stream)
+                    }
+                }
+                uri
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to save PDF document", e)
+            null
+        }
+    }
+
+    private fun savePdfDocumentToFile(document: PdfDocument, name: String): String {
+        return try {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                val pdfFile = File(FileConfig.getPdfDir(), "$name.pdf")
+                val fos = FileOutputStream(pdfFile)
+                document.writeTo(fos)
+                fos.flush()
+                fos.close()
+                pdfFile.absolutePath
+            } else {
+                val fileName = "$name.pdf"
+                val values = ContentValues().apply {
+                    put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+                    put(MediaStore.MediaColumns.RELATIVE_PATH, FileConfig.getPdfDir())
+                }
+                val contentUri = MediaStore.Files.getContentUri("external")
+                val uri = Utils.getApp().contentResolver.insert(contentUri, values)
+                uri?.let { 
+                    val outputStream = Utils.getApp().contentResolver.openOutputStream(it)
+                    outputStream?.let { stream ->
+                        val bos = BufferedOutputStream(stream)
+                        document.writeTo(bos)
+                        bos.flush()
+                        bos.close()
+                    }
+                    UriUtils.uri2File(it)?.absolutePath ?: ""
+                } ?: ""
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to save PDF to file", e)
+            ""
+        } finally {
+            document.close()
         }
     }
 
