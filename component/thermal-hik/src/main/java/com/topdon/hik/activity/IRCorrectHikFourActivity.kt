@@ -53,7 +53,7 @@ class IRCorrectHikFourActivity : BaseBindingActivity<ActivityIrCorrectHikFourBin
                 }
                 .create().show()
         }
-        //热成像机芯在上一步已经初始化过了，这里不用再搞一遍
+        //thermal imaging机芯在上一步已经初始化过了，这里不用再搞一遍
 
         binding.timeDownView.onTimeListener = {
             if (it == COUNT_DOWN_SECOND - 10) {//预热10秒

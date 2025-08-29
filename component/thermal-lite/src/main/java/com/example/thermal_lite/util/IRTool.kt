@@ -90,10 +90,10 @@ object IRTool {
     }
 
     /**
-     * 设置镜像
+     * settingsmirror
      */
     fun basicMirrorAndFlipStatusSet(openMirror : Boolean){
-        //设置图像镜像或翻转 PASS
+        //settings图像mirror或flip PASS
         val basicMirrorAndFlipStatusSet = DeviceIrcmdControlManager.getInstance().ircmdEngine
             ?.basicMirrorAndFlipStatusSet(if (openMirror) CommonParams.MirrorFlipType.ONLY_FLIP else
                 CommonParams.MirrorFlipType.NO_MIRROR_OR_FLIP)
@@ -101,18 +101,18 @@ object IRTool {
     }
 
     /**
-     * 一次完成的锅盖标定流程
+     * 一次完成的锅盖calibration流程
      * https://alidocs.dingtalk.com/i/p/QqWXwywDMb9xKG31/docs/14lgGw3P8vL0P2qbu7OR39d5V5daZ90D
      * Setp1：插上模组出图并确保当前模组达到热稳定状态，一般需要预热3-5分钟。
-     * 预热完成后，移动模组至标定靶面前，靠近但不接触靶面。靶面的成像覆盖全部视场、 无杂散光进入为最佳)；
-     * Setp2：重置锅盖标定数据，确保标定准确性
+     * 预热完成后，移动模组至calibration靶面前，靠近但不接触靶面。靶面的成像覆盖全部视场、 无杂散光进入为最佳)；
+     * Setp2：重置锅盖calibration数据，确保calibration准确性
      * Setp3：关闭自动快门
      * Setp4：打快门
-     * Setp5：进行自动锅盖标定
+     * Setp5：进行自动锅盖calibration
      * Setp6：恢复自动快门
-     * Setp7：如果标定有误，或者需要取消自动标定结果，可调用指令
+     * Setp7：如果calibration有误，或者需要cancel自动calibration结果，可调用指令
      * mIrcmdEngine.advRmcoverCaliCancel();
-     * 如果观察标定没有问题，即可保存锅盖标定数据，可调用指令
+     * 如果观察calibration没有问题，即可保存锅盖calibration数据，可调用指令
      * mIrcmdEngine.basicSaveData(CommonParams.DeviceDataSaveType.BASIC_SAVE_RMCOVER_DATA);
      */
     fun onceAuto() : Boolean{
@@ -138,7 +138,7 @@ object IRTool {
 
 
     /**
-     * 高低增益模式下各做一组锅盖标定，如此模组的锅盖标定才是完整的流程
+     * 高低增益mode下各做一组锅盖calibration，如此模组的锅盖calibration才是完整的流程
      */
     suspend fun autoStart() : Boolean{
         basicGainSet(CameraItemBean.TYPE_TMP_C)
@@ -215,7 +215,7 @@ object IRTool {
     }
 
     /**
-     * 设置场景模式三
+     * settings场景mode三
      */
     fun setMode(){
 //        val professionModeSetResult = DeviceIrcmdControlManager.getInstance().ircmdEngine

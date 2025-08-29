@@ -37,7 +37,7 @@ import java.util.*
 
 
 /**
- * 摄像头属性值设置
+ * 摄像头属性值settings
  * @author: CaiSongL
  * @date: 2023/4/3 15:00
  */
@@ -171,7 +171,7 @@ class IRCameraSettingActivity : BaseActivity() {
                 checkStoragePermission()
             }
         })
-        //TC007设备不需要延迟拍照
+        //TC007设备不需要延迟photo
         ly_auto.visibility = if (isTC007()) View.GONE else View.VISIBLE
     }
 
@@ -346,7 +346,7 @@ class IRCameraSettingActivity : BaseActivity() {
                 }
                 override fun onDenied(permissions: MutableList<String>, never: Boolean) {
                     if (never) {
-                        // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                        // 如果是被永久拒绝就跳转到应用权限系统settingspage
                         if (BaseApplication.instance.isDomestic()){
                             ToastUtils.showShort(getString(R.string.app_location_content))
                         }else{

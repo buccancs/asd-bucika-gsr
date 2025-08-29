@@ -41,9 +41,9 @@ public class FileSizeUtil {
     }
 
     /**
-     * 返回内容类型
+     * 返回内容type
      *
-     * @param sizeType 内存类型
+     * @param sizeType 内存type
      * @return String
      */
     public static String getUnit(int sizeType) {
@@ -202,7 +202,7 @@ public class FileSizeUtil {
     }
 
     /**
-     * 转换文件大小,指定转换的类型
+     * 转换文件大小,指定转换的type
      *
      * @param fileS
      * @param sizeType

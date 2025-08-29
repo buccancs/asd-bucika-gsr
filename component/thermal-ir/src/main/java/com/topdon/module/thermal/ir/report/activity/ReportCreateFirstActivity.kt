@@ -51,18 +51,18 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * 生成报告第1步（共2步）.
+ * 生成report第1步（共2步）.
  *
  * 需要传递
  * - 是否 TC007: [ExtraKeyConfig.IS_TC007] （环境温度、发射率等不同）
  * - 当前编辑的图片绝对路径: [ExtraKeyConfig.FILE_ABSOLUTE_PATH] （本界面不使用，透传）
- * - 当前编辑的图片点线面全图温度数据: [ExtraKeyConfig.IMAGE_TEMP_BEAN] （本界面不使用，透传）
+ * - 当前编辑的图片point line area全图温度数据: [ExtraKeyConfig.IMAGE_TEMP_BEAN] （本界面不使用，透传）
  */
 @Route(path = RouterConfig.REPORT_CREATE_FIRST)
 class ReportCreateFirstActivity: BaseActivity(), View.OnClickListener {
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
@@ -165,7 +165,7 @@ class ReportCreateFirstActivity: BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v) {
-            tv_report_date -> {//报告日期
+            tv_report_date -> {//report日期
                 selectTime()
             }
             tv_preview -> {//预览
@@ -296,7 +296,7 @@ class ReportCreateFirstActivity: BaseActivity(), View.OnClickListener {
 
 
     /**
-     * 当前设置的报告日期时间戳.
+     * 当前settings的report日期时间戳.
      */
     private var startTime = 0L
     /**
@@ -319,10 +319,10 @@ class ReportCreateFirstActivity: BaseActivity(), View.OnClickListener {
 
         val endTimeEntity = DatimeEntity.yearOnFuture(10)
         if (startTime == 0L) {
-            //设置当前时间
+            //settings当前时间
             picker.wheelLayout.setRange(startTimeEntity, endTimeEntity, DatimeEntity.now())
         } else {
-            //设置上一次选中时间
+            //settings上一次选中时间
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = startTime
             val year = calendar.get(Calendar.YEAR)
@@ -388,7 +388,7 @@ class ReportCreateFirstActivity: BaseActivity(), View.OnClickListener {
                 }
                 override fun onDenied(permissions: MutableList<String>, never: Boolean) {
                     if (never) {
-                        // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                        // 如果是被永久拒绝就跳转到应用权限系统settingspage
                         if (BaseApplication.instance.isDomestic()){
                             ToastUtils.showShort(getString(R.string.app_location_content))
                             return

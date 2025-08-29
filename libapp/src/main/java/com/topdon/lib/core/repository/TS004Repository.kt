@@ -164,7 +164,7 @@ object TS004Repository {
 
     /**
      * 获取文件数量.
-     * @param fileType 0-图片 1-录像 2-所有
+     * @param fileType 0-图片 1-video 2-所有
      */
     suspend fun getFileCount(fileType: Int): Int? = withContext(Dispatchers.IO) {
         try {
@@ -177,8 +177,8 @@ object TS004Repository {
     }
 
     /**
-     * 获取指定类型的最新的一个文件.
-     * @param fileType 0-图片 1-录像 2-所有
+     * 获取指定type的最新的一个文件.
+     * @param fileType 0-图片 1-video 2-所有
      */
     suspend fun getNewestFile(fileType: Int): List<FileBean>? = withContext(Dispatchers.IO) {
         try {
@@ -193,8 +193,8 @@ object TS004Repository {
     }
 
     /**
-     * 获取指定类型的所有文件列表.
-     * @param fileType 0-图片 1-录像 2-所有
+     * 获取指定type的所有文件列表.
+     * @param fileType 0-图片 1-video 2-所有
      */
     suspend fun getAllFileList(fileType: Int): List<FileBean> = withContext(Dispatchers.IO) {
         try {
@@ -214,8 +214,8 @@ object TS004Repository {
     }
 
     /**
-     * 分页加载指定类型的文件列表.
-     * @param fileType 0-图片 1-录像 2-所有
+     * 分页加载指定type的文件列表.
+     * @param fileType 0-图片 1-video 2-所有
      * @return null-请求失败
      */
     suspend fun getFileByPage(fileType: Int, pageNum: Int, pageCount: Int): List<FileBean>? = withContext(Dispatchers.IO) {
@@ -232,7 +232,7 @@ object TS004Repository {
 
     data class IdData(val id: Int)
     /**
-     * 删除指定 id 的照片视频文件
+     * delete指定 id 的照片视频文件
      */
     suspend fun deleteFiles(ids: Array<Int>): Boolean = withContext(Dispatchers.IO) {
         try {
@@ -342,8 +342,8 @@ object TS004Repository {
     }
 
     /**
-     * 设置伪彩样式
-     * @param mode 伪彩样式 白热-1，黑热-2，红热-9, 铁红-5
+     * settingspseudo color样式
+     * @param mode pseudo color样式 白热-1，黑热-2，红热-9, 铁红-5
      */
     suspend fun setPseudoColor(mode: Int): Boolean = withContext(Dispatchers.IO) {
         try {
@@ -357,7 +357,7 @@ object TS004Repository {
     }
 
     /**
-     * 获取伪彩样式
+     * 获取pseudo color样式
      */
     suspend fun getPseudoColor(): TS004Response<PseudoColorBean>? = withContext(Dispatchers.IO) {
         try {
@@ -368,7 +368,7 @@ object TS004Repository {
     }
 
     /**
-     * 设置测距
+     * settings测距
      * @param state 0-关闭，1-开启
      */
     suspend fun setRangeFind(state: Int): Boolean = withContext(Dispatchers.IO) {
@@ -393,7 +393,7 @@ object TS004Repository {
     }
 
     /**
-     * 设置屏幕亮度
+     * settings屏幕亮度
      * @param brightness  屏幕亮度值:范围0-100
      */
     suspend fun setPanelParam(brightness: Int): Boolean = withContext(Dispatchers.IO) {
@@ -418,7 +418,7 @@ object TS004Repository {
     }
 
     /**
-     * 设置画中画
+     * settings画中画
      * @param enable  true 打开，false 关闭
      */
     suspend fun setPip(enable: Boolean): Boolean = withContext(Dispatchers.IO) {
@@ -444,7 +444,7 @@ object TS004Repository {
 
 
     /**
-     * 设置放大倍数
+     * settings放大倍数
      * @param factor 放大倍数:1,2,4,8
      */
     suspend fun setZoom(factor: Int): Boolean = withContext(Dispatchers.IO) {
@@ -470,7 +470,7 @@ object TS004Repository {
     }
 
     /**
-     * 设置拍照
+     * settingsphoto
      * @param factor 放大倍数:1,2,4,8
      */
     suspend fun setSnapshot(): Boolean = withContext(Dispatchers.IO) {
@@ -482,7 +482,7 @@ object TS004Repository {
     }
 
     /**
-     * 设置录像
+     * settingsvideo
      * @param  enable 录制开关
      */
     suspend fun setVideo(enable: Boolean): Boolean = withContext(Dispatchers.IO) {
@@ -528,7 +528,7 @@ object TS004Repository {
         }
     }
     /**
-     * 恢复出厂设置
+     * 恢复出厂settings
      */
     suspend fun getResetAll(): Boolean = withContext(Dispatchers.IO) {
         try {
@@ -539,7 +539,7 @@ object TS004Repository {
         }
     }
     /**
-     * 设置超分
+     * settings超分
      * @param  state 0-关闭 1-开启
      */
     suspend fun setTISR(state: Int): Boolean = withContext(Dispatchers.IO) {

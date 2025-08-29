@@ -72,7 +72,7 @@ public class ScanConfiguration {
     }
 
     /**
-     * {@link BluetoothLeScanner}的搜索设置
+     * {@link BluetoothLeScanner}的搜索settings
      */
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     public ScanConfiguration setScanSettings(ScanSettings scanSettings) {

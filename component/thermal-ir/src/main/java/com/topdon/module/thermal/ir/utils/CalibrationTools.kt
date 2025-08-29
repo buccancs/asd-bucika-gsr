@@ -7,60 +7,60 @@ import com.energy.iruvc.utils.CommonParams
 import com.energy.iruvc.utils.SynchronizedBitmap
 
 /**
- * 温度标定
+ * 温度calibration
  */
 object CalibrationTools {
 
     /**
-     * 单点标定
-     * 对准黑体 - 设置温度
+     * 单点calibration
+     * 对准黑体 - settings温度
      */
     fun sign(irCmd: IRCMD, singlePointTemp: Int): Boolean {
         var success = false
-        // 标定前需要重置测温参数,否则温度标定不准
+        // calibration前需要重置测温参数,否则温度calibration不准
         if (irCmd.restoreDefaultConfig(CommonParams.DefaultConfigType.DEF_CFG_TPD) == 0) {
             irCmd.restoreDefaultConfig(CommonParams.DefaultConfigType.DEF_CFG_TPD)
             val result = irCmd.setTPDKtBtRecalPoint(CommonParams.TPDKtBtRecalPointType.RECAL_1_POINT, singlePointTemp)
             if (result == 0) {
                 success = true
             } else {
-                XLog.w("单点标定失败")
+                XLog.w("单点calibration失败")
             }
         } else {
-            XLog.w("单点标定失败")
+            XLog.w("单点calibration失败")
         }
         return success
     }
 
     /**
-     * 温度标定
+     * 温度calibration
      * 低温(100 ~ 400)
      */
     fun pointFirst(irCmd: IRCMD, pointTemp: Int): Boolean {
         var success = false
-        // 标定前需要重置测温参数,否则温度标定不准
+        // calibration前需要重置测温参数,否则温度calibration不准
         if (irCmd.restoreDefaultConfig(CommonParams.DefaultConfigType.DEF_CFG_TPD) == 0) {
             val result = irCmd.setTPDKtBtRecalPoint(CommonParams.TPDKtBtRecalPointType.RECAL_2_POINT_FIRST, pointTemp + 273)
             if (result == 0) {
                 success = true
             } else {
-                XLog.w("低温标定失败")
+                XLog.w("低温calibration失败")
             }
         } else {
-            XLog.w("低温标定失败")
+            XLog.w("低温calibration失败")
         }
         return success
     }
 
     /**
-     * 温度标定
+     * 温度calibration
      * 高温(20 ~ 100)
      *
      * 提交完低温之后才能提交高温
      */
     fun pointEnd(irCmd: IRCMD, pointTemp: Int): Boolean {
         var success = false
-        // 标定前需要重置测温参数,否则温度标定不准
+        // calibration前需要重置测温参数,否则温度calibration不准
         if (irCmd.restoreDefaultConfig(CommonParams.DefaultConfigType.DEF_CFG_TPD) == 0) {
             val result = irCmd.setTPDKtBtRecalPoint(CommonParams.TPDKtBtRecalPointType.RECAL_2_POINT_END, pointTemp + 273)
             if (result == 0) {
@@ -75,7 +75,7 @@ object CalibrationTools {
     }
 
     /**
-     * 锅盖标定 - 步骤一准备
+     * 锅盖calibration - 步骤一准备
      *
      */
     fun potReady(irCmd: IRCMD): Boolean {
@@ -83,7 +83,7 @@ object CalibrationTools {
     }
 
     /**
-     * 锅盖标定 - 步骤二开始
+     * 锅盖calibration - 步骤二开始
      *
      * @param gainType 默认GAIN_1
      * CommonParams.RMCoverAutoCalcType.GAIN_1
@@ -97,26 +97,26 @@ object CalibrationTools {
             4 -> CommonParams.RMCoverAutoCalcType.GAIN_4
             else -> CommonParams.RMCoverAutoCalcType.GAIN_1
         }
-        irCmd.rmCoverAutoCalc(gainType) //发送锅盖标定
+        irCmd.rmCoverAutoCalc(gainType) //发送锅盖calibration
         irCmd.rmCoverStsSwitch(CommonParams.RMCoverStsSwitchStatus.RMCOVER_EN) //打开锅盖校正
     }
 
     /**
-     * 取消标定
+     * cancelcalibration
      */
     fun cancelCalibration(irCmd: IRCMD) {
         irCmd.restoreDefaultConfig(CommonParams.DefaultConfigType.DEF_CFG_TPD)
     }
 
     /**
-     * 恢复出厂标定
+     * 恢复出厂calibration
      */
     fun reset(irCmd: IRCMD) {
         irCmd.restoreDefaultConfig(CommonParams.DefaultConfigType.DEF_CFG_ALL)
     }
 
     /**
-     * 查询增益模式
+     * 查询增益mode
      * @return true: 高增益    false: 低增益
      */
     fun queryGain(irCmd: IRCMD): Boolean {
@@ -126,7 +126,7 @@ object CalibrationTools {
     }
 
     /**
-     * 设置增益模式
+     * settings增益mode
      * @param type 1: 打开    0: 关闭
      *
      */
@@ -160,7 +160,7 @@ object CalibrationTools {
     }
 
     /**
-     * 控制锅盖标定开关
+     * 控制锅盖calibration开关
      */
     fun stsSwitch(irCmd: IRCMD?, flag: Boolean) {
         if (flag) {
@@ -171,7 +171,7 @@ object CalibrationTools {
     }
 
     /**
-     * 锅盖标定 - 步骤二开始
+     * 锅盖calibration - 步骤二开始
      *
      * @param gainType 默认GAIN_1
      * CommonParams.RMCoverAutoCalcType.GAIN_1
@@ -185,7 +185,7 @@ object CalibrationTools {
             4 -> CommonParams.RMCoverAutoCalcType.GAIN_4
             else -> CommonParams.RMCoverAutoCalcType.GAIN_1
         }
-        irCmd.rmCoverAutoCalc(gainType) //发送锅盖标定
+        irCmd.rmCoverAutoCalc(gainType) //发送锅盖calibration
     }
 
     /**
@@ -197,8 +197,8 @@ object CalibrationTools {
     }
 
     /**
-     * TPD_PROP_DISTANCE不给设置
-     * 设置距离 unit:cnt(128cnt=1m)
+     * TPD_PROP_DISTANCE不给settings
+     * settings距离 unit:cnt(128cnt=1m)
      * @param value 0 ~ 25600
      */
     fun setTpdDis(irCmd: IRCMD?, value: Int) {
@@ -207,7 +207,7 @@ object CalibrationTools {
     }
 
     /**
-     * 设置发射率 unit:cnt(128cnt=1)
+     * settings发射率 unit:cnt(128cnt=1)
      * @param value 1 ~ 128
      */
     fun setTpdEms(irCmd: IRCMD?, value: Int) {
@@ -216,13 +216,13 @@ object CalibrationTools {
     }
 
     /**
-     * 设置Tpd
+     * settingsTpd
      */
     private fun setTpdParams(irCmd: IRCMD?, params: CommonParams.PropTPDParams, value: CommonParams.PropTPDParamsValue): Int {
         return try {
             irCmd?.setPropTPDParams(params, value) ?: 0
         } catch (e: Exception) {
-            XLog.w("设置参数异常[${params.name}]: ${e.message}")
+            XLog.w("settings参数异常[${params.name}]: ${e.message}")
             0
         }
     }

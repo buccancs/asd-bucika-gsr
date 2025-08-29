@@ -96,7 +96,7 @@ class RoundImageView : AppCompatImageView {
     }
 
     /**
-     * 设置圆角半径，单位**dp**.
+     * settings圆角半径，单位**dp**.
      */
     fun setRadius(radius: Float) {
         if (this.radius != dp2px(radius)) {

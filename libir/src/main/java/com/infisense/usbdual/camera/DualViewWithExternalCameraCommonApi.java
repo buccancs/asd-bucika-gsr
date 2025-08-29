@@ -220,9 +220,9 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
              * tempData 原始温度数据，格式Y16，长度irWidth * irHeight * 2
              * remapTempData 融合图像尺寸一致的温度数据 格式YUV422 dualwidth * dualHeight * 2
              * vlData 原始可见光数据 格式RGB24 vlWidth * vlHeight * 3
-             * vlARGBData 融合图像尺寸一致的可见光数据 dualwidth * dualHeight * 4（仅画中画模式回调数据）
-             * 画中画模式ScreenFusion:mixData 为单红外数据，格式ARGB，长度dualwidth * dualHeight * 4
-             * 融合模式为IROnlyNoFusion, 只会返回irData和tempData,数据位置不变
+             * vlARGBData 融合图像尺寸一致的可见光数据 dualwidth * dualHeight * 4（仅画中画mode回调数据）
+             * 画中画modeScreenFusion:mixData 为单红外数据，格式ARGB，长度dualwidth * dualHeight * 4
+             * 融合mode为IROnlyNoFusion, 只会返回irData和tempData,数据位置不变
              */
             /**
              * frame 所有数据集合 (GPU)
@@ -234,8 +234,8 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
              * tempData 原始温度数据，格式Y16，长度irWidth * irHeight * 2
              * remapTempData 融合图像尺寸一致的温度数据 格式YUV422 dualwidth * dualHeight * 2
              * vlData 原始可见光数据 格式ARGB vlWidth * vlHeight * 4
-             * 画中画模式ScreenFusion:mixData 为单红外数据，格式ARGB，长度dualwidth * dualHeight * 4
-             * 融合模式为IROnlyNoFusion, 只会返回irData和tempData,数据位置不变
+             * 画中画modeScreenFusion:mixData 为单红外数据，格式ARGB，长度dualwidth * dualHeight * 4
+             * 融合mode为IROnlyNoFusion, 只会返回irData和tempData,数据位置不变
              */
             @Override
             public void onFrame(byte[] frame) {
@@ -272,13 +272,13 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
                 //合并原始红外数据和原始温度数据
                 System.arraycopy(frame, dualCameraWidth*dualCameraHeight*4, frameIrAndTempData, 0, frameIrAndTempData.length);
 
-                //画中画模式ScreenFusion:mixData 为单红外数据，格式ARGB，长度dualwidth * dualHeight * 4
+                //画中画modeScreenFusion:mixData 为单红外数据，格式ARGB，长度dualwidth * dualHeight * 4
 //                if (mCurrentFusionType == DualCameraParams.FusionType.ScreenFusion) {
 //                    System.arraycopy(frame, fusionLength + irSize * 4 + remapTempSize + vlSize, vlARGBData, 0,
 //                            fusionLength);
 //                }
 
-                //如果是IROnlyNoFusion模式, 此时红外数据和温度为原始数据，长度都为256*192
+                //如果是IROnlyNoFusionmode, 此时红外数据和温度为原始数据，长度都为256*192
                 if (mCurrentFusionType == DualCameraParams.FusionType.IROnlyNoFusion) {
                     for (OnFrameCallback onFrameCallback : onFrameCallbacks) {
                         onFrameCallback.onFame(mixData, normalTempData, fps);
@@ -401,8 +401,8 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
     public void startPreview() {
         /**
          * setIrDataPreHandleEnable 开启后
-         * 必须设置setIrFrameCallback
-         * 同时setFusion(HSLFusion)模式不生效, 等温尺相关接口setIsothermal,伪彩，自定义伪彩相关接口setPseudocolor, setCustomPseudocolor不生效
+         * 必须settingssetIrFrameCallback
+         * 同时setFusion(HSLFusion)mode不生效, 等温尺相关接口setIsothermal,pseudo color，自定义pseudo color相关接口setPseudocolor, setCustomPseudocolor不生效
          */
         switchIrPreDataHandleEnable(true);
         dualUVCCamera.setFrameCallback(iFrameCallback);
@@ -439,7 +439,7 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
     public Bitmap getScaledBitmap() {
         if (isOpenAmplify){
             if (mCurrentFusionType == DualCameraParams.FusionType.IROnlyNoFusion){
-                //单红外模式
+                //单红外mode
                 supIROlyNoFusionBitmap.copyPixelsFromBuffer(ByteBuffer.wrap(amplifyIRRotateArray, 0,
                         supIROlyNoFusionBitmap.getWidth() * supIROlyNoFusionBitmap.getHeight() * 4));
                 mScaledBitmap = Bitmap.createScaledBitmap(supIROlyNoFusionBitmap,

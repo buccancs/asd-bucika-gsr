@@ -56,7 +56,7 @@ import org.greenrobot.eventbus.EventBus
 class IRMainActivity : BaseActivity(), View.OnClickListener {
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
@@ -153,7 +153,7 @@ class IRMainActivity : BaseActivity(), View.OnClickListener {
             view_main_thermal -> {//首页
                 view_page.setCurrentItem(2, false)
             }
-            cl_icon_report -> {//报告
+            cl_icon_report -> {//report
                 if (LMS.getInstance().isLogin) {
                     view_page.setCurrentItem(3, false)
                 } else {

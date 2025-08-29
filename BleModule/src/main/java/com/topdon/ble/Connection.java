@@ -36,7 +36,7 @@ public interface Connection {
     int REQUEST_FAIL_TYPE_CONNECTION_DISCONNECTED = 8;
     int REQUEST_FAIL_TYPE_CONNECTION_RELEASED = 9;
 
-    //----------连接超时类型---------
+    //----------连接超时type---------
     int TIMEOUT_TYPE_CANNOT_DISCOVER_DEVICE = 0;
     /**
      * 搜索到设备，但是无法连接成功
@@ -47,7 +47,7 @@ public interface Connection {
      */
     int TIMEOUT_TYPE_CANNOT_DISCOVER_SERVICES = 2;
 
-    //-------------连接失败类型-------------------
+    //-------------连接失败type-------------------
     /**
      * 达到最大重连次数限制
      */
@@ -61,7 +61,7 @@ public interface Connection {
     Device getDevice();
 
     /**
-     * 获取当前设置的最大传输单元
+     * 获取当前settings的最大传输单元
      */
     int getMtu();
 
@@ -110,7 +110,7 @@ public interface Connection {
     void clearRequestQueue();
 
     /**
-     * 将指定的请求类型从队列中移除，如果传null，则清除请求队列，不触发事件
+     * 将指定的请求type从队列中移除，如果传null，则清除请求队列，不触发事件
      */
     void clearRequestQueueByType(RequestType type);
 
@@ -142,7 +142,7 @@ public interface Connection {
     boolean isNotificationOrIndicationEnabled(UUID service, UUID characteristic);
 
     /**
-     * 设置原生回调
+     * settings原生回调
      */
     void setBluetoothGattCallback(BluetoothGattCallback callback);
 

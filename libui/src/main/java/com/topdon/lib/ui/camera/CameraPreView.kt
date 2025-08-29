@@ -206,7 +206,7 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
     /**相机请求 */
     private lateinit var mCaptureBuilder: CaptureRequest.Builder
 
-    /**相机拍照捕获会话 */
+    /**相机photo捕获会话 */
     private var mCameraCaptureSession: CameraCaptureSession? = null
 
     /**相机管理者 */
@@ -264,7 +264,7 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
 //        layoutParams.width = cameraWidth / 2
 //        mTextureView.layoutParams = layoutParams
         val surfaceTexture = mTextureView.surfaceTexture
-        // 设置默认的缓冲大小
+        // settings默认的缓冲大小
         surfaceTexture!!.setDefaultBufferSize(mPreviewSize!!.width, mPreviewSize!!.height)
         // 创建Surface
         val previewSurface = Surface(surfaceTexture)
@@ -283,7 +283,7 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
                             val captureRequest = mCaptureBuilder.build()
                             // 設置session
                             mCameraCaptureSession = session
-                            // 设置重复预览请求
+                            // settings重复预览请求
                             mCameraCaptureSession?.setRepeatingRequest(
                                 captureRequest,
                                 null,
@@ -344,7 +344,7 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
 
 
     /**
-     * 设置相机参数
+     * settings相机参数
      * @param width 宽度
      * @param height 高度
      */
@@ -354,7 +354,7 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
         // 获取摄像头的管理者
         mCameraManager = context.getSystemService(Context.CAMERA_SERVICE) as CameraManager
         try {
-            // 遍历所有摄像头,找到一个取消遍历
+            // 遍历所有摄像头,找到一个cancel遍历
             for (cameraId in mCameraManager!!.cameraIdList) {
                 XLog.i("camera id: $cameraId")
                 cameraCharacteristics = mCameraManager!!.getCameraCharacteristics(cameraId)
@@ -364,7 +364,7 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
                 if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT) continue
                 // 获取StreamConfigurationMap，管理摄像头支持的所有输出格式和尺寸
                 val map = cameraCharacteristics?.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)!!
-                // 根据TextureView的尺寸设置预览尺寸
+                // 根据TextureView的尺寸settings预览尺寸
                 val mapList = map.getOutputSizes(SurfaceTexture::class.java)
 
                 mPreviewSize = getOptimalSize(mapList, width, height)
@@ -373,15 +373,15 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
                 constraintSet.constrainHeight(mTextureView.id,width * mPreviewSize!!.width / mPreviewSize!!.height)
                 constraintSet.applyTo(camera_lay_root);
                 XLog.w("mPreviewSize:${mPreviewSize}")
-                // 获取相机支持的最大拍照尺寸
+                // 获取相机支持的最大photo尺寸
                 val sizes = map.getOutputSizes(ImageFormat.JPEG)
                 XLog.w("size:${sizes.toList()}")
                 val w = 1000
                 val h = w * sizes[0].height / sizes[0].width
-//                mCaptureSize = Size(w, h)//影响拍照尺寸
+//                mCaptureSize = Size(w, h)//影响photo尺寸
                 XLog.w("选取比例 w:${sizes[0].width}, h:${sizes[0].height}")
                 XLog.w("调整后 w: ${w}, h:${h}")
-                // 此处ImageReader用于拍照所需
+                // 此处ImageReader用于photo所需
 //                setupImageReader()
                 // 为摄像头赋值
                 mCameraId = cameraId
@@ -389,13 +389,13 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
             }
         } catch (e: CameraAccessException) {
             e.printStackTrace()
-            Log.e("123", "设置相机参数:${e.message}")
+            Log.e("123", "settings相机参数:${e.message}")
         }
     }
 
     /**
      * 选择SizeMap中大于并且最接近width和height的size
-     * @param sizeMap 可选的尺寸
+     * @param sizeMap optional的尺寸
      * @param width 宽
      * @param height 高
      * @return 最接近width和height的size

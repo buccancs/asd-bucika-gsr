@@ -13,7 +13,7 @@ import com.topdon.tc004.activity.video.PlayFragment
 import org.easydarwin.video.Client
 
 /**
- * des:双光的红外拍照
+ * des:dual light的红外photo
  * author: CaiSongL
  * date: 2024/8/24 18:10
  **/

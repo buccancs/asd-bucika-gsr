@@ -8,7 +8,7 @@ import okio.Buffer
 import java.nio.charset.StandardCharsets
 
 /**
- * OKHttpClient 所用，用于输出日志为目的的 Interceptor.
+ * OKHttpClient used for，用于输出日志为目的的 Interceptor.
  * Created by LCG on 2024/4/28.
  */
 class OKLogInterceptor(val isTC007: Boolean) : Interceptor {

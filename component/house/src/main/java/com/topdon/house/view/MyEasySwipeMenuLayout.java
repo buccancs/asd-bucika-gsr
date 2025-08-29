@@ -264,7 +264,7 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
                     if (mViewCache != this) {
                         mViewCache.handlerSwipeMenu(State.CLOSE);
                     }
-                    // Log.i(TAG, ">>>有菜单被打开");
+                    // Log.i(TAG, ">>>有menu被打开");
                     getParent().requestDisallowInterceptTouchEvent(true);
                 }
 
@@ -377,7 +377,7 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
     }
 
     /**
-     * 自动设置状态
+     * 自动settings状态
      *
      * @param result
      */
@@ -440,7 +440,7 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
             }
         } else if (finalyDistanceX > 0) {
             //⬅️滑动
-            //3、开启右边菜单按钮
+            //3、开启右边menu按钮
             if (getScrollX() > 0 && mRightView != null) {
 
                 if (Math.abs(mRightView.getWidth() * mFraction) < Math.abs(getScrollX())) {

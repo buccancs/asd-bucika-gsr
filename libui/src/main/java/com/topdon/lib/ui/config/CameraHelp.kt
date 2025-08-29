@@ -7,7 +7,7 @@ package com.topdon.lib.ui.config
  */
 object CameraHelp {
     /**
-     * 伪彩条
+     * pseudo color条
      */
     val TYPE_SET_PSEUDOCOLOR = 4
     /**
@@ -31,9 +31,9 @@ object CameraHelp {
      */
     val TYPE_SET_COLOR = 13//颜色值
     /**
-     * 镜像
+     * mirror
      */
-    val TYPE_SET_MIRROR = 14//镜像
+    val TYPE_SET_MIRROR = 14//mirror
     /**
      * 仅 2D 编辑：水印
      */
@@ -49,17 +49,17 @@ object CameraHelp {
 
 
 
-    //TS001 -- 标定模式
+    //TS001 -- calibrationmode
     val TYPE_SET_HIGHTEMP = 20//最高温
     val TYPE_SET_LOWTEMP = 21//最低温
-    val TYPE_SET_DETELE = 22//删除
+    val TYPE_SET_DETELE = 22//delete
 
-    //TS001 -- 标靶菜单
-    val TYPE_SET_TARGET_MODE = 30//标靶
+    //TS001 -- targetmenu
+    val TYPE_SET_TARGET_MODE = 30//target
     val TYPE_SET_TARGET_ZOOM = 31//缩放
-    val TYPE_SET_MEASURE_MODE= 32//测量模式
-    val TYPE_SET_TARGET_COLOR= 33//标靶颜色
-    val TYPE_SET_TARGET_DELETE= 34//删除
+    val TYPE_SET_MEASURE_MODE= 32//测量mode
+    val TYPE_SET_TARGET_COLOR= 33//target颜色
+    val TYPE_SET_TARGET_DELETE= 34//delete
     val TYPE_SET_TARGET_HELP= 35//帮助
 
 

@@ -245,7 +245,7 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
 
     fun select(selectIndex: SelectPositionBean?) {
         this.selectIndex = selectIndex
-        XLog.i("绘制的点线面：${Gson().toJson(selectIndex)}")
+        XLog.i("绘制的point line area：${Gson().toJson(selectIndex)}")
     }
 
     private fun updateUI() {

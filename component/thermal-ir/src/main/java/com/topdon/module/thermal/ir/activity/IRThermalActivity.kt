@@ -169,7 +169,7 @@
 //                ViewStubUtils.showViewStub(view_stub_camera,false,null)
 //                popupWindow?.dismiss()
 //                temperatureView.canTouch = position == 2
-//                //一级菜单选择
+//                //一级menu选择
 //                showRecycler(position)
 //            }
 //        })
@@ -183,7 +183,7 @@
 //            cl_seek_bar.changeData = true
 //            this@IRThermalActivity.runOnUiThread {
 //                if (!customPseudoBean.isUseCustomPseudo){
-//                    //动态渲染模式
+//                    //动态渲染mode
 //                    try {
 //                        temperature_seekbar.setRangeAndPro(UnitTools.showUnitValue(editMinValue,isShowC),
 //                            UnitTools.showUnitValue(editMaxValue,isShowC),realLeftValue,realRightValue)
@@ -200,7 +200,7 @@
 //                            cl_seek_bar.updateBitmap()
 //                        }
 //                    }catch (e:Exception){
-//                        Log.w("伪彩条更新异常:","${e.message}")
+//                        Log.w("pseudo color条更新异常:","${e.message}")
 //                    }
 //                    try {
 //                        AlarmHelp.getInstance(application).alarmData(max,min,temp_bg)
@@ -251,7 +251,7 @@
 //        }
 //    }
 //
-//    //更新自定义伪彩的颜色的属性值
+//    //更新自定义pseudo color的颜色的属性值
 //    private fun updateImageAndSeekbarColorList(customPseudoBean: CustomPseudoBean?){
 //        customPseudoBean?.let {
 //            temperature_seekbar.setColorList(customPseudoBean.getColorList()?.reversedArray()?:null)
@@ -357,7 +357,7 @@
 //    private fun initOrientationEventListener(){
 //        orientationEventListener = object : OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL) {
 //            override fun onOrientationChanged(orientation: Int) {
-//                Log.w("测试自动旋转角度2: ", "onOrientationChanged: $orientation")
+//                Log.w("测试自动旋转angle2: ", "onOrientationChanged: $orientation")
 //                if(orientation == OrientationEventListener.ORIENTATION_UNKNOWN) {
 //                    return
 //                }
@@ -394,7 +394,7 @@
 //    }
 //
 //    private fun updateRotateAngle(rotateAngle: Int){
-//        // 清除limit设置
+//        // 清除limitsettings
 //        imageThread?.setLimit(
 //            editMaxValue,
 //            editMinValue,
@@ -403,7 +403,7 @@
 //            launch(Dispatchers.Main) {
 //                thermal_recycler.rotateStats = 411
 //            }
-//            Log.w("123", "旋转角度: $rotateAngle")
+//            Log.w("123", "旋转angle: $rotateAngle")
 //            temperatureView?.clear()
 //            temperatureView?.temperatureRegionMode = REGION_MODE_CENTER
 //            setRotate(rotateAngle)
@@ -557,7 +557,7 @@
 //                }
 //            }
 //            1003 -> {
-//                //切换模式
+//                //切换mode
 //                settingCamera()
 //            }
 //        }
@@ -640,22 +640,22 @@
 //        }
 //    }
 //
-//    //设置伪彩
+//    //settingspseudo color
 //    private fun setPColor(code: Int) {
 //        pseudocolorMode = code
 //        temperature_seekbar.setPseudocode(pseudocolorMode)
 //        /**
-//         * 设置伪彩【set pseudocolor】
-//         * 固件机芯实现(部分伪彩为预留,设置后可能无效果)
+//         * settingspseudo color【set pseudocolor】
+//         * 固件机芯实现(部分pseudo color为预留,settings后可能无效果)
 //         */
-//        imageThread?.pseudocolorMode = pseudocolorMode//设置伪彩
+//        imageThread?.pseudocolorMode = pseudocolorMode//settingspseudo color
 ////        ircmd!!.setPseudoColor(PreviewPathChannel.PREVIEW_PATH0, PseudocodeUtils.changePseudocodeModeByOld(pseudocolorMode))
 //        CameraLiveDateUtil.getInstance().savePseudoColorMode(pseudocolorMode)
 //        thermal_recycler.setPseudoColor(code)
 //    }
-//    private var initRotate = 0//初始角度
-//    private var correctRotate = 0//矫正角度
-//    private var rotateAngle = DeviceConfig.ROTATE_ANGLE //校对默认角度0
+//    private var initRotate = 0//初始angle
+//    private var correctRotate = 0//矫正angle
+//    private var rotateAngle = DeviceConfig.ROTATE_ANGLE //校对默认angle0
 //    private var defaultIsPortrait = DeviceConfig.IS_PORTRAIT //默认横屏
 //    private fun setSetting(code: Int) {
 //        when (code) {
@@ -673,11 +673,11 @@
 //                setParamLevelContrast()
 //            }
 //            CameraHelp.TYPE_SET_PSEUDOCOLOR -> {
-//                // 伪彩条
+//                // pseudo color条
 //                setPseudoColor()
 //            }
 //            CameraHelp.TYPE_SET_PREVIEWCONFIG -> {
-//                // 画中画，也就是双光
+//                // 画中画，也就是dual light
 //                cameraPreviewConfig(true)
 //            }
 //            CameraHelp.TYPE_SET_LIMIT -> {
@@ -691,14 +691,14 @@
 //            CameraHelp.TYPE_SET_RH -> {
 //                // 融合
 //                if (!isOpenPreview && thermal_recycler.cameraAlphaStats != 471){
-//                    //自动打开双光
+//                    //自动打开dual light
 //                    cameraPreviewConfig(false)
 //                }
 //                setCameraAlpha()
 //            }
 //            CameraHelp.TYPE_SET_ZOOM -> {
 //                // 放大
-//                setTemp(-2)//删除所有的点线面
+//                setTemp(-2)//delete所有的point line area
 //                setZoom()
 //            }
 //            CameraHelp.TYPE_SET_ALARM -> {
@@ -731,7 +731,7 @@
 //                colorDialog.show(supportFragmentManager,"")
 //            }
 //            CameraHelp.TYPE_SET_TURNOVER -> {
-//                // 180翻转
+//                // 180flip
 //                if (rotateAngle == 90){
 //                    rotateAngle  = 270
 //                    thermal_recycler.rotationStats = 510
@@ -743,7 +743,7 @@
 ////                setRotateAction()
 //            }
 //            CameraHelp.TYPE_SET_MIRROR -> {
-//                // 镜像
+//                // mirror
 //                openMirror = !openMirror
 //                if (openMirror){
 //                    ircmd?.setPropImageParams(
@@ -1067,11 +1067,11 @@
 //        iruvc?.setRotate(true)
 //        iruvc?.setRotate(rotateAngle)
 //        iruvc?.setHandler(mHandler)
-//        iruvc?.setCMDDataCallback { // 从机芯中读取数据完毕，页面可以进行正常的操作了
+//        iruvc?.setCMDDataCallback { // 从机芯中读取数据完毕，page可以进行正常的操作了
 //            this@IRThermalActivity.isCMDDataComplete = true
 //        }
 //        iruvc?.registerUSB()
-//        // 画面旋转设置
+//        // 画面旋转settings
 ////        popupCalibration.setRotate(true)
 //    }
 //    private var nuc_table_high = ShortArray(8192)
@@ -1141,7 +1141,7 @@
 //        }
 //    }
 //
-//    //设置TS001的温度校正
+//    //settingsTS001的温度校正
 //    suspend fun setTsBin(){
 //        ircmd?.let {
 //            val getSnBytes = ByteArray(16)
@@ -1283,7 +1283,7 @@
 //            try {
 //                imageThread?.join()
 //            } catch (e: InterruptedException) {
-//                Log.e(TAG, "旋转角度 imageThread.join(): catch an interrupted exception")
+//                Log.e(TAG, "旋转angle imageThread.join(): catch an interrupted exception")
 //            }
 //            startISP()
 //        }
@@ -1301,7 +1301,7 @@
 //        super.onStart()
 //        Log.w(TAG, "onStart")
 //        if (!isrun) {
-//            // 初始配置,伪彩铁红
+//            // 初始配置,pseudo color铁红
 ////          pseudocolorMode = 3
 //            tv_type_ind.visibility = GONE
 //            thermal_recycler.limitStats = 460 //默认关闭DIY
@@ -1318,16 +1318,16 @@
 //    }
 //
 //    /**
-//     * IR模式配置初始化
+//     * IRmode配置初始化
 //     */
 //    private fun initIRConfig(){
-//        //伪彩条显示
+//        //pseudo color条显示
 //        if (CameraLiveDateUtil.getInstance().getCameraSBeanData().irSettingBean.openColorBar){
 //            cl_seek_bar.visibility = View.VISIBLE
-//            thermal_recycler.colorBarStats = 441 //默认打开伪彩条
+//            thermal_recycler.colorBarStats = 441 //默认打开pseudo color条
 //        }else{
 //            cl_seek_bar.visibility = View.GONE
-//            thermal_recycler.colorBarStats = 440 //默认打开伪彩条
+//            thermal_recycler.colorBarStats = 440 //默认打开pseudo color条
 //        }
 //        temperature_seekbar?.setPseudocode(pseudocolorMode)
 //        if (customPseudoBean!=null && customPseudoBean.isUseCustomPseudo){
@@ -1525,7 +1525,7 @@
 //            mutableListOf(Permission.READ_EXTERNAL_STORAGE,Permission.WRITE_EXTERNAL_STORAGE)
 //        }
 //    }
-//    //拍照中间按钮
+//    //photo中间按钮
 //    @SuppressLint("CheckResult")
 //    private fun centerCamera() {
 //
@@ -1541,7 +1541,7 @@
 //                            val setting = CameraLiveDateUtil.getInstance().getCameraSettingData().continuousBean
 //                            if (setting.isSel){
 //                                if (!isAutoCamera){
-//                                    //连续拍照
+//                                    //连续photo
 //                                    autoJob = countDownCoroutines(
 //                                        setting.number,
 //                                        (setting.time * 1000).toLong(),
@@ -1603,10 +1603,10 @@
 //                        ActivityCompat.checkSelfPermission(this,Manifest.permission.RECORD_AUDIO)
 //                        == PackageManager.PERMISSION_GRANTED
 //            ),
-//            CameraItemBean("设置",CameraItemBean.TYPE_SETTING),
+//            CameraItemBean("settings",CameraItemBean.TYPE_SETTING),
 //        )
 //    }
-//    //拍照右边按钮
+//    //photo右边按钮
 //    private fun settingCamera() {
 //        showCameraSetting = !showCameraSetting
 //        if (showCameraSetting){
@@ -1765,7 +1765,7 @@
 //        }
 //    }
 //
-//    // 拍照
+//    // photo
 //    private fun camera() {
 //        lifecycleScope.launch(Dispatchers.Default) {
 //            launch(Dispatchers.Main) {
@@ -1800,7 +1800,7 @@
 //                        0
 //                    )
 //                }
-//                // 合并伪彩条
+//                // 合并pseudo color条
 //                seekBarBitmap?.let {
 //                    cameraViewBitmap = BitmapUtils.mergeBitmap(
 //                        cameraViewBitmap,
@@ -1962,7 +1962,7 @@
 //    }
 //
 //
-//    // 伪彩显示
+//    // pseudo color显示
 //    private fun setPseudoColor() {
 //        cl_seek_bar.isVisible = !cl_seek_bar.isVisible
 //        CameraLiveDateUtil.getInstance().saveColorBarStats(cl_seek_bar.isVisible)
@@ -1999,7 +1999,7 @@
 //        val contentHeight = contentView.measuredHeight
 //        val seekBar = contentView?.findViewById<CommSeekBar>(R.id.seek_bar)
 //        val tvProcess = contentView?.findViewById<TextView>(R.id.tv_value)
-//        // AGC不同档位都对应了一对MAXGAIN和BOS,也就是说AGC切换档位都应该重新读一下MAXGAIN和BOS,不同档位重新设置后值是不同的
+//        // AGC不同档位都对应了一对MAXGAIN和BOS,也就是说AGC切换档位都应该重新读一下MAXGAIN和BOS,不同档位重新settings后值是不同的
 //        val mode = IntArray(1)
 //        ircmd?.getPropImageParams(
 //            PropImageParams.IMAGE_PROP_LEVEL_CONTRAST,
@@ -2273,13 +2273,13 @@
 //     * TPD_PROP_DISTANCE: 32    (测温度距离 0-25600(0-200m) 128cnt = 1m, 默认值: 0.25 * 128 = 32)
 //     * TPD_PROP_TU: 300         (环境反射温度)
 //     * TPD_PROP_TA: 300         (环境大气温度)
-//     * TPD_PROP_EMS: 128        (目标发射率 1-128(0.01-1))
+//     * TPD_PROP_EMS: 128        (target发射率 1-128(0.01-1))
 //     * TPD_PROP_TAU: 128        (大气透过率)
 //     * TPD_PROP_GAIN_SEL: 1     (高低增益切换)
 //     *
-//     * 艾睿建议温度TU和TA不要设置
+//     * 艾睿建议温度TU和TA不要settings
 //     *
-//     * 标定工具出来的配置
+//     * calibration工具出来的配置
 //     *  读取TPD_PROP DISTANCE: 32
 //     *  读取TPD_PROP TU: 300
 //     *  读取TPD_PROP TA: 300
@@ -2319,7 +2319,7 @@
 //            val disChar = (config.distance * 128).toInt() //距离(米)
 //            val emsChar = (config.radiation * 128).toInt() //发射率
 ////            val tuChar = (config.environment * 10).toInt().toChar() //环境温度
-//            XLog.w("设置TPD_PROP DISTANCE:${disChar.toInt()}, EMS:${emsChar.toInt()}}")
+//            XLog.w("settingsTPD_PROP DISTANCE:${disChar.toInt()}, EMS:${emsChar.toInt()}}")
 //            val timeMillis = 250L
 //            delay(timeMillis)
 //            //发射率
@@ -2372,7 +2372,7 @@
 //                    CommonParams.PreviewPathChannel.PREVIEW_PATH0,
 //                    CommonParams.ZoomScaleStep.ZOOM_STEP2
 //                )
-//                //恢复镜像
+//                //恢复mirror
 //                ircmd?.setPropImageParams(
 //                    PropImageParams.IMAGE_PROP_SEL_MIRROR_FLIP,
 //                    PropImageParamsValue.MirrorFlipType.NO_MIRROR_FLIP
@@ -2419,12 +2419,12 @@
 //        }
 //    }
 //
-//    //设置tdp参数
+//    //settingstdp参数
 //    private fun setTpdParams(params: PropTPDParams, value: String) {
 //        ircmd?.setPropTPDParams(params, PropTPDParamsValue.NumberType(value))
 //    }
 //
-//    //设置img参数
+//    //settingsimg参数
 //    private fun setImageParams(params: PropImageParams, value: String) {
 //        ircmd?.setPropImageParams(params, PropImageParamsValue.NumberType(value))
 //    }

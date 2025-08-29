@@ -103,7 +103,7 @@ public class DateWheelLayout extends BaseWheelLayout {
         spaceStartView = findViewById(R.id.wheel_picker_date_start_view);
         spaceEndView = findViewById(R.id.wheel_picker_date_end_view);
 
-        //设置高度
+        //settings高度
         post(new Runnable() {
             @Override
             public void run() {
@@ -252,14 +252,14 @@ public class DateWheelLayout extends BaseWheelLayout {
     }
 
     /**
-     * 设置日期时间范围
+     * settings日期时间范围
      */
     public void setRange(DateEntity startValue, DateEntity endValue) {
         setRange(startValue, endValue, null);
     }
 
     /**
-     * 设置日期时间范围
+     * settings日期时间范围
      */
     public void setRange(DateEntity startValue, DateEntity endValue, DateEntity defaultValue) {
         if (startValue == null) {
@@ -400,7 +400,7 @@ public class DateWheelLayout extends BaseWheelLayout {
 
     private void changeMonth(int year) {
         final int min, max;
-        //开始年份和结束年份相同（即只有一个年份，这种情况建议使用月日模式）
+        //开始年份和结束年份相同（即只有一个年份，这种情况建议使用月日mode）
         if (startValue.getYear() == endValue.getYear()) {
             min = Math.min(startValue.getMonth(), endValue.getMonth());
             max = Math.max(startValue.getMonth(), endValue.getMonth());

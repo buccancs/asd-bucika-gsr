@@ -494,7 +494,7 @@
 //                            }
 //                        }
 //                        for (int i = lines.size(); i < drawCount; i++) {
-//                            //设置不计数状态
+//                            //settings不计数状态
 //                            lineResultList.get(i).index = 0;
 //                        }
 //                        //点温度
@@ -563,7 +563,7 @@
 //
 ////                SystemClock.sleep(333);
 //                try {
-//                    SystemClock.sleep(1000);//设置刷新间隔
+//                    SystemClock.sleep(1000);//settings刷新间隔
 ////                    int[] value = new int[1];
 ////                    Libircmd.set_prop_tpd_params(Libircmd.TPD_PROP_GAIN_SEL, (char) 0, 1);
 //                } catch (Exception e) {

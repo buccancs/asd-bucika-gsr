@@ -64,7 +64,7 @@ data class FrameHead(
 
     companion object {
         /**
-         * 从指定数组的 index 开始，解析已启用的专家测温规则
+         * 从指定数组的 index 开始，解析已启用的expert测温规则
          */
         private fun ByteArray.toRuleList(index: Int): ArrayList<TempRule> = try {
             val resultList: ArrayList<TempRule> = ArrayList(21)
@@ -82,6 +82,6 @@ data class FrameHead(
 
     override fun toString(): String = "尺寸:${tempWidth}x$tempHeight, ${yuvWidth}x$yuvHeight，" +
             "全屏最低温:($minX,$minY) ${minTemp}°C，全屏最高温:($maxX,$maxY) ${maxTemp}°C " +
-            "平均温:${aveTemp}°C，${if (isNormalTest) "普通" else "专家"}测温，" +
+            "平均温:${aveTemp}°C，${if (isNormalTest) "普通" else "expert"}测温，" +
             "$pointCount + $rectCount + $lineCount = $totalCount"
 }

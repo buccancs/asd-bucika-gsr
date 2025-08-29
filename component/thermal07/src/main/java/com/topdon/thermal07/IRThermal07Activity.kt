@@ -122,21 +122,21 @@ import kotlin.math.roundToInt
 
 
 /**
- * TC007 出图页面.
+ * TC007 出图page.
  *
  * Created by LCG on 2024/4/28.
  */
 @Route(path = RouterConfig.IR_THERMAL_07)
 class IRThermal07Activity : BaseWifiActivity() {
     /**
-     * 保存设置开关影响的相关配置项.
+     * 保存settings开关影响的相关配置项.
      */
     private val saveSetBean = SaveSettingBean(true)
 
     private var isTouchSeekBar: Boolean = false
     private var pseudoColorMode = WifiSaveSettingUtil.pseudoColorMode
     /**
-     * 双光-融合度、设置-对比度、设置-锐度 PopupWindow，用于在点击其他操作时关掉.
+     * dual light-融合度、settings-对比度、settings-锐度 PopupWindow，用于在点击其他操作时关掉.
      */
     private var popupWindow: PopupWindow? = null
 
@@ -280,7 +280,7 @@ class IRThermal07Activity : BaseWifiActivity() {
             realLeftValue = UnitTools.showUnitValue(it.minValue / 10f, isShowC)
             realRightValue = UnitTools.showUnitValue(it.maxValue / 10f, isShowC)
             if (!customPseudoBean.isUseCustomPseudo) {
-                //动态渲染模式
+                //动态渲染mode
                 try {
                     temperature_seekbar.setRangeAndPro(
                         if (editMinValue != Float.MIN_VALUE) UnitTools.showUnitValue(
@@ -317,7 +317,7 @@ class IRThermal07Activity : BaseWifiActivity() {
                     cl_seek_bar.updateBitmap()
                 }
             } catch (e: Exception) {
-                Log.w("伪彩条更新异常:", "${e.message}")
+                Log.w("pseudo color条更新异常:", "${e.message}")
             }
             runOnUiThread {
                 AlarmHelp.getInstance(application).alarmData(
@@ -454,7 +454,7 @@ class IRThermal07Activity : BaseWifiActivity() {
         view_car_detect.findViewById<LinearLayout>(com.topdon.module.thermal.ir.R.id.ll_car_detect_info).setOnClickListener {
             LongTextDialog(this, SharedManager.getCarDetectInfo()?.item, SharedManager.getCarDetectInfo()?.description).show()
         }
-        thermal_recycler_night.isVideoMode = WifiSaveSettingUtil.isVideoMode //恢复拍照/录像状态
+        thermal_recycler_night.isVideoMode = WifiSaveSettingUtil.isVideoMode //恢复photo/video状态
         thermal_recycler_night.onCameraClickListener = {
             setCamera(it)
         }
@@ -487,8 +487,8 @@ class IRThermal07Activity : BaseWifiActivity() {
                         index == 0 ||
                         index == size
                     ) {
-                        //由于艾睿的黑热和白热不支持等温尺，所以用户在白热、黑热模式下修改等温尺后，接口调用失败，
-                        //所以在此时的等温尺参数TC007设备还无法生效，所以切换其他伪彩的时候如果要等温尺生效，则需要重发一次等温尺参数
+                        //由于艾睿的黑热和白热不支持等温尺，所以用户在白热、黑热mode下修改等温尺后，接口调用失败，
+                        //所以在此时的等温尺参数TC007设备还无法生效，所以切换其他pseudo color的时候如果要等温尺生效，则需要重发一次等温尺参数
                         setPColor(index, it, true) {
                             val max = ((editMaxValue + 273.15f) * 10).toInt()
                             val min = ((editMinValue + 273.15f) * 10).toInt()
@@ -592,7 +592,7 @@ class IRThermal07Activity : BaseWifiActivity() {
             }
         }
 
-    //更新自定义伪彩的颜色的属性值
+    //更新自定义pseudo color的颜色的属性值
     private fun updateImageAndSeekbarColorList(customPseudoBean: CustomPseudoBean?) {
         lifecycleScope.launch {
             customPseudoBean?.let {
@@ -633,7 +633,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     }
 
     /**
-     * 修改自定义伪彩属性，抽出方法，方便双光界面进行重写
+     * 修改自定义pseudo color属性，抽出方法，方便dual light界面进行重写
      * @param colorList IntArray?
      * @param isUseGray Boolean
      * @param customMaxTemp Float
@@ -712,7 +712,7 @@ class IRThermal07Activity : BaseWifiActivity() {
             showCameraLoading()
             //融合和配准属性初始化
             TC007Repository.setRatio(wifiAttributeBean)
-            //字体设置
+            //字体settings
             val red = Color.red(textColor)
             val green = Color.green(textColor)
             val blue = Color.blue(textColor)
@@ -722,27 +722,27 @@ class IRThermal07Activity : BaseWifiActivity() {
             TC007Repository.setFont(isotherm)
             thermal_recycler_night.setSettingSelected(SettingType.FONT,
                 textColor != 0xffffffff.toInt() || textSize != 14)
-            //镜像
+            //mirror
             param.flipMode = if (saveSetBean.isOpenMirror) 1 else 0
             if (TC007Repository.setParam(param)?.isSuccess() == true) {
                 thermal_recycler_night.setSettingSelected(SettingType.MIRROR, saveSetBean.isOpenMirror)
             }
-            //伪彩条
+            //pseudo color条
             cl_seek_bar.isVisible = saveSetBean.isOpenPseudoBar
             thermal_recycler_night.setSettingSelected(SettingType.PSEUDO_BAR, saveSetBean.isOpenPseudoBar)
             //电池信息获取
             batteryInfo = TC007Repository.getBatteryInfo()
-            // 读取配置设置 环境温度、测温距离、发射率
+            // 读取配置settings 环境温度、测温距离、发射率
             val config = ConfigRepository.readConfig(true)
             TC007Repository.setIRConfig(config.environment, config.distance, config.radiation)
-            //设置温度单位
+            //settings温度单位
             //清除点、线、面
             TC007Repository.clearAllTemp()
             val tempFrame = TC007Repository.getTempFrame()
             if (tempFrame) {
                 TC007Repository.setTempFrame(true)
             }
-            //高低增益设置
+            //高低增益settings
             thermal_recycler_night.isUnitF = SharedManager.getTemperature() == 0 //温度档位单位
             val data = TC007Repository.setEnvAttr(
                 SharedManager.getTemperature() == 1,
@@ -751,15 +751,15 @@ class IRThermal07Activity : BaseWifiActivity() {
             if (data) {
                 thermal_recycler_night.setTempLevel(temperatureMode)
             }
-            //图像模式数据更新
+            //图像mode数据更新
             when (WifiSaveSettingUtil.fusionType) {
-                SaveSettingUtil.FusionTypeLPYFusion -> {//双光1
+                SaveSettingUtil.FusionTypeLPYFusion -> {//dual light1
                     TC007Repository.setMode(4)
                     temperature_iv_input.visibility = View.INVISIBLE
                     temperature_iv_lock.visibility = View.INVISIBLE
                     thermal_recycler_night.twoLightType = TwoLightType.TWO_LIGHT_1
                 }
-                SaveSettingUtil.FusionTypeMeanFusion -> {//双光2
+                SaveSettingUtil.FusionTypeMeanFusion -> {//dual light2
                     TC007Repository.setMode(3)
                     temperature_iv_input.visibility = View.INVISIBLE
                     temperature_iv_lock.visibility = View.INVISIBLE
@@ -825,7 +825,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     private fun setTwoLight(twoLightType: TwoLightType, isSelected: Boolean) {
         popupWindow?.dismiss()
         when (twoLightType) {
-            TwoLightType.TWO_LIGHT_1 -> {//双光1
+            TwoLightType.TWO_LIGHT_1 -> {//dual light1
                 showCustomPseudoDialogOrNo(positiveListener = {
                     lifecycleScope.launch {
                         val data = TC007Repository.setMode(4)
@@ -840,8 +840,8 @@ class IRThermal07Activity : BaseWifiActivity() {
 
                 })
             }
-            TwoLightType.TWO_LIGHT_2 -> {//双光2
-                //双光2
+            TwoLightType.TWO_LIGHT_2 -> {//dual light2
+                //dual light2
 //                mCurrentFusionType = DualCameraParams.FusionType.MeanFusion
 //                thermal_recycler_night.dualFusionType = WifiSaveSettingUtil.FusionTypeMeanFusion
 //                WifiSaveSettingUtil.fusionType = WifiSaveSettingUtil.FusionTypeMeanFusion
@@ -960,7 +960,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     private fun setSetting(type: SettingType, isSelected: Boolean) {
         popupWindow?.dismiss()
         when (type) {
-            SettingType.PSEUDO_BAR -> {//伪彩条
+            SettingType.PSEUDO_BAR -> {//pseudo color条
                 saveSetBean.isOpenPseudoBar = !saveSetBean.isOpenPseudoBar
                 cl_seek_bar.isVisible = saveSetBean.isOpenPseudoBar
                 thermal_recycler_night.setSettingSelected(SettingType.PSEUDO_BAR, saveSetBean.isOpenPseudoBar)
@@ -988,7 +988,7 @@ class IRThermal07Activity : BaseWifiActivity() {
                 }
                 colorPickDialog.show()
             }
-            SettingType.MIRROR -> {//镜像
+            SettingType.MIRROR -> {//mirror
                 saveSetBean.isOpenMirror = !saveSetBean.isOpenMirror
                 lifecycleScope.launch {
                     param.flipMode = if (saveSetBean.isOpenMirror) 1 else 0
@@ -1001,16 +1001,16 @@ class IRThermal07Activity : BaseWifiActivity() {
                 }
             }
             SettingType.COMPASS -> {//指南针
-                // TC007 没有观测模式自然没有指南针
+                // TC007 没有Observation mode自然没有指南针
             }
             SettingType.WATERMARK -> {
-                //水印菜单只有 2D 编辑才有
+                //水印menu只有 2D 编辑才有
             }
         }
     }
 
     /**
-     * 统一由此进行双光切换的伪彩处理
+     * 统一由此进行dual light切换的pseudo color处理
      */
     private fun showCustomPseudoDialogOrNo(positiveListener: (() -> Unit), cancelListener: (() -> Unit)) {
         if (customPseudoBean.isUseCustomPseudo) {
@@ -1078,7 +1078,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     }
 
     /**
-     * 统一在此处处理设备端的参数设置
+     * 统一在此处处理设备端的参数settings
      */
     private fun setConfigForIr(type: IrParam, data: Any?, isShowError: Boolean = false, netListener: (() -> Unit)? = null) {
         when (type) {
@@ -1098,7 +1098,7 @@ class IRThermal07Activity : BaseWifiActivity() {
             }
 
             IrParam.ParamPColor -> {
-                //伪彩样式切换
+                //pseudo color样式切换
                 lifecycleScope.launch {
                     TC007Repository.setPallete(PalleteBean(0, stander = Stander(data as Int, arrayListOf(200, 100, 80))))
                     netListener?.invoke()
@@ -1149,7 +1149,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     }
 
     /**
-     * 显示温度报警设置弹框.
+     * 显示温度报警settings弹框.
      */
     private fun showTempAlarmSetDialog() {
         if (tempAlarmSetDialog == null) {
@@ -1166,7 +1166,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     }
 
     /**
-     * 显示对比度设置 PopupWindow
+     * 显示对比度settings PopupWindow
      */
     private fun showContrastPopup() {
         thermal_recycler_night.setSettingSelected(SettingType.CONTRAST, true)
@@ -1190,7 +1190,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     }
 
     /**
-     * 显示细节(锐度) 设置 PopupWindow
+     * 显示细节(锐度) settings PopupWindow
      */
     private fun showSharpnessPopup() {
         thermal_recycler_night.setSettingSelected(SettingType.DETAIL, true)
@@ -1216,7 +1216,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     }
 
     /**
-     * 关系对应查看thirdBean和tc007接口的对应规则：0-白热；1-铁红；2-彩虹；3-极光；4-丛林；5-红热；6-微光；7-医疗；8-辉金；9-黑热（默认伪彩为铁红）
+     * 关系对应查看thirdBean和tc007接口的对应规则：0-白热；1-铁红；2-彩虹；3-极光；4-丛林；5-红热；6-微光；7-医疗；8-辉金；9-黑热（默认pseudo color为铁红）
      */
     private fun pseudoColorModeToIndex(code: Int): Int {
         return if (code >= 3) {
@@ -1228,14 +1228,14 @@ class IRThermal07Activity : BaseWifiActivity() {
 
 
     private fun setPColor(index: Int, code: Int, isShowError: Boolean = false, netListener: (() -> Unit)? = null) {
-        //伪彩颜色修改
+        //pseudo color颜色修改
         pseudoColorMode = code
         setConfigForIr(IrParam.ParamPColor, index, isShowError, netListener)
         thermal_recycler_night.setPseudoColor(-1)
         temperature_seekbar.setPseudocode(pseudoColorMode)
         /**
-         * 设置伪彩【set pseudocolor】
-         * 固件机芯实现(部分伪彩为预留,设置后可能无效果)
+         * settingspseudo color【set pseudocolor】
+         * 固件机芯实现(部分pseudo color为预留,settings后可能无效果)
          */
         WifiSaveSettingUtil.pseudoColorMode = pseudoColorMode
         thermal_recycler_night.setPseudoColor(code)
@@ -1294,7 +1294,7 @@ class IRThermal07Activity : BaseWifiActivity() {
             FenceType.TREND -> {//趋势图
                 // TODO: 实现趋势图逻辑
             }
-            FenceType.DEL -> {//删除
+            FenceType.DEL -> {//delete
                 geometry_view.mode = TemperatureBaseView.Mode.CLEAR
                 lifecycleScope.launch {
                     TC007Repository.setTempFrame(false)
@@ -1306,12 +1306,12 @@ class IRThermal07Activity : BaseWifiActivity() {
 
 
     /**
-     * 第 1 个菜单-拍照录像 各个操作的点击事件监听.
-     * @param actionCode: 0-拍照/录像  1-图库  2-更多菜单  3-切换到拍照  4-切换到录像
+     * 第 1 个menu-photovideo 各个操作的点击事件监听.
+     * @param actionCode: 0-photo/video  1-图库  2-更多menu  3-切换到photo  4-切换到video
      */
     private fun setCamera(actionCode: Int) {
         when (actionCode) {
-            0 -> {// 拍照/录像
+            0 -> {// photo/video
                 checkStoragePermission()
             }
             1 -> {//图库
@@ -1320,13 +1320,13 @@ class IRThermal07Activity : BaseWifiActivity() {
                     .withInt(ExtraKeyConfig.DIR_TYPE, GalleryRepository.DirType.TC007.ordinal)
                     .navigation()
             }
-            2 -> {//更多菜单
+            2 -> {//更多menu
                 settingCamera()
             }
-            3 -> {//切换到拍照
+            3 -> {//切换到photo
                 WifiSaveSettingUtil.isVideoMode = false
             }
-            4 -> {//切换到录像
+            4 -> {//切换到video
                 WifiSaveSettingUtil.isVideoMode = true
             }
         }
@@ -1353,18 +1353,18 @@ class IRThermal07Activity : BaseWifiActivity() {
 //                        )
 //                        == PackageManager.PERMISSION_GRANTED
 //            ),
-            CameraItemBean("设置", CameraItemBean.TYPE_SETTING),
+            CameraItemBean("settings", CameraItemBean.TYPE_SETTING),
         )
     }
 
     /**
-     * 延时拍照延时秒数，0表示关闭.
+     * delayphotodelay秒数，0表示关闭.
      */
     private var cameraDelaySecond: Int = WifiSaveSettingUtil.delayCaptureSecond
     private var cameraItemAdapter: CameraItemAdapter? = null
     private var isAutoShutter: Boolean = WifiSaveSettingUtil.isAutoShutter
 
-    //拍照右边按钮
+    //photo右边按钮
     private fun settingCamera() {
         showCameraSetting = !showCameraSetting
         if (showCameraSetting) {
@@ -1581,7 +1581,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     }
 
     /**
-     * 拍照
+     * photo
      */
     private fun camera() {
         lifecycleScope.launch {
@@ -1613,7 +1613,7 @@ class IRThermal07Activity : BaseWifiActivity() {
                         bitmap, thermal_lay.measuredWidth,
                         thermal_lay.measuredHeight, true
                     )
-                // 合并伪彩条
+                // 合并pseudo color条
                 val isShowPseudoBar = cl_seek_bar.visibility == View.VISIBLE
                 if (isShowPseudoBar) {
                     val seekBarBitmap = cl_seek_bar.drawToBitmap()
@@ -1746,7 +1746,7 @@ class IRThermal07Activity : BaseWifiActivity() {
     }
 
     /**
-     * 如果正在进行录像，则停止录像.
+     * 如果正在进行video，则停止video.
      */
     private fun stopIfVideoing() {
         if (isVideo) {
@@ -1821,7 +1821,7 @@ class IRThermal07Activity : BaseWifiActivity() {
         AlarmHelp.getInstance(application).onDestroy(WifiSaveSettingUtil.isSaveSetting)
         temp_bg.stopAnimation()
         time_down_view.cancel()
-        //退出时把点线面清掉
+        //退出时把point line area清掉
         CoroutineScope(Dispatchers.IO).launch {
             TC007Repository.clearAllTemp()
         }

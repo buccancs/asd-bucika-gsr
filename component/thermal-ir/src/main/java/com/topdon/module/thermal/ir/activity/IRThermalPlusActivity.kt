@@ -33,7 +33,7 @@ import java.nio.ByteBuffer
 
 
 /**
- * 双光设备的界面
+ * dual light设备的界面
  * @author: CaiSongL
  * @date: 2024/1/17 17:47
  */
@@ -64,7 +64,7 @@ class IRThermalPlusActivity : BaseIRPlushActivity() {
 
     override fun initView() {
         super.initView()
-//        findViewById<TextView>(R.id.toolbar_title)?.text = "双光设备"
+//        findViewById<TextView>(R.id.toolbar_title)?.text = "dual light设备"
         cameraView.visibility = View.GONE
         dualTextureViewNativeCamera?.visibility = View.VISIBLE
         thermal_steering_view.listener = { action, moveX ->
@@ -72,10 +72,10 @@ class IRThermalPlusActivity : BaseIRPlushActivity() {
         }
 
         when (SaveSettingUtil.fusionType) {
-            SaveSettingUtil.FusionTypeLPYFusion -> {//双光1
+            SaveSettingUtil.FusionTypeLPYFusion -> {//dual light1
                 thermal_recycler_night?.twoLightType = TwoLightType.TWO_LIGHT_1
             }
-            SaveSettingUtil.FusionTypeMeanFusion -> {//双光2
+            SaveSettingUtil.FusionTypeMeanFusion -> {//dual light2
                 thermal_recycler_night?.twoLightType = TwoLightType.TWO_LIGHT_2
             }
             SaveSettingUtil.FusionTypeIROnly -> {//单红外
@@ -91,7 +91,7 @@ class IRThermalPlusActivity : BaseIRPlushActivity() {
 
 
     /**
-     * 执行双光配准.
+     * 执行dual light配准.
      * @param action -1左移 1-右移 0确定
      * @param data 当前配准值
      */
@@ -125,12 +125,12 @@ class IRThermalPlusActivity : BaseIRPlushActivity() {
 
     override fun setTwoLight(twoLightType: TwoLightType, isSelected: Boolean) {
         when (twoLightType) {
-            TwoLightType.TWO_LIGHT_1 -> {//双光1
+            TwoLightType.TWO_LIGHT_1 -> {//dual light1
                 mCurrentFusionType = DualCameraParams.FusionType.LPYFusion
                 SaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeLPYFusion
                 setFusion(mCurrentFusionType)
             }
-            TwoLightType.TWO_LIGHT_2 -> {//双光2
+            TwoLightType.TWO_LIGHT_2 -> {//dual light2
                 mCurrentFusionType = DualCameraParams.FusionType.MeanFusion
                 SaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeMeanFusion
                 setFusion(mCurrentFusionType)
@@ -190,8 +190,8 @@ class IRThermalPlusActivity : BaseIRPlushActivity() {
         pseudoColorMode = code
         temperature_seekbar.setPseudocode(pseudoColorMode)
         /**
-         * 设置伪彩【set pseudocolor】
-         * 固件机芯实现(部分伪彩为预留,设置后可能无效果)
+         * settingspseudo color【set pseudocolor】
+         * 固件机芯实现(部分pseudo color为预留,settings后可能无效果)
          */
 //        dualView?.dualUVCCamera?.setPseudocolor(PseudocodeUtils.changeDualPseudocodeModelByOld(pseudoColorMode))
         SaveSettingUtil.pseudoColorMode = pseudoColorMode
@@ -222,7 +222,7 @@ class IRThermalPlusActivity : BaseIRPlushActivity() {
         runOnUiThread {
             thermal_steering_view.rotationIR = rotateInt
         }
-        //双光的旋转角度不同
+        //dual light的旋转angle不同
         when (rotateInt) {
             0 -> dualView?.dualUVCCamera?.setImageRotate(DualCameraParams.TypeLoadParameters.ROTATE_90)
             90 -> dualView?.dualUVCCamera?.setImageRotate(DualCameraParams.TypeLoadParameters.ROTATE_180)
@@ -235,7 +235,7 @@ class IRThermalPlusActivity : BaseIRPlushActivity() {
         System.arraycopy(irFrame, 0, preIrData, 0, preIrData.size)
         System.arraycopy(irFrame, preIrData.size, preTempData, 0, preTempData.size)
         if (irImageHelp.getColorList() != null){
-            //转成灰度图进行自定义伪彩融合处理
+            //转成灰度图进行自定义pseudo color融合处理
             LibIRProcess.convertYuyvMapToARGBPseudocolor(
                 preIrData, (Const.IR_WIDTH * Const.IR_HEIGHT).toLong(),
                 CommonParams.PseudoColorType.PSEUDO_1, preIrARGBData
@@ -247,11 +247,11 @@ class IRThermalPlusActivity : BaseIRPlushActivity() {
             )
         }
         irImageHelp.customPseudoColor(preIrARGBData,preTempData,Const.IR_WIDTH,Const.IR_HEIGHT)
-        //等温尺处理,展示伪彩的温度范围内信息
+        //等温尺处理,展示pseudo color的温度范围内信息
         irImageHelp.setPseudoColorMaxMin(
             preIrARGBData, preTempData, editMaxValue,
             editMinValue, Const.IR_WIDTH,Const.IR_HEIGHT)
-        //温度监控的轮廓检测，双光的原始图像不管旋转如何，原始数据都不变，（也就是宽高256*192）
+        //温度监控的轮廓检测，dual light的原始图像不管旋转如何，原始数据都不变，（也就是宽高256*192）
        val tempData =irImageHelp.contourDetection(alarmBean,
            preIrARGBData,preTempData,
             Const.IR_HEIGHT,Const.IR_WIDTH)

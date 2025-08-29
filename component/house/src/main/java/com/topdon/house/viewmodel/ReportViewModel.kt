@@ -13,13 +13,13 @@ import kotlinx.coroutines.launch
 import java.io.File
 
 /**
- * 房屋报告 ViewModel.
+ * 房屋report ViewModel.
  *
  * Created by LCG on 2024/8/28.
  */
 class ReportViewModel(application: Application) : AndroidViewModel(application) {
     /**
-     * 所有房屋报告列表，调用 [queryAll] 会触发更改.
+     * 所有房屋report列表，调用 [queryAll] 会触发更改.
      */
     val reportListLD =  MutableLiveData<List<HouseReport>>()
     /**
@@ -33,11 +33,11 @@ class ReportViewModel(application: Application) : AndroidViewModel(application) 
 
 
     /**
-     * 一项房屋报告，调用 [queryById] 会触发更改.
+     * 一项房屋report，调用 [queryById] 会触发更改.
      */
     val reportLD = MutableLiveData<HouseReport?>()
     /**
-     * 查询指定 id 的房屋报告数据，结果通过 [reportLD] 返回.
+     * 查询指定 id 的房屋report数据，结果通过 [reportLD] 返回.
      */
     fun queryById(id: Long) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -47,7 +47,7 @@ class ReportViewModel(application: Application) : AndroidViewModel(application) 
 
 
     /**
-     * 更新指定的一项房屋报告.
+     * 更新指定的一项房屋report.
      */
     fun update(houseReport: HouseReport) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -57,7 +57,7 @@ class ReportViewModel(application: Application) : AndroidViewModel(application) 
 
 
     /**
-     * 删除指定的房屋报告数据.
+     * delete指定的房屋report数据.
      */
     fun deleteMore(vararg houseReports: HouseReport) {
         viewModelScope.launch(Dispatchers.IO) {

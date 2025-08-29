@@ -38,7 +38,7 @@ import java.util.List;
 
 public class RangeSeekBar extends View {
 
-    //伪彩代号
+    //pseudo color代号
     private int pseudocode = 3;
 
     private final static int MIN_INTERCEPT_DISTANCE = 100;
@@ -140,7 +140,7 @@ public class RangeSeekBar extends View {
 
     private int progressTop, progressBottom, progressLeft, progressRight;
     private int seekBarMode;
-    //刻度模式：number根据数字实际比例排列；other 均分排列
+    //刻度mode：number根据数字实际比例排列；other 均分排列
     private int tickMarkMode;
     //刻度与进度条间的间距
     //The spacing between the tick mark and the progress bar
@@ -368,7 +368,7 @@ public class RangeSeekBar extends View {
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         /*
-         * onMeasure传入的widthMeasureSpec和heightMeasureSpec不是一般的尺寸数值，而是将模式和尺寸组合在一起的数值
+         * onMeasure传入的widthMeasureSpec和heightMeasureSpec不是一般的尺寸数值，而是将mode和尺寸组合在一起的数值
          * MeasureSpec.EXACTLY 是精确尺寸
          * MeasureSpec.AT_MOST 是最大尺寸
          * MeasureSpec.UNSPECIFIED 是未指定尺寸
@@ -445,7 +445,7 @@ public class RangeSeekBar extends View {
         onDrawSeekBar(canvas); //滑动标签
     }
 
-    //绘制刻度，并且根据当前位置是否在刻度范围内设置不同的颜色显示
+    //绘制刻度，并且根据当前位置是否在刻度范围内settings不同的颜色显示
     // Draw the scales, and according to the current position is set within
     // the scale range of different color display
     protected void onDrawTickMark(Canvas canvas, Paint paint) {
@@ -924,7 +924,7 @@ public class RangeSeekBar extends View {
 
 
     /**
-     * 设置范围
+     * settings范围
      *
      * @param min 最小值
      * @param max 最大值
@@ -936,8 +936,8 @@ public class RangeSeekBar extends View {
 
     /**
      *
-     * @param editMin ： 手动设置的最小值
-     * @param editMax : 手动设置的最小值
+     * @param editMin ： 手动settings的最小值
+     * @param editMax : 手动settings的最小值
      * @param realLeftValue : 实际最低温度
      * @param realRightValue ： 实际最高温度
      */
@@ -970,7 +970,7 @@ public class RangeSeekBar extends View {
     }
 
     /**
-     * 设置范围
+     * settings范围
      * @param min         最小值
      * @param max         最大值
      * @param minInterval 最小间隔

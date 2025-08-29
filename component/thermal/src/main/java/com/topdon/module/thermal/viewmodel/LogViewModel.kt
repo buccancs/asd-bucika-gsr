@@ -520,7 +520,7 @@ class LogViewModel : BaseViewModel() {
      * 2. 获取要更新的时间段数据[最新数据 ~ 最新一个时间区间的起始点]
      * 3. 秒数据转分数据的平均值
      * 4. 添加到分数据库
-     * 5. 删除多余的数据
+     * 5. delete多余的数据
      */
     private suspend fun syncVol(selectTimeType: Int) {
         Log.i("chart", "syncVol: $syncRun")
@@ -601,7 +601,7 @@ class LogViewModel : BaseViewModel() {
                 } catch (e: Exception) {
                     XLog.e("insert error:${e.message}")
                 }
-                //删除多余的数据
+                //delete多余的数据
                 AppDatabase.getInstance().thermalMinDao()
                     .deleteRepeatVol(userId)
             }
@@ -660,7 +660,7 @@ class LogViewModel : BaseViewModel() {
                 bean.createTime = TimeTool.timeToMinute(System.currentTimeMillis(), 3)//调整精确到分
                 bean.updateTime = System.currentTimeMillis()
                 AppDatabase.getInstance().thermalHourDao().insert(bean)
-                //删除多余的数据
+                //delete多余的数据
                 AppDatabase.getInstance().thermalHourDao().deleteRepeatVol(userId)
             }
             4 -> {
@@ -722,7 +722,7 @@ class LogViewModel : BaseViewModel() {
                 bean.createTime = TimeTool.timeToMinute(System.currentTimeMillis(), 4)//调整精确到分
                 bean.updateTime = System.currentTimeMillis()
                 AppDatabase.getInstance().thermalDayDao().insert(bean)
-                //删除多余的数据
+                //delete多余的数据
                 AppDatabase.getInstance().thermalDayDao().deleteRepeatVol(userId)
             }
         }

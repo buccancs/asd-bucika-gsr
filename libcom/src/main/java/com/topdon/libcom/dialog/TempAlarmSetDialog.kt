@@ -252,7 +252,7 @@ class TempAlarmSetDialog(
     }
 
     /**
-     * 设置当前选中的铃声，null 表示关闭.
+     * settings当前选中的铃声，null 表示关闭.
      */
     private fun selectRingtone(position: Int?) {
         try {

@@ -20,7 +20,7 @@ import com.infisense.usbir.utils.TempDrawHelper.Companion.correct
 import com.infisense.usbir.utils.TempUtil
 
 /**
- * 海康点线面温度图层 View.
+ * 海康point line area温度图层 View.
  *
  * Created by LCG on 2024/12/19.
  */
@@ -42,7 +42,7 @@ class TemperatureHikView : TemperatureBaseView {
 
 
     /**
-     * 热成像画面逆时针旋转角度，取值 0、90、180、270，默认 270
+     * thermal imaging画面逆时针旋转angle，取值 0、90、180、270，默认 270
      */
     @Volatile
     var rotateAngle: Int = 270
@@ -218,9 +218,9 @@ class TemperatureHikView : TemperatureBaseView {
 
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
-        //由于历史遗留，2D编辑与热成像的中心点逻辑不一致
-        //2D编辑中心点跟随全图设置，全图开则开，全图关则关；热成像中心点为开启全图或有点、线、面则显示
-        //产品没明确定义中心点的逻辑，这里先照着热成像来做
+        //由于历史遗留，2D编辑与thermal imaging的中心点逻辑不一致
+        //2D编辑中心点跟随全图settings，全图开则开，全图关则关；thermal imaging中心点为开启全图或有点、线、面则显示
+        //产品没明确定义中心点的逻辑，这里先照着thermal imaging来做
         //中心点
         if (isShowFull || pointList.isNotEmpty() || lineList.isNotEmpty() || rectList.isNotEmpty()) {
             drawPoint(canvas, Point(width / 2, height / 2))
@@ -351,7 +351,7 @@ class TemperatureHikView : TemperatureBaseView {
                     try {
                         trendResult = libIRTemp.getTemperatureOfLine(Line(startPoint, endPoint))
                     } catch (_: IllegalArgumentException) {
-                        //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的点线面坐标还是未变更前的坐标
+                        //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的point line area坐标还是未变更前的坐标
                         //以 旧坐标及新 scale 去计算温度坐标的话，就有可能超出温度坐标范围从而抛出异常，这里捕获
                     }
 
@@ -368,7 +368,7 @@ class TemperatureHikView : TemperatureBaseView {
                     try {
                         pointResultList.add(libIRTemp.getTemperatureOfPoint(sourcePoint))
                     } catch (_: IllegalArgumentException) {
-                        //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的点线面坐标还是未变更前的坐标
+                        //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的point line area坐标还是未变更前的坐标
                         //以 旧坐标及新 scale 去计算温度坐标的话，就有可能超出温度坐标范围从而抛出异常，这里捕获
                     }
                 }
@@ -383,7 +383,7 @@ class TemperatureHikView : TemperatureBaseView {
                     try {
                         lineResultList.add(libIRTemp.getTemperatureOfLine(sourceLine))
                     } catch (_: IllegalArgumentException) {
-                        //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的点线面坐标还是未变更前的坐标
+                        //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的point line area坐标还是未变更前的坐标
                         //以 旧坐标及新 scale 去计算温度坐标的话，就有可能超出温度坐标范围从而抛出异常，这里捕获
                     }
                 }
@@ -400,7 +400,7 @@ class TemperatureHikView : TemperatureBaseView {
                     try {
                         rectResultList.add(libIRTemp.getTemperatureOfRect(sourceRect))
                     } catch (_: IllegalArgumentException) {
-                        //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的点线面坐标还是未变更前的坐标
+                        //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的point line area坐标还是未变更前的坐标
                         //以 旧坐标及新 scale 去计算温度坐标的话，就有可能超出温度坐标范围从而抛出异常，这里捕获
                     }
                 }
@@ -427,7 +427,7 @@ class TemperatureHikView : TemperatureBaseView {
     }
 
     /**
-     * 点线面全图等温度计算结果信息封装，坐标采用 View 坐标，单位均为摄氏度
+     * point line area全图等温度计算结果信息封装，坐标采用 View 坐标，单位均为摄氏度
      */
     data class TempInfo(
         val center: TemperatureSampleResult? = null,

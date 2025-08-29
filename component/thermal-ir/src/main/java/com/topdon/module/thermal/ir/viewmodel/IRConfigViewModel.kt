@@ -60,7 +60,7 @@ class IRConfigViewModel(application: Application) : AndroidViewModel(application
     }
 
     /**
-     * 增加一个自定义模式
+     * 增加一个自定义mode
      */
     fun addConfig(isTC007: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -80,8 +80,8 @@ class IRConfigViewModel(application: Application) : AndroidViewModel(application
     }
 
     /**
-     * 选择模式
-     * @param id 0:默认模式   > 0 采用自定义模式
+     * 选择mode
+     * @param id 0:默认mode   > 0 采用自定义mode
      */
     fun checkConfig(isTC007: Boolean, id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -96,8 +96,8 @@ class IRConfigViewModel(application: Application) : AndroidViewModel(application
     }
 
     /**
-     * 删除自定义模式
-     * @param id 自定义模式 id
+     * delete自定义mode
+     * @param id 自定义mode id
      */
     fun deleteConfig(isTC007: Boolean, id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -106,7 +106,7 @@ class IRConfigViewModel(application: Application) : AndroidViewModel(application
             for (i in modelBean.myselfModel.indices) {
                 val dataBean = modelBean.myselfModel[i]
                 if (dataBean.id == id) {
-                    if (dataBean.use) {//删除当前正在使用的自定义模式，变更为使用默认模式
+                    if (dataBean.use) {//delete当前正在使用的自定义mode，变更为使用默认mode
                         modelBean.defaultModel.use = true
                     }
                     modelBean.myselfModel.removeAt(i)
@@ -115,7 +115,7 @@ class IRConfigViewModel(application: Application) : AndroidViewModel(application
                 }
             }
 
-            // BUG 28055 提的问题，删除后要把后面名称往前补，虽然实际使用非常怪，先按 BUG 改吧
+            // BUG 28055 提的问题，delete后要把后面名称往前补，虽然实际使用非常怪，先按 BUG 改吧
             if (removeAt < modelBean.myselfModel.size) {
                 for (i in removeAt until modelBean.myselfModel.size) {
                     val dataBean = modelBean.myselfModel[i]

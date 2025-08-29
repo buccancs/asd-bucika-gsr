@@ -119,7 +119,7 @@ class TipWaterMarkDialog : Dialog {
                     //横屏
                     0.35
                 }
-            lp.width = (ScreenUtil.getScreenWidth(context) * wRatio).toInt() //设置宽度
+            lp.width = (ScreenUtil.getScreenWidth(context) * wRatio).toInt() //settings宽度
             dialog!!.window!!.attributes = lp
 
             dialog!!.setCanceledOnTouchOutside(canceled)
@@ -184,7 +184,7 @@ class TipWaterMarkDialog : Dialog {
                     }
                     override fun onDenied(permissions: MutableList<String>, never: Boolean) {
                         if (never) {
-                            // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                            // 如果是被永久拒绝就跳转到应用权限系统settingspage
                             if (BaseApplication.instance.isDomestic()){
                                 ToastUtils.showShort(R.string.app_location_content)
                                 return

@@ -48,7 +48,7 @@ class FrameTool {
     }
 
     /**
-     * 设置图像默认尺寸
+     * settings图像默认尺寸
      */
     fun initStruct(struct: FrameStruct) {
         this.struct = struct
@@ -57,7 +57,7 @@ class FrameTool {
     }
 
     /**
-     * 矫正角度
+     * 矫正angle
      */
     fun initRotate(): ImageParams {
         var rotate = ImageParams.ROTATE_0
@@ -98,7 +98,7 @@ class FrameTool {
     }
 
     /**
-     * 灰度图转伪彩图像
+     * 灰度图转pseudo color图像
      * yuv -> argb -> 温度尺 -> 旋转 -> bitmap
      */
     fun getScrPseudoColorScaledBitmap(
@@ -121,7 +121,7 @@ class FrameTool {
         val maxRGB = IntArray(3)
         val minRGB = IntArray(3)
         if (customPseudoBean.isUseCustomPseudo) {
-            //自定义渲染模式
+            //自定义渲染mode
             LibIRProcess.convertYuyvMapToARGBPseudocolor(imageBytesTemp, pixNum.toLong(), CommonParams.PseudoColorType.PSEUDO_1, argbBytes)
             val colorList: IntArray? = customPseudoBean.getColorList(struct.isTC007())
             val places: FloatArray? = customPseudoBean.getPlaceList()
@@ -240,10 +240,10 @@ class FrameTool {
     }
 
     /**
-     * 目标尺寸
+     * target尺寸
      */
     private fun getDstImageRes(rotate: ImageParams): LibIRProcess.ImageRes_t {
-        val dstImageRes = LibIRProcess.ImageRes_t() //目标尺寸
+        val dstImageRes = LibIRProcess.ImageRes_t() //target尺寸
         if (rotate == ImageParams.ROTATE_270 || rotate == ImageParams.ROTATE_90) {
             dstImageRes.width = imageRes.height
             dstImageRes.height = imageRes.width

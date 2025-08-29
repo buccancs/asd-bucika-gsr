@@ -54,13 +54,13 @@ interface TC007Service {
     suspend fun getUpgradeStatus(): TC007Response<TC07UpgradeStatus>
 
     /**
-     * 恢复出厂设置
+     * 恢复出厂settings
      */
     @PUT("/v1/system/magic/factory")
     suspend fun resetToFactory(): TC007Response<Boolean>
 
     /**
-     * 执行锅盖标定
+     * 执行锅盖calibration
      */
     @PUT("/v1/camera/videoin/thermal/lid")
     suspend fun correction(): TC007Response<Any?>
@@ -72,14 +72,14 @@ interface TC007Service {
     @GET("/v1/thermal/env/attribute?default=false")
     suspend fun getEnvAttr(): TC007Response<EnvAttr>
     /**
-     * 设置测温属性参数
+     * settings测温属性参数
      */
     @PUT("/v1/thermal/env/attribute?default=false")
     suspend fun setEnvAttr(@Body requestBody: RequestBody): TC007Response<Any?>
 
 
     /**
-     * 设置温度修正参数
+     * settings温度修正参数
      */
     @PUT("/v1/thermal/env/target")
     suspend fun setIRConfig(@Body requestBody: RequestBody): TC007Response<Any?>
@@ -87,22 +87,22 @@ interface TC007Service {
     @GET("/v1/thermal/temp/frame")
     suspend fun getTempFrame(): TC007Response<TempFrameParam>
     /**
-     * 设置整帧测温（中心点、全图最高温、全图最低温）
+     * settings整帧测温（中心点、全图最高温、全图最低温）
      */
     @POST("/v1/thermal/temp/frame")
     suspend fun setTempFrame(@Body requestBody: RequestBody): TC007Response<Any?>
     /**
-     * 设置测温点
+     * settings测温点
      */
     @POST("/v1/thermal/temp/point")
     suspend fun setTempPoint(@Body requestBody: RequestBody): TC007Response<Any?>
     /**
-     * 设置测温线
+     * settings测温线
      */
     @POST("/v1/thermal/temp/line")
     suspend fun setTempLine(@Body requestBody: RequestBody): TC007Response<Any?>
     /**
-     * 设置测温面
+     * settings测温面
      */
     @POST("/v1/thermal/temp/rectangle")
     suspend fun setTempRect(@Body requestBody: RequestBody): TC007Response<Any?>
@@ -110,15 +110,15 @@ interface TC007Service {
 
 
     /**
-     * 拍照
+     * photo
      */
     @PUT("/v1/storage/picture/snap/manual")
     suspend fun getPhoto(): TC007Response<PhotoBean>
 
 
     /**
-     * 设置图像模式
-     * 0：红外；1：可见光；2：画中画；3：双光融合；4：细节增强
+     * settings图像mode
+     * 0：红外；1：可见光；2：画中画；3：dual light融合；4：细节增强
      */
     @PUT("/v1/camera/videoin/mode")
     suspend fun setMode(@Query("mode") mode: Int): TC007Response<Any?>
@@ -135,7 +135,7 @@ interface TC007Service {
 
     @PUT("/v1/camera/videoin/registration")
     suspend fun setRegistration(@Body requestBody: RequestBody): TC007Response<Any?>
-    //双光配准
+    //dual light配准
     @GET("/v1/camera/videoin/registration")
     suspend fun getRegistration(@Query("chn") mode: Int,@Query("default") default : String): TC007Response<WifiAttributeBean?>
 
@@ -147,12 +147,12 @@ interface TC007Service {
      * chn
      * integer
      * 视频通道
-     * 可选
+     * optional
      * 示例值:
      * 1
      * default
      * string
-     * 可选
+     * optional
      * true：默认配置；false：当前配置
      * 示例值:
      * false

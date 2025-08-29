@@ -57,7 +57,7 @@ public class ImageThreadTC extends Thread {
     private byte[] imageYUV422;
     private byte[] imageARGB;
     private byte[] imageDst;
-    public byte[] imageTemp;//艾睿需要的测试数据，处理完可以删除
+    public byte[] imageTemp;//艾睿需要的测试数据，处理完可以delete
 
     private byte[] imageY8;
     private float max = Float.MAX_VALUE;
@@ -205,7 +205,7 @@ public class ImageThreadTC extends Thread {
                     }
                     irImageHelp.customPseudoColor(imageDst,temperatureSrc,imageWidth,imageHeight);
                     /*
-                     * 等温尺处理,展示伪彩的温度范围内信息
+                     * 等温尺处理,展示pseudo color的温度范围内信息
                      */
                     irImageHelp.setPseudoColorMaxMin(imageDst,temperatureSrc,max,min,imageWidth,imageHeight);
                 }

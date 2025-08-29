@@ -127,7 +127,7 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * 删除一个线数据
+     * delete一个线数据
      * @param index
      */
     public void removeLine(int index) {
@@ -137,7 +137,7 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * 删除所有线数据
+     * delete所有线数据
      */
     public void removeLine() {
         mLineList.clear();

@@ -65,7 +65,7 @@ public class AppUtil {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ///< 判断是否是AndroidN以及更高的版本
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            // 不能再用setFlags了， setflags会重置之前的设置， 要么 setflags 多个|拼接，要么addflag
+            // 不能再用setFlags了， setflags会重置之前的settings， 要么 setflags 多个|拼接，要么addflag
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             Uri contentUri = FileProvider.getUriForFile(context, context.getPackageName() + ".fileprovider", apkPath);
             intent.setDataAndType(contentUri, "application/vnd.android.package-archive");

@@ -24,7 +24,7 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 /**
- * TC007、2D 编辑 点线面温度图层公共逻辑封装.
+ * TC007、2D 编辑 point line area温度图层公共逻辑封装.
  *
  * Created by LCG on 2024/5/7.
  */
@@ -32,23 +32,23 @@ abstract class TemperatureBaseView : View {
 
     companion object {
         /**
-         * 支持点线面的默认最大数量.
+         * 支持point line area的默认最大数量.
          */
         private const val DEFAULT_MAX_COUNT = 3
 
         /**
-         * 选中操作灵敏度，当 Touch Down 坐标与点线面坐标偏差在该值范围内，视为选中，单位 px.
+         * 选中操作灵敏度，当 Touch Down 坐标与point line area坐标偏差在该值范围内，视为选中，单位 px.
          */
         private val TOUCH_TOLERANCE = SizeUtils.dp2px(8f)
         /**
-         * 删除操作灵敏度，当 Touch UP 与 Touch Down 坐标偏差在该值范围内，视为删除，单位 px.
+         * delete操作灵敏度，当 Touch UP 与 Touch Down 坐标偏差在该值范围内，视为delete，单位 px.
          */
         private val DELETE_TOLERANCE = SizeUtils.dp2px(2f)
     }
 
 
     /**
-     * 操作模式，点、线、面、全图、清除.
+     * 操作mode，点、线、面、全图、清除.
      */
     enum class Mode {
         POINT,
@@ -72,7 +72,7 @@ abstract class TemperatureBaseView : View {
             invalidate()
         }
     /**
-     * 当前操作模式：点、线、面、全图、清除。
+     * 当前操作mode：点、线、面、全图、清除。
      */
     @Volatile
     open var mode = Mode.FULL
@@ -104,7 +104,7 @@ abstract class TemperatureBaseView : View {
             invalidate()
         }
     /**
-     * 温度值文字、点线面名称文字 颜色值.
+     * 温度值文字、point line area名称文字 颜色值.
      */
     var textColor: Int
         @ColorInt get() = helper.textColor
@@ -115,21 +115,21 @@ abstract class TemperatureBaseView : View {
 
 
     /**
-     * 由于 Touch 事件导致的点添加、移除、变更事件监听，坐标为通过 [setImageSize] 设置的坐标系
+     * 由于 Touch 事件导致的点添加、移除、变更事件监听，坐标为通过 [setImageSize] settings的坐标系
      */
     var onPointListener: ((pointList: List<Point>) -> Unit)? = null
     /**
-     * 由于 Touch 事件导致的线添加、移除、变更事件监听，坐标为通过 [setImageSize] 设置的坐标系
+     * 由于 Touch 事件导致的线添加、移除、变更事件监听，坐标为通过 [setImageSize] settings的坐标系
      */
     var onLineListener: ((lineList: List<Point>) -> Unit)? = null
     /**
-     * 由于 Touch 事件导致的面添加、移除、变更事件监听，坐标为通过 [setImageSize] 设置的坐标系
+     * 由于 Touch 事件导致的面添加、移除、变更事件监听，坐标为通过 [setImageSize] settings的坐标系
      */
     var onRectListener: ((rectList: List<Rect>) -> Unit)? = null
     /**
      * 由于 Touch 事件导致的趋势图添加或趋势图移除事件监听.
      *
-     * 也就是说：将 [mode] 设置为 [Mode.CLEAR] 不会触发该回调.
+     * 也就是说：将 [mode] settings为 [Mode.CLEAR] 不会触发该回调.
      */
     var onTrendOperateListener: ((isAdd: Boolean) -> Unit)? = null
 
@@ -207,7 +207,7 @@ abstract class TemperatureBaseView : View {
 
 
     /**
-     * 支持点线面的最大数量，默认3.
+     * 支持point line area的最大数量，默认3.
      */
     protected val maxCount: Int
 
@@ -344,9 +344,9 @@ abstract class TemperatureBaseView : View {
     private var downY = 0
 
     /**
-     * 是否为添加 点线面 模式。
+     * 是否为添加 point line area mode。
      *
-     * true-添加一个新点线面 false-移动一个已有点线面
+     * true-添加一个新point line area false-移动一个已有point line area
      */
     private var isAddAction = true
 
@@ -602,14 +602,14 @@ abstract class TemperatureBaseView : View {
 
     private enum class RectMoveEdge { LEFT, TOP, RIGHT, BOTTOM }
     /**
-     * 仅边移动模式时，移动的是哪条边.
+     * 仅边移动mode时，移动的是哪条边.
      */
     private var rectMoveEdge = RectMoveEdge.LEFT
 
 
     private enum class RectMoveCorner { LT, RT, RB, LB }
     /**
-     * 仅角移动模式时，移动的是哪个角.
+     * 仅角移动mode时，移动的是哪个角.
      */
     private var rectMoveCorner = RectMoveCorner.LT
 
@@ -632,7 +632,7 @@ abstract class TemperatureBaseView : View {
                             rectList.removeAt(0)
                         }
                     }
-                } else {//选取 - 删除
+                } else {//选取 - delete
                     isAddAction = false
                     operateRect = rect
                     downRect.set(rect)

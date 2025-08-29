@@ -22,21 +22,21 @@ import kotlinx.coroutines.launch
 import java.io.File
 
 /**
- * 报告详情界面.
+ * report详情界面.
  *
  * 需要传递
- * - 一份报告所有信息 [ExtraKeyConfig.REPORT_BEAN]
+ * - 一份report所有信息 [ExtraKeyConfig.REPORT_BEAN]
  */
 @Route(path = RouterConfig.REPORT_DETAIL)
 class ReportDetailActivity: BaseActivity() {
 
     /**
-     * 从上一界面传递过来的，报告所有信息.
+     * 从上一界面传递过来的，report所有信息.
      */
     private var reportBean: ReportBean? = null
 
     /**
-     * 当前预览页面已生成的 PDF 文件绝对路径
+     * 当前预览page已生成的 PDF 文件绝对路径
      */
     private var pdfFilePath: String? = null
 

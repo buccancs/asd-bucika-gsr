@@ -44,7 +44,7 @@ class IR07CorrectionThreeActivity : BaseActivity() {
         }
 
         lifecycleScope.launch {
-            // 读取配置设置 环境温度、测温距离、发射率
+            // 读取配置settings 环境温度、测温距离、发射率
             val config = ConfigRepository.readConfig(true)
             TC007Repository.setIRConfig(config.environment, config.distance, config.radiation)
             //清除点、线、面

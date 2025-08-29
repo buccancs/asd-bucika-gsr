@@ -20,7 +20,7 @@ public class SPUtil {
                 .apply();
     }
 
-    /* ============================ 开启视频的同时进行录像 ============================ */
+    /* ============================ 开启视频的同时进行video ============================ */
     private static final String KEY_AUTO_RECORD = "auto_record";
 
     public static boolean getAutoRecord(Context context) {
@@ -35,7 +35,7 @@ public class SPUtil {
                 .apply();
     }
 
-    /* ============================ 开启视频的同时进行录像 ============================ */
+    /* ============================ 开启视频的同时进行video ============================ */
     private static final String KEY_UDP_MODE = "USE_UDP_MODE";
 
     public static boolean getUDPMode(Context context) {
@@ -50,7 +50,7 @@ public class SPUtil {
                 .apply();
     }
 
-    /* ============================ 自动播放音频 ============================ */
+    /* ============================ 自动播放audio ============================ */
     private static final String KEY_AUTO_AUDIO = "auto_audio";
 
     public static boolean getAutoAudio(Context context) {

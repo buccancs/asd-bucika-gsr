@@ -156,14 +156,14 @@ class ItemEditActivity : BaseActivity(), View.OnClickListener {
                     cl_dir.setBackgroundResource(R.drawable.bg_corners10_solid_23202e)
                 }
             }
-            view_select_all -> {//全选、取消全选
+            view_select_all -> {//全选、cancel全选
                 adapter.isSelectAll = !adapter.isSelectAll
             }
             view_copy -> {//复制
                 adapter.copySelect()
                 TToast.shortToast(this@ItemEditActivity, R.string.ts004_copy_success)
             }
-            view_del -> {//删除
+            view_del -> {//delete
                 TipDialog.Builder(this)
                     .setTitleMessage(getString(R.string.tips_del_item_title))
                     .setMessage(R.string.tips_del_item_content)
@@ -262,7 +262,7 @@ class ItemEditActivity : BaseActivity(), View.OnClickListener {
                     for (item in dataList) {
                         item.hasSelect = true
                     }
-                } else {//全选->取消全选
+                } else {//全选->cancel全选
                     selectCount = 0
                     for (item in dataList) {
                         item.hasSelect = false
@@ -273,7 +273,7 @@ class ItemEditActivity : BaseActivity(), View.OnClickListener {
             }
 
         /**
-         * 一个 item 选中或取消选中事件监听.
+         * 一个 item 选中或cancel选中事件监听.
          */
         var onSelectChangeListener: ((selectSize: Int) -> Unit)? = null
         /**
@@ -287,7 +287,7 @@ class ItemEditActivity : BaseActivity(), View.OnClickListener {
         }
 
         /**
-         * 删除选中的目录.
+         * delete选中的目录.
          */
         fun delSelect() {
             selectCount = 0
@@ -303,7 +303,7 @@ class ItemEditActivity : BaseActivity(), View.OnClickListener {
                         onStateChangeListener?.invoke(itemDetect.state, 0)
                     }
                 }
-                if (isDelLast) {//最后一个被删除时，旧最后一个需要刷新
+                if (isDelLast) {//最后一个被delete时，旧最后一个需要刷新
                     notifyItemChanged(dataList.size - 1)
                 }
             }

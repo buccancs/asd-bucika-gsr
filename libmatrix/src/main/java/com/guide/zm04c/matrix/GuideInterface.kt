@@ -244,7 +244,7 @@ class GuideInterface {
     }
 
     /**
-     * 设置亮度
+     * settings亮度
      */
     fun setBright(bright: Int) {
         if (mGuideUsbManager == null) {
@@ -265,7 +265,7 @@ class GuideInterface {
     }
 
     /**
-     * 设置对比度
+     * settings对比度
      */
     fun setContrast(contrast: Int) {
         if (mGuideUsbManager == null) {

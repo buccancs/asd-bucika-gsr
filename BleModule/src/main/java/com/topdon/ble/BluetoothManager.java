@@ -60,7 +60,7 @@ public class BluetoothManager implements EventObserver {
 
     private void setMTUValue() {
         if (mDevice.isConnected()) {
-            //设置MTU
+            //settingsMTU
             Log.e("bcf_ble", "连接设备名称：" + mDevice.getName() + "");
             RequestBuilder<MtuChangeCallback> builder = null;
             if (mDevice.getName().contains("T-darts") || mDevice.getName().contains("TD")) {
@@ -93,13 +93,13 @@ public class BluetoothManager implements EventObserver {
             LLog.w("bcf_ble", "是否打开了Notifycation: " + isEnabled);
             RequestBuilder<NotificationChangeCallback> builder = new RequestBuilderFactory().getSetNotificationBuilder(UUID.fromString(UUIDManager.SERVICE_UUID), UUID.fromString(UUIDManager.NOTIFY_UUID), true);
             RequestBuilder<ReadCharacteristicCallback> builder1 = new RequestBuilderFactory().getReadCharacteristicBuilder(UUID.fromString(UUIDManager.SERVICE_UUID), UUID.fromString(UUIDManager.READ_UUID));
-            //不设置回调，使用观察者模式接收结果
+            //不settings回调，使用观察者mode接收结果
             builder.build().execute(connection);
             builder1.build().execute(connection);
         }
     }
 
-    //取消监听
+    //cancel监听
     public void setCancelListening() {
         Observable observable = EasyBLE.getInstance().getObservable();
         if (observable != null) {
@@ -114,7 +114,7 @@ public class BluetoothManager implements EventObserver {
         config.setRequestTimeoutMillis(7000);
         config.setAutoReconnect(false);
         config.setReconnectImmediatelyMaxTimes(3);
-        connection = EasyBLE.getInstance().connect(device, config, this);//回调监听连接状态，设置此回调不影响观察者接收连接状态消息
+        connection = EasyBLE.getInstance().connect(device, config, this);//回调监听连接状态，settings此回调不影响观察者接收连接状态消息
         connection.setBluetoothGattCallback(new BluetoothGattCallback() {
             @Override
             public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
@@ -151,7 +151,7 @@ public class BluetoothManager implements EventObserver {
     }
 
     /**
-     * 使用{@link Observe}确定要接收消息，{@link RunOn}指定在主线程执行方法，设置{@link Tag}防混淆后找不到方法
+     * 使用{@link Observe}确定要接收消息，{@link RunOn}指定在主线程执行方法，settings{@link Tag}防混淆后找不到方法
      */
     @Tag("onConnectionStateChanged")
     @Observe
@@ -223,7 +223,7 @@ public class BluetoothManager implements EventObserver {
             return false;
         }
         writeCharact = connection.getCharacteristic(UUID.fromString(UUIDManager.SERVICE_UUID), UUID.fromString(UUIDManager.WRITE_UUID));
-        connection.getGatt().setCharacteristicNotification(writeCharact, true); // 设置监听
+        connection.getGatt().setCharacteristicNotification(writeCharact, true); // settings监听
         // 当数据传递到蓝牙之后 会回调BluetoothGattCallback里面的write方法
         writeCharact.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE);
         writeCharact.setValue(data);

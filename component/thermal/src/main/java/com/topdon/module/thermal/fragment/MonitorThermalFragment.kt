@@ -46,7 +46,7 @@ import java.math.BigDecimal
 import java.util.*
 
 /**
- * 热成像
+ * thermal imaging
  */
 class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
 
@@ -56,7 +56,7 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
     override fun initContentView() = R.layout.fragment_monitor_thermal
     private val msgLiveData by lazy { MutableLiveData<Int>() }
 
-    //设置温度展示的位置
+    //settings温度展示的位置
     private fun setViewPosition(imageView: ImageView, index: Int) {
         if (rawWidth == 0 || rawHeight == 0) {
             return
@@ -318,9 +318,9 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
     }
 
 
-    //***************************************专家模式**********************************************
+    //***************************************expertmode**********************************************
     /**
-     * 专家模式
+     * expertmode
      */
     fun onExpertModeClick(view: View?) {
         System.arraycopy(EXPERT_HITS, 1, EXPERT_HITS, 0, EXPERT_HITS.size - 1)
@@ -367,8 +367,8 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
         Log.w("123", "event:${event.action}")
         when (event.action) {
             1001 -> {
-                //拍照
-                ToastUtils.showShort("拍照")
+                //photo
+                ToastUtils.showShort("photo")
                 picture()
             }
             1002 -> {
@@ -397,7 +397,7 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
                 clearFence()
             }
             in 3000..3010 -> {
-                //设置伪彩
+                //settingspseudo color
                 setColor(event.action)
             }
             in 5000..5010 -> {
@@ -422,7 +422,7 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
     }
 
     /**
-     * 设置伪彩
+     * settingspseudo color
      */
     private fun setColor(action: Int) {
         var type: Int = action % 3000 - 1
@@ -460,10 +460,10 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
         type = "fence"
     }
 
-    //显示点线面布局
+    //显示point line area布局
     private fun showFence(index: Int) {
         if (fenceFlag.getIndex(index) == 0) {
-            fenceFlag = 1.shl(4 * (index - 1)) //设置001 or 010 or 100
+            fenceFlag = 1.shl(4 * (index - 1)) //settings001 or 010 or 100
             mFenceLayout!!.visibility = View.VISIBLE
             fence_point_view.visibility = if (fenceFlag.getIndex(1) > 0) View.VISIBLE else View.GONE
             fence_line_view.visibility = if (fenceFlag.getIndex(2) > 0) View.VISIBLE else View.GONE

@@ -10,7 +10,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 /**
- * TC007、2D编辑、插件的 点线面温度图层有 View、SurfaceView 两种实现，
+ * TC007、2D编辑、插件的 point line area温度图层有 View、SurfaceView 两种实现，
  * 先用这个工具类抽取相同 draw 逻辑，后续考虑优化。
  *
  * Created by LCG on 2024/12/6.
@@ -40,7 +40,7 @@ class TempDrawHelper {
             .coerceAtMost(max - POINT_SIZE / 2)
 
         /**
-         * 修正线、面、最高温点、最低温点的 View 坐标值，确保实心圆不会超出 View 界外。
+         * 修正线、面、最High temperature point、最Low temperature point的 View 坐标值，确保实心圆不会超出 View 界外。
          */
         fun Float.correct(max: Int): Int = this.toInt()
             .coerceAtLeast(CIRCLE_RADIUS)
@@ -54,7 +54,7 @@ class TempDrawHelper {
 
 
     /**
-     * 温度值文字、趋势图 AB 两个字母、点线面名称 文字大小，单位 px.
+     * 温度值文字、趋势图 AB 两个字母、point line area名称 文字大小，单位 px.
      */
     var textSize: Int
         get() = textPaint.textSize.toInt()
@@ -63,7 +63,7 @@ class TempDrawHelper {
         }
 
     /**
-     * 温度值文字、趋势图 AB 两个字母、点线面名称 文字颜色值.
+     * 温度值文字、趋势图 AB 两个字母、point line area名称 文字颜色值.
      */
     var textColor: Int
         @ColorInt get() = textPaint.color
@@ -81,16 +81,16 @@ class TempDrawHelper {
      */
     private val linePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     /**
-     * 点、线、面、全图 低温点实心圆 Paint，蓝色.
+     * 点、线、面、全图 Low temperature point实心圆 Paint，蓝色.
      */
     private val bluePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     /**
-     * 点、线、面、全图 高温点实心圆 Paint，红色.
+     * 点、线、面、全图 High temperature point实心圆 Paint，红色.
      */
     private val redPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     /**
-     * 高温温度文字、低温温度文字、趋势图 AB 两个字母、点线面名称 Paint，
-     * 颜色默认白色，大小默认 14sp，可由文字颜色、大小设置更改.
+     * 高温温度文字、低温温度文字、趋势图 AB 两个字母、point line area名称 Paint，
+     * 颜色默认白色，大小默认 14sp，可由文字颜色、大小settings更改.
      */
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 

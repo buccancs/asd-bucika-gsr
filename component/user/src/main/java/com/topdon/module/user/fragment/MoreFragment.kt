@@ -40,7 +40,7 @@ import java.io.File
 import java.text.DecimalFormat
 
 /**
- * 插件式 “更多” 页面
+ * 插件式 “更多” page
  *
  * 需要传递参数：
  * - [ExtraKeyConfig.IS_TC007] - 当前设备是否为 TC007
@@ -49,7 +49,7 @@ import java.text.DecimalFormat
 class MoreFragment : BaseFragment(), View.OnClickListener {
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
@@ -65,11 +65,11 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
 
         setting_item_model.setOnClickListener(this)//温度修正
         setting_item_correction.setOnClickListener(this)//图像校正
-        setting_item_dual.setOnClickListener(this)//双光校正
+        setting_item_dual.setOnClickListener(this)//dual light校正
         setting_item_unit.setOnClickListener(this)//温度单温
         setting_version.setOnClickListener(this) //TC007固件升级
         setting_device_information.setOnClickListener(this)//TC007设备信息
-        setting_reset.setOnClickListener(this)//TC007恢复出厂设置
+        setting_reset.setOnClickListener(this)//TC007恢复出厂settings
 
         //根据 2024/5/23 评审会结论，TC007没有多少需要恢复出厂的配置，产品决定砍掉
         setting_reset.isVisible = false
@@ -195,7 +195,7 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
                        .navigation(requireContext())
                }
            }
-           setting_reset -> {//TC007恢复出厂设置
+           setting_reset -> {//TC007恢复出厂settings
                if (WebSocketProxy.getInstance().isTC007Connect()) {
                    restoreFactory()
                }
@@ -205,7 +205,7 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
 
 
     /**
-     * 仅 TC007 页面时，刷新连接或未连接状态.
+     * 仅 TC007 page时，刷新连接或未连接状态.
      */
     private fun refresh07Connect(isConnect: Boolean) {
         setting_device_information.isRightArrowVisible = isConnect
@@ -350,7 +350,7 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
         lifecycleScope.launch {
             val isSuccess = TC007Repository.resetToFactory()
             if (isSuccess) {
-                XLog.d("TC007 恢复出厂设置成功，即将断开连接")
+                XLog.d("TC007 恢复出厂settings成功，即将断开连接")
                 TToast.shortToast(requireContext(), R.string.ts004_reset_tip4)
                 (requireActivity().application as BaseApplication).disconnectWebSocket()
                 EventBus.getDefault().post(TS004ResetEvent())

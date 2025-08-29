@@ -178,7 +178,7 @@ object TC007Repository {
     }
 
     /**
-     * 恢复出厂设置
+     * 恢复出厂settings
      */
     suspend fun resetToFactory(): Boolean = withContext(Dispatchers.IO) {
         try {
@@ -189,7 +189,7 @@ object TC007Repository {
     }
 
     /**
-     * 执行锅盖标定
+     * 执行锅盖calibration
      */
     suspend fun correction(): Boolean = withContext(Dispatchers.IO) {
         try {
@@ -212,7 +212,7 @@ object TC007Repository {
     }
 
     /**
-     * 设置温度单位是否为摄氏度
+     * settings温度单位是否为摄氏度
      * @param isCelsius true-摄氏度 false-华氏度
      * @param Level 测温档位,0:高增益 1:低增益 3:自动切换
      */
@@ -231,7 +231,7 @@ object TC007Repository {
     }
 
     /**
-     * 设置温度修正参数
+     * settings温度修正参数
      * @param environment 环境温度，单位摄氏度
      * @param distance 测温距离，单位米
      * @param radiation 发射率 `[0.01,1]`
@@ -279,7 +279,7 @@ object TC007Repository {
         }
     }
     /**
-     * 设置全局测温开启或关闭.
+     * settings全局测温开启或关闭.
      */
     suspend fun setTempFrame(boolean: Boolean): Boolean = withContext(Dispatchers.IO) {
         try {
@@ -296,7 +296,7 @@ object TC007Repository {
         }
     }
     /**
-     * 设置测温点列表.
+     * settings测温点列表.
      */
     suspend fun setTempPointList(pointList: List<Point>): Boolean = withContext(Dispatchers.IO) {
         try {
@@ -310,7 +310,7 @@ object TC007Repository {
         }
     }
     /**
-     * 设置测温线列表.
+     * settings测温线列表.
      */
     suspend fun setTempLineList(lineList: List<Point>): Boolean = withContext(Dispatchers.IO) {
         try {
@@ -326,7 +326,7 @@ object TC007Repository {
         }
     }
     /**
-     * 设置测温面列表.
+     * settings测温面列表.
      */
     suspend fun setTempRectList(rectList: List<Rect>): Boolean = withContext(Dispatchers.IO) {
         try {
@@ -342,7 +342,7 @@ object TC007Repository {
 
 
     /**
-     * 拍照
+     * photo
      */
     suspend fun getPhoto() : TC007Response<PhotoBean>? = withContext(Dispatchers.IO){
         try {
@@ -354,7 +354,7 @@ object TC007Repository {
     }
 
     /**
-     * 设置图像模式
+     * settings图像mode
      */
     suspend fun setMode(mode : Int) : TC007Response<Any?>? = withContext(Dispatchers.IO){
         try {

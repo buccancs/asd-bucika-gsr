@@ -83,7 +83,7 @@ public class MathUtils {
      * 将字节数组转数值
      *
      * @param bigEndian true表示高位在前，false表示低位在前
-     * @param cls       返回的数据类型
+     * @param cls       返回的数据type
      * @param src       待转字节数组
      */
     @SuppressWarnings("unchecked")
@@ -115,16 +115,16 @@ public class MathUtils {
     }
 
     /**
-     * 翻转整个数组，每个bit。如10000110 00110001转换成10001100 01100001
+     * flip整个数组，每个bit。如10000110 00110001转换成10001100 01100001
      */
     public static byte[] reverseBitAndByte(byte[] src) {
         if (src == null || src.length == 0) {
             return null;
         }
         byte[] target = new byte[src.length];
-        //翻转byte同时翻转bit
+        //flipbyte同时flipbit
         for (int i = 0; i < src.length; i++) {
-            //翻转bit
+            //flipbit
             int value = 0;
             int tmp = src[src.length - 1 - i];
             for (int j = 7; j >= 0; j--) {

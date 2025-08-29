@@ -12,7 +12,7 @@ import java.nio.ShortBuffer
 
 
 /**
- * 音频采集并且与视频合并一起
+ * audio采集并且与视频合并一起
  * @author: CaiSongL
  * @date: 2023/3/28
  */
@@ -79,7 +79,7 @@ class AudioRecordHelp private constructor() {
             }
             audioRecord!!.startRecording()
             /**
-             * 音频进行循环编码
+             * audio进行循环编码
              */
             try {
                 while (runAudioThread) {
@@ -87,11 +87,11 @@ class AudioRecordHelp private constructor() {
                     if (recordingAudio) {
                         if (bufferReadResult > 0) {
                             audioData?.limit(bufferReadResult)
-                            Log.w("音频采集",bufferReadResult.toString()+"//"+bufferReadResult)
+                            Log.w("audio采集",bufferReadResult.toString()+"//"+bufferReadResult)
                             recorder?.get()?.recordSamples(
                                 VideoRecordFFmpeg.SAMPLE_AUDIO_RETE_INHZ,
                                 VideoRecordFFmpeg.AUDIO_CHANNELS, audioData)
-//                            Log.w("音频采集中2",""+recorder?.get()?.frameNumber)
+//                            Log.w("audio采集中2",""+recorder?.get()?.frameNumber)
                         }
                     }else{
                         for (i in 0 until bufferSize) {

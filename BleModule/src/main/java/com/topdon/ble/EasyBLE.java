@@ -185,7 +185,7 @@ public class EasyBLE {
                                 disconnectAllConnections();
                             } else if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_ON) {
                                 logger.log(Log.DEBUG, Logger.TYPE_GENERAL, "蓝牙开启了");
-                                //重连所有设置了自动重连的连接
+                                //重连所有settings了自动重连的连接
                                 for (Connection connection : connectionMap.values()) {
                                     if (connection.isAutoReconnectEnabled()) {
                                         connection.reconnect();
@@ -233,7 +233,7 @@ public class EasyBLE {
                         disconnectAllConnections();
                     } else if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_ON) {
                         logger.log(Log.DEBUG, Logger.TYPE_GENERAL, "蓝牙开启了");
-                        //重连所有设置了自动重连的连接
+                        //重连所有settings了自动重连的连接
                         for (Connection connection : connectionMap.values()) {
                             if (connection.isAutoReconnectEnabled()) {
                                 connection.reconnect();
@@ -349,7 +349,7 @@ public class EasyBLE {
     }
 
     /**
-     * 取消注册连接状态及数据接收观察者
+     * cancel注册连接状态及数据接收观察者
      */
     public void unregisterObserver(EventObserver observer) {
         observable.unregisterObserver(observer);

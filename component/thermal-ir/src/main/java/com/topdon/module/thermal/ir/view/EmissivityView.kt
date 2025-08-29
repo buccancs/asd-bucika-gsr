@@ -11,7 +11,7 @@ import android.view.View
 import com.blankj.utilcode.util.SizeUtils
 
 /**
- * 常用材料发射率 页面所用，一行常用材料发射率.
+ * 常用材料发射率 pageused for，一行常用材料发射率.
  *
  * Created by LCG on 2024/10/14.
  */
@@ -94,7 +94,7 @@ class EmissivityView : View {
         for (layout in layoutList) {
             maxHeight = maxHeight.coerceAtLeast(layout.height)
         }
-        if (maxHeight == 0) {//没有设置要显示的字符时，给个占位的高度好了
+        if (maxHeight == 0) {//没有settings要显示的字符时，给个占位的高度好了
             maxHeight = textPaint.fontMetricsInt.bottom - textPaint.fontMetricsInt.top
         }
         maxHeight += SizeUtils.dp2px(12f)//上下各 6dp padding

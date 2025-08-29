@@ -13,7 +13,7 @@ import com.topdon.lib.ui.bean.ColorBean
 import com.topdon.lib.ui.config.CameraHelp
 import kotlinx.android.synthetic.main.ui_item_menu_second_view.view.*
 
-@Deprecated("旧的高低温点菜单，已重构过了")
+@Deprecated("旧的high low temperature pointmenu，已重构过了")
 class MenuSecondNightAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val curMultipleArray: HashMap<Int, Int> by lazy { hashMapOf() }

@@ -7,22 +7,22 @@ import com.topdon.menu.R
 import com.topdon.menu.constant.TempPointType
 
 /**
- * 观测模式-菜单5-高低温点 菜单所用 Adapter，按旧逻辑存在全部未选择的状态。
+ * Observation mode-menu5-high low temperature point menuused for Adapter，按旧逻辑存在全部未选择的状态。
  *
- * - 高温点、低温点 互相独立，可多选
- * - {高温点、低温点} 与 删除 互斥
+ * - High temperature point、Low temperature point 互相独立，可多选
+ * - {High temperature point、Low temperature point} 与 delete 互斥
  *
  * Created by LCG on 2024/11/28.
  */
 @SuppressLint("NotifyDataSetChanged")
 internal class TempPointAdapter : BaseMenuAdapter() {
     /**
-     * 观测模式-菜单5-高低温点 点击事件监听.
+     * Observation mode-menu5-high low temperature point 点击事件监听.
      */
     var onTempPointListener: ((type: TempPointType, isSelected: Boolean) -> Unit)? = null
 
     /**
-     * 设置 高温点 或 低稳点 的选中状态。
+     * settings High temperature point 或 低稳点 的选中状态。
      */
     fun setSelected(tempPointType: TempPointType, isSelected: Boolean) {
         for (i in dataArray.indices) {
@@ -35,8 +35,8 @@ internal class TempPointAdapter : BaseMenuAdapter() {
     }
 
     /**
-     * 清除所有菜单的选中状态。
-     * 这里维持原有逻辑，后续考虑是否直接给选中删除得了。
+     * 清除所有menu的选中状态。
+     * 这里维持原有逻辑，后续考虑是否直接给选中delete得了。
      */
     fun clearAllSelect() {
         for (data in dataArray) {
@@ -60,7 +60,7 @@ internal class TempPointAdapter : BaseMenuAdapter() {
         holder.binding.tvText.isSelected = data.isSelected
         holder.binding.clRoot.setOnClickListener {
             if (data.tempPointType == TempPointType.DELETE) {
-                if (!data.isSelected) {//选中时再次删除没卵用，未选中时才处理
+                if (!data.isSelected) {//选中时再次delete没卵用，未选中时才处理
                     for (temp in dataArray) {
                         temp.isSelected = temp.tempPointType == TempPointType.DELETE
                     }
@@ -71,7 +71,7 @@ internal class TempPointAdapter : BaseMenuAdapter() {
                 data.isSelected = !data.isSelected
                 holder.binding.ivIcon.isSelected = data.isSelected
                 holder.binding.tvText.isSelected = data.isSelected
-                if (data.isSelected) {//选中高温点、低温点时要把“删除”设为未选中；取消选中时不耦合删除
+                if (data.isSelected) {//选中High temperature point、Low temperature point时要把“delete”设为未选中；cancel选中时不耦合delete
                     for (i in dataArray.indices) {
                         if (dataArray[i].tempPointType == TempPointType.DELETE && dataArray[i].isSelected) {
                             dataArray[i].isSelected = false

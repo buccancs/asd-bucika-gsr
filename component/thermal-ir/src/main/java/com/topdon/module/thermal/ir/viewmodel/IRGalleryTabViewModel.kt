@@ -5,7 +5,7 @@ import com.topdon.lib.core.ktbase.BaseViewModel
 
 class IRGalleryTabViewModel : BaseViewModel() {
     /**
-     * 是否处于编辑模式.
+     * 是否处于编辑mode.
      */
     val isEditModeLD: MutableLiveData<Boolean> = MutableLiveData(false)
     /**

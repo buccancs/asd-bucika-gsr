@@ -17,7 +17,7 @@ import com.topdon.module.thermal.ir.viewmodel.IRGalleryTabViewModel
  * 图库.
  *
  * 需要传递参数：
- * - [ExtraKeyConfig.DIR_TYPE] - 要查看的目录类型 具体取值由 [DirType] 定义
+ * - [ExtraKeyConfig.DIR_TYPE] - 要查看的目录type 具体取值由 [DirType] 定义
  *
  * Created by LCG on 2024/2/22.
  */

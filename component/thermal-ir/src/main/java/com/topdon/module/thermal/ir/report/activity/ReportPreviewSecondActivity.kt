@@ -36,28 +36,28 @@ import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 /**
- * 生成报告第2步的预览界面.
+ * 生成report第2步的预览界面.
  *
  * 需要传递
  * - 是否 TC007: [ExtraKeyConfig.IS_TC007]
- * - 一份报告所有信息 [ExtraKeyConfig.REPORT_BEAN]
+ * - 一份report所有信息 [ExtraKeyConfig.REPORT_BEAN]
  */
 @Route(path = RouterConfig.REPORT_PREVIEW_SECOND)
 class ReportPreviewSecondActivity: BaseViewModelActivity<UpReportViewModel>(), View.OnClickListener {
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
 
     /**
-     * 从上一界面传递过来的，报告所有信息.
+     * 从上一界面传递过来的，report所有信息.
      */
     private var reportBean: ReportBean? = null
 
     /**
-     * 当前预览页面已生成的 PDF 文件绝对路径
+     * 当前预览page已生成的 PDF 文件绝对路径
      */
     private var pdfFilePath: String? = null
 

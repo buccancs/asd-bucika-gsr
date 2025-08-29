@@ -16,11 +16,11 @@ interface ThermalDao {
 
     @Query("DELETE FROM thermal where start_time = :startTime")
     fun delDetail(startTime: Long)
-    //删除用户数据
+    //delete用户数据
     @Query("delete from thermal where user_id = :userId")
     fun deleteByUserId(userId: String)
 
-    //删除无用0数据
+    //delete无用0数据
     @Query("delete from thermal where user_id = :userId and thermal=0 and thermal_max=0 and thermal_min=0 and create_time<(select max(create_time) from thermal where thermal=0 and thermal_max=0 and thermal_min=0)")
     fun deleteZero(userId: String)
 

@@ -33,7 +33,7 @@ class PolicyActivity : BaseViewModelActivity<PolicyViewModel>() {
 
     companion object {
         const val KEY_THEME_TYPE = "key_theme_type"
-        const val KEY_USE_TYPE = "key_use_type"     //使用类型 用本地和用网络
+        const val KEY_USE_TYPE = "key_use_type"     //使用type 用本地和用网络
     }
 
     private var themeType = 1
@@ -81,7 +81,7 @@ class PolicyActivity : BaseViewModelActivity<PolicyViewModel>() {
     }
 
     /**
-     * 为解决闪缩白屏问题，延时打开webView
+     * 为解决闪缩白屏问题，delay打开webView
      */
     private fun delayShowWebView() {
         lifecycleScope.launch(Dispatchers.IO) {
@@ -103,7 +103,7 @@ class PolicyActivity : BaseViewModelActivity<PolicyViewModel>() {
     private fun initWeb(url: String) {
         policy_web.visibility = View.INVISIBLE
         val webSettings: WebSettings = policy_web.settings
-        webSettings.javaScriptEnabled = true //设置支持javascript
+        webSettings.javaScriptEnabled = true //settings支持javascript
 
         policy_web.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {

@@ -70,7 +70,7 @@ internal class ThreePickPopup(val context: Context, strIdArray: List<Int>, priva
                 showAsDropDown(anchor, Gravity.NO_GRAVITY, x, locationArray[1] + anchor.height)
             }
         } else {
-            if (heightPixels - locationArray[1] - anchor.height - SizeUtils.dp2px(10f) > height) {//在 anchor 底部放得下
+            if (heightPixels - locationArray[1] - anchor.height - SizeUtils.dp2px(10f) > height) {//在 anchor bottom放得下
                 showAtLocation(anchor, Gravity.NO_GRAVITY, x, locationArray[1] + anchor.height + SizeUtils.dp2px(10f))
             } else {//下面放不下就放上面吧
                 showAtLocation(anchor, Gravity.NO_GRAVITY, x, (locationArray[1] - SizeUtils.dp2px(10f) - height).coerceAtLeast(0))

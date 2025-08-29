@@ -86,7 +86,7 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
         val layoutParams =  mTextureView.layoutParams
         layoutParams.width  = showBitmapHeightWidth.toInt()
         layoutParams.height = showBitmapHeight.toInt()
-//        Log.e("测试","旋转后的宽高：标靶"+showBitmapHeight+"///"+imageHeight+"---")
+//        Log.e("测试","旋转后的宽高：target"+showBitmapHeight+"///"+imageHeight+"---")
         mTextureView.layoutParams = layoutParams
         (mTextureView as ImageView ).setImageBitmap(originalBitmap)
     }

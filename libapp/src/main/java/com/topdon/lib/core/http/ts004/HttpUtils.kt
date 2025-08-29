@@ -4,8 +4,8 @@ import com.topdon.lms.sdk.xutils.http.RequestParams
 import com.topdon.lms.sdk.xutils.x
 object HttpUtils {
     /**
-     * 设置伪彩样式
-     * @param mode              伪彩样式
+     * settingspseudo color样式
+     * @param mode              pseudo color样式
      * @param iResponseCallback 回调函数
      * @ void
      */
@@ -19,7 +19,7 @@ object HttpUtils {
     }
 
     /**
-     * 获取伪彩样式
+     * 获取pseudo color样式
      */
     fun getPseudoColor(iResponseCallback: Callback.CommonCallback<String>?) {
         val params = RequestParams()
@@ -29,7 +29,7 @@ object HttpUtils {
     }
 
     /**
-     * 设置屏幕亮度
+     * settings屏幕亮度
      * @param mode              屏幕亮度值:范围0-100
      * @param iResponseCallback 回调函数
      * @ void
@@ -53,7 +53,7 @@ object HttpUtils {
     }
 
     /**
-     * 设置画中画
+     * settings画中画
      * @param iResponseCallback 回调函数
      * @ void
      */
@@ -76,7 +76,7 @@ object HttpUtils {
     }
 
     /**
-     * 设置放大倍数
+     * settings放大倍数
      * @param factor            放大倍数:1,2,4,8
      * @param iResponseCallback 回调函数
      * @ void
@@ -101,7 +101,7 @@ object HttpUtils {
     }
 
     /**
-     * 设置拍照
+     * settingsphoto
      * @param iResponseCallback 回调函数
      * @void
      */
@@ -113,7 +113,7 @@ object HttpUtils {
     }
 
     /**
-     * 设置录像
+     * settingsvideo
      * @param enable 录制开关
      * @param iResponseCallback 回调函数
      * @void
@@ -127,7 +127,7 @@ object HttpUtils {
     }
 
     /**
-     * 获取录像状态
+     * 获取video状态
      * @param iResponseCallback 回调函数
      * @void
      */
@@ -169,7 +169,7 @@ object HttpUtils {
     }
 
     /**
-     * 恢复出厂设置
+     * 恢复出厂settings
      */
     fun getResetAll(iResponseCallback: Callback.CommonCallback<String>?) {
         val params = RequestParams()

@@ -8,24 +8,24 @@ import com.topdon.menu.R
 import com.topdon.menu.constant.FenceType
 
 /**
- * 点、线、面、全图、趋势图(可选)、删除 菜单 Adapter.
+ * point, line, area, full image, trend chart(optional)、delete menu Adapter.
  *
- * - 单光：   点、线、面、全图、趋势图、删除
- * - 双光：   点、线、面、全图、趋势图、删除
- * - Lite：  点、线、面、全图、趋势图、删除
- * - TC007： 点、线、面、全图、趋势图、删除
- * - 2D 编辑：点、线、面、全图、删除
+ * - 单光：   point, line, area, full image, trend chart、delete
+ * - dual light：   point, line, area, full image, trend chart、delete
+ * - Lite：  point, line, area, full image, trend chart、delete
+ * - TC007： point, line, area, full image, trend chart、delete
+ * - 2D 编辑：点、线、面、全图、delete
  *
- * 点、线、面、趋势图、全图 与 删除互斥
+ * 点、线、面、趋势图、全图 与 delete互斥
  *
- * 点、线、面、趋势图 互斥，全图独立可选
+ * 点、线、面、趋势图 互斥，全图独立optional
  *
  * Created by LCG on 2024/11/18.
  */
 @SuppressLint("NotifyDataSetChanged")
 internal class FenceAdapter(menuType: MenuType) : BaseMenuAdapter() {
     /**
-     * 当前选中的菜单类型，若为 null 表示所有都未选中.
+     * 当前选中的menutype，若为 null 表示所有都未选中.
      */
     var selectType: FenceType? = null
         set(value) {
@@ -45,7 +45,7 @@ internal class FenceAdapter(menuType: MenuType) : BaseMenuAdapter() {
     private var isFullSelect: Boolean = false
 
     /**
-     * 菜单点击事件监听，目前都是单选，等后续有空重构了，再搞成 IOS 那样“全图”可以多选。
+     * menu点击事件监听，目前都是单选，等后续有空重构了，再搞成 IOS 那样“全图”可以多选。
      */
     var onFenceListener: ((fenceType: FenceType, isSelected: Boolean) -> Unit)? = null
 
@@ -58,7 +58,7 @@ internal class FenceAdapter(menuType: MenuType) : BaseMenuAdapter() {
         dataList.add(Data(R.string.thermal_line, R.drawable.selector_menu2_fence_line, FenceType.LINE))
         dataList.add(Data(R.string.thermal_rect, R.drawable.selector_menu2_fence_rect, FenceType.RECT))
         dataList.add(Data(R.string.thermal_full_rect, R.drawable.selector_menu2_fence_full, FenceType.FULL))
-        if (menuType != MenuType.GALLERY_EDIT) {//2D编辑的菜单没有趋势图
+        if (menuType != MenuType.GALLERY_EDIT) {//2D编辑的menu没有趋势图
             dataList.add(Data(R.string.thermal_trend, R.drawable.selector_menu2_fence_trend, FenceType.TREND))
         }
         dataList.add(Data(R.string.thermal_delete, R.drawable.selector_menu2_del, FenceType.DEL))

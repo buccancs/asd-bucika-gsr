@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/iv_house_image" />
 
-    <!-- 右上角3个点菜单 -->
+    <!-- 右上角3个点menu -->
     <ImageView
         android:id="@+id/iv_menu_more"
         android:layout_width="0dp"
@@ -47,7 +47,7 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-    <!-- 编辑模式下选中状态指示图片 -->
+    <!-- 编辑mode下选中状态指示图片 -->
     <ImageView
         android:id="@+id/iv_select"
         android:layout_width="0dp"
@@ -82,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/iv_house_image" />
 
-    <!-- 检测或报告名称 -->
+    <!-- 检测或report名称 -->
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="0dp"

@@ -76,7 +76,7 @@ public class CameraView extends TextureView {
         paint = new Paint();  //画笔
         paint = new Paint(Paint.FILTER_BITMAP_FLAG);
 //        paint = new Paint();  //画笔
-        paint.setStrokeWidth(2);  //设置线宽。单位为像素
+        paint.setStrokeWidth(2);  //settings线宽。单位为像素
         paint.setAntiAlias(true); //抗锯齿
         paint.setDither(true);    //防抖动
         paint.setColor(Color.WHITE);  //画笔颜色
@@ -107,7 +107,7 @@ public class CameraView extends TextureView {
                                 continue;
                             }
                             // 画面中心的十字交叉线绘制
-                            paint.setStrokeWidth(2);  //设置线宽。单位为像素
+                            paint.setStrokeWidth(2);  //settings线宽。单位为像素
                             paint.setAntiAlias(true); //抗锯齿
                             paint.setDither(true);    //防抖动
                             paint.setColor(Color.WHITE);  //画笔颜色

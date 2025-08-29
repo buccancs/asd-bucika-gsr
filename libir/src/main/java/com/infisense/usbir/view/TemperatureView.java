@@ -59,8 +59,8 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
 
 
     /**
-     * 选中操作灵敏度，当 Touch Down 坐标与点线面坐标偏差在该值范围内，视为选中，单位 px.<br>
-     * 删除操作灵敏度，当 Touch UP 与 Touch Down 坐标偏差在该值范围内，视为删除，单位 px.
+     * 选中操作灵敏度，当 Touch Down 坐标与point line area坐标偏差在该值范围内，视为选中，单位 px.<br>
+     * delete操作灵敏度，当 Touch UP 与 Touch Down 坐标偏差在该值范围内，视为delete，单位 px.
      */
     private static final int TOUCH_TOLERANCE = SizeUtils.sp2px(7f);
 
@@ -109,31 +109,31 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
 
 
     /**
-     * 温度区域模式 - 高低温点重置.
+     * 温度区域mode - high low temperature point重置.
      */
     public static final int REGION_MODE_RESET = -1;
     /**
-     * 温度区域模式 - 点.
+     * 温度区域mode - 点.
      */
     public static final int REGION_MODE_POINT = 0;
     /**
-     * 温度区域模式 - 线.
+     * 温度区域mode - 线.
      */
     public static final int REGION_MODE_LINE = 1;
     /**
-     * 温度区域模式 - 面.
+     * 温度区域mode - 面.
      */
     public static final int REGION_MODE_RECTANGLE = 2;
     /**
-     * 温度区域模式 - 全图.
+     * 温度区域mode - 全图.
      */
     public static final int REGION_MODE_CENTER = 3;
     /**
-     * 温度区域模式 - 趋势图，也就是只一条线.
+     * 温度区域mode - 趋势图，也就是只一条线.
      */
     public static final int REGION_NODE_TREND = 4;
     /**
-     * 温度区域模式 - 清除.
+     * 温度区域mode - 清除.
      */
     public static final int REGION_MODE_CLEAN = 5;
 
@@ -143,7 +143,7 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
     }
 
     /**
-     * 温度区域模式，由 REGION_MODE_** 定义，默认清除.
+     * 温度区域mode，由 REGION_MODE_** 定义，默认清除.
      */
     @RegionMode
     private int temperatureRegionMode = REGION_MODE_CLEAN;
@@ -199,7 +199,7 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
     @Nullable
     private OnTrendChangeListener onTrendChangeListener = null;
     /**
-     * 设置趋势图温度变化时监听，注意，回调不在主线程！！
+     * settings趋势图温度变化时监听，注意，回调不在主线程！！
      */
     public void setOnTrendChangeListener(@Nullable OnTrendChangeListener onTrendChangeListener) {
         this.onTrendChangeListener = onTrendChangeListener;
@@ -208,7 +208,7 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
     @Nullable
     private Runnable onTrendAddListener = null;
     /**
-     * 设置趋势图添加事件监听，放心，回调在主线程.
+     * settings趋势图添加事件监听，放心，回调在主线程.
      */
     public void setOnTrendAddListener(@Nullable Runnable onTrendAddListener) {
         this.onTrendAddListener = onTrendAddListener;
@@ -217,7 +217,7 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
     @Nullable
     private Runnable onTrendRemoveListener = null;
     /**
-     * 设置趋势图移除事件监听，放心，回调在主线程.
+     * settings趋势图移除事件监听，放心，回调在主线程.
      */
     public void setOnTrendRemoveListener(@Nullable Runnable onTrendRemoveListener) {
         this.onTrendRemoveListener = onTrendRemoveListener;
@@ -241,14 +241,14 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
     }
 
 
-    private boolean isMonitor = false;//如果是温度监控，则进行实时校验点线面的比例
+    private boolean isMonitor = false;//如果是温度监控，则进行实时校验point line area的比例
     public void setMonitor(boolean monitor) {
         isMonitor = monitor;
     }
 
 
     /**
-     * 观测模式时高温点是否开启
+     * Observation mode时High temperature point是否开启
      */
     private boolean isUserHighTemp = false;
     public boolean isUserHighTemp() {
@@ -259,7 +259,7 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
     }
 
     /**
-     * 观测模式时低温点是否开启
+     * Observation mode时Low temperature point是否开启
      */
     private boolean isUserLowTemp = false;
     public boolean isUserLowTemp() {
@@ -827,8 +827,8 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
 
     /* **************************************** Touch **************************************** */
     /**
-     * 是否为添加 点线面 模式。<br>
-     * true-添加一个新点线面 false-移动一个已有点线面
+     * 是否为添加 point line area mode。<br>
+     * true-添加一个新point line area false-移动一个已有point line area
      */
     private boolean isAddAction = true;
 
@@ -873,7 +873,7 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                     surfaceViewCanvas.drawBitmap(regionBitmap, new Rect(0, 0, viewWidth, viewHeight), new Rect(0, 0, viewWidth, viewHeight), null);
                     drawPoint(surfaceViewCanvas, downX, downY);
                     getHolder().unlockCanvasAndPost(surfaceViewCanvas);
-                } else {//移动或删除
+                } else {//移动或delete
                     isAddAction = false;
                     synchronized (regionLock) {
                         pointList.remove(point);
@@ -1157,14 +1157,14 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
 
     private enum RectMoveEdge { LEFT, TOP, RIGHT, BOTTOM }
     /**
-     * 仅边移动模式时，移动的是哪条边.
+     * 仅边移动mode时，移动的是哪条边.
      */
     private RectMoveEdge rectMoveEdge = RectMoveEdge.LEFT;
     
     
     private enum RectMoveCorner { LT, RT, RB, LB }
     /**
-     * 仅角移动模式时，移动的是哪个角.
+     * 仅角移动mode时，移动的是哪个角.
      */
     private RectMoveCorner rectMoveCorner = RectMoveCorner.LT;
 
@@ -1522,7 +1522,7 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
     }
 
     /**
-     *  ----------------------双光设备--------------------------------
+     *  ----------------------dual light设备--------------------------------
      */
 
     public void setUseIRISP(boolean useIRISP) {

@@ -124,7 +124,7 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
         monitor_chart_time_recycler.adapter = timeAdapter
         monitor_chart_setting_recycler.layoutManager = GridLayoutManager(this, 3)
         monitor_chart_setting_recycler.adapter = adapter
-        //设置时间段类型(秒 分 时 天)
+        //settings时间段type(秒 分 时 天)
         timeAdapter.listener = object : SettingTimeAdapter.OnItemClickListener {
             override fun onClick(index: Int, timeType: Int) {
                 selectTimeType = timeType
@@ -289,7 +289,7 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
         chart.setNoDataTextColor(textColor)
         val mv = MyMarkerView(this, R.layout.marker_lay)
         mv.chartView = chart
-        chart.marker = mv//设置点击坐标显示提示框
+        chart.marker = mv//settings点击坐标显示提示框
         val data = LineData()
         data.setValueTextColor(textColor)
         chart.data = data
@@ -376,7 +376,7 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
                 var volDataSet = lineData.getDataSetByIndex(0) //读取x为0的坐标点
                 if (volDataSet == null) {
                     startTime = data.createTime
-                    Log.w("123", "设置初始时间startTime:$startTime")
+                    Log.w("123", "settings初始时间startTime:$startTime")
                     chart.xAxis.valueFormatter = MyValueFormatter(startTime = startTime)
                 }
                 val x = (data.createTime - startTime).toFloat()
@@ -437,8 +437,8 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
 
                 lineData.notifyDataChanged()
                 chart.notifyDataSetChanged()
-                chart.setVisibleXRangeMinimum(getMinimum())//设置显示X轴区间大小
-                chart.setVisibleXRangeMaximum(getMaximum())//设置显示X轴区间大小
+                chart.setVisibleXRangeMinimum(getMinimum())//settings显示X轴区间大小
+                chart.setVisibleXRangeMaximum(getMaximum())//settings显示X轴区间大小
                 chart.xAxis.setLabelCount(getLabCount(volDataSet.entryCount), false)//true保证有刻度数量不变
                 chart.moveViewToX(chart.xChartMax)//移动到最右端
                 if (volDataSet.entryCount == 20) {
@@ -467,7 +467,7 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
 //        set.mode = LineDataSet.Mode.LINEAR
         set.mode = LineDataSet.Mode.CUBIC_BEZIER
         set.setDrawFilled(false)
-//        set.fillDrawable = fillColor//设置填充颜色渐变
+//        set.fillDrawable = fillColor//settings填充颜色渐变
         set.axisDependency = YAxis.AxisDependency.LEFT
 
         when (label) {
@@ -492,7 +492,7 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
         set.lineWidth = 2f
         set.fillAlpha = 200
         set.valueTextSize = 10f
-        set.setDrawValues(false)//设置是否显示坐标值文本
+        set.setDrawValues(false)//settings是否显示坐标值文本
         set.isHighlightEnabled = true//允许辅助线
         set.setDrawHorizontalHighlightIndicator(false)//水平辅助线关闭
         set.enableDashedHighlightLine(8f, 8f, 0f)//辅助虚线
@@ -525,7 +525,7 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
             val logTime = TimeTool.showDateType(bean.dataList.last().createTime, selectTimeType)
             val nowTime = TimeTool.showDateType(System.currentTimeMillis(), selectTimeType)
             if (TextUtils.equals(logTime, nowTime)) {
-                //分时天,当前时间段没结束，应当删除最新当前时间段数据
+                //分时天,当前时间段没结束，应当delete最新当前时间段数据
                 bean.dataList.removeLast()
             }
         }
@@ -557,7 +557,7 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
         chart.xAxis.valueFormatter = MyValueFormatter(startTime = startTime, type = selectTimeType)
         val mv = MyMarkerView(this, R.layout.marker_lay)
         mv.chartView = chart
-        chart.marker = mv//设置点击坐标显示提示框
+        chart.marker = mv//settings点击坐标显示提示框
         data.forEach {
             val x = (it.createTime - startTime).toFloat()
             when (type) {
@@ -618,8 +618,8 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
         Log.w("123", "曲线数据:${volDataSet.entryCount}个")
         lineData.notifyDataChanged()
         chart.notifyDataSetChanged()
-        chart.setVisibleXRangeMinimum(getMinimum())//设置显示X轴区间大小
-        chart.setVisibleXRangeMaximum(getMaximum())//设置显示X轴区间大小
+        chart.setVisibleXRangeMinimum(getMinimum())//settings显示X轴区间大小
+        chart.setVisibleXRangeMaximum(getMaximum())//settings显示X轴区间大小
         Log.i(
             "123",
             "list moveViewToX:${chart.xChartMax}, chart.highestVisibleX:${chart.highestVisibleX}"

@@ -204,7 +204,7 @@
                 app:layout_constraintTop_toTopOf="@id/space_image4"
                 app:layout_constraintBottom_toBottomOf="@id/space_image4" />
 
-            <!-- 删除 -->
+            <!-- delete -->
             <ImageView
                 android:id="@+id/iv_del_image1"
                 android:layout_width="26dp"
@@ -313,7 +313,7 @@
             app:layout_constraintTop_toTopOf="@id/tv_item_add_img"
             app:layout_constraintStart_toEndOf="@id/tv_item_add_text"
             app:layout_constraintEnd_toStartOf="@+id/tv_item_del" />
-        <!-- 删除 -->
+        <!-- delete -->
         <com.topdon.lib.core.view.MyTextView
             android:id="@+id/tv_item_del"
             android:layout_width="wrap_content"

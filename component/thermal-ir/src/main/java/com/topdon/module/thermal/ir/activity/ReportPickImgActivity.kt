@@ -32,11 +32,11 @@ import org.greenrobot.eventbus.ThreadMode
 import java.io.File
 
 /**
- * 生成报告图片拾取.
+ * 生成report图片拾取.
  *
  * 需要传递参数：
  * - 是否 TC007: [ExtraKeyConfig.IS_TC007] 进入目录不同
- * - [ExtraKeyConfig.REPORT_INFO] - 报告信息
+ * - [ExtraKeyConfig.REPORT_INFO] - report信息
  * - [ExtraKeyConfig.REPORT_CONDITION] - 检测条件
  * - [ExtraKeyConfig.REPORT_IR_LIST] - 当前已添加的图片对应数据列表
  */
@@ -44,7 +44,7 @@ import java.io.File
 class ReportPickImgActivity : BaseActivity(), View.OnClickListener {
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
@@ -140,7 +140,7 @@ class ReportPickImgActivity : BaseActivity(), View.OnClickListener {
     private fun initRecycler() {
         val spanCount = 3
         val gridLayoutManager = GridLayoutManager(this, spanCount)
-        //动态设置span
+        //动态settingsspan
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return if (adapter.dataList[position] is GalleryTitle) spanCount else 1

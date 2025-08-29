@@ -10,7 +10,7 @@ import com.blankj.utilcode.util.Utils
 import com.topdon.lib.core.R
 
 /**
- * 检测 或 报告 所属的一项项目.
+ * 检测 或 report 所属的一项项目.
  *
  * Created by LCG on 2024/8/19.
  */
@@ -19,7 +19,7 @@ open class ItemBase {
     var id: Long = 0
 
     /**
-     * 所对应的检测或报告目录 Id
+     * 所对应的检测或report目录 Id
      */
     @ColumnInfo(index = true)
     open var parentId: Long = 0
@@ -138,7 +138,7 @@ open class ItemBase {
     }
 
     /**
-     * 删除指定位置的一张图片.
+     * delete指定位置的一张图片.
      * @param imageNum `[1,4]`
      */
     fun delOneImage(imageNum: Int) {
@@ -252,7 +252,7 @@ class ItemDetect() : ItemBase() {
     }
 
     /**
-     * 将当前检测 item 转换为报告 item，注意 id、parent 重置为 0.
+     * 将当前检测 item 转换为report item，注意 id、parent 重置为 0.
      */
     fun toItemReport(): ItemReport {
         val itemReport = ItemReport()
@@ -361,7 +361,7 @@ class ItemDetect() : ItemBase() {
 
 
 /**
- * 报告所属的一项项目.
+ * report所属的一项项目.
  */
 @Entity(foreignKeys = [ForeignKey(
     entity = DirReport::class,
@@ -371,7 +371,7 @@ class ItemDetect() : ItemBase() {
     onUpdate = ForeignKey.CASCADE,)])
 class ItemReport : ItemBase() {
     /**
-     * 所对应的报告目录 Id
+     * 所对应的report目录 Id
      */
     @ColumnInfo(index = true)
     override var parentId: Long = 0

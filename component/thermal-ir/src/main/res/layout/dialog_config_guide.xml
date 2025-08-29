@@ -49,7 +49,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- 默认模式 -->
+        <!-- 默认mode -->
         <TextView
             android:id="@+id/tv_default_title"
             android:layout_width="0dp"
@@ -335,7 +335,7 @@
             app:layout_constraintTop_toBottomOf="@id/view_bg_theme1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 第2步操作指引-底部 -->
+    <!-- 第2步操作指引-bottom -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_step2_bottom"
         android:layout_width="0dp"

@@ -27,7 +27,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding> : Fragment() {
 
     /**
      * 在 [onDestroyView] 要将 binding 置为 null，
-     * 而将 binding 声明为可为 null 类型使用太过麻烦，使用该变量做一重包装避免该问题.
+     * 而将 binding 声明为可为 null type使用太过麻烦，使用该变量做一重包装避免该问题.
      */
     private var _binding: B? = null
     /**

@@ -13,14 +13,14 @@ object WriteTools {
 
     fun delete(file: File): Int {
         val uri: Uri = FileTools.getUri(file)
-        XLog.w("删除文件 uri:${uri}")
+        XLog.w("delete文件 uri:${uri}")
         val mediaId = queryId(uri)// MediaStore.Audio.Media._ID of item to update.
         val resolver = Utils.getApp().applicationContext.contentResolver
         val selection = "${MediaStore.Images.Media._ID} = ?"
         // By using selection + args we protect against improper escaping of // values.
         val selectionArgs = arrayOf(mediaId.toString())
         val result = resolver.delete(uri, selection, selectionArgs)
-        XLog.w("删除结果文件: $result")
+        XLog.w("delete结果文件: $result")
         return result
     }
 

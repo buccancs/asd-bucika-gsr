@@ -109,7 +109,7 @@ public class EasyWifi {
     public boolean connectByOld(String str, String str2, WifiCapability wifiCapability) {
         int addNetwork = this.wifiManager.addNetwork(createWifiConfig(str, str2, wifiCapability));
         if (addNetwork == -1) {
-            Log.e(this.TAG, "操作失败,需要您到手机wifi列表中取消对设备连接的保存");
+            Log.e(this.TAG, "操作失败,需要您到手机wifi列表中cancel对设备连接的保存");
         }
         boolean enableNetwork = this.wifiManager.enableNetwork(addNetwork, true);
         Log.d(this.TAG, "connectByOld: " + (enableNetwork ? "成功" : "失败"));
@@ -186,7 +186,7 @@ public class EasyWifi {
             @Override // android.net.ConnectivityManager.NetworkCallback
             public void onAvailable(Network network) {
                 try {
-                    Log.d(EasyWifi.this.TAG, "设置网络类型时onAvailable: ");
+                    Log.d(EasyWifi.this.TAG, "settings网络type时onAvailable: ");
                     EasyWifi.this.getConnectivityManager().bindProcessToNetwork(network);
                 } catch (Exception e) {
                     e.printStackTrace();

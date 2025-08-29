@@ -88,7 +88,7 @@ public final class Observable {
     /**
      * 将观察者从注册集合里移除
      *
-     * @param observer 需要取消注册的观察者
+     * @param observer 需要cancel注册的观察者
      */
     public void unregisterObserver(@NonNull Observer observer) {
         synchronized (observerInfos) {

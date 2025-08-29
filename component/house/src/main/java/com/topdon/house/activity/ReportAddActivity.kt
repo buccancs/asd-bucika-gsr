@@ -31,7 +31,7 @@ import org.greenrobot.eventbus.ThreadMode
 import java.io.File
 
 /**
- * 报告生成（即检测）.
+ * report生成（即检测）.
  *
  * 需要传递：
  * - [ExtraKeyConfig.DETECT_ID] - 执行检测的房屋检测 Id
@@ -41,7 +41,7 @@ import java.io.File
  */
 class ReportAddActivity : BaseActivity(), View.OnClickListener {
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
@@ -95,7 +95,7 @@ class ReportAddActivity : BaseActivity(), View.OnClickListener {
             TToast.shortToast(this@ReportAddActivity, R.string.ts004_copy_success)
         }
         viewModel.delItemLD.observe(this) {
-            //删除项目结果
+            //delete项目结果
             view_house_detect.notifyItemRemove(it.first, it.second)
             TToast.shortToast(this@ReportAddActivity, R.string.test_results_delete_success)
         }
@@ -124,7 +124,7 @@ class ReportAddActivity : BaseActivity(), View.OnClickListener {
                 }
                 iv_expand.isSelected = isAllExpand
             }
-            tv_export_report -> {//导出报告
+            tv_export_report -> {//导出report
                 ARouter.getInstance().build(RouterConfig.REPORT_PREVIEW)
                     .withBoolean(ExtraKeyConfig.IS_REPORT, false)
                     .withLong(ExtraKeyConfig.LONG_ID, intent.getLongExtra(ExtraKeyConfig.DETECT_ID, 0))
@@ -173,14 +173,14 @@ class ReportAddActivity : BaseActivity(), View.OnClickListener {
                             galleryPickResult.launch("image/*")
                         }
                     }
-                    1 -> {//相机拍照
+                    1 -> {//相机photo
                         PermissionTool.requestCamera(this) {
                             val fileName = "Item${System.currentTimeMillis()}.png"
                             val file = FileConfig.getDetectImageDir(this, fileName)
                             lightPhotoResult.launch(file)
                         }
                     }
-                    2 -> {//红外线拍照
+                    2 -> {//红外线photo
                         if ((isTC007 && !WebSocketProxy.getInstance().isTC007Connect()) || (!isTC007 && !DeviceTools.isConnect())) {
                             TToast.shortToast(this@ReportAddActivity, R.string.device_disconnect)
                         } else {
@@ -227,7 +227,7 @@ class ReportAddActivity : BaseActivity(), View.OnClickListener {
             iv_expand.isSelected = isAllExpand
         }
         view_house_detect.onItemChangeListener = {
-            //项目数据变更（3种状态、图片删除）
+            //项目数据变更（3种状态、图片delete）
             viewModel.updateItem(it)
         }
     }
@@ -276,7 +276,7 @@ class ReportAddActivity : BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 从系统相机拍照结果
+     * 从系统相机photo结果
      */
     private val lightPhotoResult = registerForActivityResult(TakePhotoResult()) {
         if (it != null) {

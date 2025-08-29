@@ -149,7 +149,7 @@ public class IniUtil {
 
 
     /**
-     * 获取保养类型
+     * 获取保养type
      *
      * @param path
      * @param name
@@ -309,7 +309,7 @@ public class IniUtil {
 
 
     /**
-     * 获取保养类型
+     * 获取保养type
      *
      * @param path
      * @param name

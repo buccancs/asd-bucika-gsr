@@ -17,11 +17,11 @@ public object AnimaUtils{
     /**
      * 获取一个旋转动画
      *
-     * @param fromDegrees       开始角度
-     * @param toDegrees         结束角度
-     * @param pivotXType        旋转中心点X轴坐标相对类型
+     * @param fromDegrees       开始angle
+     * @param toDegrees         结束angle
+     * @param pivotXType        旋转中心点X轴坐标相对type
      * @param pivotXValue       旋转中心点X轴坐标
-     * @param pivotYType        旋转中心点Y轴坐标相对类型
+     * @param pivotYType        旋转中心点Y轴坐标相对type
      * @param pivotYValue       旋转中心点Y轴坐标
      * @param durationMillis    持续时间
      * @param animationListener 动画监听器

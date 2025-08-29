@@ -27,7 +27,7 @@ public class USBMonitorManager {
     private UVCCamera mUvcCamera;
     private IRCMD mIrcmd;
     private CommonParams.DataFlowMode mDefaultDataFlowMode = CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT;
-    // 模组支持的高低增益模式
+    // 模组支持的高低增益mode
     private CommonParams.GainMode gainMode = CommonParams.GainMode.GAIN_MODE_HIGH_LOW;
     private boolean isUseIRISP;
     // 是否使用GPU方案
@@ -247,7 +247,7 @@ public class USBMonitorManager {
         List<CameraSize> previewList = getAllSupportedSize();
         // 可以根据获取到的分辨率列表，来区分不同的模组，从而改变不同的cmd参数来调用不同的SDK
         initIRCMD(previewList);
-        // 根据设备的分辨率列表，这里可以动态的设置模组的宽高(这里作为示例，用的是从外部传入的方式)
+        // 根据设备的分辨率列表，这里可以动态的settings模组的宽高(这里作为示例，用的是从外部传入的方式)
         if (mDefaultDataFlowMode == CommonParams.DataFlowMode.TNR_OUTPUT) {
             isTempReplacedWithTNREnabled = mIrcmd.isTempReplacedWithTNREnabled(DeviceType.P2);
             Log.i(TAG, "startPreview->isTempReplacedWithTNREnabled = " + isTempReplacedWithTNREnabled);
@@ -315,7 +315,7 @@ public class USBMonitorManager {
      */
     private int setPreviewSize(int cameraWidth, int cameraHeight) {
         int result = -1;
-        //有时候可能上电后不稳定或者模组没插稳，setUSBPreviewSize会设置失败，这里可以捕获异常，提示用户重新插拔模组，重启app
+        //有时候可能上电后不稳定或者模组没插稳，setUSBPreviewSize会settings失败，这里可以捕获异常，提示用户重新插拔模组，重启app
         try {
             if (mUvcCamera != null) {
                 result = mUvcCamera.setUSBPreviewSize(cameraWidth, cameraHeight);

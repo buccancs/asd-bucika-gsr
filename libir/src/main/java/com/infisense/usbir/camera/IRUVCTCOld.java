@@ -371,7 +371,7 @@
 //                    if (syncimage.type == 1) {
 //                        Libircmd.tiny1b_shutter_manual(uvcCamera.nativePtr);
 //                    } else {
-//                        //源码设置快门
+//                        //源码settings快门
 //                        Libircmd.ooc_b_update(Libircmd.B_UPDATE, uvcCamera.nativePtr);
 //                    }
 //                }

@@ -145,7 +145,7 @@
             app:layout_constraintTop_toBottomOf="@id/iv_copy"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- 删除 -->
+        <!-- delete -->
         <View
             android:id="@+id/view_del"
             android:layout_width="0dp"

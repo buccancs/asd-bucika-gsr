@@ -239,7 +239,7 @@ class ThermalInputDialog : Dialog {
                     //横屏
                     0.35
                 }
-            lp.width = (ScreenUtil.getScreenWidth(context!!) * wRatio).toInt() //设置宽度
+            lp.width = (ScreenUtil.getScreenWidth(context!!) * wRatio).toInt() //settings宽度
             dialog!!.window!!.attributes = lp
 
             dialog!!.setCanceledOnTouchOutside(canceled)

@@ -9,7 +9,7 @@ import com.blankj.utilcode.util.Utils
 import com.topdon.lib.core.R
 
 /**
- * 检测 或 报告的一项目录.
+ * 检测 或 report的一项目录.
  *
  * Created by LCG on 2024/8/19.
  */
@@ -18,13 +18,13 @@ open class DirBase {
     var id: Long = 0
 
     /**
-     * 所对应的检测或报告目录 Id
+     * 所对应的检测或report目录 Id
      */
     @ColumnInfo(index = true)
     open var parentId: Long = 0
 
     /**
-     * 该目录在检测或报告目录列表中的 index.
+     * 该目录在检测或report目录列表中的 index.
      */
     @ColumnInfo
     var position: Int = 0
@@ -140,7 +140,7 @@ class DirDetect() : DirBase() {
     }
 
     /**
-     * 将当前检测目录转换为报告目录，注意 id、parent 重置为 0，无效目录剔除.
+     * 将当前检测目录转换为report目录，注意 id、parent 重置为 0，无效目录剔除.
      */
     fun toDirReport(): DirReport {
         val dirReport = DirReport()
@@ -185,7 +185,7 @@ class DirDetect() : DirBase() {
 
 
 /**
- * 报告所属的一项目录.
+ * report所属的一项目录.
  */
 @Entity(foreignKeys = [ForeignKey(
     entity = HouseReport::class,
@@ -195,7 +195,7 @@ class DirDetect() : DirBase() {
     onUpdate = ForeignKey.CASCADE,)])
 class DirReport : DirBase() {
     /**
-     * 所对应的报告 Id
+     * 所对应的report Id
      */
     @ColumnInfo(index = true)
     override var parentId: Long = 0

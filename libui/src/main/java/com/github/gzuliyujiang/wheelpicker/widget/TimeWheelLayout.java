@@ -110,7 +110,7 @@ public class TimeWheelLayout extends BaseWheelLayout {
         meridiemWheelView = findViewById(R.id.wheel_picker_time_meridiem_wheel);
         spaceEndView = findViewById(R.id.wheel_picker_time_end_view);
 
-        //设置高度
+        //settings高度
         post(new Runnable() {
             @Override
             public void run() {
@@ -268,14 +268,14 @@ public class TimeWheelLayout extends BaseWheelLayout {
     }
 
     /**
-     * 设置日期时间范围
+     * settings日期时间范围
      */
     public void setRange(TimeEntity startValue, TimeEntity endValue) {
         setRange(startValue, endValue, null);
     }
 
     /**
-     * 设置日期时间范围
+     * settings日期时间范围
      */
     public void setRange(TimeEntity startValue, TimeEntity endValue, TimeEntity defaultValue) {
         if (startValue == null) {

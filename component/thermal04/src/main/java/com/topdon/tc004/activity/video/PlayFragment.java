@@ -212,7 +212,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                     ivCover.setVisibility(View.VISIBLE);
                     new AlertDialog.Builder(getActivity()).setMessage("试播时间到").setTitle("SORRY").setPositiveButton(android.R.string.ok, null).show();
                 } else if (resultCode == EasyPlayerClient.RESULT_UNSUPPORTED_AUDIO) {
-                    new AlertDialog.Builder(getActivity()).setMessage("音频格式不支持").setTitle("SORRY").setPositiveButton(android.R.string.ok, null).show();
+                    new AlertDialog.Builder(getActivity()).setMessage("audio格式不支持").setTitle("SORRY").setPositiveButton(android.R.string.ok, null).show();
                 } else if (resultCode == EasyPlayerClient.RESULT_UNSUPPORTED_VIDEO) {
                     new AlertDialog.Builder(getActivity()).setMessage("视频格式不支持").setTitle("SORRY").setPositiveButton(android.R.string.ok, null).show();
                 } else if (resultCode == EasyPlayerClient.RESULT_EVENT) {
@@ -566,12 +566,12 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         }
     }
 
-    // 进入全屏模式
+    // 进入全屏mode
     public void enterFullscreen() {
         setScaleType(FILL_WINDOW);
     }
 
-    // 退出全屏模式
+    // 退出全屏mode
     public void quiteFullscreen() {
         setScaleType(ASPECT_RATIO_CROPS_MATRIX);
     }

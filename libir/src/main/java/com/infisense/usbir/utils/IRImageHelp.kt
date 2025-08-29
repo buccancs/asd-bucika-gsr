@@ -11,7 +11,7 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 
 /**
- * 热成像图像二次处理的统一入口，为了方便管理
+ * thermal imaging图像二次处理的统一入口，为了方便管理
  * @author: CaiSongL
  * @date: 2024/1/17 9:54
  */
@@ -36,7 +36,7 @@ class IRImageHelp {
     }
 
     /**
-     * 设置自定义伪彩条属性
+     * settings自定义pseudo color条属性
      * @author: CaiSongL
      * @date: 2024/1/17 10:07
      */
@@ -70,7 +70,7 @@ class IRImageHelp {
 
 
     /**
-     * 自定义伪彩处理，在执行这个方法之前，变更伪彩属性时先通过 上面setColorList进行属性设置
+     * 自定义pseudo color处理，在执行这个方法之前，变更pseudo color属性时先通过 上面setColorList进行属性settings
      * @param imageDst ByteArray ： 图像数据，argb格式
      * @param temperatureSrc ByteArray ： 温度数据
      * @param imageWidth Int ：
@@ -134,7 +134,7 @@ class IRImageHelp {
 
 
     /**
-     * 等温尺处理,展示伪彩的温度范围内信息
+     * 等温尺处理,展示pseudo color的温度范围内信息
      */
     fun setPseudoColorMaxMin(imageDst: ByteArray?, temperatureSrc:ByteArray?,max : Float,
                        min : Float,imageWidth : Int,imageHeight : Int){

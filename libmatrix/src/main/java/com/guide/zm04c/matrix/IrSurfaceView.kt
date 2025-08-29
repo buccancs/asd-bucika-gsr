@@ -178,7 +178,7 @@ class IrSurfaceView : SurfaceView, SurfaceHolder.Callback {
     }
 
     /**
-     * 设置对比度
+     * settings对比度
      * @param saturation 0 ~ 100
      */
     fun setSaturationValue(saturation: Int) {

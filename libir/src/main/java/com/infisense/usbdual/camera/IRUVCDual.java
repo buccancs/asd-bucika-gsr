@@ -64,7 +64,7 @@ public class IRUVCDual {
     private boolean isUseGPU = false;
     // 当前的增益状态
     private CommonParams.GainStatus gainStatus = CommonParams.GainStatus.HIGH_GAIN;
-    // 模组支持的高低增益模式
+    // 模组支持的高低增益mode
     private CommonParams.GainMode gainMode = CommonParams.GainMode.GAIN_MODE_HIGH_LOW;
     private short[] nuc_table_high = new short[8192];
     private short[] nuc_table_low = new short[8192];
@@ -605,7 +605,7 @@ public class IRUVCDual {
         }
         uvcCamera.onStartPreview();
         if (mPid == 0x5830 || mPid == 0x5840) {
-            //设置红外镜像出图，跟原生可见光保持一直
+            //settings红外mirror出图，跟原生可见光保持一直
             ircmd.startPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                     CommonParams.StartPreviewSource.SOURCE_SENSOR,
                     25, CommonParams.StartPreviewMode.VOC_DVP_MODE,
@@ -727,7 +727,7 @@ public class IRUVCDual {
             uvcCamera.setDefaultPreviewMaxFps(mFps);
         }
 
-        // 根据设备的分辨率列表，这里可以动态的设置模组的宽高(这里作为示例，用的是从外部传入的方式)
+        // 根据设备的分辨率列表，这里可以动态的settings模组的宽高(这里作为示例，用的是从外部传入的方式)
         int result = setPreviewSize(cameraWidth, cameraHeight);
         if (result == 0) {
             //

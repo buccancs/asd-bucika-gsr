@@ -139,7 +139,7 @@ public class RectDraw extends BaseDraw {
     }
 
     /**
-     * 删除一个矩形数据
+     * delete一个矩形数据
      * @param index
      */
     public void removeRect(int index) {
@@ -149,7 +149,7 @@ public class RectDraw extends BaseDraw {
     }
 
     /**
-     * 删除所有框数据
+     * delete所有框数据
      */
     public void removeRect() {
         mRectList.clear();

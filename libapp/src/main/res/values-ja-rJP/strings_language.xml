@@ -503,7 +503,7 @@
     <string name="dual_light_correction">二重光補正</string>
     <string name="dual_light_correction_tips_1">2台のカメラの焦点が合っていないため、2台のカメラで異なる距離から撮影された画像が合っていません。\nこの機能は画像の位置合わせを個別に行うのに役立ちます。</string>
     <string name="dual_light_correction_tips_2">1.カメラから約0.5 mの距離で熱源(手のひらなど)を画像に残します。\n2.タップして写真を撮ります。</string>
-    <string name="dual_light_correction_tips_3">1.画像をドラッグして整列させます。\n2.プログレスバーをスクロールして、配置する角度を調整します。\n3.ボタンを押して修正を完了します。</string>
+    <string name="dual_light_correction_tips_3">1.画像をドラッグして整列させます。\n2.プログレスバーをスクロールして、配置するangleを調整します。\n3.ボタンを押して修正を完了します。</string>
 
     <string name="menu_thermal_visible_light">可視光</string>
     <string name="menu_thermal_imaging">赤外線</string>
@@ -552,10 +552,10 @@
     <string name="ts004_wlan_auth">デバイスと電話機間の通信のために電話機に接続するには、WLAN許可が必要です。</string>
     <string name="ts004_wlan_tips">デバイスを検出するには、WLAN許可が必要です。許可しますか?</string>
     <string name="ts004_download_continue">継続</string>
-    <string name="ts004_download_cancel">取消</string>
+    <string name="ts004_download_cancel">cancel</string>
     <string name="ts004_download_tips">そのダウンロードに失敗しました。ダウンロードを続行しますか?</string>
     <string name="ts004_install_continue">継続</string>
-    <string name="ts004_install_cancel">取消</string>
+    <string name="ts004_install_cancel">cancel</string>
     <string name="ts004_install_tips">インストール失敗しました。インストールを続行しますか?</string>
     <string name="ts004_download_complete">ダウンロードは完了です。</string>
     <string name="ts004_download_doing">ダウンロード中</string>

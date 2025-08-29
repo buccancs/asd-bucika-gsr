@@ -45,7 +45,7 @@ import java.io.File
 class IRGalleryFragment : BaseFragment() {
 
     /**
-     * 从上一界面传递过来的，进入图库时初始的目录类型
+     * 从上一界面传递过来的，进入图库时初始的目录type
      */
     private var currentDirType = DirType.LINE
 
@@ -169,7 +169,7 @@ class IRGalleryFragment : BaseFragment() {
     private fun initRecycler() {
         val spanCount = 3
         val gridLayoutManager = GridLayoutManager(requireActivity(), spanCount)
-        //动态设置span
+        //动态settingsspan
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return if (adapter.dataList[position] is GalleryTitle) spanCount else 1

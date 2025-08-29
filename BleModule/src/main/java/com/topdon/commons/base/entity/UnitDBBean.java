@@ -23,7 +23,7 @@ public class UnitDBBean implements Serializable {
     private static final long serialVersionUID = -1L;
     public Long dbid;
     String LoginName;//登录账号
-    int unitType;//0 公制类型  1 英制类型
+    int unitType;//0 公制type  1 英制type
     String conversionRelation;//转换关系
     String preUnit;//转换前单位
     String preName;//转换前中文名称

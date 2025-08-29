@@ -9,9 +9,9 @@
     <!-- usb monitor connect activity -->
     <string name="usb_monitor_tip">测试USBMonitor的插拔流程回调函数,请注意注册和解除注册一定要成对出现。</string>
     <!-- title -->
-    <string name="pseudo_mode">伪彩</string>
+    <string name="pseudo_mode">pseudo color</string>
     <string name="temperature">测温</string>
-    <string name="calibration">标定</string>
+    <string name="calibration">calibration</string>
     <string name="image">图像</string>
     <string name="information">产品信息</string>
     <string name="top_menu_other">其它</string>
@@ -56,19 +56,19 @@
     <string name="high_temperature">高温(units:K)</string>
     <string name="submit_low">提交低温</string>
     <string name="submit_high">提交高温</string>
-    <string name="cancel_calibration">取消标定</string>
-    <string name="pot_calibration">锅盖标定</string>
+    <string name="cancel_calibration">cancelcalibration</string>
+    <string name="pot_calibration">锅盖calibration</string>
     <string name="ready">准备</string>
     <string name="begin">开始</string>
     <string name="bad_pixel">盲元 X</string>
     <string name="submit">新增盲元</string>
-    <string name="cancel">取消标定</string>
-    <string name="save_calibration">保存标定配置</string>
-    <string name="restore_factory">恢复出厂标定</string>
+    <string name="cancel">cancelcalibration</string>
+    <string name="save_calibration">保存calibration配置</string>
+    <string name="restore_factory">恢复出厂calibration</string>
     <string name="auto_shutter">自动快门</string>
     <string name="min_interval">最小间隔</string>
     <string name="max_interval">最大间隔</string>
-    <string name="single_point_calibration">单点标定</string>
+    <string name="single_point_calibration">单点calibration</string>
     <string name="get_info">读取信息</string>
     <string name="save_parameters">保存参数</string>
     <string name="reset_parameters">重置参数</string>

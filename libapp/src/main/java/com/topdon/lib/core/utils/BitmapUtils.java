@@ -40,7 +40,7 @@ public class BitmapUtils {
     public static Bitmap rotateBitmap(Bitmap bm, int degree) {
         Bitmap returnBm = null;
 
-        // 根据旋转角度，生成旋转矩阵
+        // 根据旋转angle，生成旋转矩阵
         Matrix matrix = new Matrix();
         matrix.postRotate(degree);
         try {
@@ -186,7 +186,7 @@ public class BitmapUtils {
     /**
      * 把两个位图覆盖合成为一个位图，以底层位图的长宽为基准
      *
-     * @param backBitmap  在底部的位图
+     * @param backBitmap  在bottom的位图
      * @param frontBitmap 盖在上面的位图
      * @return
      */
@@ -279,7 +279,7 @@ public class BitmapUtils {
 
     /**
      * 把两个位图覆盖合成为一个位图，以底层位图的长宽为基准
-     * @param bytes  在底部的位图
+     * @param bytes  在bottom的位图
      * @param bytes2 盖在上面的位图
      */
     public static void savaRawFile(byte[] bytes, byte[] bytes2) {
@@ -306,7 +306,7 @@ public class BitmapUtils {
      * @param title
      * @param address
      * @param time
-     * @param seekBarWidth : 右边伪彩控件的宽度，防止内容和控件重叠
+     * @param seekBarWidth : 右边pseudo color控件的宽度，防止内容和控件重叠
      * @return
      */
     public static Bitmap drawCenterLable(Bitmap bmp, String title,String address,String time,int seekBarWidth) {
@@ -323,7 +323,7 @@ public class BitmapUtils {
         paint.setFilterBitmap(true);
         Rect rectText = new Rect();  //得到text占用宽高， 单位：像素
         paint.getTextBounds("占位高度文本", 0,"占位高度文本".length(), rectText);
-        double beginX = SizeUtils.dp2px(10);  //45度角度值是1.414
+        double beginX = SizeUtils.dp2px(10);  //45度angle值是1.414
         double beginY = bmp.getHeight() - SizeUtils.dp2px(10);
         if (!TextUtils.isEmpty(time)){
             beginY = beginY - (rectText.bottom - rectText.top);

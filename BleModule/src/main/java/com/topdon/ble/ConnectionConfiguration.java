@@ -48,7 +48,7 @@ public class ConnectionConfiguration {
     }
 
     /**
-     * 连接成功后延时多久开始执行发现服务
+     * 连接成功后delay多久开始执行发现服务
      */
     public ConnectionConfiguration setDiscoverServicesDelayMillis(int discoverServicesDelayMillis) {
         this.discoverServicesDelayMillis = discoverServicesDelayMillis;
@@ -100,7 +100,7 @@ public class ConnectionConfiguration {
     }
 
     /**
-     * 双模蓝牙的传输模式
+     * 双模蓝牙的传输mode
      *
      * @param transport {@link BluetoothDevice#TRANSPORT_AUTO}其中之一
      */
@@ -111,7 +111,7 @@ public class ConnectionConfiguration {
     }
 
     /**
-     * 物理层的模式
+     * 物理层的mode
      */
     @RequiresApi(Build.VERSION_CODES.O)
     public ConnectionConfiguration setPhy(int phy) {
@@ -130,7 +130,7 @@ public class ConnectionConfiguration {
     }
 
     /**
-     * 设置默认的写特征配置
+     * settings默认的写特征配置
      *
      * @param service        特征所在的服务UUID
      * @param characteristic 特征的UUID

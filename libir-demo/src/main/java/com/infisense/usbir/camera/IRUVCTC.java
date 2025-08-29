@@ -78,7 +78,7 @@ public class IRUVCTC {
     private boolean isFrameReady = true;
     // 当前的增益状态
     private CommonParams.GainStatus gainStatus = CommonParams.GainStatus.HIGH_GAIN;
-    // 模组支持的高低增益模式
+    // 模组支持的高低增益mode
     private CommonParams.GainMode gainMode = CommonParams.GainMode.GAIN_MODE_HIGH;
     private short[] nuc_table_high = new short[8192];
     private short[] nuc_table_low = new short[8192];
@@ -404,7 +404,7 @@ public class IRUVCTC {
         if (uvcCamera == null) {
             init(cameraWidth, cameraHeight);
         }
-        // 对于p2来说，复合出图需要设置帧率为25,单独出图帧率仍为25
+        // 对于p2来说，复合出图需要settings帧率为25,单独出图帧率仍为25
         int DEFAULT_PREVIEW_MIN_FPS = 1;
         int DEFAULT_PREVIEW_MAX_FPS = 50;
         // uvc开启
@@ -467,7 +467,7 @@ public class IRUVCTC {
         uvcCamera.setEnvCorrectParams(16384, 16384, 300 * 16, 300 * 16);
 
 
-        // 设置当前的增益装填，不设置则默认为高增益
+        // settings当前的增益装填，不settings则默认为高增益
         uvcCamera.setGainStatus(gainStatus);
 
         //

@@ -13,10 +13,10 @@ import kotlinx.android.synthetic.main.activity_text_input.*
  * 房屋检测 - 问题描述文字输入界面.
  *
  * 需要传递：
- * - [ExtraKeyConfig.ITEM_NAME] - String 类型 item 名称.
- * - [ExtraKeyConfig.RESULT_INPUT_TEXT] - String 类型 当前输入内容.
+ * - [ExtraKeyConfig.ITEM_NAME] - String type item 名称.
+ * - [ExtraKeyConfig.RESULT_INPUT_TEXT] - String type 当前输入内容.
  *
- * 返回：[ExtraKeyConfig.RESULT_INPUT_TEXT] - String 类型 输入内容.
+ * 返回：[ExtraKeyConfig.RESULT_INPUT_TEXT] - String type 输入内容.
  *
  * Created by LCG on 2024/8/27.
  */

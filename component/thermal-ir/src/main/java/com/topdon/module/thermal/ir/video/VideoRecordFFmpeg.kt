@@ -92,7 +92,7 @@ class VideoRecordFFmpeg(
     private val thermalPseudoBarView: BitmapConstraintLayout?,
     private val tempBg: TempLayout?,
     private val compassView: LinearCompassView? = null, //指南针
-    private val dualView: DualViewWithExternalCameraCommonApi? = null,  // 双光
+    private val dualView: DualViewWithExternalCameraCommonApi? = null,  // dual light
     private val isTC007 : Boolean = false,
     private val carView : View ?= null
 ) : VideoRecord() {
@@ -232,7 +232,7 @@ class VideoRecordFFmpeg(
             XLog.i("使用视频编码AV_CODEC_ID_H264")
             avcodec.AV_CODEC_ID_H264
         } else {
-            //默认类型
+            //默认type
             XLog.i("使用视频编码AV_CODEC_ID_MPEG4")
             avcodec.AV_CODEC_ID_MPEG4
         }
@@ -365,7 +365,7 @@ class VideoRecordFFmpeg(
                         }
                         recorder?.timestamp?.let {
                             if (it / 1000 > 60 * 60 * 1000) {
-                                //热成像录像限制60分钟
+                                //thermal imagingvideo限制60分钟
                                 exportDisposable?.dispose()
                                 stopVideoRecordListener?.invoke(true)
                                 return@Consumer
@@ -616,7 +616,7 @@ class VideoRecordFFmpeg(
             }
         }
 
-        //伪彩条
+        //pseudo color条
         if (thermalPseudoBarView?.visibility == VISIBLE) {
             try {
                 thermalPseudoBarView?.viewBitmap?.let {
@@ -712,7 +712,7 @@ class VideoRecordFFmpeg(
         val canvas = Canvas(newBmp)
         canvas.drawBitmap(bmp, 0f, 0f, null) //绘制原始图片
         canvas.save()
-        val beginX = pix10.toDouble() //45度角度值是1.414
+        val beginX = pix10.toDouble() //45度angle值是1.414
         var beginY = (bmp.height - pix10).toDouble()
         paint.getTextBounds("占位高度文本", 0, "占位高度文本".length, rectText)
         if (!TextUtils.isEmpty(time)) {

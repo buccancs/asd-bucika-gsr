@@ -19,13 +19,13 @@ import com.topdon.pseudo.R
 import kotlin.math.abs
 
 /**
- * 自定义伪彩设置页面中，那个支持最多 7 个圆形色块滑来滑去的 View.
+ * 自定义pseudo colorsettingspage中，那个支持最多 7 个圆形色块滑来滑去的 View.
  *
  * 提供方法：
  * - [reset] 将当前状态重置为指定颜色值及位置
- * - [refreshColor] 将当前选中的圆形色块设置为指定颜色
+ * - [refreshColor] 将当前选中的圆形色块settings为指定颜色
  * - [add] 添加一个圆形色块
- * - [del] 删除当前选中圆形色块
+ * - [del] delete当前选中圆形色块
  * - [isCurrentOnlyLimit] 判断当前选中圆形色块是不是：(最左 || 最右) && 唯一
  *
  * Created by LCG on 2024/10/15.
@@ -65,11 +65,11 @@ class PseudoPickView : View {
     }
 
     /**
-     * 绘制渐变条所用的 Paint.
+     * 绘制渐变条used for的 Paint.
      */
     private val barPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     /**
-     * 绘制渐变条下面圆形色块所用的 Pint.
+     * 绘制渐变条下面圆形色块used for的 Pint.
      */
     private val circlePaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
@@ -145,7 +145,7 @@ class PseudoPickView : View {
     }
 
     /**
-     * 将当前选中的圆颜色值设置为指定颜色
+     * 将当前选中的圆颜色值settings为指定颜色
      */
     fun refreshColor(@ColorInt color: Int) {
         sourceColors[selectIndex] = color
@@ -200,13 +200,13 @@ class PseudoPickView : View {
     }
 
     /**
-     * 删除当前选中圆形色块.
+     * delete当前选中圆形色块.
      */
     fun del() {
         if (sourceColors.size <= 3) {
             return
         }
-        if (isCurrentOnlyLimit()) {//仅有的最左最右不允许删除
+        if (isCurrentOnlyLimit()) {//仅有的最左最右不允许delete
             return
         }
 
@@ -297,7 +297,7 @@ class PseudoPickView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        //绘制伪彩条
+        //绘制pseudo color条
         val barRadius = SizeUtils.dp2px(4f).toFloat()
         canvas.drawRoundRect(barRect.left, 0f, barRect.right, barRect.bottom, barRadius, barRadius, barPaint)
 

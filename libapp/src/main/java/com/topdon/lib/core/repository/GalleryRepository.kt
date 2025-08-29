@@ -71,7 +71,7 @@ object GalleryRepository {
     }
 
     /**
-     * 读取本地图库指定设备类型的最新文件
+     * 读取本地图库指定设备type的最新文件
      */
     fun readLatest(dirType: DirType): String {
         var firstPath = ""
@@ -135,7 +135,7 @@ object GalleryRepository {
     }
 
     /**
-     * 仅供生成报告使用的，加载所有指定设备类型的图片.
+     * 仅供生成report使用的，加载所有指定设备type的图片.
      */
     suspend fun loadAllReportImg(dirType: DirType): ArrayList<GalleryBean> = withContext(Dispatchers.IO) {
         val resultList: ArrayList<GalleryBean> = ArrayList()
@@ -156,7 +156,7 @@ object GalleryRepository {
     }
 
     /**
-     * 加载本地所有指定类型的图片或视频列表.
+     * 加载本地所有指定type的图片或视频列表.
      */
     private fun loadAllLocale(isVideo: Boolean, dirType: DirType): ArrayList<File> {
         if (dirType == DirType.LINE) {
@@ -193,7 +193,7 @@ object GalleryRepository {
     }
 
     /**
-     * 使用 MediaStore API 而不是 File 加载本地所有指定类型的图片或视频列表.
+     * 使用 MediaStore API 而不是 File 加载本地所有指定type的图片或视频列表.
      */
     private fun loadAllLocaleByMediaStore(dirType: DirType): Array<out File> {
         val tc001Files: MutableList<File> = ArrayList()
@@ -201,7 +201,7 @@ object GalleryRepository {
         val projection = arrayOf(
             MediaStore.Images.Media.DATA
         )
-        // 定义查询条件，指定目标文件夹路径
+        // 定义查询条件，指定target文件夹路径
         val selection = MediaStore.Images.Media.DATA + " LIKE ?"
         val path = when (dirType) {
             DirType.LINE -> "%DCIM/${CommUtils.getAppName()}%"

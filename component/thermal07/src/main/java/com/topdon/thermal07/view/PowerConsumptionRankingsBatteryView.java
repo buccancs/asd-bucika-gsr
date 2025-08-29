@@ -132,14 +132,14 @@ public class PowerConsumptionRankingsBatteryView extends View {
 
         initTypeArray(context, attrs);
 
-        //设置 电池壳画笔的相关属性
+        //settings 电池壳画笔的相关属性
         shellPaint = new Paint();
         shellPaint.setAntiAlias(true);
         shellPaint.setColor(onlineColor);
         shellPaint.setStrokeWidth(shellStrokeWidth);
         shellPaint.setAntiAlias(true);
 
-        //设置 电池画笔的相关属性
+        //settings 电池画笔的相关属性
         levelPaint = new Paint();
         levelPaint.setColor(onlineColor);
         levelPaint.setStyle(Paint.Style.FILL);
@@ -266,7 +266,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
     }
 
     /**
-     * 设置电池电量
+     * settings电池电量
      *
      * @param level
      */
@@ -281,7 +281,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
     }
 
     /**
-     * 设置在线 重绘
+     * settings在线 重绘
      */
     public void setOnline() {
         shellPaint.setColor(onlineColor);
@@ -290,7 +290,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
     }
 
     /**
-     * 设置离线 重绘
+     * settings离线 重绘
      */
     public void setOffline() {
         shellPaint.setColor(offlineColor);
@@ -299,7 +299,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
     }
 
     /**
-     * 设置低电 重绘
+     * settings低电 重绘
      */
     public void setLowerPower() {
         shellPaint.setColor(lowerPowerColor);

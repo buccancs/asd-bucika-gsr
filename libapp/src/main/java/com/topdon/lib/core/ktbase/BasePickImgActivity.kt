@@ -24,7 +24,7 @@ import java.io.File
  **/
 abstract class BasePickImgActivity : BaseActivity(), View.OnClickListener {
     /**
-     * String 类型 - 拾取的图片在本地的绝对路径.
+     * String type - 拾取的图片在本地的绝对路径.
      */
     val RESULT_IMAGE_PATH = "RESULT_IMAGE_PATH"
     /**
@@ -82,7 +82,7 @@ abstract class BasePickImgActivity : BaseActivity(), View.OnClickListener {
         val heightPixels = resources.displayMetrics.heightPixels
         title_view.measure(MeasureSpec.makeMeasureSpec(widthPixels, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(heightPixels, MeasureSpec.AT_MOST))
 
-        val ivPickHeight = SizeUtils.dp2px(60f + 20 + 20) //拍照按钮高度，60dp+上下各20dp margin
+        val ivPickHeight = SizeUtils.dp2px(60f + 20 + 20) //photo按钮高度，60dp+上下各20dp margin
         val menuHeight = (widthPixels * 75f / 384).toInt()
         val bottomHeight = ivPickHeight.coerceAtLeast(menuHeight)
         val canUseHeight = heightPixels - title_view.measuredHeight - bottomHeight
@@ -164,7 +164,7 @@ abstract class BasePickImgActivity : BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 切换 已拍照模式/未拍照模式.
+     * 切换 已photomode/未photomode.
      */
     private fun switchPhotoState(hasTakePhoto: Boolean) {
         this.hasTakePhoto = hasTakePhoto

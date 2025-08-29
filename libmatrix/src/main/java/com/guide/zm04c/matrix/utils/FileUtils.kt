@@ -29,9 +29,9 @@ class FileUtils {
 
 
         /**
-         * 删除文件夹以及目录下的文件
-         * @param   filePath 被删除目录的文件路径
-         * @return  目录删除成功返回true，否则返回false
+         * delete文件夹以及目录下的文件
+         * @param   filePath 被delete目录的文件路径
+         * @return  目录delete成功返回true，否则返回false
          */
         fun deleteDirectory(filePath: String): Boolean {
             var filePath = filePath
@@ -46,20 +46,20 @@ class FileUtils {
             }
             flag = true
             val files = dirFile.listFiles()
-            //遍历删除文件夹下的所有文件(包括子目录)
+            //遍历delete文件夹下的所有文件(包括子目录)
             for (i in files.indices) {
                 if (files[i].isFile) {
-                    //删除子文件
+                    //delete子文件
                     flag = deleteFile(files[i].absolutePath)
                     if (!flag) break
                 } else {
-                    //删除子目录
+                    //delete子目录
                     flag = deleteDirectory(files[i].absolutePath)
                     if (!flag) break
                 }
             }
             return if (!flag) false else dirFile.delete()
-            //删除当前空目录
+            //delete当前空目录
         }
 
         fun deleteFile(path: String): Boolean {
@@ -171,7 +171,7 @@ class FileUtils {
          * 旋转Bitmap
          *
          * @param srcBitmap    源Bitmap
-         * @param rotateDegree 旋转角度
+         * @param rotateDegree 旋转angle
          * @return
          */
         fun rotateBitmap(srcBitmap: Bitmap, rotateDegree: Float): Bitmap? {

@@ -11,7 +11,7 @@ import androidx.lifecycle.MutableLiveData
  */
 internal class TabViewModel(application: Application) : AndroidViewModel(application) {
     /**
-     * 是否处于编辑模式.
+     * 是否处于编辑mode.
      */
     val isEditModeLD: MutableLiveData<Boolean> = MutableLiveData(false)
     /**

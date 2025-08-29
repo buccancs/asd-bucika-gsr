@@ -6,7 +6,7 @@ import androidx.annotation.StringRes
 import com.topdon.menu.R
 
 /**
- * 观测模式-菜单2-高低温源菜单 所用 Adapter，单选可全不选中.
+ * Observation mode-menu2-high low temperature sourcemenu used for Adapter，单选可全不选中.
  *
  * 动态识别、高温源、低温源
  *
@@ -32,7 +32,7 @@ internal class TempSourceAdapter : BaseMenuAdapter() {
         }
 
     /**
-     * 观测模式-菜单2-高低温源 点击事件监听，单选。
+     * Observation mode-menu2-high low temperature source 点击事件监听，单选。
      */
     var onTempSourceListener: ((code: Int) -> Unit)? = null
 

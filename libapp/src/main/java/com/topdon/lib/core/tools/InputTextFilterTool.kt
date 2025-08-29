@@ -9,7 +9,7 @@ import java.util.regex.Pattern
 class InputTextFilterTool {
 
     /**
-     * 设置editText过滤器
+     * settingseditText过滤器
      *
      * @param editText
      */

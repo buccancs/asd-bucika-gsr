@@ -51,7 +51,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         mContext = context;
         logFile = new File(mContext.getCacheDir(),"crashLog.trace");
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
-        //设置为线程默认的异常处理器
+        //settings为线程默认的异常处理器
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 

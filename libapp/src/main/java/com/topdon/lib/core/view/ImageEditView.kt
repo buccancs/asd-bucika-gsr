@@ -59,7 +59,7 @@ class ImageEditView : View {
 
 
     /**
-     * 当前绘制的类型，默认圆形.
+     * 当前绘制的type，默认圆形.
      */
     var type: Type = Type.CIRCLE
 

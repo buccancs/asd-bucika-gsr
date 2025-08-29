@@ -127,7 +127,7 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //                    if (usbcamera.uvcCamera != null) {
 //                        Libircmd.save_cfg(0, usbcamera.uvcCamera.nativePtr);
 //                    }
-//                } else if (id == R.id.restorecfg) {// 恢复出厂标定
+//                } else if (id == R.id.restorecfg) {// 恢复出厂calibration
 //                    if (usbcamera.uvcCamera != null) {
 //                        Libircmd.restore_default_cfg(0, usbcamera.uvcCamera.nativePtr);
 //                        Toast toast = Toast.makeText(view.getContext(), "重启模组生效", Toast.LENGTH_SHORT);

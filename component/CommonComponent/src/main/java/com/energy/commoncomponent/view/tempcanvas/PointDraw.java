@@ -123,7 +123,7 @@ public class PointDraw extends BaseDraw {
     }
 
     /**
-     * 删除一个点数据
+     * delete一个点数据
      * @param index
      */
     public void removePoint(int index) {
@@ -133,7 +133,7 @@ public class PointDraw extends BaseDraw {
     }
 
     /**
-     * 删除所有点数据
+     * delete所有点数据
      */
     public void removePoint() {
         mPointList.clear();

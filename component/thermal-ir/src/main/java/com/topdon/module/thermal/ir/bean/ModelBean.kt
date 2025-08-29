@@ -1,7 +1,7 @@
 package com.topdon.module.thermal.ir.bean
 
 /**
- * 模式
+ * mode
  */
 data class ModelBean(
     var defaultModel: DataBean,

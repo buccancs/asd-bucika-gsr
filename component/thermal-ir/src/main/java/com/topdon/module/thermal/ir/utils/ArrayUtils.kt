@@ -256,7 +256,7 @@ object ArrayUtils {
                 srcMatrix[i][j] = srcData[i * column + j]
             }
         }
-        val destMatrix = Array(column) { FloatArray(row) }//目标矩阵
+        val destMatrix = Array(column) { FloatArray(row) }//target矩阵
         for (x in 0 until column) {
             for (y in 0 until row) {
                 destMatrix[x][y] = srcMatrix[y][column - 1 - x]//矩阵旋转270度

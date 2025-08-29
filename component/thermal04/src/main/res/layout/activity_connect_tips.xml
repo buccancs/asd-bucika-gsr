@@ -41,7 +41,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="14sp"
                 android:textColor="#ccffffff"
-                tools:text="1.长按模式切换键3秒"
+                tools:text="1.长按mode切换键3秒"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_title" />

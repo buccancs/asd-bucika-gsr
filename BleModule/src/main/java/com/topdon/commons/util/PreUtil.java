@@ -43,7 +43,7 @@ public class PreUtil {
     }
 
     /**
-     * 得到单例模式的PreferencesManager对象
+     * 得到单例mode的PreferencesManager对象
      *
      * @param context 上下文
      * @return
@@ -53,7 +53,7 @@ public class PreUtil {
     }
 
     /**
-     * 得到单例模式的PreferencesManager对象
+     * 得到单例mode的PreferencesManager对象
      *
      * @param context   上下文
      * @param shareName 文件名称

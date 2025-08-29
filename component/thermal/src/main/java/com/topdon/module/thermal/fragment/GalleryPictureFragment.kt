@@ -70,8 +70,8 @@ class GalleryPictureFragment : BaseViewModelFragment<GalleryViewModel>() {
     fun share(path: String) {
         val file = File(path)
         var intent = Intent()
-        intent.action = Intent.ACTION_SEND //设置分享行为
-        intent.type = "image/*" //设置分享内容的类型
+        intent.action = Intent.ACTION_SEND //settings分享行为
+        intent.type = "image/*" //settings分享内容的type
         val uri: Uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val authority = "${requireContext().packageName}.fileprovider"
             FileProvider.getUriForFile(requireContext(), authority, file)

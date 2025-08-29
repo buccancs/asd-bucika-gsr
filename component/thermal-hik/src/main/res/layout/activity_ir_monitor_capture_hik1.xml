@@ -59,7 +59,7 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- 热成像画面图层 -->
+        <!-- thermal imaging画面图层 -->
         <com.topdon.module.thermal.ir.view.HikSurfaceView
             android:id="@+id/hik_surface_view"
             android:layout_width="0dp"

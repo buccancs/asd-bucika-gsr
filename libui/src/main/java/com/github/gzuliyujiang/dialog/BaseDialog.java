@@ -44,7 +44,7 @@ import androidx.annotation.StyleRes;
 import com.topdon.lib.ui.R;
 
 /**
- * 屏幕底部弹出对话框
+ * 屏幕bottom弹出对话框
  *
  * @author 贵州山野羡民（1032694760@qq.com）
  * @since 2017/4/12
@@ -72,9 +72,9 @@ public abstract class BaseDialog extends Dialog implements DialogInterface.OnSho
     private void init(Activity activity) {
         this.activity = activity;
         setOwnerActivity(activity);
-        //触摸屏幕取消窗体
+        //触摸屏幕cancel窗体
         setCanceledOnTouchOutside(false);
-        //按返回键取消窗体
+        //按返回键cancel窗体
         setCancelable(false);
         super.setOnShowListener(this);
         super.setOnDismissListener(this);

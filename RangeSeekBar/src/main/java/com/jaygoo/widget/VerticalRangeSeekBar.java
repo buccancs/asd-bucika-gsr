@@ -94,7 +94,7 @@ public class VerticalRangeSeekBar extends DefRangeSeekBar {
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         /*
-         * onMeasure传入的widthMeasureSpec和heightMeasureSpec不是一般的尺寸数值，而是将模式和尺寸组合在一起的数值
+         * onMeasure传入的widthMeasureSpec和heightMeasureSpec不是一般的尺寸数值，而是将mode和尺寸组合在一起的数值
          * MeasureSpec.EXACTLY 是精确尺寸
          * MeasureSpec.AT_MOST 是最大尺寸
          * MeasureSpec.UNSPECIFIED 是未指定尺寸

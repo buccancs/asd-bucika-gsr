@@ -16,17 +16,17 @@ import retrofit2.http.Url
 interface TS004Service {
 
     /**
-     * 设置伪彩样式
+     * settingspseudo color样式
      */
     @POST("/api/v1/system/setPseudoColor")
     suspend fun setPseudoColor(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 获取伪彩样式
+     * 获取pseudo color样式
      */
     @POST("/api/v1/system/getPseudoColor")
     suspend fun getPseudoColor(): TS004Response<PseudoColorBean>
     /**
-     * 设置测距开关
+     * settings测距开关
      */
     @POST("/api/v1/system/setRangeFind")
     suspend fun setRangeFind(@Body requestBody: RequestBody): TS004Response<Boolean>
@@ -36,7 +36,7 @@ interface TS004Service {
     @POST("/api/v1/system/getRangeFind")
     suspend fun getRangeFind(): TS004Response<RangeBean>
     /**
-     * 设置屏幕亮度
+     * settings屏幕亮度
      */
     @POST("/api/v1/system/setPanelParam")
     suspend fun setPanelParam(@Body requestBody: RequestBody): TS004Response<Boolean>
@@ -46,7 +46,7 @@ interface TS004Service {
     @POST("/api/v1/system/getPanelParam")
     suspend fun getPanelParam(): TS004Response<BrightnessBean>
     /**
-     * 设置画中画
+     * settings画中画
      */
     @POST("/api/v1/system/setPip")
     suspend fun setPip(@Body requestBody: RequestBody): TS004Response<Boolean>
@@ -56,7 +56,7 @@ interface TS004Service {
     @POST("/api/v1/system/getPip")
     suspend fun getPip(): TS004Response<PipBean>
     /**
-     * 设置放大倍数
+     * settings放大倍数
      */
     @POST("/api/v1/system/setZoom")
     suspend fun setZoom(@Body requestBody: RequestBody): TS004Response<Boolean>
@@ -66,17 +66,17 @@ interface TS004Service {
     @POST("/api/v1/system/getZoom")
     suspend fun getZoom(): TS004Response<ZoomBean>
     /**
-     * 设置拍照
+     * settingsphoto
      */
     @POST("/api/v1/system/snapshot")
     suspend fun setSnapshot(): TS004Response<Boolean>
     /**
-     * 设置录像
+     * settingsvideo
      */
     @POST("/api/v1/system/vrecord")
     suspend fun setVRecord(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 获取录像状态
+     * 获取video状态
      */
     @POST("/api/v1/system/getRecordStatus")
     suspend fun getVRecord(): TS004Response<RecordStatusBean>
@@ -124,7 +124,7 @@ interface TS004Service {
     suspend fun getFileList(@Body requestBody: RequestBody): TS004Response<FilePageBean>
 
     /**
-     * 删除指定 id 的照片视频文件
+     * delete指定 id 的照片视频文件
      */
     @POST("/api/v1/system/deleteFile")
     suspend fun deleteFile(@Body requestBody: RequestBody): TS004Response<Boolean>
@@ -170,12 +170,12 @@ interface TS004Service {
     @POST("/api/v1/system/formatStorage")
     suspend fun formatStorage(): TS004Response<Boolean>
     /**
-     * 恢复出厂设置
+     * 恢复出厂settings
      */
     @POST("/api/v1/system/resetAll")
     suspend fun resetAll(): TS004Response<Boolean>
     /**
-     * 设置超分
+     * settings超分
      */
     @POST("/api/v1/system/setTISR")
     suspend fun setTISR(@Body requestBody: RequestBody): TS004Response<Boolean>

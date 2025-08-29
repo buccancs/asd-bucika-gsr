@@ -247,7 +247,7 @@ data class Param(
     var contrast: Int = 50,//对比度, 0-100, 默认50
     var saturation: Int = 50,//饱和度, 0-100, 默认50
     var sharpness: Int = 50,//锐度, 0-100, 默认50
-    var flipMode: Int = 0,//翻转, 0:正常, 1:水平翻转 2:垂直翻转 3:180度翻转
+    var flipMode: Int = 0,//flip, 0:正常, 1:水平flip 2:垂直flip 3:180度flip
 )
 
 

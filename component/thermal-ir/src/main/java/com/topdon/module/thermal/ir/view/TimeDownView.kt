@@ -105,7 +105,7 @@ public class TimeDownView : AppCompatTextView {
     }
 
     /**
-     * 取消
+     * cancel
      */
     fun cancel() {
         animationSet?.cancel()
@@ -178,7 +178,7 @@ public class TimeDownView : AppCompatTextView {
                         }
                     } else if (downCount == lastDown - 1) { // 若lastDown为0，downCount == -1时是倒计时真正结束之时。
                         //倒计时结束，虽然setText()方法触发onDraw，但重写使之不进行绘制
-                        //设置不绘制标记
+                        //settings不绘制标记
                         if (afterDownDimissFlag == AFTER_LAST_TIME_DIMISS) {
                             drawTextFlag = DRAW_TEXT_NO
                         }
@@ -215,14 +215,14 @@ public class TimeDownView : AppCompatTextView {
     private var afterDownDimissFlag = AFTER_LAST_TIME_DIMISS
 
     /**
-     * 设置倒计时结束后文字不消失
+     * settings倒计时结束后文字不消失
      */
     fun setAfterDownNoDimiss() {
         afterDownDimissFlag = AFTER_LAST_TIME_NODIMISS
     }
 
     /**
-     * 设置倒计时结束后文字消失
+     * settings倒计时结束后文字消失
      */
     fun setAferDownDimiss() {
         afterDownDimissFlag = AFTER_LAST_TIME_DIMISS
@@ -260,7 +260,7 @@ public class TimeDownView : AppCompatTextView {
         scaleAnimation.duration = intervalMills
         val alphaAnimation = AlphaAnimation(1f, 0.3f)
         alphaAnimation.duration = intervalMills
-        //将AlphaAnimation这个已经设置好的动画添加到 AnimationSet中
+        //将AlphaAnimation这个已经settings好的动画添加到 AnimationSet中
         animationSet!!.addAnimation(scaleAnimation)
         animationSet!!.addAnimation(alphaAnimation)
         animationSet!!.interpolator = AccelerateInterpolator()

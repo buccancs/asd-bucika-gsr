@@ -101,7 +101,7 @@ public interface EventObserver extends Observer {
      * 请求失败
      *
      * @param request  请求
-     * @param failType 失败类型。{@link Connection#REQUEST_FAIL_TYPE_GATT_IS_NULL}等
+     * @param failType 失败type。{@link Connection#REQUEST_FAIL_TYPE_GATT_IS_NULL}等
      * @param value    请求时带的数据，可能为null
      */
     default void onRequestFailed(Request request, int failType, Object value) {
@@ -119,7 +119,7 @@ public interface EventObserver extends Observer {
      * 连接失败
      *
      * @param device   设备
-     * @param failType 失败类型。{@link Connection#CONNECT_FAIL_TYPE_MAXIMUM_RECONNECTION}等
+     * @param failType 失败type。{@link Connection#CONNECT_FAIL_TYPE_MAXIMUM_RECONNECTION}等
      */
     default void onConnectFailed(Device device, int failType) {
     }

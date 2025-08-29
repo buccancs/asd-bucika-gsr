@@ -13,7 +13,7 @@ import com.topdon.lib.ui.R
  * @author: CaiSongL
  * @date: 2023/4/1 13:48
  */
-@Deprecated("热成像-菜单-拍照已重构，不需要这个类了")
+@Deprecated("thermal imaging-menu-photo已重构，不需要这个类了")
 class CameraItemAdapter(context: Context) : RecyclerView.Adapter<CameraItemAdapter.ViewHolder>() {
 
     val data: List<String> = listOf(

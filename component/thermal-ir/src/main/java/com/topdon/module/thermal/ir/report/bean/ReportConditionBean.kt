@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 /**
  * 检测条件.
  *
- * 报告由 3 部分组成：报告信息、检测条件、红外数据.
+ * report由 3 部分组成：report信息、检测条件、红外数据.
  */
 @Parcelize
 data class ReportConditionBean(

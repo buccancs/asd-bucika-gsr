@@ -55,7 +55,7 @@ object BluetoothUtil {
     private val scanCallback = MyScanCallback()
 
     /**
-     * 设置低功耗蓝牙搜索回调.
+     * settings低功耗蓝牙搜索回调.
      */
     fun setLeScanListener(isTS004: Boolean, listener: (name: String) -> Unit) {
         scanCallback.isTS004 = isTS004
@@ -123,7 +123,7 @@ object BluetoothUtil {
         override fun onScanResult(callbackType: Int, result: ScanResult?) {
             val name: String = result?.device?.name ?: return
             if (name.startsWith(if (isTS004) DeviceConfig.TS004_NAME_START else DeviceConfig.TC007_NAME_START)) {
-                XLog.v("蓝牙扫描出一个目标设备：$name")
+                XLog.v("蓝牙扫描出一个target设备：$name")
                 listener?.invoke(name)
             }
         }

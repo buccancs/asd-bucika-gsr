@@ -38,7 +38,7 @@ import java.io.File
 import java.text.DecimalFormat
 
 /**
- * TS004 的 “更多” 页面.
+ * TS004 的 “更多” page.
  */
 @Route(path = RouterConfig.TS004_MORE)
 class MoreActivity : BaseActivity(), View.OnClickListener {
@@ -90,7 +90,7 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
                     .withBoolean(ExtraKeyConfig.IS_TC007, false)
                     .navigation(this@MoreActivity)
             }
-            setting_tisr -> {//设置超分
+            setting_tisr -> {//settings超分
                 ARouter.getInstance().build(RouterConfig.TISR).navigation(this@MoreActivity)
             }
             setting_auto_save -> {//自动保存到手机
@@ -114,7 +114,7 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
 //                    LMS.getInstance().activityLogin()
 //                }
             }
-            setting_reset -> {//恢复出厂设置
+            setting_reset -> {//恢复出厂settings
                 restoreFactory()
             }
             setting_disconnect -> {//断开连接
@@ -247,9 +247,9 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
     private fun resetAll() {
         showLoadingDialog(R.string.ts004_reset_tip3)
         lifecycleScope.launch {
-            XLog.i("准备调用恢复出厂设置接口")
+            XLog.i("准备调用恢复出厂settings接口")
             val isSuccess = TS004Repository.getResetAll()
-            XLog.i("恢复出厂设置接口调用 ${if (isSuccess) "成功" else "失败"}")
+            XLog.i("恢复出厂settings接口调用 ${if (isSuccess) "成功" else "失败"}")
             if (isSuccess) {
                 TToast.shortToast(this@MoreActivity, R.string.ts004_reset_tip4)
                 (application as BaseApplication).disconnectWebSocket()

@@ -130,7 +130,7 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- 报告 -->
+        <!-- report -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_icon_report"
             android:layout_width="0dp"

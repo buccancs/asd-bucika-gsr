@@ -131,7 +131,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
     /**相机权限请求标识 */
     private val REQUEST_CAMERA_CODE = 0x100
 
-    /**拍照按钮 */
+    /**photo按钮 */
     private var mBtnTake: Button? = null
 
     /**图片 */
@@ -158,7 +158,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
     /**相机请求 */
     private lateinit var mCameraCaptureBuilder: CaptureRequest.Builder
 
-    /**相机拍照捕获会话 */
+    /**相机photo捕获会话 */
     private var mCameraCaptureSession: CameraCaptureSession? = null
 
     /**相机管理者 */
@@ -195,7 +195,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
         mTextureView.rotation = 0f
         // 获取SurfaceTexture
         val surfaceTexture = mTextureView.surfaceTexture
-        // 设置默认的缓冲大小
+        // settings默认的缓冲大小
         surfaceTexture!!.setDefaultBufferSize(mPreviewSize!!.width, mPreviewSize!!.height)
         // 创建Surface
         val previewSurface = Surface(surfaceTexture)
@@ -217,7 +217,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                             val captureRequest = mCameraCaptureBuilder.build()
                             // 設置session
                             mCameraCaptureSession = session
-                            // 设置重复预览请求
+                            // settings重复预览请求
                             mCameraCaptureSession!!.setRepeatingRequest(
                                 captureRequest,
                                 null,
@@ -247,7 +247,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                 height: Int
             ) {
                 // SurfaceTexture可用
-                // 设置相机参数并打开相机
+                // settings相机参数并打开相机
                 Log.w("123", "width:$width, height:$height")
                 //w:h = 1 / 1.33
                 setUpCamera(width, height)
@@ -290,7 +290,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
     }
 
     /**
-     * 设置相机参数
+     * settings相机参数
      * @param width 宽度
      * @param height 高度
      */
@@ -311,14 +311,14 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                 // 获取StreamConfigurationMap，管理摄像头支持的所有输出格式和尺寸
                 val map =
                     cameraCharacteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)!!
-                // 根据TextureView的尺寸设置预览尺寸
+                // 根据TextureView的尺寸settings预览尺寸
                 mPreviewSize =
                     getOptimalSize(
                         map.getOutputSizes(SurfaceTexture::class.java),
                         width,
                         height
                     )
-                // 获取相机支持的最大拍照尺寸
+                // 获取相机支持的最大photo尺寸
                 val sizes = map.getOutputSizes(ImageFormat.JPEG)
                 val w = 1000
                 val h = w * sizes[0].height / sizes[0].width
@@ -330,7 +330,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
 //                    Collections.max(Arrays.asList(map.getOutputSizes(ImageFormat.JPEG))) { lhs, rhs ->
 //                        java.lang.Long.signum(lhs.getWidth() * lhs.getHeight() - rhs.getHeight() * rhs.getWidth())
 //                    }
-                // 此处ImageReader用于拍照所需
+                // 此处ImageReader用于photo所需
                 setupImageReader()
                 // 为摄像头赋值
                 mCameraId = cameraId
@@ -343,7 +343,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
 
     /**
      * 选择SizeMap中大于并且最接近width和height的size
-     * @param sizeMap 可选的尺寸
+     * @param sizeMap optional的尺寸
      * @param width 宽
      * @param height 高
      * @return 最接近width和height的size
@@ -375,7 +375,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
     private var flag = 0
 
     /**
-     * 设置ImageReader
+     * settingsImageReader
      */
     private fun setupImageReader() {
         // 2代表ImageReader中最多可以获取两帧图像流
@@ -385,7 +385,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
             ImageFormat.JPEG,
             1
         )
-        // 设置图像可用监听
+        // settings图像可用监听
         mImageReader.setOnImageAvailableListener({ reader ->
             flag = 1
             // 获取图片
@@ -395,7 +395,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
             // 更新UI
             runOnUiThread { // 获取字节缓冲区
                 val buffer: ByteBuffer = image.planes[0].buffer
-                // 创建数组之前调用此方法，恢复默认设置
+                // 创建数组之前调用此方法，恢复默认settings
                 buffer.rewind()
                 // 创建与缓冲区内容大小相同的数组
                 val bytes = ByteArray(buffer.remaining())

@@ -10,7 +10,7 @@ import com.blankj.utilcode.util.Utils
 import com.topdon.lib.core.R
 
 /**
- * 房屋检测 - 检测与报告都有的栏位.
+ * 房屋检测 - 检测与report都有的bar位.
  *
  * Created by LCG on 2024/1/15.
  */
@@ -19,7 +19,7 @@ open class HouseBase {
     var id: Long = 0
 
     /**
-     * 报告名称
+     * report名称
      */
     @ColumnInfo
     var name: String = ""
@@ -73,19 +73,19 @@ open class HouseBase {
     var costUnit: Int = 0
 
     /**
-     * 该检测或报告由用户选择的“检测时间”时间戳，单位毫秒
+     * 该检测或report由用户选择的“检测时间”时间戳，单位毫秒
      */
     @ColumnInfo
     var detectTime: Long = 0
 
     /**
-     * 该检测或报告创建时间戳，单位毫秒
+     * 该检测或report创建时间戳，单位毫秒
      */
     @ColumnInfo
     var createTime: Long = 0
 
     /**
-     * 该检测或报告更新时间戳，单位毫秒
+     * 该检测或report更新时间戳，单位毫秒
      */
     @ColumnInfo
     var updateTime: Long = 0
@@ -123,7 +123,7 @@ open class HouseBase {
     }
 
     /**
-     * 获取该报告对应的 PDF 文件名称
+     * 获取该report对应的 PDF 文件名称
      */
     fun getPdfFileName(): String = "TC_${TimeUtils.millis2String(createTime, "yyyyMMdd_HHmmss")}.pdf"
 }
@@ -195,7 +195,7 @@ class HouseDetect : HouseBase() {
 
 
 /**
- * 房屋检测 - 一项报告.
+ * 房屋检测 - 一项report.
  */
 @Entity
 class HouseReport : HouseBase() {
@@ -225,7 +225,7 @@ class HouseReport : HouseBase() {
 
 
     /**
-     * 该报告下的目录列表
+     * 该report下的目录列表
      */
     @Ignore
     var dirList: ArrayList<DirReport> = ArrayList()

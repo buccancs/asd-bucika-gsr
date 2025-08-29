@@ -257,10 +257,10 @@ class DeviceAddActivity : BaseActivity() {
                 .setPositiveListener(R.string.app_open) {
                     var intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                     if (intent.resolveActivity(packageManager) == null) {
-                        XLog.e("【添加设备】 位置信息 Intent 没有对应 Activity，尝试跳转系统设置首页")
+                        XLog.e("【添加设备】 位置信息 Intent 没有对应 Activity，尝试跳转系统settings首页")
                         intent = Intent(Settings.ACTION_SETTINGS)
                         if (intent.resolveActivity(packageManager) == null) {
-                            XLog.e("【添加设备】 不可能！系统设置首页 Intent 没有对应 Activity!")
+                            XLog.e("【添加设备】 不可能！系统settings首页 Intent 没有对应 Activity!")
                             return@setPositiveListener
                         }
                     }
@@ -294,10 +294,10 @@ class DeviceAddActivity : BaseActivity() {
                 .setPositiveListener(R.string.app_open) {
                     var intent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
                     if (intent.resolveActivity(packageManager) == null) {
-                        XLog.e("【添加设备】 不可能！开启蓝牙 Intent 没有对应 Activity! 尝试跳转系统设置首页")
+                        XLog.e("【添加设备】 不可能！开启蓝牙 Intent 没有对应 Activity! 尝试跳转系统settings首页")
                         intent = Intent(Settings.ACTION_SETTINGS)
                         if (intent.resolveActivity(packageManager) == null) {
-                            XLog.e("【添加设备】 不可能！系统设置首页 Intent 没有对应 Activity!")
+                            XLog.e("【添加设备】 不可能！系统settings首页 Intent 没有对应 Activity!")
                             return@setPositiveListener
                         }
                     }
@@ -334,13 +334,13 @@ class DeviceAddActivity : BaseActivity() {
                     } else {
                         var wifiIntent = Intent(Settings.Panel.ACTION_WIFI)
                         if (wifiIntent.resolveActivity(packageManager) == null) {
-                            XLog.e("【添加设备】 浮窗开启 WIFI Intent 没有对应 Activity! 尝试打开 WIFI 设置 Intent")
+                            XLog.e("【添加设备】 浮窗开启 WIFI Intent 没有对应 Activity! 尝试打开 WIFI settings Intent")
                             wifiIntent = Intent(Settings.ACTION_WIFI_SETTINGS)
                             if (wifiIntent.resolveActivity(packageManager) == null) {
-                                XLog.e("【添加设备】 不可能！WIFI 设置 Intent 没有对应 Activity! 尝试跳转系统设置首页")
+                                XLog.e("【添加设备】 不可能！WIFI settings Intent 没有对应 Activity! 尝试跳转系统settings首页")
                                 wifiIntent = Intent(Settings.ACTION_SETTINGS)
                                 if (wifiIntent.resolveActivity(packageManager) == null) {
-                                    XLog.e("【添加设备】 不可能！系统设置首页 Intent 没有对应 Activity!")
+                                    XLog.e("【添加设备】 不可能！系统settings首页 Intent 没有对应 Activity!")
                                     return@setPositiveListener
                                 }
                             }

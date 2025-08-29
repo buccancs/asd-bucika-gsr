@@ -248,7 +248,7 @@ public class WheelView extends View implements Runnable {
         if (visibleItemCount < minCount) {
             throw new ArithmeticException("Visible item count can not be less than " + minCount);
         }
-        //可见条目只能是奇数个，设置可见条目时偶数个将自动矫正为奇数个
+        //可见条目只能是奇数个，settings可见条目时偶数个将自动矫正为奇数个
         int evenNumberFlag = 2;
         if (visibleItemCount % evenNumberFlag == 0) {
             visibleItemCount += 1;

@@ -32,7 +32,7 @@ class IRGalleryViewModel : BaseViewModel() {
     val showListLD: MutableLiveData<ArrayList<GalleryBean>> = MutableLiveData()
 
     /**
-     * 仅供生成报告使用的，加载所有插件式设备图片.
+     * 仅供生成report使用的，加载所有插件式设备图片.
      */
     fun queryAllReportImg(dirType: GalleryRepository.DirType) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -99,7 +99,7 @@ class IRGalleryViewModel : BaseViewModel() {
 
 
     /**
-     * 批量删除文件结果.
+     * 批量delete文件结果.
      */
     val deleteResultLD: MutableLiveData<Boolean> = MutableLiveData()
 

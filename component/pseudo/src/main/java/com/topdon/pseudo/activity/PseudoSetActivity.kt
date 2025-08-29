@@ -20,18 +20,18 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 
 /**
- * 颜色模式（自定义渲染）设置界面.
+ * 颜色mode（自定义渲染）settings界面.
  *
  * 需要传递
- * - [ExtraKeyConfig.IS_TC007] - 是否设置 TC007 的自定义渲染
- * - [ExtraKeyConfig.CUSTOM_PSEUDO_BEAN] - 自定义渲染相关设置项.（可选，不传则从 SharedPreferences 中读取配置.）
+ * - [ExtraKeyConfig.IS_TC007] - 是否settings TC007 的自定义渲染
+ * - [ExtraKeyConfig.CUSTOM_PSEUDO_BEAN] - 自定义渲染相关settings项.（optional，不传则从 SharedPreferences 中读取配置.）
  *
  * 返回 result
- * - [ExtraKeyConfig.CUSTOM_PSEUDO_BEAN] - 自定义渲染相关设置项.
+ * - [ExtraKeyConfig.CUSTOM_PSEUDO_BEAN] - 自定义渲染相关settings项.
  */
 class PseudoSetActivity : BaseActivity(), View.OnClickListener {
     /**
-     * 从上一界面传递过来的，自定义渲染相关设置项.
+     * 从上一界面传递过来的，自定义渲染相关settings项.
      */
     private lateinit var customPseudoBean: CustomPseudoBean
 
@@ -180,7 +180,7 @@ class PseudoSetActivity : BaseActivity(), View.OnClickListener {
             iv_custom_add -> {//颜色-自定义-添加
                 pseudo_pick_view.add()
             }
-            iv_custom_del -> {//颜色-自定义-删除
+            iv_custom_del -> {//颜色-自定义-delete
                 pseudo_pick_view.del()
             }
 
@@ -251,7 +251,7 @@ class PseudoSetActivity : BaseActivity(), View.OnClickListener {
                 setResult(RESULT_OK, resultIntent)
                 finish()
             }
-            tv_cancel -> {//取消
+            tv_cancel -> {//cancel
                 setResult(RESULT_CANCELED)
                 finish()
             }
@@ -274,7 +274,7 @@ class PseudoSetActivity : BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 在自定义渲染-颜色设置中的 自定义 与 推荐 之间切换.
+     * 在自定义渲染-颜色settings中的 自定义 与 推荐 之间切换.
      * @param isToCustom true-切换到自定义 false-切换到推荐
      */
     private fun switchColorType(isToCustom: Boolean) {
@@ -288,7 +288,7 @@ class PseudoSetActivity : BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 将自定义颜色设置中，6个预设颜色值重置为均未选中状态.
+     * 将自定义颜色settings中，6个预设颜色值重置为均未选中状态.
      */
     private fun reset6CustomColor() {
         view_custom_color1.isSelected = false

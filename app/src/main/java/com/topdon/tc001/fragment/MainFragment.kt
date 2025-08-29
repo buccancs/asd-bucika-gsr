@@ -350,7 +350,7 @@ class MainFragment : BaseFragment(), View.OnClickListener {
                 rootView.iv_bg.setOnLongClickListener {
                     val position = bindingAdapterPosition
                     if (position != RecyclerView.NO_POSITION) {
-                        //只有离线设备才能长按删除
+                        //只有离线设备才能长按delete
                         val deviceType = getConnectType(position)
                         when (deviceType) {
                             ConnectType.LINE -> {

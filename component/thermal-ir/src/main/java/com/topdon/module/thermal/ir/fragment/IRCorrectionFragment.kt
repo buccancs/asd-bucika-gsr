@@ -33,18 +33,18 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 /**
- * 热成像选取点
+ * thermal imaging选取点
  */
 class IRCorrectionFragment : BaseFragment(),ITsTempListener{
 
-    /** 默认数据流模式：图像+温度复合数据 */
+    /** 默认数据流mode：图像+温度复合数据 */
     protected var defaultDataFlowMode = CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT
 
     private var ircmd: IRCMD? = null
 
     override fun initContentView() = R.layout.fragment_ir_monitor_thermal
 
-    private var rotateAngle = 270 //校对默认角度270
+    private var rotateAngle = 270 //校对默认angle270
 
     override fun initView() {
         requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -185,7 +185,7 @@ class IRCorrectionFragment : BaseFragment(),ITsTempListener{
         super.onStart()
         Log.w(TAG, "onStart")
         if (!isrun) {
-            //初始配置,伪彩铁红
+            //初始配置,pseudo color铁红
             temperatureView.postDelayed({
                 pseudocolorMode = 3
                 startUSB(false)
@@ -283,7 +283,7 @@ class IRCorrectionFragment : BaseFragment(),ITsTempListener{
             val config = ConfigRepository.readConfig(false)
             val disChar = (config.distance * 128).toInt() //距离(米)
             val emsChar = (config.radiation * 128).toInt() //发射率
-            XLog.w("设置TPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
+            XLog.w("settingsTPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
             val timeMillis = 250L
             delay(timeMillis)
             //发射率
@@ -358,10 +358,10 @@ class IRCorrectionFragment : BaseFragment(),ITsTempListener{
         withContext(Dispatchers.IO){
             //            ToastUtils.showShort("任务开始")
             // 锅盖开始
-            // 1 锅盖标定开始
+            // 1 锅盖calibration开始
             // 2 关闭自动快门
             CalibrationTools.autoShutter(irCmd = ircmd, false)
-            XLog.w("锅盖矫正："+"锅盖标定开始")
+            XLog.w("锅盖矫正："+"锅盖calibration开始")
             // 常温
             // 3 手动打快门命令
 //            CalibrationTools.shutter(irCmd = ircmd, syncImage = syncimage)

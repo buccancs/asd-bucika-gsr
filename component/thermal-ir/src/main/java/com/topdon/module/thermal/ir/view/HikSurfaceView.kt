@@ -44,7 +44,7 @@ class HikSurfaceView : SurfaceView {
         }
 
     /**
-     * 热成像画面逆时针旋转角度，取值 0、90、180、270，默认 270
+     * thermal imaging画面逆时针旋转angle，取值 0、90、180、270，默认 270
      */
     @Volatile
     var rotateAngle: Int = 270
@@ -62,11 +62,11 @@ class HikSurfaceView : SurfaceView {
     var alarmBean = AlarmBean()
 
     /**
-     * 等温尺限制的低温值，单位摄氏度，MIN_VALUE 表示未设置
+     * 等温尺限制的低温值，单位摄氏度，MIN_VALUE 表示未settings
      */
     var limitTempMin = Float.MIN_VALUE
     /**
-     * 等温尺限制的高温值，单位摄氏度，MAX_VALUE 表示未设置
+     * 等温尺限制的高温值，单位摄氏度，MAX_VALUE 表示未settings
      */
     var limitTempMax = Float.MAX_VALUE
 
@@ -85,12 +85,12 @@ class HikSurfaceView : SurfaceView {
 
 
     /**
-     * 当前使用伪彩.
+     * 当前使用pseudo color.
      */
     @Volatile
     private var pseudoType: PseudoColorType = PseudoColorType.PSEUDO_3
     /**
-     * 设置当前使用的伪彩代号
+     * settings当前使用的pseudo color代号
      *
      * 1-白热 3-铁红 4-彩虹1 5-彩虹2 6-彩虹3 7-红热 8-热铁 9-彩虹4 10-彩虹5 11-黑热
      */
@@ -154,7 +154,7 @@ class HikSurfaceView : SurfaceView {
 
         System.arraycopy(newTempArray, 0, tempArray, 0, tempArray.size)
 
-        //自定义渲染时使用白热伪彩，当置灰模式时范围外直接不用改
+        //自定义渲染时使用白热pseudo color，当置灰mode时范围外直接不用改
         val pseudo: PseudoColorType = if (irImageHelp.getColorList() == null) pseudoType else PseudoColorType.PSEUDO_1
         LibIRProcess.convertYuyvMapToARGBPseudocolor(yuvArray, (sourceWidth * sourceHeight).toLong(), pseudo, sourceArgbArray)
         //自定义渲染

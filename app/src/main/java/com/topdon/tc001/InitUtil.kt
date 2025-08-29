@@ -34,7 +34,7 @@ object InitUtil {
         val tag = "TopInfrared_LOG"
         val pattern = "{d}, {L}, {t}, {m}"
         val backupStrategy = FileSizeBackupStrategy2(5 * 1024 * 1024L, 10) //一份文件的大小
-        val cleanStrategy = FileLastModifiedCleanStrategy(30 * 24 * 60 * 60) //设置自动清除时间
+        val cleanStrategy = FileLastModifiedCleanStrategy(30 * 24 * 60 * 60) //settings自动清除时间
 
         val config = LogConfiguration.Builder()
             .logLevel(LogLevel.ALL)

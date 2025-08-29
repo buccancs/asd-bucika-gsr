@@ -80,7 +80,7 @@ class IR07MonitorCapture2Activity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        //退出时把点线面清掉
+        //退出时把point line area清掉
         CoroutineScope(Dispatchers.IO).launch {
             TC007Repository.clearAllTemp()
         }

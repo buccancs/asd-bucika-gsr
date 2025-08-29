@@ -35,7 +35,7 @@ import org.greenrobot.eventbus.ThreadMode
 import java.io.File
 
 /**
- * 报告列表.
+ * report列表.
  *
  * 需要传递参数：
  * - [ExtraKeyConfig.IS_TC007] - 当前设备是否为 TC007（不使用，透传）
@@ -90,7 +90,7 @@ internal class ReportListFragment : BaseFragment(), View.OnClickListener {
                             adapter.notifyItemChanged(position)
                         }
                     }.show()
-                } else {//删除
+                } else {//delete
                     TipDialog.Builder(requireContext())
                         .setTitleMessage(getString(R.string.monitor_report_delete))
                         .setMessage(R.string.report_delete_tips)
@@ -157,7 +157,7 @@ internal class ReportListFragment : BaseFragment(), View.OnClickListener {
                 intent.putExtra(ExtraKeyConfig.IS_TC007, arguments?.getBoolean(ExtraKeyConfig.IS_TC007, false) ?: false)
                 startActivity(intent)
             }
-            cl_del -> {//批量删除
+            cl_del -> {//批量delete
                 if (adapter.selectIndexList.isNotEmpty()) {
                     TipDialog.Builder(requireContext())
                         .setTitleMessage(getString(R.string.monitor_report_delete))

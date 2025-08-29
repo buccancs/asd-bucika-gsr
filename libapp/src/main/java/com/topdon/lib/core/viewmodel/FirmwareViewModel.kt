@@ -349,7 +349,7 @@ class FirmwareViewModel(application: Application) : AndroidViewModel(application
         val params = RequestParams()
         params.addBodyParameter("sn", sn)
         params.addBodyParameter("businessId", businessId)
-        params.addBodyParameter("businessType", 20)//业务类型，20-软件包
+        params.addBodyParameter("businessType", 20)//业务type，20-软件包
         params.addBodyParameter("productType", 20)//0-未知 10-贸易体系 20-品牌体系
         params.addBodyParameter("isCheckPoint", 0)//0-不校验 1-校验（也不知道校验的是什么，接口文档没说）
         HttpProxy.instant.post(url, params, object : IResponseCallback {

@@ -16,14 +16,14 @@ import kotlinx.android.synthetic.main.activity_device_type.*
 import kotlinx.android.synthetic.main.item_device_type.view.*
 
 /**
- * 设备类型选择.
+ * 设备type选择.
  *
  * Created by LCG on 2024/4/22.
  */
 class DeviceTypeActivity : BaseActivity() {
 
     /**
-     * 当前点击的设备类型.
+     * 当前点击的设备type.
      */
     private var clientType: IRDeviceType? = null
 
@@ -154,7 +154,7 @@ class DeviceTypeActivity : BaseActivity() {
     }
 
     /**
-     * 支持的热成像设备类型.
+     * 支持的thermal imaging设备type.
      */
     enum class IRDeviceType {
         TC001 {

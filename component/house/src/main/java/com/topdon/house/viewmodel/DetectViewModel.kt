@@ -126,13 +126,13 @@ class DetectViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     /**
-     * 删除房屋检测项目结果，调用 [delItem] 会触发更改.
+     * delete房屋检测项目结果，调用 [delItem] 会触发更改.
      */
     val delItemLD = MutableLiveData<Pair<Int, ItemDetect>>()
     /**
-     * 在指定的检测中，删除指定的项目，结果通过 [delItemLD] 返回.
+     * 在指定的检测中，delete指定的项目，结果通过 [delItemLD] 返回.
      * @param layoutIndex 不使用，透传
-     * @param itemDetect 要删除的项目
+     * @param itemDetect 要delete的项目
      */
     fun delItem(layoutIndex: Int, itemDetect: ItemDetect) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -156,7 +156,7 @@ class DetectViewModel(application: Application) : AndroidViewModel(application) 
                         delItemLD.postValue(Pair(layoutIndex, itemDetect))
                     }
                 } else {
-                    //删除后目录里的3个数量可能需要刷新
+                    //delete后目录里的3个数量可能需要刷新
                     if (itemDetect.state > 0) {
                         val dir = itemDetect.dirDetect
                         when (itemDetect.state) {
@@ -192,7 +192,7 @@ class DetectViewModel(application: Application) : AndroidViewModel(application) 
 
 
     /**
-     * 删除指定的房屋检测数据.
+     * delete指定的房屋检测数据.
      */
     fun deleteMore(vararg houseDetect: HouseDetect) {
         viewModelScope.launch(Dispatchers.IO) {

@@ -139,7 +139,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
     }
 
     /**
-     * 当前设置绘制类型, 如点，线，框，圆
+     * 当前settings绘制type, 如点，线，框，圆
      */
     public void setDrawModel(DrawModel drawModel) {
         this.mDrawModel = drawModel;

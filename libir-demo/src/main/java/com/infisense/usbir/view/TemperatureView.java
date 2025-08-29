@@ -428,7 +428,7 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                             }
                         }
                         for (int i = lines.size(); i < 3; i++) {
-                            //设置不计数状态
+                            //settings不计数状态
                             lineResultList.get(i).index = 0;
                         }
                         //点温度
@@ -467,7 +467,7 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                 }
 
 //                SystemClock.sleep(333);
-                SystemClock.sleep(1000);//设置刷新间隔
+                SystemClock.sleep(1000);//settings刷新间隔
             }
             Log.d(TAG, "temperatureThread exit");
         };

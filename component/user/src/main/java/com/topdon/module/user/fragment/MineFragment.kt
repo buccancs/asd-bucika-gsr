@@ -59,7 +59,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 /**
- * 公共设置页，即公共 “我的”
+ * 公共settings页，即公共 “我的”
  * [MoreActivity] - TS004 “我的”
  * [MoreFragment] - 插件式 “我的”
  *

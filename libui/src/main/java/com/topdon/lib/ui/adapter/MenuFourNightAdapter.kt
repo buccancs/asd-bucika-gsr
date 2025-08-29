@@ -24,24 +24,24 @@ import com.topdon.lib.ui.listener.SingleClickListener
 import kotlinx.android.synthetic.main.ui_item_menu_second_view.view.*
 
 
-@Deprecated("旧的设置菜单，已重构过了")
+@Deprecated("旧的settingsmenu，已重构过了")
 @SuppressLint("NotifyDataSetChanged")
 class MenuFourNightAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     var listener: ((index: Int, code: Int) -> Unit)? = null
 
-    private var colorEnable = false //伪彩条
+    private var colorEnable = false //pseudo color条
     private var contrastEnable = false //对比度
     private var ddeEnable = false //细节
     private var alarmEnable = false //预警
     private var textColorEnable = false //字体
-    private var mirrorEnable = false //镜像
+    private var mirrorEnable = false //mirror
     private var waterMarkEnable = false //水印
     private var compassEnable = false //指南针
 
 
-    private var rotateAngle = DeviceConfig.S_ROTATE_ANGLE //校对默认角度0
+    private var rotateAngle = DeviceConfig.S_ROTATE_ANGLE //校对默认angle0
     fun selectRotate(rotateAngle: Int) {
         this.rotateAngle = rotateAngle
         notifyDataSetChanged()
@@ -85,12 +85,12 @@ class MenuFourNightAdapter(val context: Context) : RecyclerView.Adapter<Recycler
 
     /**
      * 不知道干嘛的
-     * 参数 [Constants.IR_TEMPERATURE_MODE] = 1 测温模式   伪彩条、对比度、锐度、警示、旋转、字体、镜像
-     * 参数 [Constants.IR_TCPLUS_MODE] = 5 双光设备        伪彩条、对比度、锐度、警示、旋转、字体、
-     * 参数 [Constants.IR_TEMPERATURE_LITE] = 7 Lite设备  伪彩条、对比度、警示、旋转、字体、镜像
-     * 参数 [Constants.IR_TC007_MODE] = 6 TC007          伪彩条、对比度、锐度、警示、字体、镜像
-     * else - 2D编辑菜单                                  警示、字体、水印
-     * 参数 [Constants.IR_OBSERVE_MODE] = 2 观测模式  指南针、旋转、镜像、对比度
+     * 参数 [Constants.IR_TEMPERATURE_MODE] = 1 Temperature measurement mode   pseudo color条、对比度、锐度、警示、旋转、字体、mirror
+     * 参数 [Constants.IR_TCPLUS_MODE] = 5 dual light设备        pseudo color条、对比度、锐度、警示、旋转、字体、
+     * 参数 [Constants.IR_TEMPERATURE_LITE] = 7 Lite设备  pseudo color条、对比度、警示、旋转、字体、mirror
+     * 参数 [Constants.IR_TC007_MODE] = 6 TC007          pseudo color条、对比度、锐度、警示、字体、mirror
+     * else - 2D编辑menu                                  警示、字体、水印
+     * 参数 [Constants.IR_OBSERVE_MODE] = 2 Observation mode  指南针、旋转、mirror、对比度
      */
     fun setShowMenuFour(modeType: Int){
         fourBean.clear()

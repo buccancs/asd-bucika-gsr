@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 import org.easydarwin.video.Client
 
 /**
- * TC007 温度监控捕获 - 第1步 - 选取类型及区域.
+ * TC007 温度监控捕获 - 第1步 - 选取type及区域.
  * Created by LCG on 2024/5/6.
  */
 @Route(path = RouterConfig.IR_MONITOR_CAPTURE_07)
@@ -88,10 +88,10 @@ class IR07MonitorCapture1Activity : BaseActivity(), View.OnClickListener {
      */
     private fun initConfig() {
         lifecycleScope.launch(Dispatchers.IO) {
-            // 读取配置设置 环境温度、测温距离、发射率
+            // 读取配置settings 环境温度、测温距离、发射率
             val config = ConfigRepository.readConfig(true)
             TC007Repository.setIRConfig(config.environment, config.distance, config.radiation)
-            //设置温度单位
+            //settings温度单位
             TC007Repository.setEnvAttr(SharedManager.getTemperature() == 1,0)
             //清除点、线、面、全图
             TC007Repository.clearAllTemp()

@@ -38,14 +38,14 @@ import java.io.IOException
 import java.io.OutputStream
 
 /**
- * 生成房屋检测报告 PDF 工具.
+ * 生成房屋检测report PDF 工具.
  *
  * Created by LCG on 2024/1/18.
  */
 object PDFUtil {
 
     /**
-     * 删除所有房屋检测报告 PDF 文件
+     * delete所有房屋检测report PDF 文件
      */
     suspend fun delAllPDF(context: Context) = withContext(Dispatchers.IO) {
         if (Build.VERSION.SDK_INT < 29) {//小于 Android10
@@ -198,7 +198,7 @@ object PDFUtil {
                 }
             }
             if (dataList.isEmpty()) {
-                //没有图片，放个 13dp 的底部 padding
+                //没有图片，放个 13dp 的bottom padding
                 val paddingBottom = SizeUtils.dp2px(13f).coerceAtMost(pageHeight - hasUseHeight)
                 canvas.translate(0f, paddingBottom.toFloat())
                 hasUseHeight += paddingBottom
@@ -300,7 +300,7 @@ object PDFUtil {
             }
         }
 
-        //绘制底部签名信息
+        //绘制bottom签名信息
         val footView = buildFootView(context, houseReport)
         if (hasUseHeight + margin + footView.height > pageHeight) {//超出内容，另起一页
             pdfDocument.finishPage(page)

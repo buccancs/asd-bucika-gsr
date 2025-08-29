@@ -279,7 +279,7 @@ class IRMonocularActivity : BaseWifiActivity() {
     private fun setSetting(code: Int) {
         when (code) {
             MonocularHelp.TYPE_SET_BLACK -> {
-                //伪彩样式
+                //pseudo color样式
                 setPseudoColor()
             }
 
@@ -454,7 +454,7 @@ class IRMonocularActivity : BaseWifiActivity() {
         super.finish()
     }
 
-    //底部拍照中间按钮
+    //bottomphoto中间按钮
     @SuppressLint("CheckResult")
     private fun centerCamera() {
         XXPermissions.with(this)
@@ -531,7 +531,7 @@ class IRMonocularActivity : BaseWifiActivity() {
 
     /**
      * 更新最新图库照片或视频
-     * @param fileType 0-图片 1-录像 2-所有
+     * @param fileType 0-图片 1-video 2-所有
      */
     private fun refreshImg(fileType: Int) {
         lifecycleScope.launch {
@@ -564,7 +564,7 @@ class IRMonocularActivity : BaseWifiActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onSocketMsgEvent(event: SocketMsgEvent) {
         when (SocketCmdUtil.getCmdResponse(event.text)) {
-            WsCmdConstants.AR_COMMAND_PSEUDO_COLOR_GET -> {//伪彩样式
+            WsCmdConstants.AR_COMMAND_PSEUDO_COLOR_GET -> {//pseudo color样式
                 val webSocketIp = SocketCmdUtil.getIpResponse(event.text)
                 val pseudoColor: WsPseudoColor? = WsUtil.getWsResponse(event.text)
                 if (webSocketIp == WsCmdConstants.AR_COMMAND_IP) {
@@ -609,11 +609,11 @@ class IRMonocularActivity : BaseWifiActivity() {
                 }
             }
 
-            WsCmdConstants.AR_COMMAND_SNAPSHOT -> {//拍照事件
+            WsCmdConstants.AR_COMMAND_SNAPSHOT -> {//photo事件
                 refreshImg(0)
             }
 
-            WsCmdConstants.AR_COMMAND_VRECORD -> {//开始或结束录像事件
+            WsCmdConstants.AR_COMMAND_VRECORD -> {//开始或结束video事件
                 try {
                     val data: JSONObject = JSONObject(event.text).getJSONObject("data")
                     val enable: Boolean = data.getBoolean("enable")

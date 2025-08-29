@@ -1,15 +1,15 @@
 package com.topdon.menu.constant
 
 /**
- * 测温模式-菜单3-双光 菜单类型.
+ * Temperature measurement mode-menu3-dual light menutype.
  *
  * Created by LCG on 2024/11/20.
  */
 enum class TwoLightType {
-    /** 双光1 */
+    /** dual light1 */
     TWO_LIGHT_1,
 
-    /** 双光2 */
+    /** dual light2 */
     TWO_LIGHT_2,
 
     /** 红外 */
@@ -18,12 +18,12 @@ enum class TwoLightType {
     /** 可见光 */
     LIGHT,
 
-    /** 配准 */
+    /** Registration */
     CORRECT,
 
-    /** 画中画 */
+    /** Picture in Picture */
     P_IN_P,
 
-    /** 融合度 */
+    /** Blend extent */
     BLEND_EXTENT,
 }

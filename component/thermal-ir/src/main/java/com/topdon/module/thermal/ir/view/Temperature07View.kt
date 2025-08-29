@@ -7,7 +7,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 
 /**
- * TC007 使用，不带温度，仅用来操作点线面的 View.
+ * TC007 使用，不带温度，仅用来操作point line area的 View.
  *
  * Created by LCG on 2024/5/7.
  */

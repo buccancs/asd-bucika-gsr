@@ -20,7 +20,7 @@ public interface Request {
     Device getDevice();
 
     /**
-     * 请求类型
+     * 请求type
      */
     @NonNull
     RequestType getType();

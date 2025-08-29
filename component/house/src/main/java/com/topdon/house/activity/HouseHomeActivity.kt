@@ -82,7 +82,7 @@ class HouseHomeActivity : BaseActivity(), View.OnClickListener {
             override fun onPageSelected(position: Int) {
                 if (position == 0) {//检测
                     iv_edit.isEnabled = !detectViewModel.detectListLD.value.isNullOrEmpty()
-                } else {//报告
+                } else {//report
                     iv_edit.isEnabled = !reportViewModel.reportListLD.value.isNullOrEmpty()
                 }
             }
@@ -97,7 +97,7 @@ class HouseHomeActivity : BaseActivity(), View.OnClickListener {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onDetectCreate(event: HouseReportAddEvent) {
-        //有新报告被创建时，切到报告页
+        //有新report被创建时，切到report页
         view_pager2.currentItem = 1
     }
 

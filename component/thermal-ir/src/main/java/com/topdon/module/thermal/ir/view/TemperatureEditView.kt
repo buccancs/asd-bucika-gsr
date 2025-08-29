@@ -11,7 +11,7 @@ import com.infisense.usbir.view.ITsTempListener
 import java.lang.ref.WeakReference
 
 /**
- * 2D 编辑 点线面温度图层 View.
+ * 2D 编辑 point line area温度图层 View.
  */
 class TemperatureEditView : TemperatureBaseView {
 
@@ -48,7 +48,7 @@ class TemperatureEditView : TemperatureBaseView {
 
 
     /**
-     * 是否显示点线面名字.
+     * 是否显示point line area名字.
      */
     var isShowName = false
         set(value) {
@@ -149,7 +149,7 @@ class TemperatureEditView : TemperatureBaseView {
         val result = try {
             irtemp.getTemperatureOfPoint(Point((point.x / xScale).toInt(), (point.y / yScale).toInt()))
         } catch (_: IllegalArgumentException) {
-            //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的点线面坐标还是未变更前的坐标
+            //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的point line area坐标还是未变更前的坐标
             //以 旧坐标及新 scale 去计算温度坐标的话，就有可能超出温度坐标范围从而抛出异常，这里捕获
             return null
         }
@@ -180,7 +180,7 @@ class TemperatureEditView : TemperatureBaseView {
         val result = try {
             irtemp.getTemperatureOfLine(Line(Point(tempStartX, tempStartY), Point(tempStopX, tempStopY)))
         } catch (_: IllegalArgumentException) {
-            //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的点线面坐标还是未变更前的坐标
+            //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的point line area坐标还是未变更前的坐标
             //以 旧坐标及新 scale 去计算温度坐标的话，就有可能超出温度坐标范围从而抛出异常，这里捕获
             return null
         }
@@ -217,7 +217,7 @@ class TemperatureEditView : TemperatureBaseView {
         val result = try {
             irtemp.getTemperatureOfRect(Rect(left, top, right, bottom))
         } catch (_: IllegalArgumentException) {
-            //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的点线面坐标还是未变更前的坐标
+            //当 View 尺寸变更就会导致 xScale、yScale 变更，而已绘制的point line area坐标还是未变更前的坐标
             //以 旧坐标及新 scale 去计算温度坐标的话，就有可能超出温度坐标范围从而抛出异常，这里捕获
             return null
         }

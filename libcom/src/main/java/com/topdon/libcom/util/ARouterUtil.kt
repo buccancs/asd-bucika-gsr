@@ -15,7 +15,7 @@ import com.topdon.lib.core.tools.ToastTools
  **/
 object ARouterUtil {
     /**
-     * 统一跳转红外拍照界面
+     * 统一跳转红外photo界面
      * @param activity Activity
      * @param isTC007 Boolean
      */

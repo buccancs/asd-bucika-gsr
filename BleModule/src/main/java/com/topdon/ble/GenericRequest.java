@@ -56,7 +56,7 @@ class GenericRequest implements Request, Comparable<GenericRequest> {
     }
 
     /**
-     * 请求类型
+     * 请求type
      */
     @NonNull
     public RequestType getType() {

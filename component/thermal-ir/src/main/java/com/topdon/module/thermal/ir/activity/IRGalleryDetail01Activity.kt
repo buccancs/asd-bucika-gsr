@@ -50,7 +50,7 @@ import java.io.File
 class IRGalleryDetail01Activity : BaseActivity(), View.OnClickListener {
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
@@ -270,7 +270,7 @@ class IRGalleryDetail01Activity : BaseActivity(), View.OnClickListener {
             }
 
             ll_ir_report -> {
-                //报告
+                //report
                 actionEditOrReport(true)
             }
 

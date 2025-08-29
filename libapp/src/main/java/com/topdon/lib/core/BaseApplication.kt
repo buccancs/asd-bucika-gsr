@@ -122,11 +122,11 @@ abstract class BaseApplication : Application() {
 
         if (SharedManager.is04AutoSync) {//自动保存到手机开启
             when (SocketCmdUtil.getCmdResponse(msgJson)) {
-                WsCmdConstants.AR_COMMAND_SNAPSHOT -> {//拍照事件
+                WsCmdConstants.AR_COMMAND_SNAPSHOT -> {//photo事件
                     autoSaveNewest(false)
                 }
 
-                WsCmdConstants.AR_COMMAND_VRECORD -> {//开始或结束录像事件
+                WsCmdConstants.AR_COMMAND_VRECORD -> {//开始或结束video事件
                     try {
                         val data: JSONObject = JSONObject(msgJson).getJSONObject("data")
                         val enable: Boolean = data.getBoolean("enable")
@@ -172,7 +172,7 @@ abstract class BaseApplication : Application() {
 
 
     /**
-     * 设置webview的android9以上系统的多进程兼容性处理
+     * settingswebview的android9以上系统的多进程兼容性处理
      */
     @RequiresApi(api = 28)
     open fun webviewSetPath(context: Context?) {
@@ -203,7 +203,7 @@ abstract class BaseApplication : Application() {
             }
             ARouter.init(this)
         } catch (e: Exception) {
-            //异常后建议清除映射表 (官方文档 开发模式会清除)
+            //异常后建议清除映射表 (官方文档 开发mode会清除)
             if (SharedManager.getHasShowClause()) {
                 Log.e("TopInfrared_LOG", "router init error: ${e.message}")
             }
@@ -233,8 +233,8 @@ abstract class BaseApplication : Application() {
                 LanguageUtils.applyLanguage(locale)
                 SharedManager.setLanguage(baseContext, autoSelect)
             } else {
-                //初始语言设置
-                //默认初始语言，跟随系统语言设置，没有则默认英文
+                //初始语言settings
+                //默认初始语言，跟随系统语言settings，没有则默认英文
                 val autoSelect = AppLanguageUtils.getSystemLanguage()
                 val locale = AppLanguageUtils.getLocaleByLanguage(autoSelect)
                 LanguageUtils.applyLanguage(locale)

@@ -34,8 +34,8 @@ public class MP4Encoder extends Encoder {
     private static final String TAG = MP4Encoder.class.getSimpleName();
     private static final int TIMEOUT_US = 10000;
     private int addedFrameCount;
-    //TODO 设置4096在高版本会出现崩溃 java.nio.BufferOverflowException
-    //音频文件不需要处理
+    //TODO settings4096在高版本会出现崩溃 java.nio.BufferOverflowException
+    //audio文件不需要处理
 //    private byte[] audioArray = new byte[2048];
     private MediaCodec audioCodec;
     private int audioTrackIndex;

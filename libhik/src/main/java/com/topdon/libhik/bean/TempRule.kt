@@ -6,11 +6,11 @@ import com.topdon.libhik.util.ByteArrayUtil.toInt
 import com.topdon.libhik.util.ByteArrayUtil.toStr
 
 /**
- * 专家测温规则及结果，共 208 byte.
+ * expert测温规则及结果，共 208 byte.
  * @param enable 是否启用
  * @param regionId 区域 Id
  * @param distance 测温距离，单位 cm
- * @param regionType 区域类型 1-点 2-线 3-面
+ * @param regionType 区域type 1-点 2-线 3-面
  * @param regionName 区域名称
  * @param emissivity 发射率百分比，如 97 表示 0.97
  * @param minTemp 最低温，单位摄氏度
@@ -79,7 +79,7 @@ data class TempRule(
     }
 
     override fun toString(): String = "规则$regionId ${if (enable) "开启" else "关闭"} " +
-            "距离:$distance cm，类型$regionType，" +
+            "距离:$distance cm，type$regionType，" +
             "发射率:$emissivity，名称:$regionName，" +
             "最低温:($minX,$minY) ${minTemp}°C，" +
             "最高温:($maxX,$maxY) ${maxTemp}°C，" +

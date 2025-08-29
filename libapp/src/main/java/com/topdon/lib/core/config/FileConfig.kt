@@ -49,7 +49,7 @@ object FileConfig {
     fun getFirmwareFile(filename: String): File = File(Utils.getApp().getExternalFilesDir("firmware"), filename)
 
     /**
-     * 图片报告路径.
+     * 图片report路径.
      */
     @JvmStatic
     fun getPdfDir(): String {

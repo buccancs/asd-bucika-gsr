@@ -122,7 +122,7 @@
 //        val series = initSeries()
 //        val chart = AAChart()
 //            .scrollablePlotArea(AAScrollablePlotArea().minWidth(20)).backgroundColor("#383d45")
-//            .type(AAChartType.Area)//曲线类型
+//            .type(AAChartType.Area)//曲线type
 //
 //        val xAxis = AAXAxis()
 //            .lineWidth(1f)
@@ -130,7 +130,7 @@
 //            .gridLineColor("#717a8f")
 //            .lineColor("#717a8f")
 //            .tickColor("#717a8f")//刻度颜色
-//            .minRange(9)//设置滚动时，最小宽度
+//            .minRange(9)//settings滚动时，最小宽度
 //            .minorTickColor("#000000")
 //            .labels(AALabels().style(AAStyle.style("#717a8f")))//标尺文字
 //
@@ -139,8 +139,8 @@
 //            .gridLineWidth(1f)
 //            .gridLineColor("#454b56")
 //            .lineColor("#383d45")
-////            .max(100f)//设置最大y值
-//            .min(0f)//设置最小y值
+////            .max(100f)//settings最大y值
+//            .min(0f)//settings最小y值
 //            .labels(AALabels().style(AAStyle.style("#717a8f")))
 //            .title(AATitle().text("").style(AAStyle().color("#FFFFFF")))//不显示
 //
@@ -151,7 +151,7 @@
 //    }
 //
 //    /**
-//     * 初始化曲线三种类型曲线
+//     * 初始化曲线三种type曲线
 //     */
 //    private fun initSeries(): Array<AASeriesElement> {
 //        val maxTempListData = Array<Any>(dataList.size) { dataList[it].thermalMax }

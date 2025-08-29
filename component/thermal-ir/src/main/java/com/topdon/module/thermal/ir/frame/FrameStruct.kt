@@ -17,11 +17,11 @@ import com.topdon.pseudo.bean.CustomPseudoBean
  * ver                 [18, 26)    6 byte   APP版本名称(versionName)
  * width               [26, 28)    2 byte   宽 256 或 192(未使用)
  * height              [28, 30)    2 byte   高 256 或 192(未使用)
- * rotate              [30, 32)    2 byte   旋转角度
- * pseudo              [32, 34)    2 byte   伪彩代号
- * initRotate          [34, 36)    2 byte   初始角度(未使用)
- * correctRotate       [36, 38)    2 byte   矫正角度(未使用)
- *                     [38, 81)   44 byte   点线面(未使用，实际全为0的没卵用数据)
+ * rotate              [30, 32)    2 byte   旋转angle
+ * pseudo              [32, 34)    2 byte   pseudo color代号
+ * initRotate          [34, 36)    2 byte   初始angle(未使用)
+ * correctRotate       [36, 38)    2 byte   矫正angle(未使用)
+ *                     [38, 81)   44 byte   point line area(未使用，实际全为0的没卵用数据)
  *
  * customPseudoBean    [81,173)  92 byte
  *   colorSize                   81     1 byte   色块数量
@@ -39,7 +39,7 @@ import com.topdon.pseudo.bean.CustomPseudoBean
  *   customRecommendIndex  [168,172)    4 byte
  *   isUseGray                  172     1 byte
  *
- * isShowPseudoBar          173     1 byte   是否显示伪彩条
+ * isShowPseudoBar          173     1 byte   是否显示pseudo color条
  * textColor           [174,178)    4 byte   字体颜色值
  *
  * watermarkBean       [178,628)  450 byte   水印信息
@@ -58,9 +58,9 @@ import com.topdon.pseudo.bean.CustomPseudoBean
  *   isMarkOpen             638     1 byte   区域标记是否开启
  *   highColor         [639,643)    4 byte   高温报警颜色值
  *   lowColor          [643,647)    4 byte   低温报警颜色值
- *   markType          [647,651)    4 byte   区域标记类型 1-描边 2-矩阵
+ *   markType          [647,651)    4 byte   区域标记type 1-描边 2-矩阵
  *   isRingtoneOpen         651     1 byte   报警铃声是否开启
- *   ringtoneType      [652,656)    4 byte   报警铃声类型
+ *   ringtoneType      [652,656)    4 byte   报警铃声type
  *   gainStatus       [657)    1 byte   //高低增益 1:（低温）高增益 0: 高温（低增益）
  *   textSize         [658,659） 2byte //字号大小
  *   environment      [660,663) 4byte //温度修正参数 ： 环境温度，单位摄氏度

@@ -48,7 +48,7 @@ class App : BaseApplication() {
     companion object{
         lateinit var instance: App
         /**
-         * 延时初始化
+         * delay初始化
          */
         fun delayInit() {
             initReceiver()
@@ -71,7 +71,7 @@ class App : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        //隐私政策弹框用app内的，默认设置lms里的隐私政策设置为true
+        //隐私政策弹框用app内的，默认settingslms里的隐私政策settings为true
         SPUtils.getInstance(this).put(Config.KEY_PRIVACY_AGREEMENT, true)
 
         if (SharedManager.getHasShowClause() || !isDomestic()) {

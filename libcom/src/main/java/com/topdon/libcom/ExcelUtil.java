@@ -130,7 +130,7 @@ public class ExcelUtil {
             }
             //创建行对象
             Row row = sheet.createRow(0);
-            // 设置有效数据的行数和列数
+            // settings有效数据的行数和列数
             int colNum = title.length;
             CellStyle titleStyle = wb.createCellStyle();
             titleStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
@@ -154,9 +154,9 @@ public class ExcelUtil {
             // 导入数据
             for (int rowNum = 0; rowNum < listData.size(); rowNum++) {
 
-                // 之所以rowNum + 1 是因为要设置第二行单元格
+                // 之所以rowNum + 1 是因为要settings第二行单元格
                 row = sheet.createRow(rowNum + 1);
-                // 设置单元格显示宽度
+                // settings单元格显示宽度
                 row.setHeightInPoints(28f);
 
                 ThermalEntity bean = listData.get(rowNum);

@@ -47,7 +47,7 @@ public interface Logger {
      * 打印日志
      *
      * @param priority 日志级别。{@link android.util.Log#DEBUG}等
-     * @param type     日志类型。{@link #TYPE_CONNECTION_STATE}等
+     * @param type     日志type。{@link #TYPE_CONNECTION_STATE}等
      * @param msg      日志内容
      */
     void log(int priority, int type, String msg);
@@ -56,7 +56,7 @@ public interface Logger {
      * 打印日志
      *
      * @param priority 日志级别。{@link android.util.Log#DEBUG}等
-     * @param type     日志类型。{@link #TYPE_CONNECTION_STATE}等
+     * @param type     日志type。{@link #TYPE_CONNECTION_STATE}等
      * @param msg      日志内容
      * @param th       异常
      */

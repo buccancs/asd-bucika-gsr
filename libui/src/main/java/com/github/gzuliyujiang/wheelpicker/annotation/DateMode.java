@@ -17,7 +17,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * 日期模式
+ * 日期mode
  *
  * @author 贵州山野羡民（1032694760@qq.com）
  * @since 2019/5/14 17:10

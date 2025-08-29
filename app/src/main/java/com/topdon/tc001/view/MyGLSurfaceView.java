@@ -23,14 +23,14 @@ public class MyGLSurfaceView extends GLSurfaceView {
     private class MyRenderer implements GLSurfaceView.Renderer {
         @Override
         public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
-            // 初始化OpenGL环境，设置背景色等
+            // 初始化OpenGL环境，settings背景色等
             GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             // 其他初始化操作...
         }
 
         @Override
         public void onSurfaceChanged(GL10 gl10, int width, int height) {
-            // 处理窗口大小变化，设置视口和投影矩阵
+            // 处理窗口大小变化，settings视口和投影矩阵
             GLES20.glViewport(0, 0, width, height);
             // 其他处理...
         }

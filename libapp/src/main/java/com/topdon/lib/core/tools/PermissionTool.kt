@@ -149,7 +149,7 @@ object PermissionTool {
                                 isLocationNever = true
                             }
                         }
-                        // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                        // 如果是被永久拒绝就跳转到应用权限系统settingspage
                         TipDialog.Builder(context)
                             .setTitleMessage(context.getString(R.string.app_tip))
                             .setMessage(if (!isLocationNever || (isBtNever && isBtFirst)) R.string.app_bluetooth_content else R.string.app_location_content)
@@ -176,7 +176,7 @@ object PermissionTool {
         fun onResult(allGranted: Boolean)
 
         /**
-         * 永久拒绝时，跳转弹框 去打开 或 取消 回调.
+         * 永久拒绝时，跳转弹框 去打开 或 cancel 回调.
          */
         fun onNever(isJump: Boolean)
     }

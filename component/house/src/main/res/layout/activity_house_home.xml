@@ -67,7 +67,7 @@
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- 进入编辑模式时标题栏 -->
+    <!-- 进入编辑mode时标题栏 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_edit_bar"
         android:layout_width="0dp"

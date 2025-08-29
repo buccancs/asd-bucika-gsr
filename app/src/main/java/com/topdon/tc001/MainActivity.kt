@@ -188,7 +188,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     private fun updateApk(url : String) {
         if (applicationInfo.targetSdkVersion < Build.VERSION_CODES.P) {
-            //目标版本27默认跳到官网下载
+            //target版本27默认跳到官网下载
             val intent = Intent()
             intent.action = "android.intent.action.VIEW"
             intent.data = Uri.parse(url)

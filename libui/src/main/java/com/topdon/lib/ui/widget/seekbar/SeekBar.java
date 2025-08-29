@@ -231,10 +231,10 @@ public class SeekBar {
             onDrawIndicator(canvas, paint, formatCurrentIndicatorText(userText2Draw)); //滑动轴外标签
         }
 //        if (isLeft) {
-//            //设置上指示图标
+//            //settings上指示图标
 //            setThumbDrawableId(R.drawable.ic_seekbar_high_svg, thumbWidth, thumbHeight);
 //        } else {
-//            //设置下指示图标
+//            //settings下指示图标
 //            setThumbDrawableId(R.drawable.ic_seekbar_low_svg, thumbWidth, thumbHeight);
 //        }
         if (thumbShow){
@@ -378,7 +378,7 @@ public class SeekBar {
                 canvas.drawPath(indicatorArrowPath, paint);
                 indicatorRect.bottom -= indicatorArrowSize;
                 indicatorRect.top -= indicatorArrowSize;
-                Log.w("伪彩条刷新","///");
+                Log.w("pseudo color条刷新","///");
             }
 
             //indicator background edge processing

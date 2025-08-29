@@ -96,7 +96,7 @@ class HouseDetectView : FrameLayout {
      */
     var onItemCopyListener: ((pair: Pair<Int, ItemDetect>) -> Unit)? = null
     /**
-     * 指定 position 位置的项目删除事件监听.
+     * 指定 position 位置的项目delete事件监听.
      */
     var onItemDelListener: ((pair: Pair<Int, ItemDetect>) -> Unit)? = null
 
@@ -120,7 +120,7 @@ class HouseDetectView : FrameLayout {
      */
     var onDirExpandListener: ((isExpand: Boolean) -> Unit)? = null
     /**
-     * 一个项目发生变更(3种状态变更、图片删除)事件监听.
+     * 一个项目发生变更(3种状态变更、图片delete)事件监听.
      */
     var onItemChangeListener: ((itemDetect: ItemDetect) -> Unit)? = null
 
@@ -456,7 +456,7 @@ class HouseDetectView : FrameLayout {
             }
 
             /**
-             * 执行一张图片删除处理
+             * 执行一张图片delete处理
              * @param imageNum 第几张图片，取值`[1,4]`
              */
             private fun handleImageDel(imageNum: Int) {

@@ -10,7 +10,7 @@ import androidx.core.view.isVisible
 import kotlin.math.abs
 
 /**
- * 从右往左滑动出现右侧隐藏菜单的 ViewGroup.
+ * 从右往左滑动出现右侧隐藏menu的 ViewGroup.
  *
  * Created by LCG on 2024/8/15.
  */
@@ -18,7 +18,7 @@ class RightMenuLayout : ConstraintLayout {
 
     companion object {
         /**
-         * 右侧菜单滑出右侧菜单的百分之多少后，将触发自动展开。
+         * 右侧menu滑出右侧menu的百分之多少后，将触发自动展开。
          */
         private const val DEFAULT_AUTO_PERCENT = 0.5f
 
@@ -39,7 +39,7 @@ class RightMenuLayout : ConstraintLayout {
      */
     private val scaledTouchSlop: Int
     /**
-     * 右侧菜单滑出右侧菜单的百分之多少后，将触发自动展开。
+     * 右侧menu滑出右侧menu的百分之多少后，将触发自动展开。
      */
     private var autoPercent: Float = DEFAULT_AUTO_PERCENT
 
@@ -55,7 +55,7 @@ class RightMenuLayout : ConstraintLayout {
 
 
     /**
-     * 菜单即常规状态下不可见部分的宽度，单位 px
+     * menu即常规状态下不可见部分的宽度，单位 px
      */
     private var menuWidth = 0
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

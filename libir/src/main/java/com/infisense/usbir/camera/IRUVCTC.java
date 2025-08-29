@@ -93,7 +93,7 @@ public class IRUVCTC {
      * @param cameraWidth     cameraWidth:256,cameraHeight:384,图像+温度
      *                        cameraWidth:256,cameraHeight:192,图像
      *                        cameraWidth:256,cameraHeight:192,(调用startY16ModePreview，传入Y16_MODE_TEMPERATURE)温度
-     * @param connectCallback 设置usb设备连接回调
+     * @param connectCallback settingsusb设备连接回调
      */
     public IRUVCTC(int cameraWidth, int cameraHeight, Context context, SynchronizedBitmap syncimage,
                    CommonParams.DataFlowMode dataFlowMode,
@@ -149,7 +149,7 @@ public class IRUVCTC {
 
                         if (ircmd != null) {
                             Log.d(TAG, "startPreview");
-                            // 根据设备的分辨率列表，这里可以动态的设置模组的宽高(这里作为示例，用的是从外部传入的方式)
+                            // 根据设备的分辨率列表，这里可以动态的settings模组的宽高(这里作为示例，用的是从外部传入的方式)
                             // 之前的openUVCCamera方法中传入的都是默认值，这里需要根据实际传入对应的值
                             isTempReplacedWithTNREnabled = ircmd.isTempReplacedWithTNREnabled(DeviceType.P2);
                             if (isTempReplacedWithTNREnabled) {
@@ -504,10 +504,10 @@ public class IRUVCTC {
             // YUV出图流程
             setFrameReady(false);
             if (isRestart) {
-                // 1.停图（全部停图，不是退出y16模式的停图）
+                // 1.停图（全部停图，不是退出y16mode的停图）
                 if (ircmd.stopPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0) == 0) {
                     Log.i(TAG, "stopPreview complete");
-                    // 2. 发出图命令，设置分辨率为256*384
+                    // 2. 发出图命令，settings分辨率为256*384
                     if (ircmd.startPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                             CommonParams.StartPreviewSource.SOURCE_SENSOR,
                             ScreenUtils.getPreviewFPSByDataFlowMode(defaultDataFlowMode),
@@ -538,8 +538,8 @@ public class IRUVCTC {
                         Log.i(TAG, "startPreview complete 中间出图 restart");
                         try {
                             /*
-                             * 对于部分设备，如5840芯片的模组，两个命令之间需要延时以防止中间出图命令失效导致的黑热白热翻转情况
-                             * 需要根据自己模组的实际情况判断是否添加该延时
+                             * 对于部分设备，如5840芯片的模组，两个命令之间需要delay以防止中间出图命令失效导致的黑热白热flip情况
+                             * 需要根据自己模组的实际情况判断是否添加该delay
                              */
                             Thread.sleep(1500);
                         } catch (InterruptedException e) {
@@ -587,8 +587,8 @@ public class IRUVCTC {
                             Log.i(TAG, "startPreview complete 红外+TNR");
                             try {
                                 /*
-                                 * 对于部分设备，如5840芯片的模组，两个命令之间需要延时以防止中间出图命令失效导致的黑热白热翻转情况
-                                 * 需要根据自己模组的实际情况判断是否添加该延时
+                                 * 对于部分设备，如5840芯片的模组，两个命令之间需要delay以防止中间出图命令失效导致的黑热白热flip情况
+                                 * 需要根据自己模组的实际情况判断是否添加该delay
                                  */
                                 Thread.sleep(1500);
                             } catch (InterruptedException e) {
@@ -609,8 +609,8 @@ public class IRUVCTC {
                 } else {
                     /*
                      * 单TNR 出图
-                     * 默认上电之后出YUV图像，如果默认模式为Y16中间出图，进入之后需要走先断电再上电，再中间出图的流程
-                     * 如果没有断电，且之前的模式为Y16模式，则重新进入仍为Y16模式，不需要执行该流程
+                     * 默认上电之后出YUV图像，如果默认mode为Y16中间出图，进入之后需要走先断电再上电，再中间出图的流程
+                     * 如果没有断电，且之前的mode为Y16mode，则重新进入仍为Y16mode，不需要执行该流程
                      */
                     // 调用 startY16ModePreview 中间出图方法之后，输出的数据格式为y16
                     if (ircmd.stopPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0) == 0) {
@@ -622,8 +622,8 @@ public class IRUVCTC {
                             Log.i(TAG, "startPreview complete 单TNR");
                             try {
                                 /*
-                                 * 对于部分设备，如5840芯片的模组，两个命令之间需要延时以防止中间出图命令失效导致的黑热白热翻转情况
-                                 * 需要根据自己模组的实际情况判断是否添加该延时
+                                 * 对于部分设备，如5840芯片的模组，两个命令之间需要delay以防止中间出图命令失效导致的黑热白热flip情况
+                                 * 需要根据自己模组的实际情况判断是否添加该delay
                                  */
                                 Thread.sleep(1500);
                             } catch (InterruptedException e) {
@@ -677,7 +677,7 @@ public class IRUVCTC {
      *
      */
     private void handleStartPreviewComplete() {
-        // 出图之后再去获取kt,bt,nuc_t等参数来设置温度数据，避免耗时操作导致这里的停图和出图受影响
+        // 出图之后再去获取kt,bt,nuc_t等参数来settings温度数据，避免耗时操作导致这里的停图和出图受影响
         new Thread(() -> EventBus.getDefault().post(new PreviewComplete())).start();
     }
 

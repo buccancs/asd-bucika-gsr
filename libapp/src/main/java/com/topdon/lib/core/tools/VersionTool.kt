@@ -18,7 +18,7 @@ object VersionTool {
                 str.toFloat()
                 versionStr = str
             } catch (e: Exception) {
-                //str 不是1.01类型数据
+                //str 不是1.01type数据
             }
         }
 

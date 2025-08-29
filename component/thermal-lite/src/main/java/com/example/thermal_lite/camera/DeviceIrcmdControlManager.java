@@ -147,7 +147,7 @@ public class DeviceIrcmdControlManager {
     }
 
     /**
-     * 大端模式转换
+     * 大端mode转换
      * 将int数值转换为占四个字节的byte数组，本方法适用于(高位在前，低位在后)的顺序。  和bytesToInt2（）配套使用
      */
     public static byte[] intToBytes2(int value) {
@@ -169,7 +169,7 @@ public class DeviceIrcmdControlManager {
     }
 
     /**
-     * 大端模式转换
+     * 大端mode转换
      * byte数组中取int数值，本方法适用于(低位在后，高位在前)的顺序。和intToBytes2（）配套使用
      */
     public static int bytesToInt2(byte[] src, int offset) {
@@ -208,7 +208,7 @@ public class DeviceIrcmdControlManager {
     }
 
     /**
-     * int类型的byte数组，转为二进制字符串，然后根据传入的值做替换，最终输出拼装好的值
+     * inttype的byte数组，转为二进制字符串，然后根据传入的值做替换，最终输出拼装好的值
      *
      * @param name
      * @param ispParamReadByteArray
@@ -230,7 +230,7 @@ public class DeviceIrcmdControlManager {
         Log.i(TAG, "name = " + name + " ispParamReadByteArrStr = " + ispParamReadByteArrStr.toString() +
                 " ispParamReadByteArrStrInt = " + Long.parseLong(ispParamReadByteArrStr.toString(), 2));
 
-        // 要写入的值，以int类型给出，共四个字节  0000000000000001 00000000 10001001
+        // 要写入的值，以inttype给出，共四个字节  0000000000000001 00000000 10001001
         StringBuilder valueArrStr = new StringBuilder();
         // 00000111 00000000 00000000 00000000
         for (int i = 0; i < valueArray.length; i++) {
@@ -255,8 +255,8 @@ public class DeviceIrcmdControlManager {
     }
 
     /**
-     * 设置ISP算法需要修改的文件路径
-     * 会在重新回到预览页面的时候调用sendISPParam方法来设置参数
+     * settingsISP算法需要修改的文件路径
+     * 会在重新回到预览page的时候调用sendISPParam方法来settings参数
      *
      * @param param_path
      */
@@ -266,9 +266,9 @@ public class DeviceIrcmdControlManager {
     }
 
     /**
-     * 会在重新回到预览页面的时候调用sendISPParam方法来设置参数
+     * 会在重新回到预览page的时候调用sendISPParam方法来settings参数
      * <p>
-     * ISP参数设置后，停图后不会保存参数，固件会重新下发
+     * ISP参数settings后，停图后不会保存参数，固件会重新下发
      *
      * @throws IllegalArgumentException
      */

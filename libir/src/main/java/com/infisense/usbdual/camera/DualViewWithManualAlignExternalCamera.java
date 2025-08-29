@@ -123,7 +123,7 @@ public class DualViewWithManualAlignExternalCamera extends BaseParamDualView{
         }
 
         /**
-         * 关闭双光预览
+         * 关闭dual light预览
          */
         public void stopPreview() {
             dualUVCCamera.setFrameCallback(null);

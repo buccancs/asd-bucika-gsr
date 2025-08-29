@@ -20,7 +20,7 @@ class ImagePickFromDialog(private val context: Context) : Dialog(context, R.styl
 
     /**
      * 拾取事件监听.
-     * 0-相册 1-可见光相机 2-热成像相机
+     * 0-相册 1-可见光相机 2-thermal imaging相机
      */
     private var onSelectListener: ((type: Int) -> Unit)? = null
 
@@ -46,8 +46,8 @@ class ImagePickFromDialog(private val context: Context) : Dialog(context, R.styl
     }
 
     /**
-     * 设置拾取事件监听.
-     * 0-相册 1-可见光相机 2-热成像相机
+     * settings拾取事件监听.
+     * 0-相册 1-可见光相机 2-thermal imaging相机
      */
     fun setSelectListener(l: ((type: Int) -> Unit)): ImagePickFromDialog {
         this.onSelectListener = l
@@ -60,7 +60,7 @@ class ImagePickFromDialog(private val context: Context) : Dialog(context, R.styl
                 dismiss()
                 onSelectListener?.invoke(0)
             }
-            contentView.tv_light_camera -> {//相机拍照
+            contentView.tv_light_camera -> {//相机photo
                 dismiss()
                 onSelectListener?.invoke(1)
             }

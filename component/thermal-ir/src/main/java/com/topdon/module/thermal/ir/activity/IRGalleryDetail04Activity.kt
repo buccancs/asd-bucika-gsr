@@ -69,7 +69,7 @@ class IRGalleryDetail04Activity : BaseActivity() {
 
         title_view.setTitleText("${position + 1}/${dataList.size}")
 
-        cl_bottom.isVisible = isRemote //查看远端时底部才有3个按钮
+        cl_bottom.isVisible = isRemote //查看远端时bottom才有3个按钮
 
         if (!isRemote) {
             title_view.setRightDrawable(R.drawable.ic_toolbar_info_svg)

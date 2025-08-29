@@ -82,7 +82,7 @@ class IRCorrectionLiteFourActivity : BaseActivity() {
                     override fun onLastTimeFinish(num: Int) {
                         try {
                             if (!result){
-                                ToastUtils.showShort("标定保存失败，请重新标定")
+                                ToastUtils.showShort("calibration保存失败，请重新calibration")
                                 return
                             }
                             if (!this@IRCorrectionLiteFourActivity.isFinishing){

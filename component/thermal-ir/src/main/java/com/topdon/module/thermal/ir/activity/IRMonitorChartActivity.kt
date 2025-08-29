@@ -59,7 +59,7 @@ import java.math.RoundingMode
 @Route(path = RouterConfig.IR_MONITOR_CHART)
 class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
 
-    /** 默认数据流模式：图像+温度复合数据 */
+    /** 默认数据流mode：图像+温度复合数据 */
     protected var defaultDataFlowMode = CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT
 
     private var gainStatus = CommonParams.GainStatus.HIGH_GAIN
@@ -156,7 +156,7 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         if (!isrun) {
             configParam()
             temperatureView.postDelayed({
-                //初始配置,伪彩铁红
+                //初始配置,pseudo color铁红
                 try {
                     if (!isStop){
                         pseudoColorMode = 3
@@ -436,7 +436,7 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
             val config = ConfigRepository.readConfig(false)
             val disChar = (config.distance * 128).toInt() //距离(米)
             val emsChar = (config.radiation * 128).toInt() //发射率
-            XLog.w("设置TPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
+            XLog.w("settingsTPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
             val timeMillis = 250L
             delay(timeMillis)
             //发射率
@@ -507,7 +507,7 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
     }
 
     /**
-     * 绘制点线面
+     * 绘制point line area
      */
     private fun addTempLine() {
         temperatureView.visibility = View.VISIBLE

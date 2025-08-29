@@ -81,7 +81,7 @@ object IRImageUtil {
      * 锐化
      * @param sharpen [1,3,5]
      *
-     * kernel_size  锐化程度,设置是奇正数
+     * kernel_size  锐化程度,settings是奇正数
      */
     private fun showSharpen(imageView: ImageView, @FloatRange(from = 0.0, to = 2.55) sharpen: Double) {
         Log.i("123", "show sharpen: $sharpen")

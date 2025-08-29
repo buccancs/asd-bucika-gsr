@@ -1,23 +1,23 @@
 package com.topdon.menu.constant
 
 /**
- * 观测模式-菜单5-高低温点 菜单类型.
+ * Observation mode-menu5-high low temperature point menutype.
  *
  * Created by LCG on 2024/11/29.
  */
 enum class TempPointType {
     /**
-     * 高温点
+     * High temperature point
      */
     HIGH,
 
     /**
-     * 低温点
+     * Low temperature point
      */
     LOW,
 
     /**
-     * 删除
+     * Delete
      */
     DELETE,
 }

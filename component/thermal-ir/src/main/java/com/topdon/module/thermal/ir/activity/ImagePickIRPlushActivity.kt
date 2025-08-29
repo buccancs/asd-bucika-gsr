@@ -10,7 +10,7 @@ import com.topdon.module.thermal.ir.fragment.IRCorrectionFragment
 import com.topdon.module.thermal.ir.fragment.IRPlushFragment
 
 /**
- * des:双光的红外拍照
+ * des:dual light的红外photo
  * author: CaiSongL
  * date: 2024/8/24 18:10
  **/

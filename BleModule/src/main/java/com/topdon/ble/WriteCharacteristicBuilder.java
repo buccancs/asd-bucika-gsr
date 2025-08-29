@@ -31,7 +31,7 @@ public final class WriteCharacteristicBuilder extends RequestBuilder<WriteCharac
     }
 
     /**
-     * 设置此次请求的写入设置
+     * settings此次请求的写入settings
      */
     public WriteCharacteristicBuilder setWriteOptions(WriteOptions writeOptions) {
         this.writeOptions = writeOptions;

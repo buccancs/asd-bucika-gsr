@@ -54,7 +54,7 @@ class MenuTabAdapter(val context: Context) :
             "面",
             "添加",
             "全图",
-            "删除"
+            "delete"
         )
 
     //选框
@@ -81,7 +81,7 @@ class MenuTabAdapter(val context: Context) :
             R.drawable.ic_menu_thermal3010
         )
 
-    //设置
+    //settings
     private val fourthMenus =
         arrayListOf(
             R.drawable.ic_menu_thermal4001_svg,

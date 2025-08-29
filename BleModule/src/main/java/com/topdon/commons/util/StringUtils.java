@@ -23,7 +23,7 @@ public class StringUtils {
      * 补零
      *
      * @param src       原字符串
-     * @param targetLen 目标长度
+     * @param targetLen target长度
      * @param head      补前面还是后面
      */
     public static String fillZero(String src, int targetLen, boolean head) {

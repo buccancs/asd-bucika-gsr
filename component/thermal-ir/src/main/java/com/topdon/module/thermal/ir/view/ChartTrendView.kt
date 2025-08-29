@@ -45,7 +45,7 @@ class ChartTrendView : LineChart {
 
         val mv = MyMarkerView(context, R.layout.marker_lay)
         mv.chartView = this
-        marker = mv//设置点击坐标显示提示框
+        marker = mv//settings点击坐标显示提示框
 
         legend.form = Legend.LegendForm.CIRCLE
         legend.textColor = textColor
@@ -156,7 +156,7 @@ class ChartTrendView : LineChart {
         lineDataSet.circleRadius = 1f//坐标点半径
         lineDataSet.fillAlpha = 200
         lineDataSet.valueTextSize = 10f
-        lineDataSet.setDrawValues(false)//设置是否显示坐标值文本
+        lineDataSet.setDrawValues(false)//settings是否显示坐标值文本
 
         data = LineData(lineDataSet)
         invalidate()

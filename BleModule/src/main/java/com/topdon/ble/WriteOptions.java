@@ -55,7 +55,7 @@ public class WriteOptions {
     }
 
     /**
-     * 写入模式
+     * 写入mode
      */
     public int getWriteType() {
         return writeType;
@@ -105,7 +105,7 @@ public class WriteOptions {
         }
 
         /**
-         * 设置写入模式
+         * settings写入mode
          *
          * @param writeType {@link BluetoothGattCharacteristic#WRITE_TYPE_DEFAULT}
          *                  <br>{@link BluetoothGattCharacteristic#WRITE_TYPE_NO_RESPONSE}
@@ -121,7 +121,7 @@ public class WriteOptions {
         }
 
         /**
-         * 设置将MTU作为包大小，并且{@link #setPackageSize(int)}设置的值将被忽略。真实数据包大小 = mtu - 3
+         * settings将MTU作为包大小，并且{@link #setPackageSize(int)}settings的值将被忽略。真实数据包大小 = mtu - 3
          */
         public Builder setMtuAsPackageSize() {
             useMtuAsPackageSize = true;

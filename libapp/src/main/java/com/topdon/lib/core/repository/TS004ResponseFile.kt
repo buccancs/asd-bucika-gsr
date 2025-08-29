@@ -24,9 +24,9 @@ data class TS004Response<T>(
 }
 
 /**
- * TS004 接口请求返回：获取伪彩样式
+ * TS004 接口请求返回：获取pseudo color样式
  * @param enable
- * @param mode 当前伪彩样式
+ * @param mode 当前pseudo color样式
  */
 data class PseudoColorBean(
     val enable: Boolean?,
@@ -83,7 +83,7 @@ data class VersionBean(
 /**
  * TS004 接口请求返回：设备信息
  * @param code 激活码（又叫注册码）
- * @param model 应该是设备类型名称，如 TS004
+ * @param model 应该是设备type名称，如 TS004
  * @param sn sn
  * @param uuid 不知道啥
  */
@@ -116,13 +116,13 @@ data class FilePageBean(
 
 /**
  * TS004 接口请求返回：文件信息
- * @param type 0-照片 1-录像
- * @param duration 录像时长，单位秒
+ * @param type 0-照片 1-video
+ * @param duration video时长，单位秒
  * @param size 文件大小，单位 byte
  * @param name 文件名称，如 1970_01_02075103.mp4
- * @param thumb 录像缩略图
+ * @param thumb video缩略图
  * @param time 拍摄时 Unix 时间戳，单位秒
- * @param timezone 通过时区设置接口设置的时区
+ * @param timezone 通过时区settings接口settings的时区
  */
 data class FileBean(
     val id: Int,
@@ -164,7 +164,7 @@ data class FreeSpaceBean(
 }
 
 /**
- * TS004 接口请求返回：获取录像状态
+ * TS004 接口请求返回：获取video状态
  * @param errCode 录制的错误代码， 0:无错误，1: 初始化错误，2: 电池电量低
  * @param path 当前录制的视频文件名
  * @param pts 当前录制的时间

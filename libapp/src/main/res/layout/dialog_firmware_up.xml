@@ -139,7 +139,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_restart_tips" />
 
-    <!-- 取消 -->
+    <!-- cancel -->
     <TextView
         android:id="@+id/tv_cancel"
         android:layout_width="0dp"

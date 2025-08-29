@@ -22,14 +22,14 @@ import java.util.Arrays
 /**
  * 帮助实现机芯初始化、添加回调等的的工具类.
  *
- * 设置以下回调以获取数据：
- * - [setFrameListener] 设置 YUV 数据变更回调
- * - [setTempListener] 设置温度数据变更回调
+ * settings以下回调以获取数据：
+ * - [setFrameListener] settings YUV 数据变更回调
+ * - [setTempListener] settings温度数据变更回调
  *
- * 设置码流回调设置完毕回调：
+ * settings码流回调settings完毕回调：
  * - [onReadyListener]
  *
- * 设置超时回调给海康擦屁股：
+ * settings超时回调给海康擦屁股：
  * - [onTimeoutListener]
  *
  * 核心方法为：
@@ -41,7 +41,7 @@ import java.util.Arrays
  * 或者如果是 [ComponentActivity] 的话，
  * 直接调用 [bind] 即可，省下调上述4个方法
  *
- * 剩下的就是诸如 对比度、旋转、镜像 之类的属性了
+ * 剩下的就是诸如 对比度、旋转、mirror 之类的属性了
  *
  * Created by LCG on 2024/11/19.
  */
@@ -130,7 +130,7 @@ object HikHelper {
             hasInit = true
         }
 
-        //设置日志路径
+        //settings日志路径
         HikCmdUtil.setLogPath(context.getExternalFilesDir("hkLog"))
 
         //登录
@@ -193,13 +193,13 @@ object HikHelper {
     }
 
     /**
-     * 设置整帧数据变更回调，注意，回调不在主线程！
+     * settings整帧数据变更回调，注意，回调不在主线程！
      */
     fun setFrameListener(listener : ((ByteArray, ByteArray) -> Unit)) {
         streamCallBack.onFrameListener = listener
     }
     /**
-     * 设置温度数据变更回调，注意，回调不在主线程！
+     * settings温度数据变更回调，注意，回调不在主线程！
      */
     fun setTempListener(listener : ((ByteArray) -> Unit)) {
         streamCallBack.onTempListener = listener
@@ -210,7 +210,7 @@ object HikHelper {
      */
     var onTimeoutListener: (() -> Unit)? = null
     /**
-     * 机芯命令不支持并发执行，该回调为开启码流回调结束，在此执行配置设置.
+     * 机芯命令不支持并发执行，该回调为开启码流回调结束，在此执行配置settings.
      */
     var onReadyListener: (() -> Unit)? = null
 
@@ -286,7 +286,7 @@ object HikHelper {
     }
 
     /**
-     * 重置一些配置：开启细节增强、重置伪彩为白热、码流不叠加温度图像、横屏、不镜像.
+     * 重置一些配置：开启细节增强、重置pseudo color为白热、码流不叠加温度图像、横屏、不mirror.
      */
     suspend fun initConfig() = withContext(Dispatchers.IO) {
         HikCmdUtil.initConfig(userId)
@@ -307,7 +307,7 @@ object HikHelper {
     }
 
     /**
-     * 设置对比度，取值 `[0,100]`
+     * settings对比度，取值 `[0,100]`
      */
     suspend fun setContrast(value: Int) = withContext(Dispatchers.IO) {
         HikCmdUtil.setContrast(userId, value)
@@ -321,14 +321,14 @@ object HikHelper {
     }
 
     /**
-     * 设置镜像
+     * settingsmirror
      */
     suspend fun setMirror(rotateAngle: Int, isMirror: Boolean) = withContext(Dispatchers.IO) {
         HikCmdUtil.setMirror(userId, rotateAngle, isMirror)
     }
 
     /**
-     * 设置发射率
+     * settings发射率
      * @param emissivity 取值范围 `[1, 100]`
      */
     suspend fun setEmissivity(emissivity: Int) = withContext(Dispatchers.IO) {
@@ -336,7 +336,7 @@ object HikHelper {
     }
 
     /**
-     * 设置测温距离，单位 cm
+     * settings测温距离，单位 cm
      * @param distance 取值范围 `[30, 200]`
      */
     suspend fun setDistance(distance: Int) = withContext(Dispatchers.IO) {
@@ -344,7 +344,7 @@ object HikHelper {
     }
 
     /**
-     * 设置测温 自动(-1)/常温(1)/高温(0) 档位.
+     * settings测温 自动(-1)/常温(1)/高温(0) 档位.
      */
     suspend fun setTemperatureMode(@IntRange(-1, 1) mode: Int) = withContext(Dispatchers.IO) {
         HikCmdUtil.setTemperatureMode(userId, mode)

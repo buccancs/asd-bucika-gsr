@@ -14,7 +14,7 @@ import com.topdon.lib.ui.R
 import com.topdon.lib.ui.bean.ColorBean
 import kotlinx.android.synthetic.main.ui_item_menu_second_view.view.*
 
-@Deprecated("旧的高低温源菜单，已重构过了")
+@Deprecated("旧的high low temperature sourcemenu，已重构过了")
 class MenuAIAdapter (val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     /**
      * 当前选中的选项 code.
@@ -34,7 +34,7 @@ class MenuAIAdapter (val context: Context) : RecyclerView.Adapter<RecyclerView.V
         }
 
     /**
-     * 观测模式-菜单2-高低温源 点击事件监听，单选。
+     * Observation mode-menu2-high low temperature source 点击事件监听，单选。
      */
     var onTempSourceListener: ((code: Int) -> Unit)? = null
 

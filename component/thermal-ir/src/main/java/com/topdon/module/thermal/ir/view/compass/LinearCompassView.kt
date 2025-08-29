@@ -155,7 +155,7 @@ class LinearCompassView : View {
         canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(), paint)
     }
 
-    //绘制角度
+    //绘制angle
     private fun drawAzimuthArrow() {
         if (!showAzimuthArrow) {
             return
@@ -219,7 +219,7 @@ class LinearCompassView : View {
                 else -> canvas.drawLine(x, lineHeight, x, bottomHeight, shortLinePaint)
             }
 
-            //绘制底部方位文本
+            //绘制bottom方位文本
             if (it % 45 == 0) {
                 val coord = getPositionText(it)
                 canvas.drawText(coord, realX(coord, x,positionPaint), realY(coord, height - 2f,positionPaint), positionPaint)

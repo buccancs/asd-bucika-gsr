@@ -55,7 +55,7 @@ object DeviceConfig {
 //    const val SKU = "TDBT006A11"
 //    const val SN = "BT006AAG100001"
 
-    // 横屏 TC003校对默认角度0 默认竖屏false 初始化设置initDataIR()
+    // 横屏 TC003校对默认angle0 默认竖屏false 初始化settingsinitDataIR()
     const val ROTATE_ANGLE = 0
     const val IS_PORTRAIT = false
 

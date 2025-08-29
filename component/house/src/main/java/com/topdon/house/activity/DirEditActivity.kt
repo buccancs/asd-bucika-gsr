@@ -116,14 +116,14 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
                     }
                 }
             }
-            view_select_all -> {//全选、取消全选
+            view_select_all -> {//全选、cancel全选
                 adapter.isSelectAll = !adapter.isSelectAll
             }
             view_copy -> {//复制
                 adapter.copySelect()
                 TToast.shortToast(this@DirEditActivity, R.string.ts004_copy_success)
             }
-            view_del -> {//删除
+            view_del -> {//delete
                 TipDialog.Builder(this)
                     .setTitleMessage(getString(R.string.tips_del_item_title))
                     .setMessage(R.string.tips_del_item_content)
@@ -216,7 +216,7 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
                     for (dir in dataList) {
                         dir.hasSelect = true
                     }
-                } else {//全选->取消全选
+                } else {//全选->cancel全选
                     selectCount = 0
                     for (dir in dataList) {
                         dir.hasSelect = false
@@ -227,7 +227,7 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
             }
 
         /**
-         * 一个 item 选中或取消选中事件监听.
+         * 一个 item 选中或cancel选中事件监听.
          */
         var onSelectChangeListener: ((selectSize: Int) -> Unit)? = null
 
@@ -237,7 +237,7 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
         }
 
         /**
-         * 删除选中的目录.
+         * delete选中的目录.
          */
         fun delSelect() {
             selectCount = 0

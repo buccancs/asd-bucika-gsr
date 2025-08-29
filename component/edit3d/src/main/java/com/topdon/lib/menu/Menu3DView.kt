@@ -10,24 +10,24 @@ import com.topdon.lib.core.utils.ScreenUtil
 import kotlinx.android.synthetic.main.view_menu_3d.view.*
 
 /**
- * 3D 编辑的菜单.
+ * 3D 编辑的menu.
  */
 class Menu3DView : ConstraintLayout, View.OnClickListener {
 
     /**
-     * 视觉(0-3D、1-俯视、2-左视、3-右视、4-正视) 二级菜单切换事件监听.
+     * 视觉(0-3D、1-俯视、2-左视、3-右视、4-正视) 二级menu切换事件监听.
      */
     var onVisualClickListener: ((position: Int) -> Unit)? = null
     /**
-     * 标定(0-自定义、1-高温、2-低温、3-等温、4-删除) 二级菜单切换事件监听.
+     * calibration(0-自定义、1-高温、2-低温、3-等温、4-delete) 二级menu切换事件监听.
      */
     var onMarkClickListener: ((position: Int) -> Unit)? = null
     /**
-     * 伪彩(0-铁红、1-黑红、2-自然、3-岩浆、4-辉金) 二级菜单切换事件监听.
+     * pseudo color(0-铁红、1-黑红、2-自然、3-岩浆、4-辉金) 二级menu切换事件监听.
      */
     var onPseudoClickListener: ((position: Int) -> Unit)? = null
     /**
-     * 模式(0-点、1-线、2-面) 二级菜单切换事件监听.
+     * mode(0-点、1-线、2-面) 二级menu切换事件监听.
      */
     var onModeClickListener: ((position: Int) -> Unit)? = null
 
@@ -36,24 +36,24 @@ class Menu3DView : ConstraintLayout, View.OnClickListener {
 
 
     /**
-     * 当前选中的一级菜单 index.
+     * 当前选中的一级menu index.
      */
     private var selectIndex = -1
 
     /**
-     * 视觉(3D、俯视、左视、右视、正视) 二级菜单所用 Adapter.
+     * 视觉(3D、俯视、左视、右视、正视) 二级menuused for Adapter.
      */
     private val visualAdapter: MenuAdapter
     /**
-     * 标定(自定义、高温、低温、等温、删除) 二级菜单所用 Adapter.
+     * calibration(自定义、高温、低温、等温、delete) 二级menuused for Adapter.
      */
     private val markAdapter: MenuAdapter
     /**
-     * 伪彩(铁红、黑红、自然、岩浆、辉金) 二级菜单所用 Adapter.
+     * pseudo color(铁红、黑红、自然、岩浆、辉金) 二级menuused for Adapter.
      */
     private val pseudoAdapter: MenuAdapter
     /**
-     * 模式(点、线、面）二级菜单所用 Adapter.
+     * mode(点、线、面）二级menuused for Adapter.
      */
     private val modeAdapter: MenuAdapter
 

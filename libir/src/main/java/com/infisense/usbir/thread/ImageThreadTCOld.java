@@ -156,7 +156,7 @@
 //
 //            // imagerTemp2二次处理 (温度旋转后数据)
 //            if (max != Float.MAX_VALUE || min != Float.MIN_VALUE ) {
-//                // 当不设高温，只设置低温时
+//                // 当不设高温，只settings低温时
 //                if (max == -273) {
 //                    // 替换颜色的方法里最高温不能低于最低温
 //                    max = 1000000;

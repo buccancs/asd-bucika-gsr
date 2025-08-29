@@ -33,12 +33,12 @@ class GalleryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val dataList: ArrayList<GalleryBean> = ArrayList()
 
     /**
-     * 编辑模式下，当前选中的 position 列表.
+     * 编辑mode下，当前选中的 position 列表.
      */
     val selectList: ArrayList<Int> = ArrayList()
 
     /**
-     * 是否为 TS004 远端模式，处于该模式会有下载图标.
+     * 是否为 TS004 远端mode，处于该mode会有下载图标.
      */
     var isTS004Remote = false
         set(value) {
@@ -49,7 +49,7 @@ class GalleryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
 
     /**
-     * 当前是否处于编辑模式.
+     * 当前是否处于编辑mode.
      */
     var isEditMode = false
         set(value) {
@@ -65,7 +65,7 @@ class GalleryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     /**
-     * 非编辑模式下 item 长按进入编辑模式事件监听.
+     * 非编辑mode下 item 长按进入编辑mode事件监听.
      */
     var onLongEditListener: (() -> Unit)? = null
     /**
@@ -74,7 +74,7 @@ class GalleryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
      */
     var selectCallback: ((data: ArrayList<Int>) -> Unit)? = null
     /**
-     * 非编辑模式时，item 点击事件监听.
+     * 非编辑mode时，item 点击事件监听.
      */
     var itemClickCallback: ((position: Int) -> Unit)? = null
 

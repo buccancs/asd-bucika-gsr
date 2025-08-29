@@ -37,12 +37,12 @@ class IRThermalHikFragment : BaseBindingFragment<FragmentIrThermalHikBinding>() 
                 .create().show()
         }
         HikHelper.onReadyListener = {
-            //热成像机芯相关参数初始化
+            //thermal imaging机芯相关参数初始化
             lifecycleScope.launch {
                 //自动快门强制打开；
                 //对比度、锐度强制使用默认值；
-                //房屋检测时伪彩跟随设置，温度监控、锅盖标定伪彩强制使用铁红
-                //高低温档由于历史遗留，TC001那些都是没有重置的，这里保持一致，也不去重置
+                //房屋检测时pseudo color跟随settings，温度监控、锅盖calibrationpseudo color强制使用铁红
+                //high low temperature level由于历史遗留，TC001那些都是没有重置的，这里保持一致，也不去重置
 
                 HikHelper.initConfig()
                 HikHelper.setAutoShutter(true)
@@ -56,7 +56,7 @@ class IRThermalHikFragment : BaseBindingFragment<FragmentIrThermalHikBinding>() 
         }
 
         val saveSetBean = SaveSettingBean()
-        binding.hikSurfaceView.setPseudoCode(saveSetBean.pseudoColorMode) //图片拾取伪彩跟随保存设置开关
+        binding.hikSurfaceView.setPseudoCode(saveSetBean.pseudoColorMode) //图片拾取pseudo color跟随保存settings开关
     }
 
     override fun onResume() {

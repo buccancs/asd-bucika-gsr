@@ -14,9 +14,9 @@ import com.blankj.utilcode.util.SizeUtils
 import com.topdon.menu.R
 
 /**
- * 测温模式-菜单3-伪彩/观测模式-菜单4-伪彩 其中一个伪彩块.
+ * Temperature measurement mode-menu3-pseudo color/Observation mode-menu4-pseudo color 其中一个pseudo color块.
  *
- * 这个 View 仅在菜单-伪彩中使用，太过定制化不能通用，故而里面很多尺寸、比例直接写死。
+ * 这个 View 仅在menu-pseudo color中使用，太过定制化不能通用，故而里面很多尺寸、比例直接写死。
  *
  * 仅提供一个方法 [refreshColor] 用于刷新 UI.
  *
@@ -24,11 +24,11 @@ import com.topdon.menu.R
  */
 class ColorView : View {
     /**
-     * 伪彩渐变颜色值数组.
+     * pseudo color渐变颜色值数组.
      */
     var colors: IntArray = intArrayOf(0xfffbda00.toInt(), 0xffea0e0e.toInt(), 0xff6907af.toInt())
     /**
-     * 伪彩渐变颜色对应的位置数组.
+     * pseudo color渐变颜色对应的位置数组.
      */
     var positions: FloatArray = floatArrayOf(0f, 0.5f, 1f)
 
@@ -44,7 +44,7 @@ class ColorView : View {
      */
     private var shaderSelectNot = LinearGradient(0f, 0f, 0f, 0f, colors, positions, Shader.TileMode.CLAMP)
     /**
-     * 选中时的底部三角形
+     * 选中时的bottom三角形
      */
     private val triangleDrawable: Drawable
 

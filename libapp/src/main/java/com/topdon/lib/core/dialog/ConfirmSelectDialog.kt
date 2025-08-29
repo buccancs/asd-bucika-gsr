@@ -13,7 +13,7 @@ import com.topdon.lib.core.utils.ScreenUtil
 import kotlinx.android.synthetic.main.dialog_confirm_select.view.*
 
 /**
- * TS004 远端图库删除提示弹框.
+ * TS004 远端图库delete提示弹框.
  *
  * Created by LCG on 2024/2/29.
  */
@@ -48,20 +48,20 @@ class ConfirmSelectDialog(context: Context) : Dialog(context, R.style.InfoDialog
     }
 
     /**
-     * 是否显示取消按钮，默认显示且默认文字为“取消”.
+     * 是否显示cancel按钮，默认显示且默认文字为“cancel”.
      */
     fun setShowCancel(isShowCancel: Boolean) {
         rootView.tv_cancel.isVisible = isShowCancel
     }
     /**
-     * 设置取消按钮文字，默认为“取消”.
+     * settingscancel按钮文字，默认为“cancel”.
      */
     fun setCancelText(@StringRes cancelRes: Int) {
         rootView.tv_cancel.setText(cancelRes)
     }
 
     /**
-     * 设置确认按钮文字，默认为“删除"
+     * settings确认按钮文字，默认为“delete"
      */
     fun setConfirmText(@StringRes confirmRes: Int) {
         rootView.tv_confirm.setText(confirmRes)
@@ -93,7 +93,7 @@ class ConfirmSelectDialog(context: Context) : Dialog(context, R.style.InfoDialog
             rootView.rl_message -> {//选中状态
                 rootView.iv_select.isSelected = !rootView.iv_select.isSelected
             }
-            rootView.tv_cancel -> {//取消
+            rootView.tv_cancel -> {//cancel
                 dismiss()
             }
             rootView.tv_confirm -> {//确认

@@ -11,7 +11,7 @@
     <string name="clause_msg_key1">用戶協議</string>
     <string name="clause_msg_key2">隱私策略</string>
     <string name="setting_version">版本</string>
-    <string name="app_cancel">取消</string>
+    <string name="app_cancel">cancel</string>
     <string name="person_change_password">修改密碼</string>
     <string name="app_confirm">確定</string>
     <string name="copyright_statement">版權聲明</string>
@@ -62,9 +62,9 @@
     <string name="person_headshot">頭像</string>
     <string name="person_log_out">登出</string>
     <string name="person_headshot_change">修改頭像</string>
-    <string name="person_headshot_camera">拍照</string>
+    <string name="person_headshot_camera">photo</string>
     <string name="person_headshot_phone">從相簿獲取</string>
-    <string name="person_headshot_no_camera">您的裝置不支持拍照</string>
+    <string name="person_headshot_no_camera">您的裝置不支持photo</string>
     <string name="person_info">個人資訊</string>
     <string name="person_old_password">輸入舊密碼</string>
     <string name="person_new_password">輸入新密碼</string>
@@ -104,7 +104,7 @@
     <string name="http_code_else">請求異常</string>
     <string name="app_connect">已連接</string>
     <string name="app_no_connect">未連接</string>
-    <string name="thermal_enhance">圖像擴增模式</string>
+    <string name="thermal_enhance">圖像擴增mode</string>
     <string name="app_question">FAQ</string>
     <string name="question_agree">已解決</string>
     <string name="question_disagree">未解決</string>
@@ -144,13 +144,13 @@
     <string name="monitor_query_log">查看記錄</string>
     <string name="temperature_limit_upper">溫度上限</string>
     <string name="temperature_limit_lower">溫度下限</string>
-    <string name="thermal_default_model">內定模式</string>
-    <string name="thermal_custom_mode">自訂模式</string>
+    <string name="thermal_default_model">內定mode</string>
+    <string name="thermal_custom_mode">自訂mode</string>
     <string name="thermal_model_tip">附：常用輻射率表</string>
     <string name="thermal_config_environment">環境溫度</string>
     <string name="thermal_config_distance">測溫距離</string>
     <string name="thermal_config_radiation">發射率</string>
-    <string name="tip_myself_model">是否新增一個"自訂模式"?</string>
+    <string name="tip_myself_model">是否新增一個"自訂mode"?</string>
     <string name="tip_config_delete">是否刪除%s</string>
     <string name="monitor_second">秒</string>
     <string name="monitor_minute">分</string>
@@ -208,7 +208,7 @@
     <string name="color_p9">彩虹4</string>
     <string name="color_p10">彩虹5</string>
     <string name="color_p11">黑熱</string>
-    <string name="config_add_tip">最多可增加10個模式</string>
+    <string name="config_add_tip">最多可增加10個mode</string>
     <string name="tip_otg">連接手機後如果沒有檢測到設備，請在手機的系統設置中搜索“OTG”並啟動。</string>
     <string name="tip_otg_no_show">不再提示</string>
     <string name="tip_target_sdk">當前手機系統無法連接，可嘗試更新兼容版本</string>
@@ -240,14 +240,14 @@
 
 
     <!-- 2.00版本 -->
-    <string name="app_lapsePhotography">延時拍照</string>
+    <string name="app_lapsePhotography">延時photo</string>
     <string name="app_Manual_Shutter">手動快門</string>
     <string name="app_record_sound">錄製聲音</string>
     <string name="search_learn_more">更多</string>
-    <string name="app_auto_photo">自動連續拍照</string>
+    <string name="app_auto_photo">自動連續photo</string>
     <string name="app_watemarking">浮水印</string>
-    <string name="app_pictures_photo">連續拍照間隔 (s)</string>
-    <string name="app_photo_number">連續拍照數量</string>
+    <string name="app_pictures_photo">連續photo間隔 (s)</string>
+    <string name="app_photo_number">連續photo數量</string>
     <string name="iOS_infrared">紅外</string>
     <string name="iOS_merge">雙光</string>
     <string name="ios_zoomIn">紅外放大</string>
@@ -256,11 +256,11 @@
     <string name="report_head_address">地址</string>
     <string name="date_time">日期和時間</string>
     <string name="get_address">獲取地址</string>
-    <string name="save_setting_model">保存設定模式</string>
-    <string name="save_setting_tips">該功能打開後，會保存你如下設定的參數：自動快門、拍攝模式、偽彩、圖像模式、偽彩條開關</string>
+    <string name="save_setting_model">保存設定mode</string>
+    <string name="save_setting_tips">該功能打開後，會保存你如下設定的參數：自動快門、拍攝mode、偽彩、圖像mode、偽彩條開關</string>
     <string name="get_current_address">正在獲取當前地址</string>
     <string name="get_Location_failed">位置獲取失敗</string>
-    <string name="off_photography">關閉延時拍照</string>
+    <string name="off_photography">關閉延時photo</string>
 
     <string name="seconds_dalay_3">延時3秒</string>
     <string name="seconds_dalay_6">延時6秒</string>
@@ -328,7 +328,7 @@
     <string name="temp_export_failed">導出失敗</string>
     <string name="temp_export_path">導出路徑</string>
     <string name="temp_thermal_export">導出</string>
-    <string name="album_report_preview_port">請先切換至豎屏模式</string>
+    <string name="album_report_preview_port">請先切換至豎屏mode</string>
     <string name="temp_report_no_more">已顯示全部內容</string>
     <string name="temp_alarm_mark_type">標記類型</string>
     <string name="temp_alarm_mark_stroke">描邊</string>
@@ -338,7 +338,7 @@
     <string name="user_center">用戶中心</string>
     <string name="album_report_exit_tips">是否退出生成報告？</string>
     <string name="album_report_on_edit">該圖像缺少溫度數據，不支持編輯。</string>
-    <string name="tips_two_light_not_video">雙光模式下暫不支持錄製視頻</string>
+    <string name="tips_two_light_not_video">雙光mode下暫不支持錄製視頻</string>
     <string name="start_fail_and_restart">啟動失敗！ 請退出APP重新打開</string>
     <string name="app_Low_temperature">低温</string>
 
@@ -347,14 +347,14 @@
     <string name="album_menu_3d">3D編輯</string>
     <string name="album_menu_excel">Excel</string>
     <string name="album_excel_tips">導出為 Excel 預計需要2分鐘，是否繼續？</string>
-    <string name="title_color_mode">顏色模式</string>
+    <string name="title_color_mode">顏色mode</string>
     <string name="pseudo_dynamic_rendering_title">動態渲染</string>
-    <string name="pseudo_dynamic_rendering_tips">默認該模式，顏色隨著拍攝目標的溫度變化而變化。</string>
+    <string name="pseudo_dynamic_rendering_tips">默認該mode，顏色隨著拍攝目標的溫度變化而變化。</string>
     <string name="pseudo_custom_title">自定義</string>
     <string name="pseudo_custom_tips">溫度值的顏色由用戶自定義。</string>
     <string name="pseudo_set_tips1">1、請設置自定義溫度區間。</string>
     <string name="pseudo_set_tips2">2、請設置自定義顏色。</string>
-    <string name="pseudo_set_tips3">3、若畫面溫度超出設置數據的範圍，使用哪種顏色模式？</string>
+    <string name="pseudo_set_tips3">3、若畫面溫度超出設置數據的範圍，使用哪種顏色mode？</string>
     <string name="pseudo_recommend">推薦</string>
     <string name="pseudo_type_black_red">黑紅</string>
     <string name="pseudo_type_nature">自然</string>
@@ -372,17 +372,17 @@
     <string name="stop_correction">停止校正</string>
     <string name="correction_complete">校正完成</string>
     <string name="correction_fail">校正失敗</string>
-    <string name="tips_cancel_correction">是否取消校正</string>
-    <string name="tip_temper_fasecolor">當前處於自定義模式下,請切換動態渲染模式</string>
+    <string name="tips_cancel_correction">是否cancel校正</string>
+    <string name="tip_temper_fasecolor">當前處於自定義mode下,請切換動態渲染mode</string>
     <string name="tip_temp_min_point1">最高最低溫差值不能小於0.1</string>
     <string name="tip_album_temp_exportfile">是否導出excel溫度數據文件？</string>
-    <string name="tip_change_pseudo_mode">是否切回動態渲染模式？</string>
+    <string name="tip_change_pseudo_mode">是否切回動態渲染mode？</string>
 
     <string name="color_p8_ios">輝金</string>
 
     <string name="menu_3d_visual">視角</string>
     <string name="menu_3d_calibrate">校準</string>
-    <string name="model">模式</string>
+    <string name="model">mode</string>
     <string name="menu_3d_visual_3d">3D視角</string>
     <string name="menu_3d_visual_top">俯視</string>
     <string name="menu_3d_visual_left">左視</string>
@@ -399,10 +399,10 @@
     <string name="main_mine">我</string>
     <string name="main_monitor">監控</string>
     <string name="main_open_thermal">開啓熱影像</string>
-    <string name="tip_share_cancel">取消分享</string>
+    <string name="tip_share_cancel">cancel分享</string>
     <string name="user_advice_feedback">意見反應</string>
     <string name="mine_question">常見問題</string>
-    <string name="app_cancel_select_all">取消全選</string>
+    <string name="app_cancel_select_all">cancel全選</string>
     <string name="func_picture">圖像</string>
     <string name="func_temper_select">溫度擋位</string>
     <string name="func_temper_ruler">等溫尺</string>
@@ -417,15 +417,15 @@
     <string name="main_tab_second_high_temperature_point">高溫點</string>
     <string name="main_tab_second_low_temperature_point">低溫點</string>
     <string name="main_tab_second_zoom">縮放</string>
-    <string name="main_tab_second_measure_mode">測量模式</string>
+    <string name="main_tab_second_measure_mode">測量mode</string>
     <string name="main_tab_second_target_color">標靶色彩</string>
     <string name="main_tab_second_target_help">幫助</string>
     <string name="main_tab_second_compass">指南針</string>
-    <string name="coordinate_mode">標定模式</string>
-    <string name="coordinate_tips">標定模式僅顯示圖像内的最高溫度點和最低溫度點，無法顯示溫度值。</string>
+    <string name="coordinate_mode">標定mode</string>
+    <string name="coordinate_tips">標定mode僅顯示圖像内的最高溫度點和最低溫度點，無法顯示溫度值。</string>
     <string name="tips_ai">AI識別</string>
     <string name="tips_ai_content">動態識別：本功能用來偵測圖像内進入的物體。使用時請保持畫面靜止。\n高溫源：識別圖像内的相對高溫區域。\n低溫源：識別圖像内的相對低溫區域。</string>
-    <string name="tips_observe_photo_content">觀測模式下，不支持溫度測試功能。\n拍攝的圖像無法進行二次編輯。</string>
+    <string name="tips_observe_photo_content">觀測mode下，不支持溫度測試功能。\n拍攝的圖像無法進行二次編輯。</string>
     <string name="setting_img_setting">圖像設定</string>
 
     <string name="func_test_distance">測距</string>
@@ -436,7 +436,7 @@
     <string name="ts004_device_disconnect">斷開連接</string>
     <string name="more_check_version">檢查更新</string>
     <string name="ts004_guide_text1">設備未連接</string>
-    <string name="ts004_guide_text2">1.長按模式切換鍵3秒。</string>
+    <string name="ts004_guide_text2">1.長按mode切換鍵3秒。</string>
     <string name="ts004_guide_text3">2.在内屏打開Wi-Fi開關。</string>
     <string name="ts004_guide_text4">連接</string>
     <string name="ts004_guide_text5">3.用手機連接設備Wi-Fi“%1$s”。（Wi-Fi名：TS004_XXXX；Wi-Fi密碼：12345678）</string>
@@ -501,8 +501,8 @@
 
     <string name="dual_light_correction">雙光校正</string>
     <string name="dual_light_correction_tips_1">由於兩個攝像頭的焦點不在同一條直綫上，因此不同距離的雙鏡頭畫面會有偏差導致無法對齊。\n透過本功能可單獨進行畫面的對齊。</string>
-    <string name="dual_light_correction_tips_2">1.將熱源（如手掌）放在畫面中約0.5米遠。\n2.點擊拍照。</string>
-    <string name="dual_light_correction_tips_3">1.拖動圖像，將兩個圖像進行對齊。\n2.滑動進度條，使角度重合。\n3.點擊確定鍵，完成校正。</string>
+    <string name="dual_light_correction_tips_2">1.將熱源（如手掌）放在畫面中約0.5米遠。\n2.點擊photo。</string>
+    <string name="dual_light_correction_tips_3">1.拖動圖像，將兩個圖像進行對齊。\n2.滑動進度條，使angle重合。\n3.點擊確定鍵，完成校正。</string>
 
     <string name="menu_thermal_visible_light">可見光</string>
     <string name="menu_thermal_imaging">紅外</string>
@@ -523,7 +523,7 @@
     <!--TS004-->
     <string name="ts004_connection_device">有線連接設備</string>
     <string name="ts004_auto_save">自動保存至手機</string>
-    <string name="ts004_save_tips">若啟用此功能，連接到APP進行拍照或錄像時，照片和視頻將自動保存至手機本地。</string>
+    <string name="ts004_save_tips">若啟用此功能，連接到APP進行photo或錄像時，照片和視頻將自動保存至手機本地。</string>
     <string name="ts004_disconnect_tips1">您可在手機上Wi-Fi 列表中斷開設備連接。</string>
     <string name="ts004_disconnect_tips2">1. 開啟手機Wi-Fi列表。</string>
     <string name="ts004_disconnect_tips3">2. 刪除TS004的Wi-Fi。</string>
@@ -551,10 +551,10 @@
     <string name="ts004_wlan_auth">連接手機時需要WLAN權限以便於設備和手機之間的通信。</string>
     <string name="ts004_wlan_tips">發現設備需啓用WLAN權限。是否授權？</string>
     <string name="ts004_download_continue">繼續</string>
-    <string name="ts004_download_cancel">取消</string>
+    <string name="ts004_download_cancel">cancel</string>
     <string name="ts004_download_tips">下載失敗。是否繼續下載？</string>
     <string name="ts004_install_continue">繼續</string>
-    <string name="ts004_install_cancel">取消</string>
+    <string name="ts004_install_cancel">cancel</string>
     <string name="ts004_install_tips">安裝失敗。是否繼續安裝？</string>
     <string name="ts004_download_complete">下載完成。</string>
     <string name="ts004_download_doing">下載中……</string>
@@ -639,7 +639,7 @@
     <string name="tc007_connect_tips2">2.打開手機的藍牙和WiFi</string>
     <string name="tc007_connect_tips3">3.進入APP掃描頁</string>
     <string name="tc007_connect_tips4">4.如果一直無法連接成功，請重啓並嘗試再次連接</string>
-    <string name="pseudo_color_switch">切換模式將會回到默認偽彩，確認切換嗎</string>
+    <string name="pseudo_color_switch">切換mode將會回到默認偽彩，確認切換嗎</string>
     <string name="firmware_up_success">固件升級成功，是否返回首頁？</string>
     <string name="ts004_network">無線數據</string>
     <string name="ts004_network_open">連接設備需要開啟無線數據，是否開啟？</string>
@@ -837,9 +837,9 @@
     <string name="house_state_replace">更換</string>
     <string name="common_phrases">常用語</string>
     <string name="device_disconnect">設備未連接，請連接設備</string>
-    <string name="upload_img_limit">最大支持選擇4張圖片，請删除圖片後重試</string>
-    <string name="tips_del_item_title">删除項目？</string>
-    <string name="tips_del_item_content">確定删除選中的項目？</string>
+    <string name="upload_img_limit">最大支持選擇4張圖片，請delete圖片後重試</string>
+    <string name="tips_del_item_title">delete項目？</string>
+    <string name="tips_del_item_content">確定delete選中的項目？</string>
     <string name="report_remark">備註</string>
     <string name="pdf_saved_tips">報告已保存</string>
     <string name="pdf_sign_tips">請完成簽名後保存報告</string>

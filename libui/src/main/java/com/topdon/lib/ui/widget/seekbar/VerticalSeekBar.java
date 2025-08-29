@@ -138,7 +138,7 @@ public class VerticalSeekBar extends SeekBar {
                 canvas.drawPath(indicatorArrowPath, paint);
                 indicatorRect.bottom -= getIndicatorArrowSize();
                 indicatorRect.top -= getIndicatorArrowSize();
-                Log.w("伪彩条刷新","///");
+                Log.w("pseudo color条刷新","///");
             }
 
             int defaultPaddingOffset = Utils.dp2px(getContext(), 1);
@@ -191,7 +191,7 @@ public class VerticalSeekBar extends SeekBar {
                 canvas.rotate(-degrees, rotateX, rotateY);
             }
         }catch (Exception e){
-            Log.e("伪彩条渲染失败",e.getMessage());
+            Log.e("pseudo color条渲染失败",e.getMessage());
         }
     }
 

@@ -59,7 +59,7 @@ class IRMonitorCaptureHik2Activity : BaseBindingActivity<ActivityIrMonitorCaptur
                 }
                 .create().show()
         }
-        //热成像机芯在上一步已经初始化过了，这里不用再搞一遍
+        //thermal imaging机芯在上一步已经初始化过了，这里不用再搞一遍
 
         binding.titleView.setRightClickListener {
             finish()

@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 取消 -->
+    <!-- cancel -->
     <TextView
         android:id="@+id/tv_cancel"
         android:layout_width="0dp"
@@ -174,7 +174,7 @@
                     app:layout_constraintBottom_toBottomOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- 自定义设置内容 -->
+            <!-- 自定义settings内容 -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_custom_content"
                 android:layout_width="0dp"
@@ -362,7 +362,7 @@
                         android:contentDescription="@null"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                    <!-- 删除 -->
+                    <!-- delete -->
                     <ImageView
                         android:id="@+id/iv_custom_del"
                         android:layout_width="44dp"

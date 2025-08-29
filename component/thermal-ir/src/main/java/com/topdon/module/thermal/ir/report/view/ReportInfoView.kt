@@ -12,7 +12,7 @@ import com.topdon.module.thermal.ir.report.bean.ReportInfoBean
 import kotlinx.android.synthetic.main.view_report_info.view.*
 
 /**
- * 报告信息 - 预览 View.
+ * report信息 - 预览 View.
  */
 class ReportInfoView: LinearLayout {
 
@@ -25,7 +25,7 @@ class ReportInfoView: LinearLayout {
     }
 
     /**
-     * 根据指定的报告信息刷新对应 View.
+     * 根据指定的report信息刷新对应 View.
      */
     fun refreshInfo(reportInfoBean: ReportInfoBean?) {
         tv_report_name.text = reportInfoBean?.report_name

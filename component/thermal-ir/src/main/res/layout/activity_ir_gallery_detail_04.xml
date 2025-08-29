@@ -73,7 +73,7 @@
                 app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- 删除 -->
+        <!-- delete -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_delete"
             android:layout_width="0dp"

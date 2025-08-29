@@ -71,7 +71,7 @@ class ChartLogView : LineChart {
             setNoDataTextColor(ContextCompat.getColor(context, R.color.chart_text))
             val mv = MyMarkerView(context, R.layout.marker_lay)
             mv.chartView = this
-            marker = mv//设置点击坐标显示提示框
+            marker = mv//settings点击坐标显示提示框
             val data = LineData()
             data.setValueTextColor(textColor)
             this.data = data
@@ -99,7 +99,7 @@ class ChartLogView : LineChart {
             leftAxis.gridColor = axisChartColors //y轴网格颜色
             leftAxis.gridLineWidth = 1.5f
             leftAxis.setLabelCount(6, true)
-            leftAxis.valueFormatter = YValueFormatter()//设置小数点一位
+            leftAxis.valueFormatter = YValueFormatter()//settings小数点一位
             leftAxis.textSize = 8f
 
             this.axisRight.isEnabled = false
@@ -214,8 +214,8 @@ class ChartLogView : LineChart {
                     lineData.notifyDataChanged()
                     notifyDataSetChanged()
                     moveViewToX(xChartMin)
-                    setVisibleXRangeMinimum(ChartTools.getMinimum(type = type) / 2)//设置显示X轴区间大小
-                    setVisibleXRangeMaximum(ChartTools.getMaximum(type = type))//设置显示X轴区间大小
+                    setVisibleXRangeMinimum(ChartTools.getMinimum(type = type) / 2)//settings显示X轴区间大小
+                    setVisibleXRangeMaximum(ChartTools.getMaximum(type = type))//settings显示X轴区间大小
                     zoom(1f, 1f, xChartMin, 0f)//默认无缩放，全部显示
                     ChartTools.setX(this@ChartLogView, type)
 //                    ChartTools.setY(this@ChartTempView)
@@ -249,7 +249,7 @@ class ChartLogView : LineChart {
         val set = LineDataSet(null, label)
         set.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
         set.setDrawFilled(false)
-        set.fillDrawable = ContextCompat.getDrawable(context, bgChartColors[index])//设置填充颜色渐变
+        set.fillDrawable = ContextCompat.getDrawable(context, bgChartColors[index])//settings填充颜色渐变
         set.axisDependency = YAxis.AxisDependency.LEFT
         set.color = ContextCompat.getColor(context, lineChartColors[index])//曲线颜色
         set.circleHoleColor = ContextCompat.getColor(context, linePointColors[index])//坐标圆心颜色
@@ -259,7 +259,7 @@ class ChartLogView : LineChart {
         set.circleRadius = 1f//坐标点半径
         set.fillAlpha = 200
         set.valueTextSize = 10f
-        set.setDrawValues(false)//设置是否显示坐标值文本
+        set.setDrawValues(false)//settings是否显示坐标值文本
         return set
     }
 

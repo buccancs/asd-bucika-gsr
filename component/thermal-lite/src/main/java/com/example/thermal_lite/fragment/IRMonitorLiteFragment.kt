@@ -145,7 +145,7 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
                 IRTool.setAutoShutter(true)
                 //初始化对比度
                 IRTool.basicGlobalContrastLevelSet((50).toInt())
-                //镜像
+                //mirror
                 IRTool.basicMirrorAndFlipStatusSet(false)
                 //初始化锐度
                 IRTool.basicImageDetailEnhanceLevelSet(50)
@@ -173,8 +173,8 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
                 }
                 // 开始任务
                 shutterHandler?.postDelayed(shutterRunnable!!,300)
-                //增益模式初始化
-                delay(2000)//sdk的高低增益需要延迟2秒后才能设置成功
+                //增益mode初始化
+                delay(2000)//sdk的高低增益需要延迟2秒后才能settings成功
                 withContext(Dispatchers.IO){
                     IRTool.basicGainSet(SaveSettingUtil.temperatureMode)
                 }
@@ -421,7 +421,7 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
     }
 
     /**
-     * 绘制点线面
+     * 绘制point line area
      */
     fun addTempLine(selectBean: SelectPositionBean) {
         temperatureView.visibility = View.VISIBLE

@@ -63,8 +63,8 @@ import java.io.InputStream
 
 
 /**
- * 双光的初始化
- * 双光的
+ * dual light的初始化
+ * dual light的
  */
 abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTempListener,
     IIRFrameCallback {
@@ -79,7 +79,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     protected var dualView: DualViewWithExternalCameraCommonApi? = null
 
     /**
-     * 伪彩颜色模式，默认 IRONBOW_MODE(铁红)
+     * pseudo color颜色mode，默认 IRONBOW_MODE(铁红)
      */
     protected var pseudoColorModeDual = CommonParams.PseudoColorUsbDualType.IRONBOW_MODE
 
@@ -94,10 +94,10 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     private var hasStartPreview = false
     protected var ircmd: IRCMD? = null
 
-    //热成像设备sn,可作为唯一id，此sn并非艾睿烧录的，是内部烧录的
+    //thermal imaging设备sn,可作为唯一id，此sn并非艾睿烧录的，是内部烧录的
     protected var snStr = ""
 
-    /** 默认数据流模式：图像+温度复合数据 */
+    /** 默认数据流mode：图像+温度复合数据 */
     protected var defaultDataFlowMode = CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT
     /**
      * ir camera
@@ -244,7 +244,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     }
 
     /**
-     * 是否是双光设备
+     * 是否是dual light设备
      */
     abstract fun isDualIR() : Boolean
 
@@ -293,7 +293,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         val am = requireContext().assets
         var `is`: InputStream? = null
         try {
-            //加载伪彩，虽然用不上这个伪彩，但是sdk限制必须初始化一个才能正常出图
+            //加载pseudo color，虽然用不上这个pseudo color，但是sdk限制必须初始化一个才能正常出图
             psedocolor = Array(11) { ByteArray(0) }
             `is` = am.open("pseudocolor/White_Hot.bin")
             var lenth = `is`.available()
@@ -309,7 +309,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
                 CommonParams.PseudoColorUsbDualType.WHITE_HOT_MODE,
                 psedocolor!![0]
             )
-            // 这里可以设置初始化融合模式
+            // 这里可以settings初始化融合mode
             setFusion(mCurrentFusionType)
             `is`.close()
         } catch (e: IOException) {
@@ -419,7 +419,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
                     TAG,
                     "USBMonitorManager HANDLE_CONNECT"
                 )
-                // 避免冲突，需要延时
+                // 避免冲突，需要delay
                 /**
                  * 开可见光相机
                  * 需要确认好模组的pid和分辨率
@@ -476,7 +476,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         //
         getTemperatureDualView().setDualUVCCamera(dualView!!.getDualUVCCamera())
         initPseudocolor()
-        // 这里可以设置初始化融合模式
+        // 这里可以settings初始化融合mode
 //        setFusion(mCurrentFusionType)
 //        dualView!!.startPreview()
         dualView?.setHandler(mIrHandler)
@@ -546,7 +546,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
 //        popupImage.setIrcmd(ircmd)
 //        popupOthers.setIrcmd(ircmd)
 //        getTemperatureDualView().setIrcmd(ircmd)
-//        // 画面旋转设置
+//        // 画面旋转settings
 //        popupCalibration.setRotate(true)
 //        popupImage.setRotate(true)
     }
@@ -573,7 +573,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             val config = ConfigRepository.readConfig(false)
             val disChar = (config.distance * 128).toInt() //距离(米)
             val emsChar = (config.radiation * 128).toInt() //发射率
-            XLog.w("设置TPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
+            XLog.w("settingsTPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
             delay(timeMillis)
             //发射率
             /// Emissivity property. unit:1/128, range:1-128(0.01-1)
@@ -589,9 +589,9 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             )
             // 自动快门
             delay(timeMillis)
-            XLog.w("设置TPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
+            XLog.w("settingsTPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
             if (isFirst && isrun) {
-                //恢复镜像
+                //恢复mirror
                 ircmd?.setMirror(false)
                 // 自动快门
                 delay(timeMillis)
@@ -615,7 +615,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             } else {
                 ircmd?.updateOOCOrB(CommonParams.UpdateOOCOrBType.B_UPDATE)
             }
-            XLog.w("设置TPD_PROP DISTANCE2:${disChar}, EMS:${emsChar}}")
+            XLog.w("settingsTPD_PROP DISTANCE2:${disChar}, EMS:${emsChar}}")
         }
     }
 

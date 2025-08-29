@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 /**
- * 一张图片的点线面全图温度信息.
+ * 一张图片的point line area全图温度信息.
  */
 @Parcelize
 data class ImageTempBean(

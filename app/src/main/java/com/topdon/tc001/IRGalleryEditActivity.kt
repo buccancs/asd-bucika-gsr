@@ -81,7 +81,7 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
     private var isShowC: Boolean = false
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
@@ -200,7 +200,7 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
                 struct.customPseudoBean.minTemp = tempCorrect(tempResult.minTemperature)
                 edit_recycler_second.setPseudoColor(pseudocodeMode)
             }
-//        伪彩条默认处于打开状态
+//        pseudo color条默认处于打开状态
 //        color_bar_view.isVisible = struct.isShowPseudoBar
 //        adapter.enPseudoColorBar(struct.isShowPseudoBar)
 
@@ -312,14 +312,14 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
     }
 
     /**
-     * 一级菜单
+     * 一级menu
      */
     private fun initRecycler() {
         edit_recycler_first.onTabClickListener = {
             when (it) {
-                0 -> edit_recycler_second.selectPosition(1) //点线面
-                1 -> edit_recycler_second.selectPosition(3) //伪彩颜色
-                2 -> edit_recycler_second.selectPosition(4) //设置
+                0 -> edit_recycler_second.selectPosition(1) //point line area
+                1 -> edit_recycler_second.selectPosition(3) //pseudo color颜色
+                2 -> edit_recycler_second.selectPosition(4) //settings
             }
         }
         edit_recycler_first.onBarClickListener = {
@@ -372,7 +372,7 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
         temperature_seekbar.setProgress(leftValue, rightValue) //初始位置
     }
 
-    //设置伪彩
+    //settingspseudo color
     private fun setPColor(code: Int) {
         pseudocodeMode = code
         temperature_seekbar.setPseudocode(pseudocodeMode)
@@ -454,7 +454,7 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
                     .create().show()
             }
             else -> {
-                //其他设置选项 2D 编辑没有
+                //其他settings选项 2D 编辑没有
             }
         }
     }
@@ -508,7 +508,7 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
             }
         }
 
-    //更新自定义伪彩的颜色的属性值
+    //更新自定义pseudo color的颜色的属性值
     private fun updateImageAndSeekbarColorList(customPseudoBean: CustomPseudoBean?) {
         customPseudoBean?.let {
             updateImage(
@@ -549,7 +549,7 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
     }
 
     /**
-     * 从上一界面传递过来的，是否从生成报告拾取图片中跳转过来.
+     * 从上一界面传递过来的，是否从生成report拾取图片中跳转过来.
      */
     private var isReportPick = false
     private fun initUI() {
@@ -579,7 +579,7 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
                         // 获取温度图层的数据，包括点线框，温度值等，重新合成bitmap
                         irBitmap = BitmapUtils.mergeBitmap(irBitmap, temperature_view.drawToBitmap(), 0, 0)
                     }
-                    // 合并伪彩条
+                    // 合并pseudo color条
                     if (color_bar_view.visibility == View.VISIBLE) {
                         irBitmap = BitmapUtils.mergeBitmap(irBitmap, color_bar_view.drawToBitmap(), 0, 0)
                     }
@@ -686,7 +686,7 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
                 // 获取温度图层的数据，包括点线框，温度值等，重新合成bitmap
                 irBitmap = BitmapUtils.mergeBitmap(irBitmap, temperature_view.drawToBitmap(), 0, 0)
             }
-            // 合并伪彩条
+            // 合并pseudo color条
             if (color_bar_view.visibility == View.VISIBLE) {
                 irBitmap = BitmapUtils.mergeBitmap(irBitmap, color_bar_view.drawToBitmap(), 0, 0)
             }

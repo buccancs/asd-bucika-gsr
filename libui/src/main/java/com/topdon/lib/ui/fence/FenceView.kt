@@ -43,7 +43,7 @@ class FenceView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-//        //设置无锯齿
+//        //settings无锯齿
 //        canvas.drawARGB(50, 255, 227, 0)
 //        mPaint.color = Color.GREEN
 //        // 绘制绿色实心矩形

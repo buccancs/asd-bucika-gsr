@@ -56,7 +56,7 @@ public class EasyBLEBuilder {
     }
 
     /**
-     * 配对控制器。如果设置了控制器，则会在连接时，尝试配对
+     * 配对控制器。如果settings了控制器，则会在连接时，尝试配对
      */
     public EasyBLEBuilder setBondController(BondController bondController) {
         Inspector.requireNonNull(bondController, "bondController can't be null");
@@ -93,7 +93,7 @@ public class EasyBLEBuilder {
 
     /**
      * 被观察者，消息发布者。
-     * <br>如果观察者被设置，{@link #setMethodDefaultThreadMode(ThreadMode)}、
+     * <br>如果观察者被settings，{@link #setMethodDefaultThreadMode(ThreadMode)}、
      * {@link #setObserveAnnotationRequired(boolean)}、{@link #setExecutorService(ExecutorService)}将不起作用
      */
     public EasyBLEBuilder setObservable(Observable observable) {

@@ -18,7 +18,7 @@ import com.topdon.module.thermal.ir.R
 import com.topdon.module.thermal.ir.databinding.PopCameraItemBinding
 
 /**
- * 热成像 拍照/录像 菜单.
+ * thermal imaging photo/video menu.
  *
  * Created by LCG on 2025/1/3.
  */
@@ -45,7 +45,7 @@ class CameraItemPopup(val context: Context, private val saveSetBean: SaveSetting
 
 
     /**
-     * 延时秒数点击事件监听，返回值为是否响应该次点击事件
+     * delay秒数点击事件监听，返回值为是否响应该次点击事件
      */
     var onDelayClickListener: (() -> Boolean)? = null
     /**

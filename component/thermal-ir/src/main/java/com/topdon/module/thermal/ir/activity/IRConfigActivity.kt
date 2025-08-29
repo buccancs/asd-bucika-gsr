@@ -41,7 +41,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
- * 温度修正（即设置环境温度、测温距离、发射率）
+ * 温度修正（即settings环境温度、测温距离、发射率）
  *
  * 需要传递参数：
  * - [ExtraKeyConfig.IS_TC007] - 当前设备是否为 TC007
@@ -50,7 +50,7 @@ import kotlinx.coroutines.launch
 class IRConfigActivity : BaseActivity(), View.OnClickListener {
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
@@ -164,10 +164,10 @@ class IRConfigActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v) {
-            iv_default_selector -> {//默认模式-选中
+            iv_default_selector -> {//默认mode-选中
                 viewModel.checkConfig(isTC007, 0)
             }
-            view_default_temp_bg -> {//默认模式-环境温度
+            view_default_temp_bg -> {//默认mode-环境温度
                 IRConfigInputDialog(this, IRConfigInputDialog.Type.TEMP, isTC007)
                     .setInput(UnitTools.showUnitValue(viewModel.configLiveData.value?.defaultModel?.environment!!))
                     .setConfirmListener {
@@ -175,7 +175,7 @@ class IRConfigActivity : BaseActivity(), View.OnClickListener {
                     }
                     .show()
             }
-            view_default_dis_bg -> {//默认模式-测温距离
+            view_default_dis_bg -> {//默认mode-测温距离
                 IRConfigInputDialog(this, IRConfigInputDialog.Type.DIS, isTC007)
                     .setInput(viewModel.configLiveData.value?.defaultModel?.distance)
                     .setConfirmListener {
@@ -183,7 +183,7 @@ class IRConfigActivity : BaseActivity(), View.OnClickListener {
                     }
                     .show()
             }
-            tv_default_em_value -> {//默认模式-发射率
+            tv_default_em_value -> {//默认mode-发射率
                 IRConfigInputDialog(this, IRConfigInputDialog.Type.EM, isTC007)
                     .setInput(viewModel.configLiveData.value?.defaultModel?.radiation)
                     .setConfirmListener {
@@ -202,7 +202,7 @@ class IRConfigActivity : BaseActivity(), View.OnClickListener {
          */
         var onSelectListener: ((id: Int) -> Unit)? = null
         /**
-         * item（一项自定义配置）删除件监听.
+         * item（一项自定义配置）delete件监听.
          */
         var onDeleteListener: ((bean: DataBean) -> Unit)? = null
         /**

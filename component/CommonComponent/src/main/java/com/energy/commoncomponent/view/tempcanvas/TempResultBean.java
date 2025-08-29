@@ -14,7 +14,7 @@ public class TempResultBean {
 
     private int position; //相对应点线框list的position
 
-    //类型
+    //type
     private TempInfoMode tempInfoMode;
     //环境温度
     private float ambientTemp;

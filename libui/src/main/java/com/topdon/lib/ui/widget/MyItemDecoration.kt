@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 /**
- * RecyclerView 所用，控制间距.
+ * RecyclerView used for，控制间距.
  *
  * Created by LCG on 2023/9/20.
  */
@@ -31,8 +31,8 @@ class MyItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
      */
     var wholeTop: Float? = null
     /**
-     * 整个 RecyclerView 底部间距，单位 dp.
-     * 该值仅对最底部 item 有效，且与 [itemBottom] 不叠加（优先使用当前值）.
+     * 整个 RecyclerView bottom间距，单位 dp.
+     * 该值仅对最bottom item 有效，且与 [itemBottom] 不叠加（优先使用当前值）.
      */
     var wholeBottom: Float? = null
 
@@ -50,7 +50,7 @@ class MyItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
      */
     var itemTop: Float? = null
     /**
-     * 每个 item 底部间距，单位 dp.
+     * 每个 item bottom间距，单位 dp.
      */
     var itemBottom: Float? = null
 
@@ -95,7 +95,7 @@ class MyItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
     }
 
     /**
-     * 当 RecyclerView 为纵向且只有 1 列时，设置间距.
+     * 当 RecyclerView 为纵向且只有 1 列时，settings间距.
      * @param itemCount 数据总条数
      */
     private fun setVerticalOne(outRect: Rect, position: Int, itemCount: Int) {
@@ -107,7 +107,7 @@ class MyItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
     }
 
     /**
-     * 当 RecyclerView 为横向且只有 1 行时，设置间距.
+     * 当 RecyclerView 为横向且只有 1 行时，settings间距.
      * @param itemCount 数据总条数
      */
     private fun setHorizontalOne(outRect: Rect, position: Int, itemCount: Int) {
@@ -119,7 +119,7 @@ class MyItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
     }
 
     /**
-     * 当 RecyclerView 为纵向且有多列时，设置间距.
+     * 当 RecyclerView 为纵向且有多列时，settings间距.
      * @param itemCount 数据总条数
      * @param spanCount 总列数(共有多少列)
      */
@@ -136,7 +136,7 @@ class MyItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
     }
 
     /**
-     * 当 RecyclerView 为纵向且为瀑布流布局时，设置间距.
+     * 当 RecyclerView 为纵向且为瀑布流布局时，settings间距.
      * @param itemCount 数据总条数
      * @param spanCount 总列数(共有多少列)
      * @param spanIndex 当前数据在列数中的index[0, spanCount)，即第几列
@@ -153,7 +153,7 @@ class MyItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
     }
 
     /**
-     * 当 RecyclerView 为横向且有多行时，设置间距.
+     * 当 RecyclerView 为横向且有多行时，settings间距.
      * @param itemCount 数据总条数
      * @param spanCount 总行数(共有多少行)
      */

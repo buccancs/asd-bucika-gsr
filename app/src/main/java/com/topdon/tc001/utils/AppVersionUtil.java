@@ -193,17 +193,17 @@ public class AppVersionUtil {
 
         Uri uri = Uri.parse(url); // 根据下载地址构建一个Uri对象
         DownloadManager.Request down = new DownloadManager.Request(uri); // 创建一个下载请求对象，指定从哪里下载文件
-        down.setTitle(mContext.getString(R.string.tips_download_information)); // 设置任务标题
-        down.setDescription(mContext.getString(R.string.installation_package_download_progress)); // 设置任务描述
-        // 设置允许下载的网络类型
+        down.setTitle(mContext.getString(R.string.tips_download_information)); // settings任务标题
+        down.setDescription(mContext.getString(R.string.installation_package_download_progress)); // settings任务描述
+        // settings允许下载的网络type
         down.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
-        // 设置通知栏在下载进行时与完成后都可见
+        // settings通知栏在下载进行时与完成后都可见
         down.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        // 设置下载文件在私有目录的保存路径。从Android10开始，只有保存到公共目录的才会在系统下载页面显示，保存到私有目录的不在系统下载页面显示
+        // settings下载文件在私有目录的保存路径。从Android10开始，只有保存到公共目录的才会在系统下载page显示，保存到私有目录的不在系统下载page显示
         fileName = "topinfrared" + System.currentTimeMillis() + ".zip";
         down.setDestinationInExternalFilesDir(mContext, Environment.DIRECTORY_DOWNLOADS, fileName);
         DownloadManager downloadManager = (DownloadManager) mContext.getSystemService(DOWNLOAD_SERVICE);
-        // 设置下载文件在公共目录的保存路径。保存到公共目录需要申请存储卡的读写权限
+        // settings下载文件在公共目录的保存路径。保存到公共目录需要申请存储卡的读写权限
         mDownloadId = downloadManager.enqueue(down); // 把下载请求对象加入到下载队列
         VersionTools.INSTANCE.setMDownloadId(mDownloadId);
     }

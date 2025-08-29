@@ -38,8 +38,8 @@ import kotlin.math.abs
 
 /**
  * 需要传递：
- * - [ExtraKeyConfig.IS_REPORT] - true-查看报告即查看 false-查看检测即生成
- * - [ExtraKeyConfig.LONG_ID] - 房屋检测Id(生成时)  房屋报告Id(查看时）
+ * - [ExtraKeyConfig.IS_REPORT] - true-查看report即查看 false-查看检测即生成
+ * - [ExtraKeyConfig.LONG_ID] - 房屋检测Id(生成时)  房屋reportId(查看时）
  */
 @Route(path = RouterConfig.REPORT_PREVIEW)
 class ReportPreviewActivity : BaseActivity(), View.OnClickListener {
@@ -48,7 +48,7 @@ class ReportPreviewActivity : BaseActivity(), View.OnClickListener {
     private val reportViewModel: ReportViewModel by viewModels()
 
     /**
-     * true-查看报告即查看 false-查看检测即生成
+     * true-查看report即查看 false-查看检测即生成
      */
     private var isReport = false
     private var houseReport = HouseReport()
@@ -93,9 +93,9 @@ class ReportPreviewActivity : BaseActivity(), View.OnClickListener {
             dismissLoadingDialog()
         }
 
-        if (isReport) {//查看报告
+        if (isReport) {//查看report
             reportViewModel.queryById(intent.getLongExtra(ExtraKeyConfig.LONG_ID, 0))
-        } else {//生成报告
+        } else {//生成report
             detectViewModel.queryById(intent.getLongExtra(ExtraKeyConfig.LONG_ID, 0))
         }
     }

@@ -45,12 +45,12 @@ import java.io.IOException
 import java.io.InputStream
 
 /**
- * 双光的初始化
- * 双光的
+ * dual light的初始化
+ * dual light的
  */
 abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListener, IIRFrameCallback {
 
-    //热成像设备sn,可作为唯一id，此sn并非艾睿烧录的，是内部烧录的
+    //thermal imaging设备sn,可作为唯一id，此sn并非艾睿烧录的，是内部烧录的
     private var snStr = ""
 
     /**
@@ -118,7 +118,7 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
     abstract fun getTemperatureDualView(): TemperatureView
 
     /**
-     * 是否是双光设备
+     * 是否是dual light设备
      */
     abstract fun isDualIR() : Boolean
 
@@ -189,7 +189,7 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
             if (msg.what == Const.RESTART_USB) {
                 restartDualCamera()
             } else if (msg.what == Const.HANDLE_CONNECT) {
-                // 避免冲突，需要延时
+                // 避免冲突，需要delay
                 /**
                  * 开可见光相机
                  * 需要确认好模组的pid和分辨率
@@ -265,7 +265,7 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
         getTemperatureDualView().setDualUVCCamera(dualView!!.getDualUVCCamera())
         initPseudoColor()
         initAmplify(true)
-        // 这里可以设置初始化融合模式
+        // 这里可以settings初始化融合mode
 //        setFusion(mCurrentFusionType)
 //        dualView!!.startPreview()
         dualView?.setHandler(mIrHandler)
@@ -276,7 +276,7 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
         val am = assets
         var inputStream: InputStream? = null
         try {
-            //加载伪彩，虽然用不上这个伪彩，但是sdk限制必须初始化一个才能正常出图
+            //加载pseudo color，虽然用不上这个pseudo color，但是sdk限制必须初始化一个才能正常出图
             psedocolor = Array(11) { ByteArray(0) }
             inputStream = am.open("pseudocolor/White_Hot.bin")
             val length = inputStream.available()
@@ -289,7 +289,7 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
                 CommonParams.PseudoColorUsbDualType.WHITE_HOT_MODE,
                 psedocolor!![0]
             )
-            // 这里可以设置初始化融合模式
+            // 这里可以settings初始化融合mode
             setFusion(mCurrentFusionType)
             inputStream.close()
         } catch (e: IOException) {
@@ -362,7 +362,7 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
 //        popupImage.setIrcmd(ircmd)
 //        popupOthers.setIrcmd(ircmd)
 //        getTemperatureDualView().setIrcmd(ircmd)
-//        // 画面旋转设置
+//        // 画面旋转settings
 //        popupCalibration.setRotate(true)
 //        popupImage.setRotate(true)
     }

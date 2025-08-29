@@ -48,7 +48,7 @@ import java.io.File
 class PDFListFragment : BaseViewModelFragment<PdfViewModel>() {
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
+     * 从上一界面传递过来的，当前是否为 TC007 设备type.
      * true-TC007 false-其他插件式设备
      */
     private var isTC007 = false
@@ -182,7 +182,7 @@ class PDFListFragment : BaseViewModelFragment<PdfViewModel>() {
                                     if (file.exists()) {
                                         file.delete()
                                     }
-                                    Log.w("删除成功",response.toString())
+                                    Log.w("delete成功",response.toString())
                                 }
 
                                 override fun onFail(exception: Exception?) {

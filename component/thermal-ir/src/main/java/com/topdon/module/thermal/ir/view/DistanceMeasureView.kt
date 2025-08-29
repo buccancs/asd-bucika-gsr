@@ -46,7 +46,7 @@ class DistanceMeasureView : View {
         linePaint!!.color = Color.GREEN
         linePaint!!.strokeWidth = 4f
         linePaint!!.style = Paint.Style.STROKE
-        // 设置虚线的间隔长度和线条长度
+        // settings虚线的间隔长度和线条长度
         val intervals = floatArrayOf(10f, 10f)
         linePaint!!.pathEffect = DashPathEffect(intervals, 0f)
     }

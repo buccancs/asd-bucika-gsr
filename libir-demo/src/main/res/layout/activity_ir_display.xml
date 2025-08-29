@@ -158,7 +158,7 @@
             android:textOff="Shutter Off"
             android:textOn="Shutter On" />
 
-        <!-- 拍照 -->
+        <!-- photo -->
         <ImageView
             android:id="@+id/captureImageButton"
             android:layout_width="wrap_content"
@@ -167,7 +167,7 @@
             android:background="@drawable/photo"
             android:foreground="?selectableItemBackground" />
 
-        <!-- 录像 -->
+        <!-- video -->
         <ImageView
             android:id="@+id/recordVideoButton"
             android:layout_width="wrap_content"

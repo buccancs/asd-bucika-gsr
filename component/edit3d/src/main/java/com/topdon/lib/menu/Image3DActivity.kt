@@ -21,7 +21,7 @@ import java.io.File
 
 
 /**
- * 热成像的3D界面
+ * thermal imaging的3D界面
  * @author: CaiSongL
  * @date: 2023/8/26 14:42
  */

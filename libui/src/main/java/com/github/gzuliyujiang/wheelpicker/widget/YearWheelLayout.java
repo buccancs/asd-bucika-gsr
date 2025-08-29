@@ -168,14 +168,14 @@ public class YearWheelLayout extends BaseWheelLayout {
     }
 
     /**
-     * 设置日期时间范围
+     * settings日期时间范围
      */
     public void setRange(DatimeEntity startValue, DatimeEntity endValue) {
         setRange(startValue, endValue, null);
     }
 
     /**
-     * 设置日期时间范围
+     * settings日期时间范围
      */
     public void setRange(DatimeEntity startValue, DatimeEntity endValue, DatimeEntity defaultValue) {
         if (startValue == null) {

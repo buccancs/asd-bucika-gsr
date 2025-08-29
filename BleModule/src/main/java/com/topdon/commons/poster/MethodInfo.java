@@ -34,7 +34,7 @@ public class MethodInfo {
      * 实例化参数全为null的方法信息
      *
      * @param name           方法名
-     * @param parameterTypes 方法参数类型
+     * @param parameterTypes 方法参数type
      */
     public MethodInfo(@NonNull String name, @Nullable Class<?>[] parameterTypes) {
         this(name, name, parameterTypes);
@@ -45,7 +45,7 @@ public class MethodInfo {
      *
      * @param name           方法名
      * @param tag            {@link Tag#value()}
-     * @param parameterTypes 方法参数类型
+     * @param parameterTypes 方法参数type
      */
     public MethodInfo(@NonNull String name, @NonNull String tag, @Nullable Class<?>[] parameterTypes) {
         this(name, tag, toParameters(parameterTypes));

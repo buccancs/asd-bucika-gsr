@@ -96,7 +96,7 @@ class BarPickView : View {
      */
     private val barSize: Int
     /**
-     * 顺时针旋转角度，仅支持 0、90、180、270.
+     * 顺时针旋转angle，仅支持 0、90、180、270.
      */
     private val rotate: Int
     /**

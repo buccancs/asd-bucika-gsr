@@ -45,7 +45,7 @@ class FirmwareUpDialog(context: Context) : Dialog(context, R.style.InfoDialog), 
         }
 
     /**
-     * 是否显示底部设备重启提示，目前仅固件升级需要显示，默认隐藏(Gone).
+     * 是否显示bottom设备重启提示，目前仅固件升级需要显示，默认隐藏(Gone).
      */
     var isShowRestartTips: Boolean
         get() = rootView.tv_restart_tips.isVisible
@@ -54,7 +54,7 @@ class FirmwareUpDialog(context: Context) : Dialog(context, R.style.InfoDialog), 
         }
 
     /**
-     * 是否显示取消按钮，默认显示.
+     * 是否显示cancel按钮，默认显示.
      */
     var isShowCancel: Boolean
         get() = rootView.tv_cancel.isVisible
@@ -64,7 +64,7 @@ class FirmwareUpDialog(context: Context) : Dialog(context, R.style.InfoDialog), 
 
 
     /**
-     * 取消点击事件监听.
+     * cancel点击事件监听.
      */
     var onCancelClickListener: (() -> Unit)? = null
     /**
@@ -94,7 +94,7 @@ class FirmwareUpDialog(context: Context) : Dialog(context, R.style.InfoDialog), 
 
     override fun onClick(v: View?) {
         when (v) {
-            rootView.tv_cancel -> {//取消
+            rootView.tv_cancel -> {//cancel
                 dismiss()
                 onCancelClickListener?.invoke()
             }

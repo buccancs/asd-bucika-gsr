@@ -102,7 +102,7 @@ public class OpencvTools {
 
 
     /**
-     * 效果更好的超分，但是此函数耗时过长，应用于拍照
+     * 效果更好的超分，但是此函数耗时过长，应用于photo
      * @param inBitmap
      * @return
      */
@@ -250,7 +250,7 @@ public class OpencvTools {
             // 这种情况下第二个字节可能是保留为0，用于表示较大的颜色空间或者进行格式对齐。
             // 您可能需要根据具体的图片数据格式来调整这部分代码
             doubleByteImage[2 * i] = singleByteImage[i];
-            // 如果需要其它处理 (例如设置第二个字节的值) 在这里操作
+            // 如果需要其它处理 (例如settings第二个字节的值) 在这里操作
             // doubleByteImage[2 * i + 1] = <some value>;
         }
         return doubleByteImage;
@@ -369,12 +369,12 @@ public class OpencvTools {
     }
 
     /**
-     * 自定义伪彩
+     * 自定义pseudo color
      * @param image       RGBA 32bit图像数据
      * @param temperature 温度数据
      * @param cols        宽
      * @param rows        高
-     * @param lut         伪彩图,高度必须是256
+     * @param lut         pseudo color图,高度必须是256
      */
     private static Mat draw_high_temp_edge_argb_pse(byte[] image, byte[] temperature, Bitmap lut, int cols, int rows, double high_t, int color_h, int type) throws IOException {
         double[] temp = new double[cols * rows];
@@ -795,7 +795,7 @@ public class OpencvTools {
     }
     /**
      * @param image   图像ARGB格式
-     * @param lut     伪彩图,高度必须是256
+     * @param lut     pseudo color图,高度必须是256
      * @param image_w 图像宽度
      * @param image_h 图像高度
      */
@@ -957,12 +957,12 @@ public class OpencvTools {
 
 
     /**
-     * 支持多颜色的伪彩条
+     * 支持多颜色的pseudo color条
      * @param colorList : 颜色条
      * @param maxTemp : 实际温度最大值
      * @param minTemp ： 实际温度最小值
-     * @param customMaxTemp : 用户设置的最大值
-     * @param customMinTemp : 用户设置的最小值
+     * @param customMaxTemp : 用户settings的最大值
+     * @param customMinTemp : 用户settings的最小值
      * @param isGrayUse : 是否是灰度渐变
      * @return
      */
@@ -1264,7 +1264,7 @@ public class OpencvTools {
     }
 
     /**
-     * 伪彩梯度条,固定三个渐变颜色
+     * pseudo color梯度条,固定三个渐变颜色
      * @param customMinColor
      * @param customMiddleColor
      * @param customMaxColor
@@ -1388,7 +1388,7 @@ public class OpencvTools {
     }
 
     /**
-     * 统一自定义伪彩入口
+     * 统一自定义pseudo color入口
      */
     public static int[] getOneColorByTempUnif(float customMaxTemp, float customMinTemp, float nowTemp,
                                               int[] colorList, float[] positionList){

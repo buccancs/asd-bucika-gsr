@@ -177,7 +177,7 @@ public class FileUtil {
     }
 
     /**
-     * 根据数据流获取Y16类型
+     * 根据数据流获取Y16type
      *
      * @param dataFlowMode
      * @return
@@ -286,7 +286,7 @@ public class FileUtil {
     /**
      * 把两个位图覆盖合成为一个位图，以底层位图的长宽为基准
      *
-     * @param bytes  在底部的位图
+     * @param bytes  在bottom的位图
      * @param bytes2 盖在上面的位图
      */
     public static void savaRawFile(byte[] bytes, byte[] bytes2) {
@@ -546,7 +546,7 @@ public class FileUtil {
             File file = new File(strOutFileName);
             Log.i(TAG, "file.exists->getAbsolutePath = " + file.getAbsolutePath());
             if (file.exists()) {
-                // 如果文件存在则删除文件，重新创建，避免修改的内容不生效
+                // 如果文件存在则delete文件，重新创建，避免修改的内容不生效
                 file.delete();
             }
             //
@@ -603,7 +603,7 @@ public class FileUtil {
     static String INFISENSE_SAVE_DIR(){
        return Utils.getApp().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
     }
-    //=== 设备信息存储到私有区域，app删除后一起删除
+    //=== 设备信息存储到私有区域，appdelete后一起delete
     static String  DEVICE_DATA_SAVE_DIR (){
        return Utils.getApp().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath();
     }

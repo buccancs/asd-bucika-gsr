@@ -59,7 +59,7 @@ public class DeviceControlManager implements IDeviceConnectListener {
     }
 
     /**
-     * 取消注册设备状态回调
+     * cancel注册设备状态回调
      * @param key
      */
     public void removeDeviceConnectListener(String key) {
@@ -83,7 +83,7 @@ public class DeviceControlManager implements IDeviceConnectListener {
     }
 
     /**
-     * 双光数据流出图
+     * dual light数据流出图
      * @param ctrlBlock
      */
     public void handleStartPreview(USBMonitor.UsbControlBlock ctrlBlock) {
@@ -94,7 +94,7 @@ public class DeviceControlManager implements IDeviceConnectListener {
     }
 
     /**
-     * 双光数据流停图
+     * dual light数据流停图
      */
     public void handleStopPreview() {
         if (mDeviceControlWorker != null) {
@@ -104,7 +104,7 @@ public class DeviceControlManager implements IDeviceConnectListener {
     }
 
     /**
-     * 双光数据流暂停
+     * dual light数据流暂停
      */
     public void handlePauseDualPreview() {
         if (mDeviceControlWorker != null) {
@@ -114,7 +114,7 @@ public class DeviceControlManager implements IDeviceConnectListener {
     }
 
     /**
-     * 双光数据流恢复
+     * dual light数据流恢复
      */
     public void handleResumeDualPreview() {
         if (mDeviceControlWorker != null) {

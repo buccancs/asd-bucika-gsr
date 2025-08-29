@@ -136,7 +136,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
         ivTakePhoto?.setVisibility(View.VISIBLE)
         ivTakePhoto?.setOnClickListener(View.OnClickListener {
             if (!canOperate){
-                //拍照
+                //photo
                 takePhoto()
                 ivTakePhoto?.setText(R.string.app_ok)
                 tv_tips.text = getString(R.string.dual_light_correction_tips_3)
@@ -237,7 +237,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     private fun initDualCamera() {
-        //初始化双光预览相关的类
+        //初始化dual light预览相关的类
         mDualView = DualViewWithManualAlignExternalCamera(
             mImageWidth, mImageHeight,
             mVlCameraHeight, mVlCameraWidth, mDualWidth, mDualHeight,
@@ -245,10 +245,10 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
             mDefaultDataFlowMode
         )
 
-        //初始化伪彩
+        //初始化pseudo color
         initPsedocolor()
 
-        //设置初始化融合模式,一般选择LPYFusion
+        //settings初始化融合mode,一般选择LPYFusion
         mDualView!!.dualUVCCamera.setFusion(DualCameraParams.FusionType.LPYFusion)
 
         //打开自动快门逻辑
@@ -260,13 +260,13 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * 加载伪彩，设置镜头方向，伪彩，融合模式等等
+     * 加载pseudo color，settings镜头方向，pseudo color，融合mode等等
      */
     private fun initPsedocolor() {
         val am = assets
         var `is`: InputStream
         try {
-            //加载伪彩
+            //加载pseudo color
             mPseudoColors = arrayOfNulls(11)
             `is` = am.open("pseudocolor/White_Hot.bin")
             var lenth = `is`.available()
@@ -313,7 +313,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
                 mPseudoColors[3]
             )
 
-            // 这里可以设置初始化伪彩
+            // 这里可以settings初始化pseudo color
             mDualView!!.dualUVCCamera.setPseudocolor(CommonParams.PseudoColorUsbDualType.IRONBOW_MODE)
             `is`.close()
         } catch (e: IOException) {
@@ -322,7 +322,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * 一体式结构，双光配准的数据，可从手机固定位置读取，如可从NV分区读写
+     * 一体式结构，dual light配准的数据，可从手机固定位置读取，如可从NV分区读写
      * 目前使用的是人工配准的方式，提供配准后的数据文件放在asset目录下
      */
     open fun initDefIntegralArgsDISP_VALUE(typeLoadParameters: DualCameraParams.TypeLoadParameters) {
@@ -461,10 +461,10 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * 拍照功能
+     * photo功能
      */
     private fun takePhoto() {
-        //拍照
+        //photo
         if (mDualView != null) {
             canOperate = true
             mDualView!!.stopPreview()
@@ -500,7 +500,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * 处理角度数据
+     * 处理angle数据
      */
     private fun handleAngle(angle: Float) {
         if (!canOperate) {

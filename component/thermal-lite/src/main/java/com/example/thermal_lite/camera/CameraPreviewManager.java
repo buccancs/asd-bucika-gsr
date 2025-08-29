@@ -80,14 +80,14 @@ public class CameraPreviewManager {
 
     private LibIRTemp mLibIRTemp;
 
-    //图像当前角度旋转
+    //图像当前angle旋转
     private RotateDegree mImageRotate = RotateDegree.DEGREE_270;
     private LibIRProcess.ImageRes_t mImageRes;
 
     //暂停输出图像标记
     private boolean mFramePause = false;
 
-    //双图模式是否显示完整红外+温度图像
+    //双图mode是否显示完整红外+温度图像
     private boolean mShowDoubleImage = false;
     private IRImageHelp irImageHelp;
 
@@ -185,7 +185,7 @@ public class CameraPreviewManager {
         mIIrFrameCallback = new IIrFrameCallback() {
             /**
              * 数据流回调
-             * 根据设置的出图格式setFrameOutputFormat，处理数据流数据
+             * 根据settings的出图格式setFrameOutputFormat，处理数据流数据
              * @param frame 数据源
              * YUYV_IMAGE_OUTPUT(0)：图像 YUYV；分辨率 256*192； 每帧数据大小（字节）256*192*2=98304
              * NV12_IMAGE_OUTPUT(1)：图像 NV12；分辨率 256*192； 每帧数据大小（字节）256*192*1.5=73782
@@ -281,7 +281,7 @@ public class CameraPreviewManager {
                                 }
                                 irImageHelp.customPseudoColor(mIrARGBData,mTempData,mPreviewWidth,mPreviewHeight);
                                 /*
-                                 * 等温尺处理,展示伪彩的温度范围内信息
+                                 * 等温尺处理,展示pseudo color的温度范围内信息
                                  */
                                 irImageHelp.setPseudoColorMaxMin(mIrARGBData,mTempData,max,min,mPreviewWidth,mPreviewHeight);
                                 mIrARGBData = irImageHelp.contourDetection(alarmBean,
@@ -299,7 +299,7 @@ public class CameraPreviewManager {
                             break;
                     }
 //
-                    //处理图像旋转角度
+                    //处理图像旋转angle
                     mFinalImageWidth = 0;
                     mFinalImageHeight = 0;
 
@@ -331,7 +331,7 @@ public class CameraPreviewManager {
     }
 
     public void initData() {
-        //根据机芯图像数据格式决定出图模式
+        //根据机芯图像数据格式决定出图mode
         //如果FrameOutputFormat为NV12_IMAGE_OUTPUT或者NV12_IMAGE_OUTPUT，mFrameFormatType改成FRAME_FORMAT_NV12
         //如果FrameOutputFormat为YUYV_AND_TEMP_OUTPUT或YUYV_IMAGE_OUTPUT，mFrameFormatType改成FRAME_FORMAT_YUYV
 
@@ -534,7 +534,7 @@ public class CameraPreviewManager {
     private void initHandleEngine(USBMonitor.UsbControlBlock ctrlBlock, boolean isStartPreview) {
         UvcHandleParam uvcHandleParam = new UvcHandleParam();
         /**
-         * 设置uvccamera出图需要的参数
+         * settingsuvccamera出图需要的参数
          */
         uvcHandleParam.setCtrlBlock(ctrlBlock);
 
@@ -568,7 +568,7 @@ public class CameraPreviewManager {
                 .setStreamHeight(mStreamHeight)
                 .setDriverType(CommonParams.DriverType.USB)
                 /**
-                 * 设置出图模式
+                 * settings出图mode
                  */
                 .setFrameOutputFormat(FRAME_OUT_PUT_FORMAT)
                 .setUvcHandleParam(uvcHandleParam)

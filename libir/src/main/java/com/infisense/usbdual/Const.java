@@ -16,7 +16,7 @@ import java.io.File;
 public class Const {
 
     public static final int TYPE_IR = 0;//单光
-    public static final int TYPE_IR_DUAL = 1;//双光
+    public static final int TYPE_IR_DUAL = 1;//dual light
 
 
     public static int RESTART_USB = 1000;
@@ -54,9 +54,9 @@ public class Const {
     public static int IR_HEIGHT = 256;
     public static int VL_WIDTH = 480;
     public static int VL_HEIGHT = 640;
-    //设置红外图像旋转角度
+    //settings红外图像旋转angle
     public static final DualCameraParams.TypeLoadParameters IR_ROTATE = DualCameraParams.TypeLoadParameters.ROTATE_0;
-    //设置红外图像镜像翻转类型
+    //settings红外图像mirrorfliptype
     public static final CommonParams.PropImageParamsValue.MirrorFlipType IR_MIRROR_FLIP_TYPE = CommonParams.PropImageParamsValue.MirrorFlipType.NO_MIRROR_FLIP;
 
     //融合后图像宽高

@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.item_electronic_manual.view.item_lay
 import kotlinx.android.synthetic.main.item_electronic_manual.view.item_text
 
 /**
- * 电子说明书 或 FAQ 设备类型选择页面
+ * 电子说明书 或 FAQ 设备type选择page
  */
 @Route(path = RouterConfig.ELECTRONIC_MANUAL)
 class ElectronicManualActivity : BaseActivity() {

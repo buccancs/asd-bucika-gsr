@@ -1,10 +1,10 @@
 package com.topdon.lib.core.bean
 
 /**
- * 连续拍照配置.
+ * 连续photo配置.
  * @param isOpen 是否开启
- * @param continuaTime 连续拍照时间间隔，单位毫秒
- * @param count 连续拍照数量
+ * @param continuaTime 连续photo时间间隔，单位毫秒
+ * @param count 连续photo数量
  */
 data class ContinuousBean(var isOpen: Boolean = false, var continuaTime: Long = 1000, var count: Int = 3)
 
@@ -72,10 +72,10 @@ data class CameraItemBean(
         const val DELAY_TIME_3 = 3//延迟3秒
         const val DELAY_TIME_6 = 6//延迟6秒
 
-        //温度模式
-        const val TYPE_TMP_ZD = -1 //自动识别模式
-        const val TYPE_TMP_C = 1 // 常温模式
-        const val TYPE_TMP_H = 0 //高温模式
+        //温度mode
+        const val TYPE_TMP_ZD = -1 //自动识别mode
+        const val TYPE_TMP_C = 1 // 常温mode
+        const val TYPE_TMP_H = 0 //高温mode
 
     }
 

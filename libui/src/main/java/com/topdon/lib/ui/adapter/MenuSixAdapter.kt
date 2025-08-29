@@ -15,12 +15,12 @@ import kotlinx.android.synthetic.main.ui_item_menu_second_view.view.item_menu_ta
 import kotlinx.android.synthetic.main.ui_item_menu_second_view.view.item_menu_tab_lay
 import kotlinx.android.synthetic.main.ui_item_menu_second_view.view.item_menu_tab_text
 
-@Deprecated("看起来是旧版 2D 编辑的菜单，根本没使用了")
+@Deprecated("看起来是旧版 2D 编辑的menu，根本没使用了")
 class MenuSixAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var listener: ((index: Int, code: Int) -> Unit)? = null
     private var type = 0
     private var selected = -1
-    private var colorEnable = false //伪彩条
+    private var colorEnable = false //pseudo color条
     private var contrastEnable = false //对比度
     private var ddeEnable = false //细节
 

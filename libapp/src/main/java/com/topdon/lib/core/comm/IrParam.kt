@@ -10,13 +10,13 @@ enum class IrParam {
     ParamLevel,//对比度
     ParamAlarm,//预警
     ParamSharpness,//锐度
-    ParamTempFont,//温度值字体设置
+    ParamTempFont,//温度值字体settings
     ParamRotate,//旋转
-    ParamColor,//伪彩
-    ParamMirror,//镜像
+    ParamColor,//pseudo color
+    ParamMirror,//mirror
     ParamCompass,//指南针
-    ParamPColor,//伪彩样式
-    ParamTemperature,//温度模式、高低增益
+    ParamPColor,//pseudo color样式
+    ParamTemperature,//温度mode、高低增益
 }
 
 data class TempFont(val textSize : Int,val textColor : Int)

@@ -31,7 +31,7 @@ public class BitmapUtils {
     public static Bitmap rotateBitmap(Bitmap bm, int degree) {
         Bitmap returnBm = null;
 
-        // 根据旋转角度，生成旋转矩阵
+        // 根据旋转angle，生成旋转矩阵
         Matrix matrix = new Matrix();
         matrix.postRotate(degree);
         try {
@@ -195,7 +195,7 @@ public class BitmapUtils {
         String fileName = null;
 
         try {
-            // 如果有目标文件，直接获得文件对象，否则创建一个以filename为名称的文件
+            // 如果有target文件，直接获得文件对象，否则创建一个以filename为名称的文件
             file = new File(galleryPath, picName + ".jpg");
 //            if(file.exists()){
 //                file.delete();
@@ -235,7 +235,7 @@ public class BitmapUtils {
     /**
      * 把两个位图覆盖合成为一个位图，以底层位图的长宽为基准
      *
-     * @param backBitmap  在底部的位图
+     * @param backBitmap  在bottom的位图
      * @param frontBitmap 盖在上面的位图
      * @return
      */
@@ -254,7 +254,7 @@ public class BitmapUtils {
     /**
      * 把两个位图覆盖合成为一个位图，以底层位图的长宽为基准
      *
-     * @param bytes  在底部的位图
+     * @param bytes  在bottom的位图
      * @param bytes2 盖在上面的位图
      */
     public static void saveRawFile(byte[] bytes, byte[] bytes2) {

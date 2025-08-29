@@ -22,15 +22,15 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 /**
- * 生成报告第2步（共2步）.
+ * 生成report第2步（共2步）.
  *
  * 需要传递
- * - 必选：是否 TC007: [ExtraKeyConfig.IS_TC007] 透传，再次拾取图片时进入目录不同，上传报告参数不同
+ * - 必选：是否 TC007: [ExtraKeyConfig.IS_TC007] 透传，再次拾取图片时进入目录不同，上传report参数不同
  * - 必选：当前编辑的图片绝对路径 [ExtraKeyConfig.FILE_ABSOLUTE_PATH]
- * - 必选：当前编辑的图片点线面全图温度数据 [ExtraKeyConfig.IMAGE_TEMP_BEAN]
- * - 必选：报告信息 [ExtraKeyConfig.REPORT_INFO]
- * - 可选：检测条件 [ExtraKeyConfig.REPORT_CONDITION]
- * - 可选：当前已确认的图片信息列表 [ExtraKeyConfig.REPORT_IR_LIST]
+ * - 必选：当前编辑的图片point line area全图温度数据 [ExtraKeyConfig.IMAGE_TEMP_BEAN]
+ * - 必选：report信息 [ExtraKeyConfig.REPORT_INFO]
+ * - optional：检测条件 [ExtraKeyConfig.REPORT_CONDITION]
+ * - optional：当前已确认的图片信息列表 [ExtraKeyConfig.REPORT_IR_LIST]
  */
 @Route(path = RouterConfig.REPORT_CREATE_SECOND)
 class ReportCreateSecondActivity: BaseActivity(), View.OnClickListener {
@@ -46,7 +46,7 @@ class ReportCreateSecondActivity: BaseActivity(), View.OnClickListener {
      */
     private var currentFilePath: String = ""
     /**
-     * 从上一界面传递过来的，当前编辑的图片点线面全图温度数据
+     * 从上一界面传递过来的，当前编辑的图片point line area全图温度数据
      */
     private var imageTempBean: ImageTempBean? = null
 
@@ -211,7 +211,7 @@ class ReportCreateSecondActivity: BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 构建报告点线面数据列表.
+     * 构建reportpoint line area数据列表.
      * @param type 1-点 2-线 3-面
      */
     private fun buildReportTempBeanList(type: Int): ArrayList<ReportTempBean> {

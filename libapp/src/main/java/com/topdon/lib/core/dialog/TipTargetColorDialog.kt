@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.dialog_tip_observe.view.tv_title
 import kotlinx.android.synthetic.main.dialog_tip_target_color.view.*
 
 /**
- * 观测-标靶颜色
+ * 观测-target颜色
  */
 class TipTargetColorDialog : Dialog {
 
@@ -96,7 +96,7 @@ class TipTargetColorDialog : Dialog {
                     //横屏
                     0.35
                 }
-            lp.width = (ScreenUtil.getScreenWidth(context!!) * wRatio).toInt() //设置宽度
+            lp.width = (ScreenUtil.getScreenWidth(context!!) * wRatio).toInt() //settings宽度
             dialog!!.window!!.attributes = lp
 
             dialog!!.setCanceledOnTouchOutside(canceled)

@@ -108,7 +108,7 @@ object IRCmdTool {
 
 
     /**
-     * 设置发射率 unit:cnt(128cnt = 1)
+     * settings发射率 unit:cnt(128cnt = 1)
      * @param value 1 ~ 128
      */
     fun setTpdEms(irCmd: IRCMD?, value: Int) {
@@ -117,10 +117,10 @@ object IRCmdTool {
     }
 
     /**
-     * 设置距离 unit:cnt(128cnt = 1m, 默认值: 0.25 * 128 = 32)
+     * settings距离 unit:cnt(128cnt = 1m, 默认值: 0.25 * 128 = 32)
      * @param value 0 ~ 25600
      *
-     * 现有sdk在设置TPD_PROP_DISTANCE抛异常
+     * 现有sdk在settingsTPD_PROP_DISTANCE抛异常
      */
     fun setTpdDis(irCmd: IRCMD?, value: Int) {
         val data = CommonParams.PropTPDParamsValue.NumberType(value.toString())
@@ -129,7 +129,7 @@ object IRCmdTool {
 
 
     /**
-     * 设置对比度
+     * settings对比度
      * @param value 0 ~ 255
      */
     fun setLevelContrast(irCmd: IRCMD?, value: Int) {
@@ -138,7 +138,7 @@ object IRCmdTool {
     }
 
     /**
-     * 设置锐化
+     * settings锐化
      * @param value 0 ~ 4
      *
      */
@@ -155,7 +155,7 @@ object IRCmdTool {
     }
 
     /**
-     * 设置自动增益
+     * settings自动增益
      */
     fun setLevelAgc(irCmd: IRCMD?, value: Boolean) {
         val data = if (value) {
@@ -167,7 +167,7 @@ object IRCmdTool {
     }
 
     /**
-     * 查询增益模式
+     * 查询增益mode
      * @return 1:高增益(常温)    0:低增益(高温)
      */
     fun getTpdGainSel(irCmd: IRCMD?): Int {
@@ -180,7 +180,7 @@ object IRCmdTool {
     }
 
     /**
-     * 设置增益模式
+     * settings增益mode
      * @param value 1:高增益(常温)    0:低增益(高温)
      */
     fun setTpdGainSel(irCmd: IRCMD?, value: Int): Int {
@@ -211,25 +211,25 @@ object IRCmdTool {
     }
 
     /**
-     * 设置Tpd
+     * settingsTpd
      */
     private fun setTpdParams(irCmd: IRCMD?, params: CommonParams.PropTPDParams, value: CommonParams.PropTPDParamsValue): Int {
         return try {
             irCmd?.setPropTPDParams(params, value) ?: 0
         } catch (e: Exception) {
-            XLog.w("设置参数异常[${params.name}]: ${e.message}")
+            XLog.w("settings参数异常[${params.name}]: ${e.message}")
             0
         }
     }
 
     /**
-     * 设置图像参数
+     * settings图像参数
      */
     private fun setImageParams(irCmd: IRCMD?, params: CommonParams.PropImageParams, value: CommonParams.PropImageParamsValue): Int {
         return try {
             irCmd?.setPropImageParams(params, value) ?: 0
         } catch (e: Exception) {
-            XLog.w("设置参数异常[${params.name}]: ${e.message}")
+            XLog.w("settings参数异常[${params.name}]: ${e.message}")
             0
         }
     }
@@ -247,7 +247,7 @@ object IRCmdTool {
                 0
             }
         } catch (e: Exception) {
-            XLog.w("设置配准异常[${value}]: ${e.message}")
+            XLog.w("settings配准异常[${value}]: ${e.message}")
             0
         }
     }
@@ -320,7 +320,7 @@ object IRCmdTool {
     }
 
     /**
-     * 放大(仅对热成像有效)
+     * 放大(仅对thermal imaging有效)
      * ZoomScaleStep.ZOOM_STEP1: 2级倍率
      * ZoomScaleStep.ZOOM_STEP2: 4级倍率
      * ZoomScaleStep.ZOOM_STEP3: 8级倍率

@@ -89,7 +89,7 @@ object ChartTools {
     }
 
     /**
-     * 设置Y轴范围
+     * settingsY轴范围
      */
     fun setY(chart: LineChart) {
         var maxVol = 0f
@@ -136,7 +136,7 @@ object ChartTools {
     }
 
     /**
-     * 设置X轴刻度
+     * settingsX轴刻度
      */
     fun setX(chart: LineChart, type: Int) {
         //true保证有刻度数量不变,滑动要false

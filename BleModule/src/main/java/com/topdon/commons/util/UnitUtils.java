@@ -26,7 +26,7 @@ public class UnitUtils {
 
 
     /**
-     * 根据类型获取单位数据
+     * 根据type获取单位数据
      *
      * @param unitType 0公制  1 英制
      */
@@ -53,7 +53,7 @@ public class UnitUtils {
 
 
     /**
-     * 根据类型获取单位数据
+     * 根据type获取单位数据
      */
     public static HashMap<String, UnitDBBean> getUnitDBBeanHashMap() {
         String unit = (String) SPUtils.getInstance(Topdon.getApp()).get("unit", "0");
@@ -62,7 +62,7 @@ public class UnitUtils {
     }
 
     /**
-     * 根据类型获取单位数据
+     * 根据type获取单位数据
      *
      * @param unitType 0公制  1 英制
      */

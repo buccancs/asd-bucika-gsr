@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- 删除 -->
+    <!-- delete -->
     <ImageView
         android:id="@+id/iv_del"
         android:layout_width="38dp"
@@ -44,7 +44,7 @@
         android:paddingVertical="12dp"
         android:textSize="12sp"
         android:textColor="#80ffffff"
-        tools:text="自定义模式1"
+        tools:text="自定义mode1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/iv_del" />

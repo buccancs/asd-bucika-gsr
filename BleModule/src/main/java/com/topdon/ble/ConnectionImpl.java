@@ -349,7 +349,7 @@ class ConnectionImpl implements Connection, ScanListener {
                     logD(Logger.TYPE_CONNECTION_STATE, "connected! [name: %s, addr: %s]", device.name, device.address);
                     device.connectionState = ConnectionState.CONNECTED;
                     sendConnectionCallback();
-                    // 延时一会再去发现服务
+                    // delay一会再去发现服务
                     connHandler.sendEmptyMessageDelayed(MSG_DISCOVER_SERVICES, configuration.discoverServicesDelayMillis);
                 } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
                     logD(Logger.TYPE_CONNECTION_STATE, "disconnected! [name: %s, addr: %s, autoReconnEnable: %s]",
@@ -966,7 +966,7 @@ class ConnectionImpl implements Connection, ScanListener {
         }
         if (callback != null) {//回调方式
             posterDispatcher.post(callback, info);
-        } else {//观察者模式
+        } else {//观察者mode
             observable.notifyObservers(info);
         }
     }
@@ -1112,7 +1112,7 @@ class ConnectionImpl implements Connection, ScanListener {
             if (!noEvent) {
                 sendConnectionCallback();
             }
-            easyBle.releaseConnection(device);//从集合中删除
+            easyBle.releaseConnection(device);//从集合中delete
         }
     }
 
@@ -1287,7 +1287,7 @@ class ConnectionImpl implements Connection, ScanListener {
                         //从默认配置中取
                         req.writeOptions = configuration.getDefaultWriteOptions(req.service, req.characteristic);
                         if (req.writeOptions == null) {
-                            //没有设置默认的，则新建
+                            //没有settings默认的，则新建
                             req.writeOptions = new WriteOptions.Builder().build();
                         }
                     }
