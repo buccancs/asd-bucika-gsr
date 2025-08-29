@@ -6,15 +6,6 @@ import android.hardware.usb.UsbManager
 import android.os.Build
 import com.blankj.utilcode.util.TimeUtils
 import com.blankj.utilcode.util.Utils
-import com.elvishew.xlog.LogConfiguration
-import com.elvishew.xlog.LogLevel
-import com.elvishew.xlog.XLog
-import com.elvishew.xlog.flattener.PatternFlattener
-import com.elvishew.xlog.printer.AndroidPrinter
-import com.elvishew.xlog.printer.file.FilePrinter
-import com.elvishew.xlog.printer.file.backup.FileSizeBackupStrategy2
-import com.elvishew.xlog.printer.file.clean.FileLastModifiedCleanStrategy
-import com.elvishew.xlog.printer.file.naming.ChangelessFileNameGenerator
 import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.broadcast.DeviceBroadcastReceiver
 import com.topdon.lib.core.common.SharedManager
@@ -29,28 +20,7 @@ import java.util.Date
  */
 object InitUtil {
     fun initLog() {
-        val fileName = "logs_${TimeUtils.date2String(Date(), "yyyy-MM-dd")}.log"
-        val fileDir = BaseApplication.instance.getExternalFilesDir("log")!!.absolutePath
-        val tag = "TopInfrared_LOG"
-        val pattern = "{d}, {L}, {t}, {m}"
-        val backupStrategy = FileSizeBackupStrategy2(5 * 1024 * 1024L, 10) //一份文件的大小
-        val cleanStrategy = FileLastModifiedCleanStrategy(30 * 24 * 60 * 60) //设置自动清除时间
-
-        val config = LogConfiguration.Builder()
-            .logLevel(LogLevel.ALL)
-            .tag(tag)
-            .build()
-        val androidPrinter = AndroidPrinter(true)
-        val filePrinter = FilePrinter.Builder(fileDir) //指定保存日志文件的路径
-            .fileNameGenerator(ChangelessFileNameGenerator(fileName)) //指定日志文件名生成器
-            .backupStrategy(backupStrategy) //指定日志文件备份策略
-            .cleanStrategy(cleanStrategy) //指定日志文件清除策略
-            .flattener(PatternFlattener(pattern)) //自定义日志格式
-            .build()
-        if (BuildConfig.DEBUG) {
-        } else {
-            // release不使用logcat
-        }
+        // Logging disabled for simplification
     }
 
     fun initLms(){
