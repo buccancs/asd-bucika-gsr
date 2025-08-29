@@ -133,36 +133,20 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             versionViewModel.checkVersion()
         }
 
-        if (!SharedManager.hasTcLine && !SharedManager.hasTS004 && !SharedManager.hasTC007) {
+        if (!SharedManager.hasTcLine) {
             //仅当设备列表为空时，才执行自动跳转
             if (DeviceTools.isConnect()) {
-                if (!WebSocketProxy.getInstance().isConnected()) {
-                    ARouter.getInstance()
-                        .build(RouterConfig.IR_MAIN)
-                        .withBoolean(ExtraKeyConfig.IS_TC007, false)
-                        .navigation(this)
-                }
-            } else {
-                if (WebSocketProxy.getInstance().isTS004Connect()) {
-                    ARouter.getInstance().build(RouterConfig.IR_MONOCULAR).navigation(this)
-                } else if (WebSocketProxy.getInstance().isTC007Connect()) {
-                    ARouter.getInstance()
-                        .build(RouterConfig.IR_MAIN)
-                        .withBoolean(ExtraKeyConfig.IS_TC007, true)
-                        .navigation(this)
-                }
+                ARouter.getInstance()
+                    .build(RouterConfig.IR_MAIN)
+                    .withBoolean(ExtraKeyConfig.IS_TC007, false)
+                    .navigation(this)
             }
         }
 
         if (DeviceTools.isConnect()) {
             SharedManager.hasTcLine = true
         }
-        if (WebSocketProxy.getInstance().isTS004Connect()) {
-            SharedManager.hasTS004 = true
-        }
-        if (WebSocketProxy.getInstance().isTC007Connect()) {
-            SharedManager.hasTC007 = true
-        }
+        // Removed TS004 and TC007 auto-detection since only TC001 is supported
 //        initLauncher()
     }
 
@@ -355,9 +339,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     private var tipOtgDialog: TipOtgDialog? = null
 
     override fun disConnected() {
-        if (WebSocketProxy.getInstance().isTS004Connect()) {
-            ARouter.getInstance().build(RouterConfig.IR_MONOCULAR).navigation(this)
-        }
+        // Removed TS004 socket check since only TC001 is supported
         //无连接OTG提示
         if (tipOtgDialog != null && tipOtgDialog!!.isShowing) {
             return
@@ -374,19 +356,14 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onTS004ResetEvent(event: TS004ResetEvent) {
-        showResetTipsDialog()
-    }
+    // Removed TS004ResetEvent handler since only TC001 is supported
 
     override fun onSocketConnected(isTS004: Boolean) {
         disconnectDialog?.dismiss()
     }
 
     override fun onSocketDisConnected(isTS004: Boolean) {
-        if (lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED) && isTS004) {//TC007不用
-            dialogDisconnect()
-        }
+        // Removed TS004-specific disconnection handling since only TC001 is supported
     }
 
 
@@ -567,20 +544,9 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 view_page.setCurrentItem(0, false)
             }
             2 -> {
-
-                if (DeviceTools.isTC001PlusConnect()) {
-                    ARouter.getInstance().build(RouterConfig.IR_MAIN).navigation(this@MainActivity)
-                    startActivityForResult(Intent(this@MainActivity, IRThermalPlusActivity::class.java), 101)
-                }else if(DeviceTools.isTC001LiteConnect()){
-                    ARouter.getInstance().build(RouterConfig.IR_MAIN).navigation(this@MainActivity)
-                    startActivityForResult(Intent(this@MainActivity, IRThermalLiteActivity::class.java), 101)
-                } else if (DeviceTools.isHikConnect()) {
-                    ARouter.getInstance().build(RouterConfig.IR_MAIN).navigation(this@MainActivity)
-                    startActivity(Intent(this, IRThermalHikActivity::class.java))
-                } else{
-                    ARouter.getInstance().build(RouterConfig.IR_MAIN).navigation(this@MainActivity)
-                    startActivityForResult(Intent(this@MainActivity, IRThermalNightActivity::class.java), 101)
-                }
+                // Only TC001 base model is supported now
+                ARouter.getInstance().build(RouterConfig.IR_MAIN).navigation(this@MainActivity)
+                startActivityForResult(Intent(this@MainActivity, IRThermalNightActivity::class.java), 101)
             }
         }
     }
