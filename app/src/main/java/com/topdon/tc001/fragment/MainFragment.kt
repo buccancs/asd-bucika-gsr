@@ -81,22 +81,6 @@ class MainFragment : BaseFragment(), View.OnClickListener {
                         .withBoolean(ExtraKeyConfig.IS_TC007, false)
                         .navigation(requireContext())
                 }
-                ConnectType.TS004 -> {
-                    if (WebSocketProxy.getInstance().isTS004Connect()) {
-                        ARouter.getInstance().build(RouterConfig.IR_MONOCULAR).navigation(requireContext())
-                    } else {
-                        ARouter.getInstance()
-                            .build(RouterConfig.IR_DEVICE_ADD)
-                            .withBoolean("isTS004", true)
-                            .navigation(requireContext())
-                    }
-                }
-                ConnectType.TC007 -> {
-                    ARouter.getInstance()
-                        .build(RouterConfig.IR_MAIN)
-                        .withBoolean(ExtraKeyConfig.IS_TC007, true)
-                        .navigation(requireContext())
-                }
             }
         }
         adapter.onItemLongClickListener = { view, type ->
@@ -109,8 +93,6 @@ class MainFragment : BaseFragment(), View.OnClickListener {
                     .setPositiveListener(R.string.report_delete) {
                         when (type) {
                             ConnectType.LINE -> SharedManager.hasTcLine = false
-                            ConnectType.TS004 -> SharedManager.hasTS004 = false
-                            ConnectType.TC007 -> SharedManager.hasTC007 = false
                         }
                         refresh()
                         TToast.shortToast(requireContext(), R.string.test_results_delete_success)
@@ -268,29 +250,23 @@ class MainFragment : BaseFragment(), View.OnClickListener {
         @SuppressLint("SetTextI18n")
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val type = holder.getConnectType(position)
-            val hasTitle: Boolean = when (position) {
-                0 -> true
-                1 -> SharedManager.hasTcLine
-                else -> false
-            }
+            val hasTitle: Boolean = position == 0  // Only first item has title now
             val hasConnect: Boolean = when (type) {
                 ConnectType.LINE -> hasConnectLine
-                ConnectType.TS004 -> hasConnectTS004
-                ConnectType.TC007 -> hasConnectTC007
             }
 
             holder.itemView.tv_title.isVisible = hasTitle
             holder.itemView.tv_title.text = AppLanguageUtils.attachBaseContext(
                 holder.itemView.context, SharedManager.getLanguage(holder.itemView.context!!))
-                .getString(if (type == ConnectType.LINE) R.string.tc_connect_line else R.string.tc_connect_wifi)
+                .getString(R.string.tc_connect_line)  // Only LINE type supported
 
             holder.itemView.iv_bg.isSelected = hasConnect
             holder.itemView.tv_device_name.isSelected = hasConnect
             holder.itemView.view_device_state.isSelected = hasConnect
             holder.itemView.tv_device_state.isSelected = hasConnect
             holder.itemView.tv_device_state.text = if (hasConnect) "online" else "offline"
-            holder.itemView.tv_battery.isVisible = type == ConnectType.TC007 && hasConnectTC007 && tc007Battery != null
-            holder.itemView.battery_view.isVisible = type == ConnectType.TC007 && hasConnectTC007 && tc007Battery != null
+            holder.itemView.tv_battery.isVisible = false  // Only TC007 had battery display, removed
+            holder.itemView.battery_view.isVisible = false
 
             when (type) {
                 ConnectType.LINE -> {
@@ -303,40 +279,12 @@ class MainFragment : BaseFragment(), View.OnClickListener {
                         holder.itemView.iv_image.setImageResource(R.drawable.ic_main_device_line_disconnect)
                     }
                 }
-                ConnectType.TS004 -> {
-                    holder.itemView.tv_device_name.text = "TS004"
-                    if (hasConnect) {
-                        holder.itemView.iv_image.setImageResource(R.drawable.ic_main_device_ts004_connect)
-                    } else {
-                        holder.itemView.iv_image.setImageResource(R.drawable.ic_main_device_ts004_disconnect)
-                    }
-                }
-                ConnectType.TC007 -> {
-                    holder.itemView.tv_device_name.text = "TC007"
-                    if (hasConnect) {
-                        holder.itemView.iv_image.setImageResource(R.drawable.ic_main_device_tc007_connect)
-                    } else {
-                        holder.itemView.iv_image.setImageResource(R.drawable.ic_main_device_tc007_disconnect)
-                    }
-                    holder.itemView.tv_battery.text = "${tc007Battery?.getBattery()}%"
-                    holder.itemView.battery_view.battery = tc007Battery?.getBattery() ?: 0
-                    holder.itemView.battery_view.isCharging = tc007Battery?.isCharging() ?: false
-                }
             }
         }
 
         override fun getItemCount(): Int {
-            var result = 0
-            if (SharedManager.hasTcLine) {
-                result++
-            }
-            if (SharedManager.hasTS004) {
-                result++
-            }
-            if (SharedManager.hasTC007) {
-                result++
-            }
-            return result
+            // Only TC001 (LINE) is supported now
+            return if (SharedManager.hasTcLine) 1 else 0
         }
 
         inner class ViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) {
@@ -358,16 +306,6 @@ class MainFragment : BaseFragment(), View.OnClickListener {
                                     return@setOnLongClickListener true
                                 }
                             }
-                            ConnectType.TS004 -> {
-                                if (WebSocketProxy.getInstance().isTS004Connect()) {
-                                    return@setOnLongClickListener true
-                                }
-                            }
-                            ConnectType.TC007 -> {
-                                if (WebSocketProxy.getInstance().isTC007Connect()) {
-                                    return@setOnLongClickListener true
-                                }
-                            }
                         }
                         onItemLongClickListener?.invoke(it, deviceType)
                     }
@@ -375,27 +313,14 @@ class MainFragment : BaseFragment(), View.OnClickListener {
                 }
             }
 
-            fun getConnectType(position: Int): ConnectType = when (position) {
-                0 -> if (SharedManager.hasTcLine) {
-                    ConnectType.LINE
-                } else if (SharedManager.hasTS004) {
-                    ConnectType.TS004
-                } else {
-                    ConnectType.TC007
-                }
-                1 -> if (SharedManager.hasTcLine) {
-                    if (SharedManager.hasTS004) ConnectType.TS004 else ConnectType.TC007
-                } else {
-                    ConnectType.TC007
-                }
-                else -> ConnectType.TC007
+            fun getConnectType(position: Int): ConnectType {
+                // Only TC001 (LINE) is supported now
+                return ConnectType.LINE
             }
         }
     }
 
     enum class ConnectType {
         LINE,
-        TS004,
-        TC007,
     }
 }
