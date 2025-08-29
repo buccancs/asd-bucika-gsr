@@ -1,18 +1,11 @@
 package com.topdon.menu.constant
 
+import com.topdon.lib.core.constants.MenuType as CoreMenuType
+
 /**
- * 由于不同的设备（单光、双光、Lite、TC007、2D编辑）菜单存在差异，用该枚举区分.
- *
- * Created by LCG on 2024/11/18.
+ * Backward compatibility wrapper for MenuType.
+ * All references delegate to the consolidated implementation.
+ * 
+ * @deprecated Use com.topdon.lib.core.constants.MenuType directly for new code.
  */
-enum class MenuType {
-    SINGLE_LIGHT,
-
-    DOUBLE_LIGHT,
-
-    Lite,
-
-    TC007,
-
-    GALLERY_EDIT,
-}
+typealias MenuType = CoreMenuType

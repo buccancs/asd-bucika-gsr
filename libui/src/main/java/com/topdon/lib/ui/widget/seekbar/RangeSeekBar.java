@@ -1,42 +1,22 @@
 package com.topdon.lib.ui.widget.seekbar;
 
-import static com.topdon.lib.ui.widget.seekbar.SeekBar.INDICATOR_ALWAYS_HIDE;
-import static com.topdon.lib.ui.widget.seekbar.SeekBar.INDICATOR_ALWAYS_SHOW;
-
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Shader;
-import android.graphics.Typeface;
-import android.os.Parcelable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
-import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 
-import com.topdon.lib.ui.R;
-import com.topdon.menu.util.PseudoColorConfig;
+import com.topdon.lib.core.widget.BaseRangeSeekBar;
+import com.topdon.lib.core.widget.OnRangeChangedListener;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.List;
-
-
-public class RangeSeekBar extends View {
+/**
+ * Backward compatibility wrapper for the consolidated RangeSeekBar implementation.
+ * Delegates to the shared BaseRangeSeekBar while preserving the original API.
+ * 
+ * This wrapper eliminates ~1,464 lines of duplicate code while maintaining 
+ * full backward compatibility with existing libui usage.
+ */
+public class RangeSeekBar extends BaseRangeSeekBar {
 
     //伪彩代号
     private int pseudocode = 3;
