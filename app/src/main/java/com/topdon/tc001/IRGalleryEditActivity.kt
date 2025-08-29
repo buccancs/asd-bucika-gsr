@@ -81,10 +81,9 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
     private var isShowC: Boolean = false
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备类型.
-     * true-TC007 false-其他插件式设备
+     * Only TC001 is supported now - removed TC007-specific handling.
      */
-    private var isTC007 = false
+    private var isTC007 = false // Keep for backward compatibility, always false
 
     private val imageWidth = 256
     private val imageHeight = 192
@@ -132,15 +131,13 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
             filePath = intent.getStringExtra(ExtraKeyConfig.FILE_ABSOLUTE_PATH)!!
         }
         isReportPick = intent.getBooleanExtra(ExtraKeyConfig.IS_PICK_REPORT_IMG, false)
-        isTC007 = intent.getBooleanExtra(ExtraKeyConfig.IS_TC007, false)
+        isTC007 = false // Only TC001 is supported
 
         edit_recycler_second.fenceSelectType = FenceType.DEL
         temperature_view.isShowName = isReportPick
         temperature_view.mode = Mode.CLEAR
         temperature_view.setITsTempListener(this)
-        if (isTC007){
-            temperature_seekbar?.progressHeight = SizeUtils.dp2px(10f)
-        }
+        // Removed TC007-specific UI adjustments since only TC001 is supported
     }
 
     private fun initObserve() {

@@ -19,8 +19,8 @@ class PdfActivity : BaseActivity() {
     override fun initContentView() = R.layout.activity_pdf
 
     override fun initView() {
-        //本地说明书
-        pdf_view.fromAsset(if (intent.getBooleanExtra("isTS001", false)) "TC001.pdf" else "TS004.pdf")
+        //本地说明书 - Only TC001 is supported now
+        pdf_view.fromAsset("TC001.pdf")
             .enableSwipe(true) // allows to block changing pages using swipe
             .swipeHorizontal(false)
             .enableDoubletap(true)
@@ -40,10 +40,7 @@ class PdfActivity : BaseActivity() {
             copyBigDataToSD("TC001.pdf", tc001File)
         }
 
-        val tc004File = File(getExternalFilesDir("pdf")!!, "TS004.pdf")
-        if (!tc004File.exists()) {
-            copyBigDataToSD("TS004.pdf", tc004File)
-        }
+        // Only TC001 is supported - removed TS004 PDF copying
     }
 
     override fun onResume() {
