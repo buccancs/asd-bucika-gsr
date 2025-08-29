@@ -21,7 +21,7 @@ import kotlin.math.abs
  * @author: CaiSongL
  * @date: 2023/4/1 14:13
  */
-@Deprecated("thermal imaging-menu-photo已重构，不需要这个类了")
+class
 class HorizontalLayoutManager(
     private val context: Context,
     scrollStateListener: ScrollStateListener,

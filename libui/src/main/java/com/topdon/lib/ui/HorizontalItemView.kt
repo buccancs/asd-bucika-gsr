@@ -13,7 +13,7 @@ import com.topdon.lib.ui.utils.HorizontalLayoutManager
  * @author: CaiSongL
  * @date: 2023/4/1 13:59
  */
-@Deprecated("thermal imaging-menu-photo已重构，不需要这个类了")
+class
 class HorizontalItemView : RecyclerView {
     private val layoutManager: HorizontalLayoutManager
     private val scrollStateChangeListeners: ArrayList<ScrollStateChangeListener<ViewHolder>> = ArrayList()

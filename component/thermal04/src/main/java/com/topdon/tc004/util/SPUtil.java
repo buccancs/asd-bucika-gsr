@@ -5,7 +5,7 @@ import android.preference.PreferenceManager;
 
 public class SPUtil {
 
-    /* ============================ 使用FFmpeg进行视频解码 ============================ */
+ /* ============================ FFmpeg ============================ */
     private static final String KEY_SW_CODEC = "use-sw-codec";
 
     public static boolean getswCodec(Context context) {
@@ -20,7 +20,7 @@ public class SPUtil {
                 .apply();
     }
 
-    /* ============================ 开启视频的同时进行video ============================ */
+ /* ============================ video ============================ */
     private static final String KEY_AUTO_RECORD = "auto_record";
 
     public static boolean getAutoRecord(Context context) {
@@ -35,7 +35,7 @@ public class SPUtil {
                 .apply();
     }
 
-    /* ============================ 开启视频的同时进行video ============================ */
+ /* ============================ video ============================ */
     private static final String KEY_UDP_MODE = "USE_UDP_MODE";
 
     public static boolean getUDPMode(Context context) {
@@ -50,7 +50,7 @@ public class SPUtil {
                 .apply();
     }
 
-    /* ============================ 自动播放audio ============================ */
+ /* ============================ audio ============================ */
     private static final String KEY_AUTO_AUDIO = "auto_audio";
 
     public static boolean getAutoAudio(Context context) {

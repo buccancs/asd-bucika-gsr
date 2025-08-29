@@ -34,10 +34,10 @@ import java.util.Locale;
 
 /**
  * ================================================
- * 作    者：JayGoo
- * 版    本：
- * 创建日期：2018/5/8
- * 描    述:
+ * JayGoo
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * create
+ * :
  * ================================================
  */
 
@@ -58,11 +58,11 @@ public class SeekBar {
 
     private int indicatorShowMode;
 
-    //进度提示背景的高度，宽度如果是0的话会自适应调整
+    // high
     //Progress prompted the background height, width,
     private int indicatorHeight;
     private int indicatorWidth;
-    //进度提示背景与按钮之间的距离
+    // distance
     //The progress indicates the distance between the background and the button
     private int indicatorMargin;
     private int indicatorDrawableId;
@@ -159,7 +159,7 @@ public class SeekBar {
     }
 
     /**
-     * 初始化进度提示的背景
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private void initBitmap() {
         setIndicatorDrawableId(indicatorDrawableId);
@@ -168,7 +168,7 @@ public class SeekBar {
     }
 
     /**
-     * 计算每个按钮的位置和尺寸
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * Calculates the position and size of each button
      *
      * @param x position x
@@ -207,13 +207,13 @@ public class SeekBar {
     }
     private boolean noNegativeNumber = false;
     /**
-     * 临时处理负数
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public void setNoNegativeNumber(Boolean noNegativeNumber){
         this.noNegativeNumber = noNegativeNumber;
     }
     /**
-     * 绘制按钮和提示背景和文字
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * Draw buttons and tips for background and text
      *
      * @param canvas Canvas
@@ -228,27 +228,27 @@ public class SeekBar {
         // translate canvas, then don't care left
         canvas.translate(left, 0);
         if (isShowIndicator) {
-            onDrawIndicator(canvas, paint, formatCurrentIndicatorText(userText2Draw)); //滑动轴外标签
+ onDrawIndicator(canvas, paint, formatCurrentIndicatorText(userText2Draw)); //
         }
 //        if (isLeft) {
-//            //settings上指示图标
+// //settings
 //            setThumbDrawableId(R.drawable.ic_seekbar_high_svg, thumbWidth, thumbHeight);
 //        } else {
-//            //settings下指示图标
+// //settings
 //            setThumbDrawableId(R.drawable.ic_seekbar_low_svg, thumbWidth, thumbHeight);
 //        }
         if (thumbShow){
             onDrawThumb(canvas);
         }else {
-            onDrawThumb(canvas, isLeft); //轴上标签
+ onDrawThumb(canvas, isLeft); //
         }
         canvas.restore();
     }
 
 
     /**
-     * 绘制按钮
-     * 如果没有图片资源，则绘制默认按钮
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * <p>
      * draw the thumb button
      * If there is no image resource, draw the default button
@@ -259,26 +259,26 @@ public class SeekBar {
         if (thumbInactivatedBitmap != null && !isActivate) {
             canvas.drawBitmap(thumbInactivatedBitmap, 0, rangeSeekBar.getProgressTop() + (rangeSeekBar.getProgressHeight() - scaleThumbHeight) / 2f, null);
         } else if (thumbBitmap != null) {
-            //绘制标签
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             canvas.drawBitmap(thumbBitmap, 0, rangeSeekBar.getProgressTop() + (rangeSeekBar.getProgressHeight() - scaleThumbHeight) / 2f, null);
         }
     }
 
     /**
-     * 绘制按钮
-     * 如果没有图片资源，则绘制默认按钮
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * <p>
      * draw the thumb button
      * If there is no image resource, draw the default button
      *
      * @param canvas canvas
-     * @param isLeft 区分上下,用于旋转
+ * @param isLeft ,
      */
     protected void onDrawThumb(Canvas canvas, Boolean isLeft) {
         if (thumbInactivatedBitmap != null && !isActivate) {
 //            canvas.drawBitmap(thumbInactivatedBitmap, 0, rangeSeekBar.getProgressTop() + (rangeSeekBar.getProgressHeight() - scaleThumbHeight) / 2f, null);
         } else if (thumbBitmap != null) {
-            //绘制标签
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             Matrix matrix = new Matrix();
             int offX = thumbBitmap.getWidth() / 2;
             int offY = thumbBitmap.getHeight() / 2;
@@ -296,7 +296,7 @@ public class SeekBar {
     }
 
     /**
-     * 格式化提示文字
+     * formatter
      * format the indicator text
      *
      * @param text2Draw
@@ -378,7 +378,7 @@ public class SeekBar {
                 canvas.drawPath(indicatorArrowPath, paint);
                 indicatorRect.bottom -= indicatorArrowSize;
                 indicatorRect.top -= indicatorArrowSize;
-                Log.w("pseudo color条刷新","///");
+ Log.w("pseudo color","///");
             }
 
             //indicator background edge processing
@@ -428,12 +428,12 @@ public class SeekBar {
             paint.setColor(indicatorTextColor);
             canvas.drawText(text2Draw, tx, ty, paint);
         }catch (Exception e){
-            Log.w("渲染异常",e.getMessage()+"");
+ Log.w("",e.getMessage()+"");
         }
     }
 
     /**
-     * 拖动检测
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
      * @return is collide
      */

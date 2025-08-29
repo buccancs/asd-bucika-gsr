@@ -30,38 +30,38 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
- * 二级menu
+ * menu
  */
 @SuppressLint("NotifyDataSetChanged")
 class MenuSecondView : FrameLayout {
     /**
-     * 该menu的type，由于不同的设备（单光、dual light、Lite、TC007、2D编辑）menu存在差异，用该枚举区分.
+     * edit
      */
     private val menuType: MenuType
 
     private lateinit var binding: ViewMenuSecondBinding
 
 
-    /* *********************************************  public 方法  ********************************************* */
+ /* ********************************************* public ********************************************* */
     /**
-     * 测温: 0-> photo      观测 10->photo
+ * : 0-> photo 10->photo
      *
-     * 测温: 1-> point line area
+ * : 1-> point line area
      *
-     *                    观测 11->AI识别
+ * 11->AI
      *
-     * 测温: 2-> dual light
-     *                    观测 13->target
+ * : 2-> dual light
+ * 13->target
      *
-     * 测温: 3-> pseudo color颜色   观测 12->pseudo color颜色
+ * : 3-> pseudo color 12->pseudo color
      *
-     * 测温: 4-> settings
+ * : 4-> settings
      *
-     *                    观测 15->settings
+ * 15->settings
      *
-     * 测温: 5-> 温度档位
+     * temperature
      *
-     *                    观测 14->high low temperature point
+ * 14->high low temperature point
      */
     fun selectPosition(position: Int) {
         binding.cameraMenuView.isVisible = position == 0 || position == 10
@@ -79,11 +79,11 @@ class MenuSecondView : FrameLayout {
 
 
 
-    /* *********************************************  public 属性  ********************************************* */
+ /* ********************************************* public ********************************************* */
 
     /**
-     * 第 1 个menu-photovideo 各个操作的点击事件监听.
-     * actionCode: 0-photo/video  1-图库  2-更多menu  3-切换到photo  4-切换到video
+     * event
+     * gallery
      */
     var onCameraClickListener: ((actionCode: Int) -> Unit)?
         get() = binding.cameraMenuView.onCameraClickListener
@@ -91,7 +91,7 @@ class MenuSecondView : FrameLayout {
             binding.cameraMenuView.onCameraClickListener = value
         }
     /**
-     * Temperature measurement mode-menu2-point line area 切换事件监听。
+     * event
      */
     var onFenceListener: ((fenceType: FenceType, isSelected: Boolean) -> Unit)?
         get() = fenceAdapter.onFenceListener
@@ -99,8 +99,8 @@ class MenuSecondView : FrameLayout {
             fenceAdapter.onFenceListener = value
         }
     /**
-     * Temperature measurement mode-menu3-dual light 点击事件监听。
-     * isSelected: true-切换为选中 false-切换为未选中
+     * event
+     * medium
      */
     var onTwoLightListener: ((twoLightType: TwoLightType, isSelected: Boolean) -> Unit)?
         get() = twoLightAdapter.onTwoLightListener
@@ -108,10 +108,10 @@ class MenuSecondView : FrameLayout {
             twoLightAdapter.onTwoLightListener = value
         }
     /**
-     * Temperature measurement mode-menu4-pseudo color/Observation mode-menu3-pseudo color pseudo color切换事件监听.
-     * index-选中pseudo color在列表中的 index，也就 TC007 要用
-     * code-pseudo color编码，由于历史遗留跟 index 对不上，非 TC007 时使用
-     * size-预设pseudo color数量，也就 TC007 要用
+     * event
+     * medium
+ * code-pseudo color index TC007 
+ * size-pseudo color TC007 
      */
     var onColorListener: ((index: Int, code: Int, size: Int) -> Unit)?
         get() = colorAdapter.onColorListener
@@ -119,10 +119,10 @@ class MenuSecondView : FrameLayout {
             colorAdapter.onColorListener = value
         }
     /**
-     * Temperature measurement mode-menu5-settings/Observation mode-menu6-settings 点击事件监听.
-     * isSelected: true-点击时为选中状态 false-点击时为未选中状态
-     * 警示、字体、水印是以生效才视为高亮选中的，这里先保持旧代码逻辑，
-     * settingsmenu的选中刷新丢给上层的 listener 去做，后面有空再考虑更改
+     * event
+     * medium
+     * high
+     * medium
      */
     var onSettingListener: ((type: SettingType, isSelected: Boolean) -> Unit)?
         get() = settingTeAdapter.onSettingListener
@@ -131,12 +131,12 @@ class MenuSecondView : FrameLayout {
             settingObAdapter.onSettingListener = value
         }
     /**
-     * Temperature measurement mode-menu6-high low temperature level 点击事件监听.
+     * event
      *
-     * 由于历史遗留（已保存在 SharedPreferences 中），这里 code 取值为
-     * - 自动切换：-1
-     * - 高温(低增益)：0
-     * - 常温(高增益)：1
+     * medium
+ * - -1
+     * high
+     * high
      */
     var onTempLevelListener: ((code: Int) -> Unit)?
         get() = tempLevelAdapter.onTempLevelListener
@@ -146,13 +146,13 @@ class MenuSecondView : FrameLayout {
 
 
     /**
-     * Observation mode-menu2-high low temperature source 点击事件监听.
+     * event
      *
-     * 由于历史遗留（已保存在 SharedPreferences 中），这里 code 取值为
-     * - 什么都未选中：-1
-     * - 动态识别：0
-     * - 高温源：1
-     * - 低温源：2
+     * medium
+     * medium
+ * - 0
+     * high
+     * low
      */
     var onTempSourceListener: ((code: Int) -> Unit)?
         get() = tempSourceAdapter.onTempSourceListener
@@ -160,7 +160,7 @@ class MenuSecondView : FrameLayout {
             tempSourceAdapter.onTempSourceListener = value
         }
     /**
-     * Observation mode-menu4-target 点击事件监听.
+     * event
      */
     var onTargetListener: ((targetType: TargetType) -> Unit)?
         get() = targetAdapter.onTargetListener
@@ -168,7 +168,7 @@ class MenuSecondView : FrameLayout {
             targetAdapter.onTargetListener = value
         }
     /**
-     * Observation mode-menu5-high low temperature point 点击事件监听.
+     * event
      */
     var onTempPointListener: ((type: TempPointType, isSelected: Boolean) -> Unit)?
         get() = tempPointAdapter.onTempPointListener
@@ -253,45 +253,45 @@ class MenuSecondView : FrameLayout {
 
             refreshImg(GalleryRepository.DirType.LINE)
 
-            //初始化 Temperature measurement mode-menu2-point line area menu
+ // Temperature measurement mode-menu2-point line area menu
             fenceAdapter = FenceAdapter(menuType)
             binding.recyclerFence.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             binding.recyclerFence.adapter = fenceAdapter
 
-            //初始化 Temperature measurement mode-menu3-dual light menu
+ // Temperature measurement mode-menu3-dual light menu
             twoLightAdapter = TwoLightAdapter(menuType)
             binding.recyclerTwoLight.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             binding.recyclerTwoLight.adapter = twoLightAdapter
 
-            //初始化 Temperature measurement mode-menu4-pseudo color or Observation mode-menu3-pseudo color menu
+ // Temperature measurement mode-menu4-pseudo color or Observation mode-menu3-pseudo color menu
             binding.recyclerColor.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             binding.recyclerColor.adapter = colorAdapter
 
-            //初始化 Temperature measurement mode-menu5-settings menu
+ // Temperature measurement mode-menu5-settings menu
             settingTeAdapter = SettingAdapter(menuType)
             binding.recyclerSettingTe.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             binding.recyclerSettingTe.adapter = settingTeAdapter
 
-            //初始化 Temperature measurement mode-menu6-high low temperature level menu
+ // Temperature measurement mode-menu6-high low temperature level menu
             tempLevelAdapter = TempLevelAdapter(menuType)
             binding.recyclerTempLevel.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             binding.recyclerTempLevel.adapter = tempLevelAdapter
 
 
 
-            //初始化 Observation mode-menu2-high low temperature source menu
+ // Observation mode-menu2-high low temperature source menu
             binding.recyclerTempSource.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             binding.recyclerTempSource.adapter = tempSourceAdapter
 
-            //初始化 Observation mode-menu4-target menu
+ // Observation mode-menu4-target menu
             binding.recyclerTarget.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             binding.recyclerTarget.adapter = targetAdapter
 
-            //初始化 Observation mode-menu5-high low temperature point menu
+ // Observation mode-menu5-high low temperature point menu
             binding.recyclerTempPoint.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             binding.recyclerTempPoint.adapter = tempPointAdapter
 
-            //初始化 Observation mode-menu6-settings menu
+ // Observation mode-menu6-settings menu
             binding.recyclerSettingOb.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             binding.recyclerSettingOb.adapter = settingObAdapter
         }
@@ -300,7 +300,7 @@ class MenuSecondView : FrameLayout {
 
     /* *********************************************  menu1-photovideo  ********************************************* */
     /**
-     * 当前是否处于videomode.
+ * videomode.
      *
      * true-videomode false-photomode
      */
@@ -311,7 +311,7 @@ class MenuSecondView : FrameLayout {
         }
 
     /**
-     * 仅 TS001，测温/观测 切换时，关闭delayphoto、连续photo、video后，需要重置为photo状态.
+ * TS001/ delayphotophotovideophoto.
      */
     fun switchToCamera() {
         binding.cameraMenuView.canSwitchMode = true
@@ -320,8 +320,8 @@ class MenuSecondView : FrameLayout {
     }
 
     /**
-     * 类似重置，这个方法的目的是重置状态为未photo、未video状态，且放开 photo/video 切换.
-     * 在各个thermal imaging Activity 的 start()，以及当前 View 中调用
+     * class
+     * medium
      */
     fun updateCameraModel() {
         binding.cameraMenuView.canSwitchMode = true
@@ -329,7 +329,7 @@ class MenuSecondView : FrameLayout {
     }
 
     fun refreshImg(type: GalleryRepository.DirType = GalleryRepository.DirType.LINE) {
-        updateCameraModel()//恢复状态
+ updateCameraModel()//
         CoroutineScope(Dispatchers.IO).launch {
             val path = GalleryRepository.readLatest(type)
             launch(Dispatchers.Main) {
@@ -339,7 +339,7 @@ class MenuSecondView : FrameLayout {
     }
 
     /**
-     * 将中间 photo/video 按钮settings为 photo中-立即/photo中-延迟/video中
+     * medium
      */
     fun setToRecord(isDelay: Boolean) {
         binding.cameraMenuView.canSwitchMode = false
@@ -347,7 +347,7 @@ class MenuSecondView : FrameLayout {
     }
 
     /**
-     * 将中间 photo/video 按钮settings为 photo中-立即 状态
+     * medium
      */
     fun setToCamera() {
         binding.cameraMenuView.setToRecord(false)
@@ -356,7 +356,7 @@ class MenuSecondView : FrameLayout {
 
     /* *****************************************  Temperature measurement mode-menu2-point line area  ***************************************** */
     /**
-     * Temperature measurement mode-menu2-point line area 当前选中的menutype，若为 null 表示所有都未选中.
+     * medium
      */
     var fenceSelectType: FenceType?
         get() = fenceAdapter.selectType
@@ -367,11 +367,11 @@ class MenuSecondView : FrameLayout {
 
     /* *****************************************  Temperature measurement mode-menu3-dual light  ***************************************** */
     /**
-     * 当前单选的dual lighttype
-     * - 单光：  不应该使用这个属性
-     * - Lite： 不应该使用这个属性
-     * - dual light：  dual light1、dual light2、红外、可见光
-     * - TC007：dual light、红外、可见光、画中画
+ * dual lighttype
+ * - 
+ * - Lite 
+ * - dual light dual light1dual light2
+     * medium
      */
     var twoLightType: TwoLightType
         get() = twoLightAdapter.twoLightType
@@ -380,11 +380,11 @@ class MenuSecondView : FrameLayout {
         }
 
     /**
-     * settingsdual light多选状态
-     * - 单光：  画中画、融合度
-     * - Lite： 画中画、融合度
-     * - dual light：  配准、画中画、融合度
-     * - TC007：配准、、融合度
+ * settingsdual light
+     * medium
+     * medium
+     * medium
+ * - TC007
      */
     fun setTwoLightSelected(twoLightType: TwoLightType, isSelected: Boolean) {
         twoLightAdapter.setSelected(twoLightType, isSelected)
@@ -393,8 +393,8 @@ class MenuSecondView : FrameLayout {
 
     /* **********************************  Temperature measurement mode-menu4-pseudo color/Observation mode-menu3-pseudo color  ********************************** */
     /**
-     * 根据指定的pseudo color代号，选中pseudo colormenu中的指定pseudo color，若传递的 code 为不支持 code，则为全部未选中效果。
-     * @param code 1-白热 3-铁红 4-彩虹1 5-彩虹2 6-彩虹3 7-红热 8-热铁 9-彩虹4 10-彩虹5 11-黑热
+     * medium
+ * @param code 1- 3- 4-1 5-2 6-3 7- 8- 9-4 10-5 11-
      */
     fun setPseudoColor(code: Int) {
         colorAdapter.selectCode = code
@@ -403,7 +403,7 @@ class MenuSecondView : FrameLayout {
 
     /* **********************************  Temperature measurement mode-menu5-settings or Observation mode-menu6-settings  ********************************** */
     /**
-     * settingssettingsmenu中指定选项的选中状态
+     * medium
      */
     fun setSettingSelected(settingType: SettingType, isSelected: Boolean) {
         settingTeAdapter.setSelected(settingType, isSelected)
@@ -411,8 +411,8 @@ class MenuSecondView : FrameLayout {
     }
 
     /**
-     * settingssettingsmenu中旋转选项的angle
-     * @param rotateAngle 注意！这个值是机芯的旋转angle，非 UI 旋转angle
+     * rotation angle
+     * rotation angle
      */
     fun setSettingRotate(rotateAngle: Int) {
         settingTeAdapter.rotateAngle = rotateAngle
@@ -422,9 +422,9 @@ class MenuSecondView : FrameLayout {
 
     /* *****************************************  Temperature measurement mode-menu6-high low temperature level  ***************************************** */
     /**
-     * 温度档位是否使用华氏度作为单位
+     * temperature
      *
-     * true-华氏度 false-摄氏度
+ * true- false-
      */
     var isUnitF: Boolean
         get() = tempLevelAdapter.isUnitF
@@ -432,12 +432,12 @@ class MenuSecondView : FrameLayout {
             tempLevelAdapter.isUnitF = value
         }
     /**
-     * settings Temperature measurement mode-menu6-high low temperature level 温度档位.
+     * temperature
      *
-     * 由于历史遗留（已保存在 SharedPreferences 中），这里 code 取值为
-     * - 自动切换：-1
-     * - 高温(低增益)：0
-     * - 常温(高增益)：1
+     * medium
+ * - -1
+     * high
+     * high
      */
     fun setTempLevel(code: Int) {
         tempLevelAdapter.selectCode = code
@@ -450,13 +450,13 @@ class MenuSecondView : FrameLayout {
 
     /* *****************************************  Observation mode-menu2-high low temperature source  ***************************************** */
     /**
-     * settings Observation mode-menu2-high low temperature source 选中.
+     * medium
      *
-     * 由于历史遗留（已保存在 SharedPreferences 中），这里 code 取值为
-     * - 什么都未选中：-1
-     * - 动态识别：0
-     * - 高温源：1
-     * - 低温源：2
+     * medium
+     * medium
+ * - 0
+     * high
+     * low
      */
     fun setTempSource(code: Int) {
         tempSourceAdapter.selectCode = code
@@ -465,19 +465,19 @@ class MenuSecondView : FrameLayout {
 
     /* *****************************************  Observation mode-menu4-target  ***************************************** */
     /**
-     * settings Observation mode-menu4-target 指定选项的选中状态
+     * medium
      */
     fun setTargetSelected(targetType: TargetType, isSelected: Boolean) {
         targetAdapter.setSelected(targetType, isSelected)
     }
     /**
-     * settings Observation mode-menu4-target-测量mode 图标type.
+     * measurement
      *
-     * 由于历史遗留（已保存在 SharedPreferences 中），这里 code 取值为
-     * - 人：10
-     * - 羊：11
-     * - 狗：12
-     * - 鸟：13
+     * medium
+ * - 10
+ * - 11
+ * - 12
+ * - 13
      */
     fun setTargetMode(modeCode: Int) {
         targetAdapter.setTargetMode(modeCode)
@@ -486,14 +486,14 @@ class MenuSecondView : FrameLayout {
     
     /* *****************************************  Observation mode-menu5-high low temperature point  ***************************************** */
     /**
-     * settings Observation mode-menu5-high low temperature point menu中，High temperature point 或 低稳点 的选中状态。
+     * low
      */
     fun setTempPointSelect(tempPointType: TempPointType, isSelected: Boolean) {
         tempPointAdapter.setSelected(tempPointType, isSelected)
     }
     /**
-     * 清除 Observation mode-menu5-high low temperature point menu的所有选中状态。
-     * 这里维持原有逻辑，后续考虑是否直接给选中delete得了。
+     * medium
+     * medium
      */
     fun clearTempPointSelect() {
         tempPointAdapter.clearAllSelect()

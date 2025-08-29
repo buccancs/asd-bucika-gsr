@@ -19,27 +19,27 @@ import com.topdon.lib.ui.R
 
 class CountDownView : View {
 
-    //圆环颜色
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private var mRingColor = 0
 
-    //圆环宽度
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private var mRingWidth = 0
 
-    //圆环进度值文本大小
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private var mRingProgressTextSize = 0
 
-    //宽度
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private var mWidth = 0
 
-    //高度
+    // high
     private var mHeight = 0
 
-    //文本
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private var mRingText: String? = null
     private lateinit var mPaint: Paint
     private lateinit var mTextPaint: Paint
 
-    //圆环的矩形区域
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private var mRectF: RectF? = null
 
     //
@@ -50,7 +50,7 @@ class CountDownView : View {
     private var valueAnimator: ValueAnimator? = null
 
     /**
-     * 监听事件
+     * event
      */
     private var mListener: OnCountDownListener? = null
 
@@ -120,7 +120,7 @@ class CountDownView : View {
 
 
     /**
-     * settings倒计时间 单位秒
+     * time
      */
     fun setCountdownTime(mCountdownTime: Int) {
         this.mCountdownTime = mCountdownTime
@@ -129,7 +129,7 @@ class CountDownView : View {
     }
 
     /**
-     * 动画
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private fun getValueAnimator(countdownTime: Long): ValueAnimator? {
         val valueAnimator = ValueAnimator.ofFloat(0f, 100f)
@@ -141,23 +141,23 @@ class CountDownView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        //绘制圆环
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         mPaint.color = mRingColor
         mPaint.style = Paint.Style.FILL
         mPaint.strokeWidth = mRingWidth.toFloat()
         canvas.drawArc(mRectF!!, -90f, mCurrentProgress - 360, false, mPaint)
         val font = ResourcesCompat.getFont(context, R.font.pingfang_bold)
-        //绘制文本
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         mTextPaint.isAntiAlias = true
         mTextPaint.textAlign = Paint.Align.CENTER
         mTextPaint.typeface = font
-        // 倒数计数文本(5 4 3 2 1)
+ // (5 4 3 2 1)
         // val text: String = (mCountdownTime - (mCurrentProgress / 360f * mCountdownTime)).toInt().toString()
 
         mTextPaint.textSize = mRingProgressTextSize.toFloat()
         mTextPaint.color = mProgressTextColor
 
-        //文字居中显示
+        // medium
         val fontMetrics = mTextPaint.fontMetricsInt
         val baseline =
             ((mRectF!!.bottom + mRectF!!.top - fontMetrics.bottom - fontMetrics.top) / 2).toInt()
@@ -166,7 +166,7 @@ class CountDownView : View {
 
 
     /**
-     * 开始倒计时
+     * countdown
      */
     fun startCountDown() {
         valueAnimator = getValueAnimator((mCountdownTime * 1000).toLong())
@@ -179,7 +179,7 @@ class CountDownView : View {
         valueAnimator!!.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
                 super.onAnimationEnd(animation)
-                //倒计时结束回调
+                // countdown
                 if (mListener != null) {
                     mListener!!.countDownFinished()
                 }
@@ -188,7 +188,7 @@ class CountDownView : View {
     }
 
     /**
-     * 停止倒计时
+     * countdown
      */
     fun stopCountDown() {
         if (valueAnimator!!.isRunning) {

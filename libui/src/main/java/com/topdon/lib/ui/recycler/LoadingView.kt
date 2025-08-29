@@ -6,7 +6,7 @@ import android.widget.LinearLayout
 import com.topdon.lib.ui.R
 
 /**
- * 自定义FooterView
+ * FooterView
  */
 class LoadingView : LinearLayout {
 

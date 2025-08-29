@@ -16,7 +16,7 @@ import com.topdon.lib.ui.R
 import com.topdon.lib.ui.bean.TemperatureBean
 import kotlinx.android.synthetic.main.ui_item_menu_five_view.view.*
 
-@Deprecated("旧的温度档位menu，已重构过了")
+temperature
 class MenuFiveNightAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var onTempLevelListener: ((index: Int) -> Unit)? = null
 
@@ -98,7 +98,7 @@ class MenuFiveNightAdapter(val context: Context) : RecyclerView.Adapter<Recycler
 
     inner class ItemView(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //        init {
-//            val canSeeCount = itemCount.toFloat() //一屏可见的 item 数量，目前都是全都显示完
+// val canSeeCount = itemCount.toFloat() // item 
 //            val with = (ScreenUtils.getScreenWidth() / canSeeCount).toInt()
 //            itemView.layoutParams = ViewGroup.LayoutParams(with, ViewGroup.LayoutParams.WRAP_CONTENT)
 //            val imageSize = (ScreenUtils.getScreenWidth() * 62 / 375f).toInt()

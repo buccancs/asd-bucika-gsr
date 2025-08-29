@@ -1,7 +1,7 @@
 package com.topdon.menu.constant
 
 /**
- * 由于不同的设备（单光、dual light、Lite、TC007、2D编辑）menu存在差异，用该枚举区分.
+ * edit
  *
  * Created by LCG on 2024/11/18.
  */

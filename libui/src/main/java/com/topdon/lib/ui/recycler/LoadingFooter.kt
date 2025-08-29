@@ -14,7 +14,7 @@ import com.scwang.smart.refresh.layout.constant.SpinnerStyle
 import com.topdon.lib.ui.R
 
 /**
- * 自定义FooterView
+ * FooterView
  */
 class LoadingFooter : LinearLayout, RefreshFooter {
 

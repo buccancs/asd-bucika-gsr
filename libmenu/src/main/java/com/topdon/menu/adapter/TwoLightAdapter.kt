@@ -10,17 +10,17 @@ import com.topdon.menu.constant.TwoLightType
 /**
  * Temperature measurement mode-menu3-dual light menuused for Adapter.
  *
- * - 单光：  画中画、融合度
- * - Lite： 画中画、融合度
- * - dual light：  dual light1、dual light2、红外、可见光、配准、画中画、融合度
- * - TC007：dual light、红外、可见光、配准、画中画、融合度
- * - 2D编辑：无该menu
+ * medium
+ * medium
+ * medium
+ * medium
+ * edit
  *
- * 单光、Lite：画中画、融合度 独立optional
+ * medium
  *
- * dual light：dual light1、dual light2、红外、可见光 互斥； 配准、画中画、融合度 独立optional
+ * medium
  *
- * TC007：dual light、红外、可见光、画中画 互斥；配准、融合度 独立optional
+ * medium
  *
  * Created by LCG on 2024/11/20.
  */
@@ -28,16 +28,16 @@ import com.topdon.menu.constant.TwoLightType
 internal class TwoLightAdapter(private val menuType: MenuType) : BaseMenuAdapter() {
 
     /**
-     * dual lightmenu点击事件监听。
+     * event
      */
     var onTwoLightListener: ((twoLightType: TwoLightType, isSelected: Boolean) -> Unit)? = null
 
     /**
-     * 当前单选的dual lighttype
-     * - 单光：  不应该使用这个属性
-     * - Lite： 不应该使用这个属性
-     * - dual light：  dual light1、dual light2、红外、可见光
-     * - TC007：dual light、红外、可见光、画中画
+ * dual lighttype
+ * - 
+ * - Lite 
+ * - dual light dual light1dual light2
+     * medium
      */
     var twoLightType: TwoLightType
         get() {
@@ -58,7 +58,7 @@ internal class TwoLightAdapter(private val menuType: MenuType) : BaseMenuAdapter
             for (data in dataList) {
                 if (data.isSingle) {
                     if (menuType == MenuType.TC007 && value == TwoLightType.TWO_LIGHT_1) {
-                        //TC007 时无论dual light1还是dual light2都视为dual light
+ //TC007 dual light1dual light2dual light
                         data.isSelected = data.twoLightType == TwoLightType.TWO_LIGHT_2
                     } else {
                         data.isSelected = data.twoLightType == value
@@ -69,20 +69,20 @@ internal class TwoLightAdapter(private val menuType: MenuType) : BaseMenuAdapter
         }
 
     /**
-     * settings多选状态
-     * - 单光：  画中画、融合度
-     * - Lite： 画中画、融合度
-     * - dual light：  配准、画中画、融合度
-     * - TC007：配准、、融合度
+ * settings
+     * medium
+     * medium
+     * medium
+ * - TC007
      */
     fun setSelected(twoLightType: TwoLightType, isSelected: Boolean) {
         if (twoLightType == TwoLightType.TWO_LIGHT_1 || twoLightType == TwoLightType.TWO_LIGHT_2) {//dual light1、dual light2
             return
         }
-        if (twoLightType == TwoLightType.IR || twoLightType == TwoLightType.LIGHT) {//单红外、可见光
+ if (twoLightType == TwoLightType.IR || twoLightType == TwoLightType.LIGHT) {//
             return
         }
-        if (menuType == MenuType.TC007 && twoLightType == TwoLightType.P_IN_P) {//TC007 时的画中画
+        medium
             return
         }
         for (data in dataList) {
@@ -120,12 +120,12 @@ internal class TwoLightAdapter(private val menuType: MenuType) : BaseMenuAdapter
         holder.binding.ivIcon.isSelected = data.isSelected
         holder.binding.tvText.isSelected = data.isSelected
         holder.binding.clRoot.setOnClickListener {
-            if (data.isSingle) {//单选
-                if (!data.isSelected) {//单选的情况下重复点击忽略掉
+ if (data.isSingle) {//
+ if (!data.isSelected) {//
                     twoLightType = data.twoLightType
                     onTwoLightListener?.invoke(data.twoLightType, true)
                 }
-            } else {//多选
+ } else {//
                 data.isSelected = !data.isSelected
                 holder.binding.ivIcon.isSelected = data.isSelected
                 holder.binding.tvText.isSelected = data.isSelected
@@ -137,8 +137,8 @@ internal class TwoLightAdapter(private val menuType: MenuType) : BaseMenuAdapter
     override fun getItemCount(): Int = dataList.size
 
     /**
-     * @param isSingle 是否单选，目前只有1组互斥的单选，故而 Boolean 足够用了
-     * @param isSelected 当前是否选中
+ * @param isSingle 1 Boolean 
+     * medium
      */
     data class Data(
         @StringRes val stringId: Int,

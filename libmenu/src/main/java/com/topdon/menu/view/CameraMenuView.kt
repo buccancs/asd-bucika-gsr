@@ -18,34 +18,34 @@ import com.topdon.menu.R
 import com.topdon.menu.databinding.ViewCameraMenuBinding
 
 /**
- * 第 1 个menu - photovideo相关封装.
+ * 1 menu - photovideo.
  *
- * 中间 photo/video按钮共有以下状态：
- * - photomode-常规
- * - photomode-photo中-立即photo
- * - photomode-photo中-延迟photo
- * - videomode-常规
- * - videomode-video中
+ * medium
+ * - photomode-
+ * medium
+ * medium
+ * - videomode-
+ * medium
  *
  * Created by LCG on 2024/11/8.
  */
 class CameraMenuView : FrameLayout, View.OnClickListener {
     companion object {
-        /** onCameraClickListener 的事件编码：photo/video **/
+        event
         const val CODE_ACTION = 0
-        /** onCameraClickListener 的事件编码：图库 **/
+        gallery
         const val CODE_GALLERY = 1
-        /** onCameraClickListener 的事件编码：更多menu **/
+        event
         const val CODE_MORE = 2
-        /** onCameraClickListener 的事件编码：切换到photo **/
+        event
         const val CODE_TO_PHOTO = 3
-        /** onCameraClickListener 的事件编码：切换到video **/
+        event
         const val CODE_TO_VIDEO = 4
     }
 
 
     /**
-     * 当前是否处于videomode.
+ * videomode.
      *
      * true-videomode false-photomode
      */
@@ -56,9 +56,9 @@ class CameraMenuView : FrameLayout, View.OnClickListener {
         }
 
     /**
-     * photo/video 文字是否可见及是否可切换，photo中或video中不允许切换.
+     * medium
      *
-     * true-可见及可切换 false-不可见及不可切换
+ * true- false-
      */
     var canSwitchMode: Boolean
         get() = binding.viewPager2.isUserInputEnabled
@@ -69,13 +69,13 @@ class CameraMenuView : FrameLayout, View.OnClickListener {
         }
 
     /**
-     * 各个操作的点击事件监听.
-     * actionCode: 0-photo/video  1-图库  2-更多menu  3-切换到photo  4-切换到video
+     * event
+     * gallery
      */
     var onCameraClickListener: ((actionCode: Int) -> Unit)? = null
 
     /**
-     * 将中间 photo/video 按钮settings为 未photo/未video
+     * medium
      */
     fun setToNormal() {
         if (isVideoMode) {
@@ -86,8 +86,8 @@ class CameraMenuView : FrameLayout, View.OnClickListener {
     }
 
     /**
-     * 将中间 photo/video 按钮settings为 photo中-立即/photo中-延迟/video中
-     * @param isDelay true-延迟photo false-立即photo video的话无所谓
+     * medium
+ * @param isDelay true-photo false-photo video
      */
     fun setToRecord(isDelay: Boolean) {
         if (isVideoMode) {
@@ -102,7 +102,7 @@ class CameraMenuView : FrameLayout, View.OnClickListener {
     }
 
     /**
-     * 使用指定的本地绝对路径刷新图库封面.
+     * gallery
      */
     fun refreshGallery(path: String) {
         try {
@@ -151,29 +151,29 @@ class CameraMenuView : FrameLayout, View.OnClickListener {
     }
 
     /**
-     * 考虑到 photo、video 所需的时间，需要防止用户快速点击photovideo，保存点击时的时间戳避免.
+     * save
      */
     private var lastClickTime: Long = 0
 
     override fun onClick(v: View?) {
         when (v) {
-            binding.ivAction -> {// 开始photo/开始video/停止video
+ binding.ivAction -> {// photo/video/video
                 val currentTime = System.currentTimeMillis()
                 if (currentTime - lastClickTime > 500) {
                     lastClickTime = currentTime
                     onCameraClickListener?.invoke(CODE_ACTION)
                 }
             }
-            binding.ivGallery -> {//图库
+            gallery
                 onCameraClickListener?.invoke(CODE_GALLERY)
             }
-            binding.ivMore -> {//更多menu
+ binding.ivMore -> {//menu
                 onCameraClickListener?.invoke(CODE_MORE)
             }
-            binding.tvPhoto -> {//photo文字
+ binding.tvPhoto -> {//photo
                 binding.viewPager2.currentItem = 0
             }
-            binding.tvVideo -> {//视频文字
+ binding.tvVideo -> {//
                 binding.viewPager2.currentItem = 1
             }
         }

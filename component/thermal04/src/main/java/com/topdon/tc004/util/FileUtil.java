@@ -47,7 +47,7 @@ public class FileUtil {
     }
 
     /*
-     * 截屏
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * */
     public static File getSnapFile(String url) {
         File file = new File(getPicturePath(url));

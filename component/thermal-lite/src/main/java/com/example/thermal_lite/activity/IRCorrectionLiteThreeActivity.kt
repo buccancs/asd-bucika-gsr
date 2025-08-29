@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 /**
  *
- * 锅盖矫正
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * @author: CaiSongL
  * @date: 2023/8/4 9:06
  */

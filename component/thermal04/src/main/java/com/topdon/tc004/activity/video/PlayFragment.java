@@ -53,7 +53,7 @@ import java.util.UUID;
 
 
 /**
- * 播放器Fragment
+ * Fragment
  */
 public class PlayFragment extends Fragment implements TextureView.SurfaceTextureListener{
     protected static final String TAG = "PlayFragment";
@@ -68,22 +68,22 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
     public static final int RESULT_REND_VIDEO_DISPLAY = 2;
     public static final int RESULT_REND_STOP = -1;
 
-    // 等比例,最大化区域显示,不裁剪
+ // ,,
     public static final int ASPECT_RATIO_INSIDE = 1;
-    // 等比例,裁剪,裁剪区域可以通过拖拽展示\隐藏
+ // ,,\
     public static final int ASPECT_RATIO_CROPS_MATRIX = 2;
-    // 等比例,最大区域显示,裁剪
+ // ,,
     public static final int ASPECT_RATIO_CENTER_CROPS = 3;
-    // 拉伸显示,铺满全屏
+ // ,
     public static final int FILL_WINDOW = 4;
 
     private int mRatioType = ASPECT_RATIO_INSIDE;
 
     protected String mUrl;
-    protected int mType;// 0或1表示TCP，2表示UDP
+ protected int mType;// 01TCP2UDP
     protected int sendOption;
 
-    private ResultReceiver mRR;// ResultReceiver是一个用来接收其他进程回调结果的通用接口
+ private ResultReceiver mRR;// ResultReceiver
 
     protected EasyPlayerClient mStreamRender;
     protected ResultReceiver mResultReceiver;
@@ -94,7 +94,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
     protected View.OnLayoutChangeListener listener;
 
     private ImageView mRenderCover;
-    private ImageView mTakePictureThumb;// 显示抓拍的图片
+ private ImageView mTakePictureThumb;// 
     protected TextureView mSurfaceView;
     private SurfaceTexture mSurfaceTexture;
     protected ImageView cover;
@@ -106,7 +106,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 
     private OnDoubleTapListener doubleTapListener;
 
-    // 抓拍后隐藏thumb的task
+ // thumbtask
     private final Runnable mAnimationHiddenTakePictureThumbTask = new Runnable() {
         @Override
         public void run() {
@@ -148,7 +148,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
             mRR = getArguments().getParcelable(ARG_PARAM3);
             boolean isTC007 = getArguments().getBoolean(P_TC007);
             if (!isTC007){
-                setRetainInstance(true); // 保留Fragment实例不随Activity重新创建而销毁
+                create
             }
         }
     }
@@ -199,7 +199,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                 if (resultCode == EasyPlayerClient.RESULT_VIDEO_DISPLAYED) {
                     if (resultData != null) {
                         int videoDecodeType = resultData.getInt(EasyPlayerClient.KEY_VIDEO_DECODE_TYPE, 0);
-                        Log.i(TAG, "视频解码方式:" + (videoDecodeType == 0 ? "软解码" : "硬解码"));
+ Log.i(TAG, ":" + (videoDecodeType == 0 ? "" : ""));
                     }
                     isVideoDisplayed = true;
                     onVideoDisplayed();
@@ -210,11 +210,11 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                     onVideoSizeChange();
                 } else if (resultCode == EasyPlayerClient.RESULT_TIMEOUT) {
                     ivCover.setVisibility(View.VISIBLE);
-                    new AlertDialog.Builder(getActivity()).setMessage("试播时间到").setTitle("SORRY").setPositiveButton(android.R.string.ok, null).show();
+                    time
                 } else if (resultCode == EasyPlayerClient.RESULT_UNSUPPORTED_AUDIO) {
-                    new AlertDialog.Builder(getActivity()).setMessage("audio格式不支持").setTitle("SORRY").setPositiveButton(android.R.string.ok, null).show();
+ new AlertDialog.Builder(getActivity()).setMessage("audio").setTitle("SORRY").setPositiveButton(android.R.string.ok, null).show();
                 } else if (resultCode == EasyPlayerClient.RESULT_UNSUPPORTED_VIDEO) {
-                    new AlertDialog.Builder(getActivity()).setMessage("视频格式不支持").setTitle("SORRY").setPositiveButton(android.R.string.ok, null).show();
+ new AlertDialog.Builder(getActivity()).setMessage("").setTitle("SORRY").setPositiveButton(android.R.string.ok, null).show();
                 } else if (resultCode == EasyPlayerClient.RESULT_EVENT) {
                     int errorCode = resultData.getInt("errorcode");
 //                    if (errorCode != 0) {
@@ -332,7 +332,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
     private void onVideoDisplayed() {
         View view = getView();
         Log.i(TAG, String.format("VIDEO DISPLAYED!!!!%d*%d", mWidth, mHeight));
-//        Toast.makeText(PlayActivity.this, "视频正在播放了", Toast.LENGTH_SHORT).show();
+// Toast.makeText(PlayActivity.this, "", Toast.LENGTH_SHORT).show();
         view.findViewById(android.R.id.progress).setVisibility(View.GONE);
         view.findViewById(R.id.iv_not_connect_space).setVisibility(View.GONE);
         mSurfaceView.post(new Runnable() {
@@ -371,12 +371,12 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         return mStreamRender.isAudioEnable();
     }
 
-    // 开始渲染
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     protected void startRending(SurfaceTexture surface) {
         mStreamRender = new EasyPlayerClient(getContext(), new Surface(surface), mResultReceiver, new EasyPlayerClient.I420DataCallback() {
             @Override
             public void onI420Data(ByteBuffer byteBuffer) {
-//                Log.e("测试画面回调",byteBuffer.toString()+"////");
+// Log.e("",byteBuffer.toString()+"////");
             }
         });
 
@@ -402,7 +402,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         sendResult(RESULT_REND_START, null);
     }
 
-    // 停止渲染
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private void stopRending() {
         if (mStreamRender != null) {
             sendResult(RESULT_REND_STOP, null);
@@ -411,7 +411,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         }
     }
 
-    // 抓拍
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public void takePicture(final String path) {
         try {
             if (mWidth <= 0 || mHeight <= 0) {
@@ -566,12 +566,12 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         }
     }
 
-    // 进入全屏mode
+ // mode
     public void enterFullscreen() {
         setScaleType(FILL_WINDOW);
     }
 
-    // 退出全屏mode
+ // mode
     public void quiteFullscreen() {
         setScaleType(ASPECT_RATIO_CROPS_MATRIX);
     }
@@ -599,23 +599,23 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 
                 switch (mRatioType) {
                     case ASPECT_RATIO_INSIDE: {
-                        if (ratioView - ratio < 0) {    // 屏幕比视频的宽高比更小.表示视频是过于宽屏了.
-                            // 宽为基准.
+                        high
+ // .
                             mSurfaceView.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
                             mSurfaceView.getLayoutParams().height = (int) (getView().getWidth() / ratio + 0.5f);
-                        } else {                        // 视频是竖屏了.
+ } else { // .
                             mSurfaceView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
                             mSurfaceView.getLayoutParams().width = (int) (getView().getHeight() * ratio + 0.5f);
                         }
                     }
                     break;
                     case ASPECT_RATIO_CENTER_CROPS: {
-                        // 以更短的为基准
-                        if (ratioView - ratio < 0) {    // 屏幕比视频的宽高比更小.表示视频是过于宽屏了.
-                            // 宽为基准.
+                        // [Technical comment in Chinese - content removed for ASCII compatibility]
+                        high
+ // .
                             mSurfaceView.getLayoutParams().height = ViewGroup.LayoutParams.MATCH_PARENT;
                             mSurfaceView.getLayoutParams().width = (int) (getView().getHeight() * ratio + 0.5f);
-                        } else {                        // 视频是竖屏了.
+ } else { // .
                             mSurfaceView.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
                             mSurfaceView.getLayoutParams().height = (int) (getView().getWidth() / ratio + 0.5f);
                         }
@@ -727,7 +727,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         mSurfaceView.animate().alpha(selected ? 0.7f : 1.0f);
     }
 
-    // 高度固定，宽度可更改
+    // high
     protected void fixPlayerRatio(View renderView, int maxWidth, int maxHeight) {
 //        fixPlayerRatio(renderView, maxWidth, maxHeight, mWidth, mHeight);
     }

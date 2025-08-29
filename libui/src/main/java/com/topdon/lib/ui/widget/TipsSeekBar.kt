@@ -32,7 +32,7 @@ class TipsSeekBar: ViewGroup, SeekBar.OnSeekBarChangeListener {
         }
 
     /**
-     * 指示 View 当前显示的文字.
+ * View .
      */
     var valueText: String
         get() {
@@ -42,15 +42,15 @@ class TipsSeekBar: ViewGroup, SeekBar.OnSeekBarChangeListener {
             tvTips.text = value
         }
     /**
-     * seekBar 的 onProgressChange 事件监听.
+     * event
      */
     var onProgressChangeListener: ((progress: Int, fromUser: Boolean) -> Unit)? = null
     /**
-     * seekBar 的 onStopTrackingTouch 事件监听.
+     * event
      */
     var onStopTrackingTouch: ((progress: Int) -> Unit)? = null
     /**
-     * 根据进度格式化指示 View 文字.
+     * formatter
      */
     var valueFormatListener: ((progress: Int) -> CharSequence?)? = null
         set(value) {
@@ -65,7 +65,7 @@ class TipsSeekBar: ViewGroup, SeekBar.OnSeekBarChangeListener {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int): this(context, attrs, defStyleAttr, 0)
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int): super(context, attrs, defStyleAttr, defStyleRes) {
-        // seekBar 的 maxHeight 在 29 以下只能通过 xml settings实在太蛋疼了，这里只好给当前 View settings maxHeight,在 attr 中传递给 seekBar
+        // medium
         val thumb = ContextCompat.getDrawable(context, R.drawable.ic_tips_seek_bar_thumb)
         val thumbWidth = thumb?.intrinsicWidth ?: 0
         seekBar = SeekBar(context, attrs)

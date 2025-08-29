@@ -7,17 +7,17 @@ package com.topdon.menu.constant
  */
 enum class TargetType {
     /**
-     * 测量mode：人(默认)、羊、狗、鸟.
+     * measurement
      */
     MODE,
 
     /**
-     * target风格
+ * target
      */
     STYLE,
 
     /**
-     * target颜色
+ * target
      */
     COLOR,
 
@@ -27,7 +27,7 @@ enum class TargetType {
     DELETE,
 
     /**
-     * 帮助
+     * help
      */
     HELP,
 }

@@ -15,12 +15,12 @@ import com.topdon.lib.ui.config.CameraHelp
 import com.topdon.menu.constant.TargetType
 import kotlinx.android.synthetic.main.ui_item_menu_second_view.view.*
 
-@Deprecated("旧的targetmenu，已重构过了")
+@Deprecated("targetmenu")
 class MenuTargetAdapter (val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var listener: ((code: Int) -> Unit)? = null
 
     /**
-     * settings指定选项的选中状态
+     * medium
      */
     fun setSelected(targetType: TargetType, isSelected: Boolean) {
         when (targetType) {
@@ -43,7 +43,7 @@ class MenuTargetAdapter (val context: Context) : RecyclerView.Adapter<RecyclerVi
     )
 
     /**
-     * 刷新测量mode图标
+     * measurement
      */
     fun upCurrentMeasureMode(measureMode: Int){
         secondBean.clear()
@@ -103,7 +103,7 @@ class MenuTargetAdapter (val context: Context) : RecyclerView.Adapter<RecyclerVi
         val img: ImageView = itemView.item_menu_tab_img
         val name: TextView = itemView.item_menu_tab_text
         init {
-//            val canSeeCount = 4.5 //一屏占4个
+// val canSeeCount = 4.5 //4
 //            val with = (ScreenUtils.getScreenWidth() / canSeeCount).toInt()
             itemView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 //            val imageSize = (ScreenUtils.getScreenWidth() * 62 / 375f).toInt()

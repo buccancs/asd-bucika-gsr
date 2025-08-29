@@ -12,10 +12,10 @@ enum class TwoLightType {
     /** dual light2 */
     TWO_LIGHT_2,
 
-    /** 红外 */
+ /** */
     IR,
 
-    /** 可见光 */
+ /** */
     LIGHT,
 
     /** Registration */

@@ -9,12 +9,12 @@ import com.topdon.menu.constant.TargetType
 /**
  * Observation mode-menu4-target menuused for Adapter.
  *
- * 测量mode(MODE)、target(STYLE)、target颜色(COLOR)、delete(DELETE)、帮助(HELP)
+ * measurement
  *
- * - 测量mode(MODE)、target(STYLE) 捆绑，要么都选中，要么都不选中，与 delete(DELETE) 互斥
- * - delete(DELETE) 与 {测量mode(MODE)、target(STYLE)、target颜色(COLOR)} 互斥
- * - target颜色(COLOR) 生效且未处于delete亮，颜色为默认绿色或处于delete不亮，丢给上层维护这个状态
- * - 帮助(HELP) 显示弹框亮，关闭弹框不亮，丢给上层维护这个状态
+ * measurement
+ * measurement
+ * - target(COLOR) deletedelete
+ * help
  *
  * Created by LCG on 2024/11/28.
  */
@@ -22,13 +22,13 @@ import com.topdon.menu.constant.TargetType
 internal class TargetAdapter : BaseMenuAdapter() {
 
     /**
-     * Observation mode-menu4-target 点击事件监听.
+     * event
      */
     var onTargetListener: ((targetType: TargetType) -> Unit)? = null
 
     /**
-     * settings指定选项的选中状态.
-     * 对于一些互斥的选中cancel选中操作，由于历史遗留现在先不改动，丢给上层去维护这个互斥状态.
+     * medium
+     * medium
      */
     fun setSelected(targetType: TargetType, isSelected: Boolean) {
         for (i in dataArray.indices) {
@@ -41,13 +41,13 @@ internal class TargetAdapter : BaseMenuAdapter() {
     }
 
     /**
-     * settings Observation mode-menu4-target-测量mode 图标type.
+     * measurement
      *
-     * 由于历史遗留（已保存在 SharedPreferences 中），这里 code 取值为
-     * - 人：10
-     * - 羊：11
-     * - 狗：12
-     * - 鸟：13
+     * medium
+ * - 10
+ * - 11
+ * - 12
+ * - 13
      */
     fun setTargetMode(modeCode: Int) {
         for (i in dataArray.indices) {
@@ -80,8 +80,8 @@ internal class TargetAdapter : BaseMenuAdapter() {
         holder.binding.ivIcon.isSelected = data.isSelected
         holder.binding.tvText.isSelected = data.isSelected
         holder.binding.clRoot.setOnClickListener {
-            //target颜色以生效才视为高亮选中的，这里先保持旧代码逻辑，
-            //menu的选中刷新丢给上层的 listener 去做，后面有空再考虑更改
+            // high
+            // medium
 //            data.isSelected = !data.isSelected
 //            holder.binding.ivIcon.isSelected = data.isSelected
 //            holder.binding.tvText.isSelected = data.isSelected
