@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.bean.event.device.DeviceConnectEvent
 import com.topdon.lib.core.config.DeviceConfig.isTcTsDevice
 import com.topdon.lib.core.tools.DeviceTools

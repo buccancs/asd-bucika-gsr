@@ -12,8 +12,6 @@ import android.os.Build;
 
 import androidx.core.content.FileProvider;
 
-import com.elvishew.xlog.XLog;
-
 import java.io.File;
 import java.util.List;
 
