@@ -320,8 +320,7 @@ dependencies {
     implementation project(':component:thermal-hik')
     implementation project(':component:thermal-ir')
     implementation project(':component:thermal-lite')
-    implementation project(':component:thermal04')
-    implementation project(':component:thermal07')
+    // Removed thermal04 and thermal07 dependencies since only TC001 is supported
     implementation project(':component:transfer')
     implementation project(':component:user')
     implementation project(':libapp')
