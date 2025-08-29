@@ -4,7 +4,7 @@ import android.content.Context;
 import android.hardware.usb.UsbDevice;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.util.Log;
+
 import android.view.TextureView;
 
 import com.energy.iruvc.dual.DualUVCCamera;

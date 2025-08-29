@@ -1,10 +1,6 @@
 package com.topdon.lib.core.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.viewModelScope
-import com.blankj.utilcode.util.AppUtils
-import com.blankj.utilcode.util.TimeUtils
-import com.elvishew.xlog.XLog
+
 import com.topdon.lib.core.bean.event.VersionUpData
 import com.topdon.lib.core.bean.json.CheckVersionJson
 import com.topdon.lib.core.bean.json.SoftConfigOtherTypeVO

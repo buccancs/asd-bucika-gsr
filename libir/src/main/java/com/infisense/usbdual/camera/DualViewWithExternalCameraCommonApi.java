@@ -3,7 +3,7 @@ package com.infisense.usbdual.camera;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.util.Log;
+
 import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.ViewGroup;

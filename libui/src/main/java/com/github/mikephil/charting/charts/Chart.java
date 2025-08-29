@@ -236,6 +236,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
         mInfoPaint.setTextSize(Utils.convertDpToPixel(12f));
 
         if (mLogEnabled)
+            Log.i("", "Chart.init()");
     }
 
     // public void initWithDummyData() {
@@ -299,6 +300,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
         notifyDataSetChanged();
 
         if (mLogEnabled)
+            Log.i(LOG_TAG, "Data is set.");
     }
 
     /**
@@ -624,6 +626,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
         else {
 
             if (mLogEnabled)
+                Log.i(LOG_TAG, "Highlighted: " + high.toString());
 
             e = mData.getEntryForHighlight(high);
             if (e == null) {
@@ -666,6 +669,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
     public Highlight getHighlightByTouchPoint(float x, float y) {
 
         if (mData == null) {
+            Log.e(LOG_TAG, "Can't select by touch. No data set.");
             return null;
         } else
             return getHighlighter().getHighlight(x, y);
@@ -741,6 +745,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
                 // draw the marker
                 mMarker.draw(canvas, pos[0], pos[1]);
             }catch (Exception exception){
+                Log.e("测试",exception.getMessage());
             }
         }
     }
@@ -1486,6 +1491,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
 
             stream.close();
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
 
@@ -1552,6 +1558,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
             out.close();
 
         } catch (IOException e) {
+            e.printStackTrace();
 
             return false;
         }
@@ -1659,12 +1666,15 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         if (mLogEnabled)
+            Log.i(LOG_TAG, "OnSizeChanged()");
 
         if (w > 0 && h > 0 && w < 10000 && h < 10000) {
             if (mLogEnabled)
+                Log.i(LOG_TAG, "Setting chart dimens, width: " + w + ", height: " + h);
             mViewPortHandler.setChartDimens(w, h);
         } else {
             if (mLogEnabled)
+                Log.w(LOG_TAG, "*Avoiding* setting chart dimens! width: " + w + ", height: " + h);
         }
 
         // This may cause the chart view to mutate properties affecting the view port --
@@ -1698,6 +1708,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
 
+        //Log.i(LOG_TAG, "Detaching...");
 
         if (mUnbind)
             unbindDrawables(this);

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.Utils
-import com.elvishew.xlog.XLog
+
 import com.google.gson.Gson
 import com.topdon.lib.core.R
 import com.topdon.lib.core.config.FileConfig

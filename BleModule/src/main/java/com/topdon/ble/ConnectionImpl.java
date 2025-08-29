@@ -963,11 +963,11 @@ class ConnectionImpl implements Connection, ScanListener {
     }
 
     private void logE(int type, String format, Object... args) {
-        log(Log.ERROR, type, format, args);
+        log(0, type, format, args);
     }
 
     private void logD(int type, String format, Object... args) {
-        log(Log.DEBUG, type, format, args);
+        log(1, type, format, args);
     }
 
     private void notifyRequestFailed(GenericRequest request, int failType) {

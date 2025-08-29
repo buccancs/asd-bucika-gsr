@@ -3,11 +3,11 @@ package com.infisense.usbir.thread;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
-import android.util.Log;
+
 
 import androidx.annotation.Nullable;
 
-import com.elvishew.xlog.XLog;
+
 import com.energy.iruvc.sdkisp.LibIRProcess;
 import com.energy.iruvc.utils.CommonParams;
 import com.energy.iruvc.utils.SynchronizedBitmap;

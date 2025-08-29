@@ -3,7 +3,7 @@ package com.infisense.usbdual.camera;
 import static com.infisense.usbdual.Const.HIDE_LOADING;
 
 import android.os.Handler;
-import android.util.Log;
+
 import android.view.Surface;
 import android.view.SurfaceView;
 

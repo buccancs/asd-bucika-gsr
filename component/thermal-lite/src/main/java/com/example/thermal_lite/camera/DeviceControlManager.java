@@ -1,6 +1,5 @@
 package com.example.thermal_lite.camera;
 
-import android.util.Log;
 
 import com.energy.iruvccamera.usb.USBMonitor;
 import com.example.thermal_lite.camera.task.DeviceControlWorker;

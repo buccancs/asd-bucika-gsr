@@ -2,7 +2,7 @@ package com.infisense.usbdual.camera;
 
 import android.hardware.usb.UsbDevice;
 import android.os.SystemClock;
-import android.util.Log;
+
 
 import com.blankj.utilcode.util.Utils;
 import com.energy.iruvc.ircmd.ConcreteIRCMDBuilder;

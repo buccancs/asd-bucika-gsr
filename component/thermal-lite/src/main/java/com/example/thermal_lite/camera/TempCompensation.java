@@ -3,7 +3,6 @@ package com.example.thermal_lite.camera;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 

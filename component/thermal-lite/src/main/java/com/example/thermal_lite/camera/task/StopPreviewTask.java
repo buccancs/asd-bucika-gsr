@@ -1,7 +1,6 @@
 package com.example.thermal_lite.camera.task;
 
 import android.os.SystemClock;
-import android.util.Log;
 
 import com.example.thermal_lite.camera.CameraPreviewManager;
 

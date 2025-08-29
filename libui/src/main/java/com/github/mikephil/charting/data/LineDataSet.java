@@ -159,6 +159,7 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
         if (radius >= 1f) {
             mCircleRadius = Utils.convertDpToPixel(radius);
         } else {
+            Log.e("LineDataSet", "Circle radius cannot be < 1");
         }
     }
 
@@ -178,6 +179,7 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
         if (holeRadius >= 0.5f) {
             mCircleHoleRadius = Utils.convertDpToPixel(holeRadius);
         } else {
+            Log.e("LineDataSet", "Circle radius cannot be < 0.5");
         }
     }
 

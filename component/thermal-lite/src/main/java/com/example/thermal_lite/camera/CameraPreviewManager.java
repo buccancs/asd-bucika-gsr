@@ -4,14 +4,12 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceView;
 
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.Utils;
-import com.elvishew.xlog.XLog;
 import com.energy.ac020library.IrcamEngine;
 import com.energy.ac020library.IrcmdEngine;
 import com.energy.ac020library.bean.AutoGainImageRes;

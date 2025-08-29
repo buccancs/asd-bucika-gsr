@@ -3,7 +3,6 @@ package com.infisense.usbir.camera;
 import android.content.Context;
 import android.hardware.usb.UsbDevice;
 import android.os.SystemClock;
-import android.util.Log;
 
 import com.energy.iruvc.ircmd.ConcreteIRCMDBuilder;
 import com.energy.iruvc.ircmd.IRCMD;

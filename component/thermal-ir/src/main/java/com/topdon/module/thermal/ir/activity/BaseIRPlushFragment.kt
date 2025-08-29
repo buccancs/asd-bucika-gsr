@@ -645,34 +645,19 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     }
 
     override fun onGranted(usbDevice: UsbDevice?, granted: Boolean) {
-            TAG,
-            "USBMonitorManager onGranted"
-        )
     }
 
     override fun onDettach(device: UsbDevice?) {
-            TAG,
-            "USBMonitorManager onDettach"
-        )
     }
 
     override fun onConnect(device: UsbDevice?, ctrlBlock: USBMonitor.UsbControlBlock?, createNew: Boolean) {
-            TAG,
-            "USBMonitorManager onConnect测试"
-        )
         mIrHandler.sendEmptyMessage(Const.HANDLE_CONNECT)
     }
 
     override fun onDisconnect(device: UsbDevice?, ctrlBlock: USBMonitor.UsbControlBlock?) {
-            TAG,
-            "USBMonitorManager onDisconnect"
-        )
     }
 
     override fun onCancel(device: UsbDevice?) {
-            TAG,
-            "USBMonitorManager onCancel"
-        )
     }
 
     override fun onIRCMDInit(ircmd: IRCMD?) {

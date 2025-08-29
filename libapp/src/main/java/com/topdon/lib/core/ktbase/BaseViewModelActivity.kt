@@ -1,7 +1,7 @@
 package com.topdon.lib.core.ktbase
 
 import android.os.Bundle
-import android.util.Log
+
 import androidx.lifecycle.ViewModelProvider
 import com.topdon.lib.core.R
 import com.topdon.lib.core.dialog.MsgDialog

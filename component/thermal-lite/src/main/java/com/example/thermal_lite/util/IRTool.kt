@@ -1,7 +1,5 @@
 package com.example.thermal_lite.util
 
-import android.util.Log
-import com.elvishew.xlog.XLog
 import com.energy.ac020library.bean.CommonParams
 import com.energy.ac020library.bean.IrcmdError
 import com.energy.irutilslibrary.LibIRTempAC020

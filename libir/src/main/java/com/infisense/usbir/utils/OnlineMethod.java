@@ -2,7 +2,7 @@ package com.infisense.usbir.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.util.Log;
+
 
 import com.google.gson.Gson;
 

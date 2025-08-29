@@ -15,7 +15,6 @@ import android.os.Looper
 import android.os.Message
 import android.os.SystemClock
 import android.provider.Settings
-import android.util.Log
 import android.view.Gravity
 import android.view.OrientationEventListener
 import android.view.View
@@ -39,7 +38,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.SizeUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.elvishew.xlog.XLog
 import com.energy.ac020library.bean.IrcmdError
 import com.energy.commoncomponent.bean.RotateDegree
 import com.energy.irutilslibrary.LibIRTempAC020

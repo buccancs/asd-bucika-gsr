@@ -13,7 +13,7 @@ import android.net.NetworkInfo
 import android.os.Build
 import android.os.Process
 import android.text.TextUtils
-import android.util.Log
+
 import android.webkit.WebView
 import androidx.annotation.RequiresApi
 import com.alibaba.android.arouter.launcher.ARouter

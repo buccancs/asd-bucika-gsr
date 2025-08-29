@@ -1,7 +1,7 @@
 package com.infisense.usbir.utils
 
 import android.graphics.Bitmap
-import android.util.Log
+
 import com.example.open3d.JNITool
 import com.topdon.lib.core.bean.AlarmBean
 import org.opencv.core.CvType

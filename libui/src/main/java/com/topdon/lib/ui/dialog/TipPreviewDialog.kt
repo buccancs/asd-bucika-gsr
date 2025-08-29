@@ -129,6 +129,7 @@ class TipPreviewDialog : DialogFragment() {
         try {
             super.show(manager, tag)
         } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 

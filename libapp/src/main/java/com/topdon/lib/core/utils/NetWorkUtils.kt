@@ -10,8 +10,7 @@ import android.net.wifi.WifiConfiguration
 import android.net.wifi.WifiManager
 import android.net.wifi.WifiNetworkSpecifier
 import android.os.Build
-import android.util.Log
-import com.elvishew.xlog.XLog
+
 import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.repository.TS004Repository
 
