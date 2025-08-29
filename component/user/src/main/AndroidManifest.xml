@@ -4,10 +4,6 @@
 
     <application>
         <activity
-            android:name=".activity.LanguageActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="userPortrait" />
-        <activity
             android:name=".activity.QuestionActivity"
             android:launchMode="singleTop"
             android:screenOrientation="userPortrait" />

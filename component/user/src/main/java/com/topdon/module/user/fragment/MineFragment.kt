@@ -44,7 +44,6 @@ import com.topdon.lms.sdk.bean.FeedBackBean
 import com.topdon.lms.sdk.feedback.activity.FeedbackActivity
 import com.topdon.lms.sdk.utils.LanguageUtil
 import com.topdon.module.user.R
-import com.topdon.module.user.activity.LanguageActivity
 import com.topdon.module.user.activity.MoreActivity
 import com.zoho.salesiqembed.ZohoSalesIQ
 import kotlinx.android.synthetic.main.fragment_mine.*
@@ -126,16 +125,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         }
     }
 
-
-    private val languagePickResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        if (it.resultCode == Activity.RESULT_OK) {
-            val localeStr: String = it.data?.getStringExtra("localeStr") ?: return@registerForActivityResult
-            SharedManager.setLanguage(requireContext(), localeStr)
-            LanguageUtils.applyLanguage(AppLanguageUtils.getLocaleByLanguage(localeStr))
-            ToastTools.showShort(R.string.tip_save_success)
-        }
-    }
-
     override fun onClick(v: View?) {
         when (v) {
             iv_winter -> {//冬季特辑入口
@@ -196,9 +185,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             }
             setting_item_version -> {//版本
                 ARouter.getInstance().build(RouterConfig.VERSION).navigation(requireContext())
-            }
-            setting_item_language -> {//语言
-                languagePickResult.launch(Intent(requireContext(), LanguageActivity::class.java))
             }
             setting_item_clear -> {//清除缓存，实际已隐藏
                 clearCache()
