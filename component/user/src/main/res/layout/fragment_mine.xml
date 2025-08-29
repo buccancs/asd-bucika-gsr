@@ -144,6 +144,8 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.core.widget.NestedScrollView>
+
     <!-- Online features removed - customer service chat no longer available -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

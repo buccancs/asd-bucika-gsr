@@ -29,7 +29,7 @@ import com.topdon.lib.core.tools.AppLanguageUtils
 import com.topdon.lib.core.tools.ToastTools
 import com.topdon.lib.core.utils.NetWorkUtils
 import com.topdon.module.user.R
-import com.topdon.module.user.activity.LanguageActivity
+
 import com.topdon.module.user.activity.MoreActivity
 import com.zoho.salesiqembed.ZohoSalesIQ
 import kotlinx.android.synthetic.main.fragment_mine.*
@@ -57,7 +57,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
     override fun initView() {
         // Online features removed - winter guidance hub no longer available
-        setting_item_language.setOnClickListener(this)
         setting_item_version.setOnClickListener(this)
         setting_item_clear.setOnClickListener(this)
         setting_user_lay.setOnClickListener(this)
