@@ -18,12 +18,8 @@ import com.topdon.lib.core.config.ExtraKeyConfig
 import com.topdon.lib.core.config.FileConfig
 import com.topdon.lib.core.config.RouterConfig
 import com.topdon.lib.core.dialog.ConfirmSelectDialog
-import com.topdon.lib.core.dialog.FirmwareUpDialog
-import com.topdon.lib.core.ktbase.BaseFragment
 import com.topdon.lib.core.dialog.TipDialog
-import com.topdon.lib.core.http.tool.DownloadTool
-import com.topdon.lib.core.repository.ProductBean
-import com.topdon.lib.core.repository.TC007Repository
+import com.topdon.lib.core.ktbase.BaseFragment
 import com.topdon.lib.core.socket.WebSocketProxy
 import com.topdon.lib.core.tools.DeviceTools
 import com.topdon.lib.core.viewmodel.FirmwareViewModel
@@ -285,36 +281,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
     }
 
 
-    private fun restoreFactory() {
-        TipDialog.Builder(requireContext())
-            .setTitleMessage(getString(R.string.ts004_reset_tip1, "TC007"))
-            .setMessage(getString(R.string.ts004_reset_tip2))
-            .setPositiveListener(R.string.app_ok) {
-                resetAll()
-            }
-            .setCancelListener(R.string.app_cancel) {
-            }
-            .setCanceled(true)
-            .create().show()
-    }
-
-
-    private fun resetAll() {
-        showLoadingDialog(R.string.ts004_reset_tip3)
-        lifecycleScope.launch {
-            val isSuccess = TC007Repository.resetToFactory()
-            if (isSuccess) {
-                XLog.d("TC007 恢复出厂设置成功，即将断开连接")
-                TToast.shortToast(requireContext(), R.string.ts004_reset_tip4)
-                (requireActivity().application as BaseApplication).disconnectWebSocket()
-                EventBus.getDefault().post(TS004ResetEvent())
-                ARouter.getInstance().build(RouterConfig.MAIN).navigation(requireContext())
-                requireActivity().finish()
-            } else {
-                TToast.shortToast(requireContext(), R.string.operation_failed_tips)
-            }
-            delay(500)
-            dismissLoadingDialog()
-        }
-    }
+    // Removed TC007-specific functions: restoreFactory and resetAll
+    // since only TC001 is supported now
 }
