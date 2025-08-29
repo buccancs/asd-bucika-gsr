@@ -3,7 +3,6 @@ package com.topdon.module.thermal.ir.utils
 import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
-import android.util.Log
 import com.blankj.utilcode.util.*
 import com.topdon.lib.core.tools.FileTools
 import java.io.File

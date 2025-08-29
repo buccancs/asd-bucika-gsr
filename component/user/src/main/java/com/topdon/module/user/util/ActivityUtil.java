@@ -3,7 +3,6 @@ package com.topdon.module.user.util;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import com.topdon.lms.sdk.utils.NetworkUtil;
 import com.topdon.lms.sdk.weiget.TToast;
 import com.topdon.module.user.R;

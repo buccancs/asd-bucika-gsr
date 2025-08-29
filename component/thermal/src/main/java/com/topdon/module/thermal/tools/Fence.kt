@@ -1,6 +1,5 @@
 package com.topdon.module.thermal.tools
 
-import android.util.Log
 
 class Fence(var w: Int = 256, var h: Int = 192, val srcRect: IntArray, rotateType: Int = 0) {
 

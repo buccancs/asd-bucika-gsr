@@ -1,6 +1,5 @@
 package com.topdon.module.thermal.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.Utils
 import com.topdon.lib.core.config.FileConfig.galleryPath

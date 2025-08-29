@@ -3,7 +3,6 @@ package com.guide.zm04c.matrix
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import com.blankj.utilcode.util.ScreenUtils

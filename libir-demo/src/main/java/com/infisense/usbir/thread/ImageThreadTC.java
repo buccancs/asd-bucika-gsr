@@ -2,7 +2,6 @@ package com.infisense.usbir.thread;
 
 import android.graphics.Bitmap;
 import android.os.SystemClock;
-import android.util.Log;
 
 import com.infisense.iruvc.sdkisp.LibIRParse;
 import com.infisense.iruvc.sdkisp.LibIRProcess;

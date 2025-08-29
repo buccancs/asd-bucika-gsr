@@ -1,6 +1,5 @@
 package com.topdon.commons.util;
 
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;

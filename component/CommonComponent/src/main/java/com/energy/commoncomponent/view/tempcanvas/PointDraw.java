@@ -11,7 +11,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextPaint;
-import android.util.Log;
 
 import com.energy.commoncomponent.R;
 import com.energy.commoncomponent.utils.ScreenUtils;

@@ -6,7 +6,6 @@ import android.content.Context
 import android.net.wifi.WifiManager
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.core.os.postDelayed
 import androidx.lifecycle.DefaultLifecycleObserver

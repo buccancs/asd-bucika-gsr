@@ -2,7 +2,6 @@ package com.topdon.module.thermal.activity
 
 import android.graphics.Color
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.activity.viewModels

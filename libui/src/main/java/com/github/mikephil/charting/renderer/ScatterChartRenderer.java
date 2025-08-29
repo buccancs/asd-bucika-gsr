@@ -2,7 +2,6 @@ package com.github.mikephil.charting.renderer;
 
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.data.Entry;

@@ -1,6 +1,5 @@
 package com.topdon.module.thermal.ir.utils
 
-import android.util.Log
 import com.blankj.utilcode.util.Utils
 import com.energy.iruvc.dual.DualUVCCamera
 import com.energy.iruvc.ircmd.IRCMD

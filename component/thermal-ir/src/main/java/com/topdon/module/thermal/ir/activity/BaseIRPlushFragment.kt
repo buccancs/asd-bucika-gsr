@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.os.SystemClock
-import android.util.Log
 import android.view.SurfaceView
 import android.view.WindowManager
 import android.widget.FrameLayout

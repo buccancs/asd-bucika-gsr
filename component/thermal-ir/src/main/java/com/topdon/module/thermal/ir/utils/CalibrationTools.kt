@@ -1,6 +1,5 @@
 package com.topdon.module.thermal.ir.utils
 
-import android.util.Log
 import com.energy.iruvc.ircmd.IRCMD
 import com.energy.iruvc.utils.CommonParams
 import com.energy.iruvc.utils.SynchronizedBitmap

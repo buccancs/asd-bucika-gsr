@@ -1,6 +1,5 @@
 package com.topdon.module.thermal.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.topdon.lib.core.common.SharedManager

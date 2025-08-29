@@ -1,6 +1,5 @@
 package com.topdon.lib.menu
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route

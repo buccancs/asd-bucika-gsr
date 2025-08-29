@@ -2,7 +2,6 @@ package com.topdon.lib.core.tools
 
 import android.text.InputFilter
 import android.text.Spanned
-import android.util.Log
 import android.widget.EditText
 import java.util.regex.Pattern
 

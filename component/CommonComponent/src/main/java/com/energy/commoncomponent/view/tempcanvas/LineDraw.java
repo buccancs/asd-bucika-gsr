@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.text.TextPaint;
-import android.util.Log;
 import com.energy.commoncomponent.R;
 import com.energy.commoncomponent.utils.ScreenUtils;
 import java.util.LinkedList;

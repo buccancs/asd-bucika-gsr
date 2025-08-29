@@ -1,6 +1,5 @@
 package com.guide.zm04c.matrix
 
-import android.util.Log
 import kotlin.experimental.and
 
 class UsbBuffer {

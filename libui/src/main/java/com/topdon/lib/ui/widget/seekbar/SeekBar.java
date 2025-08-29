@@ -19,7 +19,6 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;

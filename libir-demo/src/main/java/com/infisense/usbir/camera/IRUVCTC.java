@@ -8,7 +8,6 @@ import android.content.res.AssetManager;
 import android.hardware.usb.UsbDevice;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;

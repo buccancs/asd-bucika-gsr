@@ -6,7 +6,6 @@ import android.graphics.Bitmap
 import android.media.*
 import android.os.Build
 import android.os.Looper
-import android.util.Log
 import java.io.File
 import java.io.IOException
 import java.nio.ByteBuffer

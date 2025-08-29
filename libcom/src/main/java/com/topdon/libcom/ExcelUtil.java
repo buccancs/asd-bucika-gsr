@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 
 import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.UriUtils;

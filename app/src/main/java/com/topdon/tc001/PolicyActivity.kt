@@ -3,7 +3,6 @@ package com.topdon.tc001
 import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings

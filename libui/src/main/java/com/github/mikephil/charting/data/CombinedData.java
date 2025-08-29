@@ -1,7 +1,6 @@
 
 package com.github.mikephil.charting.data;
 
-import android.util.Log;
 
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarLineScatterCandleBubbleDataSet;

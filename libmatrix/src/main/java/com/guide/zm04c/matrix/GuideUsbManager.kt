@@ -4,7 +4,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.hardware.usb.*
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import com.guide.zm04c.matrix.ResultCode.ERROR_CONNECT_DEVICE_FAILD
 import com.guide.zm04c.matrix.ResultCode.SUCC_CONNECT_INTERFACE

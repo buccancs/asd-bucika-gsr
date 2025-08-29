@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import android.graphics.Point
 import android.graphics.RectF
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.yt.jni.Usbcontorl

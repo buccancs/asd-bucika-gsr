@@ -2,7 +2,6 @@ package com.topdon.module.thermal.ir.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 

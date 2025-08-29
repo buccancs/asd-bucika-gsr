@@ -11,7 +11,6 @@ import android.media.ImageReader
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
-import android.util.Log
 import android.util.Size
 import android.view.*
 import android.widget.Button

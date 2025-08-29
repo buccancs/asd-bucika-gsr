@@ -2,7 +2,6 @@ package com.topdon.module.thermal.activity
 
 import android.net.Uri
 import android.os.Build
-import android.util.Log
 import android.widget.MediaController
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider

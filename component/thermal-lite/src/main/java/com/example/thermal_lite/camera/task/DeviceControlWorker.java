@@ -1,6 +1,5 @@
 package com.example.thermal_lite.camera.task;
 
-import android.util.Log;
 
 import java.util.concurrent.ArrayBlockingQueue;
 

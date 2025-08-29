@@ -1,7 +1,6 @@
 package com.topdon.module.thermal.ir.video.media;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -8,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.mikephil.charting.animation.Easing;

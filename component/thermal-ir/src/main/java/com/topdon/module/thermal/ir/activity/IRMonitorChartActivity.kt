@@ -2,7 +2,6 @@ package com.topdon.module.thermal.ir.activity
 
 import android.graphics.Bitmap
 import android.graphics.Rect
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.yt.jni.Usbcontorl

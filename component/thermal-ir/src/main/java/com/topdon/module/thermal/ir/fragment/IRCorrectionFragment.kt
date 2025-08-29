@@ -1,7 +1,6 @@
 package com.topdon.module.thermal.ir.fragment
 
 import android.graphics.Bitmap
-import android.util.Log
 import android.view.WindowManager
 import android.yt.jni.Usbcontorl
 import androidx.lifecycle.lifecycleScope

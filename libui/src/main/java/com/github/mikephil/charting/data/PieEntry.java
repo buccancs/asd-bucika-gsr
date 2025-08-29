@@ -2,7 +2,6 @@ package com.github.mikephil.charting.data;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 /**
  * @author Philipp Jahoda

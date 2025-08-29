@@ -1,7 +1,6 @@
 package com.topdon.module.thermal.activity
 
 import android.graphics.Color
-import android.util.Log
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat

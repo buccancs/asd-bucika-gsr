@@ -10,7 +10,6 @@ import android.graphics.pdf.PdfDocument.PageInfo
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.ScrollView
 import androidx.core.content.ContextCompat

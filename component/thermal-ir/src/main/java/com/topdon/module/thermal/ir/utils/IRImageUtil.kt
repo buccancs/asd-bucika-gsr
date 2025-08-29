@@ -1,7 +1,6 @@
 package com.topdon.module.thermal.ir.utils
 
 import android.graphics.Bitmap
-import android.util.Log
 import android.widget.ImageView
 import androidx.annotation.FloatRange
 import com.topdon.module.thermal.ir.R

@@ -1,6 +1,5 @@
 package com.example.thermal_lite.camera;
 
-import android.util.Log;
 
 import com.energy.ac020library.IrcamEngine;
 import com.energy.ac020library.IrcmdEngine;

@@ -1,6 +1,5 @@
 package com.topdon.ble.util;
 
-import android.util.Log;
 
 /**
  * ByteUtil

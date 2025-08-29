@@ -3,7 +3,6 @@ package com.github.mikephil.charting.utils;
 
 import android.content.res.AssetManager;
 import android.os.Environment;
-import android.util.Log;
 
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;

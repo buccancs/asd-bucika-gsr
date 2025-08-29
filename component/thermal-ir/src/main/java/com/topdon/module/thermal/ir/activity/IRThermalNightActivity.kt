@@ -10,7 +10,6 @@ import android.graphics.Bitmap
 import android.graphics.drawable.ColorDrawable
 import android.hardware.SensorManager
 import android.provider.Settings
-import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
