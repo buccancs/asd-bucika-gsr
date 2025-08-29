@@ -665,7 +665,7 @@ public class RangeSeekBar extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (!isEnable) return false;
-//        Log.e("测试焦点：",event.getAction()+"//");
+//        // Logging removed
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 touchDownX = getEventX(event);
@@ -983,7 +983,7 @@ public class RangeSeekBar extends View {
 //            throw new IllegalArgumentException("setRange() interval must be less than (max - min) ! #minInterval:" + minInterval + " #max - min:" + (max - min));
 //        }
         if (maxProgress == max && min == minProgress){
-//            Log.w("数据更新拦截",max+"//"+min+"");
+//            // Logging removed
             return;
         }
         maxProgress = max;
@@ -1012,7 +1012,7 @@ public class RangeSeekBar extends View {
 //            throw new IllegalArgumentException("setRange() interval must be less than (max - min) ! #minInterval:" + minInterval + " #max - min:" + (max - min));
 //        }
         if (maxProgress == max && min == minProgress){
-//            Log.w("数据更新拦截",max+"//"+min+"");
+//            // Logging removed
             return;
         }
         maxProgress = max;

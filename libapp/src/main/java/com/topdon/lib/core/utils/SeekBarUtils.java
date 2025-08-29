@@ -149,7 +149,7 @@ public class SeekBarUtils {
     }
 
     public static void log(Object o) {
-        Log.d(TAG, String.valueOf(o));
+        // Logging removed
     }
 
     /**

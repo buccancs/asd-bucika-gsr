@@ -289,8 +289,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
             totalTime += drawtime;
             drawCycles += 1;
             long average = totalTime / drawCycles;
-            Log.i(LOG_TAG, "Drawtime: " + drawtime + " ms, average: " + average + " ms, cycles: "
-                    + drawCycles);
+            // Logging removed
         }
     }
 
@@ -305,8 +304,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
     protected void prepareValuePxMatrix() {
 
         if (mLogEnabled)
-            Log.i(LOG_TAG, "Preparing Value-Px Matrix, xmin: " + mXAxis.mAxisMinimum + ", xmax: "
-                    + mXAxis.mAxisMaximum + ", xdelta: " + mXAxis.mAxisRange);
+            // Logging removed
 
         mRightAxisTransformer.prepareMatrixValuePx(mXAxis.mAxisMinimum,
                 mXAxis.mAxisRange,
@@ -518,8 +516,7 @@ public abstract class BarLineChartBase<T extends BarLineScatterCandleBubbleData<
                     Math.max(minOffset, offsetBottom));
 
             if (mLogEnabled) {
-                Log.i(LOG_TAG, "offsetLeft: " + offsetLeft + ", offsetTop: " + offsetTop
-                        + ", offsetRight: " + offsetRight + ", offsetBottom: " + offsetBottom);
+                // Logging removed
                 // Logging removed
             }
         }

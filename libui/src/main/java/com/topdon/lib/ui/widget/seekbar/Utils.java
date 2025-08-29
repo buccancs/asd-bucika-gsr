@@ -29,7 +29,7 @@ public class Utils {
     private static final String TAG = "RangeSeekBar";
 
     public static void print(String log) {
-        Log.d(TAG, log);
+        // Logging removed
     }
 
     public static void print(Object... logs) {
@@ -37,7 +37,7 @@ public class Utils {
         for (Object log : logs) {
             stringBuilder.append(log);
         }
-        Log.d(TAG, stringBuilder.toString());
+        // Logging removed
     }
 
     public static Bitmap drawableToBitmap(Context context, int width, int height, int drawableId) {

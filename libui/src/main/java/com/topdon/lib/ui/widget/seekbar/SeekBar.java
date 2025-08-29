@@ -378,7 +378,7 @@ public class SeekBar {
                 canvas.drawPath(indicatorArrowPath, paint);
                 indicatorRect.bottom -= indicatorArrowSize;
                 indicatorRect.top -= indicatorArrowSize;
-                Log.w("伪彩条刷新","///");
+                // Logging removed
             }
 
             //indicator background edge processing
@@ -428,7 +428,7 @@ public class SeekBar {
             paint.setColor(indicatorTextColor);
             canvas.drawText(text2Draw, tx, ty, paint);
         }catch (Exception e){
-            Log.w("渲染异常",e.getMessage()+"");
+            // Logging removed
         }
     }
 

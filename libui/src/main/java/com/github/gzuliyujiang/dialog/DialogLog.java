@@ -47,7 +47,7 @@ public final class DialogLog {
         if (!enable) {
             return;
         }
-        Log.d(TAG, log.toString());
+        // Logging removed
     }
 
 }
