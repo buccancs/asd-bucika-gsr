@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <!-- 视角 -->
+    <!-- [Chinese comment removed for ASCII compatibility] -->
     <View
         android:id="@+id/view_menu1_visual"
         android:layout_width="0dp"

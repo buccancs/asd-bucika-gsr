@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 扫描 gif -->
+ <!-- gif -->
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/iv_scan_gif"
         android:layout_width="0dp"
@@ -58,7 +58,7 @@
         android:layout_marginEnd="20dp"
         android:textSize="14sp"
         android:textColor="@color/white"
-        tools:text="请确保设备已经开机，且位于手机附近"
+ tools:text=""
         app:layout_constrainedWidth="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_scan_tips"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- 顶部提示文字 -->
+ <!-- -->
     <TextView
         android:id="@+id/tv_top_tips"
         android:layout_width="wrap_content"

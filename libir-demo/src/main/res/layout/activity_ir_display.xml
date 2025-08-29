@@ -99,20 +99,20 @@
 
     </LinearLayout>
 
-    <!-- 中间部分 -->
+    <!-- [Chinese comment removed for ASCII compatibility] -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/imageToolBar"
         android:layout_below="@id/controlToolBar">
 
-        <!-- 红外出图图层 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <com.infisense.usbir.view.CameraView
             android:id="@+id/cameraView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <!-- 温度图层 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <com.infisense.usbir.view.TemperatureView
             android:id="@+id/temperatureView"
             android:layout_width="match_parent"
@@ -130,7 +130,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
 
-        <!-- 打快门，出图后模糊可以手动打快门 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <ImageView
             android:id="@+id/manualShutButton"
             android:layout_width="wrap_content"
@@ -139,7 +139,7 @@
             android:background="@drawable/shut"
             android:foreground="?selectableItemBackground" />
 
-        <!-- 打背景 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <ImageView
             android:id="@+id/btnShutterStatusSet"
             android:layout_width="wrap_content"
@@ -148,7 +148,7 @@
             android:background="@drawable/shut_on"
             android:foreground="?selectableItemBackground" />
 
-        <!-- 快门开合 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <ToggleButton
             android:id="@+id/shutterSwitch"
             android:layout_width="80dp"

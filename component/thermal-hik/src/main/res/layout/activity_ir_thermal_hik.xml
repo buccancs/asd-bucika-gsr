@@ -12,7 +12,7 @@
         android:background="#16131e"
         tools:context=".activity.IRThermalHikActivity">
 
-        <!-- 标题栏 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <com.topdon.lib.core.view.MainTitleView
             android:id="@+id/title_view"
             android:layout_width="0dp"
@@ -54,30 +54,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_view"
             app:layout_constraintBottom_toTopOf="@id/menu_second_view">
-            <!-- thermal imaging画面图层 -->
+            <!-- [Chinese comment removed for ASCII compatibility] -->
             <com.topdon.module.thermal.ir.view.HikSurfaceView
                 android:id="@+id/hik_surface_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-            <!-- 画中画本机相机图层 -->
+            <!-- [Chinese comment removed for ASCII compatibility] -->
             <com.topdon.lib.ui.camera.CameraPreView
                 android:id="@+id/camera_pre_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone" />
-            <!-- 温度图层 -->
+            <!-- [Chinese comment removed for ASCII compatibility] -->
             <com.topdon.module.thermal.ir.view.TemperatureHikView
                 android:id="@+id/temperature_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-            <!-- 温度报警红蓝闪烁图层 -->
+            <!-- [Chinese comment removed for ASCII compatibility] -->
             <com.topdon.libcom.view.TempLayout
                 android:id="@+id/temp_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </FrameLayout>
 
-        <!-- 趋势图 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <com.topdon.module.thermal.ir.view.TrendView
             android:id="@+id/trend_view"
             android:layout_width="0dp"
@@ -88,7 +88,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/menu_second_view" />
 
-        <!-- pseudo color条 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <com.topdon.lib.ui.widget.BitmapConstraintLayout
             android:id="@+id/cl_pseudo_bar"
             android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- 自定义渲染时的温度范围文字 -->
+            <!-- [Chinese comment removed for ASCII compatibility] -->
             <TextView
                 android:id="@+id/tv_temp_content"
                 android:layout_width="200dp"
@@ -168,7 +168,7 @@
                 app:rsb_tick_mark_mode="number" />
         </com.topdon.lib.ui.widget.BitmapConstraintLayout>
 
-        <!-- delayphoto/video 倒计时 View -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <com.topdon.module.thermal.ir.view.TimeDownView
             android:id="@+id/time_down_view"
             android:layout_width="wrap_content"
@@ -179,7 +179,7 @@
             app:layout_constraintEnd_toEndOf="@id/thermal_lay"
             app:layout_constraintTop_toTopOf="@id/thermal_lay"
             app:layout_constraintBottom_toBottomOf="@id/thermal_lay" />
-        <!-- 自动连续photo中提示文字 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <TextView
             android:id="@+id/tv_continuous_tips"
             android:layout_width="wrap_content"
@@ -196,7 +196,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/menu_second_view" />
-        <!-- video中时间显示 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <com.topdon.lib.core.view.MyTextView
             android:id="@+id/tv_video_time"
             android:layout_width="wrap_content"
@@ -218,7 +218,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/menu_second_view" />
 
-        <!-- 汽车检测 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <LinearLayout
             android:id="@+id/ll_car_detect"
             android:layout_width="wrap_content"

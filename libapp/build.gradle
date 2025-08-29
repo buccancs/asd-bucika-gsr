@@ -8,7 +8,7 @@ plugins {
 kapt {
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
-//        arg("AROUTER_GENERATE_DOC", "enable")//生成doc文档
+// arg("AROUTER_GENERATE_DOC", "enable")//doc
         arg("room.schemaLocation", "$projectDir/schemas".toString())
         arg("room.incremental", "true")
         arg("room.expandProjection", "true")

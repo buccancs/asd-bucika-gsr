@@ -47,7 +47,7 @@
             app:layout_constraintEnd_toStartOf="@id/iv_action"
             app:layout_constraintTop_toTopOf="@id/iv_action"
             app:layout_constraintBottom_toBottomOf="@id/iv_action" />
-        <!-- 右侧更多menu按钮 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <ImageView
             android:id="@+id/iv_more"
             android:layout_width="0dp"

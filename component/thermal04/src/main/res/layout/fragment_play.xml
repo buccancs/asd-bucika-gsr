@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="wrap_content"
             style="@style/Widget.AppCompat.ActionButton"
-            android:text="退出全屏"
+android:text=""
             android:gravity="center"
             android:visibility="gone"
             android:textColor="#fff"

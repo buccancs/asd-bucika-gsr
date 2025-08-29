@@ -72,6 +72,6 @@ dependencies {
 
     kapt Deps.arouter_compiler
 
-    //艾睿手持设备API接口SDK
+ //APISDK
     api(name: 'jetified-tas_api-1.0.4.0', ext: 'aar')
 }

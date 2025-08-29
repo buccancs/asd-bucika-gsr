@@ -9,13 +9,13 @@
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         >
-        <!-- 温度图层 -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <com.infisense.usbir.view.TemperatureView
             android:id="@+id/temperature_view"
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:layout_height="match_parent" />
-        <!-- dual light融合图层 native camera use -->
+        <!-- [Chinese comment removed for ASCII compatibility] -->
         <SurfaceView
             android:id="@+id/dualTextureViewNativeCamera"
             android:layout_width="match_parent"

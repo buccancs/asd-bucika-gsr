@@ -27,12 +27,12 @@ dependencies {
 
 }
 
-// 指定编码
+// [Technical comment in Chinese - content removed for ASCII compatibility]
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
-// 打包源码
+// [Technical comment in Chinese - content removed for ASCII compatibility]
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'

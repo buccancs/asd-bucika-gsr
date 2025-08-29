@@ -53,7 +53,7 @@
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_content_1"
-            tools:text="1.点击观测type，选择观测的target。" />
+tools:text="1.typetarget" />
 
         <TextView
             android:id="@+id/tv_content_3"

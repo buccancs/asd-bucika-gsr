@@ -38,7 +38,7 @@ import java.io.File
 import java.text.DecimalFormat
 
 /**
- * TS004 的 “更多” page.
+ * TS004 “” page.
  */
 @Route(path = RouterConfig.TS004_MORE)
 class MoreActivity : BaseActivity(), View.OnClickListener {
@@ -56,10 +56,10 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
         setting_disconnect.setOnClickListener(this)
         setting_auto_save.setOnClickListener(this)
 
-        /*if (Build.VERSION.SDK_INT < 29) {//低于 Android10
+        low
             setting_version.isVisible = false
         }*/
-        // 2024-5-30 09:16 TS004项目APP沟通群决定，3.30版本先把固件升级隐藏
+ // 2024-5-30 09:16 TS004APP3.30
         setting_version.isVisible = false
     }
 
@@ -69,7 +69,7 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
         firmwareViewModel.firmwareDataLD.observe(this) {
             tv_upgrade_point.isVisible = it != null
             dismissCameraLoading()
-            if (it == null) {//请求成功但没有固件升级包，即已是最新
+ if (it == null) {//
                 ToastUtils.showShort(R.string.setting_firmware_update_latest_version)
             } else {
                 showFirmwareUpDialog(it)
@@ -84,29 +84,29 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v) {
-            setting_device_information -> {//设备信息
+            info
                 ARouter.getInstance()
                     .build(RouterConfig.DEVICE_INFORMATION)
                     .withBoolean(ExtraKeyConfig.IS_TC007, false)
                     .navigation(this@MoreActivity)
             }
-            setting_tisr -> {//settings超分
+ setting_tisr -> {//settings
                 ARouter.getInstance().build(RouterConfig.TISR).navigation(this@MoreActivity)
             }
-            setting_auto_save -> {//自动保存到手机
+            save
                 ARouter.getInstance().build(RouterConfig.AUTO_SAVE).navigation(this@MoreActivity)
             }
-            setting_storage_space -> {//TS004储存空间
+ setting_storage_space -> {//TS004
                 ARouter.getInstance().build(RouterConfig.STORAGE_SPACE).navigation(this@MoreActivity)
             }
-            setting_version -> {//固件版本
-                //由于双通道方案存在问题，V3.30临时使用 apk 内置固件升级包，此处注释强制登录逻辑
+ setting_version -> {//
+ //V3.30 apk 
 //                if (LMS.getInstance().isLogin) {
                     val firmwareData = firmwareViewModel.firmwareDataLD.value
                     if (firmwareData != null) {
                         showFirmwareUpDialog(firmwareData)
                     } else {
-                        XLog.i("TS004 固件升级 - 点击查询")
+ XLog.i("TS004 - ")
                         showCameraLoading()
                         firmwareViewModel.queryFirmware(true)
                     }
@@ -114,10 +114,10 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
 //                    LMS.getInstance().activityLogin()
 //                }
             }
-            setting_reset -> {//恢复出厂settings
+ setting_reset -> {//settings
                 restoreFactory()
             }
-            setting_disconnect -> {//断开连接
+ setting_disconnect -> {//
                 ARouter.getInstance().build(RouterConfig.IR_MORE_HELP)
                     .withInt(Constants.SETTING_CONNECTION_TYPE, Constants.SETTING_DISCONNECTION)
                     .navigation(this@MoreActivity)
@@ -126,7 +126,7 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 显示固件升级提示弹框.
+ * .
      */
     private fun showFirmwareUpDialog(firmwareData: FirmwareViewModel.FirmwareData) {
         val dialog = FirmwareUpDialog(this)
@@ -135,7 +135,7 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
         dialog.contentStr = firmwareData.updateStr
         dialog.isShowRestartTips = true
         dialog.onConfirmClickListener = {
-            //由于双通道方案存在问题，V3.30临时使用 apk 内置固件升级包，此处注释下载逻辑
+            // download
             //downloadFirmware(firmwareData)
             installFirmware(FileConfig.getFirmwareFile(firmwareData.downUrl))
         }
@@ -153,11 +153,11 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 下载指定固件升级包
+     * download
      */
     private fun downloadFirmware(firmwareData: FirmwareViewModel.FirmwareData) {
         lifecycleScope.launch {
-            XLog.d("TS004 固件升级 - 开始下载固件升级包")
+            download
             val progressDialog = DownloadProDialog(this@MoreActivity)
             progressDialog.show()
 
@@ -167,10 +167,10 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
             }
             progressDialog.dismiss()
             if (isSuccess) {
-                XLog.d("TS004 固件升级 - 固件升级包下载成功，即将开始安装")
+                download
                 installFirmware(file)
             } else {
-                XLog.w("TS004 固件升级 - 固件升级包下载失败!")
+                download
                 showReDownloadDialog(firmwareData)
             }
         }
@@ -178,19 +178,19 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
 
     private fun installFirmware(file: File) {
         lifecycleScope.launch {
-            XLog.d("TS004 固件升级 - 开始安装固件升级包")
+ XLog.d("TS004 - ")
             val installDialog = FirmwareInstallDialog(this@MoreActivity)
             installDialog.show()
 
             val isSuccess = TS004Repository.updateFirmware(file)
             installDialog.dismiss()
             if (isSuccess) {
-                XLog.d("TS004 固件升级 - 固件升级包发送往 TS004 成功，即将断开连接")
+ XLog.d("TS004 - TS004 ")
                 (application as BaseApplication).disconnectWebSocket()
                 ARouter.getInstance().build(RouterConfig.MAIN).navigation(this@MoreActivity)
                 finish()
             } else {
-                XLog.w("TS004 固件升级 - 固件升级包发送往 TS004 失败!")
+ XLog.w("TS004 - TS004 !")
                 showReInstallDialog(file)
             }
         }
@@ -247,9 +247,9 @@ class MoreActivity : BaseActivity(), View.OnClickListener {
     private fun resetAll() {
         showLoadingDialog(R.string.ts004_reset_tip3)
         lifecycleScope.launch {
-            XLog.i("准备调用恢复出厂settings接口")
+ XLog.i("settings")
             val isSuccess = TS004Repository.getResetAll()
-            XLog.i("恢复出厂settings接口调用 ${if (isSuccess) "成功" else "失败"}")
+ XLog.i("settings ${if (isSuccess) "" else ""}")
             if (isSuccess) {
                 TToast.shortToast(this@MoreActivity, R.string.ts004_reset_tip4)
                 (application as BaseApplication).disconnectWebSocket()

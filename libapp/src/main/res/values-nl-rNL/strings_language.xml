@@ -240,8 +240,8 @@
 	<string name="edit_image_error_tip">De afbeelding mist temperatuurgegevens en ondersteunt geen bewerking.</string>
 
 
-	<!--	荷兰dutch-->
-	<!-- 2.00版本 -->
+	<!-- [Chinese comment removed for ASCII compatibility] -->
+	<!-- [Chinese comment removed for ASCII compatibility] -->
 	<string name="app_lapsePhotography">Getimede foto</string>
 	<string name="app_Manual_Shutter">Handmatige Sluiter</string>
 	<string name="app_record_sound">Audio opnemen</string>
@@ -498,7 +498,7 @@
 	<string name="installation_package_downloading_tips">Het downloaden begint. Controleer de voortgang in de meldingen</string>
 	<string name="welcome_use_app">Welkom bij %1$s</string>
 
-	<!--荷兰语（机翻）-->
+	<!-- [Chinese comment removed for ASCII compatibility] -->
 
 	<string name="dual_light_correction">Dubbele lichtcorrectie</string>
 	<string name="dual_light_correction_tips_1">Omdat de scherpstellingen van de twee camera\'s niet op elkaar zijn afgestemd, zullen de afbeeldingen die door de twee camera\'s vanaf verschillende afstanden zijn vastgelegd niet op elkaar afgestemd worden.\nDeze functie kan afzonderlijk helpen bij het uitlijnen van de afbeeldingen.</string>
@@ -601,7 +601,7 @@
 	<string name="ts004_faq_q5">Hoe bekijk ik de vastgelegde warmtebeelden op een pc?</string>
 	<string name="ts004_faq_a5">Sluit TS004 aan op een pc via de USB-kabel, waarna u de warmtebeelden kunt bekijken die zijn opgeslagen op TS004.</string>
 
-	<!-- TC001 老 APP 引流 -->
+	<!-- [Chinese comment removed for ASCII compatibility] -->
 	<string name="gallery_transfer">Galerij overzetten</string>
 	<string name="gallery_transfer_wait">De gegevens worden overgezet. Even geduld.</string>
 	<string name="gallery_transfer_complete">Gegevens overzetten voltooid</string>
@@ -652,7 +652,7 @@
 	<string name="wifi_connect_loading">Het zal naar verwachting 15 seconden duren…</string>
 	<string name="tc007_done_fast">Frequente operaties</string>
 
-	<!-- 房屋检测 -->
+	<!-- [Chinese comment removed for ASCII compatibility] -->
 	<string name="main_professional_test">Professionele testen</string>
 	<string name="main_temperature_test">Temperatuur testen</string>
 	<string name="main_thermal_tips">Professionele warmtebeeld testen</string>
@@ -821,7 +821,7 @@
 	<string name="abnormal_description17">De temperatuur van de achterruitverwarming wordt door veel factoren beïnvloed, zoals omgevingstemperatuur en belasting van de verwarming. Controleer de verwarmingstemperatuur met een warmtebeeldcamera en dan kunt u beoordelen of de achteruitkijkspiegel effectief kan worden verwarmd.</string>
 	<string name="abnormal_description18">De temperatuur van de raammotor wordt door veel factoren beïnvloed, zoals omgevingstemperatuur en motorbelasting. Controleer de motortemperatuur met een warmtebeeldcamera. Als de temperatuur te hoog is, kan dit worden veroorzaakt door een defect aan het hefmechanisme voor de ramen of de motor zelf.</string>
 
-	<!-- 房屋检测新增 -->
+	<!-- [Chinese comment removed for ASCII compatibility] -->
 	<string name="vehicle_function">Functie</string>
 	<string name="ability_find">vinden</string>
 	<string name="ability_monitory">Realtime weergave van objecttemperatuur om gegevens te genereren</string>

@@ -85,8 +85,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     packagingOptions {
-        //解决第三方so依赖冲突 merge（合并）  pickFirst（选取第一个）
-        //如果合并不能解决问题就选择其中一个
+ //so merge（） pickFirst（）
+        // medium
         merge 'META-INF/LICENSE-notice.md'
         merge 'META-INF/LICENSE.md'
         merge 'META-INF/proguard/androidx-annotations.pro'
@@ -163,7 +163,7 @@ android {
             ]
         }
 
-        //国内版
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         insideChina {
             dimension 'app'
             buildConfigField "int", "ENV_TYPE", "1"
@@ -171,10 +171,10 @@ android {
             buildConfigField("String", "APP_KEY", "\"${rootProject.ext.appKey.topInfraredCN}\"")
             buildConfigField("String", "APP_SECRET", "\"${rootProject.ext.appSecret.topInfraredCN}\"")
             manifestPlaceholders = [
-                    app_name: "热视界",
+ app_name: "",
             ]
         }
-        //国内版 Android 10
+ // Android 10
         prodTopdonInsideChina {
             dimension 'app'
             targetSdk 27
@@ -184,7 +184,7 @@ android {
             buildConfigField("String", "APP_SECRET", "\"${rootProject.ext.appSecret.topInfraredCN10}\"")
             versionCode rootProject.ext.android.versionCode + getYearStr().toInteger() * 10000
             manifestPlaceholders = [
-                    app_name: "热视界",
+ app_name: "",
             ]
         }
     }
@@ -233,7 +233,7 @@ def versionApk(variant, defaultConfig) {
     }
 }
 
-//复制apk
+//apk
 def copyApk(type, flavor) {
     copy {
         from "build/outputs/apk/${flavor}/${type}"
@@ -249,7 +249,7 @@ def copyApk(type, flavor) {
     }
 }
 
-//复制aab
+//aab
 def copyAab(type) {
     copy {
         from "build/outputs/bundle/${type}"
@@ -349,7 +349,7 @@ dependencies {
 //    implementation 'com.topdon.aliyun:logger:2.2.1:release@aar'
 //    implementation 'com.topdon.aliyun:main:2.2.1:release@aar'
 
-    //国际版需要添加的
+    // add
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
     devImplementation 'com.google.firebase:firebase-crashlytics-ktx'
     devImplementation 'com.google.firebase:firebase-analytics-ktx'
@@ -369,12 +369,12 @@ dependencies {
             'essaging:21.0.1'
     prodTopdonImplementation "com.google.firebase:firebase-iid"
 
-    betaImplementation files('libs/umeng-common-9.4.4+000.jar')//谷歌定制版
-    devImplementation files('libs/umeng-common-9.4.4+000.jar')//谷歌定制版
-    prodImplementation files('libs/umeng-common-9.4.4+000.jar')//谷歌定制版
-    prodTopdonImplementation files('libs/umeng-common-9.4.4+000.jar')//谷歌定制版
+ betaImplementation files('libs/umeng-common-9.4.4+000.jar')//
+ devImplementation files('libs/umeng-common-9.4.4+000.jar')//
+ prodImplementation files('libs/umeng-common-9.4.4+000.jar')//
+ prodTopdonImplementation files('libs/umeng-common-9.4.4+000.jar')//
 
-    //国内版需要添加的
+    // add
     insideChinaImplementation 'com.umeng.umsdk:common:9.6.7'
     insideChinaImplementation 'com.umeng.umsdk:asms:1.8.0'
 }

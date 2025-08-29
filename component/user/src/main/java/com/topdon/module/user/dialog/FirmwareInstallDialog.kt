@@ -10,7 +10,7 @@ import com.topdon.lib.core.utils.ScreenUtil
 import com.topdon.module.user.R
 
 /**
- * 固件安装中提示弹窗.
+ * medium
  * Created by LCG on 2024/3/4.
  */
 class FirmwareInstallDialog(context: Context) : Dialog(context, R.style.TransparentDialog) {

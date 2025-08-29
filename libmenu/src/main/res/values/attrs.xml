@@ -8,7 +8,7 @@
             <enum name="double_light" value="1" /> <!-- dual light -->
             <enum name="lite" value="2" />         <!-- Lite -->
             <enum name="tc007" value="3" />        <!-- TC007 -->
-            <enum name="gallery_edit" value="4" /> <!-- 2D编辑 -->
+            <enum name="gallery_edit" value="4" /> <!-- [Chinese comment removed for ASCII compatibility] -->
         </attr>
     </declare-styleable>
 </resources>

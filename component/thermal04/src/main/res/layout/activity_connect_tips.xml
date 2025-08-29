@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <!-- 提示1 -->
+ <!-- 1 -->
             <TextView
                 android:id="@+id/tv_tips1"
                 android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="14sp"
                 android:textColor="#ccffffff"
-                tools:text="1.长按mode切换键3秒"
+ tools:text="1.mode3"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_title" />
@@ -57,7 +57,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_tips1" />
 
-            <!-- 提示2 -->
+ <!-- 2 -->
             <TextView
                 android:id="@+id/tv_tips2"
                 android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
                 android:layout_marginTop="16dp"
                 android:textSize="14sp"
                 android:textColor="#ccffffff"
-                tools:text="2.在内屏打开WiFi开关"
+ tools:text="2.WiFi"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_tips1" />
@@ -81,7 +81,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_tips2" />
 
-            <!-- 仅TC007，提示3 -->
+ <!-- TC0073 -->
             <TextView
                 android:id="@+id/tv_tips3"
                 android:layout_width="wrap_content"
@@ -109,7 +109,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_tips3" />
 
-            <!-- 仅TC007，提示4 -->
+ <!-- TC0074 -->
             <TextView
                 android:id="@+id/tv_tips4"
                 android:layout_width="wrap_content"
@@ -137,7 +137,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_tips4" />
 
-            <!-- 仅 TS004 时，更多帮助入口 -->
+            help
             <TextView
                 android:id="@+id/tv_more_help"
                 android:layout_width="wrap_content"
@@ -147,7 +147,7 @@
                 android:textColor="#ccffffff"
                 android:visibility="gone"
                 tools:visibility="visible"
-                tools:text="若仍然无法连接，请查看“更多帮助”"
+                help
                 app:layout_constrainedWidth="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_tips4" />
