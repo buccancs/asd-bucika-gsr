@@ -30,6 +30,8 @@ import com.topdon.lib.core.tools.ToastTools
 import com.topdon.lib.core.utils.NetWorkUtils
 import com.topdon.module.user.R
 import com.topdon.module.user.activity.LanguageActivity
+import com.topdon.module.user.activity.MoreActivity
+import com.zoho.salesiqembed.ZohoSalesIQ
 import kotlinx.android.synthetic.main.fragment_mine.*
 import kotlinx.android.synthetic.main.fragment_more.setting_item_unit
 import kotlinx.coroutines.Dispatchers
@@ -67,10 +69,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
         // Removed winter guidance point visibility logic
 
-        if (BaseApplication.instance.isDomestic()) {//国内版不给切换语言
-            setting_item_language.visibility = View.GONE
-        }
-
         viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
             override fun onResume(owner: LifecycleOwner) {
                 // 要是当前已连接 TS004、TC007，切到流量上，不然登录注册意见反馈那些没网
@@ -97,16 +95,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         // Removed login refresh logic
     }
 
-
-    private val languagePickResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        if (it.resultCode == Activity.RESULT_OK) {
-            val localeStr: String = it.data?.getStringExtra("localeStr") ?: return@registerForActivityResult
-            SharedManager.setLanguage(requireContext(), localeStr)
-            LanguageUtils.applyLanguage(AppLanguageUtils.getLocaleByLanguage(localeStr))
-            ToastTools.showShort(R.string.tip_save_success)
-        }
-    }
-
     override fun onClick(v: View?) {
         when (v) {
             // Online features removed - no longer handling these clicks
@@ -122,9 +110,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             }
             setting_item_version -> {//版本
                 ARouter.getInstance().build(RouterConfig.VERSION).navigation(requireContext())
-            }
-            setting_item_language -> {//语言
-                languagePickResult.launch(Intent(requireContext(), LanguageActivity::class.java))
             }
             setting_item_clear -> {//清除缓存，实际已隐藏
                 clearCache()
