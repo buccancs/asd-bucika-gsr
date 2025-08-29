@@ -1,28 +1,28 @@
 package com.infisense.usbir.utils
 
-import java.util.*
-
+import com.topdon.lib.core.utils.ColorUtils as CoreColorUtils
 
 /**
- * @author: CaiSongL
- * @date: 2023/8/7 10:53
+ * Backward compatibility wrapper for ColorUtils functionality.
+ * All methods delegate to the consolidated ColorUtils implementation.
+ * 
+ * This wrapper eliminates ~28 lines of duplicate color utility code while maintaining
+ * full backward compatibility with existing libir usage patterns.
+ * 
+ * @deprecated Use com.topdon.lib.core.utils.ColorUtils directly for new code.
  */
+@Suppress("UNUSED")
 object ColorUtils {
 
-    fun getRed(color: Int): Int {
-        return color shr 16 and 0xFF
-    }
+    @JvmStatic
+    fun getRed(color: Int) = CoreColorUtils.getRed(color)
 
-    fun getGreen(color: Int): Int {
-        return color shr 8 and 0xFF
-    }
+    @JvmStatic
+    fun getGreen(color: Int) = CoreColorUtils.getGreen(color)
 
-    fun getBlue(color: Int): Int {
-        return color and 0xFF
-    }
+    @JvmStatic
+    fun getBlue(color: Int) = CoreColorUtils.getBlue(color)
 
-    fun to01(float: Float): String {
-        return String.format(Locale.ENGLISH, "%.1f", float)
-    }
-
+    @JvmStatic
+    fun to01(value: Float) = CoreColorUtils.to01(value)
 }
