@@ -20,7 +20,7 @@ object RouterConfig {
     const val PDF = "/$GROUP_APP/app/pdf"
     const val IR_MORE_HELP = "/$GROUP_APP/app/more_help"
     const val IR_GALLERY_EDIT = "/$GROUP_APP/gallery/edit"
-    const val WEB_VIEW = "/$GROUP_APP/WebViewActivity"
+
 
     //海康热成像
     const val IR_HIK_MAIN = "/$GROUP_HIK_IR/irHikMain"
