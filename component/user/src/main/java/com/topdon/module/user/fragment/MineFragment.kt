@@ -75,7 +75,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
     override fun initView() {
         iv_winter.setOnClickListener(this)
-        setting_item_language.setOnClickListener(this)
         setting_item_version.setOnClickListener(this)
         setting_item_clear.setOnClickListener(this)
         setting_user_lay.setOnClickListener(this)
@@ -88,10 +87,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         drag_customer_view.setOnClickListener(this)
 
         view_winter_point.isVisible = !SharedManager.hasClickWinter
-
-        if (BaseApplication.instance.isDomestic()) {//国内版不给切换语言
-            setting_item_language.visibility = View.GONE
-        }
 
         viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
             override fun onResume(owner: LifecycleOwner) {
