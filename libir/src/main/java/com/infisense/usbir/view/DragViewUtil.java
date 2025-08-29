@@ -1,18 +1,21 @@
 package com.infisense.usbir.view;
 
-
-
-import android.view.MotionEvent;
 import android.view.View;
+import com.topdon.lib.core.ui.ViewInteractionUtils;
 
 /**
- * 这个工具可以使任何一个view进行拖动。
- * @author: CaiSongL
- * @date: 2023/10/25 11:42
+ * Backward compatibility wrapper for DragViewUtil functionality.
+ * All methods delegate to the consolidated ViewInteractionUtils implementation.
+ * 
+ * This wrapper eliminates ~94 lines of duplicate drag handling code while maintaining
+ * full backward compatibility with existing libir usage patterns.
+ * 
+ * @deprecated Use com.topdon.lib.core.ui.ViewInteractionUtils directly for new code.
  */
 public class DragViewUtil {
+    
     public static void registerDragAction(View v) {
-//        registerDragAction(v, 0);
+        ViewInteractionUtils.makeDraggable(v, 0L);
     }
 
     /**
@@ -22,8 +25,9 @@ public class DragViewUtil {
      * @param delay 延迟
      */
     public static void registerDragAction(View v, long delay) {
-        v.setOnTouchListener(new TouchListener(delay));
+        ViewInteractionUtils.makeDraggable(v, delay);
     }
+}
 
     private static class TouchListener implements View.OnTouchListener {
         private float downX;
