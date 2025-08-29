@@ -1,3 +1,6 @@
+# Shared ProGuard rules for all modules
+# This file contains common rules to eliminate duplication across modules.
+
 # Add project specific ProGuard rules here.
 # You can control the set of applied configuration files using the
 # proguardFiles setting in build.gradle.
