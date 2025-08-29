@@ -74,14 +74,13 @@ object RouterConfig {
 
 
     //user
-    const val QUESTION = "/$GROUP_USER/question"//FAQ
-    const val QUESTION_DETAILS = "/$GROUP_USER/question/details"//FAQ
+    // Removed online features: QUESTION, QUESTION_DETAILS, ELECTRONIC_MANUAL
     const val UNIT = "/$GROUP_USER/unit"
     const val TS004_MORE = "/$GROUP_USER/ts004More"
     const val TC_MORE = "/$GROUP_USER/tcMore"
     const val DEVICE_INFORMATION = "/$GROUP_USER/device_information"
     const val TISR = "/$GROUP_USER/tisr"
-    const val ELECTRONIC_MANUAL = "/$GROUP_USER/electronic_manual"
+    // Removed ELECTRONIC_MANUAL
     const val STORAGE_SPACE = "/$GROUP_USER/storage_space"
     const val AUTO_SAVE = "/$GROUP_USER/auto_save"
 

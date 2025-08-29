@@ -5,8 +5,7 @@ object Constants {
     const val PRODUCT_TS001_NAME = "TS001"
     const val PRODUCT_TS004_NAME = "TS004"
     const val SETTING_TYPE = "setting_type"
-    const val SETTING_BOOK = 0
-    const val SETTING_FAQ = 1
+    // Removed SETTING_BOOK and SETTING_FAQ constants (online features removed)
     const val SETTING_CONNECTION_TYPE = "connection_type"
     const val SETTING_CONNECTION = 0
     const val SETTING_DISCONNECTION = 1
