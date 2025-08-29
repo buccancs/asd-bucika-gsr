@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-present 贵州纳雍穿青人李裕江<1032694760@qq.com>
+ * Copyright (c) 2016-present Li Yujiang<1032694760@qq.com>
  *
  * The software is licensed under the Mulan PSL v2.
  * You can use this software according to the terms and conditions of the Mulan PSL v2.
@@ -18,9 +18,9 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 /**
- * 调试日志工具类
+ * Debug logging utility class
  *
- * @author 贵州山魈羡民 (1032694760@qq.com)
+ * @author Li Yujiang (1032694760@qq.com)
  * @since 2021/3/26 21:34
  */
 public final class DialogLog {
@@ -32,16 +32,16 @@ public final class DialogLog {
     }
 
     /**
-     * 启用调试日志
+     * Enable debug logging
      */
     public static void enable() {
         enable = true;
     }
 
     /**
-     * 打印调试日志
+     * Print debug log
      *
-     * @param log 日志信息
+     * @param log log information
      */
     public static void print(@NonNull Object log) {
         if (!enable) {
