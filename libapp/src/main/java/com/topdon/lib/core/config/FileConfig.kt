@@ -216,4 +216,17 @@ object FileConfig {
                 Environment.DIRECTORY_DOCUMENTS + File.separator + CommUtils.getAppName() + "/house/"
             }
         }
+
+    /**
+     * 外部缓存目录路径
+     * External cache directory path for temporary files
+     */
+    @JvmStatic
+    fun getExternalCachePath(): String {
+        val cacheDir = Utils.getApp().externalCacheDir ?: Utils.getApp().cacheDir
+        if (!cacheDir.exists()) {
+            cacheDir.mkdirs()
+        }
+        return cacheDir.absolutePath
+    }
 }
