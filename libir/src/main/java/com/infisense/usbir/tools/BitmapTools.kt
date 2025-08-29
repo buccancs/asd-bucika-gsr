@@ -1,8 +1,6 @@
 package com.infisense.usbir.tools
 
-import android.util.Log
 import androidx.annotation.ColorInt
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.utils.ByteUtils.bytesToInt
 import com.topdon.lib.core.utils.ByteUtils.descBytes
 
