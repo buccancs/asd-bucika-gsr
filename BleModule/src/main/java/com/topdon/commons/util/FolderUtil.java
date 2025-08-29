@@ -7,34 +7,16 @@ import com.topdon.lms.sdk.LMS;
 
 import java.io.File;
 
-/**
- * @Desc 在APPlication 调用setFileName方法 传入文件名路径 区分APP
- * @ClassName FolderUtil
- * @Email 616862466@qq.com
- * @Author 子墨
- * @Date 2022/9/27 11:55
- */
-
 public class FolderUtil {
     public static String mPath = "/data/user/0/com.topdon.diag.artidiag/files";
     public static String mUserId;
-    public static String fileName; //在APPlication 传入文件名路径 区分APP
+    public static String fileName;
     public static String tdartsSn;
 
-    /**
-     * 获取文件名
-     *
-     * @return String
-     */
     public static String getFileName() {
         return fileName;
     }
 
-    /**
-     * 区分应用文件名称
-     *
-     * @param mfileName 名称("/TopDon/AD200/")
-     */
     public static void setFileName(String mfileName) {
         fileName = mfileName;
     }
@@ -62,9 +44,6 @@ public class FolderUtil {
         }
     }
 
-    /**
-     * 出事下载车型软件
-     */
     public static void initFilePath() {
         String basePath = Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName;
         String downPath = basePath + "Download/";
@@ -76,164 +55,46 @@ public class FolderUtil {
 
     private static void initPath() {
         if (!TextUtils.isEmpty(mUserId)) {
-            File asiaLibsFile = new File(mPath + fileName + mUserId + "/Diagnosis/Asia/");
-            if (!asiaLibsFile.exists()) {
-                asiaLibsFile.mkdirs();
-            }
-            File europeLibsFile = new File(mPath + fileName + mUserId + "/Diagnosis/Europe/");
-            if (!europeLibsFile.exists()) {
-                europeLibsFile.mkdirs();
-            }
-            File americaLibsFile = new File(mPath + fileName + mUserId + "/Diagnosis/America/");
-            if (!americaLibsFile.exists()) {
-                americaLibsFile.mkdirs();
-            }
-            File chinaLibsFile = new File(mPath + fileName + mUserId + "/Diagnosis/China/");
-            if (!chinaLibsFile.exists()) {
-                chinaLibsFile.mkdirs();
-            }
-            File publicLibsFile = new File(mPath + fileName + mUserId + "/Diagnosis/Public/");
-            if (!publicLibsFile.exists()) {
-                publicLibsFile.mkdirs();
-            }
 
-            File immoAsiaLibsFile = new File(mPath + fileName + mUserId + "/Immo/Asia/");
-            if (!immoAsiaLibsFile.exists()) {
-                immoAsiaLibsFile.mkdirs();
-            }
+            String basePath = mPath + fileName;
+            String userPath = basePath + mUserId;
+            
+            // Diagnosis directories
+            ensureDirectoryExists(userPath + "/Diagnosis/Asia/");
+            ensureDirectoryExists(userPath + "/Diagnosis/Europe/");
+            ensureDirectoryExists(userPath + "/Diagnosis/America/");
+            ensureDirectoryExists(userPath + "/Diagnosis/China/");
+            ensureDirectoryExists(userPath + "/Diagnosis/Public/");
 
-            File immoEuropeLibsFile = new File(mPath + fileName + mUserId + "/Immo/Europe/");
-            if (!immoEuropeLibsFile.exists()) {
-                immoEuropeLibsFile.mkdirs();
-            }
+            // Immo directories
+            ensureDirectoryExists(userPath + "/Immo/Asia/");
+            ensureDirectoryExists(userPath + "/Immo/Europe/");
+            ensureDirectoryExists(userPath + "/Immo/America/");
+            ensureDirectoryExists(userPath + "/Immo/China/");
+            ensureDirectoryExists(userPath + "/Immo/Australia/");
 
-            File immoAmericaLibsFile = new File(mPath + fileName + mUserId + "/Immo/America/");
-            if (!immoAmericaLibsFile.exists()) {
-                immoAmericaLibsFile.mkdirs();
-            }
+            // Other user-specific directories
+            ensureDirectoryExists(userPath + "/RFID/");
+            ensureDirectoryExists(userPath + "/NewEnergy/");
+            ensureDirectoryExists(userPath + "/Shot/");
+            ensureDirectoryExists(userPath + "/Pdf/");
+            ensureDirectoryExists(userPath + "/Datastream/");
+            ensureDirectoryExists(userPath + "/Gallery/");
+            ensureDirectoryExists(userPath + "/DataLog/");
+            ensureDirectoryExists(userPath + "/History/Diagnose/");
+            ensureDirectoryExists(userPath + "/History/Service/");
+            ensureDirectoryExists(userPath + "/FeedbackLog/");
+            ensureDirectoryExists(userPath + "/autovinLog/");
+            ensureDirectoryExists(userPath + "Download/");
 
-            File immoChinaLibsFile = new File(mPath + fileName + mUserId + "/Immo/China/");
-            if (!immoChinaLibsFile.exists()) {
-                immoChinaLibsFile.mkdirs();
-            }
-
-            File immoAustraliaLibsFile = new File(mPath + fileName + mUserId + "/Immo/Australia/");
-            if (!immoAustraliaLibsFile.exists()) {
-                immoAustraliaLibsFile.mkdirs();
-            }
-
-            File rfidLibsFile = new File(mPath + fileName + mUserId + "/RFID/");
-            if (!rfidLibsFile.exists()) {
-                rfidLibsFile.mkdirs();
-            }
-
-            File energy = new File(mPath + fileName + mUserId + "/NewEnergy/");
-            if (!energy.exists()) {
-                energy.mkdirs();
-            }
-
-            File shotFile = new File(mPath + fileName + mUserId + "/Shot/");
-            if (!shotFile.exists()) {
-                shotFile.mkdirs();
-            }
-
-            File pdfFile = new File(mPath + fileName + mUserId + "/Pdf/");
-            if (!pdfFile.exists()) {
-                pdfFile.mkdirs();
-            }
-
-            File dataStreamFile = new File(mPath + fileName + mUserId + "/Datastream/");
-            if (!dataStreamFile.exists()) {
-                dataStreamFile.mkdirs();
-            }
-
-            File appFile = new File(mPath + fileName + "App/");
-            if (!appFile.exists()) {
-                appFile.mkdirs();
-            }
-
-            File firmwareFile = new File(mPath + fileName + "Firmware/");
-            if (!firmwareFile.exists()) {
-                firmwareFile.mkdirs();
-            }
-
-
-            File tdartsFile = new File(mPath + fileName + "T-darts/");
-            if (!tdartsFile.exists()) {
-                tdartsFile.mkdirs();
-            }
-
-            File userDiagnose = new File(mPath + fileName + "UserData/Diagnose/");
-            if (!userDiagnose.exists()) {
-                userDiagnose.mkdirs();
-            }
-
-            File userImmo = new File(mPath + fileName + "UserData/Immo/");
-            if (!userImmo.exists()) {
-                userImmo.mkdirs();
-            }
-
-            File userNewEnergy = new File(mPath + fileName + "UserData/NewEnergy/");
-            if (!userNewEnergy.exists()) {
-                userNewEnergy.mkdirs();
-            }
-
-            File userRFID = new File(mPath + fileName + "UserData/RFID/");
-            if (!userRFID.exists()) {
-                userRFID.mkdirs();
-            }
-
-            File downFile = new File(mPath + fileName + mUserId + "Download/");
-            if (!downFile.exists()) {
-                downFile.mkdirs();
-            }
-
-            File diagHistoryFile = new File(mPath + fileName + mUserId + "/History/Diagnose/");
-            if (!diagHistoryFile.exists()) {
-                diagHistoryFile.mkdirs();
-            }
-
-            File seriveHistoryFile = new File(mPath + fileName + mUserId + "/History/Service/");
-            if (!seriveHistoryFile.exists()) {
-                seriveHistoryFile.mkdirs();
-            }
-
-            File galleryFile = new File(mPath + fileName + mUserId + "/Gallery/");
-            if (!galleryFile.exists()) {
-                galleryFile.mkdirs();
-            }
-            File dataLogFile = new File(mPath + fileName + mUserId + "/DataLog/");
-            if (!dataLogFile.exists()) {
-                dataLogFile.mkdirs();
-            }
-
-            File log6File = new File(mPath + fileName + "666666/");
-            if (!log6File.exists()) {
-//                log6File.mkdirs();
-            }
-            File log7File = new File(mPath + fileName + "777777/");
-            if (!log7File.exists()) {
-//                log7File.mkdirs();
-            }
-            File log8File = new File(mPath + fileName + "888888/");
-            if (!log8File.exists()) {
-//                log8File.mkdirs();
-            }
-            File log9File = new File(mPath + fileName + "999999/");
-            if (!log9File.exists()) {
-//                log9File.mkdirs();
-            }
-
-            //上传反馈日志
-            File feedbackLog = new File(mPath + fileName + mUserId + "/FeedbackLog/");
-                feedbackLog.mkdirs();
-            }
-
-            //autovin临时路径
-            File autovinLog = new File(mPath + fileName + mUserId + "/autovinLog/");
-                autovinLog.mkdirs();
-            }
-
+            // Global directories
+            ensureDirectoryExists(basePath + "App/");
+            ensureDirectoryExists(basePath + "Firmware/");
+            ensureDirectoryExists(basePath + "T-darts/");
+            ensureDirectoryExists(basePath + "UserData/Diagnose/");
+            ensureDirectoryExists(basePath + "UserData/Immo/");
+            ensureDirectoryExists(basePath + "UserData/NewEnergy/");
+            ensureDirectoryExists(basePath + "UserData/RFID/");
         }
     }
 
@@ -245,12 +106,7 @@ public class FolderUtil {
     public static String getDataBasePath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName;
     }
-
-    /**
-     * 获取Tdarts根目录路径
-     *
-     * @return str
-     */
+  
     public static String getTDartsRootPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + tdartsSn + "/";
     }
@@ -357,16 +213,10 @@ public class FolderUtil {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + mUserId + "/DataLog/DIAG/";
     }
 
-
     public static String getImmoDataLogPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + mUserId + "/DataLog/IMMO/";
     }
 
-    /**
-     * 获取反馈日志路径
-     *
-     * @return string
-     */
     public static String getFeedbackLogPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + mUserId + "/FeedbackLog/";
     }
@@ -387,20 +237,10 @@ public class FolderUtil {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + "UserData/RFID/";
     }
 
-    /**
-     * 获取软件下载路径
-     *
-     * @return str
-     */
     public static String getSoftDownPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + "Download/";
     }
 
-    /**
-     * AUTOVINLOG
-     *
-     * @return string
-     */
     public static String getAutoVinLogPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + mUserId + "/autovinLog/";
     }

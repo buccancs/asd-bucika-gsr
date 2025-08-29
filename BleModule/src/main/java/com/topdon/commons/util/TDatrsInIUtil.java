@@ -18,7 +18,7 @@ import java.util.List;
 
 public class TDatrsInIUtil {
 
-    public static String getTdartsVersion(String path) {
+    private static Ini loadIniFile(String path) throws Exception {
         File file = new File(path + "T-darts.ini");
         if (!file.exists()) {
             return "";
@@ -29,8 +29,15 @@ public class TDatrsInIUtil {
         cfg.setMultiSection(true);
         Ini ini = new Ini();
         ini.setConfig(cfg);
+        ini.load(file);
+        return ini;
+    }
+
+    public static String getTdartsVersion(String path) {
         try {
-            ini.load(file);
+            Ini ini = loadIniFile(path);
+            if (ini == null) return "";
+            
             Profile.Section tDartSWSection = ini.get("TDartSW".toLowerCase());
             if (tDartSWSection == null) {
                 return "";
@@ -57,30 +64,20 @@ public class TDatrsInIUtil {
         Ini ini = new Ini();
         ini.setConfig(cfg);
         try {
-            ini.load(file);
+            Ini ini = loadIniFile(path);
+            if (ini == null) return hashMap;
+            
             Profile.Section tDartSWSection = ini.get("TDartSW".toLowerCase());
-            if (tDartSWSection == null) {
-                return hashMap;
-            }
-            if (!TextUtils.isEmpty(tDartSWSection.get("version"))) {
+            if (tDartSWSection != null && !TextUtils.isEmpty(tDartSWSection.get("version"))) {
                 hashMap.put("Version", tDartSWSection.get("Version".toLowerCase()));
             }
 
             Profile.Section libsSection = ini.get("libs");
-            if (libsSection == null) {
-                return hashMap;
+            if (libsSection != null) {
+                addToMapIfNotEmpty(hashMap, libsSection, "T-dartsApp");
+                addToMapIfNotEmpty(hashMap, libsSection, "825x_module");
+                addToMapIfNotEmpty(hashMap, libsSection, "N32S032-app");
             }
-
-            if (!TextUtils.isEmpty(libsSection.get("T-dartsApp".toLowerCase()))) {
-                hashMap.put("T-dartsApp", libsSection.get("T-dartsApp".toLowerCase()));
-            }
-            if (!TextUtils.isEmpty(libsSection.get("825x_module".toLowerCase()))) {
-                hashMap.put("825x_module", libsSection.get("825x_module".toLowerCase()));
-            }
-            if (!TextUtils.isEmpty(libsSection.get("N32S032-app".toLowerCase()))) {
-                hashMap.put("N32S032-app", libsSection.get("N32S032-app".toLowerCase()));
-            }
-            return hashMap;
         } catch (Exception e) {
             return hashMap;
         }
