@@ -145,18 +145,9 @@ class ReportPreviewSecondActivity: BaseViewModelActivity<UpReportViewModel>(), V
             tv_to_pdf -> {//生成PDF
                 saveWithPDF()
             }
-            tv_complete -> {//完成
-
-                if (LMS.getInstance().isLogin) {
-                    if (!NetworkUtils.isConnected()) {
-                        TToast.shortToast(this, R.string.setting_http_error)
-                        return
-                    }
-                    showCameraLoading()
-                    viewModel.upload(isTC007, reportBean)
-                } else {
-                    LMS.getInstance().activityLogin()
-                }
+            tv_complete -> {//完成 - remove login requirement and online upload
+                // Simply close the activity without uploading since login/online removed
+                finish()
             }
         }
     }
