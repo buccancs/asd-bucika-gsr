@@ -245,7 +245,6 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
         mViewPortHandler.restrainViewPort(offsetLeft, offsetTop, offsetRight, offsetBottom);
 
         if (mLogEnabled)
-            Log.i(LOG_TAG, "offsetLeft: " + offsetLeft + ", offsetTop: " + offsetTop
                     + ", offsetRight: " + offsetRight + ", offsetBottom: " + offsetBottom);
     }
 

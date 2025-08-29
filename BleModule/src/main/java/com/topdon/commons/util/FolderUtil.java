@@ -47,20 +47,16 @@ public class FolderUtil {
     public static void init() {
         mUserId = PreUtil.getInstance(Topdon.getApp()).get("VCI_" + LMS.getInstance().getLoginName());
         setUserId(mUserId);
-        Log.e("bcf", "FolderUtil mUserId: " + mUserId);
         mPath = Topdon.getApp().getExternalFilesDir("").getAbsolutePath();
-        Log.e("bcf", "FolderUtil init: " + mPath);
         initPath();
     }
 
     public static void initTDarts(String tdSn) {
         tdartsSn = tdSn;
         String mPath = Topdon.getApp().getExternalFilesDir("").getAbsolutePath();
-        Log.e("bcf", fileName + "---FolderUtil initTDarts: " + mPath);
         if (!TextUtils.isEmpty(tdSn)) {
             File rfidFile = new File(mPath + fileName + tdSn + "/RFID/");
             if (!rfidFile.exists()) {
-                Log.e("bcf", fileName + "---FolderUtil initTDarts: create");
                 rfidFile.mkdirs();
             }
         }
@@ -72,10 +68,8 @@ public class FolderUtil {
     public static void initFilePath() {
         String basePath = Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName;
         String downPath = basePath + "Download/";
-        Log.e("bcf", fileName + "--下载路径初始化--" + downPath);
         File file = new File(downPath);
         if (!file.exists()) {
-            Log.e("bcf", fileName + "---下载路径初始化创建 ");
             file.mkdirs();
         }
     }
@@ -232,13 +226,11 @@ public class FolderUtil {
 
             //上传反馈日志
             File feedbackLog = new File(mPath + fileName + mUserId + "/FeedbackLog/");
-            if (!feedbackLog.exists()) {
                 feedbackLog.mkdirs();
             }
 
             //autovin临时路径
             File autovinLog = new File(mPath + fileName + mUserId + "/autovinLog/");
-            if (!autovinLog.exists()) {
                 autovinLog.mkdirs();
             }
 

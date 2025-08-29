@@ -14,7 +14,6 @@ public class ActivityUtil {
      * @param mContext 上下文
      */
     public static void goSystemCustomer(Context mContext) {
-        Log.w("bcf", "客服点击事件");
         String url = "https://www.topdon.cc/tc-chat";
         goSystemBrowser(mContext, url);
     }
@@ -24,7 +23,6 @@ public class ActivityUtil {
      * @param mContext 上下文
      */
     public static void goSystemBrowser(Context mContext, String url) {
-        Log.w("bcf", "goSystemBrowser");
         if (!NetworkUtil.isConnected(mContext)) {
             TToast.shortToast(mContext, R.string.lms_setting_http_error);
             return;
@@ -36,7 +34,6 @@ public class ActivityUtil {
             intent.setData(uri);
             mContext.startActivity(intent);
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

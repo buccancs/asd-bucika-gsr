@@ -1,7 +1,6 @@
 package com.topdon.lib.core.http.repository
 
 import android.text.TextUtils
-import com.elvishew.xlog.XLog
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.topdon.lib.core.bean.json.StatementJson
@@ -24,12 +23,8 @@ object LmsRepository {
         var result: CheckVersionJson? = null
         val downLatch = CountDownLatch(1)
         LMS.getInstance().checkAppUpdate {
-            try {
-                if (it.code == 2000) {
-                    result = Gson().fromJson(it.data, CheckVersionJson::class.java)
-                }
-            } catch (e: Exception) {
-                XLog.e("version json解析异常: ${e.message}")
+            if (it.code == 2000) {
+                result = Gson().fromJson(it.data, CheckVersionJson::class.java)
             }
             downLatch.countDown()
         }
@@ -47,34 +42,25 @@ object LmsRepository {
         val downLatch = CountDownLatch(1)
         LMS.getInstance().getStatement(type, object : IResponseCallback {
             override fun onResponse(p0: String?) {
-                try {
-                    val typeOfT = object : TypeToken<Resp<StatementJson>>() {}.type
-                    val json = Gson().fromJson<Resp<StatementJson>>(p0, typeOfT)
-                    if (json.code == "2000") {
-                        result = json.data
-                    }
-                } catch (e: Exception) {
-                    XLog.e("json解析异常: ${e.message}")
+                val typeOfT = object : TypeToken<Resp<StatementJson>>() {}.type
+                val json = Gson().fromJson<Resp<StatementJson>>(p0, typeOfT)
+                if (json.code == "2000") {
+                    result = json.data
                 }
                 downLatch.countDown()
             }
 
             override fun onFail(p0: Exception?) {
                 downLatch.countDown()
-                XLog.w("onFail: $result")
             }
 
             override fun onFail(failMsg: String?, errorCode: String) {
                 super.onFail(failMsg, errorCode)
-                try {
-                    StringUtils.getResString(
-                        LMS.mContext,
-                        if (TextUtils.isEmpty(errorCode)) -500 else errorCode.toInt()
-                    ).let {
-                        TToast.shortToast(LMS.mContext, it)
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                StringUtils.getResString(
+                    LMS.mContext,
+                    if (TextUtils.isEmpty(errorCode)) -500 else errorCode.toInt()
+                ).let {
+                    TToast.shortToast(LMS.mContext, it)
                 }
             }
         })

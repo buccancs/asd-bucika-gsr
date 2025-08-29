@@ -132,7 +132,6 @@ object ChartTools {
                 chart.axisLeft.axisMinimum = minVol - (maxVol - minVol) * 0.15f
             }
         }
-        Log.w("chart", "yAxis max:${chart.axisLeft.axisMaximum}, min:${chart.axisLeft.axisMinimum}")
     }
 
     /**
@@ -141,7 +140,6 @@ object ChartTools {
     fun setX(chart: LineChart, type: Int) {
         //true保证有刻度数量不变,滑动要false
         val xLen = chart.xChartMax - chart.xChartMin
-//        Log.w("chart", "xLen: $xLen")
 //        chart.xAxis.setLabelCount(getLabCount(xLen.toInt()), getLabCount(xLen.toInt()) < 3)
 //        chart.xAxis.setLabelCount(5, false) // 3点 ok
 //        chart.xAxis.setLabelCount(5, true) //

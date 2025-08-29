@@ -88,7 +88,6 @@
 //            // do request device permission
 //            @Override
 //            public void onAttach(UsbDevice device) {
-//                XLog.tag(TAG).w("onAttach");
 //                if (isIRpid(device.getProductId())) {
 //                    if (uvcCamera == null || !uvcCamera.getOpenStatus()) {
 //                        mUSBMonitor.requestPermission(device);
@@ -105,7 +104,6 @@
 //            // do open camera,start previewing
 //            @Override
 //            public void onConnect(final UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock, boolean createNew) {
-//                XLog.tag(TAG).w("onConnect");
 //                if (isIRpid(device.getProductId())) {
 //                    if (createNew) {
 //                        open(ctrlBlock);
@@ -119,14 +117,12 @@
 //            // do nothing
 //            @Override
 //            public void onDisconnect(UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock) {
-//                XLog.tag(TAG).w("onDisconnect");
 //            }
 //
 //            // called by taking out usb device
 //            // do close camera
 //            @Override
 //            public void onDettach(UsbDevice device) {
-//                XLog.tag(TAG).w("onDetach");
 //                if (isIRpid(device.getProductId())) {
 //                    if (uvcCamera != null && uvcCamera.getOpenStatus()) {
 //                        stop();
@@ -137,7 +133,6 @@
 //            @Override
 //            public void onCancel(UsbDevice device) {
 //                //在usb permission获取无效时触发
-//                XLog.tag(TAG).w("onCancel");
 //
 //            }
 //        });
@@ -155,12 +150,10 @@
 //
 //        // 监听读取设备红外数据
 //        iFrameCallback = frame -> {
-//            Log.d(TAG, "frame: " + "刷新："+(System.currentTimeMillis()-updateTime));
 //            updateTime = System.currentTimeMillis();
 //            // 测试帧率，可以根据实际需要决定是否保留
 //            if (count++ >= 25) {
 //                count = 1;
-//                Log.d(TAG, "frame: " + frame.length);
 //            }
 //            if (syncimage == null) return;
 //            syncimage.start = true;
@@ -169,7 +162,6 @@
 //                int length = frame.length - 1;
 //                if (frame[length] == 1) {
 //                    EventBus.getDefault().post(new IRMsgEvent(MsgCode.RESTART_USB));
-//                    XLog.tag(TAG).i("RESTART_USB");
 //                    return;
 //                }
 //                /**
@@ -197,10 +189,8 @@
 ////                    temperatureTemp = new byte[length / 2];
 ////
 ////                    System.arraycopy(frame, 0, imageTemp, 0, length / 2);
-////                    XLog.tag("ahh").i("imageTemp: " + ByteUtils.INSTANCE.toHexString(imageTemp, " "));
 ////
 ////                    System.arraycopy(frame, length / 2, temperatureTemp, 0, length / 2);
-////                    XLog.tag("ahh").i("temperatureTemp: " + ByteUtils.INSTANCE.toHexString(temperatureTemp, " "));
 ////                }
 //
 //                if (rotate == 270) {
@@ -279,7 +269,6 @@
 //     * @param context
 //     */
 //    public void init(int cameraHeight, int cameraWidth, Context context) {
-//        XLog.tag(TAG).w("init");
 //        uvcCamera = new UVCCamera(cameraWidth, cameraHeight, context);
 //        uvcCamera.create();
 //        EventBus.getDefault().post(new DeviceCameraEvent(100));
@@ -352,7 +341,6 @@
 //     */
 //    public void start() {
 //        try {
-//            XLog.tag(TAG).w("start");
 //            uvcCamera.setOpenStatus(true);
 //            uvcCamera.setFrameCallback(iFrameCallback); //注册监听事件
 //            //uvcCamera.setgetframemode(uvcCamera.GET_FRAME_ASYNC);
@@ -363,7 +351,6 @@
 //                try {
 //                    Thread.sleep(100);
 //                } catch (InterruptedException e) {
-//                    e.printStackTrace();
 //                }
 //                EventBus.getDefault().post(new DeviceCameraEvent(101));
 //                //打快门
@@ -377,7 +364,6 @@
 //                }
 //            }).start();
 //        }catch (Exception e){
-//            Log.w("红外sdk异常", e.getMessage());
 //        }
 //
 //    }
@@ -386,7 +372,6 @@
 //     *
 //     */
 //    public void stop() {
-//        XLog.tag(TAG).w("stop");
 ////        if (uvcCamera != null) {
 ////            if (uvcCamera.getOpenStatus()) {
 ////                uvcCamera.stopPreview();
@@ -410,18 +395,15 @@
 ////        disposable = Observable.interval(1L, TimeUnit.SECONDS).take(1000)
 ////                .subscribeOn(Schedulers.io())
 ////                .subscribe(aLong -> {
-////                    Log.w("123", "aLong" + aLong);
 //////                    if (isRun) {
 //////                        if (timeLog != 0 && System.currentTimeMillis() - timeLog > 1000) {
 //////                            //通知超时
 //////                            EventBus.getDefault().post(new DeviceConnectEvent(false, null));
-//////                            XLog.w("超过1s没数据采集,退出界面");
 ////////                ToastTools.INSTANCE.showShort("超过1s没数据采集,退出界面");
 //////                        }
 //////                        timeLog = System.currentTimeMillis();
 //////                    }
 ////                });
-////        Log.w("123", "Observable.timer");
 ////    }
 ////
 ////    private void cancelMonitor() {

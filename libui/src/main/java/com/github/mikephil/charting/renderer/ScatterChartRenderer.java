@@ -60,7 +60,6 @@ public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
 
         IShapeRenderer renderer = dataSet.getShapeRenderer();
         if (renderer == null) {
-            Log.i("MISSING", "There's no IShapeRenderer specified for ScatterDataSet");
             return;
         }
 

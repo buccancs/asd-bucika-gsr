@@ -84,7 +84,6 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //
 //    @Override
 //    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        Log.w(TAG, "onMeasure");
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 //        setMeasuredDimension(scollBarWidth, scollBarHeight);
 //    }
@@ -92,7 +91,6 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //
 //    @Override
 //    protected void onDraw(Canvas canvas) {
-//        Log.w(TAG, "onDraw");
 //        super.onDraw(canvas);
 //
 //        scrollBarBackground.setBounds((scollBarWidth - backgroundWidth) / 2 + TOUCH_TOLERANCE, thumbHeight / 2, (scollBarWidth + backgroundWidth) / 2 + TOUCH_TOLERANCE, scollBarHeight - thumbHeight / 2);
@@ -100,7 +98,6 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //        if (movingThumbLow) {
 //            float lowRate = (lowTemperature - minTemperature) / (maxTemperature - minTemperature);
 //            int thumbLowLocation = (int) (backgroundHeight * (1 - lowRate));
-//            Log.w(TAG, "thumbLowLocation = " + thumbLowLocation);
 //            thumbLow.setBounds((scollBarWidth - thumbWidth) / 2 + TOUCH_TOLERANCE, thumbLowLocation, (scollBarWidth + thumbWidth) / 2 + TOUCH_TOLERANCE, thumbLowLocation + thumbHeight);
 //        } else {
 //            thumbLow.setBounds((scollBarWidth - thumbWidth) / 2 + TOUCH_TOLERANCE, (int) thumbLowLocation, (scollBarWidth + thumbWidth) / 2 + TOUCH_TOLERANCE, (int) thumbLowLocation + thumbHeight);
@@ -109,7 +106,6 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //        if (movingThumbHigh) {
 //            float highRate = (highTemperature - minTemperature) / (maxTemperature - minTemperature);
 //            int thumbHighLocation = (int) (backgroundHeight * (1 - highRate));
-//            Log.w(TAG, "thumbHighLocation = " + thumbHighLocation);
 //            thumbHigh.setBounds((scollBarWidth - thumbWidth) / 2 + TOUCH_TOLERANCE, thumbHighLocation, (scollBarWidth + thumbWidth) / 2 + TOUCH_TOLERANCE, thumbHighLocation + thumbHeight);
 //        } else {
 //            thumbHigh.setBounds((scollBarWidth - thumbWidth) / 2 + TOUCH_TOLERANCE, (int) thumbHighLocation, (scollBarWidth + thumbWidth) / 2 + TOUCH_TOLERANCE, (int) thumbHighLocation + thumbHeight);
@@ -120,9 +116,7 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //    @Override
 //    public boolean onTouch(View v, MotionEvent event) {
 //        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//            Log.w(TAG, "ACTION_DOWN");
 //            startY = (int) (event.getY());
-//            Log.w(TAG, "startY = " + startY + "; thumbLowLocation = " + thumbLowLocation + "; TOUCH_TOLERANCE = " + TOUCH_TOLERANCE);
 //            if (startY > thumbLowLocation - TOUCH_TOLERANCE && startY < thumbLowLocation + thumbHeight + TOUCH_TOLERANCE) {
 //                movingThumbLow = true;
 //            } else if (startY > thumbHighLocation - TOUCH_TOLERANCE && startY < thumbHighLocation + thumbHeight + TOUCH_TOLERANCE) {
@@ -131,11 +125,8 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //            invalidate();
 //            return true;
 //        } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-//            Log.w(TAG, "ACTION_MOVE");
 //            endY = (int) (event.getY());
 //            if (movingThumbLow) {
-//                Log.w(TAG, "thumbLowLocation = " + thumbLowLocation + "; thumbHighLocation = " + thumbHighLocation + "; thumbHeight = " + thumbHeight);
-//                Log.w(TAG, "startY = " + startY + "; endY = " + endY);
 //                if (thumbLowLocation + endY - startY > thumbHighLocation + thumbHeight) {
 //                    lowTemperature = (1 - (thumbLowLocation + endY - startY) / backgroundHeight) * (maxTemperature - minTemperature) + minTemperature;
 //                    if (lowTemperature < minTemperature) {
@@ -144,7 +135,6 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //                } else {
 //                    lowTemperature = (1 - (thumbHighLocation + thumbHeight) / backgroundHeight) * (maxTemperature - minTemperature) + minTemperature;
 //                }
-//                Log.w(TAG, "lowTemperature = " + lowTemperature);
 //            } else if (movingThumbHigh) {
 //                if (thumbHighLocation + endY - startY < thumbLowLocation - thumbHeight) {
 //                    highTemperature = (1 - (thumbHighLocation + endY - startY) / backgroundHeight) * (maxTemperature - minTemperature) + minTemperature;
@@ -158,10 +148,7 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //            invalidate();
 //            return true;
 //        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-//            Log.w(TAG, "ACTION_UP");
 //            if (movingThumbLow) {
-//                Log.w(TAG, "thumbLowLocation = " + thumbLowLocation + "; thumbHighLocation = " + thumbHighLocation + "; thumbHeight = " + thumbHeight);
-//                Log.w(TAG, "startY = " + startY + "; endY = " + endY);
 //                if (thumbLowLocation + endY - startY > thumbHighLocation + thumbHeight) {
 //                    lowTemperature = (1 - (thumbLowLocation + endY - startY) / backgroundHeight) * (maxTemperature - minTemperature) + minTemperature;
 //                    thumbLowLocation += endY - startY;
@@ -174,7 +161,6 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //                    thumbLowLocation = thumbHighLocation + thumbHeight;
 //                }
 //                movingThumbLow = false;
-//                Log.w(TAG, "lowTemperature = " + lowTemperature);
 //            } else if (movingThumbHigh) {
 //                if (thumbHighLocation + endY - startY < thumbLowLocation - thumbHeight) {
 //                    highTemperature = (1 - (thumbHighLocation + endY - startY) / backgroundHeight) * (maxTemperature - minTemperature) + minTemperature;
@@ -198,7 +184,6 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //
 //    public void setViewLayout(int bigWindowLeftMargin, int bigWindowTopMargin, int bigWindowWidth, int bigWindowHeight) {
 //        scollBarHeight = bigWindowHeight - VERTICAL_MARGIN * 2;
-//        Log.w(TAG, "setViewLayout: scollBarHeight = " + scollBarHeight);
 //
 //        backgroundWidth = scrollBarBackground.getIntrinsicWidth();
 //        backgroundHeight = scrollBarBackground.getIntrinsicHeight();
@@ -210,7 +195,6 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //        thumbWidth = (int) (thumbWidth * rate);
 //        thumbHeight = (int) (thumbHeight * rate);
 //        scollBarWidth = Math.max(backgroundWidth, thumbWidth) + 2 * TOUCH_TOLERANCE;
-////        Log.w(TAG, "rate =" + rate + "; scollBarHeight = " + scollBarHeight + "; backgroundHeight = " + backgroundHeight + "; thumbHeight = " + thumbHeight);
 //
 //        float lowRate = (lowTemperature - minTemperature) / (maxTemperature - minTemperature);
 //        thumbLowLocation = (int) (backgroundHeight * (1 - lowRate));

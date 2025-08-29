@@ -53,7 +53,6 @@ object BitmapTools {
                         imageBytes[i * 4] = grey.toByte()
                         imageBytes[i * 4 + 1] = grey.toByte()
                         imageBytes[i * 4 + 2] = grey.toByte()
-//                        Log.e("测试","灰度化"+value)
                     }
                 }
             } else {
@@ -88,7 +87,6 @@ object BitmapTools {
                 }
             }
         } catch (e: Exception) {
-            XLog.w("颜色替换失败: ${e.message}")
         }
     }
 }

@@ -121,7 +121,6 @@ public class EasyBLE {
             Method appMethod = acThread.getClass().getMethod("getApplication");
             application = (Application) appMethod.invoke(acThread);
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -176,7 +175,6 @@ public class EasyBLE {
                             //通知观察者蓝牙状态
                             observable.notifyObservers(MethodInfoGenerator.onBluetoothAdapterStateChanged(bluetoothAdapter.getState()));
                             if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_OFF) { //蓝牙关闭
-                                logger.log(Log.DEBUG, Logger.TYPE_GENERAL, "蓝牙关闭了");
                                 //通知搜索器
                                 if (scanner != null) {
                                     scanner.onBluetoothOff();
@@ -184,7 +182,6 @@ public class EasyBLE {
                                 //断开所有连接
                                 disconnectAllConnections();
                             } else if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_ON) {
-                                logger.log(Log.DEBUG, Logger.TYPE_GENERAL, "蓝牙开启了");
                                 //重连所有设置了自动重连的连接
                                 for (Connection connection : connectionMap.values()) {
                                     if (connection.isAutoReconnectEnabled()) {
@@ -224,7 +221,6 @@ public class EasyBLE {
                     //通知观察者蓝牙状态
                     observable.notifyObservers(MethodInfoGenerator.onBluetoothAdapterStateChanged(bluetoothAdapter.getState()));
                     if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_OFF) { //蓝牙关闭
-                        logger.log(Log.DEBUG, Logger.TYPE_GENERAL, "蓝牙关闭了");
                         //通知搜索器
                         if (scanner != null) {
                             scanner.onBluetoothOff();
@@ -232,7 +228,6 @@ public class EasyBLE {
                         //断开所有连接
                         disconnectAllConnections();
                     } else if (bluetoothAdapter.getState() == BluetoothAdapter.STATE_ON) {
-                        logger.log(Log.DEBUG, Logger.TYPE_GENERAL, "蓝牙开启了");
                         //重连所有设置了自动重连的连接
                         for (Connection connection : connectionMap.values()) {
                             if (connection.isAutoReconnectEnabled()) {
@@ -279,7 +274,6 @@ public class EasyBLE {
         if (!isInitialized) {
             if (!tryAutoInit()) {
                 String msg = "The SDK has not been initialized, make sure to call EasyBLE.getInstance().initialize(Application) first.";
-                logger.log(Log.ERROR, Logger.TYPE_GENERAL, msg);
                 return false;
             }
         } else if (application == null) {
@@ -568,7 +562,6 @@ public class EasyBLE {
             } else {
                 String message = String.format(Locale.US, "connect failed! [type: unconnectable, name: %s, addr: %s]",
                         device.getName(), device.getAddress());
-                logger.log(Log.ERROR, Logger.TYPE_CONNECTION_STATE, message);
                 if (observer != null) {
                     posterDispatcher.post(observer, MethodInfoGenerator.onConnectFailed(device, Connection.CONNECT_FAIL_TYPE_CONNECTION_IS_UNSUPPORTED));
                 }

@@ -59,7 +59,6 @@ public class VerticalSeekBar extends SeekBar {
             indicatorTextOrientation = t.getInt(R.styleable.VerticalRangeSeekBar_rsb_indicator_text_orientation, TEXT_DIRECTION_VERTICAL);
             t.recycle();
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -138,7 +137,6 @@ public class VerticalSeekBar extends SeekBar {
                 canvas.drawPath(indicatorArrowPath, paint);
                 indicatorRect.bottom -= getIndicatorArrowSize();
                 indicatorRect.top -= getIndicatorArrowSize();
-                Log.w("伪彩条刷新","///");
             }
 
             int defaultPaddingOffset = Utils.dp2px(getContext(), 1);
@@ -191,7 +189,6 @@ public class VerticalSeekBar extends SeekBar {
                 canvas.rotate(-degrees, rotateX, rotateY);
             }
         }catch (Exception e){
-            Log.e("伪彩条渲染失败",e.getMessage());
         }
     }
 

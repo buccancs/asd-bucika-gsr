@@ -6,7 +6,6 @@ import android.os.Build
 import android.text.TextUtils
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.guide.zm04c.matrix.Logger.d
 import com.guide.zm04c.matrix.utils.FileUtils.Companion.saveFile
 import com.guide.zm04c.matrix.utils.HexDump
 import com.topdon.lib.core.BaseApplication
@@ -71,11 +70,9 @@ class GuideInterface {
                 if (length > 0) {
                     mUsbBuffer!!.write(mUsbReadbuffer, 0, length)
                 } else {
-//                        Logger.d(TAG, "length < 0");
                     try {
                         Thread.sleep(10)
                     } catch (e: InterruptedException) {
-                        e.printStackTrace()
                     }
                 }
             }
@@ -130,7 +127,6 @@ class GuideInterface {
                         mIrDataCallback!!.processIrData(mYuv, mTempMatrixFloat) //回调图片信息和温度矩阵
                     }
                 } else {
-//                        Logger.d(TAG, "read Frame failed");
                 }
             }
             d(TAG, "read thread exit")
@@ -144,7 +140,6 @@ class GuideInterface {
             try {
                 mUsbBufferWriteThread!!.join()
             } catch (e: InterruptedException) {
-                e.printStackTrace()
             }
             mUsbBufferWriteThread = null
         }
@@ -156,7 +151,6 @@ class GuideInterface {
             try {
                 mUsbBufferReadThread!!.join()
             } catch (e: InterruptedException) {
-                e.printStackTrace()
             }
             mUsbBufferReadThread = null
         }
@@ -218,7 +212,6 @@ class GuideInterface {
     }
 
     fun changePalette(i: Int) {
-        Log.d(TAG, "changePalette() called with: i = [$i]")
         if (mGuideUsbManager == null) {
             return
         }
@@ -413,7 +406,6 @@ class GuideInterface {
                 `in`!!.close()
                 bos.close()
             } catch (ex: Exception) {
-                ex.printStackTrace()
             }
             return FirmwareUpgradeResultCode.FILE_READ_ERROR
         }

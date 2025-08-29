@@ -122,10 +122,8 @@ class IRImageHelp {
                     index += 4
                     j += 2
                 }
-//                                        Log.w("测试上色耗时-总耗时", System.currentTimeMillis() - startTimeAll + "//");
             }
         } catch (exception: Exception) {
-            Log.e("上色异常", exception.message!!)
         }finally {
             return imageDst
         }

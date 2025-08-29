@@ -16,7 +16,6 @@ public class PausePreviewTask extends BaseTask {
     @Override
     public void run() {
         if (mDeviceState != DeviceState.PAUSED) {
-            Log.d(TAG, "pausePreview start");
             CameraPreviewManager.getInstance().pausePreview();
             mDeviceState = DeviceState.PAUSED;
         }

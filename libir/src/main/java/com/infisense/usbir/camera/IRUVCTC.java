@@ -112,7 +112,6 @@ public class IRUVCTC {
             // do request device permission
             @Override
             public void onAttach(UsbDevice device) {
-                Log.w(TAG, "onAttach");
                 if (uvcCamera == null || !uvcCamera.getOpenStatus()) {
                     mUSBMonitor.requestPermission(device);
                 }
@@ -123,7 +122,6 @@ public class IRUVCTC {
 
             @Override
             public void onGranted(UsbDevice usbDevice, boolean granted) {
-                Log.w(TAG, "onGranted");
                 if (usbMonitorCallback != null) {
                     usbMonitorCallback.onGranted();
                 }
@@ -133,7 +131,6 @@ public class IRUVCTC {
             // do open camera,start previewing
             @Override
             public void onConnect(final UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock, boolean createNew) {
-                Log.w(TAG, "onConnect");
                 if (isIRpid(device.getProductId())){
                     if (createNew) {
                         openUVCCamera(ctrlBlock);
@@ -141,14 +138,12 @@ public class IRUVCTC {
                         // 获取设备的分辨率列表
                         List<CameraSize> previewList = getAllSupportedSize();
                         for (CameraSize size : previewList) {
-                            Log.i(TAG, "SupportedSize : " + size.width + " * " + size.height);
                         }
 
                         // 可以根据获取到的分辨率列表，来区分不同的模组，从而改变不同的cmd参数来调用不同的SDK
                         initIRCMD();
 
                         if (ircmd != null) {
-                            Log.d(TAG, "startPreview");
                             // 根据设备的分辨率列表，这里可以动态的设置模组的宽高(这里作为示例，用的是从外部传入的方式)
                             // 之前的openUVCCamera方法中传入的都是默认值，这里需要根据实际传入对应的值
                             isTempReplacedWithTNREnabled = ircmd.isTempReplacedWithTNREnabled(DeviceType.P2);
@@ -177,7 +172,6 @@ public class IRUVCTC {
             // do nothing
             @Override
             public void onDisconnect(UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock) {
-                Log.w(TAG, "onDisconnect");
                 if (usbMonitorCallback != null) {
                     usbMonitorCallback.onDisconnect();
                 }
@@ -187,7 +181,6 @@ public class IRUVCTC {
             // do close camera
             @Override
             public void onDettach(UsbDevice device) {
-                Log.w(TAG, "onDettach");
                 if (uvcCamera != null && uvcCamera.getOpenStatus()) {
                     if (usbMonitorCallback != null) {
                         usbMonitorCallback.onDettach();
@@ -197,7 +190,6 @@ public class IRUVCTC {
 
             @Override
             public void onCancel(UsbDevice device) {
-                Log.w(TAG, "onCancel");
                 if (usbMonitorCallback != null) {
                     usbMonitorCallback.onCancel();
                 }
@@ -257,7 +249,6 @@ public class IRUVCTC {
 //                        LibIRTemp tmp = new LibIRTemp(256,192);
 //                        tmp.setTempData(tmpBy);
 //                        LibIRTemp.TemperatureSampleResult result = tmp.getTemperatureOfRect(new Rect(0, 0, 256,192));
-//                        Log.w("温度更新3",result.maxTemperature+"///"+result.minTemperature);
 //                    }catch (Exception  e){
 //
 //                    }
@@ -307,14 +298,11 @@ public class IRUVCTC {
                                             gain_switch_param, new AutoGainSwitchCallback() {
                                                 @Override
                                                 public void onAutoGainSwitchState(CommonParams.PropTPDParamsValue.GAINSELStatus gainselStatus) {
-                                                    Log.i(TAG, "onAutoGainSwitchState->" + gainselStatus.getValue());
                                                 }
 
                                                 @Override
                                                 public void onAutoGainSwitchResult(CommonParams.PropTPDParamsValue.GAINSELStatus gainselStatus, int result) {
-                                                    Log.i(TAG,
-                                                            "onAutoGainSwitchResult->" + gainselStatus.getValue() +
-                                                                    " result=" + result);
+                                                    // Logging removed
                                                 }
                                             });
                                 }
@@ -327,8 +315,7 @@ public class IRUVCTC {
                                             new AvoidOverexposureCallback() {
                                                 @Override
                                                 public void onAvoidOverexposureState(boolean avoidOverexpol) {
-                                                    Log.i(TAG,
-                                                            "onAvoidOverexposureState->avoidOverexpol=" + avoidOverexpol);
+                                                    // Logging removed
                                                 }
                                             });
                                 }
@@ -383,7 +370,6 @@ public class IRUVCTC {
      * init UVCCamera
      */
     private void initUVCCamera() {
-        Log.i(TAG, "uvcCamera create");
         uvcCamera = new ConcreateUVCBuilder()
                 .setUVCType(UVCType.USB_UVC)
                 .build();
@@ -435,7 +421,6 @@ public class IRUVCTC {
     }
 
     private void openUVCCamera(USBMonitor.UsbControlBlock ctrlBlock) {
-        Log.i(TAG, "openUVCCamera");
         if (ctrlBlock.getProductId() == 0x3901) {
             if (syncimage != null) {
                 syncimage.type = 1;
@@ -459,12 +444,9 @@ public class IRUVCTC {
     private List<CameraSize> getAllSupportedSize() {
         List<CameraSize> previewList = new ArrayList<>();
         if (uvcCamera != null) {
-            Log.w(TAG, "getSupportedSize = " + uvcCamera.getSupportedSize());
             previewList = uvcCamera.getSupportedSizeList();
         }
-        Log.w(TAG, "getSupportedSize = " + uvcCamera.getSupportedSize());
         for (CameraSize size : previewList) {
-            Log.i(TAG, "SupportedSize : " + size.width + " * " + size.height);
         }
         return previewList;
     }
@@ -489,7 +471,6 @@ public class IRUVCTC {
         if (ircmd == null) {
             return;
         }
-        Log.i(TAG, "startPreview isRestart : " + isRestart + " defaultDataFlowMode : " + defaultDataFlowMode);
         uvcCamera.setOpenStatus(true);
         uvcCamera.setFrameCallback(iFrameCallback);
         uvcCamera.onStartPreview();
@@ -500,24 +481,20 @@ public class IRUVCTC {
              * 红外+温度或单红外出图
              * YUV422格式数据
              */
-            Log.i(TAG, "defaultDataFlowMode = IMAGE_AND_TEMP_OUTPUT or IMAGE_OUTPUT");
             // YUV出图流程
             setFrameReady(false);
             if (isRestart) {
                 // 1.停图（全部停图，不是退出y16模式的停图）
                 if (ircmd.stopPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0) == 0) {
-                    Log.i(TAG, "stopPreview complete");
                     // 2. 发出图命令，设置分辨率为256*384
                     if (ircmd.startPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                             CommonParams.StartPreviewSource.SOURCE_SENSOR,
                             ScreenUtils.getPreviewFPSByDataFlowMode(defaultDataFlowMode),
                             CommonParams.StartPreviewMode.VOC_DVP_MODE,
                             defaultDataFlowMode) == 0) {
-                        Log.i(TAG, "startPreview complete");
                         handleStartPreviewComplete();
                     }
                 } else {
-                    Log.e(TAG, "stopPreview error");
                 }
             } else {
                 handleStartPreviewComplete();
@@ -530,12 +507,10 @@ public class IRUVCTC {
             setFrameReady(false);
             if (isRestart) {
                 if (ircmd.stopPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0) == 0) {
-                    Log.i(TAG, "stopPreview complete 中间出图 restart");
                     if (ircmd.startPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                             CommonParams.StartPreviewSource.SOURCE_SENSOR,
                             ScreenUtils.getPreviewFPSByDataFlowMode(defaultDataFlowMode),
                             CommonParams.StartPreviewMode.VOC_DVP_MODE, defaultDataFlowMode) == 0) {
-                        Log.i(TAG, "startPreview complete 中间出图 restart");
                         try {
                             /*
                              * 对于部分设备，如5840芯片的模组，两个命令之间需要延时以防止中间出图命令失效导致的黑热白热翻转情况
@@ -543,19 +518,15 @@ public class IRUVCTC {
                              */
                             Thread.sleep(1500);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
                         }
                         if (ircmd.startY16ModePreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                                 FileUtil.getY16SrcTypeByDataFlowMode(defaultDataFlowMode)) == 0) {
                             handleStartPreviewComplete();
                         } else {
-                            Log.e(TAG, "startY16ModePreview error 中间出图 restart");
                         }
                     } else {
-                        Log.e(TAG, "startPreview error 中间出图 restart");
                     }
                 } else {
-                    Log.e(TAG, "stopPreview error 中间出图 restart");
                 }
             } else {
                 /*
@@ -563,8 +534,7 @@ public class IRUVCTC {
                  * 红外+TNR出图,只能为25Hz
                  */
                 boolean isTempReplacedWithTNREnabled = ircmd.isTempReplacedWithTNREnabled(DeviceType.P2);
-                Log.i(TAG,
-                        "defaultDataFlowMode = others isTempReplacedWithTNREnabled = " + isTempReplacedWithTNREnabled);
+                // Logging removed
                 if (isTempReplacedWithTNREnabled) {
                     /*
                      * 支持 红外+TNR 方式出图
@@ -574,17 +544,14 @@ public class IRUVCTC {
 //                            FileUtil.getY16SrcTypeByDataFlowMode(defaultDataFlowMode)) == 0) {
 //                        handleStartPreviewComplete();
 //                    } else {
-//                        Log.e(TAG, "startY16ModePreview error");
 //                    }
                     // 对于M2模组来说，需要先发送startPreview出图命令，再发送startY16ModePreview命令才可以重新出图
                     if (ircmd.stopPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0) == 0) {
-                        Log.i(TAG, "stopPreview complete 红外+TNR");
                         if (ircmd.startPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                                 CommonParams.StartPreviewSource.SOURCE_SENSOR,
                                 ScreenUtils.getPreviewFPSByDataFlowMode(CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT),
                                 CommonParams.StartPreviewMode.VOC_DVP_MODE,
                                 CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT) == 0) {
-                            Log.i(TAG, "startPreview complete 红外+TNR");
                             try {
                                 /*
                                  * 对于部分设备，如5840芯片的模组，两个命令之间需要延时以防止中间出图命令失效导致的黑热白热翻转情况
@@ -592,19 +559,15 @@ public class IRUVCTC {
                                  */
                                 Thread.sleep(1500);
                             } catch (InterruptedException e) {
-                                e.printStackTrace();
                             }
                             if (ircmd.startY16ModePreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                                     FileUtil.getY16SrcTypeByDataFlowMode(CommonParams.DataFlowMode.TNR_OUTPUT)) == 0) {
                                 handleStartPreviewComplete();
                             } else {
-                                Log.e(TAG, "startY16ModePreview error 红外+TNR");
                             }
                         } else {
-                            Log.e(TAG, "startPreview error 红外+TNR");
                         }
                     } else {
-                        Log.e(TAG, "stopPreview error 红外+TNR");
                     }
                 } else {
                     /*
@@ -614,12 +577,10 @@ public class IRUVCTC {
                      */
                     // 调用 startY16ModePreview 中间出图方法之后，输出的数据格式为y16
                     if (ircmd.stopPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0) == 0) {
-                        Log.i(TAG, "stopPreview complete 单TNR");
                         if (ircmd.startPreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                                 CommonParams.StartPreviewSource.SOURCE_SENSOR,
                                 ScreenUtils.getPreviewFPSByDataFlowMode(defaultDataFlowMode),
                                 CommonParams.StartPreviewMode.VOC_DVP_MODE, defaultDataFlowMode) == 0) {
-                            Log.i(TAG, "startPreview complete 单TNR");
                             try {
                                 /*
                                  * 对于部分设备，如5840芯片的模组，两个命令之间需要延时以防止中间出图命令失效导致的黑热白热翻转情况
@@ -627,19 +588,15 @@ public class IRUVCTC {
                                  */
                                 Thread.sleep(1500);
                             } catch (InterruptedException e) {
-                                e.printStackTrace();
                             }
                             if (ircmd.startY16ModePreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                                     FileUtil.getY16SrcTypeByDataFlowMode(defaultDataFlowMode)) == 0) {
                                 handleStartPreviewComplete();
                             } else {
-                                Log.e(TAG, "startY16ModePreview error 单TNR");
                             }
                         } else {
-                            Log.e(TAG, "startPreview error 单TNR");
                         }
                     } else {
-                        Log.e(TAG, "stopPreview error 单TNR");
                     }
                 }
             }
@@ -650,7 +607,6 @@ public class IRUVCTC {
      *
      */
     public void stopPreview() {
-        Log.i(TAG, "stopPreview");
         if (uvcCamera != null) {
             if (uvcCamera.getOpenStatus()) {
                 uvcCamera.onStopPreview();

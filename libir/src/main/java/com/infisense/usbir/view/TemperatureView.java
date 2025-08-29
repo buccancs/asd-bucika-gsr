@@ -596,16 +596,13 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                 if (productType == Const.TYPE_IR_DUAL){
                     try {
                         if (remapTempData == null) {
-                            Log.d(TAG, "remapTempData == NULL");
                             if (dualUVCCamera != null && llTempData != null
                                     && dualUVCCamera.getTempData(llTempData) != 0) {
                                 //获取映射后的温度数据失败
-                                Log.d(TAG, "--------error----------");
                                 SystemClock.sleep(1000);
                                 continue;
                             }
                         } else {
-                            Log.d(TAG, "remapTempData != NULL");
                             System.arraycopy(remapTempData, 0, llTempData, 0,
                                     temperatureHeight * temperatureWidth * 2);
                         }
@@ -616,7 +613,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                             irtemp.setTempData(llTempData);
                         }
                     }catch (Exception e){
-                        Log.d(TAG, "remapTempData != NULL"+e.getMessage());
                         continue;
                     }
                 }else {
@@ -627,7 +623,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                             if (syncimage.type == 1) irtemp.setScale(16);
                         }
                     }catch (Exception e){
-                        Log.d(TAG, "syncimage != NULL"+e.getMessage());
                     }
                     tempArray = temperature;
                 }
@@ -780,15 +775,12 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                             surfaceViewCanvas.drawBitmap(regionAndValueBitmap, new Rect(0, 0, viewWidth, viewHeight), new Rect(0, 0, viewWidth, viewHeight), null);
                             getHolder().unlockCanvasAndPost(surfaceViewCanvas);
                         } catch (Exception e) {
-                            Log.e(TAG, "temperatureThread:" + e.getMessage());
                         }
                     }
                 } catch (Exception e) {
-                    Log.e(TAG, "temperatureError:" + e.getMessage());
                 }
                 SystemClock.sleep(1000);
             }
-            Log.d(TAG, "temperatureThread exit");
         };
     }
 

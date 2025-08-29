@@ -61,7 +61,6 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //        View.OnClickListener handler = new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Log.d(TAG, "onViewClicked: " + view.getId());
 //                int id = view.getId();
 //                if (id == R.id.singlepointsumit) {
 //                    if (usbcamera.uvcCamera != null) {

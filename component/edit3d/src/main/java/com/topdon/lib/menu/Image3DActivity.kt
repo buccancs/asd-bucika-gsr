@@ -52,10 +52,8 @@ class Image3DActivity : BaseActivity() {
             withContext(Dispatchers.IO){
                 val file = File(ir_path)
                 if (!file.exists()) {
-                    XLog.w("IR文件不存在: ${file.absolutePath}")
                     return@withContext
                 }
-                XLog.w("IR文件: ${file.absolutePath}")
                 val  allBytes = file.readBytes()
                 val headLenBytes = ByteArray(2)
                 System.arraycopy(allBytes, 0, headLenBytes, 0, 2)
@@ -176,7 +174,6 @@ class Image3DActivity : BaseActivity() {
                 ir_sf.requestRender()
                 tv_temp.text = getXYZText(open3DTools.selTemp, temp[0][0], temp[0][1])
             } catch (e: Exception) {
-                Log.e(TAG, e.message.toString() + tempX + "//" + tempY)
             }
         }
         bar_pick_view_x.onProgressChanged = { progress, max ->
@@ -187,7 +184,6 @@ class Image3DActivity : BaseActivity() {
                 ir_sf.requestRender()
                 tv_temp.text = getXYZText(open3DTools.selTemp, temp[0][0], temp[0][1])
             } catch (e: Exception) {
-                Log.e(TAG, e.message.toString() + tempX + "//" + tempY)
             }
         }
     }

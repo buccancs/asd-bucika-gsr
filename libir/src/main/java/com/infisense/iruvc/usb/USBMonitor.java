@@ -244,7 +244,6 @@
 //                        }
 //                    }
 //                } catch (Exception var6) {
-//                    Log.e("USBMonitor", "destroy:", var6);
 //                }
 //            }
 //
@@ -253,7 +252,6 @@
 //            try {
 //                this.mAsyncHandler.getLooper().quit();
 //            } catch (Exception var5) {
-//                Log.e("USBMonitor", "destroy:", var5);
 //            }
 //        }
 //
@@ -301,7 +299,6 @@
 //                    context.unregisterReceiver(this.mUsbReceiver);
 //                }
 //            } catch (Exception var3) {
-//                Log.w("USBMonitor", var3);
 //            }
 //
 //            this.mPermissionIntent = null;
@@ -477,13 +474,10 @@
 //                        sb.append(String.format(Locale.US, "interface%d:%s", i, device.getInterface(i).toString()));
 //                    }
 //
-//                    Log.i("USBMonitor", "key=" + key + ":" + device + ":" + sb.toString());
 //                }
 //            } else {
-//                Log.i("USBMonitor", "no device");
 //            }
 //        } else {
-//            Log.i("USBMonitor", "no device");
 //        }
 //
 //    }
@@ -521,7 +515,6 @@
 //                    try {
 //                        this.mUsbManager.requestPermission(device, this.mPermissionIntent);
 //                    } catch (Exception var4) {
-//                        Log.w("USBMonitor", var4);
 //                        this.processCancel(device);
 //                        result = true;
 //                    }
@@ -794,9 +787,7 @@
 //            if (this.mConnection != null) {
 //                int desc = this.mConnection.getFileDescriptor();
 //                byte[] rawDesc = this.mConnection.getRawDescriptors();
-//                Log.i("USBMonitor", String.format(Locale.US, "name=%s,desc=%d,busnum=%d,devnum=%d,rawDesc=", name, desc, busnum, devnum) + rawDesc);
 //            } else {
-//                Log.e("USBMonitor", "could not connect to device " + name);
 //            }
 //
 //        }

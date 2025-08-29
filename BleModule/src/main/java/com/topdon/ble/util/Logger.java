@@ -1,6 +1,7 @@
 package com.topdon.ble.util;
 
 /**
+ * Logger - Simplified (logging removed)
  * date: 2019/8/2 23:56
  * author: bichuanfeng
  */
@@ -44,31 +45,22 @@ public interface Logger {
     int TYPE_PHY_CHANGE = 12;
 
     /**
-     * 打印日志
-     *
-     * @param priority 日志级别。{@link android.util.Log#DEBUG}等
-     * @param type     日志类型。{@link #TYPE_CONNECTION_STATE}等
-     * @param msg      日志内容
+     * 打印日志 - removed
      */
     void log(int priority, int type, String msg);
 
     /**
-     * 打印日志
-     *
-     * @param priority 日志级别。{@link android.util.Log#DEBUG}等
-     * @param type     日志类型。{@link #TYPE_CONNECTION_STATE}等
-     * @param msg      日志内容
-     * @param th       异常
+     * 打印日志 - removed
      */
     void log(int priority, int type, String msg, Throwable th);
     
     /**
-     * 日志输出控制
+     * 日志输出控制 - removed
      */
     void setEnabled(boolean isEnabled);
 
     /**
-     * 日志输出是否使能
+     * 日志输出是否使能 - removed
      */
     boolean isEnabled();
 }

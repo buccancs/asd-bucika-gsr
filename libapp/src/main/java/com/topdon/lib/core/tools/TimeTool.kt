@@ -152,7 +152,6 @@ object TimeTool {
                 file.lastModified()
             }
         } catch (e: Exception) {
-            Log.e("视频文件名称解析异常", "${e.message}")
         }
         return currentTime
     }

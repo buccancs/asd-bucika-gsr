@@ -97,13 +97,11 @@ public class BitmapUtils {
             out.flush();
             success = true;
         } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             if (out != null) {
                 try {
                     out.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
         }
@@ -177,7 +175,6 @@ public class BitmapUtils {
             out.flush();
             out.close();
         } catch (IOException e) {
-            e.printStackTrace();
             return false;
         }
         return true;
@@ -294,9 +291,7 @@ public class BitmapUtils {
             fos.write(bytes2);
             fos.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

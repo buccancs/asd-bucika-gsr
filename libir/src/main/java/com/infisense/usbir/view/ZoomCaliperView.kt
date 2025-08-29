@@ -86,7 +86,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
         val layoutParams =  mTextureView.layoutParams
         layoutParams.width  = showBitmapHeightWidth.toInt()
         layoutParams.height = showBitmapHeight.toInt()
-//        Log.e("测试","旋转后的宽高：标靶"+showBitmapHeight+"///"+imageHeight+"---")
         mTextureView.layoutParams = layoutParams
         (mTextureView as ImageView ).setImageBitmap(originalBitmap)
     }
@@ -324,7 +323,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
         val targetIcon = TargetUtils.getSelectTargetDraw(targetMeasureMode, targetType, targetColorType)
         originalBitmap = (resources.getDrawable( targetIcon) as BitmapDrawable).bitmap
         (mTextureView as ImageView ).setImageBitmap(originalBitmap)
-//        Log.e("测试","旋转后的宽高updateSelectBitmap"+parentCameraView!!.width+"---"+parentCameraView!!.height)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             magnifier?.dismiss()
             if (m >= 100f){

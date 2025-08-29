@@ -161,7 +161,6 @@ class IRThermal07Activity : BaseWifiActivity() {
     private val task: Runnable by lazy {
         Runnable {
             lifecycleScope.launch {
-                XLog.i("快门矫正")
                 TC007Repository.setCorrection()
             }
         }
@@ -295,7 +294,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                         realRightValue
                     )
                 } catch (e: Exception) {
-                    Log.e("温度图层更新失败", e.message.toString())
                 }
             }
             if (tv_temp_content.isVisible) {
@@ -308,7 +306,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                             )
                         }"
                 } catch (e: Exception) {
-                    Log.e("温度图层更新失败", e.message.toString())
                 }
             }
             try {
@@ -317,7 +314,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                     cl_seek_bar.updateBitmap()
                 }
             } catch (e: Exception) {
-                Log.w("伪彩条更新异常:", "${e.message}")
             }
             runOnUiThread {
                 AlarmHelp.getInstance(application).alarmData(
@@ -419,7 +415,6 @@ class IRThermal07Activity : BaseWifiActivity() {
         try {
             scheduler?.shutdownNow()
         } catch (e: InstantiationException) {
-            XLog.e("线程池回收异常：${e.message}")
         }
     }
 
@@ -831,7 +826,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                         val data = TC007Repository.setMode(4)
                         temperature_iv_input.visibility = View.INVISIBLE
                         temperature_iv_lock.visibility = View.INVISIBLE
-                        XLog.i("设备：${data?.Message}")
                         if (200 == data?.Code) {
                             WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeLPYFusion
                         }
@@ -851,7 +845,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                         val data = TC007Repository.setMode(3)
                         temperature_iv_input.visibility = View.INVISIBLE
                         temperature_iv_lock.visibility = View.INVISIBLE
-                        XLog.i("设备：${data?.Message}")
                         if (200 == data?.Code) {
                             WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeMeanFusion
                         }
@@ -868,7 +861,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                     if (200 == data?.Code) {
                         WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeIROnly
                     }
-                    XLog.i("设备：${data?.Message}")
                 }
                 thermal_steering_view.visibility = View.GONE
                 thermal_recycler_night.setTwoLightSelected(TwoLightType.CORRECT, false)
@@ -880,7 +872,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                         if (200 == data?.Code) {
                             WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeVLOnly
                         }
-                        XLog.i("设备：${data?.Message}")
                     }
                     temperature_iv_input.visibility = View.INVISIBLE
                     temperature_iv_lock.visibility = View.INVISIBLE
@@ -901,7 +892,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                                 val data = TC007Repository.setMode(3)
                                 thermal_recycler_night.twoLightType = TwoLightType.TWO_LIGHT_2
                                 WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeMeanFusion
-                                XLog.i("设备：${data?.Message}")
                                 temperature_iv_input.visibility = View.INVISIBLE
                                 temperature_iv_lock.visibility = View.INVISIBLE
                                 thermal_steering_view.visibility = View.VISIBLE
@@ -927,7 +917,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                             temperature_iv_lock.visibility = View.INVISIBLE
                             WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeTC007Fusion
                         }
-                        XLog.i("设备：${data?.Message}")
                     }
                     thermal_steering_view.visibility = View.GONE
                     thermal_recycler_night.setTwoLightSelected(TwoLightType.CORRECT, false)
@@ -940,7 +929,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                     showCustomPseudoDialogOrNo(positiveListener = {
                         lifecycleScope.launch {
                             val data = TC007Repository.setMode(3)
-                            XLog.i("设备：${data?.Message}")
                             if (200 == data?.Code) {
                                 temperature_iv_input.visibility = View.INVISIBLE
                                 temperature_iv_lock.visibility = View.INVISIBLE
@@ -1576,7 +1564,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                 }
             }
         } catch (e: Exception) {
-            Log.e("线程", e.message.toString())
         }
     }
 

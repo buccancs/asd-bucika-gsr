@@ -21,7 +21,6 @@ public class TDatrsInIUtil {
     public static String getTdartsVersion(String path) {
         File file = new File(path + "T-darts.ini");
         if (!file.exists()) {
-            LLog.e("bcf", "  ini不存在：" + file.getPath());
             return "";
         }
         Config cfg = new Config();
@@ -40,7 +39,6 @@ public class TDatrsInIUtil {
                 return tDartSWSection.get("Version".toLowerCase());
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return "";
         }
         return "";
@@ -50,7 +48,6 @@ public class TDatrsInIUtil {
         HashMap<String, String> hashMap = new HashMap<>();
         File file = new File(path + "T-darts.ini");
         if (!file.exists()) {
-            LLog.e("bcf", "  ini不存在：" + file.getPath());
             return hashMap;
         }
         Config cfg = new Config();
@@ -85,7 +82,6 @@ public class TDatrsInIUtil {
             }
             return hashMap;
         } catch (Exception e) {
-            e.printStackTrace();
             return hashMap;
         }
     }

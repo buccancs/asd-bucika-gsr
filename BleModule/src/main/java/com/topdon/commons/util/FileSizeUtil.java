@@ -34,8 +34,6 @@ public class FileSizeUtil {
                 blockSize = getFileSize(file);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            Log.e("bcf获取文件大小", "getFileOrFilesSize-1-获取失败!");
         }
         return FormetFileSize(blockSize, sizeType);
     }
@@ -76,9 +74,7 @@ public class FileSizeUtil {
                 blockSize = getFileSize(file);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("bcf获取文件大小--getFilesSize-2-获取失败!");
-//            Log.e("获取文件大小", "getFilesSize-2-获取失败!");
         }
         return blockSize;
     }
@@ -99,8 +95,6 @@ public class FileSizeUtil {
                 blockSize = getFileSize(file);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            Log.e("bcf获取文件大小", "getAutoFileOrFilesSize-3-获取失败!");
         }
         return FormetFileSize(blockSize, sizeType) + getUnit(sizeType);
     }
@@ -122,8 +116,6 @@ public class FileSizeUtil {
                 blockSize = getFileSize(file);
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            Log.e("bcf获取文件大小", "getAutoFileOrFilesSize-4-获取失败!");
         }
         return FormetFileSize(blockSize);
     }
@@ -146,8 +138,6 @@ public class FileSizeUtil {
             }
         } catch (Exception e) {
             System.out.println("bcf获取文件大小--getFilesSize-5-获取失败!");
-//            Log.e("获取文件大小", "getFileSize-5-获取失败!");
-            e.printStackTrace();
         } finally {
             if (fc != null) {
                 fc.close();
@@ -249,7 +239,6 @@ public class FileSizeUtil {
             }
             return file.length();
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("bcf--getFileSize获取文件大小--getFilesSize-5-获取失败!");
         }
         return 0;

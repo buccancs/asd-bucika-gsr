@@ -151,7 +151,6 @@ class PDFListActivity : BaseViewModelActivity<PdfViewModel>() {
                                     if (file.exists()) {
                                         file.delete()
                                     }
-                                    Log.w("删除成功",response.toString())
                                 }
 
                                 override fun onFail(exception: Exception?) {
@@ -168,7 +167,6 @@ class PDFListActivity : BaseViewModelActivity<PdfViewModel>() {
                                             TToast.shortToast(LMS.mContext, it)
                                         }
                                     } catch (e: Exception) {
-                                        e.printStackTrace()
                                     }
                                 }
                             })

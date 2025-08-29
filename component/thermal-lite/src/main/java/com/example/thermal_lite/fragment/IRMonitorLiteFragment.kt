@@ -194,7 +194,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun action(event: ThermalActionEvent) {
         temperatureView.isEnabled = true
-        Log.w("123", "event:${event.action}")
         when (event.action) {
             2001 -> {
                 //点
@@ -293,15 +292,12 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
             if (msg.what == SHOW_LOADING) {
-                Log.d(TAG, "SHOW_LOADING")
                 showLoadingDialog()
             } else if (msg.what == HIDE_LOADING) {
-                Log.d(TAG, "HIDE_LOADING")
                 dismissLoadingDialog()
                 frameReady = true
                 isConfigWait = false
             } else if (msg.what == HANDLE_INIT_FAIL) {
-                Log.d(TAG, "HANDLE_INIT_FAIL")
                 dismissLoadingDialog()
                 Toast.makeText(requireActivity(), "handle init fail !", Toast.LENGTH_LONG).show()
             } else if (msg.what == HANDLE_SHOW_TOAST) {
@@ -501,7 +497,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
             DeviceControlManager.getInstance().release()
             CameraPreviewManager.getInstance().releaseSource()
         }catch (e : Exception){
-            XLog.e("$TAG:lite销毁异常--${e.message}")
         }
     }
 
@@ -523,7 +518,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
                 CameraPreviewManager.getInstance().releaseSource()
             }
         }catch (e : Exception){
-            XLog.e("$TAG:lite销毁异常--${e.message}")
         }
     }
 
@@ -554,7 +548,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
                     val basicGainGet: IrcmdError? = DeviceIrcmdControlManager.getInstance().getIrcmdEngine()
                         ?.basicGainGet(basicGainGetValue)
                 }catch (e : Exception){
-                    XLog.e("增益获取失败")
                 }
                 basicGainGetTime = System.currentTimeMillis()
             }
@@ -574,14 +567,12 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
                 params_array[5],
                 if (basicGainGetValue[0] == 0) GainStatus.LOW_GAIN else GainStatus.HIGH_GAIN
             )
-            Log.i(
                 TAG,
                 "temp correct, oldTemp = " + params_array[0] + " newtemp = " + tempNew +
                         " ems = " + params_array[1] + " ta = " + params_array[2] + " " +
                         "distance = " + params_array[4] + " hum = " + params_array[5] +" basicGain = "+basicGainGetValue[0]
             )
         }catch (e : Exception){
-            XLog.e("$TAG--温度修正异常：${e.message}")
         }finally {
             return tempNew ?: 0f
         }

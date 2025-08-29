@@ -179,7 +179,6 @@
 //        temperatureView.listener = TempListener { max, min ,tempData->
 //            realLeftValue = UnitTools.showUnitValue(min,isShowC)
 //            realRightValue = UnitTools.showUnitValue(max,isShowC)
-////            Log.w("温度更新","${max}--${min}//${realRightValue}--${realLeftValue}:::")
 //            cl_seek_bar.changeData = true
 //            this@IRThermalActivity.runOnUiThread {
 //                if (!customPseudoBean.isUseCustomPseudo){
@@ -193,33 +192,28 @@
 //                                upColor, downColor) //自定义颜色
 //                        }
 //                    }catch (e:Exception){
-//                        Log.e("温度图层更新失败",e.message.toString())
 //                    }
 //                    try {
 //                        if (isVideo){
 //                            cl_seek_bar.updateBitmap()
 //                        }
 //                    }catch (e:Exception){
-//                        Log.w("伪彩条更新异常:","${e.message}")
 //                    }
 //                    try {
 //                        AlarmHelp.getInstance(application).alarmData(max,min,temp_bg)
 //                        tv_temp_content.text = "Max:${UnitTools.showC(max,isShowC)}\nMin:${UnitTools.showC(min,isShowC)}"
 //                    }catch (e:Exception){
-//                        Log.e("温度图层更新失败",e.message.toString())
 //                    }
 //                }else{
 //                    //自定义渲染
 //                    try {
 //                        tv_temp_content.text = "Max:${UnitTools.showC(max,isShowC)}\nMin:${UnitTools.showC(min,isShowC)}"
 //                    }catch (e:Exception){
-//                        Log.e("温度图层更新失败",e.message.toString())
 //                    }
 //                }
 //                try {
 //                    AlarmHelp.getInstance(application).alarmData(max,min,temp_bg)
 //                }catch (e:Exception){
-//                    Log.e("温度图层更新失败",e.message.toString())
 //                }
 //            }
 //
@@ -357,7 +351,6 @@
 //    private fun initOrientationEventListener(){
 //        orientationEventListener = object : OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL) {
 //            override fun onOrientationChanged(orientation: Int) {
-//                Log.w("测试自动旋转角度2: ", "onOrientationChanged: $orientation")
 //                if(orientation == OrientationEventListener.ORIENTATION_UNKNOWN) {
 //                    return
 //                }
@@ -403,7 +396,6 @@
 //            launch(Dispatchers.Main) {
 //                thermal_recycler.rotateStats = 411
 //            }
-//            Log.w("123", "旋转角度: $rotateAngle")
 //            temperatureView?.clear()
 //            temperatureView?.temperatureRegionMode = REGION_MODE_CENTER
 //            setRotate(rotateAngle)
@@ -454,7 +446,6 @@
 //    //  orientationEventListener.enable()
 //            2
 //        }
-//        Log.w("测试自动旋转: ", "mOrientation: $mOrientation")
 //    }
 //
 //    private fun initRecycler() {
@@ -578,7 +569,6 @@
 //                }
 //            }
 //        }catch (e:Exception){
-//            Log.e("线程",e.message.toString())
 //        }
 //    }
 //
@@ -934,7 +924,6 @@
 //        // 某些特定客户的特殊设备需要使用该命令关闭sensor
 ////        if (Usbcontorl.isload) {
 ////            Usbcontorl.usb3803_mode_setting(1) //打开5V
-////            XLog.w("打开5V")
 ////        }
 //        //初始全局测温
 //        temperatureView?.post {
@@ -976,8 +965,6 @@
 //                    params.width = params.height * imageHeight / imageWidth
 //                }
 //            }
-//            Log.w("123", "set imageWidth = ${imageWidth}, imageHeight = ${imageHeight}")
-//            Log.w("123", "set width = ${params.width}, height = ${params.height}")
 //            thermal_lay.layoutParams = params
 //            if (isPortrait){
 //                zoomView.setImageSize(imageHeight, imageWidth,params.width,params.height)
@@ -1006,7 +993,6 @@
 //            imageThread?.alarmBean = alarmBean
 //            imageThread?.start()
 //        }catch (e : Exception){
-//            Log.e("图像线程重复启动",e.message.toString())
 //        }
 //    }
 //
@@ -1029,7 +1015,6 @@
 //        iruvc = IRUVCTC(cameraWidth, cameraHeight, this@IRThermalActivity, syncimage,
 //            defaultDataFlowMode, isUseIRISP, isUseGPU, object : ConnectCallback {
 //                override fun onCameraOpened(uvcCamera: UVCCamera) {
-//                    Log.i(
 //                        TAG,
 //                        "ConnectCallback->onCameraOpened"
 //                    )
@@ -1037,7 +1022,6 @@
 //                }
 //
 //                override fun onIRCMDCreate(ircmd: IRCMD) {
-//                    Log.i(
 //                        TAG,
 //                        "ConnectCallback->onIRCMDCreate"
 //                    )
@@ -1115,7 +1099,6 @@
 //                File(deviceSNUnCodePath + nucLowFileName)
 //            )
 //            nuc_table_low = FileUtil.toShortArray(nuc_table_low_byte)
-//            Log.e("测试","读取温度表：从机芯里面判断")
 //        }else{
 //            //从机芯读取
 //            if (ircmd != null && !md5PNSNKey?.isEmpty()!!) {
@@ -1127,12 +1110,10 @@
 //                // 保存数据，方便查看，可按照需要确定是否保存
 //                FileUtil.saveShortFileForDeviceData(nuc_table_high, nucHighFileName)
 //                FileUtil.saveShortFileForDeviceData(nuc_table_low, nucLowFileName)
-//                Log.e("测试","读取温度表：从机芯读取")
 //            }
 //        }
 //        var i = 0
 //        while (i < nuc_table_low.size) {
-//            Log.i(
 //                TAG,
 //                "nuc_table_high[" + i + "]=" + nuc_table_high[i] + " nuc_table_low[" + i +
 //                        "]=" + nuc_table_low[i]
@@ -1162,7 +1143,6 @@
 //                // 根据不同的高低增益加载不同的等效大气透过率表
 //                val value = IntArray(1)
 //                ircmd?.getPropTPDParams(PropTPDParams.TPD_PROP_GAIN_SEL, value)
-//                Log.d(TAG, "TPD_PROP_GAIN_SEL=" + value[0])
 //                gainStatus = if (value[0] == 1) {
 //                    // 当前机芯为高增益
 //                    GainStatus.HIGH_GAIN
@@ -1224,7 +1204,6 @@
 //            tempinfo,
 //            gainStatus
 //        )
-//        Log.i(TAG, "temp correct, oldTemp = " + params_array[0] + " ems = " + params_array[1] + " ta = " + params_array[2] + " " +
 //                    "distance = " + params_array[4] + " hum = " + params_array[5] + " productType = ${ProductType.MINI256}" + " " +
 //                    "newtemp = " + newTemp
 //        )
@@ -1268,7 +1247,6 @@
 //            try {
 //                imageThread?.join()
 //            } catch (e: InterruptedException) {
-//                Log.e(
 //                    TAG,
 //                    "imageThread.join(): catch an interrupted exception"
 //                )
@@ -1283,7 +1261,6 @@
 //            try {
 //                imageThread?.join()
 //            } catch (e: InterruptedException) {
-//                Log.e(TAG, "旋转角度 imageThread.join(): catch an interrupted exception")
 //            }
 //            startISP()
 //        }
@@ -1299,7 +1276,6 @@
 //
 //    override fun onStart() {
 //        super.onStart()
-//        Log.w(TAG, "onStart")
 //        if (!isrun) {
 //            // 初始配置,伪彩铁红
 ////          pseudocolorMode = 3
@@ -1395,7 +1371,6 @@
 //                )
 //            }
 //        } catch (e: InterruptedException) {
-//            Log.e(TAG, "imageThread.join(): catch an interrupted exception")
 //        }
 //
 //        // 某些特定客户的特殊设备需要使用该命令关闭sensor
@@ -1407,13 +1382,11 @@
 //
 //    private fun showInfo() {
 //        // 设备信息
-//        Log.i(
 //            TAG, """
 //     P2-PN:
 //     ${CommonUtils.getPNInfo(DeviceType.P2, "P2STDMD25602011XHWRXX-1170100010")}
 //     """.trimIndent()
 //        )
-//        Log.i(
 //            TAG, """
 //     P2-SN:
 //     ${CommonUtils.getSNInfo(DeviceType.P2, "YMN32091XD032200001")}
@@ -1430,7 +1403,6 @@
 //         */
 //        val oemInfo = ByteArray(oemWriteInfo.length)
 //        ircmd?.oemRead(oemInfo)
-////        Log.i(TAG, "oemRead:" + String(oemInfo))
 //        val CHIP_FW_INFO = ByteArray(8)
 //        val FW_COMPILE_DATE = ByteArray(8)
 //        val DEV_QUALIFICATION = ByteArray(8)
@@ -1483,7 +1455,6 @@
 //
 //            IRParseVer:${LibIRParse.getIRParseVersion()}
 //            """.trimIndent()
-//        Log.i("获取设备信息","$info")
 //
 //        TipDeviceDialog.Builder(this)
 //            .setMessage("$info")
@@ -1670,7 +1641,6 @@
 //                                                        ToastUtils.showShort(R.string.scan_ble_tip_authorize)
 //                                                    }
 //                                                }catch (e:Exception){
-//                                                    Log.e("录音启动失败",""+e.message)
 //                                                }
 //                                            }
 //
@@ -1868,7 +1838,6 @@
 ////                val tmp1 = LibIRTemp(256, 192)
 ////                tmp1.setTempData(tmpBy)
 ////                val result1 = tmp1.getTemperatureOfRect(Rect(0, 0, 256, 192))
-////                Log.w("温度更新19", result1.maxTemperature.toString() + "///" + result1.minTemperature)
 //                ImageUtils.saveFrame(bs = imageEditBytes, capital = capital, name = name)
 //                //保存一帧argb数据，临时代码，可删
 ////                ImageUtils.saveOneFrameAGRB(bs = imageThread!!.imageTemp, name = System.currentTimeMillis().toString())
@@ -2236,7 +2205,6 @@
 ////                Libircmd.IMAGE_PROP_MODE_AGC, value,
 ////                iruvc!!.uvcCamera.nativePtr
 ////            )
-////            Log.w("123", "IMAGE_PROP_MODE_AGC: ${value[0].toInt()}")
 ////            Libircmd.set_prop_image_params(
 ////                Libircmd.IMAGE_PROP_MODE_AGC,
 ////                3.toChar(),
@@ -2248,7 +2216,6 @@
 ////                Libircmd.IMAGE_PROP_ONOFF_AGC, value,
 ////                iruvc!!.uvcCamera.nativePtr
 ////            )
-////            Log.w("123", "IMAGE_PROP_ONOFF_AGC: ${value[0].toInt()}")
 ////            setImageParams(
 ////                Libircmd.IMAGE_PROP_ONOFF_AGC,
 ////                (if (value[0] == 0.toChar()) 1 else 0).toChar()
@@ -2303,7 +2270,6 @@
 ////                Libircmd.get_prop_tpd_params(5, gainSelValue, it)
 //////                gainSelChar = gainSelValue[0].code
 //////                thermal_recycler.setFiveSelectCode(gainSelChar)
-////                XLog.w("读取TPD_PROP ${paramType[5]}: ${gainSelValue[0].code}")
 ////            }
 //
 //            val gainSelValue = CharArray(1)
@@ -2311,7 +2277,6 @@
 ////                Libircmd.get_prop_tpd_params(5, gainSelValue, it)
 //////                gainSelChar = gainSelValue[0].code
 //////                thermal_recycler.setFiveSelectCode(gainSelChar)
-////                XLog.w("读取TPD_PROP ${paramType[5]}: ${gainSelValue[0].code}")
 ////            }
 //
 //            val configRepository = ConfigRepository()
@@ -2319,7 +2284,6 @@
 //            val disChar = (config.distance * 128).toInt() //距离(米)
 //            val emsChar = (config.radiation * 128).toInt() //发射率
 ////            val tuChar = (config.environment * 10).toInt().toChar() //环境温度
-//            XLog.w("设置TPD_PROP DISTANCE:${disChar.toInt()}, EMS:${emsChar.toInt()}}")
 //            val timeMillis = 250L
 //            delay(timeMillis)
 //            //发射率
@@ -2511,7 +2475,6 @@
 //                                    ToastUtils.showShort(R.string.scan_ble_tip_authorize)
 //                                }
 //                            }catch (e:Exception){
-//                                XLog.e("画中画"+e.message)
 //                            }
 //                        }
 //
@@ -2572,7 +2535,6 @@
 //                        dismissLoading()
 //                        thermal_recycler.setDefaultIndex()
 //                    }
-//                    XLog.i("重启模组生效")
 //                }
 //            }
 //            .setCanceled(true)
@@ -2602,7 +2564,6 @@
 ////        if (count < 10) {
 ////            if (event.action == 3) {
 ////                lifecycleScope.launch {
-////                    XLog.e("设备断开,重新连接")
 ////                    delay(1000)
 //////                    restartUsbCamera()
 //////                    startUSB()
@@ -2673,9 +2634,7 @@
 //                infoBuilder.append("Firmware version: ").append(arm).append("<br>")
 //                infoBuilder.append("SN: ").append(snStr).append("<br>")
 //                val str = HtmlCompat.fromHtml(infoBuilder.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
-//                XLog.i("获取设备信息: $str")
 //            } catch (e: Exception) {
-//                XLog.e("获取SN失败: ${e.message}")
 //            }
 //        }
 //    }
@@ -2685,7 +2644,6 @@
 //        try {
 //            tmp = tempCorrect(temp,gainStatus,tempinfo)
 //        }catch (e : Exception){
-//            XLog.e("温度校正失败: ${e.message}")
 //        }finally {
 //            return tmp
 //        }

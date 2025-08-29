@@ -118,7 +118,6 @@ class YapVideoEncoder(
             }
             mediaMuxer = MediaMuxer(out.absolutePath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4)
         } catch (e: IOException) {
-            e.printStackTrace()
         }
         mediaCodec!!.configure(mediaFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE)
         mediaCodec!!.start()
@@ -157,7 +156,6 @@ class YapVideoEncoder(
                 }
             } catch (e: Exception) {
                 IProvider.progress(-1f)
-                e.printStackTrace()
             }
         }
     }
@@ -238,8 +236,6 @@ class YapVideoEncoder(
             try {
                 mediaCodec!!.signalEndOfInputStream()
             } catch (e: Exception) {
-                Log.e("123", "录制错误:${e.message}")
-                e.printStackTrace()
             }
         }
         while (true) {
@@ -257,7 +253,6 @@ class YapVideoEncoder(
                 mediaMuxer!!.start()
                 mMuxerStarted = true
             } else if (encoderStatus < 0) {
-                Log.d(
                     "YapVideoEncoder",
                     "unexpected result from encoder.dequeueOutputBuffer: $encoderStatus"
                 )
@@ -272,23 +267,19 @@ class YapVideoEncoder(
                 }
                 if (bufferInfo.size != 0) {
                     if (!mMuxerStarted) {
-                        Log.d("YapVideoEncoder", "error:muxer hasn't started")
                     }
                     outputBuffer.position(bufferInfo.offset)
                     outputBuffer.limit(bufferInfo.offset + bufferInfo.size)
                     try {
                         mediaMuxer!!.writeSampleData(mTrackIndex, outputBuffer, bufferInfo)
                     } catch (e: Exception) {
-                        e.printStackTrace()
                     }
                 }
                 mediaCodec!!.releaseOutputBuffer(encoderStatus, false)
                 if (bufferInfo.flags and MediaCodec.BUFFER_FLAG_END_OF_STREAM != 0) {
                     if (!endOfStream) {
-                        Log.d("YapVideoEncoder", "reached end of stream unexpectedly")
                         IProvider.progress(-1f)
                     } else {
-                        Log.d("YapVideoEncoder", "end of stream reached")
                     }
                     break
                 }

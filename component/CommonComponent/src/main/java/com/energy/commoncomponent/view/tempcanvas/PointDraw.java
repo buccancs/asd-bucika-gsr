@@ -74,7 +74,6 @@ public class PointDraw extends BaseDraw {
 
     public void setOperateStatus(int mOperateStatus) {
         this.mOperateStatus = mOperateStatus;
-        Log.d(TAG, "setOperateStatus = " + mOperateStatus);
     }
 
     /**
@@ -87,7 +86,6 @@ public class PointDraw extends BaseDraw {
         PointView pointView = new PointView(mContext, mode, centerX, centerY);
         int size = mPointList.size();
         if (mPointList.size() < MAX_POINT_COUNT) {
-            Log.d(TAG, "addPoint");
 
             String newLabel = "P" + (size + 1);
             boolean hasSame = false;
@@ -95,7 +93,6 @@ public class PointDraw extends BaseDraw {
                 if (mPointList.get(i).getLabel().equals(newLabel)) {
                     //存在一样的
                     hasSame = true;
-                    Log.d(TAG, "addPoint is same");
                     break;
                 }
             }
@@ -112,7 +109,6 @@ public class PointDraw extends BaseDraw {
 
             mTouchIndex = size;
         } else {
-            Log.d(TAG, "point remove and add");
             mPointList.remove();
             mPointList.add(pointView);
             for (int i = 0; i < mPointList.size(); i ++) {

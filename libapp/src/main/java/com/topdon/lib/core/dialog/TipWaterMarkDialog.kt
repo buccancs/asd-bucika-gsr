@@ -263,10 +263,8 @@ class TipWaterMarkDialog : Dialog {
                         location.latitude,
                         location.longitude, 1
                     )
-                    Log.v("TAG", "获取地址信息：$result")
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
             }
             var str = ""
             if (result!=null && result.isNotEmpty()){

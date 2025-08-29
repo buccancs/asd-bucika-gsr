@@ -167,7 +167,6 @@
 //            )
 //        }
 //        val handler = View.OnClickListener { view ->
-//            Log.d(TAG, "onViewClicked: " + view.id)
 //            when (view.id) {
 //                R.id.rotate -> mainActivity.setRotate(true)
 //                R.id.derotate -> mainActivity.setRotate(false)

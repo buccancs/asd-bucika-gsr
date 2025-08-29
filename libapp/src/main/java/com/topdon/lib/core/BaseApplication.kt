@@ -95,7 +95,6 @@ abstract class BaseApplication : Application() {
 
     private fun connectWebSocket() {
         val ssid = WifiUtil.getCurrentWifiSSID(this) ?: return
-        Log.i("WebSocket", "当前连接 Wifi SSID: $ssid")
         if (ssid.startsWith(DeviceConfig.TS004_NAME_START)) {
             SharedManager.hasTS004 = true
             WebSocketProxy.getInstance().startWebSocket(ssid)
@@ -108,7 +107,6 @@ abstract class BaseApplication : Application() {
     }
 
     fun disconnectWebSocket() {
-        Log.i("WebSocket", "disconnectWebSocket()")
         WebSocketProxy.getInstance().stopWebSocket()
     }
 
@@ -164,7 +162,6 @@ abstract class BaseApplication : Application() {
                 }else{
 //                    NetWorkUtils.
                 }
-                Log.i("WebSocket", "网络切换 Wifi SSID: $activeNetwork"+activeNetwork.type)
             }
         }
     }
@@ -198,14 +195,12 @@ abstract class BaseApplication : Application() {
     private fun initARouter() {
         try {
             if (BuildConfig.DEBUG) {
-                Log.e("TopInfrared_LOG", "router init debug")
                 ARouter.openDebug()
             }
             ARouter.init(this)
         } catch (e: Exception) {
             //异常后建议清除映射表 (官方文档 开发模式会清除)
             if (SharedManager.getHasShowClause()) {
-                Log.e("TopInfrared_LOG", "router init error: ${e.message}")
             }
             ARouter.openDebug()
             ARouter.init(this)
@@ -218,7 +213,6 @@ abstract class BaseApplication : Application() {
             try {
                 AppDatabase.getInstance().thermalDao().deleteZero(SharedManager.getUserId())
             } catch (e: Exception) {
-                XLog.e("delete db error: ${e.message}")
             }
         }
     }

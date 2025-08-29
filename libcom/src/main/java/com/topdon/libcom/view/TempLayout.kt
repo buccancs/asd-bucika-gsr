@@ -48,7 +48,6 @@ class TempLayout : LinearLayout {
             BreatheInterpolator() //使用自定义的插值器
         alphaAnimator?.addUpdateListener {
             animatorAlpha = it.getAnimatedValue("alpha") as Float
-//            Log.w("透明值进度","$animatorAlpha")
         }
         alphaAnimator?.repeatCount = ValueAnimator.INFINITE
     }

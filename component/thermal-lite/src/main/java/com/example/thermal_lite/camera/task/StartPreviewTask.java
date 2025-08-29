@@ -17,7 +17,6 @@ public class StartPreviewTask extends BaseTask {
     @Override
     public void run() {
         if (mDeviceState != DeviceState.OPEN) {
-            Log.d(TAG, "startPreview start");
 
             if (mDeviceControlCallback != null) {
                 mDeviceControlCallback.onPrepareConnect();
@@ -26,7 +25,6 @@ public class StartPreviewTask extends BaseTask {
             CameraPreviewManager.getInstance().handleUSBConnect(mUsbControlBlock);
 
             mDeviceState = DeviceState.OPEN;
-            Log.d(TAG, "startPreview start end ");
         } else {
             mDeviceState = DeviceState.OPEN;
         }

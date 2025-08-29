@@ -33,7 +33,6 @@ abstract class BaseViewModelActivity<VM : BaseViewModel> : BaseActivity() {
         it?.run {
             when (it) {
                 is TimeoutCancellationException -> httpErrorTip(getString(R.string.http_time_out), "")
-                is CancellationException -> Log.d("${TAG}--->接口请求取消", it.message.toString())
                 else -> httpErrorTip(getString(R.string.http_code_z5004), "")
             }
         }

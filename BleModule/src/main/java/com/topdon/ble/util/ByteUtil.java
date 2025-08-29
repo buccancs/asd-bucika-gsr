@@ -106,7 +106,6 @@ public class ByteUtil {
             resultByte[i] = bytes[i];
         }
         float value = Integer.valueOf(HexUtil.bytesToHexString(resultByte), 16);
-        Log.e("bcf", "bytesToFloat bytes: " + HexUtil.bytesToHexString(resultByte) + "   float:" + value);
         return value;
     }
 

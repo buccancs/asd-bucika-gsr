@@ -53,7 +53,6 @@ class AudioRecordHelp private constructor() {
             startTime = System.currentTimeMillis()
             audioThread!!.start()
         } catch (e: Exception) {
-            e.printStackTrace()
         }
     }
 
@@ -87,11 +86,9 @@ class AudioRecordHelp private constructor() {
                     if (recordingAudio) {
                         if (bufferReadResult > 0) {
                             audioData?.limit(bufferReadResult)
-                            Log.w("音频采集",bufferReadResult.toString()+"//"+bufferReadResult)
                             recorder?.get()?.recordSamples(
                                 VideoRecordFFmpeg.SAMPLE_AUDIO_RETE_INHZ,
                                 VideoRecordFFmpeg.AUDIO_CHANNELS, audioData)
-//                            Log.w("音频采集中2",""+recorder?.get()?.frameNumber)
                         }
                     }else{
                         for (i in 0 until bufferSize) {
@@ -103,9 +100,7 @@ class AudioRecordHelp private constructor() {
                         Thread.sleep(1000L/VideoRecordFFmpeg.RATE)
                     }
                 }
-//                Log.w("停止采集",""+recorder?.get()?.frameNumber)
             }catch (e:Exception){
-                XLog.e("采集容器异常")
             }
         }
     }
@@ -123,7 +118,6 @@ class AudioRecordHelp private constructor() {
         try {
             audioThread?.interrupt()
         } catch (e: InterruptedException) {
-            e.printStackTrace()
         }
         audioRecord?.stop()
         audioRecord?.release()

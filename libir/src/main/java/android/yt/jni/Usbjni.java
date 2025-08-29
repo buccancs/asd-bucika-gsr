@@ -11,7 +11,6 @@ public class Usbjni {
         try {
             System.loadLibrary("usb3803_hub");
         } catch (UnsatisfiedLinkError e) {
-            Log.e("Usbjni", "Couldn't load lib:   - " + e.getMessage());
         }
     }
 

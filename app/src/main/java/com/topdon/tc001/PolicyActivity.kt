@@ -113,7 +113,6 @@ class PolicyActivity : BaseViewModelActivity<PolicyViewModel>() {
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                Log.w("123", "onPageFinished url: $url")
             }
         }
 
@@ -158,7 +157,6 @@ class PolicyActivity : BaseViewModelActivity<PolicyViewModel>() {
     }
 
     override fun httpErrorTip(text: String, requestUrl: String) {
-        XLog.w("声明接口异常,打开默认链接")
         loadHttp(policy_web)
         delayShowWebView()
     }

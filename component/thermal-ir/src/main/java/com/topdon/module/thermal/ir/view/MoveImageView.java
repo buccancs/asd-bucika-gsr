@@ -40,14 +40,12 @@ public class MoveImageView extends ImageView {
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(TAG, "ACTION_DOWN");
                 mPreX = event.getX();
                 mPreY = event.getY();
                 lastClickTime = System.currentTimeMillis();
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG, "ACTION_MOVE");
                 float preX = mPreX;
                 float preY = mPreY;
                 float curX = event.getX();
@@ -55,17 +53,14 @@ public class MoveImageView extends ImageView {
 
                 if (onMoveListener != null && delayMoveTime()) {
 
-                    Log.d(TAG, "ACTION_MOVE isFastClick");
                     onMoveListener.onMove(preX, preY, curX, curY);
                     mPreX = curX;
                     mPreY = curY;
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG, "ACTION_UP");
                 break;
             case MotionEvent.ACTION_CANCEL:
-                Log.d(TAG, "ACTION_CANCEL");
                 break;
 
         }
@@ -84,7 +79,6 @@ public class MoveImageView extends ImageView {
             flag = true;
             lastClickTime = System.currentTimeMillis();
         }
-        Log.d(TAG, "ACTION_MOVE isFastClick flag : " + flag);
         return flag;
     }
 

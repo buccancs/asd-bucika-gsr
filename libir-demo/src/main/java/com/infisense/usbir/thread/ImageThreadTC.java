@@ -61,7 +61,6 @@ public class ImageThreadTC extends Thread {
      * @param imageHeight
      */
     public ImageThreadTC(int imageWidth, int imageHeight) {
-        Log.i(TAG, "ImageThread create->imageWidth = " + imageWidth + " imageHeight = " + imageHeight);
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
         imageYUV422 = new byte[imageWidth * imageHeight * 2];
@@ -95,7 +94,6 @@ public class ImageThreadTC extends Thread {
         while (!isInterrupted()) {
             synchronized (syncimage.dataLock) {
                 if (syncimage.start) {
-                    Log.d(TAG, "run->dataFlowMode = " + dataFlowMode + " pseudocolorMode = " +
                             pseudocolorMode + " rotate = " + rotate + " syncimage.valid = " + syncimage.valid
                             + " imagesrc.length = " + imagesrc.length + " imagesrc[100] = " + imagesrc[100]);
                     if (dataFlowMode == CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT ||
@@ -145,7 +143,6 @@ public class ImageThreadTC extends Thread {
             }
             SystemClock.sleep(20);
         }
-        Log.i(TAG, "ImageThread exit");
     }
 
 }

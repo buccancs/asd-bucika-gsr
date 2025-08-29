@@ -118,14 +118,12 @@ class IrSurfaceView : SurfaceView, SurfaceHolder.Callback {
                 }
                 mCanvas?.drawBitmap(bitmap, mMatrix, p)
             } catch (e: Exception) {
-                e.printStackTrace()
             } finally {
                 val surface = mHolder!!.surface
                 if (mCanvas != null && mHolder != null && surface != null && surface.isValid) {
                     try {
                         mHolder?.unlockCanvasAndPost(mCanvas) // 完成画画，把画布显示在屏幕上
                     } catch (e: Exception) {
-                        e.printStackTrace()
                     }
                 }
             }
@@ -202,14 +200,12 @@ class IrSurfaceView : SurfaceView, SurfaceHolder.Callback {
         isPrepare = true
         if (callback != null)
             callback!!.onSurfaceCreated()
-        Logger.d(TAG, "holder onSurfaceCreated")
     }
 
     /**
      * 当SurfaceView的视图发生改变的时候，调用此函数
      */
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-        Logger.d(TAG, "holder surfaceChanged")
     }
 
     /**
@@ -218,7 +214,6 @@ class IrSurfaceView : SurfaceView, SurfaceHolder.Callback {
     override fun surfaceDestroyed(holder: SurfaceHolder) {
         synchronized(this) {
             isPrepare = false
-            Logger.d(TAG, "holder destroyed")
         }
     }
 

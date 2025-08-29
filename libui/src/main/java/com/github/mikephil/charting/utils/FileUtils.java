@@ -65,7 +65,6 @@ public class FileUtils {
                 }
             }
         } catch (IOException e) {
-            Log.e(LOG, e.toString());
         }
 
         return entries;
@@ -92,7 +91,6 @@ public class FileUtils {
         // Integer.parseInt(split[1])));
         // }
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
         // }
         //
         // DataSet ds = new DataSet(entries, label);
@@ -136,7 +134,6 @@ public class FileUtils {
                 line = reader.readLine();
             }
         } catch (IOException e) {
-            Log.e(LOG, e.toString());
 
         } finally {
 
@@ -144,7 +141,6 @@ public class FileUtils {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    Log.e(LOG, e.toString());
                 }
             }
         }
@@ -171,7 +167,6 @@ public class FileUtils {
         // line = reader.readLine();
         // }
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
         //
         // } finally {
         //
@@ -179,7 +174,6 @@ public class FileUtils {
         // try {
         // reader.close();
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
         // }
         // }
         // }
@@ -206,7 +200,6 @@ public class FileUtils {
                 saved.createNewFile();
             } catch (IOException e)
             {
-                Log.e(LOG, e.toString());
             }
         }
         try
@@ -223,7 +216,6 @@ public class FileUtils {
             buf.close();
         } catch (IOException e)
         {
-            Log.e(LOG, e.toString());
         }
     }
 
@@ -247,7 +239,6 @@ public class FileUtils {
                 line = reader.readLine();
             }
         } catch (IOException e) {
-            Log.e(LOG, e.toString());
 
         } finally {
 
@@ -255,7 +246,6 @@ public class FileUtils {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    Log.e(LOG, e.toString());
                 }
             }
         }
@@ -282,7 +272,6 @@ public class FileUtils {
         // line = reader.readLine();
         // }
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
         //
         // } finally {
         //
@@ -290,7 +279,6 @@ public class FileUtils {
         // try {
         // reader.close();
         // } catch (IOException e) {
-        // Log.e(LOG, e.toString());
         // }
         // }
         // }

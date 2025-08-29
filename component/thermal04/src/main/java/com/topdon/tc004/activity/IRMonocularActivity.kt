@@ -551,7 +551,6 @@ class IRMonocularActivity : BaseWifiActivity() {
                     }
                 }
             } catch (e: Exception) {
-                Log.e("刷新图标状态异常", e.message.toString())
             }
         }
     }

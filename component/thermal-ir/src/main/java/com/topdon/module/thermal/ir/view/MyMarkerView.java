@@ -69,7 +69,6 @@ public class MyMarkerView extends MarkerView {
                 }
             }
         } catch (Exception ex) {
-            XLog.e("MarkerView error: " + ex.getMessage());
         }
         super.refreshContent(e, highlight);
     }

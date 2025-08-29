@@ -930,7 +930,6 @@ class IRThermalHikActivity : BaseBindingActivity<ActivityIrThermalHikBinding>() 
                         SupHelp.getInstance().initA4KCPP()
                     } catch (e: UnsatisfiedLinkError) {
                         SupHelp.getInstance().loadOpenclSuccess = false
-                        XLog.e("超分初始化失败")
                     }
                 }
                 if (!SupHelp.getInstance().loadOpenclSuccess) {

@@ -110,7 +110,6 @@ public class CombinedChart extends BarLineChartBase<CombinedData> implements Com
     public Highlight getHighlightByTouchPoint(float x, float y) {
 
         if (mData == null) {
-            Log.e(LOG_TAG, "Can't select by touch. No data set.");
             return null;
         } else {
             Highlight h = getHighlighter().getHighlight(x, y);

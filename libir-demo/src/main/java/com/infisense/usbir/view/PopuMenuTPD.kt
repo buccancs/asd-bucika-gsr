@@ -76,7 +76,6 @@
 //            }
 //        layView.Param_Sel!!.onItemSelectedListener = spinner
 //        layView.submit!!.setOnClickListener {
-//            Log.d(TAG, layView.Param_Sel!!.selectedItemPosition.toString())
 //            if (layView.data!!.text.toString().isNotEmpty()) {
 //                param[layView.Param_Sel!!.selectedItemPosition] =
 //                    layView.data!!.text.toString().toInt().toChar()

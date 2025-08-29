@@ -28,7 +28,6 @@ class VersionViewModel : BaseViewModel() {
 //        viewModelScope.launch(Dispatchers.IO) {
 //            try {
 //                if (TimeUtils.isToday(SharedManager.getVersionCheckDate())) {
-//                    Log.w("123", "今天已有版本更新提示")
 //                    return@launch
 //                }
 //                val result: CheckVersionJson = LmsRepository.getVersionInfo() ?: return@launch
@@ -43,7 +42,6 @@ class VersionViewModel : BaseViewModel() {
 //                    return@launch
 //                }
 //            } catch (e: Exception) {
-//                XLog.e("检测异常: ${e.message}")
 //            }
 //        }
     }
@@ -54,7 +52,6 @@ class VersionViewModel : BaseViewModel() {
         val downPageUrl = result.downloadPageUrl
         val sizeStr = "${result.notUnZipSize}MB"
 
-        XLog.i("有版本升级,升级信息: $description, 是否强制升级: $isForcedUpgrade")
 
         val versionUpData = VersionUpData(
             versionNo = result.versionNo ?: "",

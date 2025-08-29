@@ -172,7 +172,6 @@ class ConnectionImpl implements Connection, ScanListener {
 
         @Override
         public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-            Log.e("bcf","onCharacteristicRead  status: "+status+"  value: "+ HexUtil.bytesToHexString(characteristic.getValue()));
             if (originCallback != null) {
                 easyBle.getExecutorService().execute(() -> originCallback.onCharacteristicRead(gatt, characteristic, status));
             }
@@ -190,7 +189,6 @@ class ConnectionImpl implements Connection, ScanListener {
 
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-//            Log.e("bcf","onCharacteristicWrite  status: "+status);
             if (originCallback != null) {
                 easyBle.getExecutorService().execute(() -> originCallback.onCharacteristicWrite(gatt, characteristic, status));
             }
@@ -346,19 +344,16 @@ class ConnectionImpl implements Connection, ScanListener {
         if (bluetoothGatt != null) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
-                    logD(Logger.TYPE_CONNECTION_STATE, "connected! [name: %s, addr: %s]", device.name, device.address);
                     device.connectionState = ConnectionState.CONNECTED;
                     sendConnectionCallback();
                     // 延时一会再去发现服务
                     connHandler.sendEmptyMessageDelayed(MSG_DISCOVER_SERVICES, configuration.discoverServicesDelayMillis);
                 } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                    logD(Logger.TYPE_CONNECTION_STATE, "disconnected! [name: %s, addr: %s, autoReconnEnable: %s]",
                             device.name, device.address, configuration.isAutoReconnect);
                     clearRequestQueueAndNotify();
                     notifyDisconnected();
                 }
             } else {
-                logE(Logger.TYPE_CONNECTION_STATE, "GATT error! [status: %d, name: %s, addr: %s]",
                         status, device.name, device.address);
                 if (status == 133) {
                     doClearTaskAndRefresh();
@@ -374,7 +369,6 @@ class ConnectionImpl implements Connection, ScanListener {
         if (bluetoothGatt != null) {
             List<BluetoothGattService> services = bluetoothGatt.getServices();
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                logD(Logger.TYPE_CONNECTION_STATE, "services discovered! [name: %s, addr: %s, size: %d]", device.name,
                         device.address, services.size());
                 if (services.isEmpty()) {
                     doClearTaskAndRefresh();
@@ -387,7 +381,6 @@ class ConnectionImpl implements Connection, ScanListener {
                 }
             } else {
                 doClearTaskAndRefresh();
-                logE(Logger.TYPE_CONNECTION_STATE, "GATT error! [status: %d, name: %s, addr: %s]",
                         status, device.name, device.address);
             }
         }
@@ -412,7 +405,6 @@ class ConnectionImpl implements Connection, ScanListener {
                     //超时
                     if (System.currentTimeMillis() - connStartTime > configuration.connectTimeoutMillis) {
                         connStartTime = System.currentTimeMillis();
-                        logE(Logger.TYPE_CONNECTION_STATE, "connect timeout! [name: %s, addr: %s]", device.name, device.address);
                         int type;
                         switch (device.connectionState) {
                             case SCANNING_FOR_RECONNECTION:
@@ -438,7 +430,6 @@ class ConnectionImpl implements Connection, ScanListener {
                                 posterDispatcher.post(observer, MethodInfoGenerator.onConnectFailed(device, CONNECT_FAIL_TYPE_MAXIMUM_RECONNECTION));
                             }
                             observable.notifyObservers(MethodInfoGenerator.onConnectFailed(device, CONNECT_FAIL_TYPE_MAXIMUM_RECONNECTION));
-                            logE(Logger.TYPE_CONNECTION_STATE, "connect failed! [type: maximun reconnection, name: %s, addr: %s]",
                                     device.name, device.address);
                         }
                     }
@@ -473,7 +464,6 @@ class ConnectionImpl implements Connection, ScanListener {
         cancelRefreshState();
         device.connectionState = ConnectionState.CONNECTING;
         sendConnectionCallback();
-        logD(Logger.TYPE_CONNECTION_STATE, "connecting [name: %s, addr: %s]", device.name, device.address);
         connHandler.postDelayed(connectRunnable, 500);
     }
 
@@ -512,7 +502,6 @@ class ConnectionImpl implements Connection, ScanListener {
 
     //处理刷新
     private void doRefresh(boolean isAuto) {
-        logD(Logger.TYPE_CONNECTION_STATE, "refresh GATT! [name: %s, addr: %s]", device.name, device.address);
         connStartTime = System.currentTimeMillis();
         if (bluetoothGatt != null) {
             try {
@@ -554,7 +543,6 @@ class ConnectionImpl implements Connection, ScanListener {
             easyBle.stopScan();
             //搜索设备，搜索到才执行连接
             device.connectionState = ConnectionState.SCANNING_FOR_RECONNECTION;
-            logD(Logger.TYPE_CONNECTION_STATE, "scanning for reconnection [name: %s, addr: %s]", device.name, device.address);
             easyBle.startScan();
         }
     }
@@ -837,7 +825,6 @@ class ConnectionImpl implements Connection, ScanListener {
             while (sb.length() < t.length()) {
                 sb.insert(0, "0");
             }
-            logD(Logger.TYPE_CHARACTERISTIC_WRITE, "package [%s/%s] write success! [UUID: %s, addr: %s, value: %s]",
                     sb, t, substringUuid(request.characteristic), device.address, toHex(value));
         }
     }
@@ -986,14 +973,12 @@ class ConnectionImpl implements Connection, ScanListener {
     private void notifyRequestFailed(GenericRequest request, int failType) {
         MethodInfo info = MethodInfoGenerator.onRequestFailed(request, failType, request.value);
         handleCallbacks(request.callback, info);
-        logE(Logger.TYPE_REQUEST_FAILED, "request failed! [requestType: %s, addr: %s, failType: %d",
                 request.type, device.address, failType);
     }
 
     private void notifyCharacteristicRead(GenericRequest request, byte[] value) {
         MethodInfo info = MethodInfoGenerator.onCharacteristicRead(request, value);
         handleCallbacks(request.callback, info);
-        logD(Logger.TYPE_CHARACTERISTIC_READ, "characteristic read! [UUID: %s, addr: %s, value: %s]",
                 substringUuid(request.characteristic), device.address, toHex(value));
     }
 
@@ -1004,26 +989,22 @@ class ConnectionImpl implements Connection, ScanListener {
         if (observer != null) {
             posterDispatcher.post(observer, info);
         }
-        logD(Logger.TYPE_CHARACTERISTIC_CHANGED, "characteristic change! [UUID: %s, addr: %s, value: %s]",
                 substringUuid(characteristic.getUuid()), device.address, toHex(characteristic.getValue()));
     }
 
     private void notifyRssiRead(GenericRequest request, int rssi) {
         MethodInfo info = MethodInfoGenerator.onRssiRead(request, rssi);
         handleCallbacks(request.callback, info);
-        logD(Logger.TYPE_READ_REMOTE_RSSI, "rssi read! [addr: %s, rssi: %d]", device.address, rssi);
     }
 
     private void notifyMtuChanged(GenericRequest request, int mtu) {
         MethodInfo info = MethodInfoGenerator.onMtuChanged(request, mtu);
         handleCallbacks(request.callback, info);
-        logD(Logger.TYPE_MTU_CHANGED, "mtu change! [addr: %s, mtu: %d]", device.address, mtu);
     }
 
     private void notifyDescriptorRead(GenericRequest request, byte[] value) {
         MethodInfo info = MethodInfoGenerator.onDescriptorRead(request, value);
         handleCallbacks(request.callback, info);
-        logD(Logger.TYPE_DESCRIPTOR_READ, "descriptor read! [UUID: %s, addr: %s, value: %s]",
                 substringUuid(request.characteristic), device.address, toHex(value));
     }
 
@@ -1031,10 +1012,8 @@ class ConnectionImpl implements Connection, ScanListener {
         MethodInfo info = MethodInfoGenerator.onNotificationChanged(request, isEnabled);
         handleCallbacks(request.callback, info);
         if (request.type == RequestType.SET_NOTIFICATION) {
-            logD(Logger.TYPE_NOTIFICATION_CHANGED, "%s [UUID: %s, addr: %s]", isEnabled ? "notification enabled!" :
                     "notification disabled!", substringUuid(request.characteristic), device.address);
         } else {
-            logD(Logger.TYPE_INDICATION_CHANGED, "%s [UUID: %s, addr: %s]", isEnabled ? "indication enabled!" :
                     "indication disabled!", substringUuid(request.characteristic), device.address);
         }
     }
@@ -1048,7 +1027,6 @@ class ConnectionImpl implements Connection, ScanListener {
         MethodInfo info = MethodInfoGenerator.onPhyChange(request, txPhy, rxPhy);
         handleCallbacks(request.callback, info);
         String event = request.type == RequestType.READ_PHY ? "phy read!" : "phy update!";
-        logD(Logger.TYPE_PHY_CHANGE, "%s [addr: %s, tvPhy: %s, rxPhy: %s]", event, device.address, txPhy, rxPhy);
     }
 
     @Override
@@ -1108,7 +1086,6 @@ class ConnectionImpl implements Connection, ScanListener {
                 bluetoothGatt = null;
             }
             device.connectionState = ConnectionState.RELEASED;
-            logD(Logger.TYPE_CONNECTION_STATE, "connection released! [name: %s, addr: %s]", device.name, device.address);
             if (!noEvent) {
                 sendConnectionCallback();
             }

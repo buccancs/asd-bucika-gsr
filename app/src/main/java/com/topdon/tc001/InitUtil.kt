@@ -48,10 +48,8 @@ object InitUtil {
             .flattener(PatternFlattener(pattern)) //自定义日志格式
             .build()
         if (BuildConfig.DEBUG) {
-            XLog.init(config, androidPrinter, filePrinter)
         } else {
             // release不使用logcat
-            XLog.init(config, filePrinter)
         }
     }
 
@@ -115,7 +113,6 @@ object InitUtil {
 //            registrationID = JPushInterface.getRegistrationID(BaseApplication.instance)
 //        }
         if (SharedManager.getHasShowClause()) {
-            XLog.w("registrationID= $registrationID")
         }
     }
 

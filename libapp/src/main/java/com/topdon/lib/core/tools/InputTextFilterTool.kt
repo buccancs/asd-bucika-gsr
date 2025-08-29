@@ -43,7 +43,6 @@ class InputTextFilterTool {
         ): CharSequence? {
             val emojiMatcher = emoji.matcher(source)
             if (emojiMatcher.find()) {
-                Log.w("123", "不支持输入表情")
                 return ""
             }
             return null

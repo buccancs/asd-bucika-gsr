@@ -82,7 +82,6 @@ class BaseDataTypeConvertUtils private constructor() {
             } catch (e: Exception) {
                 val newNumber = Math.round(number * 10) / 10f
                 val str = newNumber.toString()
-                Logger.e(TAG,"float2StrWithOneDecimal number = " + number + " str = " + str);
                 return str;
             }
         }
@@ -105,7 +104,6 @@ class BaseDataTypeConvertUtils private constructor() {
             } catch (e: Exception) {
                 val newNumber = Math.round(number * 100) / 100f
                 val str = newNumber.toString()
-                Logger.e(TAG,"float2StrWithTwoDecimal number = " + number + " str = " + str);
                 return str;
             }
         }

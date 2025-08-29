@@ -63,7 +63,6 @@ package com.infisense.usbir.camera;//package com.infisense.usbir.camera;
 //            // do request device permission
 //            @Override
 //            public void onAttach(UsbDevice device) {
-//                Log.w(TAG, "onAttach");
 //                if (isIRpid(device.getProductId())) {
 //                    if (uvcCamera == null || !uvcCamera.getOpenStatus()) {
 //                        mUSBMonitor.requestPermission(device);
@@ -75,7 +74,6 @@ package com.infisense.usbir.camera;//package com.infisense.usbir.camera;
 //            // do open camera,start previewing
 //            @Override
 //            public void onConnect(final UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock, boolean createNew) {
-//                Log.w(TAG, "onConnect");
 //                if (isIRpid(device.getProductId())) {
 //                    if (createNew) {
 //                        open(ctrlBlock);
@@ -88,14 +86,12 @@ package com.infisense.usbir.camera;//package com.infisense.usbir.camera;
 //            // do nothing
 //            @Override
 //            public void onDisconnect(UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock) {
-//                Log.w(TAG, "onDisconnect");
 //            }
 //
 //            // called by taking out usb device
 //            // do close camera
 //            @Override
 //            public void onDettach(UsbDevice device) {
-//                Log.w(TAG, "onDettach");
 //                if (isIRpid(device.getProductId())) {
 //                    if (uvcCamera != null && uvcCamera.getOpenStatus()) {
 //                        stop();
@@ -105,7 +101,6 @@ package com.infisense.usbir.camera;//package com.infisense.usbir.camera;
 //
 //            @Override
 //            public void onCancel(UsbDevice device) {
-//                Log.w(TAG, "onCancel");
 //            }
 //        });
 //        // auto gain switch parameter
@@ -125,7 +120,6 @@ package com.infisense.usbir.camera;//package com.infisense.usbir.camera;
 //            count++;
 //            if (count == 100) {
 //                count = 0;
-//                Log.d("onFrame", "" + frame.length);
 //            }
 //            //
 //            if (syncimage == null) return;
@@ -137,7 +131,6 @@ package com.infisense.usbir.camera;//package com.infisense.usbir.camera;
 //                if (frame[length] == 1) {
 //                    if (handler != null)
 //                        handler.sendEmptyMessage(IRDisplayActivity.RESTART_USB);
-//                    Log.d(TAG, "RESTART_USB");
 //                    return;
 //                }
 //                /**
@@ -218,7 +211,6 @@ package com.infisense.usbir.camera;//package com.infisense.usbir.camera;
 //     * @param context
 //     */
 //    public void init(int cameraHeight, int cameraWidth, Context context) {
-//        Log.w(TAG, "init");
 //        uvcCamera = new UVCCamera(cameraWidth, cameraHeight, context);
 //        uvcCamera.create();
 //    }
@@ -289,7 +281,6 @@ package com.infisense.usbir.camera;//package com.infisense.usbir.camera;
 //     *
 //     */
 //    public void start() {
-//        Log.w(TAG, "start");
 //        uvcCamera.setOpenStatus(true);
 //        uvcCamera.setFrameCallback(iFrameCallback);
 //        //uvcCamera.setgetframemode(uvcCamera.GET_FRAME_ASYNC);
@@ -302,7 +293,6 @@ package com.infisense.usbir.camera;//package com.infisense.usbir.camera;
 //     *
 //     */
 //    public void stop() {
-//        Log.w(TAG, "stop");
 //        if (uvcCamera != null) {
 //            if (uvcCamera.getOpenStatus()) {
 //                uvcCamera.stopPreview();
