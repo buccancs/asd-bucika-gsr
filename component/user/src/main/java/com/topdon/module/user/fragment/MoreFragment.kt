@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ToastUtils
 import com.topdon.lib.core.BaseApplication
-import com.topdon.lib.core.bean.event.TS004ResetEvent
 import com.topdon.lib.core.common.SaveSettingUtil
 import com.topdon.lib.core.common.SharedManager
 import com.topdon.lib.core.common.WifiSaveSettingUtil
@@ -17,12 +16,8 @@ import com.topdon.lib.core.config.ExtraKeyConfig
 import com.topdon.lib.core.config.FileConfig
 import com.topdon.lib.core.config.RouterConfig
 import com.topdon.lib.core.dialog.ConfirmSelectDialog
-import com.topdon.lib.core.dialog.FirmwareUpDialog
-import com.topdon.lib.core.ktbase.BaseFragment
 import com.topdon.lib.core.dialog.TipDialog
-import com.topdon.lib.core.http.tool.DownloadTool
-import com.topdon.lib.core.repository.ProductBean
-import com.topdon.lib.core.repository.TC007Repository
+import com.topdon.lib.core.ktbase.BaseFragment
 import com.topdon.lib.core.socket.WebSocketProxy
 import com.topdon.lib.core.tools.DeviceTools
 import com.topdon.lib.core.viewmodel.FirmwareViewModel
@@ -73,34 +68,24 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
         //根据 2024/5/23 评审会结论，TC007没有多少需要恢复出厂的配置，产品决定砍掉
         setting_reset.isVisible = false
 
-        setting_version.isVisible = isTC007 && Build.VERSION.SDK_INT >= 29
-        setting_device_information.isVisible = isTC007
-        setting_item_dual.isVisible = !isTC007 && DeviceTools.isTC001PlusConnect()
+        // Only TC001 is supported now, so TC007-specific features are always hidden
+        setting_version.isVisible = false
+        setting_device_information.isVisible = false
+        setting_item_dual.isVisible = false // TC001 Plus is no longer supported
 
-        if (isTC007) {
-            refresh07Connect(WebSocketProxy.getInstance().isTC007Connect())
-        }
-
-        setting_item_auto_show.isChecked = if (isTC007) SharedManager.isConnect07AutoOpen else SharedManager.isConnectAutoOpen
+        // Only TC001 is supported now, no need to check TC007 connection
+        setting_item_auto_show.isChecked = SharedManager.isConnectAutoOpen
         setting_item_auto_show.setOnCheckedChangeListener { _, isChecked ->
-            if (isTC007) {
-                SharedManager.isConnect07AutoOpen = isChecked
-            } else {
-                SharedManager.isConnectAutoOpen = isChecked
-            }
+            SharedManager.isConnectAutoOpen = isChecked
         }
 
-        setting_item_config_select.isChecked = if (isTC007) WifiSaveSettingUtil.isSaveSetting else SaveSettingUtil.isSaveSetting
+        setting_item_config_select.isChecked = SaveSettingUtil.isSaveSetting
         setting_item_config_select.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 TipDialog.Builder(requireContext())
                     .setMessage(R.string.save_setting_tips)
                     .setPositiveListener(R.string.app_ok) {
-                        if (isTC007){
-                            WifiSaveSettingUtil.isSaveSetting = true
-                        }else{
-                            SaveSettingUtil.isSaveSetting = true
-                        }
+                        SaveSettingUtil.isSaveSetting = true
                     }
                     .setCancelListener(R.string.app_cancel) {
                         setting_item_config_select.isChecked = false
@@ -108,13 +93,8 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
                     .setCanceled(false)
                     .create().show()
             } else {
-                if (isTC007){
-                    WifiSaveSettingUtil.reset()
-                    WifiSaveSettingUtil.isSaveSetting = false
-                }else{
-                    SaveSettingUtil.reset()
-                    SaveSettingUtil.isSaveSetting = false
-                }
+                SaveSettingUtil.reset()
+                SaveSettingUtil.isSaveSetting = false
             }
         }
 
@@ -138,7 +118,7 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun connected() {
-        setting_item_dual.isVisible = !isTC007 && DeviceTools.isTC001PlusConnect()
+        setting_item_dual.isVisible = false // TC001 Plus is no longer supported
     }
 
     override fun disConnected() {
@@ -146,21 +126,17 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onSocketConnected(isTS004: Boolean) {
-        if (!isTS004 && isTC007) {
-            refresh07Connect(true)
-        }
+        // Only TC001 is supported - no socket-specific handling needed
     }
 
     override fun onSocketDisConnected(isTS004: Boolean) {
-        if (!isTS004 && isTC007) {
-            refresh07Connect(false)
-        }
+        // Only TC001 is supported - no socket-specific handling needed
     }
 
     override fun onClick(v: View?) {
        when(v){
            setting_item_model -> {//温度修正
-               ARouter.getInstance().build(RouterConfig.IR_SETTING).withBoolean(ExtraKeyConfig.IS_TC007, isTC007).navigation(requireContext())
+               ARouter.getInstance().build(RouterConfig.IR_SETTING).withBoolean(ExtraKeyConfig.IS_TC007, false).navigation(requireContext())
            }
            setting_item_dual->{
                ARouter.getInstance().build(RouterConfig.MANUAL_START).navigation(requireContext())
@@ -169,35 +145,10 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
                ARouter.getInstance().build(RouterConfig.UNIT).navigation(requireContext())
            }
            setting_item_correction->{//锅盖校正
-               ARouter.getInstance().build(RouterConfig.IR_CORRECTION).withBoolean(ExtraKeyConfig.IS_TC007, isTC007).navigation(requireContext())
+
+               ARouter.getInstance().build(RouterConfig.IR_CORRECTION).withBoolean(ExtraKeyConfig.IS_TC007, false).navigation(requireContext())
            }
-           setting_version -> {//TC007固件升级
-               //由于双通道方案存在问题，V3.30临时使用 apk 内置固件升级包，此处注释强制登录逻辑
-//               if (LMS.getInstance().isLogin) {
-                   val firmwareData = firmwareViewModel.firmwareDataLD.value
-                   if (firmwareData != null) {
-                       showFirmwareUpDialog(firmwareData)
-                   } else {
-                       showLoadingDialog()
-                       firmwareViewModel.queryFirmware(false)
-                   }
-//               } else {
-//                   LMS.getInstance().activityLogin()
-//               }
-           }
-           setting_device_information -> {//TC007设备信息
-               if (WebSocketProxy.getInstance().isTC007Connect()) {
-                   ARouter.getInstance()
-                       .build(RouterConfig.DEVICE_INFORMATION)
-                       .withBoolean(ExtraKeyConfig.IS_TC007, true)
-                       .navigation(requireContext())
-               }
-           }
-           setting_reset -> {//TC007恢复出厂设置
-               if (WebSocketProxy.getInstance().isTC007Connect()) {
-                   restoreFactory()
-               }
-           }
+           // Removed TC007-specific handlers since only TC001 is supported
        }
     }
 
@@ -325,36 +276,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
         dialog.show()
     }
 
-
-    private fun restoreFactory() {
-        TipDialog.Builder(requireContext())
-            .setTitleMessage(getString(R.string.ts004_reset_tip1, "TC007"))
-            .setMessage(getString(R.string.ts004_reset_tip2))
-            .setPositiveListener(R.string.app_ok) {
-                resetAll()
-            }
-            .setCancelListener(R.string.app_cancel) {
-            }
-            .setCanceled(true)
-            .create().show()
-    }
-
-
-    private fun resetAll() {
-        showLoadingDialog(R.string.ts004_reset_tip3)
-        lifecycleScope.launch {
-            val isSuccess = TC007Repository.resetToFactory()
-            if (isSuccess) {
-                TToast.shortToast(requireContext(), R.string.ts004_reset_tip4)
-                (requireActivity().application as BaseApplication).disconnectWebSocket()
-                EventBus.getDefault().post(TS004ResetEvent())
-                ARouter.getInstance().build(RouterConfig.MAIN).navigation(requireContext())
-                requireActivity().finish()
-            } else {
-                TToast.shortToast(requireContext(), R.string.operation_failed_tips)
-            }
-            delay(500)
-            dismissLoadingDialog()
-        }
-    }
+    // Removed TC007-specific functions: restoreFactory and resetAll
+    // since only TC001 is supported now
 }
