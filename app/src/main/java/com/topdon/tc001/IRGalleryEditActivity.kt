@@ -25,7 +25,6 @@ import com.topdon.lib.core.utils.BitmapUtils
 import com.infisense.usbir.utils.PseudocodeUtils.changePseudocodeModeByOld
 import com.infisense.usbir.view.ITsTempListener
 import com.topdon.lib.core.BaseApplication
-import com.topdon.lib.core.bean.event.ReportCreateEvent
 import com.topdon.lib.core.common.ProductType.PRODUCT_NAME_TC001LITE
 import com.topdon.lib.core.common.ProductType.PRODUCT_NAME_TS
 import com.topdon.lib.core.common.SharedManager
@@ -604,13 +603,6 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
             }
         }
         edit_recycler_second.selectPosition(-1)
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onReportCreate(event: ReportCreateEvent) {
-        if (isReportPick) {
-            finish()
-        }
     }
 
     private fun keepOneDigit(float: Float) = String.format(Locale.ENGLISH, "%.1f", float)

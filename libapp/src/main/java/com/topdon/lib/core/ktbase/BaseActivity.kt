@@ -60,7 +60,7 @@ abstract class BaseActivity : RxAppCompatActivity() {
         setContentView(initContentView())
         initView()
         initData()
-        synLogin()
+        // Removed login sync
     }
 
 
@@ -182,33 +182,7 @@ abstract class BaseActivity : RxAppCompatActivity() {
         }
     }
 
-    //同步登录信息
-    private fun synLogin() {
-        if (this::class.java.simpleName == "MainActivity") {
-            LMS.getInstance().syncUserInfo()
-        }
-        if (SharedManager.getHasShowClause() && LMS.getInstance().isLogin) {
-            LMS.getInstance().getUserInfo { userinfo: CommonBean ->
-                try {
-                    val infoData = Gson().fromJson(userinfo.data, ResponseUserInfo::class.java)
-                    UserInfoManager.getInstance().login(
-                        token = LMS.getInstance().token,
-                        userId = infoData.topdonId,
-                        phone = infoData.phone,
-                        email = infoData.email,
-                        nickname = infoData.userName,
-                        headUrl = infoData.avatar,
-                    )
-                } catch (e: Exception) {
-                }
-            }
-        } else {
-            if (UserInfoManager.getInstance().isLogin()) {
-                //账号已退出,本地登录状态,需退出操作
-                UserInfoManager.getInstance().logout()
-            }
-        }
-    }
+    // Login synchronization removed
 
     protected class TakePhotoResult : ActivityResultContract<File, File?>() {
         private lateinit var file: File

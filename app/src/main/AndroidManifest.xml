@@ -117,9 +117,6 @@
         <activity
             android:name="com.topdon.tc001.MoreHelpActivity"
             android:screenOrientation="userPortrait" />
-        <activity
-            android:name="com.topdon.tc001.WebViewActivity"
-            android:screenOrientation="userPortrait" />
     </application>
 
 </manifest>

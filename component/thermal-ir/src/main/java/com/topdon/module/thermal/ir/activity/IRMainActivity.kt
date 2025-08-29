@@ -153,17 +153,8 @@ class IRMainActivity : BaseActivity(), View.OnClickListener {
             view_main_thermal -> {//首页
                 view_page.setCurrentItem(2, false)
             }
-            cl_icon_report -> {//报告
-                if (LMS.getInstance().isLogin) {
-                    view_page.setCurrentItem(3, false)
-                } else {
-                    LMS.getInstance().activityLogin(null) {
-                        if (it) {
-                            view_page.setCurrentItem(3, false)
-                            EventBus.getDefault().post(PDFEvent())
-                        }
-                    }
-                }
+            cl_icon_report -> {//报告 - remove login requirement
+                view_page.setCurrentItem(3, false)
             }
             cl_icon_mine -> {//我的
                 view_page.setCurrentItem(4, false)
