@@ -24,8 +24,8 @@ class MonitorActivity : BaseActivity(), View.OnClickListener {
 
     var MONITOR_ACTION = STATS_START
 
-    private var selectType = 1//选取点type(点 线 面)
-    private var selectIndex: ArrayList<Int> = arrayListOf()//选取点
+ private var selectType = 1//type( )
+ private var selectIndex: ArrayList<Int> = arrayListOf()//
 
     override fun initContentView() = R.layout.activity_monitor
 
@@ -55,7 +55,7 @@ class MonitorActivity : BaseActivity(), View.OnClickListener {
             }
             motion_btn -> {
                 MonitorSelectDialog.Builder(this)
-                    .setTitle("请选择监控type")
+                    monitor
                     .setPositiveListener(object : MonitorSelectDialog.OnClickListener {
                         override fun onClick(select: Int) {
                             updateUI()
@@ -94,7 +94,7 @@ class MonitorActivity : BaseActivity(), View.OnClickListener {
         motion_btn.visibility = View.GONE
     }
 
-    //秒
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     fun updateTime(time: Long) {
         val ss = time % 60
         val mm = time / 60 % 60

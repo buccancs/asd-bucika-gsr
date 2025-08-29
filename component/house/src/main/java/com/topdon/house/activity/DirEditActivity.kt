@@ -34,10 +34,10 @@ import org.greenrobot.eventbus.EventBus
 import java.util.Collections
 
 /**
- * 房屋检测 - 目录编辑.
+ * edit
  *
- * 需要传递：
- * - [ExtraKeyConfig.DETECT_ID] - 执行检测的房屋检测 Id
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * - [ExtraKeyConfig.DETECT_ID] - Id
  *
  * Created by LCG on 2024/8/26.
  */
@@ -102,7 +102,7 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v) {
             iv_exit -> showExitTipsDialog()
-            iv_save -> {//保存
+            save
                 val houseDetect: HouseDetect = viewModel.detectLD.value ?: return
                 showLoadingDialog()
                 lifecycleScope.launch(Dispatchers.IO) {
@@ -116,10 +116,10 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
                     }
                 }
             }
-            view_select_all -> {//全选、cancel全选
+ view_select_all -> {//cancel
                 adapter.isSelectAll = !adapter.isSelectAll
             }
-            view_copy -> {//复制
+ view_copy -> {//
                 adapter.copySelect()
                 TToast.shortToast(this@DirEditActivity, R.string.ts004_copy_success)
             }
@@ -138,7 +138,7 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
                     }
                     .create().show()
             }
-            tv_add -> {//新增默认目录
+ tv_add -> {//
                 recycler_view.isVisible = true
                 cl_bottom.isVisible = true
                 cl_empty.isVisible = false
@@ -155,7 +155,7 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 显示退出不保存提示弹框
+     * save
      */
     private fun showExitTipsDialog() {
         TipDialog.Builder(this)
@@ -202,21 +202,21 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
         var dataList: ArrayList<DirDetect> = ArrayList(0)
 
         /**
-         * 当前已选中的数量.
+         * medium
          */
         private var selectCount = 0
         /**
-         * 当前是否已全选 true-已全选 false-未全选
+ * true- false-
          */
         var isSelectAll: Boolean
             get() = selectCount == dataList.size && dataList.size > 0
             set(value) {
-                if (value) {//->全选
+ if (value) {//->
                     selectCount = dataList.size
                     for (dir in dataList) {
                         dir.hasSelect = true
                     }
-                } else {//全选->cancel全选
+ } else {//->cancel
                     selectCount = 0
                     for (dir in dataList) {
                         dir.hasSelect = false
@@ -227,7 +227,7 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
             }
 
         /**
-         * 一个 item 选中或cancel选中事件监听.
+         * medium
          */
         var onSelectChangeListener: ((selectSize: Int) -> Unit)? = null
 
@@ -237,7 +237,7 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
         }
 
         /**
-         * delete选中的目录.
+         * medium
          */
         fun delSelect() {
             selectCount = 0
@@ -256,7 +256,7 @@ class DirEditActivity : BaseActivity(), View.OnClickListener {
         }
 
         /**
-         * 复制选中的目录.
+         * medium
          */
         fun copySelect() {
             selectCount *= 2

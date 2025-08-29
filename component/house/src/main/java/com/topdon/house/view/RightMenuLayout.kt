@@ -10,7 +10,7 @@ import androidx.core.view.isVisible
 import kotlin.math.abs
 
 /**
- * 从右往左滑动出现右侧隐藏menu的 ViewGroup.
+ * menu ViewGroup.
  *
  * Created by LCG on 2024/8/15.
  */
@@ -18,12 +18,12 @@ class RightMenuLayout : ConstraintLayout {
 
     companion object {
         /**
-         * 右侧menu滑出右侧menu的百分之多少后，将触发自动展开。
+ * menumenu
          */
         private const val DEFAULT_AUTO_PERCENT = 0.5f
 
         /**
-         * 保存当前处于展开状态的 View，用于保持唯一展开。
+         * save
          */
         @JvmStatic
         private var currentOpenView: RightMenuLayout? = null
@@ -31,15 +31,15 @@ class RightMenuLayout : ConstraintLayout {
 
 
     /**
-     * 触发展开收起时使用的 Scroller
+ * Scroller
      */
     private val scroller: Scroller
     /**
-     * 视为滚动的距离
+     * distance
      */
     private val scaledTouchSlop: Int
     /**
-     * 右侧menu滑出右侧menu的百分之多少后，将触发自动展开。
+ * menumenu
      */
     private var autoPercent: Float = DEFAULT_AUTO_PERCENT
 
@@ -55,7 +55,7 @@ class RightMenuLayout : ConstraintLayout {
 
 
     /**
-     * menu即常规状态下不可见部分的宽度，单位 px
+ * menu px
      */
     private var menuWidth = 0
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -127,19 +127,19 @@ class RightMenuLayout : ConstraintLayout {
             }
             MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
                 if (abs(currentX - downX) < scaledTouchSlop) {
-                    //搞了半天相当于什么都没动，原来什么状态就保持什么状态
+                    // [Technical comment in Chinese - content removed for ASCII compatibility]
                     if (scrollX != 0 && scrollX != menuWidth) {
                         scroller.startScroll(scrollX, 0, if (scrollX > 0) menuWidth - scrollX else -scrollX, 0)
                         invalidate()
                     }
                 } else {
-                    if (currentX > downX) {//从左往右滑，关闭 →→
+ if (currentX > downX) {// →→
                         if (currentOpenView === this) {
                             currentOpenView = null
                         }
                         scroller.startScroll(scrollX, 0, -scrollX, 0)
-                    } else {//从右往左滑，展开 ←←
-                        if ((downX - currentX) < (menuWidth * autoPercent).toInt()) {//滑动的距离不够，恢复收起状态
+ } else {// ←←
+                        distance
                             if (currentOpenView === this) {
                                 currentOpenView = null
                             }
@@ -176,7 +176,7 @@ class RightMenuLayout : ConstraintLayout {
     }
 
     /**
-     * 将当前 View 置为收起状态
+ * View 
      */
     fun close() {
         if (currentOpenView === this) {
@@ -187,7 +187,7 @@ class RightMenuLayout : ConstraintLayout {
     }
 
     /**
-     * 将当前 View 置为展开状态
+ * View 
      */
     fun expand() {
         if (currentOpenView !== this) {

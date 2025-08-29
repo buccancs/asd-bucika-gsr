@@ -22,21 +22,21 @@ import kotlinx.coroutines.launch
 import java.io.File
 
 /**
- * report详情界面.
+ * details
  *
- * 需要传递
- * - 一份report所有信息 [ExtraKeyConfig.REPORT_BEAN]
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * info
  */
 @Route(path = RouterConfig.REPORT_DETAIL)
 class ReportDetailActivity: BaseActivity() {
 
     /**
-     * 从上一界面传递过来的，report所有信息.
+     * info
      */
     private var reportBean: ReportBean? = null
 
     /**
-     * 当前预览page已生成的 PDF 文件绝对路径
+     * preview
      */
     private var pdfFilePath: String? = null
 
@@ -117,8 +117,8 @@ class ReportDetailActivity: BaseActivity() {
     }
 
     /**
-     * 获取需要转为 PDF 的所有 View 列表.
-     * 注意：水印 View 不在列表内，需要自行处理.
+ * PDF View .
+ * View .
      */
     private fun getPrintViewList(): ArrayList<View> {
         val result = ArrayList<View>()

@@ -51,19 +51,19 @@ abstract class BaseApplication : Application() {
     var tau_data_L: ByteArray? = null
 
     var activitys = arrayListOf<Activity>()
-    var hasOtgShow = false//otg提示只出现一次
+ var hasOtgShow = false//otg
 
     /**
-     * 获取软件编码.
+ * .
      */
     abstract fun getSoftWareCode(): String
 
     /**
-     * 是否国内渠道。
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
-     * 国内渠道一些逻辑不同，如国内渠道可以应用内升级，权限申请前有提示弹窗等。
-     * 根据 2024/8/27 邮件结论，“热视界和电小搭其实没有形成销售，可以不用维护。”
-     * @return true-国内渠道 false-非国内渠道
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * 2024/8/27 “”
+ * @return true- false-
      */
     abstract fun isDomestic(): Boolean
 
@@ -85,7 +85,7 @@ abstract class BaseApplication : Application() {
 
     open fun initWebSocket(){
         connectWebSocket()
-        //注册网络变更广播
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         if (Build.VERSION.SDK_INT < 33) {
             registerReceiver(NetworkChangedReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
         } else {
@@ -95,7 +95,7 @@ abstract class BaseApplication : Application() {
 
     private fun connectWebSocket() {
         val ssid = WifiUtil.getCurrentWifiSSID(this) ?: return
-        Log.i("WebSocket", "当前连接 Wifi SSID: $ssid")
+ Log.i("WebSocket", " Wifi SSID: $ssid")
         if (ssid.startsWith(DeviceConfig.TS004_NAME_START)) {
             SharedManager.hasTS004 = true
             WebSocketProxy.getInstance().startWebSocket(ssid)
@@ -113,24 +113,24 @@ abstract class BaseApplication : Application() {
     }
 
     /**
-     * 解析socket消息
+ * socket
      * @param msgJson
      */
     private fun parserSocketMessage(msgJson: String) {
         if (TextUtils.isEmpty(msgJson)) return
         EventBus.getDefault().post(SocketMsgEvent(msgJson))
 
-        if (SharedManager.is04AutoSync) {//自动保存到手机开启
+        save
             when (SocketCmdUtil.getCmdResponse(msgJson)) {
-                WsCmdConstants.AR_COMMAND_SNAPSHOT -> {//photo事件
+                event
                     autoSaveNewest(false)
                 }
 
-                WsCmdConstants.AR_COMMAND_VRECORD -> {//开始或结束video事件
+                event
                     try {
                         val data: JSONObject = JSONObject(msgJson).getJSONObject("data")
                         val enable: Boolean = data.getBoolean("enable")
-                        if (!enable) {//结束才同步
+ if (!enable) {//
                             autoSaveNewest(true)
                         }
                     } catch (_: Exception) {
@@ -164,7 +164,7 @@ abstract class BaseApplication : Application() {
                 }else{
 //                    NetWorkUtils.
                 }
-                Log.i("WebSocket", "网络切换 Wifi SSID: $activeNetwork"+activeNetwork.type)
+ Log.i("WebSocket", " Wifi SSID: $activeNetwork"+activeNetwork.type)
             }
         }
     }
@@ -172,13 +172,13 @@ abstract class BaseApplication : Application() {
 
 
     /**
-     * settingswebview的android9以上系统的多进程兼容性处理
+ * settingswebviewandroid9
      */
     @RequiresApi(api = 28)
     open fun webviewSetPath(context: Context?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             val processName = getProcessName(context)
-            if (!applicationContext.packageName.equals(processName)) { //判断不等于默认进程名称
+ if (!applicationContext.packageName.equals(processName)) { //
                 WebView.setDataDirectorySuffix(processName!!)
             }
         }
@@ -203,7 +203,7 @@ abstract class BaseApplication : Application() {
             }
             ARouter.init(this)
         } catch (e: Exception) {
-            //异常后建议清除映射表 (官方文档 开发mode会清除)
+ // ( mode)
             if (SharedManager.getHasShowClause()) {
                 Log.e("TopInfrared_LOG", "router init error: ${e.message}")
             }
@@ -212,7 +212,7 @@ abstract class BaseApplication : Application() {
         }
     }
 
-    //清除无用数据
+    // data
     fun clearDb() {
         GlobalScope.launch(Dispatchers.Default) {
             try {
@@ -227,14 +227,14 @@ abstract class BaseApplication : Application() {
         val selectLan = SharedManager.getLanguage(baseContext)
         if (TextUtils.isEmpty(selectLan)) {
             if (isDomestic()) {
-                //国内版默认中文
+                // medium
                 val autoSelect = AppLanguageUtils.getChineseSystemLanguage()
                 val locale = AppLanguageUtils.getLocaleByLanguage(autoSelect)
                 LanguageUtils.applyLanguage(locale)
                 SharedManager.setLanguage(baseContext, autoSelect)
             } else {
-                //初始语言settings
-                //默认初始语言，跟随系统语言settings，没有则默认英文
+ //settings
+ //settings
                 val autoSelect = AppLanguageUtils.getSystemLanguage()
                 val locale = AppLanguageUtils.getLocaleByLanguage(autoSelect)
                 LanguageUtils.applyLanguage(locale)
@@ -252,7 +252,7 @@ abstract class BaseApplication : Application() {
     }
 
     /**
-     * 退出所有
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun exitAll() {
         hasOtgShow = false

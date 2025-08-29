@@ -20,53 +20,53 @@ import kotlinx.coroutines.withContext
 import java.util.Arrays
 
 /**
- * 帮助实现机芯初始化、添加回调等的的工具类.
+ * help
  *
- * settings以下回调以获取数据：
- * - [setFrameListener] settings YUV 数据变更回调
- * - [setTempListener] settings温度数据变更回调
+ * data
+ * data
+ * temperature
  *
- * settings码流回调settings完毕回调：
+ * settingssettings
  * - [onReadyListener]
  *
- * settings超时回调给海康擦屁股：
+ * settings
  * - [onTimeoutListener]
  *
- * 核心方法为：
- * - [init] 初始化
- * - [startStream] 开启码流回调
- * - [stopStream] 停止码流回调
- * - [release] 回收相关资源
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * - [init] 
+ * - [startStream] 
+ * - [stopStream] 
+ * - [release] 
  *
- * 或者如果是 [ComponentActivity] 的话，
- * 直接调用 [bind] 即可，省下调上述4个方法
+ * [ComponentActivity] 
+ * [bind] 4
  *
- * 剩下的就是诸如 对比度、旋转、mirror 之类的属性了
+ * class
  *
  * Created by LCG on 2024/11/19.
  */
 object HikHelper {
     /**
-     * 当前设备用户 Id.
+ * Id.
      */
     private var userId: Int = JavaInterface.USB_INVALID_USER_ID
     /**
-     * 码流回调 Id，用于停止回调.
+ * Id.
      */
     private var callbackId: Int = JavaInterface.USB_INVALID_CHANNEL
 
     /**
-     * 定时检查有没有回调过来的 Job
+ * Job
      */
     private var timeoutJob: Job? = null
     /**
-     * 码流数据回调.
+     * data
      */
     private val streamCallBack = MyFStreamCallBack()
 
 
     /**
-     * 根据指定 Activity 的生命周期执行相应初始化、开启码流、停止码流、回收资源操作.
+ * Activity .
      */
     fun bind(activity: ComponentActivity) {
         init(activity)
@@ -88,7 +88,7 @@ object HikHelper {
     }
 
     /**
-     * 根据指定 Fragment 的生命周期执行相应初始化、开启码流、停止码流、回收资源操作.
+ * Fragment .
      */
     fun bind(fragment: Fragment) {
         init(fragment.requireContext())
@@ -110,41 +110,41 @@ object HikHelper {
     }
 
     /**
-     * 是否已成功初始化，用于判断是否需要调用 USB_Cleanup
+ * USB_Cleanup
      */
     private var hasInit = false
     /**
-     * 初始化，确保设备已连接且有权限.
-     * @return true-已成功初始化 false-初始化失败
+ * .
+ * @return true- false-
      */
     fun init(context: Context): Boolean {
-        if (userId != JavaInterface.USB_INVALID_USER_ID) {//已成功初始化并登录
+ if (userId != JavaInterface.USB_INVALID_USER_ID) {//
             return true
         }
 
-        //初始化
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         if (!hasInit) {
-            if (!HikCmdUtil.init()) {//初始化失败
+ if (!HikCmdUtil.init()) {//
                 return false
             }
             hasInit = true
         }
 
-        //settings日志路径
+        // log
         HikCmdUtil.setLogPath(context.getExternalFilesDir("hkLog"))
 
-        //登录
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         userId = HikCmdUtil.login(context)
         return userId != JavaInterface.USB_INVALID_USER_ID
     }
 
     /**
-     * 是否需要检查超时
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @Volatile
     private var wantCheckTimeout = false
     /**
-     * 开启码流回调.
+ * .
      */
     suspend fun startStream() {
         if (callbackId == JavaInterface.USB_INVALID_CHANNEL) {
@@ -152,7 +152,7 @@ object HikHelper {
             wantCheckTimeout = true
             timeoutJob = CoroutineScope(Dispatchers.Main).launch {
                 while (wantCheckTimeout) {
-                    delay(5000) //5秒检查一次
+ delay(5000) //5
                     if (System.currentTimeMillis() - streamCallBack.beforeFrameTime > 5000) {
                         wantCheckTimeout = false
                         onTimeoutListener?.invoke()
@@ -164,7 +164,7 @@ object HikHelper {
     }
 
     /**
-     * 停止码流回调，注意，YUV 及 温度数据回调也一并置 null.
+     * temperature
      */
     fun stopStream() {
         if (callbackId != JavaInterface.USB_INVALID_CHANNEL) {
@@ -176,10 +176,10 @@ object HikHelper {
     }
 
     /**
-     * 清理及回收相关资源.
+ * .
      */
     fun release() {
-        if (userId != JavaInterface.USB_INVALID_USER_ID) {//已登录要退出登录
+ if (userId != JavaInterface.USB_INVALID_USER_ID) {//
             JavaInterface.getInstance().USB_Logout(userId)
             userId = JavaInterface.USB_INVALID_USER_ID
         }
@@ -193,61 +193,61 @@ object HikHelper {
     }
 
     /**
-     * settings整帧数据变更回调，注意，回调不在主线程！
+     * data
      */
     fun setFrameListener(listener : ((ByteArray, ByteArray) -> Unit)) {
         streamCallBack.onFrameListener = listener
     }
     /**
-     * settings温度数据变更回调，注意，回调不在主线程！
+     * temperature
      */
     fun setTempListener(listener : ((ByteArray) -> Unit)) {
         streamCallBack.onTempListener = listener
     }
 
     /**
-     * 给海康擦屁股，一段时间内没有回调的事件监听.
+     * time
      */
     var onTimeoutListener: (() -> Unit)? = null
     /**
-     * 机芯命令不支持并发执行，该回调为开启码流回调结束，在此执行配置settings.
+     * configuration
      */
     var onReadyListener: (() -> Unit)? = null
 
     /**
-     * 复制一份整帧数据（YUV+温度）并返回
+     * temperature
      */
     fun copyFrameData(): ByteArray = streamCallBack.copyFrameArray()
 
 
     private class MyFStreamCallBack : FStreamCallBack {
         /**
-         * YUV 数组，YUY2 格式
+ * YUV YUY2 
          */
         private val yuvArray = ByteArray(256 * 192 * 2)
         /**
-         * 温度数组
+         * temperature
          */
         private val tempArray = ByteArray(256 * 192 * 2)
         /**
-         * 温度数据变更回调.
+         * temperature
          */
         @Volatile
         var onTempListener: ((ByteArray) -> Unit)? = null
         /**
-         * 一帧数据（YUY2+温度）变更回调.
+         * temperature
          */
         @Volatile
         var onFrameListener: ((ByteArray, ByteArray) -> Unit)? = null
 
         /**
-         * 上一帧回调的时间戳
+         * time
          */
         @Volatile
         var beforeFrameTime: Long = 0
 
         /**
-         * 复制一份整帧数据（YUV+温度）并返回
+         * temperature
          */
         fun copyFrameArray(): ByteArray = synchronized(this) {
             val frameArray = ByteArray(256 * 192 * 4)
@@ -259,7 +259,7 @@ object HikHelper {
         override fun invoke(handle: Int, frameInfo: USB_FRAME_INFO) {
             beforeFrameTime = System.currentTimeMillis()
             if (frameInfo.dwBufSize != 4640 + 256 * 192 * 4) {
-                XLog.w("数据长度不对！${frameInfo.dwBufSize}")
+                data
                 return
             }
             val dataArray: ByteArray = Arrays.copyOf(frameInfo.pBuf, frameInfo.dwBufSize)
@@ -286,35 +286,35 @@ object HikHelper {
     }
 
     /**
-     * 重置一些配置：开启细节增强、重置pseudo color为白热、码流不叠加温度图像、横屏、不mirror.
+     * temperature
      */
     suspend fun initConfig() = withContext(Dispatchers.IO) {
         HikCmdUtil.initConfig(userId)
     }
 
     /**
-     * 手动快门，实际调用发现执行手动快门的耗时不短，放子线程避免阻塞主线程
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     suspend fun shutter() = withContext(Dispatchers.IO) {
         HikCmdUtil.shutter(userId)
     }
 
     /**
-     * 开启关闭自动快门
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     suspend fun setAutoShutter(isAutoShutter: Boolean) = withContext(Dispatchers.IO) {
         HikCmdUtil.setAutoShutter(userId, isAutoShutter)
     }
 
     /**
-     * settings对比度，取值 `[0,100]`
+ * settings `[0,100]`
      */
     suspend fun setContrast(value: Int) = withContext(Dispatchers.IO) {
         HikCmdUtil.setContrast(userId, value)
     }
 
     /**
-     * 细节增强等级，取值 `[0,100]`
+ * `[0,100]`
      */
     suspend fun setEnhanceLevel(value: Int) = withContext(Dispatchers.IO) {
         HikCmdUtil.setEnhanceLevel(userId, value)
@@ -328,30 +328,30 @@ object HikHelper {
     }
 
     /**
-     * settings发射率
-     * @param emissivity 取值范围 `[1, 100]`
+     * emissivity
+ * @param emissivity `[1, 100]`
      */
     suspend fun setEmissivity(emissivity: Int) = withContext(Dispatchers.IO) {
         HikCmdUtil.setEmissivity(userId, emissivity)
     }
 
     /**
-     * settings测温距离，单位 cm
-     * @param distance 取值范围 `[30, 200]`
+     * distance
+ * @param distance `[30, 200]`
      */
     suspend fun setDistance(distance: Int) = withContext(Dispatchers.IO) {
         HikCmdUtil.setDistance(userId, distance)
     }
 
     /**
-     * settings测温 自动(-1)/常温(1)/高温(0) 档位.
+     * high
      */
     suspend fun setTemperatureMode(@IntRange(-1, 1) mode: Int) = withContext(Dispatchers.IO) {
         HikCmdUtil.setTemperatureMode(userId, mode)
     }
 
     /**
-     * 开始锅盖校正
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     suspend fun startCorrect() = withContext(Dispatchers.IO) {
         HikCmdUtil.startCorrect(userId)

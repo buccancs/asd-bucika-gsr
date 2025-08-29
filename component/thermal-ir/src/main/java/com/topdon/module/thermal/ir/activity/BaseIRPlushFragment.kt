@@ -63,8 +63,8 @@ import java.io.InputStream
 
 
 /**
- * dual light的初始化
- * dual light的
+ * dual light
+ * dual light
  */
 abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTempListener,
     IIRFrameCallback {
@@ -72,32 +72,32 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     val INIT_ALIGN_DATA = floatArrayOf(1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f)
 
     /**
-     * 使用 DualUVCCamera 进行画面预览、获取回调数据的关键工具类.
+     * preview
      *
-     * 注意：这个命名有问题，虽然叫 View，但却不是 View!
+ * View View!
      */
     protected var dualView: DualViewWithExternalCameraCommonApi? = null
 
     /**
-     * pseudo color颜色mode，默认 IRONBOW_MODE(铁红)
+ * pseudo colormode IRONBOW_MODE()
      */
     protected var pseudoColorModeDual = CommonParams.PseudoColorUsbDualType.IRONBOW_MODE
 
 
 
     /**
-     * 是否已开始可见光及红外的预览.
-     * true-已调用完相关预览方法，即将或正在展示预览画面
-     * false-尚未执行预览相关的初始化.
-     * 使用该变量避免在已初始化过的 dualStart 方法中弹出加载中弹框.
+     * preview
+     * preview
+     * preview
+     * medium
      */
     private var hasStartPreview = false
     protected var ircmd: IRCMD? = null
 
-    //thermal imaging设备sn,可作为唯一id，此sn并非艾睿烧录的，是内部烧录的
+ //thermal imagingsn,idsn
     protected var snStr = ""
 
-    /** 默认数据流mode：图像+温度复合数据 */
+    temperature
     protected var defaultDataFlowMode = CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT
     /**
      * ir camera
@@ -106,15 +106,15 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
      */
     private var irPid = 0x5830
     private var irFps = 25
-    private var irCameraWidth // 传感器的原始宽度
+ private var irCameraWidth // 
             = 0
-    private var irCameraHeight // 传感器的原始高度
+    high
             = 0
-    private var irTempHeight // 温度数据高度
+    temperature
             = 0
-    private var imageWidth // 经过旋转后的图像宽度
+    image
             = 0
-    private var imageHeight // 经过旋转后的图像高度
+    high
             = 0
     protected var temperatureSrc: ByteArray ?= null
 
@@ -130,11 +130,11 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
      * 8833
      */
     private var vlPid = 12337
-    private var vlFps = 30 // 该分辨率支持的帧率
+ private var vlFps = 30 // 
 
     protected var vlCameraWidth = 1280
     protected var vlCameraHeight = 720
-    private var vlData = ByteArray(vlCameraWidth * vlCameraHeight * 3) // 存储可见光数据
+    data
 
     /**
      * dual camera
@@ -144,7 +144,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
 
     protected var isrun = false
 
-    // 是否使用IRISP算法集成
+ // IRISP
     protected val isUseIRISP = false
 
     protected var fullScreenlayoutParams: FrameLayout.LayoutParams? = null
@@ -156,23 +156,23 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     protected var dualDisp = 30
 
     /**
-     * camera 相机相关
+ * camera 
      */
     private var vlUVCCamera: IRUVCDual? = null
 
 
     /**
-     * 子类实现该方法，返回用于渲染画面的 SurfaceView
+     * class
      */
     abstract fun getSurfaceView(): SurfaceView
 
     /**
-     * 子类实现该方法，返回用于显示温度图层的 TemperatureDualView
+     * temperature
      */
     abstract fun getTemperatureDualView(): TemperatureView
 
     /**
-     * 子类实现该方法，在 USBMonitor 的 onConnect 阶段，执行创建 DualView 后的相应处理.
+     * create
      */
     abstract suspend fun onDualViewCreate(dualView: DualViewWithExternalCameraCommonApi?)
 
@@ -188,10 +188,10 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         when (dataFlowMode) {
             CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT -> {
                 /**
-                 * 图像+温度
+                 * temperature
                  */
-                irCameraWidth = 256 // 传感器的原始宽度
-                irCameraHeight = 384 // 传感器的原始高度
+ irCameraWidth = 256 // 
+                high
                 irTempHeight = 192
                 imageWidth = irCameraHeight - irTempHeight
                 imageHeight = irCameraWidth
@@ -199,10 +199,10 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             }
             CommonParams.DataFlowMode.IMAGE_OUTPUT -> {
                 /**
-                 * 图像
+                 * image
                  */
-                irCameraWidth = 256 // 传感器的原始宽度
-                irCameraHeight = 192 // 传感器的原始高度
+ irCameraWidth = 256 // 
+                high
                 irTempHeight = 0
                 imageWidth = irCameraHeight - irTempHeight
                 imageHeight = irCameraWidth
@@ -210,18 +210,18 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             }
             CommonParams.DataFlowMode.TEMP_OUTPUT -> {
                 /**
-                 * 温度
+                 * temperature
                  */
-                irCameraWidth = 256 // 传感器的原始宽度
-                irCameraHeight = 192 // 传感器的原始高度
+ irCameraWidth = 256 // 
+                high
                 irTempHeight = 0
                 imageWidth = irCameraHeight - irTempHeight
                 imageHeight = irCameraWidth
                 temperatureSrc = ByteArray(imageWidth * imageHeight * 2)
             }
             else -> {
-                irCameraWidth = 256 // 传感器的原始宽度
-                irCameraHeight = 192 // 传感器的原始高度
+ irCameraWidth = 256 // 
+                high
                 irTempHeight = 0
                 imageWidth = irCameraHeight - irTempHeight
                 imageHeight = irCameraWidth
@@ -244,7 +244,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     }
 
     /**
-     * 是否是dual light设备
+ * dual light
      */
     abstract fun isDualIR() : Boolean
 
@@ -260,7 +260,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     }
 
     private fun initIrDualdata() {
-        // 计算画面的宽高，避免被拉伸变形
+        // high
         var width = 0
         var height = 0
         val screenWidth: Int = ScreenUtils.getScreenWidth(context)
@@ -293,7 +293,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         val am = requireContext().assets
         var `is`: InputStream? = null
         try {
-            //加载pseudo color，虽然用不上这个pseudo color，但是sdk限制必须初始化一个才能正常出图
+ //pseudo colorpseudo colorsdk
             psedocolor = Array(11) { ByteArray(0) }
             `is` = am.open("pseudocolor/White_Hot.bin")
             var lenth = `is`.available()
@@ -309,7 +309,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
                 CommonParams.PseudoColorUsbDualType.WHITE_HOT_MODE,
                 psedocolor!![0]
             )
-            // 这里可以settings初始化融合mode
+ // settingsmode
             setFusion(mCurrentFusionType)
             `is`.close()
         } catch (e: IOException) {
@@ -337,7 +337,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     val SAVE_DUAL_BIN = "dual_calibration_parameters2.bin"
 
     /**
-     * 一体式
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     open fun initDefIntegralArgsDISP_VALUE(typeLoadParameters: DualCameraParams.TypeLoadParameters) {
         if (!isDualIR()){
@@ -348,7 +348,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             val data = dualView?.dualUVCCamera?.loadParameters(parameters, typeLoadParameters)
             dualDisp = IRCmdTool.dispNumber
             setDispViewData(dualDisp)
-            // 初始化默认值
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             dualView?.dualUVCCamera?.setDisp(dualDisp)
             dualView?.startPreview()
         }
@@ -379,11 +379,11 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             "dualStart"
         )
         /**
-         * 打开红外模组
-         * 需要确认好模组的pid和分辨率
+         * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * pid
          */
         USBMonitorManager.getInstance().registerUSB()
-        //在USBMonitorManager onConnect回调中打开可见光模组
+        // medium
         //
 //        getTemperatureDualView().setTemperatureRegionMode(View.FOCUSABLES_TOUCH_MODE)
         getTemperatureDualView().setUseIRISP(isUseIRISP)
@@ -403,7 +403,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             super.handleMessage(msg)
             Log.d(
                 TAG,
-                "USBMonitorManager 收到消息${msg.what}"
+ "USBMonitorManager ${msg.what}"
             )
             if (!isDualIR()){
                 return
@@ -419,15 +419,15 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
                     TAG,
                     "USBMonitorManager HANDLE_CONNECT"
                 )
-                // 避免冲突，需要delay
+ // delay
                 /**
-                 * 开可见光相机
-                 * 需要确认好模组的pid和分辨率
+                 * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * pid
                  */
                 lifecycleScope.launch(Dispatchers.Main){
                     startVLCamera(vlPid, vlFps, vlCameraWidth, vlCameraHeight)
                     initDualCamera()
-                    // 一体式
+                    // [Technical comment in Chinese - content removed for ASCII compatibility]
                     initDefIntegralArgsDISP_VALUE(DualCameraParams.TypeLoadParameters.ROTATE_270)
                 }
             } else if (msg.what == Const.HANDLE_REGISTER) {
@@ -476,18 +476,18 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         //
         getTemperatureDualView().setDualUVCCamera(dualView!!.getDualUVCCamera())
         initPseudocolor()
-        // 这里可以settings初始化融合mode
+ // settingsmode
 //        setFusion(mCurrentFusionType)
 //        dualView!!.startPreview()
         dualView?.setHandler(mIrHandler)
         isrun = true
     }
     /**
-     * 可见光模组
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
-     * @param pid          模组的pid
-     * @param cameraWidth  模组的分辨率宽
-     * @param cameraHeight 模组的分辨率高
+ * @param pid pid
+ * @param cameraWidth 
+     * high
      */
     open fun startVLCamera(pid: Int, fps: Int, cameraWidth: Int, cameraHeight: Int) {
         if (!isDualIR()){
@@ -546,7 +546,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
 //        popupImage.setIrcmd(ircmd)
 //        popupOthers.setIrcmd(ircmd)
 //        getTemperatureDualView().setIrcmd(ircmd)
-//        // 画面旋转settings
+// // settings
 //        popupCalibration.setRotate(true)
 //        popupImage.setRotate(true)
     }
@@ -555,7 +555,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         super.onStart()
         if (!isrun) {
             isrun = true
-            //恢复配置
+            // configuration
             configParam()
         }
     }
@@ -563,7 +563,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     private var isFirst = true
     private var configJob: Job? = null
     private val timeMillis = 150L
-    //配置
+    // configuration
     private fun configParam() {
         configJob = lifecycleScope.launch{
             while (isConfigWait && isActive) {
@@ -571,45 +571,45 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             }
             delay(500)
             val config = ConfigRepository.readConfig(false)
-            val disChar = (config.distance * 128).toInt() //距离(米)
-            val emsChar = (config.radiation * 128).toInt() //发射率
+            distance
+            emissivity
             XLog.w("settingsTPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
             delay(timeMillis)
-            //发射率
+            // emissivity
             /// Emissivity property. unit:1/128, range:1-128(0.01-1)
             ircmd?.setPropTPDParams(
                 CommonParams.PropTPDParams.TPD_PROP_EMS,
                 CommonParams.PropTPDParamsValue.NumberType(emsChar.toString())
             )
             delay(timeMillis)
-            //距离
+            // distance
             ircmd?.setPropTPDParams(
                 CommonParams.PropTPDParams.TPD_PROP_DISTANCE,
                 CommonParams.PropTPDParamsValue.NumberType(disChar.toString())
             )
-            // 自动快门
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             delay(timeMillis)
             XLog.w("settingsTPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
             if (isFirst && isrun) {
-                //恢复mirror
+ //mirror
                 ircmd?.setMirror(false)
-                // 自动快门
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 delay(timeMillis)
                 withContext(Dispatchers.IO) {
-                    // 部分机型在关闭自动快门，初始会花屏
+                    // [Technical comment in Chinese - content removed for ASCII compatibility]
                     ircmd?.setAutoShutter(true)
                     isFirst = false
                 }
-                //重置锐度（细节）
+ //（）
                 ircmd?.setPropDdeLevel(2)
-                //重置对比度
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 ircmd?.setContrast(128)
             }
             ircmd?.setPropImageParams(
                 CommonParams.PropImageParams.IMAGE_PROP_ONOFF_AGC,
                 CommonParams.PropImageParamsValue.StatusSwith.ON
             )
-            //手动快门
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             if (syncimage.type == 1) {
                 ircmd?.tc1bShutterManual()
             } else {
@@ -652,7 +652,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
             dualView = null
             Log.d(
                 TAG,
-                "正常回收完毕 dualStop"
+ " dualStop"
             )
         }
     }
@@ -681,7 +681,7 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     override fun onConnect(device: UsbDevice?, ctrlBlock: USBMonitor.UsbControlBlock?, createNew: Boolean) {
         Log.d(
             TAG,
-            "USBMonitorManager onConnect测试"
+ "USBMonitorManager onConnect"
         )
         mIrHandler.sendEmptyMessage(Const.HANDLE_CONNECT)
     }
@@ -710,14 +710,14 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     override fun onSetPreviewSizeFail() {
         mIrHandler.sendEmptyMessage(Const.SHOW_RESTART_MESSAGE)
     }
-    //预处理后红外ARGB数据 192 * 256 * 4
+    // data
     protected val preIrARGBData = ByteArray(256*192*4)
     protected val preIrData = ByteArray(256*192*2)
     protected val preTempData = ByteArray(256*192*2)
 
     override fun onIrFrame(irFrame: ByteArray?): ByteArray {
         /**
-         * @param irFrame 原始红外YUV422数据 + 温度数据 长度 irWidth * irHeight * 2 + irWidth * irHeight * 2
+         * temperature
          * @return
          */
         System.arraycopy(irFrame, 0, preIrData, 0, preIrData.size);

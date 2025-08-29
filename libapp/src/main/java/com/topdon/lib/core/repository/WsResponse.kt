@@ -2,10 +2,10 @@ package com.topdon.lib.core.repository
 
 
 /**
- * websocket 数据推送响应.
- * @param cmd 推送指令
- * @param data 推送实体类，视不同指令返回对象不同
- * @param id 推送id
+ * data
+ * @param cmd 
+ * class
+ * @param id id
  */
 data class WsResponse<T>(
     val cmd: Int,
@@ -14,37 +14,37 @@ data class WsResponse<T>(
 )
 
 /**
- * websocket - pseudo color样式
+ * websocket - pseudo color
  */
 data class WsPseudoColor(
-    val enable: Boolean?,//白热-1，黑热-2，警示红-12, 铁红-5，观鸟-16
+ val enable: Boolean?,//-1-2-12, -5-16
     val mode: Int?,
 )
 
 /**
- * websocket - 测距
+ * websocket - 
  */
 data class WsRange(
-    val state: Int?//0-关闭，1-开启
+ val state: Int?//0-1-
 )
 
 /**
- * websocket - 亮度
+ * websocket - 
  */
 data class WsLight(
-    val brightness: Int?//81-100 高，61-80 中，0-60 低
+    high
 )
 /**
- * websocket - 画中画
+ * medium
  */
 data class WsPip(
-    val enable: Int?,//0-关闭，1-开启
+ val enable: Int?,//0-1-
 )
 
 /**
- * websocket - 放大倍数
+ * websocket - 
  */
 data class WsZoom(
-    val enable: Boolean?,//使能缩放标识
-    val factor: Int?,//缩放比例
+ val enable: Boolean?,//
+ val factor: Int?,//
 )

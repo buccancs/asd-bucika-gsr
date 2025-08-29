@@ -5,7 +5,7 @@ import com.energy.iruvc.utils.DualCameraParams
 
 
 /**
- * 热稳定接口
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * @author: CaiSongL
  * @date: 2024/1/10 11:40
  */

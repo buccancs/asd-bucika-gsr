@@ -14,45 +14,45 @@ import java.util.UUID;
  */
 public interface Request {
     /**
-     * 设备
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @NonNull
     Device getDevice();
 
     /**
-     * 请求type
+ * type
      */
     @NonNull
     RequestType getType();
 
     /**
-     * 请求标识
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @Nullable
     String getTag();
 
     /**
-     * 服务UUID
+ * UUID
      */
     @Nullable
     UUID getService();
 
     /**
-     * 特征UUID
+ * UUID
      */
     @Nullable
     UUID getCharacteristic();
 
     /**
-     * 描述符UUID
+ * UUID
      */
     @Nullable
     UUID getDescriptor();
 
     /**
-     * 执行请求
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
-     * @param connection 请求执行的连接
+ * @param connection 
      */
     void execute(Connection connection);
 }

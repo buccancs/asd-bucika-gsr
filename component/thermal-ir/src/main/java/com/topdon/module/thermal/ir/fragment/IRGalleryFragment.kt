@@ -40,12 +40,12 @@ import org.greenrobot.eventbus.ThreadMode
 import java.io.File
 
 /**
- * 图库
+ * gallery
  */
 class IRGalleryFragment : BaseFragment() {
 
     /**
-     * 从上一界面传递过来的，进入图库时初始的目录type
+     * gallery
      */
     private var currentDirType = DirType.LINE
 
@@ -56,7 +56,7 @@ class IRGalleryFragment : BaseFragment() {
     private val adapter = GalleryAdapter()
 
     /**
-     * 从上一界面传递过来的，当前是查看照片还是查看视频.
+ * .
      */
     private var isVideo = false
 
@@ -169,7 +169,7 @@ class IRGalleryFragment : BaseFragment() {
     private fun initRecycler() {
         val spanCount = 3
         val gridLayoutManager = GridLayoutManager(requireActivity(), spanCount)
-        //动态settingsspan
+ //settingsspan
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return if (adapter.dataList[position] is GalleryTitle) spanCount else 1
@@ -300,7 +300,7 @@ class IRGalleryFragment : BaseFragment() {
                         }
                     }
                 }
-                if (successCount == downloadMap.size) {//全都下载成功
+                download
                     dismissLoadingDialog()
                     if (isShare) {
                         shareImage(downloadList)

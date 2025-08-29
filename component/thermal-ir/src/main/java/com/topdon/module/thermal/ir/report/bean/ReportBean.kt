@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 /**
- * 一份report.
+ * report.
  */
 @Parcelize
 data class ReportBean(

@@ -16,14 +16,14 @@ import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 
 /**
- * 海康的锅盖校正第 4 步.
+ * 4 .
  *
  * Created by LCG on 2025/1/9.
  */
 class IRCorrectHikFourActivity : BaseBindingActivity<ActivityIrCorrectHikFourBinding>() {
     companion object {
         /**
-         * 倒计时秒数
+         * countdown
          */
         private const val COUNT_DOWN_SECOND = 60
     }
@@ -45,18 +45,18 @@ class IRCorrectHikFourActivity : BaseBindingActivity<ActivityIrCorrectHikFourBin
             binding.hikSurfaceView.refresh(yuvArray, tempArray)
         }
         HikHelper.onTimeoutListener = {
-            // TODO: 跟进超时弹框逻辑
+ // TODO: 
             TipDialog.Builder(this)
-                .setMessage("机芯出了毛病，5秒了没个回调过来")
+ .setMessage("5")
                 .setPositiveListener(R.string.app_got_it) {
                     finish()
                 }
                 .create().show()
         }
-        //thermal imaging机芯在上一步已经初始化过了，这里不用再搞一遍
+ //thermal imaging
 
         binding.timeDownView.onTimeListener = {
-            if (it == COUNT_DOWN_SECOND - 10) {//预热10秒
+ if (it == COUNT_DOWN_SECOND - 10) {//10
                 startCorrect()
             }
         }
@@ -105,19 +105,19 @@ class IRCorrectHikFourActivity : BaseBindingActivity<ActivityIrCorrectHikFourBin
     }
 
     /**
-     * 执行锅盖校正
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private fun startCorrect() {
         lifecycleScope.launch {
-            HikHelper.setTemperatureMode(1) //切换到常温档
-            HikHelper.setAutoShutter(false) //关闭自动快门
+ HikHelper.setTemperatureMode(1) //
+ HikHelper.setAutoShutter(false) //
             HikHelper.startCorrect()
-            HikHelper.setAutoShutter(SaveSettingUtil.isAutoShutter)//恢复自动快门
+ HikHelper.setAutoShutter(SaveSettingUtil.isAutoShutter)//
         }
     }
 
     /**
-     * 显示退出不保存提示弹框
+     * save
      */
     private fun showExitTipsDialog() {
         TipDialog.Builder(this)

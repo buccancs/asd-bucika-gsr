@@ -33,7 +33,7 @@ class PdfViewModel : BaseViewModel() {
     val listData = MutableLiveData<ReportData?>()
 
 
-    //获取report列表
+ //report
     fun getReportData(isTC007: Boolean, page: Int){
         if (!NetworkUtil.isConnected(Utils.getApp())) {
             TToast.shortToast(Utils.getApp(), R.string.lms_setting_http_error)
@@ -74,7 +74,7 @@ class PdfViewModel : BaseViewModel() {
                 result?.msg = p0?.message
                 result?.code = -1
                 downLatch.countDown()
-                TLog.e("bcf", "获取report列表失败：" + p0?.message)
+ TLog.e("bcf", "report" + p0?.message)
             }
 
             override fun onFail(failMsg: String?, errorCode: String) {

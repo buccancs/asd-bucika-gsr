@@ -12,21 +12,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.topdon.module.thermal.ir.R
 import kotlinx.android.synthetic.main.item_gallery_edit_menu.view.*
 
-@Deprecated("旧的2D编辑一级menu，已重构过了")
+edit
 class GalleryEditMenuAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var listener: ((code: Int) -> Unit)? = null
 
-    private var pointColor = false //点
+ private var pointColor = false //
     private var pseudoColor = false //pseudo color
-    private var pseudoColorBar = false //pseudo color条
+ private var pseudoColorBar = false //pseudo color
     private var settingColorBar = false //settings
 
     private val bean = arrayListOf(
         IconBean(name = context.getString(R.string.menu_3d_calibrate), icon = R.drawable.selector_menu_first_2_5, code = 1000), //calibration
         IconBean(name = context.getString(R.string.thermal_false_color), icon = R.drawable.selector_menu_first_4_3, code = 2000), //pseudo color
         IconBean(name = context.getString(R.string.app_setting), icon = R.drawable.selector_menu_first_5_6, code = 4000), //settings
-        IconBean(name = context.getString(R.string.func_temper_ruler), icon = R.drawable.selector_menu_first_edit_4, code = 3000), //等温尺
+ IconBean(name = context.getString(R.string.func_temper_ruler), icon = R.drawable.selector_menu_first_edit_4, code = 3000), //
     )
 
     fun enPointColor(pointColor: Boolean) {
@@ -82,7 +82,7 @@ class GalleryEditMenuAdapter(val context: Context) : RecyclerView.Adapter<Recycl
         }
     }
 
-    // 状态变化
+    // change
     private fun iconUI(isActive: Boolean, img: ImageView, nameText: TextView) {
         img.isSelected = isActive
         if (isActive) {

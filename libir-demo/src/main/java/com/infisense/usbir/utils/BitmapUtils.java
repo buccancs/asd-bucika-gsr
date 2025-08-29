@@ -31,11 +31,11 @@ public class BitmapUtils {
     public static Bitmap rotateBitmap(Bitmap bm, int degree) {
         Bitmap returnBm = null;
 
-        // 根据旋转angle，生成旋转矩阵
+        // rotation angle
         Matrix matrix = new Matrix();
         matrix.postRotate(degree);
         try {
-            // 将原始图片按照旋转矩阵进行旋转，并得到新的图片
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             returnBm = Bitmap.createBitmap(bm, 0, 0, bm.getWidth(), bm.getHeight(), matrix, true);
         } catch (OutOfMemoryError e) {
         }
@@ -49,7 +49,7 @@ public class BitmapUtils {
     }
 
     /**
-     * 将bitmap转换成bytes
+ * bitmapbytes
      */
     public static byte[] bitmapToBytes(Bitmap bitmap, int quality) {
         if (bitmap == null) {
@@ -68,11 +68,11 @@ public class BitmapUtils {
     }
 
     /**
-     * 将图片保存到磁盘中
+     * medium
      *
      * @param bitmap
-     * @param file   图片保存目录——不包含图片名
-     * @param path   图片保存文件路径——包含图片名
+     * save
+     * save
      * @return
      */
     public static boolean saveBitmap(Bitmap bitmap, File file, File path) {
@@ -102,28 +102,28 @@ public class BitmapUtils {
     }
 
     /**
-     * 高级图片质量压缩
+     * high
      *
-     * @param bitmap 位图
-     * @param width  压缩后的宽度，单位像素
+ * @param bitmap 
+ * @param width 
      */
     public static Bitmap imageZoom(Bitmap bitmap, double width) {
-        // 将bitmap放至数组中，意在获得bitmap的大小（与实际读取的原文件要大）
+        // medium
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        // 格式、质量、输出流
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
         byte[] b = baos.toByteArray();
         Bitmap newBitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
-        // 获取bitmap大小 是允许最大大小的多少倍
+ // bitmap 
         return scaleWithWH(newBitmap, width,
                 width * newBitmap.getHeight() / newBitmap.getWidth());
     }
 
     /***
-     * 图片缩放
-     *@param bitmap 位图
-     * @param w 新的宽度
-     * @param h 新的高度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
+ *@param bitmap 
+ * @param w 
+     * high
      * @return Bitmap
      */
     public static Bitmap scaleWithWH(Bitmap bitmap, double w, double h) {
@@ -144,10 +144,10 @@ public class BitmapUtils {
     }
 
     /**
-     * bitmap保存到指定路径
+     * save
      *
-     * @param file 图片的绝对路径
-     * @param file 位图
+ * @param file 
+ * @param file 
      * @return bitmap
      */
     public static boolean saveFile(String file, Bitmap bmp) {
@@ -175,36 +175,36 @@ public class BitmapUtils {
     }
 
     /**
-     * 保存bitmap到SD卡，请确认应用有存储权限
+     * save
      *
-     * @param bmp     获取的bitmap数据
-     * @param picName 自定义的图片名
+     * data
+ * @param picName 
      */
     public static File saveBmp2Gallery(Context context, Bitmap bmp, String picName) {
-        // 存储目录，用户可以自定义
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         String Path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
                 + File.separator + "infisense";
         File galleryPath = new File(Path);
         if (!galleryPath.exists()) {
             galleryPath.mkdir();
         }
-        // 声明文件对象
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         File file = null;
-        // 声明输出流
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         FileOutputStream outStream = null;
         String fileName = null;
 
         try {
-            // 如果有target文件，直接获得文件对象，否则创建一个以filename为名称的文件
+            // create
             file = new File(galleryPath, picName + ".jpg");
 //            if(file.exists()){
 //                file.delete();
 //                file = new File(galleryPath, picName + ".jpg");
 //            }
 //            file = new File(galleryPath, photoName);
-            // 获得文件相对路径
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             fileName = file.toString();
-            // 获得输出流，如果文件中有内容，追加内容
+            // medium
             outStream = new FileOutputStream(fileName);
             if (null != outStream) {
                 bmp.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
@@ -233,10 +233,10 @@ public class BitmapUtils {
     }
 
     /**
-     * 把两个位图覆盖合成为一个位图，以底层位图的长宽为基准
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
-     * @param backBitmap  在bottom的位图
-     * @param frontBitmap 盖在上面的位图
+ * @param backBitmap bottom
+ * @param frontBitmap 
      * @return
      */
     public static Bitmap mergeBitmap(Bitmap backBitmap, Bitmap frontBitmap, int leftFront, int topFront) {
@@ -252,10 +252,10 @@ public class BitmapUtils {
     }
 
     /**
-     * 把两个位图覆盖合成为一个位图，以底层位图的长宽为基准
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
-     * @param bytes  在bottom的位图
-     * @param bytes2 盖在上面的位图
+ * @param bytes bottom
+ * @param bytes2 
      */
     public static void saveRawFile(byte[] bytes, byte[] bytes2) {
         try {
@@ -276,7 +276,7 @@ public class BitmapUtils {
     }
 
     /**
-     * 保存红外数据
+     * save
      *
      * @param bytes
      */
@@ -285,7 +285,7 @@ public class BitmapUtils {
     }
 
     /**
-     * 保存温度数据
+     * temperature
      *
      * @param bytes
      */
@@ -339,7 +339,7 @@ public class BitmapUtils {
     }
 
     /**
-     * short数组转byte数组
+ * shortbyte
      *
      * @param src
      * @return
@@ -355,7 +355,7 @@ public class BitmapUtils {
     }
 
     /**
-     * byte数组转short数组
+ * byteshort
      *
      * @param src
      * @return

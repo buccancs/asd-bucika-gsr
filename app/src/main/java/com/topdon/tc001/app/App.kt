@@ -48,7 +48,7 @@ class App : BaseApplication() {
     companion object{
         lateinit var instance: App
         /**
-         * delay初始化
+ * delay
          */
         fun delayInit() {
             initReceiver()
@@ -71,7 +71,7 @@ class App : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        //隐私政策弹框用app内的，默认settingslms里的隐私政策settings为true
+ //appsettingslmssettingstrue
         SPUtils.getInstance(this).put(Config.KEY_PRIVACY_AGREEMENT, true)
 
         if (SharedManager.getHasShowClause() || !isDomestic()) {
@@ -80,20 +80,20 @@ class App : BaseApplication() {
 
         RxJavaPlugins.setErrorHandler {
             if (SharedManager.getHasShowClause()) {
-                XLog.w("未知异常： ${it.message}")
+ XLog.w(" ${it.message}")
             }
         }
         if (!isDomestic()) {
             if (!BuildConfig.DEBUG) {
-                // 正式版本,服务地址强制转换正式地址,并且不可更换
-                // 测试版本,可自由切换
+ // ,,
+ // ,
                 UrlConstant.setBaseUrl("${HttpConfig.HOST}/", false)
             } else {
                 if (SharedManager.getHasShowClause()) {
                     XLog.w("lms host: ${UrlConstant.BASE_URL}")
                 }
             }
-            SharedManager.setBaseHost(UrlConstant.BASE_URL) //更新app服务地址
+ SharedManager.setBaseHost(UrlConstant.BASE_URL) //app
         }
         if(BuildConfig.DEBUG) {
             FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(false);
@@ -134,7 +134,7 @@ class App : BaseApplication() {
     }
 
     /**
-     * 初始化客服ZOHO
+ * ZOHO
      */
     private fun initZoho() {
         ZohoSalesIQ.init(
@@ -145,12 +145,12 @@ class App : BaseApplication() {
             object : InitListener {
                 override fun onInitSuccess() {
 //                    ZohoSalesIQ.Launcher.show(ZohoSalesIQ.Launcher.VisibilityMode.ALWAYS)
-                    XLog.e("bcf", "ZohoSalesIQ成功")
+ XLog.e("bcf", "ZohoSalesIQ")
                 }
 
                 override fun onInitError(errorCode: Int, errorMessage: String?) {
                     //your code
-                    XLog.e("bcf", "ZohoSalesIQ失敗")
+ XLog.e("bcf", "ZohoSalesIQ")
                 }
             })
     }

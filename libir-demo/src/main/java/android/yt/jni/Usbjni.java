@@ -3,7 +3,7 @@ package android.yt.jni;
 import android.util.Log;
 
 /*
- * @Description:    为特定客户提供的USB插拔工具类,usb3803_hub是系统中的so库，部分定制的机型有可能会添加应用包名的白名单，也会导致不出图
+ * medium
  * @Author:         brilliantzhao
  * @CreateDate:     2022.3.21 9:27
  * @UpdateUser:
@@ -24,18 +24,18 @@ public class Usbjni {
     }
 
     /**
-     * usb3803电源控制
-     * 些特定客户的特殊设备需要使用该命令关闭或打开sensor的供电
+ * usb3803
+ * sensor
      *
      * @param isPowerOn
      * @return
      */
     public static int setUSB3803Mode(boolean isPowerOn) {
         if (isPowerOn) {
-            //打开
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             return usb3803_mode_setting(1);
         } else {
-            //关闭
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             return usb3803_mode_setting(0);
         }
     }

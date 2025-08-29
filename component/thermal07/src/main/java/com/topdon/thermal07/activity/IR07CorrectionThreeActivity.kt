@@ -16,7 +16,7 @@ import org.easydarwin.video.Client
 
 /**
  *
- * 锅盖矫正
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * @author: CaiSongL
  * @date: 2023/8/4 9:06
  */
@@ -44,18 +44,18 @@ class IR07CorrectionThreeActivity : BaseActivity() {
         }
 
         lifecycleScope.launch {
-            // 读取配置settings 环境温度、测温距离、发射率
+            // temperature
             val config = ConfigRepository.readConfig(true)
             TC007Repository.setIRConfig(config.environment, config.distance, config.radiation)
-            //清除点、线、面
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             TC007Repository.clearAllTemp()
-            //全图也关掉
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             TC007Repository.setTempFrame(false)
         }
     }
 
     override fun onSocketDisConnected(isTS004: Boolean) {
-        if (!isTS004) {//TC007 的 Socket 断了
+ if (!isTS004) {//TC007 Socket 
             finish()
         }
     }

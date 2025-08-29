@@ -38,11 +38,11 @@ class ImgAdapter(
     }
 
     /**
-     * 调整图片大小
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
-     * @param bitmap 源
-     * @param dst_w  输出宽度
-     * @param dst_h  输出高度
+ * @param bitmap 
+ * @param dst_w 
+     * high
      * @return
      */
     fun imageScale(bitmap: Bitmap, dst_w: Int, dst_h: Int): Bitmap {

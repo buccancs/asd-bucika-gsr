@@ -2,7 +2,7 @@ package com.example.open3d
 
 
 /**
- * 统一的c++调试
+ * debug
  * @author: CaiSongL
  * @date: 2023/10/23 17:57
  */
@@ -27,7 +27,7 @@ object JNITool {
     external fun lowTemTrack(img:ByteArray,temp : ByteArray,width : Int,height: Int,input : Double): ByteArray
 
     /**
-     * 轮廓检测的处理
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * @param image ByteArray
      * @param temperature ByteArray
      * @param image_h Int
@@ -36,7 +36,7 @@ object JNITool {
      * @param low_t Float
      * @param color_h Int
      * @param color_l Int
-     * @param type Int ： 圈住的轮廓画法，1：直接轮廓绘制，2、矩阵绘制
+ * @param type Int 12
      * @return ByteArray
      */
     external fun draw_edge_from_temp_reigon_bitmap_argb_psd(image : ByteArray,temperature : ByteArray, image_h : Int,

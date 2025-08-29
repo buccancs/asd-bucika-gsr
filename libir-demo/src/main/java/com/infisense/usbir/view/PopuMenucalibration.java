@@ -94,7 +94,7 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //                        endpointsumit.setVisibility(View.INVISIBLE);
 //                        doiblepointsumit.setVisibility(View.VISIBLE);
 //                        //usbcamera.uvcCamera.setRESTORE_TPD();
-//                        // showShortMsg("重启摄像头生效");
+// // showShortMsg("");
 //                        //singlepoint.setText(usbcamera.uvcCamera.getEnverionmentTemperature()+"");
 //                    }
 //                } else if (id == R.id.bengin) {
@@ -127,10 +127,10 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //                    if (usbcamera.uvcCamera != null) {
 //                        Libircmd.save_cfg(0, usbcamera.uvcCamera.nativePtr);
 //                    }
-//                } else if (id == R.id.restorecfg) {// 恢复出厂calibration
+// } else if (id == R.id.restorecfg) {// calibration
 //                    if (usbcamera.uvcCamera != null) {
 //                        Libircmd.restore_default_cfg(0, usbcamera.uvcCamera.nativePtr);
-//                        Toast toast = Toast.makeText(view.getContext(), "重启模组生效", Toast.LENGTH_SHORT);
+// Toast toast = Toast.makeText(view.getContext(), "", Toast.LENGTH_SHORT);
 //                        //toast.setGravity(Gravity.CENTER, 0, 0);
 //                        toast.show();
 //                    }
@@ -152,10 +152,10 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 //        popupWindow.setFocusable(true);
 //        popupWindow.setOutsideTouchable(false);
-//        popupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000)); // 解决 7.0 手机，点击外部不消失
+// popupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000)); // 7.0 
 //        popupWindow.setAnimationStyle(R.style.contextMenuAnim);
 //        view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-//        //创建布局管理
+// create
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 //        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 //    }

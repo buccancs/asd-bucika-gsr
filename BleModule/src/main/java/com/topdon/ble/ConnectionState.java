@@ -1,46 +1,46 @@
 package com.topdon.ble;
 
 /**
- * 连接状态
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * <p>
  * date: 2019/8/12 14:26
  * author: bichuanfeng
  */
 public enum ConnectionState {
     /**
-     * 已断开连接
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     DISCONNECTED,
     /**
-     * 正在连接
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     CONNECTING,
     /**
-     * 正在搜索重连
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     SCANNING_FOR_RECONNECTION,
     /**
-     * 已连接，还未执行发现服务
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     CONNECTED,
     /**
-     * 已连接，正在发现服务
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     SERVICE_DISCOVERING,
     /**
-     * 已连接，成功发现服务
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     SERVICE_DISCOVERED,
     /**
-     * 连接已释放
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     RELEASED,
     /**
-     * 超时
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     TIMEOUT,
     /**
-     * MTUssettings成功
+ * MTUssettings
      */
     MTU_SUCCESS
     }

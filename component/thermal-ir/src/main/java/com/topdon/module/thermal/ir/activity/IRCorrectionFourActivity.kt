@@ -18,7 +18,7 @@ import org.greenrobot.eventbus.EventBus
 
 /**
  *
- * 锅盖矫正
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * @author: CaiSongL
  * @date: 2023/8/4 9:06
  */
@@ -58,7 +58,7 @@ class IRCorrectionFourActivity : BaseActivity() {
 
 
         time_down_view.postDelayed({
-            //开始矫正
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             if (time_down_view.downTimeWatcher == null){
                 time_down_view.setOnTimeDownListener(object : TimeDownView.DownTimeWatcher{
                     override fun onTime(num: Int) {

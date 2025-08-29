@@ -7,7 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * 简单的定时器
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * 
  * date: 2019/8/6 13:31
  * author: chuanfeng.bi
@@ -23,12 +23,12 @@ public abstract class AbstractTimer {
     }
 
     /**
-     * 回调
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public abstract void onTick();
 
     /**
-     * 开始
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public synchronized final void start(long delay, long period) {
         if (timer == null) {

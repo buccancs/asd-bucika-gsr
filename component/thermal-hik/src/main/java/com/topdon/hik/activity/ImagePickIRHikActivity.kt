@@ -9,7 +9,7 @@ import com.topdon.lib.core.ktbase.BasePickImgActivity
 import com.topdon.module.thermal.ir.R
 
 /**
- * 房屋检测-红外photo.
+ * -photo.
  *
  * Created by LCG on 2025/1/9.
  */

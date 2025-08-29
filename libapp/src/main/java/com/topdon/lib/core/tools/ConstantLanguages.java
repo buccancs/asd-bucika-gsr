@@ -8,28 +8,28 @@ package com.topdon.lib.core.tools;
 public class ConstantLanguages {
     public static final String ZH_CN = "zh_CN";
     public static final String ZH_TW = "zh_TW";
-    // 英文
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String ENGLISH = "en";
-    // 日语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String JA = "ja";
-    // 俄语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String RU = "ru";
-    // 德语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String GERMAN = "de";
-    // 葡萄牙语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String PT = "pt";
-    // 西班牙语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String ES = "es";
-    // 法语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String FR = "fr";
-    // 意大利语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String IT = "it";
-    // 波兰语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String PL = "pl";
-    // 捷克语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String CS = "cs";
-    // 乌克兰语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String UK = "uk";
-    // 荷兰语
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     public static final String NL = "nl";
 }

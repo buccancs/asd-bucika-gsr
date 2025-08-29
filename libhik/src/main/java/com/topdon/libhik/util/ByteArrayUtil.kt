@@ -2,7 +2,7 @@ package com.topdon.libhik.util
 
 internal object ByteArrayUtil {
     /**
-     * 取指定数组的 `[index, index + 4)` 共 4 字节以小端方式转换成 Int.
+ * `[index, index + 4)` 4 Int.
      */
     internal fun ByteArray.toInt(index: Int): Int = try {
         (this[index].toInt() and 0xff) or (this[index + 1].toInt() and 0xff shl 8) or (this[index + 2].toInt() and 0xff shl 16) or (this[index + 3].toInt() and 0xff shl 24)
@@ -11,7 +11,7 @@ internal object ByteArrayUtil {
     }
 
     /**
-     * 取指定数组的 `[index, index + 4)` 共 4 字节以小端方式转换成 Float.
+ * `[index, index + 4)` 4 Float.
      */
     internal fun ByteArray.toFloat(index: Int): Float = try {
         java.lang.Float.intBitsToFloat((this[index].toInt() and 0xff) or (this[index + 1].toInt() and 0xff shl 8) or (this[index + 2].toInt() and 0xff shl 16) or (this[index + 3].toInt() and 0xff shl 24))
@@ -20,7 +20,7 @@ internal object ByteArrayUtil {
     }
 
     /**
-     * 从指定数组的 `[startIndex, startIndex + size)` 解析 String
+ * `[startIndex, startIndex + size)` String
      */
     internal fun ByteArray.toStr(startIndex: Int, size: Int): String = try {
         var validCount = 0
@@ -39,7 +39,7 @@ internal object ByteArrayUtil {
 
 
     /**
-     * 将指定数组的 `[startIndex, startIndex + size)` 以 16 进制的形式输出
+ * `[startIndex, startIndex + size)` 16 
      */
     internal fun ByteArray.buildPrintStr(startIndex: Int, size: Int): String = try {
         val stringBuilder = StringBuilder()
@@ -55,6 +55,6 @@ internal object ByteArrayUtil {
         }
         stringBuilder.toString()
     } catch (_: IndexOutOfBoundsException) {
-        "数组越界了哥们"
+ ""
     }
 }

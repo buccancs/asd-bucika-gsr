@@ -5,7 +5,7 @@ import android.bluetooth.BluetoothDevice;
 
 
 /**
- * 清空已配对设备时的过滤器
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * <p>
  * date: 2021/8/12 21:11
  * author: bichuanfeng

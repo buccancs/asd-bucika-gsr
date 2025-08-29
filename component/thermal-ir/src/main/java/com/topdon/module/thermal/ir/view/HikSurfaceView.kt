@@ -18,21 +18,21 @@ import com.topdon.pseudo.bean.CustomPseudoBean
 import java.nio.ByteBuffer
 
 /**
- * 进行 Hik 模组预览的 SurfaceView.
+ * preview
  *
  * Created by LCG on 2024/11/30.
  */
 class HikSurfaceView : SurfaceView {
     companion object {
         /**
-         * 超分放大倍数
+         * [Technical comment in Chinese - content removed for ASCII compatibility]
          */
         private const val MULTIPLE = 2
     }
 
 
     /**
-     * 是否开启超分
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     var isOpenAmplify: Boolean = false
         set(value) {
@@ -44,7 +44,7 @@ class HikSurfaceView : SurfaceView {
         }
 
     /**
-     * thermal imaging画面逆时针旋转angle，取值 0、90、180、270，默认 270
+     * rotation angle
      */
     @Volatile
     var rotateAngle: Int = 270
@@ -57,27 +57,27 @@ class HikSurfaceView : SurfaceView {
         }
 
     /**
-     * 温度报警配置信息，用于绘制描边或矩形.
+     * temperature
      */
     var alarmBean = AlarmBean()
 
     /**
-     * 等温尺限制的低温值，单位摄氏度，MIN_VALUE 表示未settings
+     * low
      */
     var limitTempMin = Float.MIN_VALUE
     /**
-     * 等温尺限制的高温值，单位摄氏度，MAX_VALUE 表示未settings
+     * high
      */
     var limitTempMax = Float.MAX_VALUE
 
 
     /**
-     * 温度报警用来描边的工具类.
+     * temperature
      */
     private val irImageHelp = IRImageHelp()
 
     /**
-     * 刷新自定义渲染配置
+     * configuration
      */
     fun refreshCustomPseudo(it: CustomPseudoBean) {
         irImageHelp.setColorList(it.getColorList(), it.getPlaceList(), it.isUseGray, it.maxTemp, it.minTemp)
@@ -85,14 +85,14 @@ class HikSurfaceView : SurfaceView {
 
 
     /**
-     * 当前使用pseudo color.
+ * pseudo color.
      */
     @Volatile
     private var pseudoType: PseudoColorType = PseudoColorType.PSEUDO_3
     /**
-     * settings当前使用的pseudo color代号
+ * settingspseudo color
      *
-     * 1-白热 3-铁红 4-彩虹1 5-彩虹2 6-彩虹3 7-红热 8-热铁 9-彩虹4 10-彩虹5 11-黑热
+ * 1- 3- 4-1 5-2 6-3 7- 8- 9-4 10-5 11-
      */
     fun setPseudoCode(code: Int) {
         pseudoType = PseudocodeUtils.changePseudocodeModeByOld(code)
@@ -100,27 +100,27 @@ class HikSurfaceView : SurfaceView {
 
 
     /**
-     * 用于温度及画面旋转参数的尺寸.
+     * temperature
      */
     private val imageRes = ImageRes_t()
     /**
-     * 当前显示图像的 Bitmap.
+     * image
      */
     private var bitmap: Bitmap = Bitmap.createBitmap(192, 256, Bitmap.Config.ARGB_8888)
     /**
-     * 未旋转前的 ARGB 数组.
+ * ARGB .
      */
     private val sourceArgbArray = ByteArray(256 * 192 * 4)
     /**
-     * 旋转后的 ARGB 数组.
+ * ARGB .
      */
     private val rotateArgbArray = ByteArray(256 * 192 * 4)
     /**
-     * 超分后的 ARGB 数组.
+ * ARGB .
      */
     private val amplifyArray = ByteArray(256 * MULTIPLE * 192 * MULTIPLE * 4)
     /**
-     * 温度数组
+     * temperature
      */
     private val tempArray = ByteArray(256 * 192 * 2)
 
@@ -138,39 +138,39 @@ class HikSurfaceView : SurfaceView {
 
 
     /**
-     * 获取缩放为当前 View 尺寸的图像.
+     * image
      */
     fun getScaleBitmap(): Bitmap = synchronized(this) {
         Bitmap.createScaledBitmap(bitmap, width, height, true)
     }
 
     /**
-     * 使用指定的 YUV 数据刷新画面
+     * data
      */
     fun refresh(yuvArray: ByteArray, newTempArray: ByteArray) {
-        //原始数据的宽高，即不应用旋转的宽高
+        // high
         val sourceWidth = 256
         val sourceHeight = 192
 
         System.arraycopy(newTempArray, 0, tempArray, 0, tempArray.size)
 
-        //自定义渲染时使用白热pseudo color，当置灰mode时范围外直接不用改
+ //pseudo colormode
         val pseudo: PseudoColorType = if (irImageHelp.getColorList() == null) pseudoType else PseudoColorType.PSEUDO_1
         LibIRProcess.convertYuyvMapToARGBPseudocolor(yuvArray, (sourceWidth * sourceHeight).toLong(), pseudo, sourceArgbArray)
-        //自定义渲染
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         irImageHelp.customPseudoColor(sourceArgbArray, tempArray, sourceWidth, sourceHeight)
-        //等温尺
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         irImageHelp.setPseudoColorMaxMin(sourceArgbArray, tempArray, limitTempMax, limitTempMin, sourceWidth, sourceHeight)
-        //温度报警描边或矩形
+        // temperature
         val newArray = irImageHelp.contourDetection(alarmBean, sourceArgbArray, tempArray, sourceWidth, sourceHeight) ?: sourceArgbArray
-        //旋转
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         when (rotateAngle) {
             90 -> LibIRProcess.rotateLeft90(newArray, imageRes, IRPROCSRCFMTType.IRPROC_SRC_FMT_ARGB8888, rotateArgbArray)
             180 -> LibIRProcess.rotate180(newArray, imageRes, IRPROCSRCFMTType.IRPROC_SRC_FMT_ARGB8888, rotateArgbArray)
             270 -> LibIRProcess.rotateRight90(newArray, imageRes, IRPROCSRCFMTType.IRPROC_SRC_FMT_ARGB8888, rotateArgbArray)
             else  -> System.arraycopy(newArray, 0, rotateArgbArray, 0, rotateArgbArray.size)
         }
-        //超分
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         if (isOpenAmplify) {
             val width: Int = if (rotateAngle == 90 || rotateAngle == 270) sourceWidth else sourceHeight
             val height: Int = if (rotateAngle == 90 || rotateAngle == 270) sourceHeight else sourceWidth

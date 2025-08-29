@@ -9,7 +9,7 @@ import com.topdon.lib.core.tools.ConstantLanguages
 object LanguageTool {
 
     /**
-     * 获取显示各国语言
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun showLanguage(context: Context): String {
         return when (SharedManager.getLanguage(context)) {
@@ -32,8 +32,8 @@ object LanguageTool {
     }
 
     /**
-     * 获取各国语言简称
-     * (用于服务端多语言的识别)
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * ()
      */
     fun useLanguage(context: Context): String {
         return when (SharedManager.getLanguage(context)) {
@@ -56,8 +56,8 @@ object LanguageTool {
     }
 
     /**
-     * 获取各国语言简称
-     * (用于声明接口)
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * ()
      */
     fun useStatementLanguage(): String {
         return when (SharedManager.getLanguage(Utils.getApp())) {

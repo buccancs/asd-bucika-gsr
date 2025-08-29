@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  */
 public class AppUtils {
     /**
-     * 通过反射类执行静态方法
+     * class
      * @param className
      * @param methodName
      */

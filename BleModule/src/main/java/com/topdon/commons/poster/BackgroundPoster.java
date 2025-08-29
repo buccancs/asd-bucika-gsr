@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 
 /**
- * 执行后台任务
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * <p>
  * date: 2019/8/7 10:40
  * author: chuanfeng.bi

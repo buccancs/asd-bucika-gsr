@@ -24,7 +24,7 @@ import org.easydarwin.video.Client
 import org.greenrobot.eventbus.EventBus
 
 /**
- * TC007 温度监控生成第2步 - 捕获
+ * temperature
  * Created by LCG on 2024/5/10.
  */
 class IR07MonitorCapture2Activity : BaseActivity() {
@@ -34,7 +34,7 @@ class IR07MonitorCapture2Activity : BaseActivity() {
     }
 
     /**
-     * 从上一界面传递过来的，当前选中的 点/线/面 信息.
+     * medium
      */
     private var selectInfo = SelectInfoBean()
 
@@ -69,7 +69,7 @@ class IR07MonitorCapture2Activity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        mp_chart_view.highlightValue(null) //关闭高亮点Marker
+        high
     }
 
 
@@ -80,7 +80,7 @@ class IR07MonitorCapture2Activity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        //退出时把point line area清掉
+ //point line area
         CoroutineScope(Dispatchers.IO).launch {
             TC007Repository.clearAllTemp()
         }
@@ -94,7 +94,7 @@ class IR07MonitorCapture2Activity : BaseActivity() {
     }
 
     private fun addCallback(selectInfo: SelectInfoBean) {
-        var lastSaveTime: Long = 0 //上一次执行保存的时间戳，用于控制1秒保存1次
+        save
         val thermalId = TimeTool.showDateSecond()
         val startTime = System.currentTimeMillis()
 

@@ -1,30 +1,30 @@
 package com.topdon.commons.poster;
 
 /**
- * 线程策略
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * <p>
  * date: 2019/8/2 23:53
  * author: chuanfeng.bi
  */
 public enum ThreadMode {
     /**
-     * 和调用者同一线程
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     POSTING,
     /**
-     * 主线程，UI线程
+ * UI
      */
     MAIN,
     /**
-     * 后台线程，同步的
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     BACKGROUND,
     /**
-     * 异步线程
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     ASYNC,
     /**
-     * 未指定
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     UNSPECIFIED
 }

@@ -17,12 +17,12 @@ public abstract class BaseDualView {
     protected int irSize;
     protected int vlSize;
     protected int remapTempSize;
-    protected byte[] remapTempData;//裁剪后的温度数据
-    protected byte[] mixData;//融合数据
-    protected byte[] normalTempData;//原始温度数据
+    temperature
+    data
+    temperature
     protected byte[] mixDataRotate;
-    protected byte[] irData;//原始红外数据
-    public byte[] vlData;//原始可见光数据
+    data
+    data
     public byte[] vlARGBData;
 
     public BaseDualView() {

@@ -9,7 +9,7 @@ import org.bytedeco.javacv.FrameGrabber
 
 object VideoTools {
 
-    //获取视频时长
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     fun getLocalVideoDuration(videoPath: String): Long {
         return if (videoPath.uppercase().endsWith(".MP4")||videoPath.uppercase().endsWith(".AVI")) {
             try {

@@ -10,7 +10,7 @@ import com.blankj.utilcode.util.Utils
 import com.topdon.lib.core.R
 
 /**
- * 房屋检测 - 检测与report都有的bar位.
+ * - reportbar.
  *
  * Created by LCG on 2024/1/15.
  */
@@ -19,73 +19,73 @@ open class HouseBase {
     var id: Long = 0
 
     /**
-     * report名称
+ * report
      */
     @ColumnInfo
     var name: String = ""
 
     /**
-     * 检测师姓名
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @ColumnInfo
     var inspectorName: String = ""
 
     /**
-     * 房屋详细地址
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @ColumnInfo
     var address: String = ""
 
     /**
-     * 房屋图片在本地绝对路径
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @ColumnInfo
     var imagePath: String = ""
 
     /**
-     * 建筑年份
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @ColumnInfo
     var year: Int? = null
 
     /**
-     * 建筑面积.
+ * .
      */
     @ColumnInfo
     var houseSpace: String = ""
 
     /**
-     * 建筑面积单位 0-英亩 1-平方米 2-公顷
+ * 0- 1- 2-
      */
     @ColumnInfo
     var houseSpaceUnit: Int = 0
 
     /**
-     * 检测费用
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @ColumnInfo
     var cost: String = ""
 
     /**
-     * 检测费用单位，0-美元USD 1-欧元EUR 2-英镑GBP 3-澳元AUD 4-日元JPY 5-加元CAD 6-新西兰NZD 7-人民币RMB 8-港币HKD
+ * 0-USD 1-EUR 2-GBP 3-AUD 4-JPY 5-CAD 6-NZD 7-RMB 8-HKD
      */
     @ColumnInfo
     var costUnit: Int = 0
 
     /**
-     * 该检测或report由用户选择的“检测时间”时间戳，单位毫秒
+     * time
      */
     @ColumnInfo
     var detectTime: Long = 0
 
     /**
-     * 该检测或report创建时间戳，单位毫秒
+     * create
      */
     @ColumnInfo
     var createTime: Long = 0
 
     /**
-     * 该检测或report更新时间戳，单位毫秒
+     * time
      */
     @ColumnInfo
     var updateTime: Long = 0
@@ -99,7 +99,7 @@ open class HouseBase {
 
 
     /**
-     * 获取房屋面积单位.
+ * .
      */
     fun getSpaceUnitStr(): String = when (houseSpaceUnit) {
         0 -> "ac"
@@ -108,22 +108,22 @@ open class HouseBase {
     }
 
     /**
-     * 获取检测费用货币单位.
+ * .
      */
     fun getCostUnitStr(): String = when (costUnit) {
-        1 -> "EUR" //欧元EUR
-        2 -> "GBP" //英镑GBP
-        3 -> "AUD" //澳元AUD
-        4 -> "JPY" //日元JPY
-        5 -> "CAD" //加元CAD
-        6 -> "NZD" //新西兰NZD
-        7 -> "RMB" //人民币RMB
-        8 -> "HKD" //港币HKD
-        else -> "USD" //美元USD
+ 1 -> "EUR" //EUR
+ 2 -> "GBP" //GBP
+ 3 -> "AUD" //AUD
+ 4 -> "JPY" //JPY
+ 5 -> "CAD" //CAD
+ 6 -> "NZD" //NZD
+ 7 -> "RMB" //RMB
+ 8 -> "HKD" //HKD
+ else -> "USD" //USD
     }
 
     /**
-     * 获取该report对应的 PDF 文件名称
+ * report PDF 
      */
     fun getPdfFileName(): String = "TC_${TimeUtils.millis2String(createTime, "yyyyMMdd_HHmmss")}.pdf"
 }
@@ -131,18 +131,18 @@ open class HouseBase {
 
 
 /**
- * 房屋检测 - 一项检测.
+ * - .
  */
 @Entity
 class HouseDetect : HouseBase() {
     /**
-     * 该检测或下的目录列表
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @Ignore
     var dirList: ArrayList<DirDetect> = ArrayList()
 
     /**
-     * 返回一个 id 为 0，名称添加 (1)，其余属性完全一致的新对象.
+     * add
      */
     fun copyOne(): HouseDetect {
         val newDetect = HouseDetect()
@@ -195,29 +195,29 @@ class HouseDetect : HouseBase() {
 
 
 /**
- * 房屋检测 - 一项report.
+ * - report.
  */
 @Entity
 class HouseReport : HouseBase() {
     /**
-     * 检测师签名图片（白色笔刷版）在本地绝对路径
+ * （）
      */
     @ColumnInfo
     var inspectorWhitePath: String = ""
     /**
-     * 检测师签名图片（黑色笔刷版）在本地绝对路径
+ * （）
      */
     @ColumnInfo
     var inspectorBlackPath: String = ""
 
 
     /**
-     * 房主签名图片（白色笔刷版）在本地绝对路径
+ * （）
      */
     @ColumnInfo
     var houseOwnerWhitePath: String = ""
     /**
-     * 房主签名图片（黑色笔刷版）在本地绝对路径
+ * （）
      */
     @ColumnInfo
     var houseOwnerBlackPath: String = ""
@@ -225,7 +225,7 @@ class HouseReport : HouseBase() {
 
 
     /**
-     * 该report下的目录列表
+ * report
      */
     @Ignore
     var dirList: ArrayList<DirReport> = ArrayList()

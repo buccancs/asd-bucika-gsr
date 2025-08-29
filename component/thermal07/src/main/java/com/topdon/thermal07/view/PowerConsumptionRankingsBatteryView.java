@@ -16,109 +16,109 @@ import com.topdon.thermal07.R;
 
 
 /**
- * 电池UI
+ * UI
  */
 public class PowerConsumptionRankingsBatteryView extends View {
     /**
-     * 电池最大电量
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public static final int MAX_LEVEL = 100;
     /**
-     * 电池默认电量
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public static final int DEFAULT_LEVEL = 40;
 
     /**
-     * 自定义View的宽
+ * View
      */
     private int width;
     /**
-     * 自定义View的高
+     * high
      */
     private int height;
     /**
-     * 抗锯齿标志
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private DrawFilter drawFilter;
     /**
-     * 电池外壳 厚度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int shellStrokeWidth;
     /**
-     * 电池外壳 圆角
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int shellCornerRadius;
     /**
-     * 电池外壳 宽度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int shellWidth;
     /**
-     * 电池外壳 宽度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int shellHeight;
     /**
-     * 电池头 圆角
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int shellHeadCornerRadius;
     /**
-     * 电池头 宽度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int shellHeadWidth;
     /**
-     * 电池头 高度
+     * high
      */
     private int shellHeadHeight;
 
     /**
-     * 电池宽度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int levelWidth;
     /**
-     * 电池最大高度
+     * high
      */
     private int levelMaxHeight;
     /**
-     * 电池高度
+     * high
      */
     private int levelHeight = 100;
 
     /**
-     * 电池外壳和电池等级直接的间距
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int gap;
 
     /**
-     * 电池外壳 画笔
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private Paint shellPaint;
     /**
-     * 电池外壳
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private RectF shellRectF;
     /**
-     * 电池头
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private RectF shellHeadRect;
 
     /**
-     * 电池电量 画笔
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private Paint levelPaint;
     /**
-     * 电池电量
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private RectF levelRect;
 
     /**
-     * 低电颜色
+     * low
      */
     private int lowerPowerColor;
     /**
-     * 在线颜色
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int onlineColor;
     /**
-     * 离线颜色
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private int offlineColor;
 
@@ -132,14 +132,14 @@ public class PowerConsumptionRankingsBatteryView extends View {
 
         initTypeArray(context, attrs);
 
-        //settings 电池壳画笔的相关属性
+ //settings 
         shellPaint = new Paint();
         shellPaint.setAntiAlias(true);
         shellPaint.setColor(onlineColor);
         shellPaint.setStrokeWidth(shellStrokeWidth);
         shellPaint.setAntiAlias(true);
 
-        //settings 电池画笔的相关属性
+ //settings 
         levelPaint = new Paint();
         levelPaint.setColor(onlineColor);
         levelPaint.setStyle(Paint.Style.FILL);
@@ -151,7 +151,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
     }
 
     /**
-     * 初始化自定义属性
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private void initTypeArray(Context context, @Nullable AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.PowerConsumptionRankingsBatteryView);
@@ -161,7 +161,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
                 getResources().getColor(R.color.onlineColor));
         offlineColor = typedArray.getColor(R.styleable.PowerConsumptionRankingsBatteryView_batteryOfflineColor,
                 getResources().getColor(R.color.offlineColor));
-        //外壳的相关信息
+        // info
         shellCornerRadius = typedArray.getDimensionPixelOffset(R.styleable.PowerConsumptionRankingsBatteryView_batteryShellCornerRadius,
                 getResources().getDimensionPixelOffset(R.dimen.power_consumption_rankings_dimen_main_battery_view_shell_corner));
         shellWidth = typedArray.getDimensionPixelOffset(R.styleable.PowerConsumptionRankingsBatteryView_batteryShellWidth,
@@ -171,7 +171,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
         shellStrokeWidth = typedArray.getDimensionPixelOffset(R.styleable.PowerConsumptionRankingsBatteryView_batteryShellStrokeWidth,
                 getResources().getDimensionPixelOffset(R.dimen.power_consumption_rankings_dimen_main_battery_view_shell_stroke_width));
 
-        //电池头的相关信息
+        // info
         shellHeadCornerRadius = typedArray.getDimensionPixelOffset(R.styleable.PowerConsumptionRankingsBatteryView_batteryShellHeadCornerRadius,
                 getResources().getDimensionPixelOffset(R.dimen.power_consumption_rankings_dimen_main_battery_view_head_corner));
         shellHeadWidth = typedArray.getDimensionPixelOffset(R.styleable.PowerConsumptionRankingsBatteryView_batteryShellHeadWidth,
@@ -179,26 +179,26 @@ public class PowerConsumptionRankingsBatteryView extends View {
         shellHeadHeight = typedArray.getDimensionPixelOffset(R.styleable.PowerConsumptionRankingsBatteryView_batteryShellHeadHeight,
                 getResources().getDimensionPixelOffset(R.dimen.power_consumption_rankings_dimen_main_battery_view_head_height));
 
-        //电池最大高度
+        // high
         levelMaxHeight = typedArray.getDimensionPixelOffset(R.styleable.PowerConsumptionRankingsBatteryView_batteryLevelMaxHeight,
                 getResources().getDimensionPixelOffset(R.dimen.power_consumption_rankings_dimen_main_battery_level_max_height));
-        //电池宽度
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         levelWidth = typedArray.getDimensionPixelOffset(R.styleable.PowerConsumptionRankingsBatteryView_batteryLevelWidth,
                 getResources().getDimensionPixelOffset(R.dimen.power_consumption_rankings_dimen_main_battery_level_width));
 
-        //电池外壳和电池等级直接的间距
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         gap = typedArray.getDimensionPixelOffset(R.styleable.PowerConsumptionRankingsBatteryView_batteryGap,
                 getResources().getDimensionPixelOffset(R.dimen.power_consumption_rankings_dimen_main_battery_view_gap));
-        //回收typedArray
+ //typedArray
         typedArray.recycle();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        //对View上的內容进行测量后得到的View內容占据的宽度
+        // measurement
         width = getMeasuredWidth();
-        //对View上的內容进行测量后得到的View內容占据的高度
+        // measurement
         height = getMeasuredHeight();
     }
 
@@ -207,66 +207,66 @@ public class PowerConsumptionRankingsBatteryView extends View {
         super.onDraw(canvas);
         canvas.setDrawFilter(drawFilter);
 
-        // 电池头 矩形的坐标
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
 
-        //坐标 left：控件整体宽度的一半 减去 电池头宽度的一半
+ // left 
         shellHeadRect.left = width / 2 - shellHeadWidth / 2;
-        //坐标 top： 0
+ // top 0
         shellHeadRect.top = 0;
-        //坐标 right：控件整体宽度的一半 加上 电池头宽度的一半
+ // right 
         shellHeadRect.right = width / 2 + shellHeadWidth / 2;
-        //坐标 bottom：电池头的高度
+        // high
         shellHeadRect.bottom = shellHeadHeight;
 
-        // 电池壳 矩形的坐标
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
 
-        //坐标 left：电池壳厚度的一半
+ // left
         shellRectF.left = shellStrokeWidth / 2;
-        //坐标 left：电池壳厚度的一半 加上 电池头的高度
+        // high
         shellRectF.top = shellStrokeWidth / 2 + shellHeadHeight;
-        //坐标 right：控件整体宽度 减去 电池壳厚度的一半
+ // right 
         shellRectF.right = width - shellStrokeWidth / 2;
-        //坐标 bottom：控件整体高度 减去 电池壳厚度的一半
+        // high
         shellRectF.bottom = height - shellStrokeWidth / 2;
 
-        // 电池电量 矩形的坐标
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
 
-        //坐标 left：电池壳厚度的一半 加上 电池外壳和电池等级直接的间距
+ // left 
         levelRect.left = shellStrokeWidth + gap;
 
-        //电池满格时候的最大高度 ：（控件整体高度  减去电池壳厚度 减去电池头高度 减去 电池外壳和电池等级直接的间距的两倍）
-        //topOffset: 电池满格时候的最大高度 * （电池满格100 - 当前的电量）/ 电池满格100
+        // high
+        // high
         float topOffset = (height - shellHeadHeight - gap * 2 - shellStrokeWidth) * (MAX_LEVEL - levelHeight) / MAX_LEVEL;
-        //坐标 top：电池头的高度 + 电池壳的厚度 + 电池外壳和电池等级直接的间距 + topOffset
+        // high
         levelRect.top = shellHeadHeight + shellStrokeWidth + gap + topOffset;
 
-        //坐标 right：控件整体宽度 减去 电池壳厚度的一半 减去 电池外壳和电池等级直接的间距
+ // right 
         levelRect.right = width - shellStrokeWidth - gap;
 
-        //坐标 bottom：控件整体宽度 减去 电池壳厚度的一半 减去 电池外壳和电池等级直接的间距
+ // bottom 
         levelRect.bottom = height - shellStrokeWidth - gap;
 
-        //绘制电池头
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         shellPaint.setStyle(Paint.Style.FILL);
         canvas.drawRoundRect(shellHeadRect, shellHeadCornerRadius, shellHeadCornerRadius, shellPaint);
-        //由于电池头的左下角和右下角不是圆角的，因此我们需要画一个矩形 覆盖圆角
-        //绘制左下角矩形
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         canvas.drawRect(shellHeadRect.left, shellHeadRect.bottom - shellHeadCornerRadius,
                 shellHeadRect.left + shellHeadCornerRadius, shellHeadRect.bottom, shellPaint);
-        //绘制右下角矩形
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         canvas.drawRect(shellHeadRect.right - shellHeadCornerRadius, shellHeadRect.bottom - shellHeadCornerRadius,
                 shellHeadRect.right, shellHeadRect.bottom, shellPaint);
 
-        //绘制电池壳
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         shellPaint.setStyle(Paint.Style.STROKE);
         canvas.drawRoundRect(shellRectF, shellCornerRadius, shellCornerRadius, shellPaint);
 
-        //绘制电池等级
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         canvas.drawRect(levelRect, levelPaint);
     }
 
     /**
-     * settings电池电量
+ * settings
      *
      * @param level
      */
@@ -281,7 +281,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
     }
 
     /**
-     * settings在线 重绘
+ * settings 
      */
     public void setOnline() {
         shellPaint.setColor(onlineColor);
@@ -290,7 +290,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
     }
 
     /**
-     * settings离线 重绘
+ * settings 
      */
     public void setOffline() {
         shellPaint.setColor(offlineColor);
@@ -299,7 +299,7 @@ public class PowerConsumptionRankingsBatteryView extends View {
     }
 
     /**
-     * settings低电 重绘
+     * low
      */
     public void setLowerPower() {
         shellPaint.setColor(lowerPowerColor);

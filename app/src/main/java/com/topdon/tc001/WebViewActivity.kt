@@ -15,10 +15,10 @@ import com.topdon.lib.core.ktbase.BaseBindingActivity
 import com.topdon.tc001.databinding.ActivityWebViewBinding
 
 /**
- * 使用 WebView 加载网页的 Activity.
+ * WebView Activity.
  *
- * 需要传递参数：
- * - [ExtraKeyConfig.URL] 要加载网页地址
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * - [ExtraKeyConfig.URL] 
  *
  * Created by LCG on 2024/12/18.
  */
@@ -42,9 +42,9 @@ class WebViewActivity : BaseBindingActivity<ActivityWebViewBinding>() {
         }
 
         val webSettings: WebSettings = binding.webView.settings
-        webSettings.setSupportZoom(false)//settings不支持字体缩放
+ webSettings.setSupportZoom(false)//settings
         webSettings.useWideViewPort = true
-        webSettings.javaScriptCanOpenWindowsAutomatically = true //允许js弹出窗口
+ webSettings.javaScriptCanOpenWindowsAutomatically = true //js
         webSettings.defaultTextEncodingName = "UTF-8"
         webSettings.javaScriptEnabled = true
         webSettings.allowFileAccess = true

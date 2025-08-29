@@ -17,34 +17,34 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 /**
- * 使用 DataBinding 的基础 Fragment.
+ * base
  *
- * 由于 BaseFragment 子类实在太多没法一下子全改完，等全部改完再来优化继承.
+ * class
  *
  * Created by LCG on 2024/11/5.
  */
 abstract class BaseBindingFragment<B : ViewDataBinding> : Fragment() {
 
     /**
-     * 在 [onDestroyView] 要将 binding 置为 null，
-     * 而将 binding 声明为可为 null type使用太过麻烦，使用该变量做一重包装避免该问题.
+ * [onDestroyView] binding null
+ * binding null type.
      */
     private var _binding: B? = null
     /**
-     * 注意：由于 Fragment 存在时间比其视图长，binding 将在 [onDestroyView] 置为 null.
+     * time
      *
-     * 仅可在 [onCreateView] 与 [onDestroyView] 之间访问.
+ * [onCreateView] [onDestroyView] .
      */
     protected val binding: B get() = _binding!!
 
 
     /**
-     * 子类实现该方法，返回使用 DataBinding 的 layout 资源 Id.
+     * class
      */
     @LayoutRes
     protected abstract fun initContentLayoutId(): Int
     /**
-     * 子类实现该方法，执行 onViewCreated 之后的初始化逻辑.
+     * class
      */
     protected abstract fun initView(savedInstanceState: Bundle?)
 
@@ -106,17 +106,17 @@ abstract class BaseBindingFragment<B : ViewDataBinding> : Fragment() {
 
 
     /**
-     * 新版 LMS 风格的加载中弹框.
+     * medium
      */
     private var loadingDialog: LoadingDialog? = null
     /**
-     * 显示加载中弹框.
+     * medium
      */
     fun showLoadingDialog(@StringRes resId: Int) {
         showLoadingDialog(getString(resId))
     }
     /**
-     * 显示加载中弹框.
+     * medium
      */
     fun showLoadingDialog(text: CharSequence?) {
         if (loadingDialog == null) {
@@ -126,7 +126,7 @@ abstract class BaseBindingFragment<B : ViewDataBinding> : Fragment() {
         loadingDialog?.show()
     }
     /**
-     * 关闭加载中弹框.
+     * medium
      */
     fun dismissLoadingDialog() {
         loadingDialog?.dismiss()

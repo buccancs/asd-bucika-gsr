@@ -26,7 +26,7 @@ public class ZoomableDraggableView extends View {
     private float focusX, focusY;
     private float lastX, lastY;
 
-    //原始图片
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private Bitmap originalBitmap;
     private int imageWidth;
     private int imageHeight;
@@ -87,7 +87,7 @@ public class ZoomableDraggableView extends View {
         if (showBitmap!=null){
             canvas.drawBitmap(showBitmap,matrix,paint);
         }
-        // 在此处绘制你的内容
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         super.onDraw(canvas);
         canvas.restore();
     }
@@ -132,7 +132,7 @@ public class ZoomableDraggableView extends View {
             lastX = e2.getX();
             lastY = e2.getY();
 
-            // 将滚动距离根据缩放因子进行调整
+            // distance
             deltaX /= scaleFactor;
             deltaY /= scaleFactor;
 

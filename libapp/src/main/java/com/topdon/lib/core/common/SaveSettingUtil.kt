@@ -10,15 +10,15 @@ import com.topdon.lib.core.config.DeviceConfig
 import com.topdon.lib.core.utils.CommUtils
 
 /**
- * 保存settings开关牵扯面太广，分布太乱，统一封装使用.
+ * save
  *
- * 当前类封装受“保存settings开关”影响的配置项，
+ * save
  *
- * [SharedManager] 保存不受“保存settings开关”影响的配置项.
+ * save
  */
 object SaveSettingUtil {
     /**
-     * 保存settings开关使用的 SharedPreferences 名称.
+     * save
      */
     private const val SP_NAME = "SaveSettingUtil"
 
@@ -31,17 +31,17 @@ object SaveSettingUtil {
      */
     const val FusionTypeMeanFusion = 2
     /**
-     * 单红外
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
-    const val FusionTypeIROnly = 1 //单独红外
+ const val FusionTypeIROnly = 1 //
     /**
-     * 单可见光
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
-    const val FusionTypeVLOnly = 0 //单独可见光
+ const val FusionTypeVLOnly = 0 //
     /**
-     * 画中画
+     * medium
      */
-    const val FusionTypeTC007Fusion = 7 //tc007的画中画
+    medium
 
     const val FusionTypeHSLFusion = 3
     const val FusionTypeScreenFusion = 5
@@ -49,10 +49,10 @@ object SaveSettingUtil {
 
 
     /**
-     * 保存settings开关关闭时，要将所有影响的配置项重置为默认项.
+     * save
      */
     fun reset() {
-        //thermal imaging测温Observation mode共有
+ //thermal imagingObservation mode
         isMeasureTempMode = true
         isVideoMode = false
         isAutoShutter = true
@@ -63,7 +63,7 @@ object SaveSettingUtil {
         pseudoColorMode = 3
         rotateAngle = DeviceConfig.S_ROTATE_ANGLE
 
-        //Temperature measurement mode独有
+ //Temperature measurement mode
         isOpenPseudoBar = true
         isOpenTwoLight = false
         twoLightAlpha = 50
@@ -72,7 +72,7 @@ object SaveSettingUtil {
         temperatureMode = CameraItemBean.TYPE_TMP_C
         alarmBean = AlarmBean()
 
-        //Observation mode独有
+ //Observation mode
         isOpenCompass = false
         isOpenHighPoint = false
         isOpenLowPoint = false
@@ -92,7 +92,7 @@ object SaveSettingUtil {
 
 
     /**
-     * 是否开启保存settings开关，默认关闭.
+     * save
      */
     var isSaveSetting: Boolean
         get() = SPUtils.getInstance(SP_NAME).getBoolean("isSaveSetting", true)
@@ -103,7 +103,7 @@ object SaveSettingUtil {
 
 
     /**
-     * thermal imaging是否处于Temperature measurement mode，默认Temperature measurement mode true-测温 false-观测
+ * thermal imagingTemperature measurement modeTemperature measurement mode true- false-
      */
     var isMeasureTempMode: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME).getBoolean("isMeasureTempMode", true) else true
@@ -113,7 +113,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * 是否开启超分
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     var isOpenAmplify : Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME).getBoolean("isOpenAmplify", false) else false
@@ -123,7 +123,7 @@ object SaveSettingUtil {
 
 
     /**
-     * thermal imaging是否选择videomode，默认photo true-video false-photo
+     * pick/select
      */
     var isVideoMode: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -134,7 +134,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging是否打开自动快门，默认打开 true-打开 false-关闭
+ * thermal imaging true- false-
      */
     var isAutoShutter: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -145,7 +145,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imagingvideo是否同时使用麦克风录制audio，默认关闭 true-开启 false-关闭
+ * thermal imagingvideoaudio true- false-
      */
     var isRecordAudio: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -156,7 +156,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * 延迟photo或delay录制的delay秒数，单位秒，默认0秒即不延迟.
+ * photodelaydelay0.
      */
     var delayCaptureSecond: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -174,7 +174,7 @@ object SaveSettingUtil {
             SPUtils.getInstance(SP_NAME).put("fusionType", value)
         }
     /**
-     * thermal imaging-Temperature measurement mode-是否开启dual light，默认关闭 true-开启 false-关闭
+ * thermal imaging-Temperature measurement mode-dual light true- false-
      */
     var isOpenTwoLight: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME).getBoolean("isOpenTwoLight", false) else false
@@ -184,7 +184,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging-Temperature measurement mode-dual light开启时融合度，取值`[0,100]`，0表示完全不透明，100表示完全透明，默认 50%
+ * thermal imaging-Temperature measurement mode-dual light`[0,100]`0100 50%
      */
     var twoLightAlpha: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME).getInt("twoLightAlpha", 50) else 50
@@ -196,7 +196,7 @@ object SaveSettingUtil {
 
 
     /**
-     * thermal imagingpseudo colormode，取值为pseudo color枚举值，默认铁红
+ * thermal imagingpseudo colormodepseudo color
      */
     var pseudoColorMode: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME).getInt("pseudoColorMode", 3) else 3
@@ -208,7 +208,7 @@ object SaveSettingUtil {
 
 
     /**
-     * thermal imaging-Temperature measurement mode-是否开启pseudo color条，默认开启 true-开启 false-关闭
+ * thermal imaging-Temperature measurement mode-pseudo color true- false-
      */
     var isOpenPseudoBar: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -219,7 +219,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging对比度，取值范围`[0,255]`，默认 128
+ * thermal imaging`[0,255]` 128
      */
     var contrastValue: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -230,7 +230,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging-Temperature measurement mode-锐度(细节增强等级)，取值范围`[0,4]`，默认为 2
+ * thermal imaging-Temperature measurement mode-()`[0,4]` 2
      */
     var ddeConfig: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME).getInt("ddeConfig", 2) else 2
@@ -240,7 +240,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     *thermal imaging-Temperature measurement mode-温度报警相关settings项.
+     * temperature
      */
     var alarmBean: AlarmBean
         get() = if (isSaveSetting) {
@@ -255,7 +255,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging画面逆时针旋转angle，取值 0、90、180、270，默认 [DeviceConfig.S_ROTATE_ANGLE]
+     * rotation angle
      */
     var rotateAngle: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -266,7 +266,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging是否开启mirror，默认关闭即不mirror true-mirror false-不mirror
+ * thermal imagingmirrormirror true-mirror false-mirror
      */
     var isOpenMirror: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -277,7 +277,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging-Observation mode-是否开启指南针，默认关闭 true-开启 false-关闭
+     * guide
      */
     var isOpenCompass: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -288,7 +288,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging-Temperature measurement mode-温度字体颜色值，默认白色.
+     * temperature
      */
     var tempTextColor: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -299,7 +299,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging-Temperature measurement mode-温度字体颜色值，默认14sp.
+     * temperature
      */
     var tempTextSize: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -312,13 +312,13 @@ object SaveSettingUtil {
 
 
     /**
-     * thermal imaging-Temperature measurement mode-温度档位，默认常温，取值
+     * temperature
      *
-     * 常温 ([CameraItemBean.TYPE_TMP_C] = 1）
+ * ([CameraItemBean.TYPE_TMP_C] = 1）
      *
-     * 高温 ([CameraItemBean.TYPE_TMP_H] = 0)
+     * high
      *
-     * 自动 ([CameraItemBean.TYPE_TMP_ZD] = -1)
+ * ([CameraItemBean.TYPE_TMP_ZD] = -1)
      */
     var temperatureMode: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -332,7 +332,7 @@ object SaveSettingUtil {
 
 
     /**
-     * thermal imaging-Observation mode-是否开启High temperature point，默认关闭 true-开启 false-关闭
+ * thermal imaging-Observation mode-High temperature point true- false-
      */
     var isOpenHighPoint: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -343,7 +343,7 @@ object SaveSettingUtil {
             }
         }
     /**
-     * thermal imaging-Observation mode-是否开启Low temperature point，默认关闭 true-开启 false-关闭
+ * thermal imaging-Observation mode-Low temperature point true- false-
      */
     var isOpenLowPoint: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -355,15 +355,15 @@ object SaveSettingUtil {
         }
 
     /**
-     * thermal imaging-Observation mode-选中AI追踪type，默认未选中，取值
+     * medium
      *
-     * 未选中 ([ObserveBean.TYPE_NONE] = -1)
+     * medium
      *
-     * 动态识别 ([ObserveBean.TYPE_DYN_R] = 0)
+ * ([ObserveBean.TYPE_DYN_R] = 0)
      *
-     * 高温源 ([ObserveBean.TYPE_TMP_H_S] = 1)
+     * high
      *
-     * 低温源 ([ObserveBean.TYPE_TMP_L_S] = 2)
+     * low
      */
     var aiTraceType: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -375,7 +375,7 @@ object SaveSettingUtil {
         }
 
     /**
-     * thermal imaging-Observation mode-target-是否开启target，默认关闭 true-开启 false-关闭
+ * thermal imaging-Observation mode-target-target true- false-
      */
     var isOpenTarget: Boolean
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -387,15 +387,15 @@ object SaveSettingUtil {
         }
 
     /**
-     * thermal imaging-Observation mode-target-target测量mode，默认人，取值
+     * measurement
      *
-     * 人 ([ObserveBean.TYPE_MEASURE_PERSON] = 10)
+ * ([ObserveBean.TYPE_MEASURE_PERSON] = 10)
      *
-     * 羊 ([ObserveBean.TYPE_MEASURE_SHEEP] = 11)
+ * ([ObserveBean.TYPE_MEASURE_SHEEP] = 11)
      *
-     * 狗 ([ObserveBean.TYPE_MEASURE_DOG] = 12)
+ * ([ObserveBean.TYPE_MEASURE_DOG] = 12)
      *
-     * 鸟 ([ObserveBean.TYPE_MEASURE_BIRD] = 13)
+ * ([ObserveBean.TYPE_MEASURE_BIRD] = 13)
      */
     var targetMeasureMode: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME).getInt(
@@ -409,13 +409,13 @@ object SaveSettingUtil {
         }
 
     /**
-     * thermal imaging-Observation mode-target-targettype，默认横向，取值
+ * thermal imaging-Observation mode-target-targettype
      *
-     * 横向 ([ObserveBean.TYPE_TARGET_HORIZONTAL] = 15)
+ * ([ObserveBean.TYPE_TARGET_HORIZONTAL] = 15)
      *
-     * 竖向 ([ObserveBean.TYPE_TARGET_VERTICAL] = 16)
+ * ([ObserveBean.TYPE_TARGET_VERTICAL] = 16)
      *
-     * 圆形 ([ObserveBean.TYPE_TARGET_CIRCLE] = 17)
+ * ([ObserveBean.TYPE_TARGET_CIRCLE] = 17)
      */
     var targetType: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME).getInt(
@@ -429,17 +429,17 @@ object SaveSettingUtil {
         }
 
     /**
-     * thermal imaging-Observation mode-target-target颜色，默认绿色，取值
+ * thermal imaging-Observation mode-target-target
      *
-     * 绿色 ([ObserveBean.TYPE_TARGET_COLOR_GREEN] = 20)
+ * ([ObserveBean.TYPE_TARGET_COLOR_GREEN] = 20)
      *
-     * 红色 ([ObserveBean.TYPE_TARGET_COLOR_RED] = 21)
+ * ([ObserveBean.TYPE_TARGET_COLOR_RED] = 21)
      *
-     * 蓝色 ([ObserveBean.TYPE_TARGET_COLOR_BLUE] = 22)
+ * ([ObserveBean.TYPE_TARGET_COLOR_BLUE] = 22)
      *
-     * 黑色 ([ObserveBean.TYPE_TARGET_COLOR_BLACK] = 23)
+ * ([ObserveBean.TYPE_TARGET_COLOR_BLACK] = 23)
      *
-     * 白色 ([ObserveBean.TYPE_TARGET_COLOR_WHITE] = 24)
+ * ([ObserveBean.TYPE_TARGET_COLOR_WHITE] = 24)
      */
     var targetColorType: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME).getInt(
@@ -454,7 +454,7 @@ object SaveSettingUtil {
 
 
     /**
-     * report-作者名称，默认值 App 名称.
+     * author
      */
     var reportAuthorName: String
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -466,7 +466,7 @@ object SaveSettingUtil {
         }
 
     /**
-     * report-水印内容，默认值 App 名称.
+ * report- App .
      */
     var reportWatermarkText: String
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)
@@ -478,7 +478,7 @@ object SaveSettingUtil {
         }
 
     /**
-     * report-环境湿度千分比，默认值500，取值`[0, 1000]`
+ * report-500`[0, 1000]`
      */
     var reportHumidity: Int
         get() = if (isSaveSetting) SPUtils.getInstance(SP_NAME)

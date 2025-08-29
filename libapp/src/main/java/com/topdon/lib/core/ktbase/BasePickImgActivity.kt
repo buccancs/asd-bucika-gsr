@@ -24,11 +24,11 @@ import java.io.File
  **/
 abstract class BasePickImgActivity : BaseActivity(), View.OnClickListener {
     /**
-     * String type - 拾取的图片在本地的绝对路径.
+ * String type - .
      */
     val RESULT_IMAGE_PATH = "RESULT_IMAGE_PATH"
     /**
-     * 当前是否已拍了一张照等待完成.
+     * finish
      */
     private var hasTakePhoto = false
 
@@ -44,7 +44,7 @@ abstract class BasePickImgActivity : BaseActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //默认选中画圆
+        // medium
         iv_edit_circle.isSelected = true
         image_edit_view.type = ImageEditView.Type.CIRCLE
         view_color.setBackgroundColor(image_edit_view.color)
@@ -82,12 +82,12 @@ abstract class BasePickImgActivity : BaseActivity(), View.OnClickListener {
         val heightPixels = resources.displayMetrics.heightPixels
         title_view.measure(MeasureSpec.makeMeasureSpec(widthPixels, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(heightPixels, MeasureSpec.AT_MOST))
 
-        val ivPickHeight = SizeUtils.dp2px(60f + 20 + 20) //photo按钮高度，60dp+上下各20dp margin
+        high
         val menuHeight = (widthPixels * 75f / 384).toInt()
         val bottomHeight = ivPickHeight.coerceAtLeast(menuHeight)
         val canUseHeight = heightPixels - title_view.measuredHeight - bottomHeight
         val wantHeight = (widthPixels * 256f / 192).toInt()
-        if (wantHeight <= canUseHeight) {//够用
+ if (wantHeight <= canUseHeight) {//
             fragment_container_view.layoutParams = fragment_container_view.layoutParams.apply {
                 width = widthPixels
                 height = wantHeight
@@ -164,7 +164,7 @@ abstract class BasePickImgActivity : BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 切换 已photomode/未photomode.
+ * photomode/photomode.
      */
     private fun switchPhotoState(hasTakePhoto: Boolean) {
         this.hasTakePhoto = hasTakePhoto
@@ -176,8 +176,8 @@ abstract class BasePickImgActivity : BaseActivity(), View.OnClickListener {
     }
 
     /**
-     * 显示退出不保存提示弹框
-     * @param listener 点击弹框上退出事件监听
+     * save
+     * event
      */
     private fun showExitTipsDialog(listener: (() -> Unit)) {
         TipDialog.Builder(this)

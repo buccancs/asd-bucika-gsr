@@ -14,16 +14,16 @@ import com.topdon.module.thermal.ir.activity.IRMonitorActivity
 import kotlinx.android.synthetic.main.fragment_ir_monitor_capture.*
 
 /**
- * 温度监控-实时（即生成温度监控）.
+ * temperature
  *
- * 需要传递参数：
- * - [ExtraKeyConfig.IS_TC007] - 当前设备是否为 TC007
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * - [ExtraKeyConfig.IS_TC007] - TC007
  */
 class IRMonitorCaptureFragment : BaseFragment() {
 
     /**
-     * 从上一界面传递过来的，当前是否为 TC007 设备type.
-     * true-TC007 false-其他插件式设备
+ * TC007 type.
+ * true-TC007 false-
      */
     private var isTC007 = false
 
@@ -67,7 +67,7 @@ class IRMonitorCaptureFragment : BaseFragment() {
     }
 
     /**
-     * 刷新连接状态
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private fun refreshUI(isConnect: Boolean) {
         animation_view.isVisible = !isConnect

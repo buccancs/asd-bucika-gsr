@@ -26,14 +26,14 @@ import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 
 /**
- * 温度监控生成第2步 - 捕获.
+ * temperature
  *
  * Created by LCG on 2025/1/10.
  */
 class IRMonitorCaptureHik2Activity : BaseBindingActivity<ActivityIrMonitorCaptureHik2Binding>() {
 
     /**
-     * 从上一界面传递过来的，当前选中的 点/线/面 信息.
+     * medium
      */
     private var selectBean = SelectPositionBean()
 
@@ -51,15 +51,15 @@ class IRMonitorCaptureHik2Activity : BaseBindingActivity<ActivityIrMonitorCaptur
             binding.hikSurfaceView.refresh(yuvArray, tempArray)
         }
         HikHelper.onTimeoutListener = {
-            // TODO: 跟进超时弹框逻辑
+ // TODO: 
             TipDialog.Builder(this)
-                .setMessage("机芯出了毛病，5秒了没个回调过来")
+ .setMessage("5")
                 .setPositiveListener(R.string.app_got_it) {
                     finish()
                 }
                 .create().show()
         }
-        //thermal imaging机芯在上一步已经初始化过了，这里不用再搞一遍
+ //thermal imaging
 
         binding.titleView.setRightClickListener {
             finish()
@@ -93,7 +93,7 @@ class IRMonitorCaptureHik2Activity : BaseBindingActivity<ActivityIrMonitorCaptur
     override fun onResume() {
         super.onResume()
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        binding.mpChartView.highlightValue(null) //关闭高亮点Marker
+        high
     }
 
     override fun onPause() {
@@ -111,15 +111,15 @@ class IRMonitorCaptureHik2Activity : BaseBindingActivity<ActivityIrMonitorCaptur
     }
 
     /**
-     * 开始记录的时间戳
+     * time
      */
     private var startTime: Long = 0L
     /**
-     * 未使用的字段，为兼容旧版本，继续写入吧
+     * (unused)
      */
     private var thermalId: String = ""
     /**
-     * 记录一个温度数据到数据库.
+     * temperature
      */
     private fun saveOneRecord(tempInfo: TemperatureHikView.TempInfo) {
         lifecycleScope.launch(Dispatchers.IO) {

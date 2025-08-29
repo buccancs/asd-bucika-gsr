@@ -46,7 +46,7 @@ public class AppLanguageUtils {
     }
 
     /**
-     * 获取系统默认语言
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public static String getSystemLanguage() {
         Locale locale = LanguageUtils.getSystemLanguage();
@@ -119,7 +119,7 @@ public class AppLanguageUtils {
     }
 
     /**
-     * 获取指定语言的locale信息，如果指定语言不存在{@link #mAllLanguages}，返回本机语言，如果本机语言不是语言集合中的一种{@link #mAllLanguages}，返回英语
+     * medium
      *
      * @param language language
      * @return

@@ -17,16 +17,16 @@ import com.topdon.lib.core.utils.ScreenUtil
 import kotlinx.android.synthetic.main.item_menu_3d.view.*
 
 /**
- * 二级menu RecyclerView used for Adapter.
+ * menu RecyclerView used for Adapter.
  */
 class MenuAdapter(val context: Context, val type: Type) : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
     /**
-     * 当前选中 item index，用于实现选中效果.
+     * medium
      */
     private var selectIndex = 0
 
     /**
-     * item 点击事件监听.
+     * event
      */
     var onItemClickListener: ((position: Int) -> Unit)? = null
 
@@ -106,7 +106,7 @@ class MenuAdapter(val context: Context, val type: Type) : RecyclerView.Adapter<M
             holder.itemView.iv_pseudo.visibility = if(position == selectIndex) View.VISIBLE else View.GONE
         }
 
-        //单独settingsdelete文本颜色
+ //settingsdelete
         if (type == Type.MARK && position == MARK_ARRAY.size - 1) {
             holder.itemView.tv_menu.setTextColor(0x66ffffff)
         }
@@ -146,7 +146,7 @@ class MenuAdapter(val context: Context, val type: Type) : RecyclerView.Adapter<M
     @SuppressLint("NotifyDataSetChanged")
     inner class ViewHolder(rootView: View) : RecyclerView.ViewHolder(rootView) {
         init {
-            val canSeeCount = itemCount.toFloat() //一屏可见的 item 数量，目前都是全都显示完
+ val canSeeCount = itemCount.toFloat() // item 
             if (ScreenUtil.isPortrait(context)) {
                 val with = (ScreenUtil.getScreenWidth(context)/ canSeeCount).toInt()
                 rootView.layoutParams = ViewGroup.LayoutParams(with, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -178,7 +178,7 @@ class MenuAdapter(val context: Context, val type: Type) : RecyclerView.Adapter<M
 
     enum class Type {
         /**
-         * 视觉.
+ * .
          */
         VISUAL,
 

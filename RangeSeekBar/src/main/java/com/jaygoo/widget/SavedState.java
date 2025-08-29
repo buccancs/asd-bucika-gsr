@@ -6,10 +6,10 @@ import android.view.View;
 
 /**
  * ================================================
- * 作    者：JayGoo
- * 版    本：
- * 创建日期：2018/5/8
- * 描    述:
+ * JayGoo
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * create
+ * :
  * ================================================
  */
 public class SavedState extends View.BaseSavedState {

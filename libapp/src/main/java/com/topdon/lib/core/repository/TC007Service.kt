@@ -18,25 +18,25 @@ import retrofit2.http.Query
  */
 interface TC007Service {
     /**
-     * 获取产品信息
+     * info
      */
     @GET("/v1/system/product/info/dj")
     suspend fun getProductInfo(): TC007Response<ProductBean>
 
     /**
-     * 获取设备电池信息
+     * info
      */
     @GET("/v1/system/local/battery")
     suspend fun getBatteryInfo(): TC007Response<BatteryInfo>
 
     /**
-     * 同步时间.
+     * time
      */
     @PUT("/v1/system/local/time")
     suspend fun syncTime(@Body requestBody: RequestBody): TC007Response<Any?>
 
     /**
-     * 固件升级-上传固件升级包
+ * -
      */
     @Multipart
     @POST("/v1/system/upgrade/package?reset=true")
@@ -48,38 +48,38 @@ interface TC007Service {
         @Part part: MultipartBody.Part
     ): TC007Response<Any?>
     /**
-     * 查询固件升级状态.
+ * .
      */
     @GET("/v1/system/upgrade/status")
     suspend fun getUpgradeStatus(): TC007Response<TC07UpgradeStatus>
 
     /**
-     * 恢复出厂settings
+ * settings
      */
     @PUT("/v1/system/magic/factory")
     suspend fun resetToFactory(): TC007Response<Boolean>
 
     /**
-     * 执行锅盖calibration
+ * calibration
      */
     @PUT("/v1/camera/videoin/thermal/lid")
     suspend fun correction(): TC007Response<Any?>
 
 
     /**
-     * 获取测温属性参数
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @GET("/v1/thermal/env/attribute?default=false")
     suspend fun getEnvAttr(): TC007Response<EnvAttr>
     /**
-     * settings测温属性参数
+ * settings
      */
     @PUT("/v1/thermal/env/attribute?default=false")
     suspend fun setEnvAttr(@Body requestBody: RequestBody): TC007Response<Any?>
 
 
     /**
-     * settings温度修正参数
+     * temperature
      */
     @PUT("/v1/thermal/env/target")
     suspend fun setIRConfig(@Body requestBody: RequestBody): TC007Response<Any?>
@@ -87,22 +87,22 @@ interface TC007Service {
     @GET("/v1/thermal/temp/frame")
     suspend fun getTempFrame(): TC007Response<TempFrameParam>
     /**
-     * settings整帧测温（中心点、全图最高温、全图最低温）
+     * high
      */
     @POST("/v1/thermal/temp/frame")
     suspend fun setTempFrame(@Body requestBody: RequestBody): TC007Response<Any?>
     /**
-     * settings测温点
+ * settings
      */
     @POST("/v1/thermal/temp/point")
     suspend fun setTempPoint(@Body requestBody: RequestBody): TC007Response<Any?>
     /**
-     * settings测温线
+ * settings
      */
     @POST("/v1/thermal/temp/line")
     suspend fun setTempLine(@Body requestBody: RequestBody): TC007Response<Any?>
     /**
-     * settings测温面
+ * settings
      */
     @POST("/v1/thermal/temp/rectangle")
     suspend fun setTempRect(@Body requestBody: RequestBody): TC007Response<Any?>
@@ -117,8 +117,8 @@ interface TC007Service {
 
 
     /**
-     * settings图像mode
-     * 0：红外；1：可见光；2：画中画；3：dual light融合；4：细节增强
+     * image
+     * medium
      */
     @PUT("/v1/camera/videoin/mode")
     suspend fun setMode(@Query("mode") mode: Int): TC007Response<Any?>
@@ -135,7 +135,7 @@ interface TC007Service {
 
     @PUT("/v1/camera/videoin/registration")
     suspend fun setRegistration(@Body requestBody: RequestBody): TC007Response<Any?>
-    //dual light配准
+ //dual light
     @GET("/v1/camera/videoin/registration")
     suspend fun getRegistration(@Query("chn") mode: Int,@Query("default") default : String): TC007Response<WifiAttributeBean?>
 
@@ -143,18 +143,18 @@ interface TC007Service {
     suspend fun setPallete(@Body requestBody: RequestBody): TC007Response<Any?>
 
     /**
-     * 获取测温属性参数
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * chn
      * integer
-     * 视频通道
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * optional
-     * 示例值:
+ * :
      * 1
      * default
      * string
      * optional
-     * true：默认配置；false：当前配置
-     * 示例值:
+     * configuration
+ * :
      * false
      */
     @GET("/v1/thermal/env/attribute")

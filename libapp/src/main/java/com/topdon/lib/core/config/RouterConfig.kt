@@ -22,7 +22,7 @@ object RouterConfig {
     const val IR_GALLERY_EDIT = "/$GROUP_APP/gallery/edit"
     const val WEB_VIEW = "/$GROUP_APP/WebViewActivity"
 
-    //海康thermal imaging
+ //thermal imaging
     const val IR_HIK_MAIN = "/$GROUP_HIK_IR/irHikMain"
     const val IR_HIK_CORRECT_THREE = "/$GROUP_HIK_IR/correction3"
     const val IR_HIK_MONITOR_CAPTURE1 = "/$GROUP_HIK_IR/monitorCap1"
@@ -62,7 +62,7 @@ object RouterConfig {
     const val IR_IMG_PICK_07 = "/$GROUP_THERMAL07/ImagePickTC007Activity"
 
 
-    //report 生成report
+ //report report
     const val REPORT_CREATE_FIRST = "/$GROUP_REPORT/create/first"
     const val REPORT_CREATE_SECOND = "/$GROUP_REPORT/create/second"
     const val REPORT_PREVIEW_FIRST = "/$GROUP_REPORT/preview/first"

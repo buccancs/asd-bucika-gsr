@@ -9,11 +9,11 @@ import com.topdon.module.thermal.ir.report.bean.ReportInfoBean
 import kotlinx.android.synthetic.main.activity_report_preview_first.*
 
 /**
- * 生成report第1步的预览界面.
+ * preview
  *
- * 需要传递
- * - 必选：report信息 [ExtraKeyConfig.REPORT_INFO]
- * - optional：检测条件 [ExtraKeyConfig.REPORT_CONDITION]
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * info
+ * - optional [ExtraKeyConfig.REPORT_CONDITION]
  */
 @Route(path = RouterConfig.REPORT_PREVIEW_FIRST)
 class ReportPreviewFirstActivity: BaseActivity() {

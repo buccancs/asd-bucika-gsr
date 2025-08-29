@@ -29,7 +29,7 @@ object DeviceConfig {
 
 
     /**
-     * 判断该 UsbDevice 是否为TC、TS插件式设备.
+ * UsbDevice TCTS.
      */
     fun UsbDevice.isTcTsDevice(): Boolean {
         return (productId == TOPDON_PRODUCT_ID && vendorId == TOPDON_VENDOR_ID) ||
@@ -55,11 +55,11 @@ object DeviceConfig {
 //    const val SKU = "TDBT006A11"
 //    const val SN = "BT006AAG100001"
 
-    // 横屏 TC003校对默认angle0 默认竖屏false 初始化settingsinitDataIR()
+    // initial angle (unused)
     const val ROTATE_ANGLE = 0
     const val IS_PORTRAIT = false
 
-    // 竖屏
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     const val S_ROTATE_ANGLE = 270
     const val S_IS_PORTRAIT = true
 

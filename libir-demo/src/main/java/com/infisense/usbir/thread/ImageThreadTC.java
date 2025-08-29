@@ -100,14 +100,14 @@ public class ImageThreadTC extends Thread {
                             + " imagesrc.length = " + imagesrc.length + " imagesrc[100] = " + imagesrc[100]);
                     if (dataFlowMode == CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT ||
                             dataFlowMode == CommonParams.DataFlowMode.IMAGE_OUTPUT) {
-                        // yuv422格式
+ // yuv422
                         if (pseudocolorMode != null) {
                             LibIRProcess.convertYuyvMapToARGBPseudocolor(imagesrc, (long) imageHeight * imageWidth, pseudocolorMode, imageARGB);
                         } else {
                             LibIRParse.converyArrayYuv422ToARGB(imagesrc, imageHeight * imageWidth, imageARGB);
                         }
                     } else {
-                        // 调用 startY16ModePreview 中间出图方法之后，输出的数据格式为y16,需要做转换
+                        // medium
                         LibIRParse.convertArrayY14ToYuv422(imagesrc, imageHeight * imageWidth, imageYUV422);
                         if (pseudocolorMode != null) {
                             LibIRProcess.convertYuyvMapToARGBPseudocolor(imageYUV422, (long) imageHeight * imageWidth, pseudocolorMode, imageARGB);

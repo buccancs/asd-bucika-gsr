@@ -16,14 +16,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * 图片加载
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * Created by fylder on 2018/6/23.
  */
 object GlideLoader {
 
 
     /**
-     * 图像默认图
+     * image
      */
     private fun getPhotoOptions(): RequestOptions {
         val multi = MultiTransformation(CenterCrop(), RoundedCorners(SizeUtils.dp2px(6f)))
@@ -33,7 +33,7 @@ object GlideLoader {
     }
 
     /**
-     * 圆形图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadCircle(img: ImageView, resourceId: Int, options: RequestOptions) {
         Glide.with(img)
@@ -43,7 +43,7 @@ object GlideLoader {
     }
 
     /**
-     * 圆形图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadCircle(img: ImageView, url: String, options: RequestOptions) {
         Glide.with(img)
@@ -53,7 +53,7 @@ object GlideLoader {
     }
 
     /**
-     * 圆形图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadCircle(img: ImageView, drawable: Drawable, options: RequestOptions) {
         Glide.with(img)
@@ -63,7 +63,7 @@ object GlideLoader {
     }
 
     /**
-     * 圆形图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadCircle(img: ImageView, uri: Uri, options: RequestOptions) {
         Glide.with(img)
@@ -73,7 +73,7 @@ object GlideLoader {
     }
 
     /**
-     * 圆形图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadCircle(img: ImageView, url: String, resourceId: Int, options: RequestOptions) {
         Glide.with(img)
@@ -85,7 +85,7 @@ object GlideLoader {
     }
 
     /**
-     * 圆角形图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadRounded(img: ImageView, resourceId: Int) {
         Glide.with(img)
@@ -95,7 +95,7 @@ object GlideLoader {
     }
 
     /**
-     * 圆角形图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadRounded(img: ImageView, url: String) {
         Glide.with(img)
@@ -105,7 +105,7 @@ object GlideLoader {
     }
 
     /**
-     * 圆角形图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadRounded(img: ImageView, drawable: Drawable) {
         Glide.with(img)
@@ -115,7 +115,7 @@ object GlideLoader {
     }
 
     /**
-     * 圆角形图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadRounded(img: ImageView, uri: Uri) {
         Glide.with(img)
@@ -125,7 +125,7 @@ object GlideLoader {
     }
 
     /**
-     * 加载图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun load(img: ImageView, url: String?) {
         val multi = MultiTransformation(
@@ -142,7 +142,7 @@ object GlideLoader {
     }
 
     /**
-     * 加载图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadGallery(img: ImageView, url: String?) {
         val multi = MultiTransformation(
@@ -159,7 +159,7 @@ object GlideLoader {
     }
 
     /**
-     * 加载图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun loadFit(img: ImageView, url: String?) {
         val multi = MultiTransformation(
@@ -176,7 +176,7 @@ object GlideLoader {
     }
 
     /**
-     * 加载图片
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun load(img: ImageView, resourceId: Int) {
         val multi = MultiTransformation(

@@ -10,13 +10,13 @@ import com.topdon.lib.core.ktbase.BaseActivity
 import kotlinx.android.synthetic.main.activity_text_input.*
 
 /**
- * 房屋检测 - 问题描述文字输入界面.
+ * input
  *
- * 需要传递：
- * - [ExtraKeyConfig.ITEM_NAME] - String type item 名称.
- * - [ExtraKeyConfig.RESULT_INPUT_TEXT] - String type 当前输入内容.
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * - [ExtraKeyConfig.ITEM_NAME] - String type item .
+ * input
  *
- * 返回：[ExtraKeyConfig.RESULT_INPUT_TEXT] - String type 输入内容.
+ * input
  *
  * Created by LCG on 2024/8/27.
  */
@@ -45,7 +45,7 @@ class TextInputActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v) {
             iv_exit -> finish()
-            iv_save -> {//保存
+            save
                 val intent = Intent()
                 intent.putExtra(ExtraKeyConfig.RESULT_INPUT_TEXT, et_input.text.toString())
                 setResult(RESULT_OK, intent)

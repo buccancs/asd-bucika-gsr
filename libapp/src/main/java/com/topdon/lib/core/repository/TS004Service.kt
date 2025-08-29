@@ -16,52 +16,52 @@ import retrofit2.http.Url
 interface TS004Service {
 
     /**
-     * settingspseudo color样式
+ * settingspseudo color
      */
     @POST("/api/v1/system/setPseudoColor")
     suspend fun setPseudoColor(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 获取pseudo color样式
+ * pseudo color
      */
     @POST("/api/v1/system/getPseudoColor")
     suspend fun getPseudoColor(): TS004Response<PseudoColorBean>
     /**
-     * settings测距开关
+ * settings
      */
     @POST("/api/v1/system/setRangeFind")
     suspend fun setRangeFind(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 获取测距
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @POST("/api/v1/system/getRangeFind")
     suspend fun getRangeFind(): TS004Response<RangeBean>
     /**
-     * settings屏幕亮度
+ * settings
      */
     @POST("/api/v1/system/setPanelParam")
     suspend fun setPanelParam(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 获取屏幕亮度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @POST("/api/v1/system/getPanelParam")
     suspend fun getPanelParam(): TS004Response<BrightnessBean>
     /**
-     * settings画中画
+     * medium
      */
     @POST("/api/v1/system/setPip")
     suspend fun setPip(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 获取画中画状态
+     * medium
      */
     @POST("/api/v1/system/getPip")
     suspend fun getPip(): TS004Response<PipBean>
     /**
-     * settings放大倍数
+ * settings
      */
     @POST("/api/v1/system/setZoom")
     suspend fun setZoom(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 获取放大倍数
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @POST("/api/v1/system/getZoom")
     suspend fun getZoom(): TS004Response<ZoomBean>
@@ -76,83 +76,83 @@ interface TS004Service {
     @POST("/api/v1/system/vrecord")
     suspend fun setVRecord(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 获取video状态
+ * video
      */
     @POST("/api/v1/system/getRecordStatus")
     suspend fun getVRecord(): TS004Response<RecordStatusBean>
     /**
-     * 下载文件.
+     * download
      */
     @GET
     @Streaming
     suspend fun download(@Url url: String): ResponseBody
 
     /**
-     * 同步时间.
+     * time
      */
     @POST("/api/v1/system/setDateTime")
     suspend fun syncTime(@Body requestBody: RequestBody): TS004Response<Boolean>
 
     /**
-     * 同步时区.
+ * .
      */
     @POST("/api/v1/system/setTimeZone")
     suspend fun syncTimeZone(@Body requestBody: RequestBody): TS004Response<Boolean>
 
     /**
-     * 获取版本信息
+     * info
      */
     @POST("/api/v1/system/getVersion")
     suspend fun getVersion(): TS004Response<VersionBean>
 
     /**
-     * 获取设备信息
+     * info
      */
     @POST("/api/v1/system/getDeviceInfo")
     suspend fun getDeviceInfo(): TS004Response<DeviceInfo>
 
     /**
-     * 获取文件数量
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @POST("/api/v1/system/getFileCount")
     suspend fun getFileCount(@Body requestBody: RequestBody): TS004Response<FileCountBean>
 
     /**
-     * 获取文件列表
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @POST("/api/v1/system/getFileList")
     suspend fun getFileList(@Body requestBody: RequestBody): TS004Response<FilePageBean>
 
     /**
-     * delete指定 id 的照片视频文件
+ * delete id 
      */
     @POST("/api/v1/system/deleteFile")
     suspend fun deleteFile(@Body requestBody: RequestBody): TS004Response<Boolean>
 
 
     /**
-     * 触发固件升级
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @POST("/api/v1/system/remoteUpgrade")
     suspend fun firmwareUpdateStart(): TS004Response<Boolean>
     /**
-     * 固件升级-开始
+ * -
      */
     @POST("/api/v1/system/sendUpgradeFileStart")
     suspend fun sendUpgradeFileStart(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 固件升级-上传固件升级包
+ * -
      */
     @Headers("Content-type: application/octet-stream")
     @POST("/api/v1/system/sendUpgradeFileData")
     suspend fun sendUpgradeFile(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 固件升级-结束
+ * -
      */
     @POST("/api/v1/system/sendUpgradeFileEnd")
     suspend fun sendUpgradeFileEnd(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 查询固件升级状态.
+ * .
      */
     @POST("/api/v1/system/getUpgradeStatus")
     suspend fun getUpgradeStatus(): TS004Response<UpgradeStatus>
@@ -160,27 +160,27 @@ interface TS004Service {
 
 
     /**
-     * 获取存储分区信息
+     * info
      */
     @POST("/api/v1/system/getFreeSpace")
     suspend fun freeSpace(): TS004Response<FreeSpaceBean>
     /**
-     * 格式化存储分区
+     * formatter
      */
     @POST("/api/v1/system/formatStorage")
     suspend fun formatStorage(): TS004Response<Boolean>
     /**
-     * 恢复出厂settings
+ * settings
      */
     @POST("/api/v1/system/resetAll")
     suspend fun resetAll(): TS004Response<Boolean>
     /**
-     * settings超分
+ * settings
      */
     @POST("/api/v1/system/setTISR")
     suspend fun setTISR(@Body requestBody: RequestBody): TS004Response<Boolean>
     /**
-     * 获取超分
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @POST("/api/v1/system/getTISR")
     suspend fun getTISR(): TS004Response<TISRBean>

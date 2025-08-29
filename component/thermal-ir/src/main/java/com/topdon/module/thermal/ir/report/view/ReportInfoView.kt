@@ -12,7 +12,7 @@ import com.topdon.module.thermal.ir.report.bean.ReportInfoBean
 import kotlinx.android.synthetic.main.view_report_info.view.*
 
 /**
- * report信息 - 预览 View.
+ * preview
  */
 class ReportInfoView: LinearLayout {
 
@@ -25,7 +25,7 @@ class ReportInfoView: LinearLayout {
     }
 
     /**
-     * 根据指定的report信息刷新对应 View.
+     * info
      */
     fun refreshInfo(reportInfoBean: ReportInfoBean?) {
         tv_report_name.text = reportInfoBean?.report_name
@@ -41,7 +41,7 @@ class ReportInfoView: LinearLayout {
     }
 
     /**
-     * 根据指定的检测条件信息刷新对应 View.
+     * info
      */
     fun refreshCondition(conditionBean: ReportConditionBean?) {
         cl_report_condition.isVisible = conditionBean?.is_ambient_humidity == 1
@@ -67,7 +67,7 @@ class ReportInfoView: LinearLayout {
     }
 
     /**
-     * 获取需要转为 PDF 的所有 View 列表.
+ * PDF View .
      */
     fun getPrintViewList(): ArrayList<View> {
         val result = ArrayList<View>()

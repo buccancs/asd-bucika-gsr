@@ -13,7 +13,7 @@ import com.topdon.lib.core.utils.ScreenUtil
 import kotlinx.android.synthetic.main.dialog_confirm_select.view.*
 
 /**
- * TS004 远端图库delete提示弹框.
+ * gallery
  *
  * Created by LCG on 2024/2/29.
  */
@@ -22,7 +22,7 @@ class ConfirmSelectDialog(context: Context) : Dialog(context, R.style.InfoDialog
     var onConfirmClickListener: ((isSelect: Boolean) -> Unit)? = null
 
     /**
-     * 是否显示顶部信息图标，默认不显示.
+     * info
      */
     fun setShowIcon(isShowIcon: Boolean) {
         rootView.iv_icon.isVisible = isShowIcon
@@ -37,7 +37,7 @@ class ConfirmSelectDialog(context: Context) : Dialog(context, R.style.InfoDialog
     }
 
     /**
-     * 是否显示提示文字及选中效果，默认不显示.
+     * medium
      */
     fun setShowMessage(isShowMessage: Boolean) {
         rootView.rl_message.isVisible = isShowMessage
@@ -48,20 +48,20 @@ class ConfirmSelectDialog(context: Context) : Dialog(context, R.style.InfoDialog
     }
 
     /**
-     * 是否显示cancel按钮，默认显示且默认文字为“cancel”.
+ * cancel“cancel”.
      */
     fun setShowCancel(isShowCancel: Boolean) {
         rootView.tv_cancel.isVisible = isShowCancel
     }
     /**
-     * settingscancel按钮文字，默认为“cancel”.
+ * settingscancel“cancel”.
      */
     fun setCancelText(@StringRes cancelRes: Int) {
         rootView.tv_cancel.setText(cancelRes)
     }
 
     /**
-     * settings确认按钮文字，默认为“delete"
+ * settings“delete"
      */
     fun setConfirmText(@StringRes confirmRes: Int) {
         rootView.tv_confirm.setText(confirmRes)
@@ -90,13 +90,13 @@ class ConfirmSelectDialog(context: Context) : Dialog(context, R.style.InfoDialog
 
     override fun onClick(v: View?) {
         when (v) {
-            rootView.rl_message -> {//选中状态
+            medium
                 rootView.iv_select.isSelected = !rootView.iv_select.isSelected
             }
             rootView.tv_cancel -> {//cancel
                 dismiss()
             }
-            rootView.tv_confirm -> {//确认
+ rootView.tv_confirm -> {//
                 dismiss()
                 onConfirmClickListener?.invoke(rootView.iv_select.isSelected)
             }

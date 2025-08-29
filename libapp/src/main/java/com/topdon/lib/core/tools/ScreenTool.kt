@@ -11,7 +11,7 @@ import kotlin.math.sqrt
 object ScreenTool {
 
     /**
-     * 折叠屏
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun isLandPhone(): Boolean {
         val displayMetrics: DisplayMetrics = Utils.getApp().resources.displayMetrics

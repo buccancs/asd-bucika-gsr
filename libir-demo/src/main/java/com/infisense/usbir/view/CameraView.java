@@ -13,7 +13,7 @@ import android.view.TextureView;
 import com.infisense.iruvc.utils.SynchronizedBitmap;
 
 /**
- * 红外图像展示控件，可以为TextureView或SurfaceView
+ * image
  */
 public class CameraView extends TextureView {
     private String TAG = "CameraView";
@@ -37,7 +37,7 @@ public class CameraView extends TextureView {
      */
     public CameraView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        // 线程中绘制画面
+        // medium
         runnable = new Runnable() {
             @Override
             public void run() {
@@ -60,18 +60,18 @@ public class CameraView extends TextureView {
                                 continue;
 
                             /**
-                             * 图片缩放，这里简单的使用getWidth()作为宽，getHeight()作为高，可能会出现画面拉伸情况，
-                             * 实际使用的时候请参考设备的宽高按照设备的图像尺寸做等比例缩放
+                             * high
+                             * high
                              */
                             Bitmap mScaledBitmap = Bitmap.createScaledBitmap(bitmap, getWidth(), getHeight(), true);
                             canvas.drawBitmap(mScaledBitmap, 0, 0, null);
 
-                            // 画面中心的十字交叉线绘制
-                            Paint paint = new Paint();  //画笔
-                            paint.setStrokeWidth(2);  //settings线宽。单位为像素
-                            paint.setAntiAlias(true); //抗锯齿
-                            paint.setDither(true);    //防抖动
-                            paint.setColor(Color.WHITE);  //画笔颜色
+                            // medium
+ Paint paint = new Paint(); //
+ paint.setStrokeWidth(2); //settings
+ paint.setAntiAlias(true); //
+ paint.setDither(true); //
+ paint.setColor(Color.WHITE); //
 
                             int cross_len = 20;
                             canvas.drawLine(getWidth() / 2 - cross_len, getHeight() / 2,

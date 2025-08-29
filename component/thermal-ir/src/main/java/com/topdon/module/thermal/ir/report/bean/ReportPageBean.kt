@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 /**
- * 从服务器接口返回的，一页report信息.
+ * info
  */
 @Parcelize
 data class ReportPageBean(

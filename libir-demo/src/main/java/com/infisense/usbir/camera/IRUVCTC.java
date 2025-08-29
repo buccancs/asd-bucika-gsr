@@ -35,7 +35,7 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- * @Description: 红外出图核心工具类
+ * class
  * @Author: brilliantzhao
  * @CreateDate: 2022.2.28 15:36
  * @UpdateUser:
@@ -50,7 +50,7 @@ public class IRUVCTC {
     private Context mContext;
     private UVCCamera uvcCamera;
     private IRCMD ircmd;
-    // 机芯温度
+    // temperature
     private int[] curVtemp = new int[1];
     //
     private USBMonitor mUSBMonitor;
@@ -59,26 +59,26 @@ public class IRUVCTC {
     private byte[] imageSrc;
     private byte[] temperatureSrc;
     private SynchronizedBitmap syncimage;
-    // 设备PID白名单
+ // PID
     private int pids[] = {0x5840, 0x3901, 0x5830, 0x5838};
     private boolean auto_gain_switch = false;
     private boolean auto_over_portect = false;
     private LibIRProcess.AutoGainSwitchInfo_t auto_gain_switch_info = new LibIRProcess.AutoGainSwitchInfo_t();
     private LibIRProcess.GainSwitchParam_t gain_switch_param = new LibIRProcess.GainSwitchParam_t();
-    // 帧率展示
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private int count = 0;
     private long timestart = 0;
     private double fps = 0;
     //
     private Handler mHandler;
     private int rotate = 0;
-    // 是否使用IRISP算法集成
+ // IRISP
     private boolean isUseIRISP;
-    // 判断数据是否准备完毕，在准备完毕之前，画面可能会出现不正常
+    // data
     private boolean isFrameReady = true;
-    // 当前的增益状态
+    // [Technical comment in Chinese - content removed for ASCII compatibility]
     private CommonParams.GainStatus gainStatus = CommonParams.GainStatus.HIGH_GAIN;
-    // 模组支持的高低增益mode
+    // high
     private CommonParams.GainMode gainMode = CommonParams.GainMode.GAIN_MODE_HIGH;
     private short[] nuc_table_high = new short[8192];
     private short[] nuc_table_low = new short[8192];
@@ -106,7 +106,7 @@ public class IRUVCTC {
         this.isUseIRISP = isUseIRISP;
         //
         init(cameraWidth, cameraHeight);
-        // 注意：USBMonitor的所有回调函数都是运行在线程中的
+        // medium
         mUSBMonitor = new USBMonitor(context, new USBMonitor.OnDeviceConnectListener() {
 
             // called by checking usb device
@@ -159,27 +159,27 @@ public class IRUVCTC {
             }
         });
         /**
-         * 同时打开防灼烧和自动增益切换后，如果想修改防灼烧和自动增益切换的触发优先级，可以通过修改下面的触发参数实现
+         * [Technical comment in Chinese - content removed for ASCII compatibility]
          */
-        // 自动增益切换参数auto gain switch parameter
-        gain_switch_param.above_pixel_prop = 0.1f;    //用于high -> low gain,设备像素总面积的百分比
-        gain_switch_param.above_temp_data = (int) ((130 + 273.15) * 16 * 4); //用于high -> low gain,高增益向低增益切换的触发温度
-        gain_switch_param.below_pixel_prop = 0.95f;   //用于low -> high gain,设备像素总面积的百分比
-        gain_switch_param.below_temp_data = (int) ((110 + 273.15) * 16 * 4);//用于low -> high gain,低增益向高增益切换的触发温度
-        auto_gain_switch_info.switch_frame_cnt = 5 * 15; //连续满足触发条件帧数超过该阈值会触发自动增益切换(假设出图速度为15帧每秒，则5 * 15大概为5秒)
-        auto_gain_switch_info.waiting_frame_cnt = 7 * 15;//触发自动增益切换之后，会间隔该阈值的帧数不进行增益切换监测(假设出图速度为15帧每秒，则7 * 15大概为7秒)
-        // 防灼烧参数over_portect parameter
-        int low_gain_over_temp_data = (int) ((550 + 273.15) * 16 * 4); //低增益下触发防灼烧的温度(高温测试550°C)
-        int high_gain_over_temp_data = (int) ((100 + 273.15) * 16 * 4); //高增益下触发防灼烧的温度(低温测试100°C)
-        float pixel_above_prop = 0.02f;//设备像素总面积的百分比
-        int switch_frame_cnt = 7 * 15;//连续满足触发条件超过该阈值会触发防灼烧(假设出图速度为15帧每秒，则7 * 15大概为7秒)
-        int close_frame_cnt = 10 * 15;//触发防灼烧之后，经过该阈值的帧数之后会解除防灼烧(假设出图速度为15帧每秒，则10 * 15大概为10秒)
-        // 设备出图回调
+ // auto gain switch parameter
+ gain_switch_param.above_pixel_prop = 0.1f; //high -> low gain,
+        temperature
+ gain_switch_param.below_pixel_prop = 0.95f; //low -> high gain,
+        temperature
+ auto_gain_switch_info.switch_frame_cnt = 5 * 15; //(155 * 155)
+ auto_gain_switch_info.waiting_frame_cnt = 7 * 15;//(157 * 157)
+ // over_portect parameter
+        temperature
+        temperature
+ float pixel_above_prop = 0.02f;//
+ int switch_frame_cnt = 7 * 15;//(157 * 157)
+ int close_frame_cnt = 10 * 15;//(1510 * 1510)
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         iFrameCallback = frame -> {
             if (!isFrameReady) {
                 return;
             }
-            // 帧率展示
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             count++;
             if (count == 100) {
                 count = 0;
@@ -195,7 +195,7 @@ public class IRUVCTC {
             if (syncimage == null) return;
             syncimage.start = true;
             synchronized (syncimage.dataLock) {
-                // 判断坏帧，出现坏帧则重启sensor
+ // sensor
                 int length = frame.length - 1;
                 if (frame[length] == 1) {
                     // bad frame
@@ -205,15 +205,15 @@ public class IRUVCTC {
                     return;
                 }
                 if ((dataFlowMode == CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT) || isUseIRISP && (dataFlowMode == CommonParams.DataFlowMode.TEMP_OUTPUT)) {
-                    //图像+温度
+                    // temperature
                     /**
-                     * copy红外数据到image数组中
-                     * 出图的frame数组中前半部分是红外数据，后半部分是温度数据，
-                     * 例如256*384分辨率的设备，前面的256*192是红外数据，后面的256*192是温度数据，
-                     * 其中的数据是旋转90度的，需要旋转回来。
+                     * medium
+                     * temperature
+                     * temperature
+                     * medium
                      */
                     System.arraycopy(frame, 0, imageSrc, 0, length / 2);
-                    //=== 画面旋转，温度数据需要跟着旋转
+                    // temperature
                     LibIRProcess.ImageRes_t imageRes = new LibIRProcess.ImageRes_t();
                     imageRes.height = (char) cameraHeight;
                     imageRes.width = (char) cameraWidth;
@@ -238,19 +238,19 @@ public class IRUVCTC {
                         System.arraycopy(frame, length / 2, temperatureSrc, 0, length / 2);
                     }
 
-                    // 自动增益切换，不生效的话请您的设备是否支持自动增益切换
+                    // [Technical comment in Chinese - content removed for ASCII compatibility]
                     if (auto_gain_switch) {
                         ircmd.autoGainSwitch(temperatureSrc, imageRes, auto_gain_switch_info, gain_switch_param, null);
                     }
-                    // 防灼烧保护
+                    // [Technical comment in Chinese - content removed for ASCII compatibility]
                     if (auto_over_portect) {
                         ircmd.avoidOverexposure(temperatureSrc, imageRes, low_gain_over_temp_data, high_gain_over_temp_data, pixel_above_prop, switch_frame_cnt, close_frame_cnt, null);
                     }
                 } else if (!isUseIRISP && (dataFlowMode == CommonParams.DataFlowMode.IMAGE_OUTPUT)) {
-                    //图像
+                    // image
                     System.arraycopy(frame, 0, imageSrc, 0, length);
                 } else if (!isUseIRISP && (dataFlowMode == CommonParams.DataFlowMode.TEMP_OUTPUT)) {
-                    //温度    数据拷贝到image中查看效果
+                    // temperature
                     System.arraycopy(frame, 0, imageSrc, 0, length);
                 }
             }
@@ -293,7 +293,7 @@ public class IRUVCTC {
     }
 
     /**
-     * 判断是否是红外设备，请把您的设备的PID添加进设备PID白名单
+     * add
      *
      * @param devpid
      * @return
@@ -313,9 +313,9 @@ public class IRUVCTC {
         Log.w(TAG, "init");
         // UVCCamera init
         /**
-         * cameraWidth:256,cameraHeight:384,图像+温度
-         * cameraWidth:256,cameraHeight:192,图像
-         * cameraWidth:256,cameraHeight:192,(调用startY16ModePreview，传入Y16_MODE_TEMPERATURE)温度
+         * temperature
+         * image
+         * temperature
          */
         ConcreateUVCBuilder concreateUVCBuilder = new ConcreateUVCBuilder();
         uvcCamera = concreateUVCBuilder
@@ -404,10 +404,10 @@ public class IRUVCTC {
         if (uvcCamera == null) {
             init(cameraWidth, cameraHeight);
         }
-        // 对于p2来说，复合出图需要settings帧率为25,单独出图帧率仍为25
+ // p2settings25,25
         int DEFAULT_PREVIEW_MIN_FPS = 1;
         int DEFAULT_PREVIEW_MAX_FPS = 50;
-        // uvc开启
+ // uvc
         uvcCamera.openUVCCamera(ctrlBlock, DEFAULT_PREVIEW_MIN_FPS, DEFAULT_PREVIEW_MAX_FPS);
     }
 
@@ -419,7 +419,7 @@ public class IRUVCTC {
        if (uvcCamera!=null){
            uvcCamera.setOpenStatus(true);
            uvcCamera.setFrameCallback(iFrameCallback);
-           // 使用ISP算法
+ // ISP
            if (isUseIRISP) {
                initIRISP();
            } else {
@@ -448,26 +448,26 @@ public class IRUVCTC {
     }
 
     /**
-     * 使用IRISP算法之后，需要初始化参数传递进去
-     * 里面有耗时操作，需要等待执行完
+ * IRISP
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private void initIRISP() {
-        // 获取机芯温度,需要上传到UVC(探测器的温度不会突变，5s上传一次即可)
+        // temperature
         ircmd.getCurrentVTemperature(curVtemp);
-        // 传递机芯温度给UVC,实现数据流和命令流的分离
+        // temperature
         uvcCamera.setCurVTemp(curVtemp[0]);
         Log.i(TAG, "ktbt_init->CurVTemp=" + curVtemp[0]);
 
         /**
-         * 初始化参数
-         * 应该把高低增益都传递进去，然后根据需要来决定使用高增益还是低增益
+         * [Technical comment in Chinese - content removed for ASCII compatibility]
+         * high
          */
         uvcCamera.initIRISPModule();
-        // 初始化之后可以自定义环境修正参数
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         uvcCamera.setEnvCorrectParams(16384, 16384, 300 * 16, 300 * 16);
 
 
-        // settings当前的增益装填，不settings则默认为高增益
+        // high
         uvcCamera.setGainStatus(gainStatus);
 
         //
@@ -478,9 +478,9 @@ public class IRUVCTC {
         if (ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
-            Toast.makeText(activity, "申请权限", Toast.LENGTH_SHORT).show();
+ Toast.makeText(activity, "", Toast.LENGTH_SHORT).show();
 
-            // 申请 相机 麦克风权限
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             ActivityCompat.requestPermissions(activity, new String[]{
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
@@ -491,7 +491,7 @@ public class IRUVCTC {
      *
      */
     public void getIRISPfParamData() {
-        // 是否使用保存下来的数据，方便测试查看效果和验证问题
+        // save
         boolean isUseSaveData = false;
         //
         new Thread(new Runnable() {
@@ -501,7 +501,7 @@ public class IRUVCTC {
                 InputStream is = null;
                 try {
                     if (isUseSaveData) {
-                        // 直接从文件中读取
+                        // medium
                         is = am.open("priv_high.bin");
                         int lenth_priv = is.available();
                         priv_high = new byte[lenth_priv];
@@ -510,9 +510,9 @@ public class IRUVCTC {
                         }
                         Log.d(TAG, "read priv file lenth " + lenth_priv);
                     } else {
-                        // 从机芯里面读取，读取之后可以保存起来，下次直接从文件中读取
+                        // medium
                         ircmd.readPrivData(gainMode, priv_high, priv_low);
-                        // 保存数据，方便查看，可按照需要确定是否保存
+                        // save
                         BitmapUtils.saveByteFile(priv_high, "priv_high");
                         BitmapUtils.saveByteFile(priv_low, "priv_low");
                     }
@@ -521,7 +521,7 @@ public class IRUVCTC {
                     }
 
                     if (isUseSaveData) {
-                        // 直接从文件中读取
+                        // medium
                         is = am.open("kt_high.bin");
                         int lenthKt = is.available();
                         byte kt_high_byte[] = new byte[lenthKt];
@@ -531,9 +531,9 @@ public class IRUVCTC {
                         Log.d(TAG, "read kt file lenth " + lenthKt);
                         kt_high = BitmapUtils.toShortArray(kt_high_byte);
                     } else {
-                        // 从机芯里面读取，读取之后可以保存起来，下次直接从文件中读取
+                        // medium
                         ircmd.readKTData(gainMode, kt_high, kt_low);
-                        // 保存数据，方便查看，可按照需要确定是否保存
+                        // save
                         BitmapUtils.saveShortFile(kt_high, "kt_high");
                         BitmapUtils.saveShortFile(kt_low, "kt_low");
                     }
@@ -542,7 +542,7 @@ public class IRUVCTC {
                     }
 
                     if (isUseSaveData) {
-                        // 直接从文件中读取
+                        // medium
                         is = am.open("bt_high.bin");
                         int lenthBt = is.available();
                         byte bt_high_byte[] = new byte[lenthBt];
@@ -556,16 +556,16 @@ public class IRUVCTC {
                             Log.i(TAG, "ktbt_init->bt_data[" + i + "]=" + bt_high_byte[i]);
                         }
                     } else {
-                        // 从机芯里面读取，读取之后可以保存起来，下次直接从文件中读取
+                        // medium
                         ircmd.readBTData(gainMode, bt_high, bt_low);
-                        // 保存数据，方便查看，可按照需要确定是否保存
+                        // save
                         BitmapUtils.saveShortFile(bt_high, "bt_high");
                         BitmapUtils.saveShortFile(bt_low, "bt_low");
                     }
 
 
                     if (isUseSaveData) {
-                        // 直接从文件中读取
+                        // medium
                         is = am.open("nuc_table_high.bin");
                         int lenthNuc = is.available();
                         byte nuc_table_high_byte[] = new byte[lenthNuc];
@@ -575,28 +575,28 @@ public class IRUVCTC {
                         Log.d(TAG, "read nuc_table file lenth " + lenthNuc);
                         nuc_table_high = BitmapUtils.toShortArray(nuc_table_high_byte);
                     } else {
-                        // 根据不同的高低增益加载不同的等效大气透过率表
+                        // high
                         int[] valueGain = new int[1];
                         ircmd.getPropTPDParams(CommonParams.PropTPDParams.TPD_PROP_GAIN_SEL, valueGain);
                         Log.i(TAG, "TPD_PROP_GAIN_SEL=" + valueGain[0]);
 
                         if (valueGain[0] == 1) {
-                            // 当前机芯为高增益
+                            // high
                             gainStatus = CommonParams.GainStatus.HIGH_GAIN;
                         } else {
-                            // 当前机芯为低增益
+                            // low
                             gainStatus = CommonParams.GainStatus.LOW_GAIN;
                         }
-                        // 从机芯里面读取，读取之后可以保存起来，下次直接从文件中读取
+                        // medium
                         ircmd.readNucTableFromFlash(gainMode, nuc_table_high, nuc_table_low);
-                        // 获取nuc_table表数据
+                        // data
                         for (int i = 4000; i < 5000; i += 100) {
                             Log.i(TAG, "ktbt_init->nuc_table_high[" + i + "]=" + nuc_table_high[i]);
                         }
                         for (int i = 4000; i < 5000; i += 100) {
                             Log.i(TAG, "ktbt_init->nuc_table_low[" + i + "]=" + nuc_table_low[i]);
                         }
-                        // 保存数据，方便查看，可按照需要确定是否保存
+                        // save
                         BitmapUtils.saveShortFile(nuc_table_high, "nuc_table_high");
                         BitmapUtils.saveShortFile(nuc_table_low, "nuc_table_low");
                     }

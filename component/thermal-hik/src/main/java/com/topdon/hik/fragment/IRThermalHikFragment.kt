@@ -15,7 +15,7 @@ import com.topdon.module.thermal.ir.repository.ConfigRepository
 import kotlinx.coroutines.launch
 
 /**
- * 海康出图 Fragment.
+ * Fragment.
  *
  * Created by LCG on 2025/1/14.
  */
@@ -28,35 +28,35 @@ class IRThermalHikFragment : BaseBindingFragment<FragmentIrThermalHikBinding>() 
             binding.hikSurfaceView.refresh(yuvArray, tempArray)
         }
         HikHelper.onTimeoutListener = {
-            // TODO: 跟进超时弹框逻辑
+ // TODO: 
             TipDialog.Builder(requireContext())
-                .setMessage("机芯出了毛病，5秒了没个回调过来")
+ .setMessage("5")
                 .setPositiveListener(R.string.app_got_it) {
                     activity?.finish()
                 }
                 .create().show()
         }
         HikHelper.onReadyListener = {
-            //thermal imaging机芯相关参数初始化
+ //thermal imaging
             lifecycleScope.launch {
-                //自动快门强制打开；
-                //对比度、锐度强制使用默认值；
-                //房屋检测时pseudo color跟随settings，温度监控、锅盖calibrationpseudo color强制使用铁红
-                //high low temperature level由于历史遗留，TC001那些都是没有重置的，这里保持一致，也不去重置
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
+                // temperature
+ //high low temperature levelTC001
 
                 HikHelper.initConfig()
                 HikHelper.setAutoShutter(true)
-                HikHelper.setContrast(50) //使用默认对比度
-                HikHelper.setEnhanceLevel(50) //使用默认细节增强等级
+ HikHelper.setContrast(50) //
+ HikHelper.setEnhanceLevel(50) //
 
                 val config: DataBean = ConfigRepository.readConfig(false)
-                HikHelper.setEmissivity((config.radiation * 100).toInt()) //应用发射率
+                emissivity
                 HikHelper.setDistance((config.distance * 100).toInt().coerceAtLeast(30))
             }
         }
 
         val saveSetBean = SaveSettingBean()
-        binding.hikSurfaceView.setPseudoCode(saveSetBean.pseudoColorMode) //图片拾取pseudo color跟随保存settings开关
+        save
     }
 
     override fun onResume() {

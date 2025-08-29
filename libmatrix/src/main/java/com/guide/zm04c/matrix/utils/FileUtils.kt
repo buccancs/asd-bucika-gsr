@@ -10,7 +10,7 @@ import java.io.*
 
 
 /**
- * created by liuhongwei gd02527 on 2018年08月29日
+ * created by liuhongwei gd02527 on 20180829
  */
 class FileUtils {
 
@@ -29,14 +29,14 @@ class FileUtils {
 
 
         /**
-         * delete文件夹以及目录下的文件
-         * @param   filePath 被delete目录的文件路径
-         * @return  目录delete成功返回true，否则返回false
+ * delete
+ * @param filePath delete
+ * @return deletetruefalse
          */
         fun deleteDirectory(filePath: String): Boolean {
             var filePath = filePath
             var flag = false
-            //如果filePath不以文件分隔符结尾，自动添加文件分隔符
+            // add
             if (!filePath.endsWith(File.separator)) {
                 filePath = filePath + File.separator
             }
@@ -46,20 +46,20 @@ class FileUtils {
             }
             flag = true
             val files = dirFile.listFiles()
-            //遍历delete文件夹下的所有文件(包括子目录)
+ //delete()
             for (i in files.indices) {
                 if (files[i].isFile) {
-                    //delete子文件
+ //delete
                     flag = deleteFile(files[i].absolutePath)
                     if (!flag) break
                 } else {
-                    //delete子目录
+ //delete
                     flag = deleteDirectory(files[i].absolutePath)
                     if (!flag) break
                 }
             }
             return if (!flag) false else dirFile.delete()
-            //delete当前空目录
+ //delete
         }
 
         fun deleteFile(path: String): Boolean {
@@ -89,11 +89,11 @@ class FileUtils {
 
 
         fun appFile(data: ByteArray, filePath: String) {
-            // 打开一个随机访问文件流，按读写方式
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             var randomFile = RandomAccessFile(filePath, "rw")
-            // 文件长度，字节数
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             var fileLength = randomFile.length()
-            //将写文件指针移到文件尾。
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             randomFile.seek(fileLength);
             randomFile.write(data);
 
@@ -130,7 +130,7 @@ class FileUtils {
         }
 
         /**
-         * 保存Bitmap为JPG文件
+         * save
          *
          * @param bmp
          * @param filePath
@@ -168,10 +168,10 @@ class FileUtils {
         }
 
         /**
-         * 旋转Bitmap
+ * Bitmap
          *
-         * @param srcBitmap    源Bitmap
-         * @param rotateDegree 旋转angle
+ * @param srcBitmap Bitmap
+         * rotation angle
          * @return
          */
         fun rotateBitmap(srcBitmap: Bitmap, rotateDegree: Float): Bitmap? {
@@ -235,7 +235,7 @@ class FileUtils {
                         if (imagePath.contains(".jpg")) {
                             var rotate = 0
                             val exif = ExifInterface(imagePath)
-                            //获取方向信息
+                            // info
                             val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED)
 
                             when (orientation) {
@@ -267,7 +267,7 @@ class FileUtils {
         }
 
         fun readFile2ByteArr(filePath: String, fileNotFoundErrAction: () -> Unit, ioErrAction: () -> Unit): ByteArray? {
-            // 从文件读取
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             var fis: FileInputStream? = null
             val inFile = File(filePath)
             val buffer: ByteArray?
@@ -308,7 +308,7 @@ class FileUtils {
                 }
             } catch (e1: Exception) {
                 e1.printStackTrace()
-                // 捕获异常后尝试读取下一遍
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 try {
                     if (null != inputStream) {
                         byteArr = ByteArray(inputStream.available())

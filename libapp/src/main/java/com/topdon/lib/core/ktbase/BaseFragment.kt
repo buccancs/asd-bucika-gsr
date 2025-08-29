@@ -43,10 +43,10 @@ abstract class BaseFragment : RxFragment() {
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (hidden) {
-            // 不在最前端显示 相当于调用了onPause();
+ // onPause();
 
-        } else {  // 在最前端显示 相当于调用了onResume();
-            //网络数据刷新
+ } else { // onResume();
+            // data
             initData()
         }
     }
@@ -60,11 +60,11 @@ abstract class BaseFragment : RxFragment() {
 
 
     /**
-     * 新版 LMS 风格的加载中弹框.
+     * medium
      */
     private var loadingDialog: LoadingDialog? = null
     /**
-     * 显示 LMS 风格的加载中弹框.
+     * medium
      */
     fun showLoadingDialog(@StringRes resId: Int = 0) {
         if (loadingDialog == null) {
@@ -74,7 +74,7 @@ abstract class BaseFragment : RxFragment() {
         loadingDialog?.show()
     }
     /**
-     * 显示 LMS 风格的加载中弹框.
+     * medium
      */
     fun showLoadingDialog(text: CharSequence) {
         if (loadingDialog == null) {
@@ -84,7 +84,7 @@ abstract class BaseFragment : RxFragment() {
         loadingDialog?.show()
     }
     /**
-     * 关闭 LMS 风格的加载中弹框.
+     * medium
      */
     fun dismissLoadingDialog() {
         loadingDialog?.dismiss()

@@ -16,7 +16,7 @@ import java.io.*
 object ImageUtils {
 
     /**
-     * 生成图片report时存在缓存目录下的临时图片文件.
+ * report.
      */
     fun saveToCache(context: Context, bitmap: Bitmap): String {
         val cacheFile = context.externalCacheDir ?: context.cacheDir
@@ -26,11 +26,11 @@ object ImageUtils {
     }
 
     /**
-     * 保存图片到 图库/APP名称 下，文件名称为 APP名称_时间戳.jpg
-     * 这里是thermal imagingphoto 和 2D编辑 的图片.
+     * gallery
+     * edit
      */
     fun save(bitmap: Bitmap, isTC007: Boolean = false): String {
-        // 存储目录，用户可以自定义
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         val dicName = if (isTC007) "TC007" else CommUtils.getAppName()
         val fileName = "${dicName}_${System.currentTimeMillis()}.jpg"
         val saveFile = ImageUtils.save2Album(bitmap, dicName, Bitmap.CompressFormat.JPEG)
@@ -43,7 +43,7 @@ object ImageUtils {
     }
 
     /**
-     * thermal imagingphoto时，若开始了可见光，原始图像再叠加可见光的图片，虽然有保存，但却没有使用，原因不明
+     * save
      */
     fun saveImageToApp(bitmap: Bitmap): String {
         val saveFile = File(Utils.getApp().cacheDir, "PinP_${System.currentTimeMillis()}.jpg")
@@ -51,7 +51,7 @@ object ImageUtils {
         return saveFile.absolutePath
     }
 
-    //保存lite模组的原始文件
+    // save
     fun saveLiteFrame(bs: ByteArray, capital: ByteArray,nuct : ByteArray, name: String) {
         try {
             val dir = lineIrGalleryDir
@@ -59,13 +59,13 @@ object ImageUtils {
             val fileName = "${name}.ir"
             val file = File(galleryPath, fileName)
             file.writeBytes(capital.plus(bs))
-            Log.w("保存帧数据:",file.absolutePath)
+            save
         }catch (e: Exception) {
-            XLog.e("一帧图像保存异常: ${e.message}")
+            save
         }
     }
 
-    //保存原始文件
+    // save
     fun saveFrame(bs: ByteArray, capital: ByteArray, name: String) {
         try {
             val dir = lineIrGalleryDir
@@ -73,14 +73,14 @@ object ImageUtils {
             val fileName = "${name}.ir"
             val file = File(galleryPath, fileName)
             file.writeBytes(capital.plus(bs))
-            Log.w("保存帧数据:",file.absolutePath)
+            save
         }catch (e: Exception) {
-            XLog.e("一帧图像保存异常: ${e.message}")
+            save
         }
     }
 
     /**
-     * 保存一帧的argb数据
+     * save
      */
     fun saveOneFrameAGRB(bs: ByteArray, name: String) {
         try {
@@ -90,7 +90,7 @@ object ImageUtils {
             val file = File(galleryPath, fileName)
             file.writeBytes(bs)
         }catch (e: Exception) {
-            XLog.e("一帧图像保存异常: ${e.message}")
+            save
         }
     }
 }

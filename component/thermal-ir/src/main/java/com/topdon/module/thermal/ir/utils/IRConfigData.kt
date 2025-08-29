@@ -23,7 +23,7 @@ data class IRConfigData(val name: String, val value: String) {
         )
 
         /**
-         * 根据指定的发射率，拼接与该发射率对应的材料文字并返回.
+         * emissivity
          */
         fun getTextByEmissivity(context: Context, emissivity: Float): String {
             val stringBuilder = StringBuilder()

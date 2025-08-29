@@ -6,35 +6,35 @@ package com.topdon.ble.util;
  */
 public interface Logger {
     /**
-     * 一般的
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int TYPE_GENERAL = 0;
     /**
-     * 搜索状态
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int TYPE_SCAN_STATE = 1;
     /**
-     * 连接状态
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int TYPE_CONNECTION_STATE = 2;
     /**
-     * 读特征
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int TYPE_CHARACTERISTIC_READ = 3;
     /**
-     * 特征值变化
+     * change
      */
     int TYPE_CHARACTERISTIC_CHANGED = 4;
     /**
-     * 信号强度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int TYPE_READ_REMOTE_RSSI = 5;
     /**
-     * 最大传输单元变化
+     * change
      */
     int TYPE_MTU_CHANGED = 6;
     /**
-     * 请求失败
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int TYPE_REQUEST_FAILED = 7;
     int TYPE_DESCRIPTOR_READ = 8;
@@ -44,31 +44,31 @@ public interface Logger {
     int TYPE_PHY_CHANGE = 12;
 
     /**
-     * 打印日志
+     * log
      *
-     * @param priority 日志级别。{@link android.util.Log#DEBUG}等
-     * @param type     日志type。{@link #TYPE_CONNECTION_STATE}等
-     * @param msg      日志内容
+     * level
+     * log
+     * log
      */
     void log(int priority, int type, String msg);
 
     /**
-     * 打印日志
+     * log
      *
-     * @param priority 日志级别。{@link android.util.Log#DEBUG}等
-     * @param type     日志type。{@link #TYPE_CONNECTION_STATE}等
-     * @param msg      日志内容
-     * @param th       异常
+     * level
+     * log
+     * log
+ * @param th 
      */
     void log(int priority, int type, String msg, Throwable th);
     
     /**
-     * 日志输出控制
+     * log
      */
     void setEnabled(boolean isEnabled);
 
     /**
-     * 日志输出是否使能
+     * log
      */
     boolean isEnabled();
 }

@@ -12,7 +12,7 @@ import com.topdon.module.thermal.ir.activity.IRMainActivity
 import com.topdon.tc001.app.App
 
 /**
- * des:usb识别的之后进行界面中转，所有的设备中转逻辑可参考次界面
+ * medium
  * author: CaiSongL
  * date: 2024/3/25 16:50
  **/

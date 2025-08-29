@@ -33,8 +33,8 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
     private static final String TAG = "BaseTemperatureView";
 
     /**
-     * 绘制的中心点距离边界最小距离
-     * 用于判断手势移动超出边界
+     * distance
+     * move
      */
     private final static int BORDER_PX = 8;
 
@@ -57,32 +57,32 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
     private Object mCanvasLock = new Object();
 
-    private float mFirstX;//手指按下x坐标，相对父布局
-    private float mFirstY;//手指按下y坐标，相对父布局
+ private float mFirstX;//x
+ private float mFirstY;//y
 
-    private float mCurX;//当前手指x坐标，相对父布局
-    private float mCurY;//当前手指y坐标，相对父布局
+ private float mCurX;//x
+ private float mCurY;//y
 
-    private float mRawX;//当前手指x坐标，相对屏幕
-    private float mRawY;//当前手指y坐标，相对屏幕
+ private float mRawX;//x
+ private float mRawY;//y
 
-    private float mDistanceX;//当前手指距离上个点滑动的x轴距离
-    private float mDistanceY;//当前手指距离上个点滑动的y轴距离
+    distance
+    distance
 
     protected int mViewWidth;
     protected int mViewHeight;
 
     /**
-     * 温度数据宽高
+     * temperature
      */
     protected int mTempWidth;
     protected int mTempHeight;
 
-    protected float xScale = 0;//实际渲染与原始图像宽高比
-    protected float yScale = 0;//实际渲染与原始图像宽高比
+    high
+    high
 
     /**
-     * 温度文字绘制相关
+     * temperature
      */
     private int mTextWidth = 110;
     private TextPaint mTextPaint;
@@ -102,15 +102,15 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
     //------------------------ public method ------------------------------//
     /**
-     * 开始绘制
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public void start() {
-        mDrawThread = new DrawThread();//创建一个绘图线程
+        create
         mDrawThread.start();
     }
 
     /**
-     * 停止绘制
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public void stop () {
         mDrawThread.isRun = false;
@@ -121,7 +121,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
     }
 
     /**
-     * 恢复绘制
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public void resume() {
         if (mDrawThread != null) {
@@ -130,7 +130,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
     }
 
     /**
-     * 暂停绘制
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public void pause() {
         if (mDrawThread != null) {
@@ -139,14 +139,14 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
     }
 
     /**
-     * 当前settings绘制type, 如点，线，框，圆
+ * settingstype, 
      */
     public void setDrawModel(DrawModel drawModel) {
         this.mDrawModel = drawModel;
     }
 
     /**
-     * 清空画布所有
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public void clearCanvas() {
         pause();
@@ -217,14 +217,14 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                         break;
                     case MotionEvent.ACTION_UP:
                         Log.d(TAG, "onDoubleTapEvent ACTION_UP");
-                        //双击
+                        // [Technical comment in Chinese - content removed for ASCII compatibility]
                         mCurX = e.getX();
                         mCurY = e.getY();
                         mRawX = e.getRawX();
                         mRawY = e.getRawY();
                         Log.d(TAG, "onDoubleTap mCurX : " + mCurX);
                         Log.d(TAG, "onDoubleTap mCurY : " + mCurY);
-                        // 防止数据越界到图像外部
+                        // image
                         if (mCurX < BORDER_PX) {
                             mCurX = BORDER_PX;
                         } else if (mCurX >= mViewWidth) {
@@ -274,7 +274,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
             @Override
             public boolean onDown(MotionEvent e) {
-                //屏幕点下
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 Log.d(TAG, "onDown");
                 pause();
 
@@ -296,7 +296,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                 Log.d(TAG, "onDown mFirstY : " + mFirstY);
                 switch (mDrawModel) {
                     case DRAW_POINT:
-                        //判断当时是否触碰已有的点
+                        // [Technical comment in Chinese - content removed for ASCII compatibility]
                         int indexPointTouch = mPointDraw.checkTouchPointInclude(mFirstX, mFirstY);
                         Log.d(TAG, "indexPointTouch : " + indexPointTouch);
                         if (indexPointTouch != -1) {
@@ -309,7 +309,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                         int indexLineTouch = mLineDraw.checkTouchLineInclude((int)mFirstX, (int)mFirstY);
                         Log.d(TAG, "indexLineTouch : " + indexLineTouch);
                         if (indexLineTouch != -1) {
-                            //判断触碰线的面积
+                            // [Technical comment in Chinese - content removed for ASCII compatibility]
                             mLineDraw.changeTouchLineOperateStatus(mFirstX, mFirstY);
                         } else {
                             mLineDraw.setOperateStatus(LineDraw.OPERATE_STATUS_LINE_ADD);
@@ -331,7 +331,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
             @Override
             public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                //屏幕拖动
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 mCurX = e2.getX();
                 mCurY = e2.getY();
                 mRawX = e2.getRawX();
@@ -340,7 +340,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                 mDistanceX = distanceX;
                 mDistanceY = distanceY;
 
-                // 防止数据越界到图像外部
+                // image
                 if (mCurX < BORDER_PX) {
                     mCurX = BORDER_PX;
                 } else if (mCurX >= mViewWidth) {
@@ -396,7 +396,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                //屏幕点下
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 Log.d(TAG, "onFling");
 
                 return super.onFling(e1, e2, velocityX, velocityY);
@@ -409,7 +409,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
             @Override
             public boolean onSingleTapUp(MotionEvent e) {
-                //屏幕点击后弹起
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 Log.d(TAG, "onSingleTapUp");
 
                 mCurX = e.getX();
@@ -440,14 +440,14 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
             @Override
             public void onLongPress(MotionEvent e) {
-                //屏幕点下 并长按时触发
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 Log.d(TAG, "onLongPress");
                 super.onLongPress(e);
             }
 
             @Override
             public void onShowPress(MotionEvent e) {
-                //屏幕长按
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 Log.d(TAG, "onShowPress");
                 super.onShowPress(e);
             }
@@ -456,7 +456,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        mGestureDetector.onTouchEvent(event); //通知手势识别方法
+ mGestureDetector.onTouchEvent(event); //
         switch (event.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
 
@@ -563,9 +563,9 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
     }
 
     /**
-     * 温度数据处理线程
-     * 通过libirtemp库获取点，线，框的对应最大最小温度，更新数据
-     * 不做绘制
+     * temperature
+     * temperature
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private class TempThread extends Thread {
         public boolean isRun;
@@ -598,7 +598,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
     }
 
     /**
-     * 绘制处理线程
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private class DrawThread extends Thread {
 
@@ -629,7 +629,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
 
     /**
-     * 图形绘制
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private void doShapeDraw() {
         if (mSurfaceHolder == null || !mCanDraw) {
@@ -686,7 +686,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
     }
 
     /**
-     * 绘制手势操作过程
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private void doTouchDraw() {
         if (mSurfaceHolder == null || !mCanDraw) {
@@ -742,7 +742,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
 
     /**
-     * 绘制温度数据
+     * temperature
      * @param context
      * @param screenDegree
      * @param canvas

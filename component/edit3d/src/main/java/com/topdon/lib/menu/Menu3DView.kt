@@ -10,24 +10,24 @@ import com.topdon.lib.core.utils.ScreenUtil
 import kotlinx.android.synthetic.main.view_menu_3d.view.*
 
 /**
- * 3D 编辑的menu.
+ * edit
  */
 class Menu3DView : ConstraintLayout, View.OnClickListener {
 
     /**
-     * 视觉(0-3D、1-俯视、2-左视、3-右视、4-正视) 二级menu切换事件监听.
+     * event
      */
     var onVisualClickListener: ((position: Int) -> Unit)? = null
     /**
-     * calibration(0-自定义、1-高温、2-低温、3-等温、4-delete) 二级menu切换事件监听.
+     * high
      */
     var onMarkClickListener: ((position: Int) -> Unit)? = null
     /**
-     * pseudo color(0-铁红、1-黑红、2-自然、3-岩浆、4-辉金) 二级menu切换事件监听.
+     * event
      */
     var onPseudoClickListener: ((position: Int) -> Unit)? = null
     /**
-     * mode(0-点、1-线、2-面) 二级menu切换事件监听.
+     * event
      */
     var onModeClickListener: ((position: Int) -> Unit)? = null
 
@@ -36,34 +36,34 @@ class Menu3DView : ConstraintLayout, View.OnClickListener {
 
 
     /**
-     * 当前选中的一级menu index.
+     * medium
      */
     private var selectIndex = -1
 
     /**
-     * 视觉(3D、俯视、左视、右视、正视) 二级menuused for Adapter.
+ * (3D) menuused for Adapter.
      */
     private val visualAdapter: MenuAdapter
     /**
-     * calibration(自定义、高温、低温、等温、delete) 二级menuused for Adapter.
+     * high
      */
     private val markAdapter: MenuAdapter
     /**
-     * pseudo color(铁红、黑红、自然、岩浆、辉金) 二级menuused for Adapter.
+ * pseudo color() menuused for Adapter.
      */
     private val pseudoAdapter: MenuAdapter
     /**
-     * mode(点、线、面）二级menuused for Adapter.
+ * mode(）menuused for Adapter.
      */
     private val modeAdapter: MenuAdapter
 
 
     /**
-     * 文字选中时颜色值.
+     * medium
      */
     private val selectColor: Int = 0xffffffff.toInt()
     /**
-     * 文字未选中时颜色值.
+     * medium
      */
     private val defaultColor: Int = 0x66ffffff
 

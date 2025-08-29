@@ -1,7 +1,7 @@
 package com.topdon.lib.core.bean.event
 
 /**
- * TS004 恢复出厂settings成功事件.
+ * event
  *
  * Created by LCG on 2024/4/23.
  */

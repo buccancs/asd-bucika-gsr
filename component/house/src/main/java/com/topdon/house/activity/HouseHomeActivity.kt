@@ -25,10 +25,10 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 /**
- * 房屋检测首页.
+ * home
  *
- * 需要传递参数：
- * - [ExtraKeyConfig.IS_TC007] - 当前设备是否为 TC007（不使用，透传）
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
+ * - [ExtraKeyConfig.IS_TC007] - TC007（）
  *
  * Created by LCG on 2024/8/20.
  */
@@ -80,7 +80,7 @@ class HouseHomeActivity : BaseActivity(), View.OnClickListener {
         view_pager2.adapter = ViewPagerAdapter(this)
         view_pager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                if (position == 0) {//检测
+ if (position == 0) {//
                     iv_edit.isEnabled = !detectViewModel.detectListLD.value.isNullOrEmpty()
                 } else {//report
                     iv_edit.isEnabled = !reportViewModel.reportListLD.value.isNullOrEmpty()
@@ -97,22 +97,22 @@ class HouseHomeActivity : BaseActivity(), View.OnClickListener {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onDetectCreate(event: HouseReportAddEvent) {
-        //有新report被创建时，切到report页
+        // create
         view_pager2.currentItem = 1
     }
 
     override fun onClick(v: View?) {
         when (v) {
             iv_back -> finish()
-            iv_edit -> {//编辑
+            edit
                 tabViewModel.isEditModeLD.value = true
             }
-            iv_add -> {//添加
+            add
                 val newIntent = Intent(this, DetectAddActivity::class.java)
                 newIntent.putExtra(ExtraKeyConfig.IS_TC007, intent.getBooleanExtra(ExtraKeyConfig.IS_TC007, false))
                 startActivity(newIntent)
             }
-            iv_exit_edit -> {//退出编辑
+            edit
                 tabViewModel.isEditModeLD.value = false
             }
         }

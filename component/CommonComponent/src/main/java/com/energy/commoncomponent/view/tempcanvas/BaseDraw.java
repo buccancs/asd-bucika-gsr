@@ -9,11 +9,11 @@ import android.graphics.Canvas;
 public abstract class BaseDraw {
     protected Context mContext;
     /**
-     * 用于线和框最小尺寸判断
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     protected final static int MIN_SIZE_PIX_COUNT = 20;
     protected int mScreenDegree = 0;
-    protected int mTouchIndex = -1;//手势按住已绘制的，进行拖拽
+ protected int mTouchIndex = -1;//
     protected int mViewWidth;
     protected int mViewHeight;
 
@@ -32,7 +32,7 @@ public abstract class BaseDraw {
     abstract void onDraw(Canvas canvas, boolean isScroll);
 
     /**
-     * 获取当前选中点的数组index
+     * medium
      * @return
      */
     public int getTouchInclude() {
@@ -40,7 +40,7 @@ public abstract class BaseDraw {
     }
 
     /**
-     * 手指是否选中了其中一个点
+     * medium
      * @return
      */
     public boolean isTouch() {

@@ -13,14 +13,14 @@ import com.topdon.lib.core.utils.ScreenUtil
 import kotlinx.android.synthetic.main.dialog_color_select.view.*
 
 /**
- * 仅拾取颜色的弹框.
+ * .
  *
  * Created by LCG on 2024/2/2.
  */
 class ColorSelectDialog(context: Context, @ColorInt private var color: Int) : Dialog(context, R.style.InfoDialog) {
 
     /**
-     * 颜色值拾取事件监听.
+     * event
      */
     var onPickListener: ((color: Int) -> Unit)? = null
 

@@ -14,7 +14,7 @@ import androidx.annotation.RequiresApi;
 import java.util.Objects;
 
 /**
- * BLE设备实体类
+ * class
  * <p>
  * date: 2021/8/12 00:08
  * author: bichuanfeng
@@ -94,14 +94,14 @@ public class Device implements Comparable<Device>, Cloneable, Parcelable {
     }
 
     /**
-     * 是否已连接并成功发现服务
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public boolean isConnected() {
         return getConnectionState() == ConnectionState.SERVICE_DISCOVERED;
     }
 
     /**
-     * 是否已断开连接
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public boolean isDisconnected() {
         ConnectionState state = getConnectionState();
@@ -109,7 +109,7 @@ public class Device implements Comparable<Device>, Cloneable, Parcelable {
     }
 
     /**
-     * 是否正在连接
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public boolean isConnecting() {
         ConnectionState state = getConnectionState();

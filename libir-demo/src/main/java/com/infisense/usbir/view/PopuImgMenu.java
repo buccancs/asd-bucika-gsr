@@ -27,12 +27,12 @@ package com.infisense.usbir.view;//package com.infisense.usbir.view;
 //        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 //        popupWindow.setFocusable(true);
 //        popupWindow.setOutsideTouchable(false);
-//        popupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000)); // 解决 7.0 手机，点击外部不消失
+// popupWindow.setBackgroundDrawable(new ColorDrawable(0x00000000)); // 7.0 
 //        popupWindow.setAnimationStyle(R.style.contextMenuAnim);
 //        recyclerView = view.findViewById(R.id.recycler_view);
 //        view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
 //
-//        //创建布局管理
+// create
 //        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 //        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 //        recyclerView.setLayoutManager(layoutManager);

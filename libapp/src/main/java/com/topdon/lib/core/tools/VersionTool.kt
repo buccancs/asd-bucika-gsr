@@ -18,7 +18,7 @@ object VersionTool {
                 str.toFloat()
                 versionStr = str
             } catch (e: Exception) {
-                //str 不是1.01type数据
+                // data
             }
         }
 
@@ -26,7 +26,7 @@ object VersionTool {
     }
 
     /**
-     * 检查是否需要更新最新版本
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun checkNewVersion(serverVersionStr: String, localVersionStr: String): Boolean {
         try {
@@ -35,13 +35,13 @@ object VersionTool {
             return serverV.toFloat() > localV.toFloat()
 //            return serverV.toFloat() != localV.toFloat()
         } catch (e: Exception) {
-            XLog.e("对比固件版本异常: ${e.message}")
+ XLog.e(": ${e.message}")
             return false
         }
     }
 
     /**
-     * 比较app版本大小
+ * app
      */
     fun checkVersion(remoteStr: String, localStr: String): Boolean {
         try {
@@ -60,7 +60,7 @@ object VersionTool {
             }
             return result
         } catch (e: Exception) {
-            XLog.e("版本比较出错: ${e.message}, remoteStr: $remoteStr, localStr: $localStr")
+ XLog.e(": ${e.message}, remoteStr: $remoteStr, localStr: $localStr")
             return false
         }
     }

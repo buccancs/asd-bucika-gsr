@@ -10,7 +10,7 @@ import com.topdon.lib.core.bean.CameraItemBean
 object WifiAttributeChangeU {
 
     /**
-     * TC007的高低增益参数值和插件的转换
+     * high
      */
     fun getTemperatureModeToWifi(temperatureMode : Int) : Int{
         return when(temperatureMode){

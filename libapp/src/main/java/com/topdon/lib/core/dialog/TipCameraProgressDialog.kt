@@ -11,7 +11,7 @@ import com.topdon.lib.core.utils.ScreenUtil
 
 
 /**
- * 提示窗
+ * [Technical comment in Chinese - content removed for ASCII compatibility]
  * create by fylder on 2018/6/15
  **/
 class TipCameraProgressDialog : Dialog {
@@ -55,13 +55,13 @@ class TipCameraProgressDialog : Dialog {
             val lp = dialog!!.window!!.attributes
             val wRatio =
                 if (context!!.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    //竖屏
+                    // [Technical comment in Chinese - content removed for ASCII compatibility]
                     0.52
                 } else {
-                    //横屏
+                    // [Technical comment in Chinese - content removed for ASCII compatibility]
                     0.35
                 }
-            lp.width = (ScreenUtil.getScreenWidth(context!!) * wRatio).toInt() //settings宽度
+ lp.width = (ScreenUtil.getScreenWidth(context!!) * wRatio).toInt() //settings
             dialog!!.window!!.attributes = lp
             dialog!!.setCanceledOnTouchOutside(canceleable)
             dialog!!.setCancelable(canceleable)
@@ -73,7 +73,7 @@ class TipCameraProgressDialog : Dialog {
 
 
     /**
-     * 提交回调
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     interface OnClickListener {
         fun onClick(dialog: DialogInterface)

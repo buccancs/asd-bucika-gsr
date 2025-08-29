@@ -45,11 +45,11 @@ public class SeekBar {
 
     private int indicatorShowMode;
 
-    //进度提示背景的高度，宽度如果是0的话会自适应调整
+    // high
     //Progress prompted the background height, width,
     private int indicatorHeight;
     private int indicatorWidth;
-    //进度提示背景与按钮之间的距离
+    // distance
     //The progress indicates the distance between the background and the button
     private int indicatorMargin;
     private int indicatorDrawableId;
@@ -145,7 +145,7 @@ public class SeekBar {
     }
 
     /**
-     * 初始化进度提示的背景
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private void initBitmap() {
         setIndicatorDrawableId(indicatorDrawableId);
@@ -154,7 +154,7 @@ public class SeekBar {
     }
 
     /**
-     * 计算每个按钮的位置和尺寸
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * Calculates the position and size of each button
      *
      * @param x position x
@@ -193,7 +193,7 @@ public class SeekBar {
     }
 
     /**
-     * 绘制按钮和提示背景和文字
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * Draw buttons and tips for background and text
      *
      * @param canvas Canvas
@@ -216,8 +216,8 @@ public class SeekBar {
 
 
     /**
-     * 绘制按钮
-     * 如果没有图片资源，则绘制默认按钮
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * <p>
      * draw the thumb button
      * If there is no image resource, draw the default button
@@ -233,7 +233,7 @@ public class SeekBar {
     }
 
     /**
-     * 格式化提示文字
+     * formatter
      * format the indicator text
      *
      * @param text2Draw
@@ -355,7 +355,7 @@ public class SeekBar {
     }
 
     /**
-     * 拖动检测
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
      * @return is collide
      */

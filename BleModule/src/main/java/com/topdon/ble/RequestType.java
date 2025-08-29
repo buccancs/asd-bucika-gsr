@@ -1,46 +1,46 @@
 package com.topdon.ble;
 
 /**
- * 请求type
+ * type
  * <p>
  * date: 2019/8/9 22:10
  * author: bichuanfeng
  */
 public enum RequestType {
     /**
-     * 开关通知
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     SET_NOTIFICATION,
     /**
-     * 开关Indication
+ * Indication
      */
     SET_INDICATION,
     /**
-     * 读特征值
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     READ_CHARACTERISTIC,
     /**
-     * 读描述符
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     READ_DESCRIPTOR,
     /**
-     * 读信号强度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     READ_RSSI,
     /**
-     * 写特征值
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     WRITE_CHARACTERISTIC,
     /**
-     * 修改最大传输单元
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     CHANGE_MTU,
     /**
-     * 读物物理层发送器和接收器
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     READ_PHY,
     /**
-     * settings物理层发送器和接收器偏好
+ * settings
      */
     SET_PREFERRED_PHY
 }

@@ -19,7 +19,7 @@ package com.infisense.usbir.camera.temp;//package com.infisense.usbir.camera.tem
 //import java.util.List;
 //
 ///**
-// * 红外出图核心工具类
+// class
 // */
 //public class IRUVCTC {
 //
@@ -34,7 +34,7 @@ package com.infisense.usbir.camera.temp;//package com.infisense.usbir.camera.tem
 //    private byte[] image;
 //    private byte[] temperature;
 //    private SynchronizedBitmap syncimage;
-//    // 设备PID白名单
+// // PID
 //    private int pids[] = {0x5840, 0x3901, 0x5830, 0x5838};
 //    private boolean auto_gain_switch = false;
 //    private boolean auto_over_portect = false;
@@ -56,7 +56,7 @@ package com.infisense.usbir.camera.temp;//package com.infisense.usbir.camera.tem
 //        this.context = context;
 //        this.syncimage = syncimage;
 //        init(cameraHeight, cameraWidth, context);
-//        // 注意：USBMonitor的所有回调函数都是运行在线程中的
+// medium
 //        mUSBMonitor = new USBMonitor(context, new USBMonitor.OnDeviceConnectListener() {
 //
 //            // called by checking usb device
@@ -119,9 +119,9 @@ package com.infisense.usbir.camera.temp;//package com.infisense.usbir.camera.tem
 //        int low_gain_over_temp_data = (int) ((550 + 273.15) * 16 * 4);
 //        int high_gain_over_temp_data = (int) ((100 + 273.15) * 16 * 4);
 //        float pixel_above_prop = 0.02f;         //0-1
-//        // 设备出图回调
+// // 
 //        iFrameCallback = frame -> {
-//            // 测试帧率，可以根据实际需要决定是否保留
+// // 
 //            count++;
 //            if (count == 100) {
 //                count = 0;
@@ -132,7 +132,7 @@ package com.infisense.usbir.camera.temp;//package com.infisense.usbir.camera.tem
 //            syncimage.start = true;
 //            //
 //            synchronized (syncimage.dataLock) {
-//                // 判断坏帧，出现坏帧则重启sensor
+// // sensor
 //                int length = frame.length - 1;
 //                if (frame[length] == 1) {
 //                    if (handler != null)
@@ -141,10 +141,10 @@ package com.infisense.usbir.camera.temp;//package com.infisense.usbir.camera.tem
 //                    return;
 //                }
 //                /**
-//                 * copy红外数据到image数组中
-//                 * 出图的frame数组中前半部分是红外数据，后半部分是温度数据，
-//                 * 例如256*384分辨率的设备，前面的256*192是红外数据，后面的256*192是温度数据，
-//                 * 其中的数据是旋转90度的，需要旋转回来。
+// medium
+// temperature
+// temperature
+// medium
 //                 */
 //                System.arraycopy(frame, 0, image, 0, length / 2);
 //                Libirprocess.ImageRes_t imageRes = new Libirprocess.ImageRes_t();
@@ -169,12 +169,12 @@ package com.infisense.usbir.camera.temp;//package com.infisense.usbir.camera.tem
 //                    // 0
 //                    System.arraycopy(frame, length / 2, temperature, 0, length / 2);
 //                }
-//                // 自动增益切换，不生效的话请您的设备是否支持自动增益切换
+// // 
 //                if (auto_gain_switch) {
 //                    Libircmd.auto_gain_switch(temperature, imageRes, auto_gain_switch_info,
 //                            gain_switch_param, uvcCamera.nativePtr);
 //                }
-//                // 防灼烧保护
+// // 
 //                if (auto_over_portect) {
 //                    Libircmd.avoid_overexposure(temperature, imageRes, low_gain_over_temp_data,
 //                            high_gain_over_temp_data, pixel_above_prop, 15 * 25, uvcCamera.nativePtr);
@@ -212,7 +212,7 @@ package com.infisense.usbir.camera.temp;//package com.infisense.usbir.camera.tem
 //    }
 //
 //    /**
-//     * 判断是否是红外设备，请把您的设备的PID添加进设备PID白名单
+// add
 //     *
 //     * @param devpid
 //     * @return

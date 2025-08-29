@@ -20,14 +20,14 @@ public interface Connection {
     UUID clientCharacteristicConfig = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
 
     /**
-     * 普通请求失败
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int REQUEST_FAIL_TYPE_REQUEST_FAILED = 0;
     int REQUEST_FAIL_TYPE_CHARACTERISTIC_NOT_EXIST = 1;
     int REQUEST_FAIL_TYPE_DESCRIPTOR_NOT_EXIST = 2;
     int REQUEST_FAIL_TYPE_SERVICE_NOT_EXIST = 3;
     /**
-     * 请求结果不是[BluetoothGatt.GATT_SUCCESS]
+ * [BluetoothGatt.GATT_SUCCESS]
      */
     int REQUEST_FAIL_TYPE_GATT_STATUS_FAILED = 4;
     int REQUEST_FAIL_TYPE_GATT_IS_NULL = 5;
@@ -36,24 +36,24 @@ public interface Connection {
     int REQUEST_FAIL_TYPE_CONNECTION_DISCONNECTED = 8;
     int REQUEST_FAIL_TYPE_CONNECTION_RELEASED = 9;
 
-    //----------连接超时type---------
+ //----------type---------
     int TIMEOUT_TYPE_CANNOT_DISCOVER_DEVICE = 0;
     /**
-     * 搜索到设备，但是无法连接成功
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int TIMEOUT_TYPE_CANNOT_CONNECT = 1;
     /**
-     * 连接成功，但是无法发现蓝牙服务，即[BluetoothGattCallback.onServicesDiscovered]不回调
+ * [BluetoothGattCallback.onServicesDiscovered]
      */
     int TIMEOUT_TYPE_CANNOT_DISCOVER_SERVICES = 2;
 
-    //-------------连接失败type-------------------
+ //-------------type-------------------
     /**
-     * 达到最大重连次数限制
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int CONNECT_FAIL_TYPE_MAXIMUM_RECONNECTION = 1;
     /**
-     * 不支持连接
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     int CONNECT_FAIL_TYPE_CONNECTION_IS_UNSUPPORTED = 2;
 
@@ -61,43 +61,43 @@ public interface Connection {
     Device getDevice();
 
     /**
-     * 获取当前settings的最大传输单元
+ * settings
      */
     int getMtu();
 
     /**
-     * 重连
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     void reconnect();
 
     /**
-     * 断开连接
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     void disconnect();
 
     /**
-     * 清理内部缓存并强制刷新蓝牙设备的服务
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     void refresh();
 
     /**
-     * 销毁连接
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     void release();
 
     /**
-     * 销毁连接，不通知观察者
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     void releaseNoEvent();
 
     /**
-     * 获取连接状态
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     @NonNull
     ConnectionState getConnectionState();
 
     /**
-     * 是否开启了自动连接
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     boolean isAutoReconnectEnabled();
 
@@ -105,12 +105,12 @@ public interface Connection {
     BluetoothGatt getGatt();
 
     /**
-     * 清除请求队列，不触发事件
+     * event
      */
     void clearRequestQueue();
 
     /**
-     * 将指定的请求type从队列中移除，如果传null，则清除请求队列，不触发事件
+     * medium
      */
     void clearRequestQueueByType(RequestType type);
 
@@ -127,31 +127,31 @@ public interface Connection {
     BluetoothGattDescriptor getDescriptor(UUID service, UUID characteristic, UUID descriptor);
 
     /**
-     * 执行请求
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     void execute(Request request);
 
     /**
-     * 通知或Indication是否开启
+ * Indication
      */
     boolean isNotificationOrIndicationEnabled(BluetoothGattCharacteristic characteristic);
 
     /**
-     * 通知或Indication是否开启
+ * Indication
      */
     boolean isNotificationOrIndicationEnabled(UUID service, UUID characteristic);
 
     /**
-     * settings原生回调
+ * settings
      */
     void setBluetoothGattCallback(BluetoothGattCallback callback);
 
     /**
-     * 判断特征是否具有某属性
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
-     * @param service        特征所在服务的UUID
-     * @param characteristic 特征的UUID
-     * @param property       需要判断是否存在的属性。{@link BluetoothGattCharacteristic#PROPERTY_WRITE}等
+ * @param service UUID
+ * @param characteristic UUID
+ * @param property {@link BluetoothGattCharacteristic#PROPERTY_WRITE}
      */
     boolean hasProperty(UUID service, UUID characteristic, int property);
 }

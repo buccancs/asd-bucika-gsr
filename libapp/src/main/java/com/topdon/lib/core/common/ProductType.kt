@@ -8,7 +8,7 @@ package com.topdon.lib.core.common
 object ProductType {
 
     /**
-     * 产品名称
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     const val PRODUCT_NAME_TC = "TC001"
     const val PRODUCT_NAME_TS = "TS001"

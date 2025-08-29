@@ -13,7 +13,7 @@ import com.kylecorry.andromeda.core.ui.setCompoundDrawables
 import com.topdon.tc001.R
 
 /**
- * 首页-设备列表-delete设备确认 PopupWindow.
+ * home
  *
  * Created by LCG on 2024/4/24.
  */

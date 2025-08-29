@@ -17,34 +17,34 @@ import java.io.File
 class IRGalleryViewModel : BaseViewModel() {
     companion object {
         /**
-         * 分页加载时 1 页数据的条数
+         * data
          */
         const val PAGE_COUNT = 20
     }
 
     /**
-     * 未掺杂日期标题的原始数据列表.
+     * data
      */
     val sourceListLD: MutableLiveData<ArrayList<GalleryBean>> = MutableLiveData()
     /**
-     * 添加了日期标题的用于显示的列表.
+     * add
      */
     val showListLD: MutableLiveData<ArrayList<GalleryBean>> = MutableLiveData()
 
     /**
-     * 仅供生成report使用的，加载所有插件式设备图片.
+ * report.
      */
     fun queryAllReportImg(dirType: GalleryRepository.DirType) {
         viewModelScope.launch(Dispatchers.IO) {
             val sourceList: ArrayList<GalleryBean> = GalleryRepository.loadAllReportImg(dirType)
             sourceListLD.postValue(sourceList)
 
-            //插入日期 item
+ // item
             val showList: ArrayList<GalleryBean> = ArrayList(sourceList.size)
             var beforeTime = 0L
             for (galleryBean in sourceList) {
                 val currentTime = TimeTool.timeToMinute(galleryBean.timeMillis, 4)
-                if (beforeTime != currentTime) {//新的日期
+ if (beforeTime != currentTime) {//
                     showList.add(GalleryTitle(galleryBean.timeMillis))
                     beforeTime = currentTime
                 }
@@ -55,12 +55,12 @@ class IRGalleryViewModel : BaseViewModel() {
     }
 
     /**
-     * 分页加载时已成功加载的页数
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     var hasLoadPage = 0
     /**
-     * 一页请求数据列表.
-     * null-请求失败
+     * data
+ * null-
      */
     val pageListLD: MutableLiveData<ArrayList<GalleryBean>?> = MutableLiveData()
 
@@ -76,11 +76,11 @@ class IRGalleryViewModel : BaseViewModel() {
                     hasLoadPage++
                 }
 
-                //插入日期 item
+ // item
                 var beforeTime = if (sourceList.isEmpty()) 0 else TimeTool.timeToMinute(sourceList.last().timeMillis, 4)
                 for (galleryBean in pageList) {
                     val currentTime = TimeTool.timeToMinute(galleryBean.timeMillis, 4)
-                    if (beforeTime != currentTime) {//新的日期
+ if (beforeTime != currentTime) {//
                         showList.add(GalleryTitle(galleryBean.timeMillis))
                         beforeTime = currentTime
                     }
@@ -99,7 +99,7 @@ class IRGalleryViewModel : BaseViewModel() {
 
 
     /**
-     * 批量delete文件结果.
+ * delete.
      */
     val deleteResultLD: MutableLiveData<Boolean> = MutableLiveData()
 

@@ -20,33 +20,33 @@ import kotlinx.coroutines.delay
 import java.io.File
 
 /**
- * 收发机芯指令的工具类.
+ * class
  *
- * 海康 SDK 的 API 写得又臭又长，全都放一个类里的话一大坨的东西找不到重点，
- * 用这个类把这些又臭又长的代码装起来。
+ * class
+ * class
  *
  * Created by LCG on 2024/11/19.
  */
 object HikCmdUtil {
     /**
-     * 仅用于日志输出
+     * log
      */
     private const val TAG = "HikCmd"
 
 
     /**
-     * 执行初始化.
+ * .
      */
     fun init(): Boolean = if (JavaInterface.getInstance().USB_Init()) {
-        XLog.i("$TAG init() 初始化成功")
+ XLog.i("$TAG init() ")
         true
     } else {
-        XLog.e("$TAG init() 初始化失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG init() ${JavaInterface.getInstance().USB_GetLastError()}")
         false
     }
 
     /**
-     * settings日志文件存放的目录，注意，目录.
+     * log
      */
     fun setLogPath(logFile: File?) {
         if (logFile != null) {
@@ -55,159 +55,159 @@ object HikCmdUtil {
     }
 
     /**
-     * 登录并返回 userId.
-     * @return 若登录失败则返回 [JavaInterface.USB_INVALID_USER_ID]
+ * userId.
+ * @return [JavaInterface.USB_INVALID_USER_ID]
      */
     fun login(context: Context): Int {
-        //获取设备数量
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         val deviceCount: Int = JavaInterface.getInstance().USB_GetDeviceCount(context)
         if (deviceCount < 0) {
-            XLog.e("$TAG login() 获取设备数量失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG login() ${JavaInterface.getInstance().USB_GetLastError()}")
             return JavaInterface.USB_INVALID_USER_ID
         }
         if (deviceCount == 0) {
-            XLog.e("$TAG login() target设备未连接！")
+ XLog.e("$TAG login() target")
             return JavaInterface.USB_INVALID_USER_ID
         }
 
-        //获取设备信息
+        // info
         val deviceInfoArray: Array<USB_DEVICE_INFO> = Array(JavaInterface.MAX_DEVICE_NUM) {
             USB_DEVICE_INFO()
         }
         if (!JavaInterface.getInstance().USB_EnumDevices(deviceCount, deviceInfoArray)) {
-            XLog.e("$TAG login() 获取设备信息失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+            info
             return JavaInterface.USB_INVALID_USER_ID
         }
 
         val loginInfo = USB_USER_LOGIN_INFO()
-        loginInfo.dwTimeout = 5000 //超时时间
+        time
         loginInfo.dwDevIndex = deviceInfoArray[0].dwIndex
         loginInfo.dwVID = deviceInfoArray[0].dwVID
         loginInfo.dwPID = deviceInfoArray[0].dwPID
         loginInfo.dwFd = deviceInfoArray[0].dwFd
         val userId: Int = JavaInterface.getInstance().USB_Login(loginInfo, USB_DEVICE_REG_RES())
         if (userId == JavaInterface.USB_INVALID_USER_ID) {
-            XLog.e("$TAG login() 登录失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG login() ${JavaInterface.getInstance().USB_GetLastError()}")
         } else {
-            XLog.i("$TAG login() 登录成功")
+ XLog.i("$TAG login() ")
         }
         return userId
     }
 
     /**
-     * 重置一些配置：开启细节增强、重置pseudo color为白热、码流不叠加温度图像、横屏、不mirror.
+     * temperature
      */
     suspend fun initConfig(userId: Int) {
-        //开启细节增强、重置pseudo color为白热
+ //pseudo color
         val imageParam = USB_IMAGE_ENHANCEMENT()
         if (JavaInterface.getInstance().USB_GetImageEnhancement(userId, imageParam)) {
             if (imageParam.byLSEDetailEnabled != 1.toByte() || imageParam.byPaletteMode != 1.toByte()) {
-                XLog.i("$TAG initConfig() 开启细节增强、重置pseudo color(白热)")
-                //1-白热 2-黑热 10-融合1 11-彩虹 12-融合2 13-铁红1 14-铁红2 15-深褐色
-                //16-色彩1 17-色彩2 18-冰火 19-雨 20-红热 21-绿热 22-深蓝
+ XLog.i("$TAG initConfig() pseudo color()")
+ //1- 2- 10-1 11- 12-2 13-1 14-2 15-
+ //16-1 17-2 18- 19- 20- 21- 22-
                 imageParam.byPaletteMode = 1
-                imageParam.byLSEDetailEnabled = 1 //0-关闭 1-开启
+ imageParam.byLSEDetailEnabled = 1 //0- 1-
                 if (JavaInterface.getInstance().USB_SetImageEnhancement(userId, imageParam)) {
                     checkCommandState(userId) {
-                        XLog.v("$TAG initConfig() settings图像增强参数 $it")
+                        image
                     }
                 } else {
-                    XLog.e("$TAG initConfig() settings图像增强参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+                    image
                 }
             }
         } else {
-            XLog.e("$TAG initConfig() 获取图像增强参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+            image
         }
 
-        //码流不叠加温度图像
+        // temperature
         val basicTempParam = USB_THERMOMETRY_BASIC_PARAM()
         if (JavaInterface.getInstance().USB_GetThermometryBasicParam(userId, basicTempParam)) {
             if (basicTempParam.byThermometryStreamOverlay != 1.toByte()) {
-                XLog.i("$TAG initConfig() settings码流不叠加温度图像")
-                basicTempParam.byThermometryStreamOverlay = 1 //2-叠加 1-不叠加
+                temperature
+ basicTempParam.byThermometryStreamOverlay = 1 //2- 1-
                 if (JavaInterface.getInstance().USB_SetThermometryBasicParam(userId, basicTempParam)) {
                     checkCommandState(userId) {
-                        XLog.v("$TAG initConfig() settings测温基本参数 $it")
+ XLog.v("$TAG initConfig() settings $it")
                     }
                 } else {
-                    XLog.e("$TAG initConfig() settings测温基本参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG initConfig() settings${JavaInterface.getInstance().USB_GetLastError()}")
                 }
             }
         } else {
-            XLog.e("$TAG initConfig() 获取测温基本参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG initConfig() ${JavaInterface.getInstance().USB_GetLastError()}")
         }
     }
 
 
     /**
-     * 手动快门
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     fun shutter(userId: Int) {
         JavaInterface.getInstance().USB_SetImageManualCorrect(userId)
     }
 
     /**
-     * 开启关闭自动快门
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     suspend fun setAutoShutter(userId: Int, isAutoShutter: Boolean) {
-        XLog.i("$TAG setAutoShutter() ${if (isAutoShutter) "开启" else "关闭"} 自动快门")
+ XLog.i("$TAG setAutoShutter() ${if (isAutoShutter) "" else ""} ")
         val param = USB_SYSTEM_SERIAL_DATA_TRANSMISSION()
-        param.byMode = 2 //0-保留 1-读 2-写
+ param.byMode = 2 //0- 1- 2-
         param.wDeviceCMDFlag = 0
-        param.dwDeviceCMD = 0x2001 //命令 code
+ param.dwDeviceCMD = 0x2001 // code
         param.dwValue = if (isAutoShutter) 1 else 0
         if (JavaInterface.getInstance().USB_SetSystemSerialData(userId, param)) {
             checkCommandState(userId) {
-                XLog.v("$TAG setAutoShutter() 发送自定协议参数 $it")
+ XLog.v("$TAG setAutoShutter() $it")
             }
         } else {
-            XLog.e("$TAG setAutoShutter() 发送自定协议参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setAutoShutter() ${JavaInterface.getInstance().USB_GetLastError()}")
         }
     }
 
     /**
-     * 开始锅盖校正
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     suspend fun startCorrect(userId: Int) {
-        XLog.i("$TAG startCorrect() 开始锅盖校正")
+ XLog.i("$TAG startCorrect() ")
         val param = USB_SYSTEM_SERIAL_DATA_TRANSMISSION()
-        param.byMode = 2 //0-保留 1-读 2-写
+ param.byMode = 2 //0- 1- 2-
         param.wDeviceCMDFlag = 0
-        param.dwDeviceCMD = 0xf026 //命令 code
+ param.dwDeviceCMD = 0xf026 // code
         param.dwValue = 2
         if (JavaInterface.getInstance().USB_SetSystemSerialData(userId, param)) {
             checkCommandState(userId) {
-                XLog.v("$TAG startCorrect() 发送自定协议参数 $it")
+ XLog.v("$TAG startCorrect() $it")
             }
         } else {
-            XLog.e("$TAG startCorrect() 发送自定协议参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG startCorrect() ${JavaInterface.getInstance().USB_GetLastError()}")
         }
     }
 
 
 
     /**
-     * settings对比度.
-     * @param contrast 取值范围 `[0,100]`
+ * settings.
+ * @param contrast `[0,100]`
      */
     suspend fun setContrast(userId: Int, contrast: Int) {
-        XLog.i("$TAG setContrast($contrast) settings对比度")
+ XLog.i("$TAG setContrast($contrast) settings")
         val param = USB_IMAGE_CONTRAST()
         param.dwContrast = contrast
         if (JavaInterface.getInstance().USB_SetImageContrast(userId, param)) {
             checkCommandState(userId) {
-                XLog.v("$TAG setContrast() settings对比度参数 $it")
+ XLog.v("$TAG setContrast() settings $it")
             }
         } else {
-            XLog.e("$TAG setContrast() settings对比度参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setContrast() settings${JavaInterface.getInstance().USB_GetLastError()}")
         }
     }
 
 
 
-    /* ******************************  图像增强参数 ImageEnhancement  ****************************** */
+    image
     /**
-     * settings细节增强(超分)等级
+ * settings()
      */
     suspend fun setEnhanceLevel(userId: Int, level: Int) {
         val param = USB_IMAGE_ENHANCEMENT()
@@ -215,26 +215,26 @@ object HikCmdUtil {
             if (param.dwLSEDetailLevel == level) {
                 return
             }
-            XLog.i("$TAG setEnhanceLevel() 变更细节增强等级 ${param.dwLSEDetailLevel}->$level")
+ XLog.i("$TAG setEnhanceLevel() ${param.dwLSEDetailLevel}->$level")
             param.dwLSEDetailLevel = level
             if (JavaInterface.getInstance().USB_SetImageEnhancement(userId, param)) {
                 checkCommandState(userId) {
-                    XLog.v("$TAG setEnhanceLevel() settings图像增强参数 $it")
+                    image
                 }
             } else {
-                XLog.e("$TAG setEnhanceLevel() settings图像增强参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+                image
             }
         } else {
-            XLog.e("$TAG setEnhanceLevel() 获取图像增强参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+            image
         }
     }
 
 
 
-    /* ******************************  视频调整参数 ImageVideoAdjust  ****************************** */
+ /* ****************************** ImageVideoAdjust ****************************** */
     /**
      * settingsmirror.
-     * @param isMirror true-左右mirror false-不mirror
+ * @param isMirror true-mirror false-mirror
      */
     suspend fun setMirror(userId: Int, rotateAngle: Int, isMirror: Boolean) {
         val videoAdjust = USB_IMAGE_VIDEO_ADJUST()
@@ -243,112 +243,112 @@ object HikCmdUtil {
             if (videoAdjust.byImageFlipStyle == mirrorCode) {
                 return
             }
-            XLog.i("$TAG setMirror() 变更mirror ${videoAdjust.byImageFlipStyle}->$mirrorCode")
+ XLog.i("$TAG setMirror() mirror ${videoAdjust.byImageFlipStyle}->$mirrorCode")
             videoAdjust.byImageFlipStyle = mirrorCode
             if (JavaInterface.getInstance().USB_SetImageVideoAdjust(userId, videoAdjust)) {
                 checkCommandState(userId) {
-                    XLog.v("$TAG setMirror() settings视频调整参数 $it")
+ XLog.v("$TAG setMirror() settings $it")
                 }
             } else {
-                XLog.e("$TAG setMirror() settings视频调整参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setMirror() settings${JavaInterface.getInstance().USB_GetLastError()}")
             }
         } else {
-            XLog.e("$TAG setMirror() 获取视频调整参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setMirror() ${JavaInterface.getInstance().USB_GetLastError()}")
         }
     }
 
 
 
-    /* ******************************  码流回调  ****************************** */
+ /* ****************************** ****************************** */
     /**
-     * 添加码流回调.
-     * @return 码流回调 Id，若失败则为 [JavaInterface.USB_INVALID_CHANNEL]
+     * add
+ * @return Id [JavaInterface.USB_INVALID_CHANNEL]
      */
     suspend fun startStream(userId: Int, callback: FStreamCallBack): Int {
-        //settings横屏、不mirror
+ //settingsmirror
         val videoAdjust = USB_IMAGE_VIDEO_ADJUST()
         if (JavaInterface.getInstance().USB_GetImageVideoAdjust(userId, videoAdjust)) {
             val isRotateChange = videoAdjust.byCorridor != 0.toByte()
             val isMirrorChange = videoAdjust.byImageFlipStyle != 0.toByte()
             if (isRotateChange || isMirrorChange) {
-                XLog.i("$TAG startStream() settings视频调整参数：横屏、不mirror")
+ XLog.i("$TAG startStream() settingsmirror")
                 videoAdjust.byCorridor = 0 //0-256x192 1-192x256
-                videoAdjust.byImageFlipStyle = 0 //mirror 0-关闭 1-中心 2-左右 3-上下
+                medium
                 if (JavaInterface.getInstance().USB_SetImageVideoAdjust(userId, videoAdjust)) {
                     checkCommandState(userId) {
-                        XLog.v("$TAG startStream() settings视频调整参数 $it")
+ XLog.v("$TAG startStream() settings $it")
                     }
                 } else {
-                    XLog.e("$TAG startStream() settings视频调整参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG startStream() settings${JavaInterface.getInstance().USB_GetLastError()}")
                 }
             }
         } else {
-            XLog.e("$TAG startStream() 获取视频调整参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG startStream() ${JavaInterface.getInstance().USB_GetLastError()}")
         }
 
-        //settings视频参数
-        //横屏 256x392 竖屏 192x520 即高度需要为(192+4)*2 或 (256+4)*2
-        //旋转自己上层实现，原始出图固定 256x192 就行了
-        XLog.i("$TAG startStream() settings视频参数：256x392")
+ //settings
+        // high
+ // 256x192 
+ XLog.i("$TAG startStream() settings256x392")
         val videoParam = USB_VIDEO_PARAM()
         videoParam.dwVideoFormat = JavaInterface.USB_STREAM_YUY2
         videoParam.dwWidth = 256
         videoParam.dwHeight = 392
-        videoParam.dwFramerate = 25 //25帧
+ videoParam.dwFramerate = 25 //25
         if (JavaInterface.getInstance().USB_SetVideoParam(userId, videoParam)) {
             checkCommandState(userId) {
-                XLog.v("$TAG startStream() settings视频参数 $it")
+ XLog.v("$TAG startStream() settings $it")
             }
         } else {
-            XLog.w("$TAG startStream() settings视频参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.w("$TAG startStream() settings${JavaInterface.getInstance().USB_GetLastError()}")
             return JavaInterface.USB_INVALID_CHANNEL
         }
 
-        //开启码流回调
-        XLog.i("$TAG startStream() 开启码流回调")
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
+ XLog.i("$TAG startStream() ")
         val callbackParam = USB_STREAM_CALLBACK_PARAM()
         callbackParam.dwStreamType = JavaInterface.USB_STREAM_YUY2
         callbackParam.fnStreamCallBack = callback
         val callbackId: Int = JavaInterface.getInstance().USB_StartStreamCallback(userId, callbackParam)
         if (callbackId == JavaInterface.USB_INVALID_CHANNEL) {
-            XLog.w("$TAG startStream() 添加码流回调失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+            add
             return JavaInterface.USB_INVALID_CHANNEL
         } else {
-            XLog.v("$TAG startStream() 开启码流回调成功")
+ XLog.v("$TAG startStream() ")
         }
 
-        //settings码流type
-        XLog.i("$TAG startStream() settings码流type：8")
+ //settingstype
+ XLog.i("$TAG startStream() settingstype8")
         val streamParam = USB_THERMAL_STREAM_PARAM()
         streamParam.byVideoCodingType = 8
         if (JavaInterface.getInstance().USB_SetThermalStreamParam(userId, streamParam)) {
             checkCommandState(userId) {
-                XLog.v("$TAG startStream() settings码流type $it")
+ XLog.v("$TAG startStream() settingstype $it")
             }
         } else {
-            XLog.w("$TAG startStream() settings码流type失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.w("$TAG startStream() settingstype${JavaInterface.getInstance().USB_GetLastError()}")
             return JavaInterface.USB_INVALID_CHANNEL
         }
 
         return callbackId
     }
     /**
-     * 移除码流回调.
+ * .
      */
     fun removeStreamCallback(userId: Int, callbackId: Int) {
         if (callbackId != JavaInterface.USB_INVALID_CHANNEL) {
             if (!JavaInterface.getInstance().USB_StopChannel(userId, callbackId)) {
-                XLog.w("$TAG removeStreamCallback() 移除码流回调失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.w("$TAG removeStreamCallback() ${JavaInterface.getInstance().USB_GetLastError()}")
             }
         }
     }
 
 
 
-    /* ******************************  测温基本参数 ThermometryBasicParam  ****************************** */
+ /* ****************************** ThermometryBasicParam ****************************** */
     /**
-     * settings发射率
-     * @param emissivity 取值范围 `[1, 100]`
+     * emissivity
+ * @param emissivity `[1, 100]`
      */
     suspend fun setEmissivity(userId: Int, emissivity: Int) {
         val param = USB_THERMOMETRY_BASIC_PARAM()
@@ -356,23 +356,23 @@ object HikCmdUtil {
             if (param.dwEmissivity == emissivity) {
                 return
             }
-            XLog.i("$TAG setEmissivity() 变更发射率 ${param.dwEmissivity}->$emissivity")
+            emissivity
             param.dwEmissivity = emissivity
             if (JavaInterface.getInstance().USB_SetThermometryBasicParam(userId, param)) {
                 checkCommandState(userId) {
-                    XLog.v("$TAG setEmissivity() settings测温基本参数 $it")
+ XLog.v("$TAG setEmissivity() settings $it")
                 }
             } else {
-                XLog.e("$TAG setEmissivity() settings测温基本参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setEmissivity() settings${JavaInterface.getInstance().USB_GetLastError()}")
             }
         } else {
-            XLog.e("$TAG setEmissivity() 获取测温基本参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setEmissivity() ${JavaInterface.getInstance().USB_GetLastError()}")
         }
     }
 
     /**
-     * settings测温距离，单位 cm
-     * @param distance 取值范围 `[30, 200]`
+     * distance
+ * @param distance `[30, 200]`
      */
     suspend fun setDistance(userId: Int, distance: Int) {
         val param = USB_THERMOMETRY_BASIC_PARAM()
@@ -380,54 +380,54 @@ object HikCmdUtil {
             if (param.dwDistance == distance) {
                 return
             }
-            XLog.i("$TAG setDistance() 变更测温距离 ${param.dwDistance}cm->${distance}cm")
+            distance
             param.dwDistance = distance
             if (JavaInterface.getInstance().USB_SetThermometryBasicParam(userId, param)) {
                 checkCommandState(userId) {
-                    XLog.v("$TAG setDistance() settings测温基本参数 $it")
+ XLog.v("$TAG setDistance() settings $it")
                 }
             } else {
-                XLog.e("$TAG setDistance() settings测温基本参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setDistance() settings${JavaInterface.getInstance().USB_GetLastError()}")
             }
         } else {
-            XLog.e("$TAG setDistance() 获取测温基本参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setDistance() ${JavaInterface.getInstance().USB_GetLastError()}")
         }
     }
 
     /**
-     * settings测温 自动(-1)/常温(1)/高温(0) 档位.
+     * high
      */
     suspend fun setTemperatureMode(userId: Int, mode: Int) {
         val param = USB_THERMOMETRY_BASIC_PARAM()
         if (JavaInterface.getInstance().USB_GetThermometryBasicParam(userId, param)) {
-            //优先级：自动 > 测温范围
+ // > 
             val oldAuto: Byte = param.byTemperatureRangeAutoChangedEnabled
             val oldRange: Byte = param.byTemperatureRange
-            val newAuto: Byte = if (mode == -1) 1 else 0 //0-关闭 1-开启
-            val newRange: Byte = if (mode == 1) 2 else 3 //2(-20~150常温档) 3(100~550高温档)
+ val newAuto: Byte = if (mode == -1) 1 else 0 //0- 1-
+            high
             if (oldAuto == newAuto && (oldRange == newRange || newRange == 1.toByte())) {
                 return
             }
-            XLog.i("$TAG setTemperatureMode() 变更测温档位 ${getTempModeStr(oldAuto, oldRange)}->${getTempModeStr(newAuto, newRange)}")
+ XLog.i("$TAG setTemperatureMode() ${getTempModeStr(oldAuto, oldRange)}->${getTempModeStr(newAuto, newRange)}")
             param.byTemperatureRangeAutoChangedEnabled = newAuto
             param.byTemperatureRange = newRange
             if (JavaInterface.getInstance().USB_SetThermometryBasicParam(userId, param)) {
                 checkCommandState(userId) {
-                    XLog.v("$TAG setTemperatureMode() settings测温基本参数 $it")
+ XLog.v("$TAG setTemperatureMode() settings $it")
                 }
             } else {
-                XLog.e("$TAG setTemperatureMode() settings测温基本参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setTemperatureMode() settings${JavaInterface.getInstance().USB_GetLastError()}")
             }
         } else {
-            XLog.e("$TAG setTemperatureMode() 获取测温基本参数失败！错误码：${JavaInterface.getInstance().USB_GetLastError()}")
+ XLog.e("$TAG setTemperatureMode() ${JavaInterface.getInstance().USB_GetLastError()}")
         }
     }
 
     private fun getTempModeStr(autoEnable: Byte, range: Byte): String {
         if (autoEnable == 1.toByte()) {
-            return "自动"
+ return ""
         }
-        return if (range == 2.toByte()) "常温档" else "高温档"
+        high
     }
 
 
@@ -443,35 +443,35 @@ object HikCmdUtil {
     }
 
     /**
-     * 在执行settings命令后，检查设备配置状态直到设备端完成请求
+     * configuration
      */
     private suspend inline fun checkCommandState(userId: Int, callback: (state: String) -> Unit) {
-        var commandState = 1 //1为 设备端尚未完成先前的请求
+        finish
         while (commandState == 1) {
             commandState = getCommandState(userId)
             callback.invoke("Command State: ${getCommandState(userId).toComStateStr()}")
             if (commandState == 1) {
-                //恢复默认、settingsexpert测温校正参数海康文档建议等待 1000 毫秒，其他请求建议不低于 10 毫秒
+                // low
                 delay(100)
             }
         }
     }
 
     private fun Int.toComStateStr(): String = when (this) {
-        0x00 -> "0x00: 正常"
-        0x01 -> "0x01: 设备端尚未完成先前的请求"
-        0x02 -> "0x02: 设备端不允许特定请求的状态"
-        0x03 -> "0x03: 设备端的实际电源mode不足以完成请求"
-        0x04 -> "0x04: SET_CUR 请求settings的参数超出限定范围"
-        0x05 -> "0x05: 不支持的 Unint ID"
-        0x06 -> "0x06: 不支持的 CS ID"
-        0x07 -> "0x07: 不支持的请求命令type"
-        0x08 -> "0x08: SET_CUR 请求settings的参数在限定范围，但settings值无效"
-        0x09 -> "0x09: 不支持的子功能"
-        0x0a -> "0x0a: 设备端功能执行异常"
-        0x0b -> "0x0b: 设备端内部协议流程异常"
-        0x0c -> "0x0c: 大数据传输流程异常"
-        0xff -> "0xff: 未知错误"
-        else -> "0x${this.toString(16)}: 不在文档内的状态码"
+ 0x00 -> "0x00: "
+        finish
+ 0x02 -> "0x02: "
+        finish
+ 0x04 -> "0x04: SET_CUR settings"
+ 0x05 -> "0x05: Unint ID"
+ 0x06 -> "0x06: CS ID"
+ 0x07 -> "0x07: type"
+ 0x08 -> "0x08: SET_CUR settingssettings"
+ 0x09 -> "0x09: "
+ 0x0a -> "0x0a: "
+ 0x0b -> "0x0b: "
+        data
+ 0xff -> "0xff: "
+ else -> "0x${this.toString(16)}: "
     }
 }

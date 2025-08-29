@@ -45,15 +45,15 @@ public class LLog {
 
 
     /**
-     * 最大一次打印长度
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     public final static int MAX_LENGTH = 2000;
 
     /**
-     * 适应最大长度打印
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      *
-     * @param tag 标志
-     * @param msg 信息
+ * @param tag 
+     * info
      */
     public static void LogMaxPrint(String tag, String msg) {
         if (msg.length() > MAX_LENGTH) {

@@ -39,10 +39,10 @@ public class LineDraw extends BaseDraw {
     private int mBgColor = Color.parseColor("#CC1A1A1A");
 
     private final int STROKE_WIDTH = 8;
-    private final int TEXT_SIZE = 14; // 文字大小
+ private final int TEXT_SIZE = 14; // 
     private final int TOUCH_TOLERANCE = 48;
 
-    private LineView mTempLine;//临时绘制的line，比如手势移动过程中
+    medium
 
     private int mOperateStatus = -1;
 
@@ -79,7 +79,7 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * 添加一个线数据
+     * add
      * @param startX
      * @param startY
      * @param endX
@@ -96,7 +96,7 @@ public class LineDraw extends BaseDraw {
                 boolean hasSame = false;
                 for (int i = 0; i < mLineList.size(); i ++) {
                     if (mLineList.get(i).getLabel().equals(newLabel)) {
-                        //存在一样的
+                        // [Technical comment in Chinese - content removed for ASCII compatibility]
                         hasSame = true;
                         Log.d(TAG, "addLine is same");
                         break;
@@ -127,7 +127,7 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * delete一个线数据
+     * data
      * @param index
      */
     public void removeLine(int index) {
@@ -137,14 +137,14 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * delete所有线数据
+     * data
      */
     public void removeLine() {
         mLineList.clear();
     }
 
     /**
-     * 绘制所有线
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * @param canvas
      */
     @Override
@@ -165,7 +165,7 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * 绘制临时线
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      * @param canvas
      * @param startX
      * @param startY
@@ -204,12 +204,12 @@ public class LineDraw extends BaseDraw {
         float right = rectF.right + rectWidth / 2;
         float top = rectF.top;
         float bottom = rectF.bottom;
-        //左侧超出
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         if (left < 0) {
             left = 0;
             right = rectWidth;
         }
-        //右侧超出
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         if (right > mViewWidth) {
             left = mViewWidth - rectWidth;
             right = mViewWidth;
@@ -238,7 +238,7 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * 更新选中线的手势位置状态
+     * medium
      * @param startX
      * @param startY
      */
@@ -258,7 +258,7 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * 修改选中的线坐标
+     * medium
      * @param moveX
      * @param moveY
      */
@@ -327,7 +327,7 @@ public class LineDraw extends BaseDraw {
 
             mLineList.get(mTouchIndex).changeLocation(startMovingLineX, startMovingLineY, endMovingLineX, endMovingLineY);
         } else if (mOperateStatus == OPERATE_STATUS_LINE_IN_TOUCH_CENTER) {
-            // 防止数据越界到图像外部
+            // image
             int startMovingLineX = (int)(lineView.mStartPoint.x + moveX);
             int startMovingLineY = (int)(lineView.mStartPoint.y + moveY);
             int endMovingLineX = (int)(lineView.mEndPoint.x + moveX);
@@ -359,7 +359,7 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * 修改选中的线Point
+     * medium
      */
     public void changeTouchPointLocation() {
         if (mTouchIndex < 0 || mTouchIndex >= mLineList.size()) {
@@ -369,7 +369,7 @@ public class LineDraw extends BaseDraw {
     }
 
     /**
-     * 检查当前是否存在手势选中的线
+     * medium
      * @param x
      * @param y
      * @return
@@ -391,9 +391,9 @@ public class LineDraw extends BaseDraw {
     }
 
     public static class LineView extends BaseView {
-        private Point mStartPoint; //起点
-        private Point mEndPoint; //终点
-        private static final float TOUCH_EXTRA = 10;//额外的触摸范围
+ private Point mStartPoint; //
+ private Point mEndPoint; //
+ private static final float TOUCH_EXTRA = 10;//
         private Bitmap mHighPointBitmap;
         private Bitmap mLowPointBitmap;
         private Point mHighTempPoint;

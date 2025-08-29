@@ -69,10 +69,10 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
      */
     private val mIrPid = 0x5830
     private val mIrFps = 25
-    private var mIrCameraWidth = 0 // 传感器的原始宽度
-    private var mIrCameraHeight = 0 // 传感器的原始高度
-    private var mImageWidth = 0 // 经过旋转后的图像宽度
-    private var mImageHeight = 0 // 经过旋转后的图像高度
+ private var mIrCameraWidth = 0 // 
+    high
+    image
+    high
 
     /**
      * vl camera
@@ -80,12 +80,12 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
      * 38704 - 0x9730  25 fps 1280*720
      */
     private val mVlPid = 12337
-    private val mVlFps = 30 // 该分辨率支持的帧率
+ private val mVlFps = 30 // 
     private val mVlCameraWidth = 1280
     private val mVlCameraHeight = 720
 
     /**
-     * 融合分辨率
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private val mDualWidth = 480
     private val mDualHeight = 640
@@ -94,12 +94,12 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     private var sId : String = ""
 
     /**
-     * 手动配准的初始化参数
+     * [Technical comment in Chinese - content removed for ASCII compatibility]
      */
     private val INIT_ALIGN_DATA = floatArrayOf(1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f)
-    private var alignScaleX = 0f //图和屏幕缩放比
-    private var alignScaleY = 0f //图和屏幕缩放比
-    private var canOperate = false //是否可以操作
+ private var alignScaleX = 0f //
+ private var alignScaleY = 0f //
+ private var canOperate = false //
     private val mIrDualHandler: Handler = object : Handler(Looper.myLooper()!!) {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
@@ -111,7 +111,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
                 hideLoadingDialog()
             } else if (msg.what == HANDLE_CONNECT) {
                 initDualCamera()
-                //加载配准参数
+                // [Technical comment in Chinese - content removed for ASCII compatibility]
                 initDefIntegralArgsDISP_VALUE(DualCameraParams.TypeLoadParameters.ROTATE_270)
             } else if (msg.what == HIDE_LOADING_FINISH) {
                 hideLoadingDialog()
@@ -124,7 +124,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     var moveImageView: MoveImageView? = null
     var dualTextureView: SurfaceView? = null
     /**
-     * 上一次执行 move 或 旋转操作的时间戳.
+     * time
      */
     private var beforeTime = 0L
     public override fun initView() {
@@ -173,7 +173,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
         seek_bar?.max = 2000
         seek_bar?.setEnabled(false)
         moveImageView?.setEnabled(false)
-        //初始化相机类
+        // class
         initDataFlowMode(mDefaultDataFlowMode)
         initData()
         USBMonitorDualManager.getInstance()
@@ -199,10 +199,10 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     private fun initDataFlowMode(dataFlowMode: CommonParams.DataFlowMode) {
         if (dataFlowMode == CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT) {
             /**
-             * 图像+温度
+             * temperature
              */
-            mIrCameraWidth = Const.SENSOR_WIDTH // 传感器的原始宽度
-            mIrCameraHeight = Const.SENSOR_HEIGHT // 传感器的原始高度
+ mIrCameraWidth = Const.SENSOR_WIDTH // 
+            high
             mImageWidth = mIrCameraHeight / 2
             mImageHeight = mIrCameraWidth
         }
@@ -212,7 +212,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
      *
      */
     public override fun initData() {
-        // 计算画面的宽高，避免被拉伸变形
+        // high
 //        var width = 0
 //        var height = 0
 //        val screenWidth = ScreenUtils.getScreenWidth(this)
@@ -237,7 +237,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     private fun initDualCamera() {
-        //初始化dual light预览相关的类
+        // preview
         mDualView = DualViewWithManualAlignExternalCamera(
             mImageWidth, mImageHeight,
             mVlCameraHeight, mVlCameraWidth, mDualWidth, mDualHeight,
@@ -245,13 +245,13 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
             mDefaultDataFlowMode
         )
 
-        //初始化pseudo color
+ //pseudo color
         initPsedocolor()
 
-        //settings初始化融合mode,一般选择LPYFusion
+        // pick/select
         mDualView!!.dualUVCCamera.setFusion(DualCameraParams.FusionType.LPYFusion)
 
-        //打开自动快门逻辑
+        // [Technical comment in Chinese - content removed for ASCII compatibility]
         USBMonitorDualManager.getInstance().ircmd.setPropAutoShutterParameter(
             CommonParams.PropAutoShutterParameter.SHUTTER_PROP_SWITCH,
             CommonParams.PropAutoShutterParameterValue.StatusSwith.ON
@@ -260,13 +260,13 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * 加载pseudo color，settings镜头方向，pseudo color，融合mode等等
+ * pseudo colorsettingspseudo colormode
      */
     private fun initPsedocolor() {
         val am = assets
         var `is`: InputStream
         try {
-            //加载pseudo color
+ //pseudo color
             mPseudoColors = arrayOfNulls(11)
             `is` = am.open("pseudocolor/White_Hot.bin")
             var lenth = `is`.available()
@@ -313,7 +313,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
                 mPseudoColors[3]
             )
 
-            // 这里可以settings初始化pseudo color
+ // settingspseudo color
             mDualView!!.dualUVCCamera.setPseudocolor(CommonParams.PseudoColorUsbDualType.IRONBOW_MODE)
             `is`.close()
         } catch (e: IOException) {
@@ -322,18 +322,18 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * 一体式结构，dual light配准的数据，可从手机固定位置读取，如可从NV分区读写
-     * 目前使用的是人工配准的方式，提供配准后的数据文件放在asset目录下
+     * data
+     * data
      */
     open fun initDefIntegralArgsDISP_VALUE(typeLoadParameters: DualCameraParams.TypeLoadParameters) {
         lifecycleScope.launch{
             val parameters = IRCmdTool.getDualBytes(USBMonitorDualManager.getInstance().ircmd)
             val data = mDualView!!.dualUVCCamera.loadParameters(parameters, typeLoadParameters)
             dualDisp = IRCmdTool.dispNumber
-            // 初始化默认值
+            // [Technical comment in Chinese - content removed for ASCII compatibility]
             mDualView?.dualUVCCamera?.setDisp(dualDisp)
             mDualView?.startPreview()
-            Log.e("机芯数据加载成功","初始化完成:")
+            finish
         }
     }
 
@@ -413,7 +413,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     var userStop = false
 
     /**
-     * 停止预览
+     * preview
      */
     private fun dualStop() {
         userStop = true
@@ -440,7 +440,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
             dualStopWithAlign();
             return
         }
-        //停止预览
+        // preview
         dualStop()
     }
 
@@ -461,7 +461,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * photo功能
+ * photo
      */
     private fun takePhoto() {
         //photo
@@ -479,7 +479,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * 处理移动数据
+     * move
      */
     private fun handleMove(preX: Float, preY: Float, curX: Float, curY: Float) {
         if (!canOperate) {
@@ -500,7 +500,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * 处理angle数据
+     * data
      */
     private fun handleAngle(angle: Float) {
         if (!canOperate) {
@@ -517,7 +517,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     }
 
     /**
-     * 停止校准
+     * calibration
      */
     private fun finishAlign(isSavePara: Boolean) {
         if (!canOperate) {
@@ -528,7 +528,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     fun updateSaveButton() {
         if (ivTakePhoto!!.visibility == View.INVISIBLE) {
             ivTakePhoto!!.visibility = View.VISIBLE
-            ivTakePhoto!!.setOnClickListener { //保存图片
+            save
                 val message = Message.obtain()
                 message.what = SHOW_LOADING
                 message.obj = ""
@@ -571,7 +571,7 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
         private const val MIN_CLICK_DELAY_TIME = 100
         private var lastClickTime: Long = 0
 
-        //最多70毫秒执行一次move
+ //70move
         fun delayMoveTime(): Boolean {
             var flag = false
             val curClickTime = System.currentTimeMillis()
