@@ -116,7 +116,8 @@ dependencies {
 
     api Deps.utilcode
     api Deps.XXPermissions
-    api Deps.xlog
+    // Logging dependencies removed for simplification
+    // api Deps.xlog
     api Deps.PhotoView
     api Deps.android_pdf_viewr
     api Deps.lottie
@@ -126,6 +127,7 @@ dependencies {
     api Deps.refresh_header_classics
     api Deps.refresh_header_material
 
+    // Logging interceptor restored - provides essential OkHttp extensions beyond just logging
     api Deps.logging_interceptor
     api Deps.colorpickerview
     api Deps.MNImageBrowser
@@ -147,6 +149,6 @@ dependencies {
     api files('libs\\abtest-1.0.1.aar')
     api files('libs\\auth-number-2.13.2.1.aar')
     api files('libs\\lms_international-3.90.009.0.aar')
-    api files('libs\\logger-2.2.1-release.aar')
+    // api files('libs\\logger-2.2.1-release.aar')
     api files('libs\\main-2.2.1-release.aar')
 }

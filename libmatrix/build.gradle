@@ -42,12 +42,13 @@ android {
         jvmTarget = '1.8'
     }
 
-    externalNativeBuild {
-        cmake {
-            path "src/main/cpp/CMakeLists.txt"
-            version "3.10.2"
-        }
-    }
+    // Temporarily disabled for compilation testing
+    // externalNativeBuild {
+    //     cmake {
+    //         path "src/main/cpp/CMakeLists.txt"
+    //         version "3.10.2"
+    //     }
+    // }
 
     lintOptions {
         abortOnError false

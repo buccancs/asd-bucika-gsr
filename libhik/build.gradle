@@ -40,5 +40,5 @@ dependencies {
     implementation Deps.material
     implementation Deps.lifecycle_runtime_ktx
 
-    implementation Deps.xlog
+    // implementation Deps.xlog
 }

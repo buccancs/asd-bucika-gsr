@@ -509,7 +509,6 @@ public class RangeSeekBar extends View {
         //动态区域前景
         //draw progress
         if (seekBarMode == SEEKBAR_MODE_RANGE) {
-//            XLog.w("动态轴区域");
             progressDstRect.top = getProgressTop();
             progressDstRect.left = leftSB.left + leftSB.getThumbScaleWidth() / 2f + progressWidth * leftSB.currPercent;
             progressDstRect.right = rightSB.left + rightSB.getThumbScaleWidth() / 2f + progressWidth * rightSB.currPercent;
