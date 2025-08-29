@@ -2,7 +2,6 @@ package com.topdon.module.user.fragment
 
 import android.app.Activity
 import android.content.Intent
-import android.text.TextUtils
 import android.view.Gravity
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -21,7 +20,6 @@ import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.bean.event.PDFEvent
 import com.topdon.lib.core.bean.event.WinterClickEvent
 import com.topdon.lib.core.common.SharedManager
-import com.topdon.lib.core.config.ExtraKeyConfig
 import com.topdon.lib.core.config.RouterConfig
 import com.topdon.lib.core.db.AppDatabase
 import com.topdon.lib.core.dialog.TipDialog
@@ -29,18 +27,11 @@ import com.topdon.lib.core.ktbase.BaseFragment
 import com.topdon.lib.core.socket.WebSocketProxy
 import com.topdon.lib.core.tools.AppLanguageUtils
 import com.topdon.lib.core.tools.ToastTools
-import com.topdon.lib.core.utils.Constants
 import com.topdon.lib.core.utils.NetWorkUtils
-import com.topdon.lms.sdk.bean.FeedBackBean
-import com.topdon.lms.sdk.feedback.activity.FeedbackActivity
-import com.topdon.lms.sdk.UrlConstant
-import com.topdon.lms.sdk.utils.LanguageUtil
 import com.topdon.module.user.R
 import com.topdon.module.user.activity.LanguageActivity
-import com.zoho.salesiqembed.ZohoSalesIQ
 import kotlinx.android.synthetic.main.fragment_mine.*
 import kotlinx.android.synthetic.main.fragment_more.setting_item_unit
-import kotlinx.android.synthetic.main.layout_customer.drag_customer_view
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -63,20 +54,18 @@ class MineFragment : BaseFragment(), View.OnClickListener {
     override fun initContentView(): Int = R.layout.fragment_mine
 
     override fun initView() {
-        iv_winter.setOnClickListener(this)
+        // Online features removed - winter guidance hub no longer available
         setting_item_language.setOnClickListener(this)
         setting_item_version.setOnClickListener(this)
         setting_item_clear.setOnClickListener(this)
         setting_user_lay.setOnClickListener(this)
         setting_user_img_night.setOnClickListener(this)
         setting_user_text.setOnClickListener(this)
-        setting_electronic_manual.setOnClickListener(this)
-        setting_faq.setOnClickListener(this)
-        setting_feedback.setOnClickListener(this)
+        // Online features removed - electronic manual, FAQ, and feedback no longer available
         setting_item_unit.setOnClickListener(this)//温度单温
-        drag_customer_view.setOnClickListener(this)
+        // Online features removed - customer service chat no longer available
 
-        view_winter_point.isVisible = !SharedManager.hasClickWinter
+        // Removed winter guidance point visibility logic
 
         if (BaseApplication.instance.isDomestic()) {//国内版不给切换语言
             setting_item_language.visibility = View.GONE
@@ -100,10 +89,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
         // Removed login refresh logic
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onWinterClick(event: WinterClickEvent) {
-        view_winter_point.isVisible = false
-    }
+    // Removed winter guidance event handler
 
     override fun onResume() {
         super.onResume()
@@ -123,48 +109,14 @@ class MineFragment : BaseFragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v) {
-            iv_winter -> {//冬季特辑入口
-                view_winter_point.isVisible = false
-                SharedManager.hasClickWinter = true
-                EventBus.getDefault().post(WinterClickEvent())
-
-                val url = if (UrlConstant.BASE_URL == "https://api.topdon.com/") {
-                    "https://app.topdon.com/h5/share/#/detectionGuidanceIndex?showHeader=1&" +
-                            "languageId=${LanguageUtil.getLanguageId(requireContext())}"
-                } else {
-                    "http://172.16.66.77:8081/#/detectionGuidanceIndex?languageId=1&showHeader=1"
-                }
-
-
-                ARouter.getInstance().build(RouterConfig.WEB_VIEW)
-                    .withString(ExtraKeyConfig.URL, url)
-                    .navigation(requireContext())
-            }
+            // Online features removed - no longer handling these clicks
             setting_user_lay, setting_user_img_night -> {
                 // Login functionality removed - no action needed
             }
             setting_user_text -> {
                 // Login functionality removed - no action needed
             }
-            setting_electronic_manual -> {//电子说明书
-                ARouter.getInstance().build(RouterConfig.ELECTRONIC_MANUAL).withInt(Constants.SETTING_TYPE, Constants.SETTING_BOOK).navigation(requireContext())
-            }
-            setting_faq -> {//FAQ
-                ARouter.getInstance().build(RouterConfig.ELECTRONIC_MANUAL).withInt(Constants.SETTING_TYPE, Constants.SETTING_FAQ).navigation(requireContext())
-            }
-            setting_feedback -> {//意见反馈 - simplified without login requirement
-                val devSn = SharedManager.getDeviceSn()
-                FeedBackBean().apply {
-                    logPath = logPath
-                    sn = devSn
-                    lastConnectSn = devSn
-                    XLog.e("bcf","sn $sn  logPath $logPath")
-                }.let { feedBackBean ->
-                    val intent = Intent(requireContext(), FeedbackActivity::class.java)
-                    intent.putExtra(FeedbackActivity.FEEDBACKBEAN, feedBackBean)
-                    startActivity(intent)
-                }
-            }
+            // Online features removed - electronic manual, FAQ, feedback, and chat no longer available
             setting_item_unit -> {//温度单位
                 ARouter.getInstance().build(RouterConfig.UNIT).navigation(requireContext())
             }
@@ -177,15 +129,7 @@ class MineFragment : BaseFragment(), View.OnClickListener {
             setting_item_clear -> {//清除缓存，实际已隐藏
                 clearCache()
             }
-            drag_customer_view -> {//客服
-//                ActivityUtil.goSystemCustomer(requireContext())
-                val sn = SharedManager.getDeviceSn()
-                if (!TextUtils.isEmpty(sn)) {
-                    ZohoSalesIQ.Visitor.addInfo("SN", sn)
-                }
-                ZohoSalesIQ.Visitor.addInfo("Model", "Topinfrared")
-                ZohoSalesIQ.Chat.show()
-            }
+            // Online features removed - customer service no longer available
         }
     }
 
