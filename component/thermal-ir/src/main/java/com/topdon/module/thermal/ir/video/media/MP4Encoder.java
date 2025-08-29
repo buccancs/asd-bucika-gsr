@@ -151,7 +151,6 @@ public class MP4Encoder extends Encoder {
 
     private void encodeAudio() {
         int audioStatus = audioCodec.dequeueOutputBuffer(bufferInfo, TIMEOUT_US);
-                + bufferInfo.presentationTimeUs);
         if (audioStatus == INFO_OUTPUT_FORMAT_CHANGED) {
             MediaFormat audioFormat = audioCodec.getOutputFormat();
             audioTrackIndex = mediaMuxer.addTrack(audioFormat);
@@ -176,7 +175,6 @@ public class MP4Encoder extends Encoder {
 
     private void encodeVideo() {
         int encoderStatus = videoCodec.dequeueOutputBuffer(bufferInfo, TIMEOUT_US);
-                + bufferInfo.presentationTimeUs);
         if (encoderStatus == INFO_OUTPUT_FORMAT_CHANGED) {
             MediaFormat videoFormat = videoCodec.getOutputFormat();
             videoTrackIndex = mediaMuxer.addTrack(videoFormat);

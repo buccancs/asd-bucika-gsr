@@ -2049,11 +2049,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
             tempInfo,
             gainStatus
         )
-            TAG,
-            "temp correct, oldTemp = " + paramsArray[0] + " ems = " + paramsArray[1] + " ta = " + paramsArray[2] + " " +
-                    "distance = " + paramsArray[4] + " hum = " + paramsArray[5] + " productType = ${CommonParams.ProductType.WN256}" + " " +
-                    "newtemp = " + newTemp
-        )
         return newTemp
     }
 

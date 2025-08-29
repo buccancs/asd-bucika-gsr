@@ -26,8 +26,6 @@ object IRTool {
             DeviceIrcmdControlManager.getInstance().getIrcmdEngine()
                 ?.basicAutoFFCStatusSet(if (isAutoShutter) CommonParams.AutoFFCStatus.AUTO_FFC_ENABLE
                 else CommonParams.AutoFFCStatus.AUTO_FFC_DISABLED)
-            "basicAutoFFCStatusSet=$basicAutoFFCStatusSet"
-        )
     }
 
     /**
@@ -35,8 +33,6 @@ object IRTool {
      */
     fun setOneShutter(){
         val basicFFCUpdate = DeviceIrcmdControlManager.getInstance().ircmdEngine?.basicFFCUpdate()
-            "basicFFCUpdate=$basicFFCUpdate"
-        )
     }
 
     /**
@@ -68,8 +64,6 @@ object IRTool {
     fun basicGlobalContrastLevelSet(levelValue : Int){
         val basicGlobalContrastLevelSetResult = DeviceIrcmdControlManager.getInstance().ircmdEngine
             ?.basicGlobalContrastLevelSet(levelValue)
-            "basicGlobalContrastLevelSet=$basicGlobalContrastLevelSetResult"
-        )
     }
     /**
      * 锐度：参数是0-100，也就是细节
