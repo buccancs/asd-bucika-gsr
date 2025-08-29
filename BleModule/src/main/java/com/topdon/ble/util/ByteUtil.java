@@ -10,14 +10,34 @@ import android.util.Log;
  * @date 2021/12/8 10:49
  */
 public class ByteUtil {
+    
+    // Main byteMerger method that handles byte arrays
+    public static byte[] byteMerger(byte[]... bytes) {
+        int length = 0;
+        for (byte[] tmp : bytes) {
+            length += tmp.length;
+        }
+        byte[] result = new byte[length];
+        int lastTypeLength = 0;
+        for (byte[] tmp : bytes) {
+            System.arraycopy(tmp, 0, result, lastTypeLength, tmp.length);
+            lastTypeLength += tmp.length;
+        }
+        return result;
+    }
+
+    // Convenience methods that delegate to the main method
     public static byte[] byteMerger(byte[] byte1, int byte2, int byte3, int byte4) {
         return byteMerger(byte1, intToByteArray(byte2), intToByteArray(byte3), intToByteArray2(byte4));
     }
-    public static byte[] byteMerger(byte[] byte1, String byte2,String byte3) {
-        return byteMerger(byte1, byte2.getBytes(),byte3.getBytes());
-    }
-    public static byte[] byteMerger(byte[] byte1, String byte2,String byte3,String byte4) {
-        return byteMerger(byte1, byte2.getBytes(),byte3.getBytes(),byte4.getBytes());
+    
+    public static byte[] byteMerger(byte[] byte1, String... strings) {
+        byte[][] byteArrays = new byte[strings.length + 1][];
+        byteArrays[0] = byte1;
+        for (int i = 0; i < strings.length; i++) {
+            byteArrays[i + 1] = strings[i].getBytes();
+        }
+        return byteMerger(byteArrays);
     }
 
     public static byte[] byteMerger(String byte1, int byte2) {
@@ -34,31 +54,6 @@ public class ByteUtil {
 
     public static byte[] byteMerger(String byte1, byte[] byte2) {
         return byteMerger(byte1.getBytes(), byte2);
-    }
-
-    public static byte[] byteMerger(byte[] byte1, String byte2) {
-        return byteMerger(byte1, byte2.getBytes());
-    }
-
-//    public static byte[] byteMerger(byte[] byte1, byte[] byte2) {
-//        byte[] result = new byte[byte1.length + byte2.length];
-//        System.arraycopy(byte1, 0, result, 0, byte1.length);
-//        System.arraycopy(byte2, 0, result, byte1.length, byte2.length);
-//        return result;
-//    }
-
-    public static byte[] byteMerger(byte[]... bytes) {
-        int length = 0;
-        for (byte[] tmp : bytes) {
-            length += tmp.length;
-        }
-        byte[] result = new byte[length];
-        int lastTypeLength = 0;
-        for (byte[] tmp : bytes) {
-            System.arraycopy(tmp, 0, result, lastTypeLength, tmp.length);
-            lastTypeLength += tmp.length;
-        }
-        return result;
     }
 
     /**
