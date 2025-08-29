@@ -75,7 +75,6 @@ public class Utils {
             drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
             drawable.draw(canvas);
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return bitmap;
     }

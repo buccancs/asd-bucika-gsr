@@ -2,7 +2,6 @@ package com.topdon.module.thermal.ir.frame
 
 import android.graphics.Bitmap
 import android.graphics.Rect
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.sdkisp.LibIRProcess
 import com.energy.iruvc.sdkisp.LibIRTemp
 import com.energy.iruvc.utils.CommonParams

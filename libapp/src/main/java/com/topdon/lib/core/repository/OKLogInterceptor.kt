@@ -1,6 +1,5 @@
 package com.topdon.lib.core.repository
 
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response

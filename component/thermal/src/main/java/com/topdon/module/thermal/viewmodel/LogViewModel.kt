@@ -3,7 +3,6 @@ package com.topdon.module.thermal.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.common.SharedManager
 import com.topdon.lib.core.db.AppDatabase
 import com.topdon.lib.core.db.entity.ThermalDayEntity

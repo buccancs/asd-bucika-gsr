@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
-import com.elvishew.xlog.XLog
 import com.hcusbsdk.Interface.FStreamCallBack
 import com.hcusbsdk.Interface.JavaInterface
 import com.hcusbsdk.Interface.USB_FRAME_INFO

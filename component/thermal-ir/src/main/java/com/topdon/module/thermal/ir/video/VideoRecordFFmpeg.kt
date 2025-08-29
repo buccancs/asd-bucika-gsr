@@ -35,7 +35,6 @@ import com.blankj.utilcode.util.ThreadUtils
 import com.blankj.utilcode.util.Utils
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool
 import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool
-import com.elvishew.xlog.XLog
 import com.infisense.usbdual.camera.DualViewWithExternalCameraCommonApi
 import com.infisense.usbir.view.CameraView
 import com.infisense.usbir.view.TemperatureView

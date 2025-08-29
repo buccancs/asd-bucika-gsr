@@ -11,7 +11,6 @@ import android.view.SurfaceView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ToastUtils
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.ircmd.IRCMD
 import com.energy.iruvc.sdkisp.LibIRProcess
 import com.energy.iruvc.usb.USBMonitor

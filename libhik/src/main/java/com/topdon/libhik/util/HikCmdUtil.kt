@@ -1,7 +1,6 @@
 package com.topdon.libhik.util
 
 import android.content.Context
-import com.elvishew.xlog.XLog
 import com.hcusbsdk.Interface.FStreamCallBack
 import com.hcusbsdk.Interface.JavaInterface
 import com.hcusbsdk.Interface.USB_COMMAND_STATE

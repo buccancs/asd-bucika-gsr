@@ -18,7 +18,6 @@ import com.blankj.utilcode.util.CleanUtils
 import com.blankj.utilcode.util.LanguageUtils
 import com.blankj.utilcode.util.SizeUtils
 import com.bumptech.glide.request.RequestOptions
-import com.elvishew.xlog.XLog
 import com.google.gson.Gson
 import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.bean.event.PDFEvent

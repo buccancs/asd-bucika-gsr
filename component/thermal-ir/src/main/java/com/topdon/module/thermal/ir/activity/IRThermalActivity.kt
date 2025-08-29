@@ -29,7 +29,6 @@
 //import com.alibaba.android.arouter.launcher.ARouter
 //import com.blankj.utilcode.util.*
 //import com.blankj.utilcode.util.ScreenUtils
-//import com.elvishew.xlog.XLog
 //import com.google.gson.Gson
 //import com.hjq.permissions.OnPermissionCallback
 //import com.hjq.permissions.Permission

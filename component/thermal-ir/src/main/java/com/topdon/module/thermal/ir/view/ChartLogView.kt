@@ -8,7 +8,6 @@ import android.util.AttributeSet
 import android.util.Log
 import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.SizeUtils
-import com.elvishew.xlog.XLog
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis

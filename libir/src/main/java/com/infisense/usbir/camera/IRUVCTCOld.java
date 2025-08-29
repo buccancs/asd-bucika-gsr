@@ -5,7 +5,6 @@
 //import android.os.SystemClock;
 //import android.util.Log;
 //
-//import com.elvishew.xlog.XLog;
 //import com.infisense.iruvc.sdkisp.LibIRProcess;
 //import com.infisense.iruvc.sdkisp.Libircmd;
 //import com.infisense.iruvc.sdkisp.Libirprocess;

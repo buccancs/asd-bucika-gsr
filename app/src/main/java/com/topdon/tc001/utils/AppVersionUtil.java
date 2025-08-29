@@ -14,7 +14,6 @@ import android.os.Environment;
 
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.ZipUtils;
-import com.elvishew.xlog.XLog;
 import com.topdon.lib.core.common.SharedManager;
 import com.topdon.lib.core.config.HttpConfig;
 import com.topdon.lib.core.dialog.TipDialog;

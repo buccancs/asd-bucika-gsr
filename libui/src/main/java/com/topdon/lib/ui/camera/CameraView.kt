@@ -224,7 +224,6 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                                 mCameraHandler
                             )
                         } catch (e: CameraAccessException) {
-                            e.printStackTrace()
                         }
                     }
 
@@ -234,7 +233,6 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                 }, mCameraHandler
             )
         } catch (e: CameraAccessException) {
-            e.printStackTrace()
         }
     }
 
@@ -337,7 +335,6 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                 break
             }
         } catch (e: CameraAccessException) {
-            e.printStackTrace()
         }
     }
 

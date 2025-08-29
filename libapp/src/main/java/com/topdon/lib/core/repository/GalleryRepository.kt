@@ -5,7 +5,7 @@ import android.media.MediaScannerConnection
 import android.provider.MediaStore
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.Utils
-import com.elvishew.xlog.XLog
+
 import com.topdon.lib.core.bean.GalleryBean
 import com.topdon.lib.core.config.FileConfig
 import com.topdon.lib.core.utils.CommUtils

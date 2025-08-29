@@ -12,7 +12,6 @@ import androidx.core.os.postDelayed
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.Utils
-import com.elvishew.xlog.XLog
 import com.hjq.permissions.XXPermissions
 import com.topdon.lib.core.bean.event.SocketStateEvent
 import com.topdon.lib.core.config.DeviceConfig

@@ -1,6 +1,5 @@
 package com.topdon.lib.core.tools
 
-import com.elvishew.xlog.XLog
 import java.util.regex.Pattern
 
 object VersionTool {

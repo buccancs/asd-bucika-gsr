@@ -11,7 +11,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.elvishew.xlog.XLog
+
 import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.config.RouterConfig
 import com.topdon.lib.core.ktbase.BaseViewModelActivity
