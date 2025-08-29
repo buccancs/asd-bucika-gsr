@@ -14,15 +14,11 @@
  * limitations under the License.
  */
 
-package com.topdon.module.thermal.ir.utils;
+package com.topdon.lib.core.utils;
 
-/*
- * @Description:
- * @Author:         brilliantzhao
- * @CreateDate:     2022.9.8 10:25
- * @UpdateUser:
- * @UpdateDate:     2022.9.8 10:25
- * @UpdateRemark:
+/**
+ * Shared HexDump utility class consolidating duplicate implementations
+ * from multiple modules. Contains all functionality from both libir and libmatrix versions.
  */
 public class HexDump {
     private final static char[] HEX_DIGITS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
@@ -68,7 +64,7 @@ public class HexDump {
             line[lineIndex++] = b;
         }
 
-        if (lineIndex != 16) {
+        if (lineIndex != 0) {
             int count = (16 - lineIndex) * 3;
             count++;
             for (int i = 0; i < count; i++) {
@@ -92,26 +88,17 @@ public class HexDump {
     }
 
     public static String toHexString(byte[] array) {
-        return toHexString(array, 0, array.length, true);
-    }
-
-    public static String toHexString(byte[] array, boolean upperCase) {
-        return toHexString(array, 0, array.length, upperCase);
+        return toHexString(array, 0, array.length);
     }
 
     public static String toHexString(byte[] array, int offset, int length) {
-        return toHexString(array, offset, length, true);
-    }
-
-    public static String toHexString(byte[] array, int offset, int length, boolean upperCase) {
-        char[] digits = upperCase ? HEX_DIGITS : HEX_LOWER_CASE_DIGITS;
         char[] buf = new char[length * 2];
 
         int bufIndex = 0;
         for (int i = offset; i < offset + length; i++) {
             byte b = array[i];
-            buf[bufIndex++] = digits[(b >>> 4) & 0x0F];
-            buf[bufIndex++] = digits[b & 0x0F];
+            buf[bufIndex++] = HEX_DIGITS[(b >>> 4) & 0x0F];
+            buf[bufIndex++] = HEX_DIGITS[b & 0x0F];
         }
 
         return new String(buf);
@@ -157,13 +144,21 @@ public class HexDump {
         return buffer;
     }
 
-    public static StringBuilder appendByteAsHex(StringBuilder sb, byte b, boolean upperCase) {
-        char[] digits = upperCase ? HEX_DIGITS : HEX_LOWER_CASE_DIGITS;
-        sb.append(digits[(b >> 4) & 0xf]);
-        sb.append(digits[b & 0xf]);
-        return sb;
+    public static String toHexString(long value) {
+        return Long.toHexString(value);
     }
 
+    public static String toHexString(float f) {
+        return Float.toHexString(f);
+    }
+
+    public static String toHexString(double d) {
+        return Double.toHexString(d);
+    }
+
+    /**
+     * Convert byte array to int value (little-endian: low byte first)
+     */
     public static int bytesToInt(byte[] src, int offset) {
         int value;
         value = (int) ((src[offset] & 0xFF)
@@ -174,10 +169,11 @@ public class HexDump {
     }
 
     /**
-     * 将int数值转换为占四个字节的byte数组，本方法适用于(低位在前，高位在后)的顺序。 和bytesToInt（）配套使用
+     * Convert int value to byte array (little-endian: low byte first)
+     * Compatible with bytesToInt()
      *
-     * @param value 要转换的int值
-     * @return byte数组
+     * @param value int value to convert
+     * @return byte array
      */
     public static byte[] intToBytes(int value) {
         byte[] src = new byte[4];
@@ -189,7 +185,8 @@ public class HexDump {
     }
 
     /**
-     * 将int数值转换为占四个字节的byte数组，本方法适用于(高位在前，低位在后)的顺序。  和bytesToInt2（）配套使用
+     * Convert int value to byte array (big-endian: high byte first)
+     * Compatible with bytesToInt2()
      */
     public static byte[] intToBytes2(int value) {
         byte[] src = new byte[4];
@@ -200,6 +197,9 @@ public class HexDump {
         return src;
     }
 
+    /**
+     * Convert float to byte array (little-endian)
+     */
     public static void float2byte(float num, byte[] numbyte) {
         int fbit = Float.floatToIntBits(num);
 

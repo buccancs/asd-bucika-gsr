@@ -18,11 +18,14 @@ import java.util.List;
 
 public class TDatrsInIUtil {
 
-    public static String getTdartsVersion(String path) {
+    /**
+     * Helper method to load and configure INI file
+     */
+    private static Ini loadIniFile(String path) throws Exception {
         File file = new File(path + "T-darts.ini");
         if (!file.exists()) {
             LLog.e("bcf", "  ini不存在：" + file.getPath());
-            return "";
+            return null;
         }
         Config cfg = new Config();
         cfg.setLowerCaseOption(true);
@@ -30,8 +33,15 @@ public class TDatrsInIUtil {
         cfg.setMultiSection(true);
         Ini ini = new Ini();
         ini.setConfig(cfg);
+        ini.load(file);
+        return ini;
+    }
+
+    public static String getTdartsVersion(String path) {
         try {
-            ini.load(file);
+            Ini ini = loadIniFile(path);
+            if (ini == null) return "";
+            
             Profile.Section tDartSWSection = ini.get("TDartSW".toLowerCase());
             if (tDartSWSection == null) {
                 return "";
@@ -41,52 +51,40 @@ public class TDatrsInIUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "";
         }
         return "";
     }
 
     public static HashMap<String, String> getTdarts(String path) {
         HashMap<String, String> hashMap = new HashMap<>();
-        File file = new File(path + "T-darts.ini");
-        if (!file.exists()) {
-            LLog.e("bcf", "  ini不存在：" + file.getPath());
-            return hashMap;
-        }
-        Config cfg = new Config();
-        cfg.setLowerCaseOption(true);
-        cfg.setLowerCaseSection(true);
-        cfg.setMultiSection(true);
-        Ini ini = new Ini();
-        ini.setConfig(cfg);
         try {
-            ini.load(file);
+            Ini ini = loadIniFile(path);
+            if (ini == null) return hashMap;
+            
             Profile.Section tDartSWSection = ini.get("TDartSW".toLowerCase());
-            if (tDartSWSection == null) {
-                return hashMap;
-            }
-            if (!TextUtils.isEmpty(tDartSWSection.get("version"))) {
+            if (tDartSWSection != null && !TextUtils.isEmpty(tDartSWSection.get("version"))) {
                 hashMap.put("Version", tDartSWSection.get("Version".toLowerCase()));
             }
 
             Profile.Section libsSection = ini.get("libs");
-            if (libsSection == null) {
-                return hashMap;
+            if (libsSection != null) {
+                addToMapIfNotEmpty(hashMap, libsSection, "T-dartsApp");
+                addToMapIfNotEmpty(hashMap, libsSection, "825x_module");
+                addToMapIfNotEmpty(hashMap, libsSection, "N32S032-app");
             }
-
-            if (!TextUtils.isEmpty(libsSection.get("T-dartsApp".toLowerCase()))) {
-                hashMap.put("T-dartsApp", libsSection.get("T-dartsApp".toLowerCase()));
-            }
-            if (!TextUtils.isEmpty(libsSection.get("825x_module".toLowerCase()))) {
-                hashMap.put("825x_module", libsSection.get("825x_module".toLowerCase()));
-            }
-            if (!TextUtils.isEmpty(libsSection.get("N32S032-app".toLowerCase()))) {
-                hashMap.put("N32S032-app", libsSection.get("N32S032-app".toLowerCase()));
-            }
-            return hashMap;
         } catch (Exception e) {
             e.printStackTrace();
-            return hashMap;
+        }
+        return hashMap;
+    }
+
+    /**
+     * Helper method to add section value to map if not empty
+     */
+    private static void addToMapIfNotEmpty(HashMap<String, String> map, Profile.Section section, String key) {
+        String value = section.get(key.toLowerCase());
+        if (!TextUtils.isEmpty(value)) {
+            map.put(key, value);
         }
     }
 
