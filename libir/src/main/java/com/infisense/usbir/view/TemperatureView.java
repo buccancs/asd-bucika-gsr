@@ -1,33 +1,57 @@
 package com.infisense.usbir.view;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.PixelFormat;
-import android.graphics.Point;
-import android.graphics.PorterDuff;
-import android.graphics.Rect;
-import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.View;
+import com.topdon.lib.core.view.EnhancedTemperatureView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+/**
+ * Backward compatibility wrapper for TemperatureView.
+ * Delegates to EnhancedTemperatureView in libapp core.
+ * 
+ * @deprecated Use EnhancedTemperatureView in libapp core instead
+ */
+@Deprecated
+public class TemperatureView extends EnhancedTemperatureView {
 
-import com.blankj.utilcode.util.SizeUtils;
-import com.energy.iruvc.dual.DualUVCCamera;
-import com.energy.iruvc.sdkisp.LibIRTemp;
-import com.energy.iruvc.utils.DualCameraParams;
-import com.energy.iruvc.utils.Line;
-import com.energy.iruvc.utils.SynchronizedBitmap;
-import com.infisense.usbdual.Const;
+    public TemperatureView(Context context) {
+        super(context);
+    }
+
+    public TemperatureView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public TemperatureView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    /**
+     * Compatibility method for setting temperature data
+     * @deprecated Use setTemperatureData instead
+     */
+    @Deprecated
+    public void updateTemperatureData(float[] data, int width, int height) {
+        setTemperatureData(data, width, height);
+    }
+
+    /**
+     * Compatibility method for setting display parameters
+     * @deprecated Use setDisplayMode instead
+     */
+    @Deprecated
+    public void setThermalMode(int mode) {
+        setDisplayMode(mode);
+    }
+
+    /**
+     * Compatibility method for temperature range
+     * @deprecated Use setTemperatureRange instead
+     */
+    @Deprecated
+    public void setTempRange(float min, float max) {
+        setTemperatureRange(min, max);
+    }
+}
 import com.infisense.usbdual.camera.BaseDualView;
 import com.infisense.usbir.R;
 import com.infisense.usbir.inf.ILiteListener;
