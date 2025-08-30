@@ -13,8 +13,12 @@ import com.topdon.lib.core.bean.ColorSelectBean
 @Deprecated("Product requirement: all color picking should use ColorPickDialog style")
 class DColorSelectAdapter(
     context: Context,
-    colorList: MutableList<ColorSelectBean> = mutableListOf()
-) : EnhancedColorSelectAdapter(context, colorList) {
+    private val initialColorList: MutableList<ColorSelectBean> = mutableListOf()
+) : EnhancedColorSelectAdapter(context, initialColorList) {
+
+    // Legacy API support - expose colors as colorBean for backward compatibility
+    val colorBean: MutableList<ColorSelectBean>
+        get() = initialColorList
 
     // Legacy API support
     var listener: ((code: Int, color: Int) -> Unit)? = null

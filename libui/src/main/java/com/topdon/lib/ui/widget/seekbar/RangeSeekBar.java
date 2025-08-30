@@ -1,13 +1,38 @@
 package com.topdon.lib.ui.widget.seekbar;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.Typeface;
+import android.os.Parcelable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.Gravity;
+import android.view.View;
+import android.view.MotionEvent;
+import android.view.ViewGroup;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 
 import com.topdon.lib.core.widget.BaseRangeSeekBar;
 import com.topdon.lib.core.widget.OnRangeChangedListener;
+import com.topdon.lib.ui.R;
+import com.topdon.menu.util.PseudoColorConfig;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Backward compatibility wrapper for the consolidated RangeSeekBar implementation.
@@ -214,7 +239,11 @@ public class RangeSeekBar extends BaseRangeSeekBar {
     }
 
     public RangeSeekBar(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
+    }
+
+    public RangeSeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
         initAttrs(attrs);
         initPaint();
         initSeekBar(attrs);

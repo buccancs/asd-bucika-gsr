@@ -11,7 +11,7 @@ import com.topdon.lib.core.bean.ColorSelectBean
  * Enhanced color selection adapter with comprehensive color management capabilities  
  * Consolidated from libcom.adapter.DColorSelectAdapter with additional features
  */
-class EnhancedColorSelectAdapter(
+open class EnhancedColorSelectAdapter(
     private val context: Context,
     private val colorList: MutableList<ColorSelectBean> = mutableListOf(),
     private val layoutResId: Int = 0

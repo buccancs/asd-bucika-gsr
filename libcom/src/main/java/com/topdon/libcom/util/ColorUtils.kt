@@ -3,7 +3,7 @@ package com.topdon.libcom.util
 import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
 import com.topdon.lib.core.utils.ColorUtils as CoreColorUtils
-import com.topdon.lib.core.utils.EnhancedKotlinExtensions
+import com.topdon.lib.core.utils.EnhancedSizeUtils
 
 /**
  * Backward compatibility wrapper for ColorUtils.
@@ -23,14 +23,20 @@ object ColorUtils {
     }
 
     fun dpToPx(@Dimension(unit = Dimension.DP) dp: Int): Int {
-        return EnhancedKotlinExtensions.dpToPx(dp)
+        return EnhancedSizeUtils.dpToPx(dp)
     }
 
     fun dpToPxF(@Dimension(unit = Dimension.DP) dp: Float): Float {
-        return EnhancedKotlinExtensions.dpToPxF(dp)
+        return EnhancedSizeUtils.dpToPxF(dp)
     }
 
     fun formatVideoTime(milliseconds: Long): String {
-        return EnhancedKotlinExtensions.formatVideoTime(milliseconds)
+        val seconds = milliseconds / 1000
+        val minutes = seconds / 60
+        val hours = minutes / 60
+        return when {
+            hours > 0 -> String.format("%02d:%02d:%02d", hours, minutes % 60, seconds % 60)
+            else -> String.format("%02d:%02d", minutes % 60, seconds % 60)
+        }
     }
 }

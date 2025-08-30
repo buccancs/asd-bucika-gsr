@@ -22,7 +22,6 @@ object PDFHelp {
      * @return File path
      */
     fun savePdfFileByListView(name: String, view: ScrollView, viewList: MutableList<View>, watermarkView: View): String {
-        val uri = ExportUtils.savePdfFromViews(name, viewList, watermarkView)
-        return uri?.path ?: ""
+        return ExportUtils.savePdfFromViews(name, view, viewList, watermarkView)
     }
 }

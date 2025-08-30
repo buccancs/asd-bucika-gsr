@@ -15,7 +15,7 @@ import com.topdon.lib.core.animation.AnimationUtils
  * Enhanced temperature layout with breathing animation for alarm visualization
  * Consolidated from libcom.view.TempLayout with enhanced capabilities
  */
-class EnhancedTempLayout : LinearLayout {
+open class EnhancedTempLayout : LinearLayout {
 
     companion object {
         const val TYPE_HOT = 1       // High temperature warning

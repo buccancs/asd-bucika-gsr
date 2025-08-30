@@ -20,7 +20,7 @@ import com.topdon.lib.core.tools.ToastTools
  * Enhanced temperature alarm settings dialog with comprehensive alarm configuration
  * Consolidated from libcom.dialog.TempAlarmSetDialog
  */
-class EnhancedAlarmSetDialog(
+open class EnhancedAlarmSetDialog(
     context: Context,
     private val isEdit: Boolean = false,
     private val layoutResId: Int = 0

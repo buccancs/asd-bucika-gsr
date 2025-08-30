@@ -24,3 +24,4 @@ class TempAlarmSetDialog(
 
     // All functionality delegated to enhanced parent class
     // Original API maintained for backward compatibility
+}

@@ -12,9 +12,12 @@ import androidx.annotation.Nullable;
  * Backward compatibility wrapper for ExcelUtil.
  * Delegates to enhanced ExportUtils in libapp core.
  * @author: CaiSongL
+/**
+ * Backward compatibility wrapper for ExcelUtil.
+ * @deprecated Use ExportUtils in libapp core instead
  * @date: 2023/5/11 15:58
  */
-@Deprecated("Use ExportUtils in libapp core instead")
+@Deprecated
 public class ExcelUtil {
 
     /**

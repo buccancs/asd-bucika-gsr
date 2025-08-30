@@ -12,7 +12,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
  * Enhanced load more view with comprehensive loading state management
  * Consolidated from multiple lib* modules with additional capabilities
  */
-class EnhancedLoadMoreView @JvmOverloads constructor(
+open class EnhancedLoadMoreView @JvmOverloads constructor(
     private val context: Context,
     private val customLayoutRes: Int = 0,
     private val loadingText: String? = null,

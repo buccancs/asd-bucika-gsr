@@ -2,15 +2,14 @@ package com.topdon.lib.ui.widget.seekbar;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import com.topdon.lib.core.widget.BaseRangeSeekBar;
 
 /**
  * Backward compatibility wrapper for libui RangeSeekBar.
- * Extends the consolidated BaseRangeSeekBar while preserving the original API.
+ * Extends the RangeSeekBar while preserving the original API.
  * 
- * @deprecated Use com.topdon.lib.core.widget.BaseRangeSeekBar directly for new code.
+ * @deprecated Use com.topdon.lib.ui.widget.seekbar.RangeSeekBar directly for new code.
  */
-public class RangeSeekBarWrapper extends BaseRangeSeekBar {
+public class RangeSeekBarWrapper extends RangeSeekBar {
 
     // Maintain original interface for backward compatibility
     private OnRangeChangedListener mOriginalListener;
@@ -32,24 +31,24 @@ public class RangeSeekBarWrapper extends BaseRangeSeekBar {
         // Wrap the consolidated listener to work with original interface
         super.setOnRangeChangedListener(new com.topdon.lib.core.widget.OnRangeChangedListener() {
             @Override
-            public void onRangeChanged(BaseRangeSeekBar view, float leftValue, float rightValue, boolean isFromUser, int tempMode) {
+            public void onRangeChanged(com.topdon.lib.core.widget.BaseRangeSeekBar view, float leftValue, float rightValue, boolean isFromUser, int tempMode) {
                 if (mOriginalListener != null) {
-                    // Convert BaseRangeSeekBar to RangeSeekBar for backward compatibility
-                    mOriginalListener.onRangeChanged(RangeSeekBar.this, leftValue, rightValue, isFromUser, tempMode);
+                    // Pass this wrapper as the RangeSeekBar
+                    mOriginalListener.onRangeChanged(RangeSeekBarWrapper.this, leftValue, rightValue, isFromUser, tempMode);
                 }
             }
             
             @Override
-            public void onStartTrackingTouch(BaseRangeSeekBar view, boolean isLeft) {
+            public void onStartTrackingTouch(com.topdon.lib.core.widget.BaseRangeSeekBar view, boolean isLeft) {
                 if (mOriginalListener != null) {
-                    mOriginalListener.onStartTrackingTouch(RangeSeekBar.this, isLeft);
+                    mOriginalListener.onStartTrackingTouch(RangeSeekBarWrapper.this, isLeft);
                 }
             }
             
             @Override
-            public void onStopTrackingTouch(BaseRangeSeekBar view, boolean isLeft) {
+            public void onStopTrackingTouch(com.topdon.lib.core.widget.BaseRangeSeekBar view, boolean isLeft) {
                 if (mOriginalListener != null) {
-                    mOriginalListener.onStopTrackingTouch(RangeSeekBar.this, isLeft);
+                    mOriginalListener.onStopTrackingTouch(RangeSeekBarWrapper.this, isLeft);
                 }
             }
         });
@@ -64,18 +63,18 @@ public class RangeSeekBarWrapper extends BaseRangeSeekBar {
             setOnRangeChangedListener((com.topdon.lib.core.widget.OnRangeChangedListener) null);
             setOnRangeChangedListener((com.topdon.lib.core.widget.OnRangeChangedListener) new com.topdon.lib.core.widget.OnRangeChangedListener() {
                 @Override
-                public void onRangeChanged(BaseRangeSeekBar view, float leftValue, float rightValue, boolean isFromUser, int tempMode) {
-                    listener.onRangeChanged(RangeSeekBar.this, leftValue, rightValue, isFromUser, tempMode);
+                public void onRangeChanged(com.topdon.lib.core.widget.BaseRangeSeekBar view, float leftValue, float rightValue, boolean isFromUser, int tempMode) {
+                    listener.onRangeChanged(RangeSeekBarWrapper.this, leftValue, rightValue, isFromUser, tempMode);
                 }
                 
                 @Override
-                public void onStartTrackingTouch(BaseRangeSeekBar view, boolean isLeft) {
-                    listener.onStartTrackingTouch(RangeSeekBar.this, isLeft);
+                public void onStartTrackingTouch(com.topdon.lib.core.widget.BaseRangeSeekBar view, boolean isLeft) {
+                    listener.onStartTrackingTouch(RangeSeekBarWrapper.this, isLeft);
                 }
                 
                 @Override
-                public void onStopTrackingTouch(BaseRangeSeekBar view, boolean isLeft) {
-                    listener.onStopTrackingTouch(RangeSeekBar.this, isLeft);
+                public void onStopTrackingTouch(com.topdon.lib.core.widget.BaseRangeSeekBar view, boolean isLeft) {
+                    listener.onStopTrackingTouch(RangeSeekBarWrapper.this, isLeft);
                 }
             });
         }
