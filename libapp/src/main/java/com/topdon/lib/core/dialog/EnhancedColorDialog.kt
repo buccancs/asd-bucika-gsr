@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.topdon.lib.ui.bean.ColorBean
+import com.topdon.lib.core.bean.ColorSelectBean
 
 /**
  * Enhanced color picker dialog consolidating libcom color dialog functionality.
@@ -114,13 +114,13 @@ class EnhancedColorDialog(private val initialColor: Int = Color.WHITE) : DialogF
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorViewHolder {
             val view = View(parent.context).apply {
                 layoutParams = ViewGroup.LayoutParams(100, 100)
-                setOnClickListener { onColorClick(colors[adapterPosition]) }
             }
             return ColorViewHolder(view)
         }
 
         override fun onBindViewHolder(holder: ColorViewHolder, position: Int) {
             holder.itemView.setBackgroundColor(colors[position])
+            holder.itemView.setOnClickListener { onColorClick(colors[position]) }
         }
 
         override fun getItemCount() = colors.size

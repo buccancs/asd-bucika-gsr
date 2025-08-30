@@ -186,8 +186,8 @@ object ExportUtils {
         val isShowC = SharedManager.getTemperature() == 1
 
         val cellStyle = workbook.createCellStyle().apply {
-            alignment = HorizontalAlignment.CENTER
-            verticalAlignment = VerticalAlignment.CENTER
+            setAlignment(HorizontalAlignment.CENTER)
+            setVerticalAlignment(VerticalAlignment.CENTER)
         }
 
         for (i in 0 until height) {
@@ -212,7 +212,7 @@ object ExportUtils {
         return try {
             val fileName = "$name.xlsx"
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-                val excel = File(FileConfig.getExcelDir(), fileName)
+                val excel = File(FileConfig.excelDir, fileName)
                 val fileOutputStream = FileOutputStream(excel)
                 val bufferedOutputStream = BufferedOutputStream(fileOutputStream)
                 workbook.write(bufferedOutputStream)
@@ -250,7 +250,7 @@ object ExportUtils {
         
         val paint = Paint().apply {
             textSize = 12f
-            color = Color.BLACK
+            color = android.graphics.Color.BLACK
         }
         
         // Simple text-based thermal data export
@@ -260,7 +260,7 @@ object ExportUtils {
         
         for ((index, entity) in thermalList.withIndex()) {
             if (yPosition > 800) break // Stay within page bounds
-            canvas.drawText("Entry ${index + 1}: Temp ${entity.centerTemp}°C", 50f, yPosition, paint)
+            canvas.drawText("Entry ${index + 1}: Temp ${entity.thermal}°C", 50f, yPosition, paint)
             yPosition += 20f
         }
         
