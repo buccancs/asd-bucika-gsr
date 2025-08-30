@@ -1,33 +1,19 @@
 package com.topdon.menu
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.TypedArray
 import android.util.AttributeSet
-import android.view.LayoutInflater
-import android.widget.FrameLayout
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.topdon.lib.core.repository.GalleryRepository
-import com.topdon.menu.constant.MenuType
-import com.topdon.menu.adapter.ColorAdapter
-import com.topdon.menu.adapter.FenceAdapter
-import com.topdon.menu.adapter.SettingAdapter
-import com.topdon.menu.adapter.TargetAdapter
-import com.topdon.menu.adapter.TempLevelAdapter
-import com.topdon.menu.adapter.TempPointAdapter
-import com.topdon.menu.adapter.TempSourceAdapter
-import com.topdon.menu.adapter.TwoLightAdapter
-import com.topdon.menu.constant.FenceType
-import com.topdon.menu.constant.SettingType
-import com.topdon.menu.constant.TargetType
-import com.topdon.menu.constant.TempPointType
-import com.topdon.menu.constant.TwoLightType
-import com.topdon.menu.databinding.ViewMenuSecondBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.topdon.lib.core.menu.EnhancedMenuSecondView
+
+/**
+ * Backward compatibility wrapper for MenuSecondView.
+ * Delegates to EnhancedMenuSecondView in libapp core.
+ */
+@Deprecated("Use EnhancedMenuSecondView in libapp core instead", ReplaceWith("EnhancedMenuSecondView"))
+class MenuSecondView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : EnhancedMenuSecondView(context, attrs, defStyleAttr)
 
 /**
  * 二级菜单

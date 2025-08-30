@@ -4,46 +4,95 @@ import android.app.PendingIntent
 import android.content.Context
 import android.hardware.usb.*
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
-import com.guide.zm04c.matrix.ResultCode.ERROR_CONNECT_DEVICE_FAILD
-import com.guide.zm04c.matrix.ResultCode.SUCC_CONNECT_INTERFACE
-import com.guide.zm04c.matrix.utils.ByteUtils.toHexString
-import com.guide.zm04c.matrix.utils.HexDump
-import java.util.*
+import com.topdon.lib.core.usb.EnhancedUsbManager
+import kotlinx.coroutines.*
 
-class GuideUsbManager {
-
-    private var mContext: Context? = null
-    private val mPermissionIntent: PendingIntent? = null
-    private var mUsbManager: UsbManager? = null
-    private var mUsbDevice: UsbDevice? = null
-    private var mConnection: UsbDeviceConnection? = null
-    private var mUsbInterface: UsbInterface? = null
-    private var mEndpointDataIn: UsbEndpoint? = null
-    private var mEndpointControlOut: UsbEndpoint? = null
-    private var mEndpointControlIn: UsbEndpoint? = null
-
+/**
+ * Backward compatibility wrapper for GuideUsbManager.
+ * Delegates to EnhancedUsbManager in libapp core.
+ */
+@Deprecated("Use EnhancedUsbManager in libapp core instead", ReplaceWith("EnhancedUsbManager"))
+class GuideUsbManager(
+    private val context: Context?,
+    private val nativeGuideCore: NativeGuideCore? = null
+) {
     companion object {
-        val ADDRESS_ENDPOINT_DATA_IN = 129
-        val ADDRESS_ENDPOINT_CONTROL_OUT = 2
-        val ADDRESS_ENDPOINT_CONTROL_IN = 131
+        val ADDRESS_ENDPOINT_DATA_IN = EnhancedUsbManager.ADDRESS_ENDPOINT_DATA_IN
+        val ADDRESS_ENDPOINT_CONTROL_OUT = EnhancedUsbManager.ADDRESS_ENDPOINT_CONTROL_OUT
+        val ADDRESS_ENDPOINT_CONTROL_IN = EnhancedUsbManager.ADDRESS_ENDPOINT_CONTROL_IN
         val VENDOR_ID = 0x4206
         val PRODUCT_ID = 0x3702
     }
 
-    /*
-        public static final int VENDOR_ID = 0x0525;
-        public static final int PRODUCT_ID = 0xa4a0;
-    */
-    private var mConnectCode: Int = ResultCode.READY_CONNECT_DEVICE
-    private val TAG = "guidecore"
-    private var mNativeGuideCore: NativeGuideCore? = null
-
-    constructor(context: Context?, nativeGuideCore: NativeGuideCore?) {
-        mContext = context
-        mNativeGuideCore = nativeGuideCore
+    private val enhancedManager by lazy { 
+        if (context != null) EnhancedUsbManager.getInstance(context) else null
     }
+    private var connectCode: Int = ResultCode.READY_CONNECT_DEVICE
+    private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    fun connectUsbDevice(): Int {
+        return runBlocking {
+            val manager = enhancedManager ?: return@runBlocking ResultCode.ERROR_CONNECT_DEVICE_FAILD
+            
+            val devices = manager.scanForDevices()
+            val targetDevice = devices.find { 
+                it.vendorId == VENDOR_ID && it.productId == PRODUCT_ID 
+            } ?: return@runBlocking ResultCode.ERROR_CONNECT_DEVICE_FAILD
+            
+            val result = manager.connectToDevice(targetDevice)
+            connectCode = when (result) {
+                EnhancedUsbManager.RESULT_SUCCESS -> ResultCode.SUCC_CONNECT_INTERFACE
+                else -> ResultCode.ERROR_CONNECT_DEVICE_FAILD
+            }
+            connectCode
+        }
+    }
+
+    fun disconnectDevice() {
+        enhancedManager?.disconnect()
+        connectCode = ResultCode.READY_CONNECT_DEVICE
+    }
+
+    fun getConnectCode(): Int = connectCode
+
+    fun readData(timeout: Int = 5000): ByteArray? {
+        return runBlocking {
+            enhancedManager?.readData(timeout)
+        }
+    }
+
+    fun writeData(data: ByteArray, timeout: Int = 5000): Boolean {
+        return runBlocking {
+            enhancedManager?.writeData(data, timeout) ?: false
+        }
+    }
+
+    fun hasPermission(): Boolean {
+        val manager = enhancedManager ?: return false
+        val devices = manager.scanForDevices()
+        val targetDevice = devices.find { 
+            it.vendorId == VENDOR_ID && it.productId == PRODUCT_ID 
+        } ?: return false
+        return manager.hasPermission(targetDevice)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun requestPermission(pendingIntent: PendingIntent) {
+        val manager = enhancedManager ?: return
+        val devices = manager.scanForDevices()
+        val targetDevice = devices.find { 
+            it.vendorId == VENDOR_ID && it.productId == PRODUCT_ID 
+        } ?: return
+        manager.requestPermission(targetDevice, pendingIntent)
+    }
+
+    fun cleanup() {
+        scope.cancel()
+        enhancedManager?.cleanup()
+    }
+}
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     fun connectUsbDevice(): Int {
