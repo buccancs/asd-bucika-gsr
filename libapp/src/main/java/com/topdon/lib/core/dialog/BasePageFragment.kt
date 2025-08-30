@@ -6,6 +6,8 @@ import android.widget.ImageView
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import com.topdon.lib.core.ktbase.BaseFragment
+import android.widget.*
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Consolidated base page fragment for displaying image resources.

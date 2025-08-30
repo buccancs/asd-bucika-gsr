@@ -9,7 +9,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.topdon.lib.ui.R
 import com.topdon.lib.ui.bean.ColorSelectBean
-import kotlinx.android.synthetic.main.ui_item_color_select.view.*
+// Removed synthetic imports - using findViewById instead
 
 class ColorSelectAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

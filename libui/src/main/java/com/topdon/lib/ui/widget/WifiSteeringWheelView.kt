@@ -6,7 +6,7 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.LinearLayout
 import com.topdon.lib.ui.R
-import kotlinx.android.synthetic.main.ui_wifi_steering_wheel_view.view.*
+// Removed synthetic imports - using findViewById instead
 
 /**
  * 校准方向

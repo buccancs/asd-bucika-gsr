@@ -15,6 +15,8 @@ import com.topdon.lib.core.tools.UnitTools
 import com.topdon.lib.core.bean.AlarmBean
 import com.topdon.lib.core.common.SaveSettingUtil
 import com.topdon.lib.core.tools.ToastTools
+import android.widget.*
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Enhanced temperature alarm settings dialog with comprehensive alarm configuration

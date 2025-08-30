@@ -21,7 +21,7 @@ import com.blankj.utilcode.util.ToastUtils
 
 import com.topdon.lib.core.listener.BitmapViewListener
 import com.topdon.lib.ui.R
-import kotlinx.android.synthetic.main.camera_lay.view.*
+// Removed synthetic imports - using findViewById instead
 import java.util.*
 
 /**

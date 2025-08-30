@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.topdon.lib.core.R
 import com.topdon.lib.core.utils.ScreenUtil
-import kotlinx.android.synthetic.main.dialog_long_text.view.*
+import android.widget.*
+import androidx.recyclerview.widget.RecyclerView
+// Removed synthetic imports - using findViewById instead
 
 /**
  * 展示很长文字的弹框.

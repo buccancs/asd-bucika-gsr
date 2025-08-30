@@ -11,7 +11,9 @@ import android.widget.TextView
 import androidx.annotation.StringRes
 import com.topdon.lib.core.R
 import com.topdon.lib.core.utils.ScreenUtil
-import kotlinx.android.synthetic.main.dialog_tip_progress.view.*
+import android.widget.*
+import androidx.recyclerview.widget.RecyclerView
+// Removed synthetic imports - using findViewById instead
 
 
 /**

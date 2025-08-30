@@ -12,10 +12,7 @@ import com.topdon.lib.core.R
 import com.topdon.lib.core.adapter.TargetColorAdapter
 import com.topdon.lib.core.bean.ObserveBean
 import com.topdon.lib.core.utils.ScreenUtil
-import kotlinx.android.synthetic.main.dialog_tip_observe.view.img_close
-import kotlinx.android.synthetic.main.dialog_tip_observe.view.tv_i_know
-import kotlinx.android.synthetic.main.dialog_tip_observe.view.tv_title
-import kotlinx.android.synthetic.main.dialog_tip_target_color.view.*
+// Removed synthetic imports - using findViewById instead
 
 /**
  * 观测-标靶颜色
@@ -68,13 +65,13 @@ class TipTargetColorDialog : Dialog {
                 context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val view = inflater.inflate(R.layout.dialog_tip_target_color, null)
 
-            view.tv_i_know.setOnClickListener {
+            view.findViewById<TextView>(R.id.tv_i_know).setOnClickListener {
                 dismiss()
                 closeEvent?.invoke(targetColor)
             }
 
-            titleText = view.tv_title
-            imgClose = view.img_close
+            titleText = view.findViewById<TextView>(R.id.tv_title)
+            imgClose = view.findViewById<ImageView>(R.id.img_close)
             recyclerView = view.recycler_view
             recyclerView.layoutManager = LinearLayoutManager(context!!, RecyclerView.HORIZONTAL, false)
             val targetColorAdapter = TargetColorAdapter(context!!,targetColor)
