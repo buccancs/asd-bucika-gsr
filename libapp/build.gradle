@@ -117,6 +117,8 @@ dependencies {
 
     api Deps.utilcode
     api Deps.XXPermissions
+    // Apache POI for Excel export functionality
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
     // Logging dependencies removed for simplification
     // api Deps.xlog
     api Deps.PhotoView
