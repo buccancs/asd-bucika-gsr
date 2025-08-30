@@ -627,7 +627,6 @@ public class IRUVCDual {
      */
     private int setPreviewSize(int cameraWidth, int cameraHeight) {
         if (uvcCamera != null) {
-                    " cameraHeight = " + cameraHeight);
             return uvcCamera.setUSBPreviewSize(cameraWidth, cameraHeight);
         }
         return -1;

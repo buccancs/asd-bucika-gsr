@@ -300,8 +300,6 @@ public class IRUVCTC {
 
                                                 @Override
                                                 public void onAutoGainSwitchResult(CommonParams.PropTPDParamsValue.GAINSELStatus gainselStatus, int result) {
-                                                            "onAutoGainSwitchResult->" + gainselStatus.getValue() +
-                                                                    " result=" + result);
                                                 }
                                             });
                                 }
@@ -314,7 +312,6 @@ public class IRUVCTC {
                                             new AvoidOverexposureCallback() {
                                                 @Override
                                                 public void onAvoidOverexposureState(boolean avoidOverexpol) {
-                                                            "onAvoidOverexposureState->avoidOverexpol=" + avoidOverexpol);
                                                 }
                                             });
                                 }
@@ -534,7 +531,6 @@ public class IRUVCTC {
                  * 红外+TNR出图,只能为25Hz
                  */
                 boolean isTempReplacedWithTNREnabled = ircmd.isTempReplacedWithTNREnabled(DeviceType.P2);
-                        "defaultDataFlowMode = others isTempReplacedWithTNREnabled = " + isTempReplacedWithTNREnabled);
                 if (isTempReplacedWithTNREnabled) {
                     /*
                      * 支持 红外+TNR 方式出图

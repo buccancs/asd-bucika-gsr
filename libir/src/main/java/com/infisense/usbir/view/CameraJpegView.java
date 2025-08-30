@@ -78,13 +78,3 @@ public class CameraJpegView extends EnhancedCameraView {
         super.onDetachedFromWindow();
     }
 }
-
-    public void stop() {
-        cameraThread.interrupt();
-        try {
-            cameraThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}

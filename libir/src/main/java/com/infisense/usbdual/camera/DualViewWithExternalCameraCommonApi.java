@@ -252,7 +252,6 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
                         fps = 100 * 1000 / (timeuse + 0.0);
                     }
                     timestart = currentTimeMillis;
-                            " dataFlowMode = " + dataFlowMode);
                 }
                 System.arraycopy(frame, 0, mixData, 0, fusionLength);
                 System.arraycopy(frame, fusionLength, irData, 0, irSize * 2);
@@ -359,7 +358,6 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
 
                                     @Override
                                     public void onAutoGainSwitchResult(CommonParams.PropTPDParamsValue.GAINSELStatus gainselStatus, int result) {
-                                                ":" + result);
                                         auto_gain_switch_running = true;
                                     }
                                 });
