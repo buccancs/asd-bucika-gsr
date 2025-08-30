@@ -5,12 +5,10 @@ import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
 import android.bluetooth.le.ScanSettings;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.topdon.ble.callback.ScanListener;
-import com.topdon.ble.util.Logger;
 
 /**
  * 蓝牙搜索器
@@ -42,7 +40,6 @@ class LeScanner extends AbstractScanner {
         @Override
         public void onScanFailed(int errorCode) {
             handleScanCallback(false, null, false, ScanListener.ERROR_SCAN_FAILED, "onScanFailed. errorCode = " + errorCode);
-            logger.log(Log.ERROR, Logger.TYPE_SCAN_STATE, "onScanFailed. errorCode = " + errorCode);
             stopScan(true);
         }
     };

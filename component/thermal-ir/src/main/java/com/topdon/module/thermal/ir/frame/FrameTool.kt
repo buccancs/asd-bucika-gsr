@@ -2,7 +2,6 @@ package com.topdon.module.thermal.ir.frame
 
 import android.graphics.Bitmap
 import android.graphics.Rect
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.sdkisp.LibIRProcess
 import com.energy.iruvc.sdkisp.LibIRTemp
 import com.energy.iruvc.utils.CommonParams
@@ -42,8 +41,6 @@ class FrameTool {
             println("imageBytes len: ${imageBytes.size}")
             println("temperatureBytes len: ${temperatureBytes.size}")
         } catch (e: Exception) {
-            e.printStackTrace()
-            XLog.e("读取一帧原始数据失败: ${e.message}")
         }
     }
 
@@ -282,7 +279,6 @@ class FrameTool {
 //        val irTemp = Libirtemp(256, 192)
 //        irTemp.settempdata(mixTemperatureBytes)
 //        val temperatureSampleEasyResult = irTemp.getTemperatureOfRect(Rect(0, 0, 256, 192))
-//        Log.w("123", "mix max: ${temperatureSampleEasyResult.maxTemperature}, min: ${temperatureSampleEasyResult.minTemperature}")
 //    }
 
 
@@ -292,7 +288,6 @@ class FrameTool {
 //        irTemp.settempdata(temperatureBytes)
 //        val temperatureSampleEasyResult = irTemp.getTemperatureOfRect(Rect(0, 0, 256, 192))
 //        temperatureSampleEasyResult.maxTemperaturePixel
-//        Log.w("123", "src max: ${temperatureSampleEasyResult.maxTemperature}, min: ${temperatureSampleEasyResult.minTemperature}")
 //    }
 
     /**

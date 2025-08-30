@@ -2,11 +2,9 @@ package com.topdon.module.thermal.ir.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.elvishew.xlog.XLog;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.CandleEntry;
 import com.github.mikephil.charting.data.Entry;
@@ -69,7 +67,6 @@ public class MyMarkerView extends MarkerView {
                 }
             }
         } catch (Exception ex) {
-            XLog.e("MarkerView error: " + ex.getMessage());
         }
         super.refreshContent(e, highlight);
     }

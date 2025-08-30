@@ -6,13 +6,11 @@ import android.content.Context
 import android.net.wifi.WifiManager
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.core.os.postDelayed
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.Utils
-import com.elvishew.xlog.XLog
 import com.hjq.permissions.XXPermissions
 import com.topdon.lib.core.bean.event.SocketStateEvent
 import com.topdon.lib.core.config.DeviceConfig
@@ -64,7 +62,6 @@ class WebSocketProxy {
                 val originalRequest = chain.request()
                 val builder: Request.Builder = originalRequest.newBuilder()
                 val compressedRequest: Request = builder.build()
-                XLog.tag("WebSocket").d("request:$compressedRequest")
                 chain.proceed(compressedRequest)
             })
             .retryOnConnectionFailure(true)
@@ -95,12 +92,10 @@ class WebSocketProxy {
     fun startWebSocket(ssid: String, network: Network? = null) {
         if (ssid == currentSSID) {
             if (mWsManager != null) {
-                XLog.tag("WebSocket").w("$ssid startWebSocket() 重复调用")
                 return
             }
             this.network = network
         } else {
-            XLog.tag("WebSocket").d("设备由 $currentSSID 切换到 $ssid，关闭旧连接")
             if (reconnectHandler.isReconnecting) {
                 EventBus.getDefault().post(SocketStateEvent(false, ssid.startsWith(DeviceConfig.TS004_NAME_START)))
             }
@@ -110,7 +105,6 @@ class WebSocketProxy {
             stopWebSocket()
         }
 
-        XLog.tag("WebSocket").d("$ssid startWebSocket()")
 
         if (mWsManager == null) {
             webSocketListener = MyWebSocketListener(ssid, reconnectHandler, onMessageListener) {
@@ -129,7 +123,6 @@ class WebSocketProxy {
      * 断开 Socket 连接.
      */
     fun stopWebSocket() {
-        XLog.tag("WebSocket").d("stopWebSocket()")
         webSocketListener?.isNeedReconnect = false
         webSocketListener = null
 
@@ -168,7 +161,6 @@ class WebSocketProxy {
         var isNeedReconnect = true
 
         override fun onOpen(webSocket: WebSocket, response: Response) {
-            XLog.tag("WebSocket").d("$ssid Socket 连接成功")
             isNeedReconnect = true
             handler.reset()
             EventBus.getDefault().post(SocketStateEvent(true, ssid.startsWith(DeviceConfig.TS004_NAME_START)))
@@ -176,9 +168,7 @@ class WebSocketProxy {
 
         override fun onMessage(webSocket: WebSocket, text: String) {
             if (SocketCmdUtil.getCmdResponse(text) == WsCmdConstants.APP_EVENT_HEART_BEATS) {
-                Log.v("WebSocket", "<-- 收到心跳消息 ${text.replace("\n", "").replace(" ", "")}")
             } else {
-                XLog.tag("WebSocket").d("$ssid 收到TEXT消息:$text")
             }
             onMessageListener?.invoke(text)
         }
@@ -193,23 +183,17 @@ class WebSocketProxy {
                 onFrameListener.invoke(frameBean)
                 needPrint = !needPrint
                 if (needPrint) {
-                    Log.v("WebSocket", "--------- $ssid 打印一帧数据 ---------")
-                    Log.v("WebSocket", frameBean.toString())
                 }
             } else {
-                XLog.tag("WebSocket").w("$ssid 未知的 bytes 消息，长度 ${bytes.size}")
             }
         }
 
         override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
-            XLog.tag("WebSocket").d("$ssid 连接关闭中，原因：$reason")
         }
 
         override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
             if (handler.isReconnecting) {
-                XLog.tag("WebSocket").d("$ssid 重连过程中，旧连接已关闭，原因：$reason")
             } else {
-                XLog.tag("WebSocket").d("$ssid 连接已关闭，原因：$reason")
                 handler.reset()
                 EventBus.getDefault().post(SocketStateEvent(false, ssid.startsWith(DeviceConfig.TS004_NAME_START)))
             }
@@ -217,15 +201,12 @@ class WebSocketProxy {
         }
 
         override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
-            XLog.tag("WebSocket").d("$ssid 发送或接收失败，response: ${response?.message}")
-            XLog.tag("WebSocket").d("$ssid 发送或接收失败，异常原因: ${t.message}")
             if (checkNeedReconnect()) {
                 handler.handleFail(ssid)
                 if (!handler.isReconnecting) {
                     EventBus.getDefault().post(SocketStateEvent(false, ssid.startsWith(DeviceConfig.TS004_NAME_START)))
                 }
             } else {
-                XLog.tag("WebSocket").w("主动断开连接")
                 handler.reset()
                 getInstance().stopWebSocket()
                 EventBus.getDefault().post(SocketStateEvent(false, ssid.startsWith(DeviceConfig.TS004_NAME_START)))
@@ -236,7 +217,6 @@ class WebSocketProxy {
         override fun onHeartBeat(): String? = SocketCmdUtil.getSocketCmd(WsCmdConstants.APP_EVENT_HEART_BEATS)
 
         override fun onHeartBeatTimeout() {
-            XLog.tag("WebSocket").w("心跳超时")
             handler.handleFail(ssid)
         }
 
@@ -251,7 +231,6 @@ class WebSocketProxy {
                 return true
             }
             val wifiName: String = WifiUtil.getCurrentWifiSSID(Utils.getApp()) ?: return true
-            XLog.tag("WebSocket").i("执行重连前，当前连接 WIFI：$wifiName")
             return wifiName == ssid
         }
     }
@@ -287,13 +266,11 @@ class WebSocketProxy {
 
         fun handleFail(currentSSID: String) {
             if (this.currentSSID != currentSSID) {
-                XLog.tag("WebSocket").w("设备切换到 ${this.currentSSID} 后，丢弃 $currentSSID fail 处理")
                 return
             }
             if (isReconnecting) {
                 reconnectCount++
                 if (reconnectCount < MAX_RECONNECT_COUNT) {
-                    XLog.tag("WebSocket").w("第 $reconnectCount 次重连失败")
 
                     getInstance().stopWebSocket()
                     removeCallbacksAndMessages(null)
@@ -301,14 +278,12 @@ class WebSocketProxy {
                         getInstance().startWebSocket(currentSSID)
                     }
                 } else {
-                    XLog.tag("WebSocket").w("最后一次重连失败，发送 连接已断开 事件")
                     reconnectCount = 0
                     isReconnecting = false
                     removeCallbacksAndMessages(null)
                     getInstance().stopWebSocket()
                 }
             } else {
-                XLog.tag("WebSocket").d("出现心跳超时或错误后，准备开始执行重连")
                 reconnectCount = 0
                 isReconnecting = true
 

@@ -11,7 +11,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.ColorRes;
 import androidx.core.content.ContextCompat;
@@ -29,7 +28,7 @@ public class Utils {
     private static final String TAG = "RangeSeekBar";
 
     public static void print(String log) {
-        Log.d(TAG, log);
+        // Logging removed
     }
 
     public static void print(Object... logs) {
@@ -37,7 +36,7 @@ public class Utils {
         for (Object log : logs) {
             stringBuilder.append(log);
         }
-        Log.d(TAG, stringBuilder.toString());
+        // Logging removed
     }
 
     public static Bitmap drawableToBitmap(Context context, int width, int height, int drawableId) {
@@ -75,7 +74,6 @@ public class Utils {
             drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
             drawable.draw(canvas);
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return bitmap;
     }

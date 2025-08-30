@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PointF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -99,7 +98,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             typedArray.recycle();
         }
@@ -200,15 +198,12 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
         for (int i = 0; i < count; i++) {
             View child = getChildAt(i);
             if (mLeftView == null && child.getId() == mLeftViewResID) {
-                // Log.i(TAG, "找到左边按钮view");
                 mLeftView = child;
                 mLeftView.setClickable(true);
             } else if (mRightView == null && child.getId() == mRightViewResID) {
-                // Log.i(TAG, "找到右边按钮view");
                 mRightView = child;
                 mRightView.setClickable(true);
             } else if (mContentView == null && child.getId() == mContentViewResID) {
-                // Log.i(TAG, "找到内容View");
                 mContentView = child;
                 mContentView.setClickable(true);
             }
@@ -264,7 +259,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
                     if (mViewCache != this) {
                         mViewCache.handlerSwipeMenu(State.CLOSE);
                     }
-                    // Log.i(TAG, ">>>有菜单被打开");
                     getParent().requestDisallowInterceptTouchEvent(true);
                 }
 
@@ -280,7 +274,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
 //                if (Math.abs(distanceX) <= mScaledTouchSlop){
 //                    break;
 //                }
-                // Log.i(TAG, ">>>>>distanceX:" + distanceX);
 
                 scrollBy((int) (distanceX), 0);//滑动使用scrollBy
                 //越界修正
@@ -307,7 +300,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
                 if (Math.abs(distanceX) > mScaledTouchSlop
 //                        || Math.abs(getScrollX()) > mScaledTouchSlop
                         ) {
-                    //  Log.i(TAG, ">>>>当处于水平滑动时，禁止父类拦截 true");
                     getParent().requestDisallowInterceptTouchEvent(true);
                 }
                 mLastP.set(ev.getRawX(), ev.getRawY());
@@ -343,7 +335,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-      //  Log.d(TAG, "<<<<dispatchTouchEvent() called with: " + "ev = [" + event + "]");
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
                 break;
@@ -352,11 +343,9 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
                 //滑动时拦截点击时间
                 if (Math.abs(finalyDistanceX) > mScaledTouchSlop) {
                     // 当手指拖动值大于mScaledTouchSlop值时，认为应该进行滚动，拦截子控件的事件
-                 //   Log.i(TAG, "<<<onInterceptTouchEvent true");
                     return true;
                 }
 //                if (Math.abs(finalyDistanceX) > mScaledTouchSlop || Math.abs(getScrollX()) > mScaledTouchSlop) {
-//                    Log.d(TAG, "onInterceptTouchEvent: 2");
 //                    return true;
 //                }
                 break;
@@ -423,7 +412,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
         if (!(mScaledTouchSlop < Math.abs(finalyDistanceX))) {
             return mStateCache;
         }
-        Log.i(TAG, ">>>finalyDistanceX:" + finalyDistanceX);
         if (finalyDistanceX < 0) {
             //➡滑动
             //1、展开左边按钮
@@ -465,7 +453,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
             mViewCache.handlerSwipeMenu(State.CLOSE);
         }
         super.onDetachedFromWindow();
-        //  Log.i(TAG, ">>>>>>>>onDetachedFromWindow");
 
     }
 
@@ -475,7 +462,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
         if (this == mViewCache) {
             mViewCache.handlerSwipeMenu(mStateCache);
         }
-        // Log.i(TAG, ">>>>>>>>onAttachedToWindow");
     }
 
     public void resetStatus() {

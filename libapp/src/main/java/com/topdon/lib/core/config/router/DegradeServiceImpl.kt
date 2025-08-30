@@ -5,7 +5,7 @@ import android.widget.Toast
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.facade.service.DegradeService
-import com.elvishew.xlog.XLog
+
 
 /**
  * create by fylder on 2018/7/23

@@ -5,7 +5,7 @@ import android.media.MediaScannerConnection
 import android.provider.MediaStore
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.Utils
-import com.elvishew.xlog.XLog
+
 import com.topdon.lib.core.bean.GalleryBean
 import com.topdon.lib.core.config.FileConfig
 import com.topdon.lib.core.utils.CommUtils
@@ -89,8 +89,6 @@ object GalleryRepository {
                 }
             }
         } catch (e: Exception) {
-            e.printStackTrace()
-            XLog.e("读取图库失败: ${e.message}")
             return ""
         }
         return firstPath
@@ -126,7 +124,6 @@ object GalleryRepository {
                         }
                     }
                 } catch (e: Exception) {
-                    XLog.e("读取图库失败: ${e.message}")
                 }
             }
 
@@ -150,7 +147,6 @@ object GalleryRepository {
                 }
             }
         } catch (e: Exception) {
-            XLog.e("读取图库失败: ${e.message}")
         }
         return@withContext resultList
     }

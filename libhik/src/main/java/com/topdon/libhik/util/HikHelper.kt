@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
-import com.elvishew.xlog.XLog
 import com.hcusbsdk.Interface.FStreamCallBack
 import com.hcusbsdk.Interface.JavaInterface
 import com.hcusbsdk.Interface.USB_FRAME_INFO
@@ -259,17 +258,13 @@ object HikHelper {
         override fun invoke(handle: Int, frameInfo: USB_FRAME_INFO) {
             beforeFrameTime = System.currentTimeMillis()
             if (frameInfo.dwBufSize != 4640 + 256 * 192 * 4) {
-                XLog.w("数据长度不对！${frameInfo.dwBufSize}")
                 return
             }
             val dataArray: ByteArray = Arrays.copyOf(frameInfo.pBuf, frameInfo.dwBufSize)
 
 
             /*val frameHead = FrameHead(dataArray)
-            XLog.d(frameHead.toString())
             for (i in frameHead.tempRuleList.indices) {
-                XLog.v(frameHead.tempRuleList[i].toString())
-                XLog.v(dataArray.buildPrintStr(216 + i * 208, 88))
             }*/
 
             synchronized(this) {

@@ -3,11 +3,11 @@ package com.infisense.usbir.thread;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
-import android.util.Log;
+
 
 import androidx.annotation.Nullable;
 
-import com.elvishew.xlog.XLog;
+
 import com.energy.iruvc.sdkisp.LibIRProcess;
 import com.energy.iruvc.utils.CommonParams;
 import com.energy.iruvc.utils.SynchronizedBitmap;
@@ -134,7 +134,6 @@ public class ImageThreadTC extends Thread {
     }
 
     public ImageThreadTC(Context context, int imageWidth, int imageHeight) {
-        Log.i(TAG, "ImageThread create->imageWidth = " + imageWidth + " imageHeight = " + imageHeight);
         this.mContext = context;
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
@@ -256,7 +255,6 @@ public class ImageThreadTC extends Thread {
                                 imageDst = grayData;
                                 firstTime++;
                             } catch (Throwable e) {
-                                Log.e("静态闯入异常：", e.getMessage());
                             }
                         } else {
                             //相似度不同，则代表手机抖动
@@ -271,7 +269,6 @@ public class ImageThreadTC extends Thread {
                             (rotateInt == 270 || rotateInt == 90) ? imageWidth  : imageHeight ,
                             amplifyRotateArray);
                 }
-//                    Log.e("图像总处理耗时：", String.valueOf(System.currentTimeMillis() - startImageTime));
             }
 
             synchronized (syncimage.viewLock) {
@@ -287,7 +284,6 @@ public class ImageThreadTC extends Thread {
                             }
                         }
                     }catch (Exception e){
-                        e.printStackTrace();
                     }
                     syncimage.valid = true;
                     syncimage.viewLock.notify();
@@ -296,10 +292,8 @@ public class ImageThreadTC extends Thread {
             try {
                 SystemClock.sleep(20);
             } catch (Exception e) {
-                XLog.e("Image Thread刷新异常: " + e.getMessage());
             }
         }
-        Log.i(TAG, "ImageThread exit");
     }
 
     public Bitmap getBaseBitmap(int rotateInt){

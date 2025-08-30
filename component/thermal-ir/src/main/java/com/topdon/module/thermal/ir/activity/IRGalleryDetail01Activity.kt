@@ -14,7 +14,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.bean.GalleryBean
 import com.topdon.lib.core.config.ExtraKeyConfig
 import com.topdon.lib.core.config.FileConfig
@@ -245,10 +244,8 @@ class IRGalleryDetail01Activity : BaseActivity(), View.OnClickListener {
                     withContext(Dispatchers.IO) {
                         val file = File(irPath)
                         if (!file.exists()) {
-                            XLog.w("IR文件不存在: ${file.absolutePath}")
                             return@withContext
                         }
-                        XLog.w("IR文件: ${file.absolutePath}")
                         val bytes = file.readBytes()
                         val headLenBytes = ByteArray(2)
                         System.arraycopy(bytes, 0, headLenBytes, 0, 2)

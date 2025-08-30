@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ToastUtils
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.common.SaveSettingUtil
 import com.topdon.lib.core.common.SharedManager
@@ -146,6 +145,7 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
                ARouter.getInstance().build(RouterConfig.UNIT).navigation(requireContext())
            }
            setting_item_correction->{//锅盖校正
+
                ARouter.getInstance().build(RouterConfig.IR_CORRECTION).withBoolean(ExtraKeyConfig.IS_TC007, false).navigation(requireContext())
            }
            // Removed TC007-specific handlers since only TC001 is supported
@@ -228,14 +228,12 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
 
     private fun installFirmware(file: File) {
         lifecycleScope.launch {
-            XLog.d("TC007 固件升级 - 开始安装固件升级包")
             val installDialog = FirmwareInstallDialog(requireContext())
             installDialog.show()
 
             val isSuccess = TC007Repository.updateFirmware(file)
             installDialog.dismiss()
             if (isSuccess) {
-                XLog.d("TC007 固件升级 - 固件升级包发送往 TC007 成功，即将断开连接")
                 (requireActivity().application as BaseApplication).disconnectWebSocket()
                 TipDialog.Builder(requireContext())
                     .setTitleMessage(getString(R.string.app_tip))
@@ -249,7 +247,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
                     }
                     .create().show()
             } else {
-                XLog.w("TC007 固件升级 - 固件升级包发送往 TC007 失败!")
                 showReInstallDialog(file)
             }
         }
@@ -278,7 +275,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
         }
         dialog.show()
     }
-
 
     // Removed TC007-specific functions: restoreFactory and resetAll
     // since only TC001 is supported now

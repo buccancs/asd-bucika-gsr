@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.text.TextPaint;
-import android.util.Log;
 import com.energy.commoncomponent.R;
 import com.energy.commoncomponent.utils.ScreenUtils;
 import java.util.LinkedList;
@@ -75,7 +74,6 @@ public class LineDraw extends BaseDraw {
 
     public void setOperateStatus(int mOperateStatus) {
         this.mOperateStatus = mOperateStatus;
-        Log.d(TAG, "setOperateStatus = " + mOperateStatus);
     }
 
     /**
@@ -92,13 +90,11 @@ public class LineDraw extends BaseDraw {
             if (mLineList.size() < MAX_LINE_COUNT) {
 
                 String newLabel = "L" + (size + 1);
-                Log.d(TAG, "addLine newLabel : " + newLabel);
                 boolean hasSame = false;
                 for (int i = 0; i < mLineList.size(); i ++) {
                     if (mLineList.get(i).getLabel().equals(newLabel)) {
                         //存在一样的
                         hasSame = true;
-                        Log.d(TAG, "addLine is same");
                         break;
                     }
                 }
@@ -115,7 +111,6 @@ public class LineDraw extends BaseDraw {
 
                 mTouchIndex = size;
             } else {
-                Log.d(TAG, "line remove and add");
                 mLineList.remove();
                 mLineList.add(lineView);
                 for (int i = 0; i < mLineList.size(); i ++) {
@@ -266,7 +261,6 @@ public class LineDraw extends BaseDraw {
         if (mTouchIndex < 0 || mTouchIndex >= mLineList.size()) {
             return;
         }
-        Log.d(TAG, "mOperateStatus : " + mOperateStatus);
 
         LineView lineView = mLineList.get(mTouchIndex);
         if (mOperateStatus == OPERATE_STATUS_LINE_IN_TOUCH_START) {
@@ -383,7 +377,6 @@ public class LineDraw extends BaseDraw {
             tempDistance = (int) (tempDistance / Math.sqrt(Math.pow(lineView.mEndMovingLineY - lineView.mStartMovingLineY, 2) + Math.pow(lineView.mEndMovingLineX - lineView.mStartMovingLineX, 2)));
             if (Math.abs(tempDistance) < TOUCH_TOLERANCE && x > Math.min(lineView.mStartMovingLineX, lineView.mEndMovingLineX) - TOUCH_TOLERANCE && x < Math.max(lineView.mStartMovingLineX, lineView.mEndMovingLineX) + TOUCH_TOLERANCE) {
                 mTouchIndex = i;
-                Log.d(TAG, "checkTouchLineInclude true mTouchIndex = " + mTouchIndex);
                 return i;
             }
         }

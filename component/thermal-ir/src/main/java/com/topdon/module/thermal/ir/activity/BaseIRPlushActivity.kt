@@ -11,7 +11,6 @@ import android.view.SurfaceView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ToastUtils
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.ircmd.IRCMD
 import com.energy.iruvc.sdkisp.LibIRProcess
 import com.energy.iruvc.usb.USBMonitor
@@ -293,12 +292,10 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
             setFusion(mCurrentFusionType)
             inputStream.close()
         } catch (e: IOException) {
-            e.printStackTrace()
         } finally {
             try {
                 inputStream?.close()
             } catch (e: IOException) {
-                e.printStackTrace()
             }
         }
     }
@@ -462,7 +459,6 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
                             }
                             .create().show()
                     }
-                    XLog.e("超分初始化失败")
                 }
             }
             if (!SupHelp.getInstance().loadOpenclSuccess){

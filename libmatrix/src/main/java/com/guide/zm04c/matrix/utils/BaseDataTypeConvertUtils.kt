@@ -1,6 +1,5 @@
 package com.guide.zm04c.matrix.utils
 
-import com.guide.zm04c.matrix.Logger
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
@@ -82,7 +81,6 @@ class BaseDataTypeConvertUtils private constructor() {
             } catch (e: Exception) {
                 val newNumber = Math.round(number * 10) / 10f
                 val str = newNumber.toString()
-                Logger.e(TAG,"float2StrWithOneDecimal number = " + number + " str = " + str);
                 return str;
             }
         }
@@ -105,7 +103,6 @@ class BaseDataTypeConvertUtils private constructor() {
             } catch (e: Exception) {
                 val newNumber = Math.round(number * 100) / 100f
                 val str = newNumber.toString()
-                Logger.e(TAG,"float2StrWithTwoDecimal number = " + number + " str = " + str);
                 return str;
             }
         }

@@ -15,7 +15,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.CleanUtils
 import com.blankj.utilcode.util.LanguageUtils
 import com.blankj.utilcode.util.SizeUtils
-import com.elvishew.xlog.XLog
+
 import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.bean.event.PDFEvent
 import com.topdon.lib.core.bean.event.WinterClickEvent
@@ -148,7 +148,6 @@ class MineFragment : BaseFragment(), View.OnClickListener {
                     AppDatabase.getInstance().thermalDao().deleteByUserId(SharedManager.getUserId())
                     CleanUtils.cleanExternalCache()
                 } catch (e: Exception) {
-                    XLog.w("清除缓存异常: ${e.message}")
                 }
                 delay(1000)
             }

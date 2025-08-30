@@ -3,7 +3,6 @@ package com.topdon.lib.core.tools
 import android.content.Context
 import android.os.Build
 import com.blankj.utilcode.util.AppUtils
-import com.elvishew.xlog.XLog
 import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
@@ -132,12 +131,10 @@ object PermissionTool {
             .permission(permissionList)
             .request(object : OnPermissionCallback {
                 override fun onGranted(permissions: MutableList<String>, allGranted: Boolean) {
-                    XLog.i("onGranted($allGranted)")
                     callback.onResult(allGranted)
                 }
 
                 override fun onDenied(permissions: MutableList<String>, never: Boolean) {
-                    XLog.i("onDenied($never)")
                     if (never) {
                         var isBtNever = false
                         var isLocationNever = false

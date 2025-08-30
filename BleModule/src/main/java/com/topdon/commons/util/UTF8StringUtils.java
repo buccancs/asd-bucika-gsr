@@ -39,7 +39,6 @@ public class UTF8StringUtils {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
         }
         return "";
     }
@@ -71,7 +70,6 @@ public class UTF8StringUtils {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
         }
         return "";
     }

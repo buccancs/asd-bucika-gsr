@@ -142,7 +142,6 @@ public class PosterDispatcher {
                 try {
                     method.invoke(owner, finalParams);
                 } catch (IllegalAccessException | InvocationTargetException e) {
-                    e.printStackTrace();
                 }
             });
         } catch (Exception ignore) {

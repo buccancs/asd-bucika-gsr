@@ -16,7 +16,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import android.util.Log;
+
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -36,7 +36,6 @@ import androidx.core.view.ViewPropertyAnimatorListenerAdapter;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.elvishew.xlog.XLog;
 import com.topdon.tc004.R;
 import com.topdon.tc004.util.FileUtil;
 import com.topdon.tc004.util.SPUtil;
@@ -199,7 +198,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                 if (resultCode == EasyPlayerClient.RESULT_VIDEO_DISPLAYED) {
                     if (resultData != null) {
                         int videoDecodeType = resultData.getInt(EasyPlayerClient.KEY_VIDEO_DECODE_TYPE, 0);
-                        Log.i(TAG, "视频解码方式:" + (videoDecodeType == 0 ? "软解码" : "硬解码"));
                     }
                     isVideoDisplayed = true;
                     onVideoDisplayed();
@@ -226,7 +224,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 //                        String msg = resultData.getString("event-msg");
 //                        ((PlayActivity) activity).onEvent(PlayFragment.this, state, errorCode, msg);
 //                    }
-                    Log.i(TAG, "errorCode:" + errorCode);
                 } else if (resultCode == EasyPlayerClient.RESULT_RECORD_BEGIN) {
 //                    if (activity instanceof PlayActivity)
 //                        ((PlayActivity) activity).onRecordState(1);
@@ -240,7 +237,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         listener = new View.OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                Log.d(TAG, String.format("onLayoutChange left:%d,top:%d,right:%d,bottom:%d->oldLeft:%d,oldTop:%d,oldRight:%d,oldBottom:%d", left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom));
 
                 if (right - left != oldRight - oldLeft || bottom - top != oldBottom - oldTop) {
                     onVideoSizeChange();
@@ -331,7 +327,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 
     private void onVideoDisplayed() {
         View view = getView();
-        Log.i(TAG, String.format("VIDEO DISPLAYED!!!!%d*%d", mWidth, mHeight));
 //        Toast.makeText(PlayActivity.this, "视频正在播放了", Toast.LENGTH_SHORT).show();
         view.findViewById(android.R.id.progress).setVisibility(View.GONE);
         view.findViewById(R.id.iv_not_connect_space).setVisibility(View.GONE);
@@ -376,7 +371,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         mStreamRender = new EasyPlayerClient(getContext(), new Surface(surface), mResultReceiver, new EasyPlayerClient.I420DataCallback() {
             @Override
             public void onI420Data(ByteBuffer byteBuffer) {
-//                Log.e("测试画面回调",byteBuffer.toString()+"////");
             }
         });
 
@@ -394,7 +388,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                     "",
                     autoRecord ? FileUtil.getMovieName(mUrl).getPath() : null);
         } catch (Exception e) {
-            e.printStackTrace();
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
             return;
         }
@@ -482,9 +475,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                 }
             }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         } catch (OutOfMemoryError error) {
-            error.printStackTrace();
         } catch (IllegalStateException e) {
-            e.printStackTrace();
         }
     }
 
@@ -546,21 +537,17 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                 try {
                     connection.connect();
                 } catch (Exception e) {
-                    e.printStackTrace();
                 }
 
                 mScanner = connection;
             }
         } catch (IOException e) {
-            e.printStackTrace();
         } catch (OutOfMemoryError error) {
-            error.printStackTrace();
         } finally {
             if (fos != null) {
                 try {
                     fos.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
         }
@@ -578,7 +565,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 
     private void onVideoSizeChange() {
         try {
-            Log.i(TAG, String.format("RESULT_VIDEO_SIZE RECEIVED :%d*%d", mWidth, mHeight));
 
             if (mWidth == 0 || mHeight == 0)
                 return;
@@ -631,7 +617,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 
             mSurfaceView.requestLayout();
         }catch (Exception e){
-            XLog.d(e.getMessage());
         }
     }
 

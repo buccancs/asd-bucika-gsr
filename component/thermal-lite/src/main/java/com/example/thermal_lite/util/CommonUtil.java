@@ -28,14 +28,12 @@ public class CommonUtil {
                 // "read file fail "
             }
         } catch (IOException e) {
-            e.printStackTrace();
         } finally {
             try {
                 if (is != null) {
                     is.close();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
             }
         }
         return tau_data;

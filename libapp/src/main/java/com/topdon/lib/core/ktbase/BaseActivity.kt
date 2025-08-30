@@ -4,12 +4,12 @@ import android.content.*
 import android.content.pm.ActivityInfo
 import android.os.*
 import android.provider.MediaStore
-import android.util.Log
+
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import com.elvishew.xlog.XLog
+
 import com.google.gson.Gson
 import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.R
@@ -118,7 +118,6 @@ abstract class BaseActivity : RxAppCompatActivity() {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onSocketConnectState(event: SocketStateEvent) {
-        Log.d("onSocketConnectState","${event.isConnect}")
         if (event.isConnect) {
             onSocketConnected(event.isTS004)
         } else {
@@ -175,7 +174,6 @@ abstract class BaseActivity : RxAppCompatActivity() {
             }
         }catch (e:Exception){
             //临时捕获方案，后面需求完成后再追踪优化
-            Log.e("临时处理方案",e.message.toString())
         }
     }
     fun dismissCameraLoading() {

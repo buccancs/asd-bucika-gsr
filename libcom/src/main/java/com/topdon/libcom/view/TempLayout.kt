@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
@@ -48,7 +47,6 @@ class TempLayout : LinearLayout {
             BreatheInterpolator() //使用自定义的插值器
         alphaAnimator?.addUpdateListener {
             animatorAlpha = it.getAnimatedValue("alpha") as Float
-//            Log.w("透明值进度","$animatorAlpha")
         }
         alphaAnimator?.repeatCount = ValueAnimator.INFINITE
     }

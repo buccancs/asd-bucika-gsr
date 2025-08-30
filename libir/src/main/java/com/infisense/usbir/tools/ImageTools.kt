@@ -1,7 +1,6 @@
 package com.infisense.usbir.tools
 
 import androidx.annotation.ColorInt
-import com.elvishew.xlog.XLog
 import com.infisense.usbir.tools.bean.SelectIndexBean
 import com.topdon.lib.core.tools.NumberTools
 import com.topdon.lib.core.utils.ByteUtils.bytesToInt
@@ -15,7 +14,6 @@ object ImageTools {
             return
         }
         val selectBean = getTempIndex(tempBytes, max, min)
-//        Log.w("123", "max size: ${selectBean.maxIndex.size}, min size: ${selectBean.minIndex.size}")
         bitmapFromRgbaGrey(bytes = imageBytes, bean = selectBean)//灰度
     }
 
@@ -269,7 +267,6 @@ object ImageTools {
                 }
             }
         } catch (e: Exception) {
-            XLog.w("颜色替换失败: ${e.message}")
         }
     }
 }

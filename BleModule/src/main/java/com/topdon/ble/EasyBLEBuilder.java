@@ -1,6 +1,5 @@
 package com.topdon.ble;
 
-import com.topdon.ble.util.Logger;
 import com.topdon.commons.observer.Observable;
 import com.topdon.commons.poster.ThreadMode;
 

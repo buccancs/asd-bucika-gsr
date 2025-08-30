@@ -21,7 +21,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.Utils
-import com.elvishew.xlog.XLog
 import com.example.suplib.wrapper.SupHelp
 import com.example.thermal_lite.activity.IRThermalLiteActivity
 import com.hjq.permissions.OnPermissionCallback
@@ -92,11 +91,9 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             str.append("SDK_INT: ${Build.VERSION.SDK_INT}").append("\n")
             str.append("RELEASE: ${Build.VERSION.RELEASE}").append("\n")
             if (SharedManager.getHasShowClause()) {
-                XLog.i(str)
             }
         } catch (e: Exception) {
             if (SharedManager.getHasShowClause()) {
-                XLog.e("log error: ${e.message}")
             }
         }
     }
@@ -242,7 +239,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             inputStream.close()
             outputStream.close()
         } catch (e: IOException) {
-            e.printStackTrace()
         }
     }
 

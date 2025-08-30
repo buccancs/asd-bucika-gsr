@@ -4,7 +4,6 @@ import android.graphics.Point
 import android.graphics.Rect
 import android.net.Network
 import com.blankj.utilcode.util.EncryptUtils
-import com.elvishew.xlog.XLog
 import com.google.gson.Gson
 import com.topdon.lib.core.http.converter.StringConverterFactory
 import kotlinx.coroutines.Dispatchers
@@ -348,7 +347,6 @@ object TC007Repository {
         try {
             getTC007Service().getPhoto()
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -360,7 +358,6 @@ object TC007Repository {
         try {
             getTC007Service().setMode(mode)
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -382,7 +379,6 @@ object TC007Repository {
         try {
             getTC007Service().setRatio(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -403,7 +399,6 @@ object TC007Repository {
         try {
             getTC007Service().setRegistration(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -416,7 +411,6 @@ object TC007Repository {
         try {
             getTC007Service().setPallete(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -428,7 +422,6 @@ object TC007Repository {
         try {
             getTC007Service().setParam(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -440,7 +433,6 @@ object TC007Repository {
         try {
             getTC007Service().setFont(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -449,7 +441,6 @@ object TC007Repository {
         try {
             getTC007Service().setCorrection()
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -461,7 +452,6 @@ object TC007Repository {
         try {
             getTC007Service().setIsotherm(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }

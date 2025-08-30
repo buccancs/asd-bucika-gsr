@@ -73,7 +73,6 @@
 //        dataList.forEach {
 //            dataSeries = dataSeries.plus(it.thermal)
 //        }
-//        Log.w("123", "ahh:${dataSeries.joinToString()}")
 //        return arrayOf(
 //            AASeriesElement()
 //                .name("Tokyo")

@@ -148,7 +148,7 @@ public class EthnicPicker extends OptionPicker {
                 data.add(entity);
             }
         } catch (JSONException e) {
-            DialogLog.print(e);
+            Dialog// Logging removed
         }
         switch (ethnicSpec) {
             case EthnicSpec.DEFAULT:

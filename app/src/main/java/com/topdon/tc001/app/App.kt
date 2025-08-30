@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
-import com.elvishew.xlog.XLog
 import com.example.thermal_lite.IrConst
 import com.example.thermal_lite.util.CommonUtil
 import com.google.firebase.crashlytics.FirebaseCrashlytics
@@ -80,7 +79,6 @@ class App : BaseApplication() {
 
         RxJavaPlugins.setErrorHandler {
             if (SharedManager.getHasShowClause()) {
-                XLog.w("未知异常： ${it.message}")
             }
         }
         if (!isDomestic()) {
@@ -90,7 +88,6 @@ class App : BaseApplication() {
                 UrlConstant.setBaseUrl("${HttpConfig.HOST}/", false)
             } else {
                 if (SharedManager.getHasShowClause()) {
-                    XLog.w("lms host: ${UrlConstant.BASE_URL}")
                 }
             }
             SharedManager.setBaseHost(UrlConstant.BASE_URL) //更新app服务地址
@@ -145,12 +142,10 @@ class App : BaseApplication() {
             object : InitListener {
                 override fun onInitSuccess() {
 //                    ZohoSalesIQ.Launcher.show(ZohoSalesIQ.Launcher.VisibilityMode.ALWAYS)
-                    XLog.e("bcf", "ZohoSalesIQ成功")
                 }
 
                 override fun onInitError(errorCode: Int, errorMessage: String?) {
                     //your code
-                    XLog.e("bcf", "ZohoSalesIQ失敗")
                 }
             })
     }

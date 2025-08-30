@@ -15,7 +15,6 @@ public class SystemIniUtils {
     public static int getSystemVersion(String path, String systemName, int systemVersion) {
         File file = new File(path + "/Version.ini");
         if (!file.exists()) {
-            LLog.e("bcf", "  ini不存在：" + file.getPath());
             return -1;
         }
         Config cfg = new Config();
@@ -53,7 +52,6 @@ public class SystemIniUtils {
                 return 1;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return 1;
         }
     }

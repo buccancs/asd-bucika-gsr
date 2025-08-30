@@ -102,7 +102,7 @@ public abstract class BaseDialog extends Dialog implements DialogInterface.OnSho
     @Deprecated
     @CallSuper
     protected void onInit(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-        DialogLog.print("dialog onInit");
+        Dialog// Logging removed
     }
 
     @CallSuper
@@ -114,7 +114,7 @@ public abstract class BaseDialog extends Dialog implements DialogInterface.OnSho
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DialogLog.print("dialog onCreate");
+        Dialog// Logging removed
         if (contentView == null) {
             readyView();
         }
@@ -138,7 +138,7 @@ public abstract class BaseDialog extends Dialog implements DialogInterface.OnSho
     @Deprecated
     @CallSuper
     protected void initView(View contentView) {
-        DialogLog.print("dialog initView");
+        Dialog// Logging removed
     }
 
     @CallSuper
@@ -258,12 +258,12 @@ public abstract class BaseDialog extends Dialog implements DialogInterface.OnSho
         }
         try {
             super.show();
-            DialogLog.print("dialog show");
+            Dialog// Logging removed
         } catch (Exception e) {
             //...not attached to window manager
             //...Unable to add window...is your activity running?
             //...Activity...has leaked window...that was originally added here
-            DialogLog.print(e);
+            Dialog// Logging removed
         }
     }
 
@@ -275,32 +275,32 @@ public abstract class BaseDialog extends Dialog implements DialogInterface.OnSho
         }
         try {
             super.dismiss();
-            DialogLog.print("dialog dismiss");
+            Dialog// Logging removed
         } catch (Exception e) {
             //...not attached to window manager
             //...Activity...has leaked window...that was originally added here
-            DialogLog.print(e);
+            Dialog// Logging removed
         }
     }
 
     @CallSuper
     @Override
     public void onAttachedToWindow() {
-        DialogLog.print("dialog attached to window");
+        Dialog// Logging removed
         super.onAttachedToWindow();
         initData();
     }
 
     @CallSuper
     protected void initData() {
-        DialogLog.print("dialog initData");
+        Dialog// Logging removed
     }
 
     @CallSuper
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        DialogLog.print("dialog detached from window");
+        Dialog// Logging removed
     }
 
     /**
@@ -309,7 +309,7 @@ public abstract class BaseDialog extends Dialog implements DialogInterface.OnSho
     @CallSuper
     @Override
     public void onShow(DialogInterface dialog) {
-        DialogLog.print("dialog onShow");
+        Dialog// Logging removed
     }
 
     /**
@@ -318,7 +318,7 @@ public abstract class BaseDialog extends Dialog implements DialogInterface.OnSho
     @CallSuper
     @Override
     public void onDismiss(DialogInterface dialog) {
-        DialogLog.print("dialog onDismiss");
+        Dialog// Logging removed
     }
 
 }

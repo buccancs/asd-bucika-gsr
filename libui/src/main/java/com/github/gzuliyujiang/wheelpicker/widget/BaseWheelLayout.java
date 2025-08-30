@@ -113,7 +113,7 @@ public abstract class BaseWheelLayout extends LinearLayout implements OnWheelCha
 
     public void setStyle(@StyleRes int style) {
         if (attrs == null) {
-            DialogLog.print("Please use " + getClass().getSimpleName() + " in xml");
+            Dialog// Logging removed
             return;
         }
         TypedArray a = getContext().obtainStyledAttributes(attrs, provideStyleableRes(), R.attr.WheelStyle, style);

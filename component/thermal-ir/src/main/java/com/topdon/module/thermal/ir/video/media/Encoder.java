@@ -1,7 +1,6 @@
 package com.topdon.module.thermal.ir.video.media;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,23 +32,19 @@ public abstract class Encoder {
                     try {
                         bitmap = bitmapQueue.remove(0);
                     } catch (IndexOutOfBoundsException e) {
-                        Log.e(TAG, e.getMessage());
                     }
                     if (bitmap != null) {
                         try {
                             onAddFrame(bitmap);
                         } catch (ArrayIndexOutOfBoundsException e) {
-                            Log.e(TAG, e.getMessage());
                         }
                         bitmap.recycle();
                     }
                     if (state == STATE_RECORDING_UNTIL_LAST_FRAME && bitmapQueue.size() == 0) {
-                        Log.d(TAG, "Last frame added");
                         break;
                     }
                 }
             }
-            Log.d(TAG, "add Frame finished");
             onStop();
             notifyEncodeFinish();
         }

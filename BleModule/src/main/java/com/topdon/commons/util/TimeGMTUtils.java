@@ -36,7 +36,6 @@ public class TimeGMTUtils {
             Date d1 = sf.parse(time);
             return zone.useDaylightTime() && zone.inDaylightTime(d1);
         } catch (ParseException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -49,17 +48,14 @@ public class TimeGMTUtils {
      */
     public static String getGMTConvertTime(String time, String format) {
         try {
-//            LLog.w("bcf", "GMT--time--" + time);
             if (TextUtils.isEmpty(time)) {
                 return "";
             }
             long longTime = getStringToDate(time, "GMT+00:00", "yyyy-MM-dd HH:mm:ss");
             Locale curLocale = LanguageUtil.getSystemLocal();
             String gmt = TimeZone.getDefault().getDisplayName(isDaylight(TimeZone.getDefault(), time), TimeZone.SHORT, curLocale);
-//            LLog.w("bcf", "GMT--" + gmt);
             return getDateToString(longTime, gmt, format);
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return "";
     }
@@ -88,7 +84,6 @@ public class TimeGMTUtils {
             dateFormat.setTimeZone(timeZone);
             date = dateFormat.parse(dateString);
         } catch (ParseException e) {
-            e.printStackTrace();
         }
         return date.getTime();
     }

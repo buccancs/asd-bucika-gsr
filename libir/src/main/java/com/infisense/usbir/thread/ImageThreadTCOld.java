@@ -5,7 +5,6 @@
 //import android.os.SystemClock;
 //import android.util.Log;
 //
-//import com.elvishew.xlog.XLog;
 //import com.infisense.iruvc.utils.SynchronizedBitmap;
 //import com.infisense.usbir.tools.BitmapTools;
 //import com.infisense.usbir.tools.ImageTools;
@@ -165,18 +164,15 @@
 //                if (maxColor == Color.parseColor("#FF808080") && minColor == Color.parseColor("#FF808080")) {
 //                    ImageTools.INSTANCE.readFrame(imageDst, temperatureSrc, max, min);//替换灰度处理
 //                } else {
-//                    Log.w("123", "max:" + max + ", min: " + min);
 ////                    ImageTools.INSTANCE.readFrame(imageDst, temperatureSrc, max, min,maxColor,minColor);//替换颜色处理
 //                    BitmapTools.INSTANCE.replaceBitmapColor(imageDst, temperatureSrc, max, min,0,0);//替换颜色处理
 //                }
-//                Log.w("原始图像:", imageDst.toString());
 //            }
 //            synchronized (syncImage.viewLock) {
 //                if (!syncImage.valid) {
 //                    if (bitmap != null) {
 //                        bitmap.copyPixelsFromBuffer(ByteBuffer.wrap(imageDst)); //bitmap图像刷新数据
 //                    } else {
-//                        XLog.e("ImageThreadTC copyPixelsFromBuffer(): bitmap is null");
 //                    }
 //                    syncImage.valid = true;
 //
@@ -186,10 +182,8 @@
 //            try {
 //                SystemClock.sleep(20);
 //            } catch (Exception e) {
-//                XLog.e("Image Thread刷新异常: " + e.getMessage());
 //            }
 //        }
-//        Log.w(TAG, "ImageThread exit:");
 //    }
 //
 //    public Bitmap getBitmap() {
