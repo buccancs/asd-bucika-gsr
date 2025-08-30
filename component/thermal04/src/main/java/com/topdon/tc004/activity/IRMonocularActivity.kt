@@ -421,7 +421,6 @@ class IRMonocularActivity : BaseWifiActivity() {
         }
     }
 
-
     private fun setPip() {
         lifecycleScope.launch {
             val isSuccess = TS004Repository.setPip(!isPip)
@@ -551,7 +550,6 @@ class IRMonocularActivity : BaseWifiActivity() {
                     }
                 }
             } catch (e: Exception) {
-                Log.e("刷新图标状态异常", e.message.toString())
             }
         }
     }

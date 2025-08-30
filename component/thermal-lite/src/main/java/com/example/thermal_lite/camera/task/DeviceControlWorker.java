@@ -1,7 +1,5 @@
 package com.example.thermal_lite.camera.task;
 
-import android.util.Log;
-
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class DeviceControlWorker {
@@ -20,10 +18,8 @@ public class DeviceControlWorker {
 
             try {
                 while (!Thread.currentThread().isInterrupted()) {
-                    Log.d(TAG, "DeviceControlWorker run");
                     synchronized (mEventQueue) {
                         while (mEventQueue.isEmpty()) {
-                            Log.d(TAG, "DeviceControlWorker mEventQueue wait");
                             try {
                                 mEventQueue.wait();
                             } catch (InterruptedException e) {
@@ -41,7 +37,6 @@ public class DeviceControlWorker {
                     mEventQueue.poll();
                     //call back connect result
                     mDeviceState = task.getDeviceState();
-                    Log.d(TAG, "DeviceControlWorker do state : " + mDeviceState);
                     if (mDeviceControlCallback != null) {
                         //防止重复回调
                         if (mDeviceState != previousState) {
@@ -68,7 +63,6 @@ public class DeviceControlWorker {
      * start worker thread
      */
     public void startWork() {
-        Log.d(TAG, "startWork");
         if (mThread == null) {
             mThread = new Thread(mRunnable);
             mThread.start();
@@ -79,7 +73,6 @@ public class DeviceControlWorker {
      * stop worker thread
      */
     public void stopWork() {
-        Log.d(TAG, "stopWork");
         if (mThread != null) {
             try {
                 mThread.interrupt();
@@ -100,15 +93,11 @@ public class DeviceControlWorker {
     public void addTask(BaseTask task) {
         synchronized (mEventQueue) {
             if (mEventQueue.size() < 2) {
-                Log.d(TAG, "addTask task：" + task.getClass().getSimpleName());
                 mEventQueue.add(task);
             } else {
-                Log.d(TAG, "addTask poll");
                 BaseTask task1 = mEventQueue.poll();
                 if (task1 instanceof StartPreviewTask) {
-                    Log.d(TAG, "addTask StartPreviewTask");
                 } else if (task1 instanceof StopPreviewTask) {
-                    Log.d(TAG, "addTask StopPreviewTask");
                 }
                 mEventQueue.add(task);
             }

@@ -2,7 +2,6 @@ package com.topdon.module.thermal.ir.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,7 +18,6 @@ import com.topdon.lib.core.tools.UnitTools;
 import com.topdon.module.thermal.ir.R;
 
 import java.util.Locale;
-
 
 /**
  * Custom implementation of the MarkerView.
@@ -69,7 +67,6 @@ public class MyMarkerView extends MarkerView {
                 }
             }
         } catch (Exception ex) {
-            XLog.e("MarkerView error: " + ex.getMessage());
         }
         super.refreshContent(e, highlight);
     }

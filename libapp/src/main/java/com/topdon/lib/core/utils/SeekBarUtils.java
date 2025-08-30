@@ -12,7 +12,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.ColorRes;
 import androidx.core.content.ContextCompat;
@@ -97,7 +96,6 @@ public class SeekBarUtils {
         return bitmap;
     }
 
-
     /**
      * Bitmap to Drawable
      *
@@ -108,7 +106,6 @@ public class SeekBarUtils {
     public static BitmapDrawable bitmapToDrawable(Context context, Bitmap bitmap) {
         return new BitmapDrawable(context.getResources(), bitmap);
     }
-
 
     public static Bitmap scaleImage(Bitmap bitmap, float scale) {
         Matrix matrix = new Matrix();
@@ -149,7 +146,6 @@ public class SeekBarUtils {
     }
 
     public static void log(Object o) {
-        Log.d(TAG, String.valueOf(o));
     }
 
     /**

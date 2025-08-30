@@ -1,7 +1,5 @@
 package android.yt.jni;
 
-import android.util.Log;
-
 /*
  * @Description:    为特定客户提供的USB插拔工具类,usb3803_hub是系统中的so库，部分定制的机型有可能会添加应用包名的白名单，也会导致不出图
  * @Author:         brilliantzhao
@@ -19,7 +17,6 @@ public class Usbjni {
             System.loadLibrary("usb3803_hub");
         } catch (UnsatisfiedLinkError e) {
             e.printStackTrace();
-            Log.e(TAG, "Couldn't load lib:   - " + e.getMessage());
         }
     }
 
@@ -47,7 +44,6 @@ public class Usbjni {
     public static int readUSB3803Parameter(int i) {
         return usb3803_read_parameter(i);
     }
-
 
     static native int usb3803_mode_setting(int i);
 

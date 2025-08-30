@@ -17,7 +17,6 @@ import com.infisense.usbir.R
 import com.infisense.usbir.utils.TargetUtils
 import com.topdon.lib.core.bean.ObserveBean
 
-
 /**
  * 缩放view基类
  */
@@ -86,7 +85,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
         val layoutParams =  mTextureView.layoutParams
         layoutParams.width  = showBitmapHeightWidth.toInt()
         layoutParams.height = showBitmapHeight.toInt()
-//        Log.e("测试","旋转后的宽高：标靶"+showBitmapHeight+"///"+imageHeight+"---")
         mTextureView.layoutParams = layoutParams
         (mTextureView as ImageView ).setImageBitmap(originalBitmap)
     }
@@ -126,7 +124,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
     var isCheckChildView = false
     var contentWith = 0
     var contentHeight = 0
-
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (canScale && isScale && event.action != MotionEvent.ACTION_UP) {
@@ -266,8 +263,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
     /**预览大小 */
     private var mPreviewSize: Size? = null
 
-
-
     fun setRotation(isReverse : Boolean){
         this.isReverse = isReverse
         updateRotation()
@@ -283,7 +278,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
 
     private fun onResumeView() {
     }
-
 
     val viewX: Float
         get() = mTextureView.x - (viewWidth - mTextureView.width)/2
@@ -324,7 +318,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
         val targetIcon = TargetUtils.getSelectTargetDraw(targetMeasureMode, targetType, targetColorType)
         originalBitmap = (resources.getDrawable( targetIcon) as BitmapDrawable).bitmap
         (mTextureView as ImageView ).setImageBitmap(originalBitmap)
-//        Log.e("测试","旋转后的宽高updateSelectBitmap"+parentCameraView!!.width+"---"+parentCameraView!!.height)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             magnifier?.dismiss()
             if (m >= 100f){
@@ -432,6 +425,5 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
             magnifier?.show(centerX, centerY)
         }
     }
-
 
 }

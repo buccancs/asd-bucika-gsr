@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -50,7 +49,6 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.UUID;
-
 
 /**
  * 播放器Fragment
@@ -199,7 +197,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                 if (resultCode == EasyPlayerClient.RESULT_VIDEO_DISPLAYED) {
                     if (resultData != null) {
                         int videoDecodeType = resultData.getInt(EasyPlayerClient.KEY_VIDEO_DECODE_TYPE, 0);
-                        Log.i(TAG, "视频解码方式:" + (videoDecodeType == 0 ? "软解码" : "硬解码"));
                     }
                     isVideoDisplayed = true;
                     onVideoDisplayed();
@@ -226,7 +223,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 //                        String msg = resultData.getString("event-msg");
 //                        ((PlayActivity) activity).onEvent(PlayFragment.this, state, errorCode, msg);
 //                    }
-                    Log.i(TAG, "errorCode:" + errorCode);
                 } else if (resultCode == EasyPlayerClient.RESULT_RECORD_BEGIN) {
 //                    if (activity instanceof PlayActivity)
 //                        ((PlayActivity) activity).onRecordState(1);
@@ -240,7 +236,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         listener = new View.OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                Log.d(TAG, String.format("onLayoutChange left:%d,top:%d,right:%d,bottom:%d->oldLeft:%d,oldTop:%d,oldRight:%d,oldBottom:%d", left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom));
 
                 if (right - left != oldRight - oldLeft || bottom - top != oldBottom - oldTop) {
                     onVideoSizeChange();
@@ -331,7 +326,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 
     private void onVideoDisplayed() {
         View view = getView();
-        Log.i(TAG, String.format("VIDEO DISPLAYED!!!!%d*%d", mWidth, mHeight));
 //        Toast.makeText(PlayActivity.this, "视频正在播放了", Toast.LENGTH_SHORT).show();
         view.findViewById(android.R.id.progress).setVisibility(View.GONE);
         view.findViewById(R.id.iv_not_connect_space).setVisibility(View.GONE);
@@ -376,7 +370,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
         mStreamRender = new EasyPlayerClient(getContext(), new Surface(surface), mResultReceiver, new EasyPlayerClient.I420DataCallback() {
             @Override
             public void onI420Data(ByteBuffer byteBuffer) {
-//                Log.e("测试画面回调",byteBuffer.toString()+"////");
             }
         });
 
@@ -578,7 +571,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 
     private void onVideoSizeChange() {
         try {
-            Log.i(TAG, String.format("RESULT_VIDEO_SIZE RECEIVED :%d*%d", mWidth, mHeight));
 
             if (mWidth == 0 || mHeight == 0)
                 return;
@@ -631,7 +623,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
 
             mSurfaceView.requestLayout();
         }catch (Exception e){
-            XLog.d(e.getMessage());
         }
     }
 
@@ -669,7 +660,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
 
     }
-
 
     public interface OnDoubleTapListener {
         void onDoubleTab(PlayFragment f);

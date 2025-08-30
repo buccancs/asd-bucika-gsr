@@ -43,8 +43,6 @@ object PermissionTool {
      */
     fun requestFile(context: Context, callback: () -> Unit) = request(context, Type.FILE, callback)
 
-
-
     private enum class Type { RECORD_AUDIO, CAMERA, LOCATION, IMAGE, FILE }
 
     private fun request(context: Context, type: Type, callback: () -> Unit) {
@@ -103,8 +101,6 @@ object PermissionTool {
             })
     }
 
-
-
     /**
      * 判断是否具有 ACCESS_FINE_LOCATION、BLUETOOTH_SCAN、BLUETOOTH_CONNECT 权限。
      * 低于 Android12 视为具有。
@@ -132,12 +128,10 @@ object PermissionTool {
             .permission(permissionList)
             .request(object : OnPermissionCallback {
                 override fun onGranted(permissions: MutableList<String>, allGranted: Boolean) {
-                    XLog.i("onGranted($allGranted)")
                     callback.onResult(allGranted)
                 }
 
                 override fun onDenied(permissions: MutableList<String>, never: Boolean) {
-                    XLog.i("onDenied($never)")
                     if (never) {
                         var isBtNever = false
                         var isLocationNever = false

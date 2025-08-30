@@ -8,7 +8,6 @@ import android.content.res.AssetManager;
 import android.hardware.usb.UsbDevice;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -113,7 +112,6 @@ public class IRUVCTC {
             // do request device permission
             @Override
             public void onAttach(UsbDevice device) {
-                Log.w(TAG, "onAttach");
                 if (isIRpid(device.getProductId())) {
                     if (uvcCamera == null || !uvcCamera.getOpenStatus()) {
                         mUSBMonitor.requestPermission(device);
@@ -125,7 +123,6 @@ public class IRUVCTC {
             // do open camera,start previewing
             @Override
             public void onConnect(final UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock, boolean createNew) {
-                Log.w(TAG, "onConnect");
                 if (isIRpid(device.getProductId())) {
                     if (createNew) {
                         openUVCCamera(ctrlBlock, dataFlowMode);
@@ -138,14 +135,12 @@ public class IRUVCTC {
             // do nothing
             @Override
             public void onDisconnect(UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock) {
-                Log.w(TAG, "onDisconnect");
             }
 
             // called by taking out usb device
             // do close camera
             @Override
             public void onDettach(UsbDevice device) {
-                Log.w(TAG, "onDettach");
                 if (isIRpid(device.getProductId())) {
                     if (uvcCamera != null && uvcCamera.getOpenStatus()) {
                         stopPreview();
@@ -155,7 +150,6 @@ public class IRUVCTC {
 
             @Override
             public void onCancel(UsbDevice device) {
-                Log.w(TAG, "onCancel");
             }
         });
         /**
@@ -189,7 +183,6 @@ public class IRUVCTC {
                     fps = 100 * 1000 / (timeuse + 0.0);
                 }
                 timestart = currentTimeMillis;
-                Log.d(TAG, "frame.length = " + frame.length + " fps=" + String.format("%.1f", fps) +
                         " dataFlowMode = " + dataFlowMode + " rotate = " + rotate);
             }
             if (syncimage == null) return;
@@ -201,7 +194,6 @@ public class IRUVCTC {
                     // bad frame
                     if (mHandler != null)
                         mHandler.sendEmptyMessage(MsgCode.RESTART_USB);
-                    Log.d(TAG, "RESTART_USB");
                     return;
                 }
                 if ((dataFlowMode == CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT) || isUseIRISP && (dataFlowMode == CommonParams.DataFlowMode.TEMP_OUTPUT)) {
@@ -310,7 +302,6 @@ public class IRUVCTC {
      * @param cameraWidth
      */
     public void init(int cameraWidth, int cameraHeight) {
-        Log.w(TAG, "init");
         // UVCCamera init
         /**
          * cameraWidth:256,cameraHeight:384,图像+温度
@@ -395,7 +386,6 @@ public class IRUVCTC {
      * @param ctrlBlock
      */
     public void openUVCCamera(USBMonitor.UsbControlBlock ctrlBlock, CommonParams.DataFlowMode dataFlowMode) {
-        Log.i(TAG, "openUVCCamera");
         if (ctrlBlock.getProductId() == TinyB) {
             if (syncimage != null) {
                 syncimage.type = 1;
@@ -415,7 +405,6 @@ public class IRUVCTC {
      *
      */
     public void startPreview() {
-        Log.i(TAG, "startPreview");
        if (uvcCamera!=null){
            uvcCamera.setOpenStatus(true);
            uvcCamera.setFrameCallback(iFrameCallback);
@@ -433,7 +422,6 @@ public class IRUVCTC {
      *
      */
     public void stopPreview() {
-        Log.i(TAG, "stopPreview");
         if (uvcCamera != null) {
             if (uvcCamera.getOpenStatus()) {
                 uvcCamera.onStopPreview();
@@ -456,7 +444,6 @@ public class IRUVCTC {
         ircmd.getCurrentVTemperature(curVtemp);
         // 传递机芯温度给UVC,实现数据流和命令流的分离
         uvcCamera.setCurVTemp(curVtemp[0]);
-        Log.i(TAG, "ktbt_init->CurVTemp=" + curVtemp[0]);
 
         /**
          * 初始化参数
@@ -465,7 +452,6 @@ public class IRUVCTC {
         uvcCamera.initIRISPModule();
         // 初始化之后可以自定义环境修正参数
         uvcCamera.setEnvCorrectParams(16384, 16384, 300 * 16, 300 * 16);
-
 
         // 设置当前的增益装填，不设置则默认为高增益
         uvcCamera.setGainStatus(gainStatus);
@@ -506,9 +492,7 @@ public class IRUVCTC {
                         int lenth_priv = is.available();
                         priv_high = new byte[lenth_priv];
                         if (is.read(priv_high) != lenth_priv) {
-                            Log.d(TAG, "read priv file fail ");
                         }
-                        Log.d(TAG, "read priv file lenth " + lenth_priv);
                     } else {
                         // 从机芯里面读取，读取之后可以保存起来，下次直接从文件中读取
                         ircmd.readPrivData(gainMode, priv_high, priv_low);
@@ -517,7 +501,6 @@ public class IRUVCTC {
                         BitmapUtils.saveByteFile(priv_low, "priv_low");
                     }
                     for (int i = 0; i < 6; i++) {
-                        Log.i(TAG, "ktbt_init->priv_data[" + i + "]=" + priv_high[i]);
                     }
 
                     if (isUseSaveData) {
@@ -526,9 +509,7 @@ public class IRUVCTC {
                         int lenthKt = is.available();
                         byte kt_high_byte[] = new byte[lenthKt];
                         if (is.read(kt_high_byte) != lenthKt) {
-                            Log.d(TAG, "read kt file fail ");
                         }
-                        Log.d(TAG, "read kt file lenth " + lenthKt);
                         kt_high = BitmapUtils.toShortArray(kt_high_byte);
                     } else {
                         // 从机芯里面读取，读取之后可以保存起来，下次直接从文件中读取
@@ -538,7 +519,6 @@ public class IRUVCTC {
                         BitmapUtils.saveShortFile(kt_low, "kt_low");
                     }
                     for (int i = 0; i < 100; i++) {
-                        Log.i(TAG, "ktbt_init->kt_data[" + i + "]=" + kt_high[i]);
                     }
 
                     if (isUseSaveData) {
@@ -547,13 +527,10 @@ public class IRUVCTC {
                         int lenthBt = is.available();
                         byte bt_high_byte[] = new byte[lenthBt];
                         if (is.read(bt_high_byte) != lenthBt) {
-                            Log.d(TAG, "read file fail ");
                         }
-                        Log.d(TAG, "read bt file lenth " + lenthBt);
                         bt_high = BitmapUtils.toShortArray(bt_high_byte);
 
                         for (int i = 0; i < 100; i++) {
-                            Log.i(TAG, "ktbt_init->bt_data[" + i + "]=" + bt_high_byte[i]);
                         }
                     } else {
                         // 从机芯里面读取，读取之后可以保存起来，下次直接从文件中读取
@@ -563,22 +540,18 @@ public class IRUVCTC {
                         BitmapUtils.saveShortFile(bt_low, "bt_low");
                     }
 
-
                     if (isUseSaveData) {
                         // 直接从文件中读取
                         is = am.open("nuc_table_high.bin");
                         int lenthNuc = is.available();
                         byte nuc_table_high_byte[] = new byte[lenthNuc];
                         if (is.read(nuc_table_high_byte) != lenthNuc) {
-                            Log.d(TAG, "read nuc_table file fail ");
                         }
-                        Log.d(TAG, "read nuc_table file lenth " + lenthNuc);
                         nuc_table_high = BitmapUtils.toShortArray(nuc_table_high_byte);
                     } else {
                         // 根据不同的高低增益加载不同的等效大气透过率表
                         int[] valueGain = new int[1];
                         ircmd.getPropTPDParams(CommonParams.PropTPDParams.TPD_PROP_GAIN_SEL, valueGain);
-                        Log.i(TAG, "TPD_PROP_GAIN_SEL=" + valueGain[0]);
 
                         if (valueGain[0] == 1) {
                             // 当前机芯为高增益
@@ -591,10 +564,8 @@ public class IRUVCTC {
                         ircmd.readNucTableFromFlash(gainMode, nuc_table_high, nuc_table_low);
                         // 获取nuc_table表数据
                         for (int i = 4000; i < 5000; i += 100) {
-                            Log.i(TAG, "ktbt_init->nuc_table_high[" + i + "]=" + nuc_table_high[i]);
                         }
                         for (int i = 4000; i < 5000; i += 100) {
-                            Log.i(TAG, "ktbt_init->nuc_table_low[" + i + "]=" + nuc_table_low[i]);
                         }
                         // 保存数据，方便查看，可按照需要确定是否保存
                         BitmapUtils.saveShortFile(nuc_table_high, "nuc_table_high");

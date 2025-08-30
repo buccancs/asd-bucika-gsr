@@ -76,7 +76,6 @@ import java.util.*
 @Route(path = RouterConfig.IR_GALLERY_EDIT)
 class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListener {
 
-
     private var isShowC: Boolean = false
 
     /**
@@ -166,7 +165,6 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
             temperature_view.setImageSize(imageWidth, imageHeight)
         }
     }
-
 
     @SuppressLint("SetTextI18n")
     private fun showImage(capital: ByteArray, frame: ByteArray) {
@@ -648,7 +646,6 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
         return ImageTempBean(full, pointList, lineList, rectList)
     }
 
-
     private fun saveImage() {
         TipDialog.Builder(this)
             .setTitleMessage(getString(R.string.app_tip))
@@ -738,7 +735,6 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
         try {
             tmp = tempCorrect(temp!!)
         } catch (e: Exception) {
-            XLog.i("温度校正失败: ${e.message}")
         }
         return tmp!!
     }
@@ -784,7 +780,6 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
                     BaseApplication.instance.tau_data_L!!,struct.gainStatus)
             }
         }catch (e : Exception){
-            XLog.e("$TAG:tempCorrect-${e.message}")
         }finally {
             return newTemp
         }

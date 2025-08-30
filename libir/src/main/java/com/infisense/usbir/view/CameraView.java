@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.TextureView;
 
 import androidx.annotation.NonNull;
@@ -42,7 +41,6 @@ public class CameraView extends TextureView {
     private int irHeight = 256;
 
     private boolean isOpenAmplify = false;
-
 
     public boolean isOpenAmplify() {
         return isOpenAmplify;
@@ -97,7 +95,6 @@ public class CameraView extends TextureView {
                                 syncimage.viewLock.wait();
                             } catch (InterruptedException e) {
                                 cameraThread.interrupt();
-                                Log.e(TAG, "lock.wait(): catch an interrupted exception");
                             }
                         }
                         //
@@ -134,7 +131,6 @@ public class CameraView extends TextureView {
                     }
                     SystemClock.sleep(1);
                 }
-                Log.w(TAG, "DisplayThread exit:");
             }
         };
     }
@@ -190,10 +186,8 @@ public class CameraView extends TextureView {
             canvas.drawLine(getWidth() / 2f, getHeight() / 2f - cross_len,
                     getWidth() / 2f, getHeight() / 2f + cross_len, paint);
         }catch (Exception e){
-            Log.e(TAG,"点异常:"+e.getMessage());
         }
     }
-
 
     /**
      *
@@ -209,7 +203,4 @@ public class CameraView extends TextureView {
         }
     }
 }
-
-
-
 

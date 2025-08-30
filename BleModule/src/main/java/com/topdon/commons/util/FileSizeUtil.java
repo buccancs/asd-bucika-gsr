@@ -1,7 +1,5 @@
 package com.topdon.commons.util;
 
-import android.util.Log;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.nio.channels.FileChannel;
@@ -23,7 +21,6 @@ public class FileSizeUtil {
     public static final int SIZETYPE_MB = 3;//获取文件大小单位为MB的double值
     public static final int SIZETYPE_GB = 4;//获取文件大小单位为GB的double值
 
-
     public static double getFileOrFilesSize(String filePath, int sizeType) {
         File file = new File(filePath);
         long blockSize = 0;
@@ -35,7 +32,6 @@ public class FileSizeUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("bcf获取文件大小", "getFileOrFilesSize-1-获取失败!");
         }
         return FormetFileSize(blockSize, sizeType);
     }
@@ -77,8 +73,6 @@ public class FileSizeUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("bcf获取文件大小--getFilesSize-2-获取失败!");
-//            Log.e("获取文件大小", "getFilesSize-2-获取失败!");
         }
         return blockSize;
     }
@@ -100,11 +94,9 @@ public class FileSizeUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("bcf获取文件大小", "getAutoFileOrFilesSize-3-获取失败!");
         }
         return FormetFileSize(blockSize, sizeType) + getUnit(sizeType);
     }
-
 
     /**
      * 调用此方法自动计算指定文件或指定文件夹的大小
@@ -123,7 +115,6 @@ public class FileSizeUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("bcf获取文件大小", "getAutoFileOrFilesSize-4-获取失败!");
         }
         return FormetFileSize(blockSize);
     }
@@ -145,8 +136,6 @@ public class FileSizeUtil {
                 }
             }
         } catch (Exception e) {
-            System.out.println("bcf获取文件大小--getFilesSize-5-获取失败!");
-//            Log.e("获取文件大小", "getFileSize-5-获取失败!");
             e.printStackTrace();
         } finally {
             if (fc != null) {
@@ -232,7 +221,6 @@ public class FileSizeUtil {
         return fileSizeLong;
     }
 
-
     /**
      * 获取文件大小
      * 写入日志读取
@@ -244,13 +232,11 @@ public class FileSizeUtil {
         try {
             File file = new File(filename);
             if (!file.exists() || !file.isFile()) {
-                System.out.println("bcf--getFileSize文件大小不存在");
                 return -1;
             }
             return file.length();
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("bcf--getFileSize获取文件大小--getFilesSize-5-获取失败!");
         }
         return 0;
     }

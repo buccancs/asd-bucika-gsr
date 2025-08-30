@@ -135,7 +135,6 @@ package com.infisense.usbir.thread.temp;//package com.infisense.usbir.thread;
 //            }
 //            SystemClock.sleep(20);
 //        }
-//        Log.w(TAG, "ImageThread exit:");
 //    }
 //
 //    private void imageprocess(byte[] src, byte[] dst, Libirprocess.ImageRes_t imageRes) {

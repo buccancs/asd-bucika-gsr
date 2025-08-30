@@ -25,7 +25,6 @@ import com.topdon.lib.ui.R
 import kotlinx.android.synthetic.main.camera_lay.view.*
 import java.util.*
 
-
 /**
  * 相机预览
  */
@@ -59,8 +58,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
         lis = ScaleGestureDetector(context, this)
         onResumeView()
     }
-
-
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
@@ -118,7 +115,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
 //                if (moveY + scaleH > parentViewH - mTextureView.height) {
 //                    moveY = parentViewH - mTextureView.height - scaleH
 //                }
-//                Log.e("测试---","/"+(moveX + scaleW)+"///"+(parentViewW - mTextureView.width))
                 mTextureView.x = moveX
                 mTextureView.y = moveY
             }
@@ -126,7 +122,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
                 isScale = false//实际以手指抬起设定缩放结束
                 val startX = viewX
                 val startY = viewY
-//                Log.e("测试","/"+(startX)+"///"+startY+"///"+(mTextureView.width)+"//"+mTextureView.width * scale)
                 if ((viewX < 0 && startX <  -mTextureView.width * scale + SizeUtils.dp2px(10f)) ||
                     (startX > 0 && startX > parentViewW - SizeUtils.dp2px(10f)) ||
                     (startY < 0 && startY < -mTextureView.height * scale + SizeUtils.dp2px(10f)) ||
@@ -217,14 +212,12 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
         object : CameraDevice.StateCallback() {
             override fun onOpened(@NonNull camera: CameraDevice) {
                 // 打开
-                XLog.i("开启预览")
                 mCameraDevice = camera
                 takePreview()
             }
 
             override fun onDisconnected(@NonNull camera: CameraDevice) {
                 // 断开连接
-                XLog.i("关闭预览")
                 isPreviewing = false
 //                camera.close()
 //                mCameraDevice = null
@@ -235,7 +228,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
                 isPreviewing = false
                 camera.close()
                 mCameraDevice = null
-                XLog.e("预览异常 error: $error")
             }
         }
 
@@ -290,13 +282,11 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
                                 mCameraHandler
                             )
                         } catch (e: CameraAccessException) {
-                            XLog.e("相机异常：${e.printStackTrace()}")
                         }
                     }
 
                     override fun onConfigureFailed(@NonNull session: CameraCaptureSession) {
                         // 配置失败
-                        XLog.e("配置失败")
                     }
                 },
                 mCameraHandler
@@ -306,7 +296,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
         }
     }
 
-
     private fun onResumeView() {
         mTextureView.surfaceTextureListener = object : TextureView.SurfaceTextureListener {
             override fun onSurfaceTextureAvailable(
@@ -315,7 +304,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
                 height: Int
             ) {
                 // SurfaceTexture可用
-                XLog.w("width:$width, height:$height")
                 setUpCamera(width, height)
             }
 
@@ -342,7 +330,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
         super.onAttachedToWindow()
     }
 
-
     /**
      * 设置相机参数
      * @param width 宽度
@@ -356,7 +343,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
         try {
             // 遍历所有摄像头,找到一个取消遍历
             for (cameraId in mCameraManager!!.cameraIdList) {
-                XLog.i("camera id: $cameraId")
                 cameraCharacteristics = mCameraManager!!.getCameraCharacteristics(cameraId)
                 // 获取摄像头是前置还是后置
                 val facing = cameraCharacteristics?.get(CameraCharacteristics.LENS_FACING)
@@ -372,15 +358,11 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
                 constraintSet.clone(camera_lay_root)
                 constraintSet.constrainHeight(mTextureView.id,width * mPreviewSize!!.width / mPreviewSize!!.height)
                 constraintSet.applyTo(camera_lay_root);
-                XLog.w("mPreviewSize:${mPreviewSize}")
                 // 获取相机支持的最大拍照尺寸
                 val sizes = map.getOutputSizes(ImageFormat.JPEG)
-                XLog.w("size:${sizes.toList()}")
                 val w = 1000
                 val h = w * sizes[0].height / sizes[0].width
 //                mCaptureSize = Size(w, h)//影响拍照尺寸
-                XLog.w("选取比例 w:${sizes[0].width}, h:${sizes[0].height}")
-                XLog.w("调整后 w: ${w}, h:${h}")
                 // 此处ImageReader用于拍照所需
 //                setupImageReader()
                 // 为摄像头赋值
@@ -389,7 +371,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
             }
         } catch (e: CameraAccessException) {
             e.printStackTrace()
-            Log.e("123", "设置相机参数:${e.message}")
         }
     }
 
@@ -435,7 +416,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
             mCameraManager!!.openCamera(mCameraId, mStateCallback, mCameraHandler)
         } catch (e: Exception) {
             isPreviewing = false
-            XLog.e("打开相机失败:${e.message}")
             ToastUtils.showShort("打开相机失败")
         }
     }
@@ -456,7 +436,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
             scale = 1f
 //            isReverse = false
         } catch (e: Exception) {
-            XLog.e("关闭相机失败:${e.message}")
             ToastUtils.showShort("关闭相机失败")
         }
     }
@@ -484,6 +463,5 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
         mTextureView.scaleY = scale
         invalidate()
     }
-
 
 }

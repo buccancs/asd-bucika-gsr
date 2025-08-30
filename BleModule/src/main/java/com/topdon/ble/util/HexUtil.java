@@ -1,7 +1,5 @@
 package com.topdon.ble.util;
 
-import android.util.Log;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -139,14 +137,12 @@ public class HexUtil {
     public static byte[] readFileToByteArray(String path) {
         File file = new File(path);
         if (!file.exists()) {
-            Log.d("bcf", "File doesn't exist!");
             return null;
         }
         try {
             in = new FileInputStream(file);
             long inSize = in.getChannel().size();//判断FileInputStream中是否有内容
             if (inSize == 0) {
-                Log.d("bcf", "The FileInputStream has no content!");
                 return null;
             }
 

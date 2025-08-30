@@ -95,7 +95,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         temperatureView.isEnabled = false
         temperatureView.setTextSize(SaveSettingUtil.tempTextSize)
 
-
         initDataIR()
     }
 
@@ -124,9 +123,7 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
                 if (isFirstRead) {
                     if (result.maxTemperature > 200f || result.minTemperature < -200f) {
                         errorReadCount++
-                        XLog.w("第 $errorReadCount 次读取到异常数据，max = ${result.maxTemperature} min = ${result.minTemperature}")
                         if (errorReadCount > 10) {
-                            XLog.i("连续10次获取到异常数据，认为温度区域稳定")
                             isFirstRead = false
                         }
                         continue
@@ -170,7 +167,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
                         }
                     }
                 }catch (e:Exception){
-                    Log.e("测试","//"+e.message)
                 }
             }, 1500)
         }
@@ -208,7 +204,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         try {
             imageThread?.join()
         } catch (e: InterruptedException) {
-            Log.e(TAG, "imageThread.join(): catch an interrupted exception")
         }
     }
 
@@ -262,10 +257,8 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
                     }
                 }
             }
-            XLog.w("停止记录, 数据量:$time")
         }
     }
-
 
     private var imageThread: ImageThreadTC? = null
     private var bitmap: Bitmap? = null //不需要显示图像，可去掉
@@ -317,10 +310,8 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         // 某些特定客户的特殊设备需要使用该命令关闭sensor
         if (Usbcontorl.isload) {
             Usbcontorl.usb3803_mode_setting(1) //打开5V
-            Log.w("123", "打开5V")
         }
     }
-
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun iruvctc(event: PreviewComplete) {
@@ -348,10 +339,8 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
             imageThread!!.setRotate(rotateAngle)
             imageThread!!.start()
         }catch (e : Exception){
-            Log.e("图像线程重复启动",e.message.toString())
         }
     }
-
 
     /**
      * @param isRestart 是否是重启模组
@@ -364,7 +353,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
                 }
 
                 override fun onIRCMDCreate(ircmd: IRCMD) {
-                    Log.i(
                         TAG,
                         "ConnectCallback->onIRCMDCreate"
                     )
@@ -382,7 +370,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
                     val arm = String(fwBuildVersionInfoBytes.copyOfRange(0, 8))
                     isTS001 = arm.contains("Mini256", true)
                     ircmd!!.getPropTPDParams(CommonParams.PropTPDParams.TPD_PROP_GAIN_SEL, value)
-                    Log.d(TAG, "TPD_PROP_GAIN_SEL=" + value[0])
                     gainStatus = if (value[0] == 1) {
                         // 当前机芯为高增益
                         CommonParams.GainStatus.HIGH_GAIN
@@ -413,7 +400,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
 
     }
 
-
     /**
      *
      */
@@ -436,7 +422,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
             val config = ConfigRepository.readConfig(false)
             val disChar = (config.distance * 128).toInt() //距离(米)
             val emsChar = (config.radiation * 128).toInt() //发射率
-            XLog.w("设置TPD_PROP DISTANCE:${disChar}, EMS:${emsChar}}")
             val timeMillis = 250L
             delay(timeMillis)
             //发射率
@@ -566,11 +551,9 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         try {
             tmp = tempCorrect(temp!!, gainStatus, 0)
         } catch (e: Exception) {
-            XLog.i("温度校正失败: ${e.message}")
         }
         return tmp!!
     }
-
 
     /**
      * 单点修正过程
@@ -607,7 +590,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
             tempInfo,
             gainStatus
         )
-        Log.i(
             TAG,
             "temp correct, oldTemp = " + paramsArray[0] + " ems = " + paramsArray[1] + " ta = " + paramsArray[2] + " " +
                     "distance = " + paramsArray[4] + " hum = " + paramsArray[5] + " productType = ${CommonParams.ProductType.WN256_ADVANCED}" + " " +
@@ -615,7 +597,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         )
         return newTemp
     }
-
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun cameraEvent(event: DeviceCameraEvent) {

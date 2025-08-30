@@ -51,7 +51,6 @@ object ExportUtils {
             workbook.close()
             uri
         } catch (e: Exception) {
-            Log.e(TAG, "Excel export failed", e)
             null
         }
     }
@@ -67,7 +66,6 @@ object ExportUtils {
             document.close()
             uri
         } catch (e: Exception) {
-            Log.e(TAG, "PDF export failed", e)
             null
         }
     }
@@ -168,7 +166,6 @@ object ExportUtils {
             workbook.close()
             filePath
         } catch (e: Exception) {
-            Log.e(TAG, "Thermal matrix export failed", e)
             null
         }
     }
@@ -240,7 +237,6 @@ object ExportUtils {
                 }
             }
         } catch (e: IOException) {
-            Log.e(TAG, "Failed to save thermal matrix workbook", e)
             null
         }
     }
@@ -296,7 +292,6 @@ object ExportUtils {
                 uri
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to save PDF document", e)
             null
         }
     }
@@ -330,7 +325,6 @@ object ExportUtils {
                 } ?: ""
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to save PDF to file", e)
             ""
         } finally {
             document.close()
@@ -409,7 +403,6 @@ object ExportUtils {
             
             uri
         } catch (e: IOException) {
-            Log.e(TAG, "Failed to save workbook", e)
             null
         }
     }

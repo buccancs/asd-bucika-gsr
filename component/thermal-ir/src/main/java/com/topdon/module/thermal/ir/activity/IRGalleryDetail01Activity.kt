@@ -221,7 +221,6 @@ class IRGalleryDetail01Activity : BaseActivity(), View.OnClickListener {
         irViewModel.initData(irPath)
     }
 
-
     override fun onClick(v: View?) {
         when (v) {
             ll_ir_edit_2D -> {
@@ -245,10 +244,8 @@ class IRGalleryDetail01Activity : BaseActivity(), View.OnClickListener {
                     withContext(Dispatchers.IO) {
                         val file = File(irPath)
                         if (!file.exists()) {
-                            XLog.w("IR文件不存在: ${file.absolutePath}")
                             return@withContext
                         }
-                        XLog.w("IR文件: ${file.absolutePath}")
                         val bytes = file.readBytes()
                         val headLenBytes = ByteArray(2)
                         System.arraycopy(bytes, 0, headLenBytes, 0, 2)

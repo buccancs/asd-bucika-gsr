@@ -64,7 +64,6 @@ public class IniUtil {
         return readFileInfo(path + "/Diag.ini");
     }
 
-
     /**
      * 读取文件
      *
@@ -75,7 +74,6 @@ public class IniUtil {
         File file = new File(path);
         //如果path是传递过来的参数，可以做一个非目录的判断
         if (file.isDirectory()) {
-            LLog.d("TestFile", "The File doesn't not exist.");
         } else {
             try {
                 InputStream instream = new FileInputStream(file);
@@ -84,15 +82,12 @@ public class IniUtil {
                 String line;
                 //分行读取
                 while ((line = buffreader.readLine()) != null) {
-                    LLog.e("TestFile", "ReadTxtFile: " + line);
                     name = line;
                     break;
                 }
                 instream.close();
             } catch (java.io.FileNotFoundException e) {
-                LLog.d("TestFile", "The File doesn't not exist.");
             } catch (IOException e) {
-                LLog.d("TestFile", e.getMessage());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -100,11 +95,9 @@ public class IniUtil {
         return name;
     }
 
-
     public static String getVersion(String path, String name) {
         File file = new File(path + "/Diag.ini");
         if (!file.exists()) {
-            LLog.e("bcf", name + "  ini不存在：" + file.getPath());
             return "INI_LOST";
         }
         Config cfg = new Config();
@@ -142,11 +135,9 @@ public class IniUtil {
             return languageSection.get(language.toLowerCase());
         } catch (Exception e) {
 //            e.printStackTrace();
-            LLog.e("bcf", "INI: error: " + e.getMessage());
         }
         return "";
     }
-
 
     /**
      * 获取保养类型
@@ -159,7 +150,6 @@ public class IniUtil {
         HashMap<String, String> hashMap = new HashMap<>();
         File file = new File(path + "/Diag.ini");
         if (!file.exists()) {
-            LLog.e("bcf", name + "  ini不存在：" + file.getPath());
             return hashMap;
         }
         Config cfg = new Config();
@@ -307,7 +297,6 @@ public class IniUtil {
         }
     }
 
-
     /**
      * 获取保养类型
      *
@@ -319,7 +308,6 @@ public class IniUtil {
         HashMap<String, String> hashMap = new HashMap<>();
         File file = new File(path + "/Diag.ini");
         if (!file.exists()) {
-            LLog.e("bcf", name + "  ini不存在：" + file.getPath());
             return hashMap;
         }
         Config cfg = new Config();

@@ -11,7 +11,6 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -235,7 +234,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                     mSurfaceHolder.unlockCanvasAndPost(mCanvas);
                 }
             } catch (Exception e) {
-                Log.e(TAG, "Error drawing temperature frame", e);
             } finally {
                 isDrawing = false;
             }

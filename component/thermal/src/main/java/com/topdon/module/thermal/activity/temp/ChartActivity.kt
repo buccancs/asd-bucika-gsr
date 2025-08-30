@@ -43,7 +43,6 @@
 //                getSeriesModel(y1.toFloat())
 //                y1
 //            }.collect {
-//                Log.w("123", "data:${dataSeries.joinToString()}")
 //                aa_chart_view.aa_addPointToChartSeriesElement(0, it, true)
 //            }
 //        }

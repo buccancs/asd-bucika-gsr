@@ -37,7 +37,6 @@ public class AppUtil {
         resolveIntent.setPackage(pi.packageName);
         List<ResolveInfo> apps = context.getPackageManager().queryIntentActivities(resolveIntent, 0);
         if (apps == null || apps.size() <= 0) {
-//            LLog.e("bcf","该应用没有启动入口无法启动");
             return;
         }
         ResolveInfo ri = apps.iterator().next();
@@ -51,7 +50,6 @@ public class AppUtil {
             context.startActivity(intent);
         }
     }
-
 
     /**
      * 应用安装
@@ -88,7 +86,6 @@ public class AppUtil {
             return false;
         }
         for (ActivityManager.RunningServiceInfo serviceInfo : runningServiceInfos) {
-            XLog.w("bcf", "进程名=" + serviceInfo.service.getClassName());
             if (serviceInfo.process.equals(serviceName)) {
                 return true;
             }
@@ -109,7 +106,6 @@ public class AppUtil {
             return false;
         }
         for (ActivityManager.RunningServiceInfo serviceInfo : runningServiceInfos) {
-            XLog.w("bcf", "类名=" + serviceInfo.service.getClassName());
             if (serviceInfo.service.getClassName().equals(serviceName)) {
                 return true;
             }

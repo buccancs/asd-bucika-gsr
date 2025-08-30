@@ -1,7 +1,6 @@
 package com.topdon.lib.core.utils;
 
 import android.content.Context;
-import android.util.Log;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
@@ -109,10 +108,8 @@ public class EasyWifi {
     public boolean connectByOld(String str, String str2, WifiCapability wifiCapability) {
         int addNetwork = this.wifiManager.addNetwork(createWifiConfig(str, str2, wifiCapability));
         if (addNetwork == -1) {
-            Log.e(this.TAG, "操作失败,需要您到手机wifi列表中取消对设备连接的保存");
         }
         boolean enableNetwork = this.wifiManager.enableNetwork(addNetwork, true);
-        Log.d(this.TAG, "connectByOld: " + (enableNetwork ? "成功" : "失败"));
         return enableNetwork;
     }
 
@@ -135,9 +132,7 @@ public class EasyWifi {
         wifiConfiguration.SSID = "\"" + str + "\"";
         WifiConfiguration isExist = isExist(str);
         if (isExist != null) {
-            Log.d(this.TAG, "createWifiConfig: 移除网路（true:成功，false:失败），结果=" + this.wifiManager.removeNetwork(isExist.networkId) + "移除后保存" + this.wifiManager.saveConfiguration());
         }
-        Log.d(this.TAG, "createWifiConfig: 当前ssid=" + str);
         if (wifiCapability == WifiCapability.WIFI_CIPHER_NO_PASS) {
             wifiConfiguration.allowedKeyManagement.set(0);
         } else if (wifiCapability == WifiCapability.WIFI_CIPHER_WEP) {
@@ -175,7 +170,6 @@ public class EasyWifi {
     }
 
     public void setNetworkType(NetType netType) {
-        Log.d(this.TAG, "selectNetworkType: 强制使用wifi网络或者移动数据网络");
         NetworkRequest.Builder builder = new NetworkRequest.Builder();
         if (netType == NetType.WIFI) {
             builder.addTransportType(1);
@@ -186,7 +180,6 @@ public class EasyWifi {
             @Override // android.net.ConnectivityManager.NetworkCallback
             public void onAvailable(Network network) {
                 try {
-                    Log.d(EasyWifi.this.TAG, "设置网络类型时onAvailable: ");
                     EasyWifi.this.getConnectivityManager().bindProcessToNetwork(network);
                 } catch (Exception e) {
                     e.printStackTrace();

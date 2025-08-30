@@ -17,7 +17,6 @@ import java.io.IOException
  */
 class IRImageHelp {
 
-
     //自定义的颜色值
     @Volatile
     private var colorList: IntArray ?= null
@@ -67,7 +66,6 @@ class IRImageHelp {
             this.minRGB[2] = minColor and 0xFF
         }
     }
-
 
     /**
      * 自定义伪彩处理，在执行这个方法之前，变更伪彩属性时先通过 上面setColorList进行属性设置
@@ -122,16 +120,12 @@ class IRImageHelp {
                     index += 4
                     j += 2
                 }
-//                                        Log.w("测试上色耗时-总耗时", System.currentTimeMillis() - startTimeAll + "//");
             }
         } catch (exception: Exception) {
-            Log.e("上色异常", exception.message!!)
         }finally {
             return imageDst
         }
     }
-
-
 
     /**
      * 等温尺处理,展示伪彩的温度范围内信息
@@ -206,7 +200,5 @@ class IRImageHelp {
         }
         return imageDst
     }
-
-
 
 }

@@ -2,7 +2,6 @@ package com.infisense.usbdual.camera;
 
 import android.hardware.usb.UsbDevice;
 import android.os.SystemClock;
-import android.util.Log;
 
 import com.blankj.utilcode.util.Utils;
 import com.energy.iruvc.ircmd.ConcreteIRCMDBuilder;
@@ -116,8 +115,6 @@ public class USBMonitorManager {
                         // do request device permission
                         @Override
                         public void onAttach(UsbDevice device) {
-                            Log.w(TAG, "USBMonitorManager-onAttach-getProductId = " + device.getProductId());
-                            Log.w(TAG, "USBMonitorManager-onAttach-mPid = " + mPid);
                             /**
                              * USBMonitor会同时响应所有的UVC设备，
                              * 需要根据自己的初始化pid判断自己需要初始化的设备
@@ -133,7 +130,6 @@ public class USBMonitorManager {
 
                         @Override
                         public void onGranted(UsbDevice usbDevice, boolean granted) {
-                            Log.d(TAG, "USBMonitorManager-onGranted");
                             for (OnUSBConnectListener onUSBConnectListener : mOnUSBConnectListeners) {
                                 onUSBConnectListener.onGranted(usbDevice, granted);
                             }
@@ -143,7 +139,6 @@ public class USBMonitorManager {
                         // do close camera
                         @Override
                         public void onDettach(UsbDevice device) {
-                            Log.d(TAG, "USBMonitorManager-onDettach");
                             Const.isDeviceConnected = false;
                             for (OnUSBConnectListener onUSBConnectListener : mOnUSBConnectListeners) {
                                 onUSBConnectListener.onDettach(device);
@@ -154,7 +149,6 @@ public class USBMonitorManager {
                         @Override
                         public void onConnect(final UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock,
                                               boolean createNew) {
-                            Log.w(TAG, "USBMonitorManager-onConnect");
                             if (createNew) {
                                 Const.isDeviceConnected = true;
                                 if (isReStart()) {
@@ -170,7 +164,6 @@ public class USBMonitorManager {
                         // do nothing
                         @Override
                         public void onDisconnect(UsbDevice device, USBMonitor.UsbControlBlock ctrlBlock) {
-                            Log.w(TAG, "USBMonitorManager-onDisconnect");
                             Const.isDeviceConnected = false;
                             for (OnUSBConnectListener onUSBConnectListener : mOnUSBConnectListeners) {
                                 onUSBConnectListener.onDisconnect(device, ctrlBlock);
@@ -179,7 +172,6 @@ public class USBMonitorManager {
 
                         @Override
                         public void onCancel(UsbDevice device) {
-                            Log.d(TAG, "USBMonitorManager-onCancel");
                             Const.isDeviceConnected = false;
                             for (OnUSBConnectListener onUSBConnectListener : mOnUSBConnectListeners) {
                                 onUSBConnectListener.onCancel(device);
@@ -202,7 +194,6 @@ public class USBMonitorManager {
     }
 
     private void initUVCCamera() {
-        Log.d(TAG, "initUVCCamera");
         // UVCCamera init
 
         ConcreateUVCBuilder concreateUVCBuilder = new ConcreateUVCBuilder();
@@ -250,7 +241,6 @@ public class USBMonitorManager {
         // 根据设备的分辨率列表，这里可以动态的设置模组的宽高(这里作为示例，用的是从外部传入的方式)
         if (mDefaultDataFlowMode == CommonParams.DataFlowMode.TNR_OUTPUT) {
             isTempReplacedWithTNREnabled = mIrcmd.isTempReplacedWithTNREnabled(DeviceType.P2);
-            Log.i(TAG, "startPreview->isTempReplacedWithTNREnabled = " + isTempReplacedWithTNREnabled);
             //P2模组固件3.06版本后, TNR数据无需停图再出图，TNR数据在256*384数据的下半部分，顶替之前的温度数据
             if (isTempReplacedWithTNREnabled) {
                 cameraWidth = 256;
@@ -273,13 +263,11 @@ public class USBMonitorManager {
      * @return
      */
     private List<CameraSize> getAllSupportedSize() {
-        Log.w(TAG, "getSupportedSize = " + mUvcCamera.getSupportedSize());
         List<CameraSize> previewList = new ArrayList<>();
         if (mUvcCamera != null) {
             previewList = mUvcCamera.getSupportedSizeList();
         }
         for (CameraSize size : previewList) {
-            Log.i(TAG, "SupportedSize : " + size.width + " * " + size.height);
         }
         return previewList;
     }
@@ -292,7 +280,6 @@ public class USBMonitorManager {
      */
     public void initIRCMD(List<CameraSize> previewList) {
         for (CameraSize size : previewList) {
-            Log.i(TAG, "SupportedSize : " + size.width + " * " + size.height);
         }
         // IRCMD init
         if (mUvcCamera != null) {
@@ -332,7 +319,6 @@ public class USBMonitorManager {
      *
      */
     private void startPreview() {
-        Log.d(TAG, "startPreview");
 
         if (mUvcCamera == null) {
             return;
@@ -368,7 +354,6 @@ public class USBMonitorManager {
     }
 
     public void stopPreview() {
-        Log.i(TAG, "stopPreview");
         if (mUvcCamera != null) {
             if (mUvcCamera.getOpenStatus()) {
                 mUvcCamera.onStopPreview();

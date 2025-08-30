@@ -125,9 +125,7 @@
 //     * 初始化曲线三种类型曲线
 //     */
 //    private fun initSeries(): Array<AASeriesElement> {
-//        Log.w("123", "dataList size: ${dataList.size}")
 //        val maxTempListData = Array<Any>(dataList.size) {
-//            Log.w("123", "时间 ${TimeTool.showTimeSecond(dataList[it].createTime)}")
 //            arrayOf(TimeTool.showTimeSecond(dataList[it].createTime), dataList[it].thermalMax)
 //        }
 //        val minTempListData = Array<Any>(dataList.size) {

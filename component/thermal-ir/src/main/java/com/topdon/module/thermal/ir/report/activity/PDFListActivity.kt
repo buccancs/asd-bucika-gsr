@@ -33,7 +33,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
 
-
 /**
  * 需要传递
  * - 是否 TC007: [ExtraKeyConfig.IS_TC007]
@@ -151,7 +150,6 @@ class PDFListActivity : BaseViewModelActivity<PdfViewModel>() {
                                     if (file.exists()) {
                                         file.delete()
                                     }
-                                    Log.w("删除成功",response.toString())
                                 }
 
                                 override fun onFail(exception: Exception?) {

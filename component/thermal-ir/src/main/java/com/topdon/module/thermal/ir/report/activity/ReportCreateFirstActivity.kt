@@ -232,7 +232,6 @@ class ReportCreateFirstActivity: BaseActivity(), View.OnClickListener {
                     location.latitude,
                     location.longitude, 1
                 )
-                Log.v("TAG", "获取地址信息：$result")
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -292,8 +291,6 @@ class ReportCreateFirstActivity: BaseActivity(), View.OnClickListener {
             if (switch_test_distance.isChecked && et_test_distance.text.isNotEmpty()) 1 else 0
         )
     }
-
-
 
     /**
      * 当前设置的报告日期时间戳.

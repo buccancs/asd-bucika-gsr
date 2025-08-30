@@ -32,7 +32,6 @@ class PdfViewModel : BaseViewModel() {
 
     val listData = MutableLiveData<ReportData?>()
 
-
     //获取报告列表
     fun getReportData(isTC007: Boolean, page: Int){
         if (!NetworkUtil.isConnected(Utils.getApp())) {
@@ -45,7 +44,6 @@ class PdfViewModel : BaseViewModel() {
             listData.postValue(data)
         }
     }
-
 
     private suspend fun getReportDataRepository(isTC007: Boolean, page:Int) : ReportData? {
         var result: ReportData? = null
@@ -74,7 +72,6 @@ class PdfViewModel : BaseViewModel() {
                 result?.msg = p0?.message
                 result?.code = -1
                 downLatch.countDown()
-                TLog.e("bcf", "获取报告列表失败：" + p0?.message)
             }
 
             override fun onFail(failMsg: String?, errorCode: String) {

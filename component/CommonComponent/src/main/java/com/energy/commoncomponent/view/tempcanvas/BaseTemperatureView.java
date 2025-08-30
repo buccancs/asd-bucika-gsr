@@ -11,7 +11,6 @@ import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -168,7 +167,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
     //------------------------ private method ------------------------------//
     private void initView(Context context) {
-        Log.d(TAG, "initView");
         mContext = context;
 
         mSurfaceHolder = this.getHolder();
@@ -195,14 +193,11 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
             @Override
             public boolean onContextClick(MotionEvent e) {
-                Log.d(TAG, "onContextClick");
                 return super.onContextClick(e);
             }
 
             @Override
             public boolean onDoubleTap(MotionEvent e) {
-                Log.d(TAG, "onDoubleTap");
-
 
                 return super.onDoubleTap(e);
             }
@@ -212,18 +207,14 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
                 switch (e.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        Log.d(TAG, "onDoubleTapEvent ACTION_DOWN");
 
                         break;
                     case MotionEvent.ACTION_UP:
-                        Log.d(TAG, "onDoubleTapEvent ACTION_UP");
                         //双击
                         mCurX = e.getX();
                         mCurY = e.getY();
                         mRawX = e.getRawX();
                         mRawY = e.getRawY();
-                        Log.d(TAG, "onDoubleTap mCurX : " + mCurX);
-                        Log.d(TAG, "onDoubleTap mCurY : " + mCurY);
                         // 防止数据越界到图像外部
                         if (mCurX < BORDER_PX) {
                             mCurX = BORDER_PX;
@@ -275,7 +266,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
             @Override
             public boolean onDown(MotionEvent e) {
                 //屏幕点下
-                Log.d(TAG, "onDown");
                 pause();
 
                 mFirstX = e.getX();
@@ -292,13 +282,10 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                 } else if (mFirstY >= mViewHeight) {
                     mFirstY = mViewHeight - BORDER_PX;
                 }
-                Log.d(TAG, "onDown mFirstX : " + mFirstX);
-                Log.d(TAG, "onDown mFirstY : " + mFirstY);
                 switch (mDrawModel) {
                     case DRAW_POINT:
                         //判断当时是否触碰已有的点
                         int indexPointTouch = mPointDraw.checkTouchPointInclude(mFirstX, mFirstY);
-                        Log.d(TAG, "indexPointTouch : " + indexPointTouch);
                         if (indexPointTouch != -1) {
                             mPointDraw.setOperateStatus(PointDraw.OPERATE_STATUS_POINT_IN_TOUCH);
                         } else {
@@ -307,7 +294,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                         break;
                     case DRAW_LINE:
                         int indexLineTouch = mLineDraw.checkTouchLineInclude((int)mFirstX, (int)mFirstY);
-                        Log.d(TAG, "indexLineTouch : " + indexLineTouch);
                         if (indexLineTouch != -1) {
                             //判断触碰线的面积
                             mLineDraw.changeTouchLineOperateStatus(mFirstX, mFirstY);
@@ -317,7 +303,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                         break;
                     case DRAW_RECT:
                         int indexRectTouch = mRectDraw.checkTouchRectInclude((int)mFirstX, (int)mFirstY);
-                        Log.d(TAG, "indexRectTouch : " + indexRectTouch);
                         if (indexRectTouch != -1) {
                             mRectDraw.changeTouchRectOperateStatus(mFirstX, mFirstY);
                         } else {
@@ -351,10 +336,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                 } else if (mCurY >= mViewHeight) {
                     mCurY = mViewHeight - BORDER_PX;
                 }
-                Log.d(TAG, "onScroll mCurX : " + mCurX);
-                Log.d(TAG, "onScroll mCurY : " + mCurY);
-                Log.d(TAG, "onScroll distanceX : " + mDistanceX);
-                Log.d(TAG, "onScroll distanceY : " + mDistanceY);
                 float moveX = mCurX - mFirstX;
                 float moveY = mCurY - mFirstY;
 
@@ -397,7 +378,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 //屏幕点下
-                Log.d(TAG, "onFling");
 
                 return super.onFling(e1, e2, velocityX, velocityY);
             }
@@ -410,7 +390,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
             @Override
             public boolean onSingleTapUp(MotionEvent e) {
                 //屏幕点击后弹起
-                Log.d(TAG, "onSingleTapUp");
 
                 mCurX = e.getX();
                 mCurY = e.getY();
@@ -441,14 +420,12 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
             @Override
             public void onLongPress(MotionEvent e) {
                 //屏幕点下 并长按时触发
-                Log.d(TAG, "onLongPress");
                 super.onLongPress(e);
             }
 
             @Override
             public void onShowPress(MotionEvent e) {
                 //屏幕长按
-                Log.d(TAG, "onShowPress");
                 super.onShowPress(e);
             }
         });
@@ -467,7 +444,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_POINTER_UP:
-                Log.d(TAG, "ACTION_UP OR ACTION_POINTER_UP");
                 switch (mDrawModel) {
                     case DRAW_POINT:
                         if (mPointDraw.getOperateStatus() == PointDraw.OPERATE_STATUS_POINT_ADD) {
@@ -514,18 +490,15 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder holder) {
-        Log.d(TAG, "surfaceCreated");
         mCanDraw = true;
     }
 
     @Override
     public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
-        Log.d(TAG, "surfaceChanged");
     }
 
     @Override
     public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
-        Log.d(TAG, "surfaceDestroyed");
         mCanDraw = false;
     }
 
@@ -583,14 +556,11 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                         continue;
                     }
 
-                    Log.d(TAG, "TempThread running");
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                    Log.d(TAG, "TempThread InterruptedException :" + e.getMessage());
                     if (mTempThread != null) {
                         mTempThread.interrupt();
-                        Log.d(TAG, "TempThread interrupt");
                     }
                 }
             }
@@ -621,12 +591,10 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                     doShapeDraw();
                 }catch (Exception e) {
                     e.printStackTrace();
-                    Log.d(TAG, "DrawThread InterruptedException :" + e.getMessage());
                 }
             }
         }
     }
-
 
     /**
      * 图形绘制
@@ -677,7 +645,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d(TAG, "DrawThread InterruptedException :" + e.getMessage());
         } finally {
             if (canvas != null) {
                 mSurfaceHolder.unlockCanvasAndPost(canvas);
@@ -727,7 +694,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d(TAG, "DrawThread InterruptedException :" + e.getMessage());
         } finally {
             if (canvas != null) {
                 mSurfaceHolder.unlockCanvasAndPost(canvas);
@@ -735,11 +701,9 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
         }
     }
 
-
     public abstract CopyOnWriteArrayList<TempResultBean> generateViewData(LinkedList<PointDraw.PointView> pointViews,
                                           LinkedList<LineDraw.LineView> lineViews,
                                           LinkedList<RectDraw.RectView> rectViews);
-
 
     /**
      * 绘制温度数据
@@ -752,7 +716,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
         if (tempResultBean.size() <= 0) {
             return;
         }
-//        Log.d(TAG, "drawTempResultBean size : " + tempResultBean.size());
         int y = 10;
         int x = 10;
 

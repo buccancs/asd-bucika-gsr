@@ -40,7 +40,6 @@ class VideoRecordMedia(
         }
     }
 
-
     override fun startRecord() {
 
         val downloadDir = FileConfig.lineGalleryDir
@@ -50,7 +49,6 @@ class VideoRecordMedia(
         }
         encoder.setOutputFilePath(exportedFile.path)
 //        if (bitmap == null) {
-//            Log.w("123", "录制准备失败")
 //            return
 //        }
         encoder.setOutputSize(width, height)

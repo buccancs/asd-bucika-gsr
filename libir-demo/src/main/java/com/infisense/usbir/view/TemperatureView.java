@@ -11,7 +11,6 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -130,12 +129,10 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
 
     public LibIRTemp.TemperatureSampleResult getV() {
         LibIRTemp.TemperatureSampleResult result = irtemp.getTemperatureOfLine(new Line(new Point(50, 100), new Point(100, 50)));
-        Log.w("123", "data tempDataRes_t:" + result.maxTemperature + ", h:" + result.minTemperature);
         return result;
     }
 
     public void setImageSize(int imageWidth, int imageHeight) {
-        Log.w("123", "imageWidth: " + imageWidth + ", imageHeight: " + imageHeight);
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
         if (viewWidth != 0)
@@ -381,7 +378,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                             int top = (int) (tempRectangle.top / yscale);
                             int right = (int) (tempRectangle.right / xscale);
                             int bottom = (int) (tempRectangle.bottom / yscale);
-                            Log.d(TAG, "Rectangle right: " + right + ", bottom: " + bottom);
                             if (right > left && bottom > top && left < imageWidth && top < imageHeight && right > 0 && bottom > 0) {
                                 temperatureSampleResult = irtemp.getTemperatureOfRect(new Rect(left, top, right, bottom));
                                 rectangleResultList.set(index, temperatureSampleResult);
@@ -413,12 +409,10 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                             int minY = Math.min(startY, endY);
                             int maxY = Math.max(startY, endY);
                             if (maxX < imageWidth && minX > 0 && maxY < imageHeight && minY > 0) {
-                                Log.d(TAG, "start point: (" + startX + ", " + startY + "), endX: (" + endX + ", " + endY + ")");
                                 temperatureSampleResult = irtemp.getTemperatureOfLine(new Line(new Point(startX, startY), new Point(endX, endY)));
                                 lineResultList.set(index, temperatureSampleResult);
                                 lineResultList.get(index).index = index + 1;
                                 //读取到温度
-                                Log.d(TAG, "minTemperaturePixel x: " + temperatureSampleResult.minTemperaturePixel.x);
                                 String min = new DecimalFormat("0.0").format(temperatureSampleResult.minTemperature) + "°C";
                                 String max = new DecimalFormat("0.0").format(temperatureSampleResult.maxTemperature) + "°C";
                                 drawDot(canvas, whitePaint, temperatureSampleResult.minTemperaturePixel.x * xscale, temperatureSampleResult.minTemperaturePixel.y * yscale);
@@ -469,7 +463,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
 //                SystemClock.sleep(333);
                 SystemClock.sleep(1000);//设置刷新间隔
             }
-            Log.d(TAG, "temperatureThread exit");
         };
 
     }
@@ -504,7 +497,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        Log.w(TAG, "surfaceCreated");
         setZOrderOnTop(true);
         holder.setFormat(PixelFormat.TRANSLUCENT);
     }
@@ -516,7 +508,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        Log.w(TAG, "surfaceDestroyed");
     }
 
     /**
@@ -528,49 +519,37 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 startX = event.getX();
                 startY = event.getY();
-                Log.w(TAG, "ACTION_DOWN" + startX + "|" + startY);
                 Rect rectangle = getRectangle(new Point((int) startX, (int) startY));
                 if (rectangle.equals(new Rect())) {
                     actionMode = ACTION_MODE_INSERT;
-                    Log.w(TAG, "ACTION_MODE_INSERT");
                 } else {
                     actionMode = ACTION_MODE_MOVE;
                     movingRectangle = rectangle;
-                    Log.w(TAG, "ACTION_MODE_MOVE");
                     if (startX > rectangle.left - TOUCH_TOLERANCE && startX < rectangle.left + TOUCH_TOLERANCE && startY > rectangle.top - TOUCH_TOLERANCE && startY < rectangle.top + TOUCH_TOLERANCE) {
-                        Log.w(TAG, "move left top corner");
                         rectangleMoveType = RECTANGLE_MOVE_CORNER;
                         rectangleMoveCorner = RECTANGLE_LEFT_TOP_CORNER;
                     } else if (startX > rectangle.right - TOUCH_TOLERANCE && startX < rectangle.right + TOUCH_TOLERANCE && startY > rectangle.top - TOUCH_TOLERANCE && startY < rectangle.top + TOUCH_TOLERANCE) {
-                        Log.w(TAG, "move right top corner");
                         rectangleMoveType = RECTANGLE_MOVE_CORNER;
                         rectangleMoveCorner = RECTANGLE_RIGHT_TOP_CORNER;
                     } else if (startX > rectangle.right - TOUCH_TOLERANCE && startX < rectangle.right + TOUCH_TOLERANCE && startY > rectangle.bottom - TOUCH_TOLERANCE && startY < rectangle.bottom + TOUCH_TOLERANCE) {
-                        Log.w(TAG, "move right bottom corner");
                         rectangleMoveType = RECTANGLE_MOVE_CORNER;
                         rectangleMoveCorner = RECTANGLE_RIGHT_BOTTOM_CORNER;
                     } else if (startX > rectangle.left - TOUCH_TOLERANCE && startX < rectangle.left + TOUCH_TOLERANCE && startY > rectangle.bottom - TOUCH_TOLERANCE && startY < rectangle.bottom + TOUCH_TOLERANCE) {
-                        Log.w(TAG, "move left bottom corner");
                         rectangleMoveType = RECTANGLE_MOVE_CORNER;
                         rectangleMoveCorner = RECTANGLE_LEFT_BOTTOM_CORNER;
                     } else if (startX > rectangle.left - TOUCH_TOLERANCE && startX < rectangle.left + TOUCH_TOLERANCE) {
-                        Log.w(TAG, "move left edge");
                         rectangleMoveType = RECTANGLE_MOVE_EDGE;
                         rectangleMoveEdge = RECTANGLE_LEFT_EDGE;
                     } else if (startY > rectangle.top - TOUCH_TOLERANCE && startY < rectangle.top + TOUCH_TOLERANCE) {
-                        Log.w(TAG, "move top edge");
                         rectangleMoveType = RECTANGLE_MOVE_EDGE;
                         rectangleMoveEdge = RECTANGLE_TOP_EDGE;
                     } else if (startX > rectangle.right - TOUCH_TOLERANCE && startX < rectangle.right + TOUCH_TOLERANCE) {
-                        Log.w(TAG, "move right edge");
                         rectangleMoveType = RECTANGLE_MOVE_EDGE;
                         rectangleMoveEdge = RECTANGLE_RIGHT_EDGE;
                     } else if (startY > rectangle.bottom - TOUCH_TOLERANCE && startY < rectangle.bottom + TOUCH_TOLERANCE) {
-                        Log.w(TAG, "move bottom edge");
                         rectangleMoveType = RECTANGLE_MOVE_EDGE;
                         rectangleMoveEdge = RECTANGLE_BOTTOM_EDGE;
                     } else {
-                        Log.w(TAG, "move entire");
                         rectangleMoveType = RECTANGLE_MOVE_ENTIRE;
                     }
                     synchronized (regionLock) {
@@ -587,7 +566,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
             } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
                 endX = event.getX();
                 endY = event.getY();
-                Log.w(TAG, "ACTION_DOWN " + endX + " | " + endY);
                 if (actionMode == ACTION_MODE_INSERT) {
                     Canvas surfaceViewCanvas = getHolder().lockCanvas();
                     surfaceViewCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
@@ -635,7 +613,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                 }
                 return true;
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                Log.w(TAG, "ACTION_UP");
                 endX = event.getX();
                 endY = event.getY();
                 if (actionMode == ACTION_MODE_INSERT) {
@@ -668,7 +645,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                     Canvas bitmapCanvas = new Canvas(regionBitmap);
                     float biasX = endX - startX;
                     float biasY = endY - startY;
-                    Log.d(TAG, "ACTION_UP" + movingRectangle.left + " " + movingRectangle.top + "----" + movingRectangle.right + " " + movingRectangle.bottom + " ");
                     int tmp;
                     if (Math.abs(biasX) > TOUCH_TOLERANCE || Math.abs(biasY) > TOUCH_TOLERANCE) {
                         if (rectangleMoveType == RECTANGLE_MOVE_ENTIRE) {
@@ -812,18 +788,14 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
             }
         } else if (temperatureRegionMode == REGION_MODE_LINE) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                Log.w(TAG, "ACTION_DOWN");
                 startX = event.getX();
                 startY = event.getY();
                 Line line = getLine(new Point((int) startX, (int) startY));
                 if (line.start == null || line.end == null) {
                     actionMode = ACTION_MODE_INSERT;
-                    Log.w(TAG, "ACTION_MODE_INSERT: startX = " + startX + "; startY = " + startY);
                 } else {
                     actionMode = ACTION_MODE_MOVE;
                     movingLine = line;
-                    Log.w(TAG, "ACTION_MODE_MOVE: startX = " + startX + "; startY = " + startY);
-                    Log.w(TAG, "ACTION_MODE_MOVE: x0 = " + line.start.x + "; y0 = " + line.start.y + "; x1 = " + line.end.x + "; y1 = " + line.end.y);
                     if (startX > line.start.x - TOUCH_TOLERANCE && startX < line.start.x + TOUCH_TOLERANCE && startY > line.start.y - TOUCH_TOLERANCE && startY < line.start.y + TOUCH_TOLERANCE) {
                         lineMoveType = LINE_MOVE_POINT;
                         lineMovePoint = LINE_START;
@@ -873,11 +845,9 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
                 }
                 return true;
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                Log.w(TAG, "ACTION_UP");
                 endX = event.getX();
                 endY = event.getY();
                 if (actionMode == ACTION_MODE_INSERT) {
-                    Log.w(TAG, "ACTION_MODE_INSERT: endX = " + endX + "; endY = " + endY);
                     Canvas surfaceViewCanvas = getHolder().lockCanvas();
                     surfaceViewCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                     if (Math.abs(endX - startX) > TOUCH_TOLERANCE || Math.abs(endY - startY) > TOUCH_TOLERANCE) {
@@ -946,7 +916,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 startX = event.getX();
                 startY = event.getY();
-                Log.w(TAG, "ACTION_DOWN" + startX + "|" + startY);
                 Point point = getPoint(new Point((int) startX, (int) startY));
                 if (point.equals(new Point())) {
                     actionMode = ACTION_MODE_INSERT;
@@ -1101,7 +1070,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
             Line tempLine = lines.get(index);
             int tempDistance = ((tempLine.end.y - tempLine.start.y) * point.x - (tempLine.end.x - tempLine.start.x) * point.y + tempLine.end.x * tempLine.start.y - tempLine.start.x * tempLine.end.y);
             tempDistance = (int) (tempDistance / Math.sqrt(Math.pow(tempLine.end.y - tempLine.start.y, 2) + Math.pow(tempLine.end.x - tempLine.start.x, 2)));
-            Log.w(TAG, "tempDistance = " + tempDistance);
             if (Math.abs(tempDistance) < TOUCH_TOLERANCE && point.x > Math.min(tempLine.start.x, tempLine.end.x) - TOUCH_TOLERANCE && point.x < Math.max(tempLine.start.x, tempLine.end.x) + TOUCH_TOLERANCE) {
                 line = tempLine;
             }
@@ -1253,7 +1221,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
     }
 
     public void stop() {
-        Log.w(TAG, "temperatureThread interrupt");
         pause();
         temperatureThread.interrupt();
         try {

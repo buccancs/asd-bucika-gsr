@@ -155,12 +155,10 @@
 //
 //        // 监听读取设备红外数据
 //        iFrameCallback = frame -> {
-//            Log.d(TAG, "frame: " + "刷新："+(System.currentTimeMillis()-updateTime));
 //            updateTime = System.currentTimeMillis();
 //            // 测试帧率，可以根据实际需要决定是否保留
 //            if (count++ >= 25) {
 //                count = 1;
-//                Log.d(TAG, "frame: " + frame.length);
 //            }
 //            if (syncimage == null) return;
 //            syncimage.start = true;
@@ -377,7 +375,6 @@
 //                }
 //            }).start();
 //        }catch (Exception e){
-//            Log.w("红外sdk异常", e.getMessage());
 //        }
 //
 //    }
@@ -410,18 +407,15 @@
 ////        disposable = Observable.interval(1L, TimeUnit.SECONDS).take(1000)
 ////                .subscribeOn(Schedulers.io())
 ////                .subscribe(aLong -> {
-////                    Log.w("123", "aLong" + aLong);
 //////                    if (isRun) {
 //////                        if (timeLog != 0 && System.currentTimeMillis() - timeLog > 1000) {
 //////                            //通知超时
 //////                            EventBus.getDefault().post(new DeviceConnectEvent(false, null));
-//////                            XLog.w("超过1s没数据采集,退出界面");
 ////////                ToastTools.INSTANCE.showShort("超过1s没数据采集,退出界面");
 //////                        }
 //////                        timeLog = System.currentTimeMillis();
 //////                    }
 ////                });
-////        Log.w("123", "Observable.timer");
 ////    }
 ////
 ////    private void cancelMonitor() {

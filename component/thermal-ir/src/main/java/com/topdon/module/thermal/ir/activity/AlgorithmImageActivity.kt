@@ -24,7 +24,6 @@ import java.io.InputStream
  */
 class AlgorithmImageActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_color)
@@ -111,7 +110,6 @@ class AlgorithmImageActivity : AppCompatActivity() {
             val im = Mat(192, 256, CvType.CV_8UC4)
             im.put(0, 0, matByteArray)
             val bitmap = ImageColorTools.matToBitmap(im)
-            Log.e("测试耗时：","diff2firstFrameByTemp ： ${System.currentTimeMillis() - startTime}")
             imgARGB.setImageBitmap(ImageColorTools.adjustPhotoRotation(bitmap, 90))
         }
         findViewById<View>(R.id.btn_u4).setOnClickListener {

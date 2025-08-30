@@ -120,7 +120,6 @@ import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
-
 /**
  * TC007 出图页面.
  *
@@ -161,7 +160,6 @@ class IRThermal07Activity : BaseWifiActivity() {
     private val task: Runnable by lazy {
         Runnable {
             lifecycleScope.launch {
-                XLog.i("快门矫正")
                 TC007Repository.setCorrection()
             }
         }
@@ -198,11 +196,9 @@ class IRThermal07Activity : BaseWifiActivity() {
     private var realRightValue = -1f
     private var isShowC = false
 
-
     companion object {
         private const val RTSP_URL = "rtsp://192.168.40.1/stream0"
     }
-
 
     private var playFragment: PlayFragment? = null
 
@@ -212,7 +208,6 @@ class IRThermal07Activity : BaseWifiActivity() {
             sharpness = (saveSetBean.ddeConfig / 4f * 100).toInt()
         )
     }
-
 
     override fun initContentView(): Int = R.layout.activity_ir_thermal07
 
@@ -295,7 +290,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                         realRightValue
                     )
                 } catch (e: Exception) {
-                    Log.e("温度图层更新失败", e.message.toString())
                 }
             }
             if (tv_temp_content.isVisible) {
@@ -308,7 +302,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                             )
                         }"
                 } catch (e: Exception) {
-                    Log.e("温度图层更新失败", e.message.toString())
                 }
             }
             try {
@@ -317,7 +310,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                     cl_seek_bar.updateBitmap()
                 }
             } catch (e: Exception) {
-                Log.w("伪彩条更新异常:", "${e.message}")
             }
             runOnUiThread {
                 AlarmHelp.getInstance(application).alarmData(
@@ -419,10 +411,8 @@ class IRThermal07Activity : BaseWifiActivity() {
         try {
             scheduler?.shutdownNow()
         } catch (e: InstantiationException) {
-            XLog.e("线程池回收异常：${e.message}")
         }
     }
-
 
     override fun initView() {
         AlarmHelp.getInstance(this).updateData(alarmBean)
@@ -574,7 +564,6 @@ class IRThermal07Activity : BaseWifiActivity() {
         }
         thermal_recycler_night.updateCameraModel()
     }
-
 
     override fun onSocketDisConnected(isTS004: Boolean) {
         if (!isTS004) {//TC007 的 Socket 断了
@@ -831,7 +820,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                         val data = TC007Repository.setMode(4)
                         temperature_iv_input.visibility = View.INVISIBLE
                         temperature_iv_lock.visibility = View.INVISIBLE
-                        XLog.i("设备：${data?.Message}")
                         if (200 == data?.Code) {
                             WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeLPYFusion
                         }
@@ -851,7 +839,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                         val data = TC007Repository.setMode(3)
                         temperature_iv_input.visibility = View.INVISIBLE
                         temperature_iv_lock.visibility = View.INVISIBLE
-                        XLog.i("设备：${data?.Message}")
                         if (200 == data?.Code) {
                             WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeMeanFusion
                         }
@@ -868,7 +855,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                     if (200 == data?.Code) {
                         WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeIROnly
                     }
-                    XLog.i("设备：${data?.Message}")
                 }
                 thermal_steering_view.visibility = View.GONE
                 thermal_recycler_night.setTwoLightSelected(TwoLightType.CORRECT, false)
@@ -880,7 +866,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                         if (200 == data?.Code) {
                             WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeVLOnly
                         }
-                        XLog.i("设备：${data?.Message}")
                     }
                     temperature_iv_input.visibility = View.INVISIBLE
                     temperature_iv_lock.visibility = View.INVISIBLE
@@ -901,7 +886,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                                 val data = TC007Repository.setMode(3)
                                 thermal_recycler_night.twoLightType = TwoLightType.TWO_LIGHT_2
                                 WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeMeanFusion
-                                XLog.i("设备：${data?.Message}")
                                 temperature_iv_input.visibility = View.INVISIBLE
                                 temperature_iv_lock.visibility = View.INVISIBLE
                                 thermal_steering_view.visibility = View.VISIBLE
@@ -927,7 +911,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                             temperature_iv_lock.visibility = View.INVISIBLE
                             WifiSaveSettingUtil.fusionType = SaveSettingUtil.FusionTypeTC007Fusion
                         }
-                        XLog.i("设备：${data?.Message}")
                     }
                     thermal_steering_view.visibility = View.GONE
                     thermal_recycler_night.setTwoLightSelected(TwoLightType.CORRECT, false)
@@ -940,7 +923,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                     showCustomPseudoDialogOrNo(positiveListener = {
                         lifecycleScope.launch {
                             val data = TC007Repository.setMode(3)
-                            XLog.i("设备：${data?.Message}")
                             if (200 == data?.Code) {
                                 temperature_iv_input.visibility = View.INVISIBLE
                                 temperature_iv_lock.visibility = View.INVISIBLE
@@ -1053,7 +1035,6 @@ class IRThermal07Activity : BaseWifiActivity() {
         }
 
     }
-
 
     private fun showBlendExtentPopup() {
         val seekBarPopup = SeekBarPopup(this, true)
@@ -1226,7 +1207,6 @@ class IRThermal07Activity : BaseWifiActivity() {
         }
     }
 
-
     private fun setPColor(index: Int, code: Int, isShowError: Boolean = false, netListener: (() -> Unit)? = null) {
         //伪彩颜色修改
         pseudoColorMode = code
@@ -1303,7 +1283,6 @@ class IRThermal07Activity : BaseWifiActivity() {
             }
         }
     }
-
 
     /**
      * 第 1 个菜单-拍照录像 各个操作的点击事件监听.
@@ -1495,7 +1474,6 @@ class IRThermal07Activity : BaseWifiActivity() {
         }
     }
 
-
     private fun initStoragePermission() {
         XXPermissions.with(this)
             .permission(
@@ -1541,7 +1519,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                     }
                 }
 
-
                 override fun onDenied(permissions: MutableList<String>, doNotAskAgain: Boolean) {
                     if (doNotAskAgain) {
                         //拒绝授权并且不再提醒
@@ -1576,7 +1553,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                 }
             }
         } catch (e: Exception) {
-            Log.e("线程", e.message.toString())
         }
     }
 

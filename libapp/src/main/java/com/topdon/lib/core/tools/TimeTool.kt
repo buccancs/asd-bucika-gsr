@@ -52,7 +52,6 @@ object TimeTool {
         }
     }
 
-
     /**
      * @param type 1:秒 2:分 3:时 4:天
      */
@@ -128,7 +127,6 @@ object TimeTool {
         }
     }
 
-
     /**
      * 视频时长
      */
@@ -152,7 +150,6 @@ object TimeTool {
                 file.lastModified()
             }
         } catch (e: Exception) {
-            Log.e("视频文件名称解析异常", "${e.message}")
         }
         return currentTime
     }

@@ -107,9 +107,7 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
                     if (isFirstRead) {
                         if (result.maxTemperature > 200f || result.minTemperature < -200f) {
                             errorReadCount++
-                            XLog.w("第 $errorReadCount 次读取到异常数据，max = ${result.maxTemperature} min = ${result.minTemperature}")
                             if (errorReadCount > 10) {
-                                XLog.i("连续10次获取到异常数据，认为温度区域稳定")
                                 isFirstRead = false
                             }
                             continue
@@ -132,7 +130,6 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
                 }
             }
         }
-
 
         monitor_current_vol.text = getString(if (selectIndex!!.type == 1) R.string.chart_temperature else R.string.chart_temperature_high)
         monitor_real_vol.visibility = if (selectIndex!!.type == 1) View.GONE else View.VISIBLE
@@ -184,7 +181,6 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
                     tv_time.text = TimeTool.showVideoLongTime(System.currentTimeMillis() - startTime)
                 }
             }
-            XLog.w("停止记录, 数据量:$time")
         }
     }
 
@@ -245,7 +241,6 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
 
     fun select(selectIndex: SelectPositionBean?) {
         this.selectIndex = selectIndex
-        XLog.i("绘制的点线面：${Gson().toJson(selectIndex)}")
     }
 
     private fun updateUI() {
@@ -258,12 +253,9 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
         finish()
     }
 
-
-
     var config : DataBean?= null
     val basicGainGetValue = IntArray(1)
     var basicGainGetTime = 0L
-
 
     override fun tempCorrectByTs(temp: Float?): Float {
         var tempNew = temp
@@ -284,7 +276,6 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
                     val basicGainGet: IrcmdError? = DeviceIrcmdControlManager.getInstance().getIrcmdEngine()
                         ?.basicGainGet(basicGainGetValue)
                 }catch (e : Exception){
-                    XLog.e("增益获取失败")
                 }
                 basicGainGetTime = System.currentTimeMillis()
             }
@@ -304,14 +295,12 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
                 params_array[5],
                 if (basicGainGetValue[0] == 0) GainStatus.LOW_GAIN else GainStatus.HIGH_GAIN
             )
-            Log.i(
                 TAG,
                 "temp correct,${basicGainGetValue[0]} oldTemp = " + params_array[0] + "newtemp = " + tempNew +
                         " ems = " + params_array[1] + " ta = " + params_array[2] + " " +
                         "distance = " + params_array[4] + " hum = " + params_array[5]
             )
         }catch (e : Exception){
-            XLog.e("$TAG--温度修正异常：${e.message}")
         }finally {
             return tempNew ?: 0f
         }

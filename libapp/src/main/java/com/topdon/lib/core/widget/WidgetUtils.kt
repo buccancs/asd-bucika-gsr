@@ -19,13 +19,11 @@ object WidgetUtils {
     
     @JvmStatic
     fun log(message: String) {
-        Log.d(TAG, message)
     }
     
     @JvmStatic
     fun log(vararg messages: Any) {
         val combined = messages.joinToString(" ")
-        Log.d(TAG, combined)
     }
     
     // === Bitmap and drawable utilities ===

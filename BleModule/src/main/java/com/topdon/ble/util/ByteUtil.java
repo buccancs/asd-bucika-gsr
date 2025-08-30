@@ -1,7 +1,5 @@
 package com.topdon.ble.util;
 
-import android.util.Log;
-
 /**
  * ByteUtil
  * 数组操作工具
@@ -77,7 +75,6 @@ public class ByteUtil {
         return result;
     }
 
-
     public static byte[] LongToBytes(long values) {
         byte[] buffer = new byte[4];
         for (int i = 0; i < 4; i++) {
@@ -87,8 +84,6 @@ public class ByteUtil {
         }
         return buffer;
     }
-
-
 
     public static float bytesToFloat(byte[] bytes) {
         float value = Integer.valueOf(HexUtil.bytesToHexString(bytes), 16);
@@ -101,7 +96,6 @@ public class ByteUtil {
             resultByte[i] = bytes[i];
         }
         float value = Integer.valueOf(HexUtil.bytesToHexString(resultByte), 16);
-        Log.e("bcf", "bytesToFloat bytes: " + HexUtil.bytesToHexString(resultByte) + "   float:" + value);
         return value;
     }
 

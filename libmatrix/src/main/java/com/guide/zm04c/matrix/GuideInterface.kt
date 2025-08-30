@@ -218,7 +218,6 @@ class GuideInterface {
     }
 
     fun changePalette(i: Int) {
-        Log.d(TAG, "changePalette() called with: i = [$i]")
         if (mGuideUsbManager == null) {
             return
         }
@@ -285,7 +284,6 @@ class GuideInterface {
         return getParam(PARAM_INDEX_CONTRAST * 2, 2, 1).toInt()
     }
 
-
     //    int count = 0;
     fun yuv2Bitmap(bitmap: Bitmap?, yuv: ByteArray?) {
         if (mNativeGuideCore == null) {
@@ -318,7 +316,6 @@ class GuideInterface {
         }
         mGuideUsbManager!!.setRange(range)
     }
-
 
     fun setEmiss(emiss: Int) {
         if (mGuideUsbManager == null) {

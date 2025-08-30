@@ -1,7 +1,6 @@
 package com.topdon.commons.util;
 
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.topdon.lms.sdk.LMS;
 
@@ -43,22 +42,17 @@ public class FolderUtil {
         mUserId = userId;
     }
 
-
     public static void init() {
         mUserId = PreUtil.getInstance(Topdon.getApp()).get("VCI_" + LMS.getInstance().getLoginName());
         setUserId(mUserId);
-        Log.e("bcf", "FolderUtil mUserId: " + mUserId);
         mPath = Topdon.getApp().getExternalFilesDir("").getAbsolutePath();
-        Log.e("bcf", "FolderUtil init: " + mPath);
         initPath();
     }
 
     public static void initTDarts(String tdSn) {
         tdartsSn = tdSn;
         String mPath = Topdon.getApp().getExternalFilesDir("").getAbsolutePath();
-        Log.e("bcf", fileName + "---FolderUtil initTDarts: " + mPath);
         if (!TextUtils.isEmpty(tdSn)) {
-            Log.e("bcf", fileName + "---FolderUtil initTDarts: create");
             ensureDirectoryExists(mPath + fileName + tdSn + "/RFID/");
         }
     }
@@ -69,8 +63,6 @@ public class FolderUtil {
     public static void initFilePath() {
         String basePath = Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName;
         String downPath = basePath + "Download/";
-        Log.e("bcf", fileName + "--下载路径初始化--" + downPath);
-        Log.e("bcf", fileName + "---下载路径初始化创建 ");
         ensureDirectoryExists(downPath);
     }
 
@@ -138,7 +130,6 @@ public class FolderUtil {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + "/s/";
     }
 
-
     public static String getDataBasePath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName;
     }
@@ -197,7 +188,6 @@ public class FolderUtil {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName;
     }
 
-
     public static String getShotPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + mUserId + "/Shot/";
     }
@@ -253,7 +243,6 @@ public class FolderUtil {
     public static String getDiagDataLogPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + mUserId + "/DataLog/DIAG/";
     }
-
 
     public static String getImmoDataLogPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + mUserId + "/DataLog/IMMO/";

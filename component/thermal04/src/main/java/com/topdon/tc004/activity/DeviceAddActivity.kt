@@ -107,12 +107,10 @@ class DeviceAddActivity : BaseActivity() {
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter = adapter
 
-
         requestPermission(2)
 
         LocationUtil.addBtStateListener(this) {
             // 进入界面时不会收到开启或关闭位置信息广播，要发生实际变化时才有广播
-            XLog.i("【添加设备】 位置信息开关状态：${if (it) "已开启" else "已关闭"}")
             refreshStateAndTips()
             if (it) {
                 if (isFirstRequest) {
@@ -136,7 +134,6 @@ class DeviceAddActivity : BaseActivity() {
         }
         BluetoothUtil.addBtStateListener(this) {
             // 进入界面时不会收到开启或关闭蓝牙广播，要发生实际变化时才有广播
-            XLog.i("【添加设备】 蓝牙开关状态：${if (it) "已开启" else "已关闭"}")
             refreshStateAndTips()
             if (it) {
                 if (isFirstRequest) {
@@ -157,7 +154,6 @@ class DeviceAddActivity : BaseActivity() {
 
         WifiUtil.addWifiStateListener(this) {
             // 进入界面时会收到一次开启或关闭 WIFI 广播，无论 WIFI 状态有无变化
-            XLog.i("【添加设备】 WIFI 开关状态：${if (it) "已开启" else "已关闭或未知"}")
             refreshStateAndTips()
             if (it) {
                 if (isFirstRequest) {
@@ -238,7 +234,6 @@ class DeviceAddActivity : BaseActivity() {
         stopBtScan()
     }
 
-
     private var openLocationDialog: TipDialog? = null
     /**
      * 显示开启位置信息开关提示弹框.
@@ -257,10 +252,8 @@ class DeviceAddActivity : BaseActivity() {
                 .setPositiveListener(R.string.app_open) {
                     var intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                     if (intent.resolveActivity(packageManager) == null) {
-                        XLog.e("【添加设备】 位置信息 Intent 没有对应 Activity，尝试跳转系统设置首页")
                         intent = Intent(Settings.ACTION_SETTINGS)
                         if (intent.resolveActivity(packageManager) == null) {
-                            XLog.e("【添加设备】 不可能！系统设置首页 Intent 没有对应 Activity!")
                             return@setPositiveListener
                         }
                     }
@@ -274,7 +267,6 @@ class DeviceAddActivity : BaseActivity() {
         }
         openLocationDialog?.show()
     }
-
 
     private var openBtDialog: TipDialog? = null
     /**
@@ -294,10 +286,8 @@ class DeviceAddActivity : BaseActivity() {
                 .setPositiveListener(R.string.app_open) {
                     var intent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
                     if (intent.resolveActivity(packageManager) == null) {
-                        XLog.e("【添加设备】 不可能！开启蓝牙 Intent 没有对应 Activity! 尝试跳转系统设置首页")
                         intent = Intent(Settings.ACTION_SETTINGS)
                         if (intent.resolveActivity(packageManager) == null) {
-                            XLog.e("【添加设备】 不可能！系统设置首页 Intent 没有对应 Activity!")
                             return@setPositiveListener
                         }
                     }
@@ -311,7 +301,6 @@ class DeviceAddActivity : BaseActivity() {
         }
         openBtDialog?.show()
     }
-
 
     private var openWifiDialog: TipDialog? = null
     /**
@@ -334,13 +323,10 @@ class DeviceAddActivity : BaseActivity() {
                     } else {
                         var wifiIntent = Intent(Settings.Panel.ACTION_WIFI)
                         if (wifiIntent.resolveActivity(packageManager) == null) {
-                            XLog.e("【添加设备】 浮窗开启 WIFI Intent 没有对应 Activity! 尝试打开 WIFI 设置 Intent")
                             wifiIntent = Intent(Settings.ACTION_WIFI_SETTINGS)
                             if (wifiIntent.resolveActivity(packageManager) == null) {
-                                XLog.e("【添加设备】 不可能！WIFI 设置 Intent 没有对应 Activity! 尝试跳转系统设置首页")
                                 wifiIntent = Intent(Settings.ACTION_SETTINGS)
                                 if (wifiIntent.resolveActivity(packageManager) == null) {
-                                    XLog.e("【添加设备】 不可能！系统设置首页 Intent 没有对应 Activity!")
                                     return@setPositiveListener
                                 }
                             }
@@ -356,7 +342,6 @@ class DeviceAddActivity : BaseActivity() {
         }
         openWifiDialog?.show()
     }
-
 
     /**
      * 权限申请可能同时触发多次，用该变量进行控制。
@@ -433,7 +418,6 @@ class DeviceAddActivity : BaseActivity() {
         })
     }
 
-
     private var timeoutEmptyJob: Job? = null
     /**
      * 开始蓝牙搜索，若缺少相应权限或开关未开启，则直接 return.
@@ -505,7 +489,6 @@ class DeviceAddActivity : BaseActivity() {
             return
         }
 
-        XLog.i("当前连接 ${WifiUtil.getCurrentWifiSSID(this)} 准备连接 $wifiName")
         showCameraLoading()
         // 部分设备部分情况下即没有 onAvailable 也没有 onUnavailable 回调，15秒后把 Loading 弹框 dismiss，避免流程卡死
         // 没有回调是 connectWifi 方法中的 listener 未刷新，修复那个问题后，理论上不存在没回调情况了，这个逻辑先注释掉

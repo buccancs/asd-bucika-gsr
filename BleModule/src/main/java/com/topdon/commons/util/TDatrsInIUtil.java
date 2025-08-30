@@ -24,7 +24,6 @@ public class TDatrsInIUtil {
     private static Ini loadIniFile(String path) throws Exception {
         File file = new File(path + "T-darts.ini");
         if (!file.exists()) {
-            LLog.e("bcf", "  ini不存在：" + file.getPath());
             return null;
         }
         Config cfg = new Config();
@@ -87,7 +86,6 @@ public class TDatrsInIUtil {
             map.put(key, value);
         }
     }
-
 
     public static String getBinPath(int data) {
         String path = FolderUtil.getTdartsUpgradePath();

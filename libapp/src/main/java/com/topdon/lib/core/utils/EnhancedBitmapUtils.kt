@@ -50,7 +50,6 @@ object EnhancedBitmapUtils {
                 }
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Error replacing bitmap colors", e)
         }
     }
 
@@ -78,7 +77,6 @@ object EnhancedBitmapUtils {
             
             Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888)
         } catch (e: Exception) {
-            Log.e(TAG, "Error creating thermal overlay", e)
             null
         }
     }
@@ -104,7 +102,6 @@ object EnhancedBitmapUtils {
             
             Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888)
         } catch (e: Exception) {
-            Log.e(TAG, "Error applying thermal color map", e)
             null
         }
     }
@@ -127,7 +124,6 @@ object EnhancedBitmapUtils {
             canvas.drawBitmap(overlayBitmap, 0f, 0f, paint)
             result
         } catch (e: Exception) {
-            Log.e(TAG, "Error blending bitmaps", e)
             null
         }
     }
@@ -154,7 +150,6 @@ object EnhancedBitmapUtils {
             
             Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888)
         } catch (e: Exception) {
-            Log.e(TAG, "Error converting to grayscale", e)
             null
         }
     }
@@ -177,7 +172,6 @@ object EnhancedBitmapUtils {
             
             Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true)
         } catch (e: Exception) {
-            Log.e(TAG, "Error scaling bitmap", e)
             null
         }
     }
@@ -196,7 +190,6 @@ object EnhancedBitmapUtils {
                 rect.height()
             )
         } catch (e: Exception) {
-            Log.e(TAG, "Error extracting region", e)
             null
         }
     }

@@ -8,7 +8,6 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import com.blankj.utilcode.util.SizeUtils
@@ -22,7 +21,6 @@ class FencePointView : View {
     constructor (context: Context) : super(context)
 
     constructor (context: Context, attrs: AttributeSet) : super(context, attrs)
-
 
     constructor (context: Context, attrs: AttributeSet, defStyle: Int) : super(
         context,
@@ -53,7 +51,6 @@ class FencePointView : View {
             null
         ) as BitmapDrawable
     }
-
 
     @SuppressLint("UseCompatLoadingForDrawables", "DrawAllocation")
     override fun onDraw(canvas: Canvas) {
@@ -110,7 +107,6 @@ class FencePointView : View {
                 invalidate()
             }
             MotionEvent.ACTION_UP -> {
-//                Log.i("123", "onTouchEvent: ACTION_UP")
                 startPoint[0] = mX.toInt()
                 startPoint[1] = mY.toInt()
                 result()
@@ -142,7 +138,6 @@ class FencePointView : View {
             //bottom
             point1[1] = height - destH / 2
         }
-        Log.w("123", "坐标 point:${point1.contentToString()}")
         if (listener != null) {
             listener!!.callback(point1, intArrayOf(width, height))
         }

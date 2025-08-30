@@ -74,13 +74,11 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
         val y1 = y * ph / rawHeight
         val maxX = x1 - imageView.width / 2
         val maxY = y1 - imageView.height / 2
-//        Log.w("123", "真实位置 maxX:$maxX, maxY:$maxY")
         imageView.x = maxX.toFloat()
         imageView.y = maxY.toFloat()
     }
 
     private var mGuideInterface: GuideInterface? = null
-
 
     override fun initView() {
         requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -152,7 +150,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
         //初始图像
         onIrVideoStart()
         mIrSurfaceView!!.post {
-            Log.w("123", "w:${mIrSurfaceView!!.width}, h:${mIrSurfaceView!!.height}")
         }
 
         msgLiveData.observe(this) { msg ->
@@ -203,7 +200,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
         super.onDestroyView()
         onIrVideoStop()
     }
-
 
     /**
      * 开启视频流
@@ -258,14 +254,12 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
                     mMinTemp = minBigDecimal.setScale(1, BigDecimal.ROUND_HALF_UP).toFloat()
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    Log.e(TAG, "提取温度异常:${e.message}")
                 }
             }
 
         })
 
         if (ret == 5) {
-            Log.w("123", "视频流开启完成")
         } else {
             ToastTools.showShort("视频流开启失败")
         }
@@ -287,7 +281,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
             origin.recycle()
             return newBitmap
         } catch (e: Exception) {
-            Log.e("123", "error:${e.message}")
             return origin
         }
     }
@@ -306,7 +299,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
         mGuideInterface = null
         ToastTools.showShort("视频流停止完成")
     }
-
 
     fun onLowRangeBtnClick(view: View?) {
         if (mGuideInterface == null) {
@@ -367,7 +359,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
             .create().show()
     }
 
-
     //***************************************专家模式**********************************************
     /**
      * 专家模式
@@ -414,7 +405,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun action(event: ThermalActionEvent) {
-        Log.w("123", "event:${event.action}")
         when (event.action) {
             1001 -> {
                 //拍照
@@ -583,11 +573,9 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
 
     private fun video() {
         if (isVideoRunning) {
-            Log.w("123", "正在录制")
             return
         }
         val latestResultPath = "${galleryPath}YapBitmapToMp4_${System.currentTimeMillis()}.mp4"
-        Log.w("123", "latestResultPath:$latestResultPath")
         YapVideoEncoder(this, File(latestResultPath)).start()
     }
 
@@ -597,7 +585,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
         mIrSurfaceView!!.setMatrix(ThermalTool.getRotate(rotateType), 256f, 192f)
         ToastTools.showShort("旋转:${ThermalTool.getRotate(rotateType)}度")
     }
-
 
     //图像增强
     private fun enhance() {
@@ -665,7 +652,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
     }
 
     override fun progress(progress: Float) {
-        Log.w("123", "progress:$progress")
         isVideoRunning = progress > 0 || progress < 100
     }
 

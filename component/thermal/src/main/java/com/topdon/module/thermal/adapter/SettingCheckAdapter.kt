@@ -25,7 +25,6 @@ class SettingCheckAdapter(val context: Context) :
         notifyDataSetChanged()
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_setting_check, parent, false)
@@ -43,7 +42,6 @@ class SettingCheckAdapter(val context: Context) :
                 holder.btn.setTextColor(ContextCompat.getColor(context, R.color.font_gray))
             }
             holder.btn.setOnClickListener {
-                Log.w("123", "文件: ${datas[position]}")
                 listener?.onClick(position, dataTimes[position])
             }
 
@@ -58,10 +56,8 @@ class SettingCheckAdapter(val context: Context) :
         val btn: Button = itemView.item_setting_check_btn
     }
 
-
     interface OnItemClickListener {
         fun onClick(index: Int, time: Int)
     }
-
 
 }

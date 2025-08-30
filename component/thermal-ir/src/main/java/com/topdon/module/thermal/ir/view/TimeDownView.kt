@@ -144,8 +144,6 @@ public class TimeDownView : AppCompatTextView {
      */
     var onFinishListener: (() -> Unit)? = null
 
-
-
     var downTimeWatcher: DownTimeWatcher? = null
 
     /**
@@ -166,7 +164,6 @@ public class TimeDownView : AppCompatTextView {
                     downTimeWatcher!!.onTime(downCount)
                 }
                 onTimeListener?.invoke(downCount)
-//                Log.e("测试","//handleMessage"+downCount+"//"+lastDown);
                 if (downCount >= lastDown - 1) {
                     drawTextFlag = DRAW_TEXT_YES //默认绘制
                     //未到结束时

@@ -15,7 +15,6 @@ class RepeatMotionLayout : MotionLayout, MotionLayout.TransitionListener {
     @Volatile
     private var isAdd = false
 
-
     constructor(context: Context) : this(context, null)
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
@@ -32,7 +31,6 @@ class RepeatMotionLayout : MotionLayout, MotionLayout.TransitionListener {
      * 开始闪烁
      */
     fun startTransition() {
-//        Log.w("123", "开始闪烁")
         if (!isAdd) {
             addTransitionListener(this)
             isAdd = true
@@ -64,7 +62,6 @@ class RepeatMotionLayout : MotionLayout, MotionLayout.TransitionListener {
     }
 
     override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
-//        Log.w("123", "onTransitionCompleted currentId:$currentId")
         if (currentId == motionEndId) {
             transitionToStart()
         } else {
@@ -80,6 +77,5 @@ class RepeatMotionLayout : MotionLayout, MotionLayout.TransitionListener {
     ) {
 
     }
-
 
 }

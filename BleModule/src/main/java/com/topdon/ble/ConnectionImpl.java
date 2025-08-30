@@ -14,7 +14,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.util.Pair;
@@ -172,7 +171,6 @@ class ConnectionImpl implements Connection, ScanListener {
 
         @Override
         public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-            Log.e("bcf","onCharacteristicRead  status: "+status+"  value: "+ HexUtil.bytesToHexString(characteristic.getValue()));
             if (originCallback != null) {
                 easyBle.getExecutorService().execute(() -> originCallback.onCharacteristicRead(gatt, characteristic, status));
             }
@@ -190,7 +188,6 @@ class ConnectionImpl implements Connection, ScanListener {
 
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-//            Log.e("bcf","onCharacteristicWrite  status: "+status);
             if (originCallback != null) {
                 easyBle.getExecutorService().execute(() -> originCallback.onCharacteristicWrite(gatt, characteristic, status));
             }
@@ -392,7 +389,6 @@ class ConnectionImpl implements Connection, ScanListener {
             }
         }
     }
-
 
     private void doDiscoverServices() {
         if (bluetoothGatt != null) {
@@ -1271,7 +1267,6 @@ class ConnectionImpl implements Connection, ScanListener {
         }
         return false;
     }
-
 
     @Override
     public void execute(Request request) {

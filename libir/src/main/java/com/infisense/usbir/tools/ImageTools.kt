@@ -15,7 +15,6 @@ object ImageTools {
             return
         }
         val selectBean = getTempIndex(tempBytes, max, min)
-//        Log.w("123", "max size: ${selectBean.maxIndex.size}, min size: ${selectBean.minIndex.size}")
         bitmapFromRgbaGrey(bytes = imageBytes, bean = selectBean)//灰度
     }
 
@@ -111,7 +110,6 @@ object ImageTools {
             }
         }
     }
-
 
     /**
      * 温度选取点
@@ -269,7 +267,6 @@ object ImageTools {
                 }
             }
         } catch (e: Exception) {
-            XLog.w("颜色替换失败: ${e.message}")
         }
     }
 }

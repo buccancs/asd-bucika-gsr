@@ -28,7 +28,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
     //RangeSeekBar
     public final static int SEEKBAR_MODE_RANGE = 2;
 
-
     private boolean noNegativeNumber = false;
 
     public final static int TEMP_MODE_CLOSE = 0;//关闭
@@ -252,7 +251,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
         rightSB.setVisible(seekBarMode != SEEKBAR_MODE_SINGLE);
     }
 
-
     private void initAttrs(AttributeSet attrs) {
         try {
             TypedArray t = getContext().obtainStyledAttributes(attrs, R.styleable.RangeSeekBar);
@@ -288,7 +286,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
         }
 
     }
-
 
     /**
      * measure progress bar position
@@ -415,7 +412,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
         }
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -490,7 +486,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
         //动态区域前景
         //draw progress
         if (seekBarMode == SEEKBAR_MODE_RANGE) {
-//            XLog.w("动态轴区域");
             progressDstRect.top = getProgressTop();
             progressDstRect.left = leftSB.left + leftSB.getThumbScaleWidth() / 2f + progressWidth * leftSB.currPercent;
             progressDstRect.right = rightSB.left + rightSB.getThumbScaleWidth() / 2f + progressWidth * rightSB.currPercent;
@@ -578,7 +573,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
         paint.setTextSize(tickMarkTextSize);
     }
 
-
     private void changeThumbActivateState(boolean hasActivate) {
         if (hasActivate && currTouchSB != null) {
             boolean state = currTouchSB == leftSB;
@@ -647,7 +641,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (!isEnable) return false;
-//        Log.e("测试焦点：",event.getAction()+"//");
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 touchDownX = getEventX(event);
@@ -815,7 +808,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
 
     //******************* Attributes getter and setter *******************//
 
-
     /**
      * 临时处理负数
      */
@@ -902,7 +894,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
         invalidate();
     }
 
-
     /**
      * 设置范围
      *
@@ -966,7 +957,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
 //            throw new IllegalArgumentException("setRange() interval must be less than (max - min) ! #minInterval:" + minInterval + " #max - min:" + (max - min));
 //        }
         if (maxProgress == max && min == minProgress){
-//            Log.w("数据更新拦截",max+"//"+min+"");
             return;
         }
         maxProgress = max;
@@ -995,7 +985,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
 //            throw new IllegalArgumentException("setRange() interval must be less than (max - min) ! #minInterval:" + minInterval + " #max - min:" + (max - min));
 //        }
         if (maxProgress == max && min == minProgress){
-//            Log.w("数据更新拦截",max+"//"+min+"");
             return;
         }
         maxProgress = max;
@@ -1040,7 +1029,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
 
         return new SeekBarState[]{leftSeekBarState, rightSeekBarState};
     }
-
 
     @Override
     public void setEnabled(boolean enabled) {
@@ -1091,7 +1079,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
     public SeekBar getRightSeekBar() {
         return rightSB;
     }
-
 
     public int getProgressTop() {
         return progressTop;
@@ -1275,7 +1262,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
         this.progressWidth = progressWidth;
     }
 
-
     public void setTypeface(Typeface typeFace) {
         paint.setTypeface(typeFace);
     }
@@ -1420,8 +1406,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
         this.pseudocode = pseudocode;
         invalidate();
     }
-
-
 
     public void setColorList(@Nullable int[] colorList) {
         this.colorList = colorList;

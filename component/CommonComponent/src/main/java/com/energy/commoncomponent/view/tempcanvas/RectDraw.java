@@ -10,7 +10,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextPaint;
-import android.util.Log;
 
 import com.energy.commoncomponent.R;
 import com.energy.commoncomponent.utils.ScreenUtils;
@@ -87,7 +86,6 @@ public class RectDraw extends BaseDraw {
 
     public void setOperateStatus(int mOperateStatus) {
         this.mOperateStatus = mOperateStatus;
-        Log.d(TAG, "setOperateStatus = " + mOperateStatus);
     }
 
     /**
@@ -104,13 +102,11 @@ public class RectDraw extends BaseDraw {
             if (mRectList.size() < MAX_RECT_COUNT) {
 
                 String newLabel = "R" + (size + 1);
-                Log.d(TAG, "addRect newLabel : " + newLabel);
                 boolean hasSame = false;
                 for (int i = 0; i < mRectList.size(); i ++) {
                     if (mRectList.get(i).getLabel().equals(newLabel)) {
                         //存在一样的
                         hasSame = true;
-                        Log.d(TAG, "addRect is same");
                         break;
                     }
                 }
@@ -127,7 +123,6 @@ public class RectDraw extends BaseDraw {
 
                 mTouchIndex = size;
             } else {
-                Log.d(TAG, "Rect remove and add");
                 mRectList.remove();
                 mRectList.add(rectView);
                 for (int i = 0; i < mRectList.size(); i ++) {
@@ -154,7 +149,6 @@ public class RectDraw extends BaseDraw {
     public void removeRect() {
         mRectList.clear();
     }
-
 
     /**
      * 更新选中框的手势位置状态

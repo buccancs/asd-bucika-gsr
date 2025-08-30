@@ -115,7 +115,6 @@ object InitUtil {
 //            registrationID = JPushInterface.getRegistrationID(BaseApplication.instance)
 //        }
         if (SharedManager.getHasShowClause()) {
-            XLog.w("registrationID= $registrationID")
         }
     }
 

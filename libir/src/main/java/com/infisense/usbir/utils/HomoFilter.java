@@ -37,7 +37,6 @@ public class HomoFilter {
         homo.add(new Mat(hu.size(),CV_32FC1,new Scalar(0)));
         Mat hu2c = new Mat(size,CV_32FC2);
         Core.merge(homo,hu2c);
-        //System.out.println(hu.dump());
         return hu2c;
     }
 
@@ -47,7 +46,6 @@ public class HomoFilter {
         int dy = src.cols() / 2;
         float[] data = new float[dy];
 
-        //System.out.println(src.dump());
         if(src.rows() % 2 == 0) {
             if (src.cols() % 2 == 0) {
                 for(int i = 0; i < dx; i++){
@@ -68,10 +66,8 @@ public class HomoFilter {
                 }
 
             }else{
-                System.out.println("copy failed");
             }
         }
-        //System.out.println(dst.dump());
         return dst;
     }
 
@@ -111,8 +107,6 @@ public class HomoFilter {
         Mat hu2c = calcHU(image_padd.size(),t2);
         Core.mulSpectrums(image_padd, hu2c, image_padd_2c, 0);
         Core.idft(image_padd_2c,image_padd_2c,DFT_SCALE);
-        System.out.println(image_padd_2c.channels());
-
 
         Core.exp(image_padd_2c,image_padd_2c);
         Core.subtract(image_padd_2c,new Scalar(1),image_padd_2c);

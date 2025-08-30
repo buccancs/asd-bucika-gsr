@@ -19,7 +19,6 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
@@ -30,7 +29,6 @@ import com.topdon.lib.ui.R;
 
 import java.text.DecimalFormat;
 import java.util.Locale;
-
 
 /**
  * ================================================
@@ -183,7 +181,6 @@ public class SeekBar {
         bottom = y + getThumbHeight() / 2;
     }
 
-
     public void scaleThumb() {
         scaleThumbWidth = (int) getThumbScaleWidth();
         scaleThumbHeight = (int) getThumbScaleHeight();
@@ -244,7 +241,6 @@ public class SeekBar {
         }
         canvas.restore();
     }
-
 
     /**
      * 绘制按钮
@@ -326,9 +322,6 @@ public class SeekBar {
         return text2Draw;
     }
 
-
-
-
     /**
      * This method will draw the indicator background dynamically according to the text.
      * you can use to set padding
@@ -378,7 +371,6 @@ public class SeekBar {
                 canvas.drawPath(indicatorArrowPath, paint);
                 indicatorRect.bottom -= indicatorArrowSize;
                 indicatorRect.top -= indicatorArrowSize;
-                Log.w("伪彩条刷新","///");
             }
 
             //indicator background edge processing
@@ -428,7 +420,6 @@ public class SeekBar {
             paint.setColor(indicatorTextColor);
             canvas.drawText(text2Draw, tx, ty, paint);
         }catch (Exception e){
-            Log.w("渲染异常",e.getMessage()+"");
         }
     }
 
@@ -441,7 +432,6 @@ public class SeekBar {
         int offset = (int) (rangeSeekBar.getProgressWidth() * currPercent);
         return x > left + offset && x < right + offset && y > top && y < bottom;
     }
-
 
     protected void slide(float percent) {
         if (percent < 0) percent = 0;
@@ -517,7 +507,6 @@ public class SeekBar {
             }
         }
     }
-
 
     public int getIndicatorArrowSize() {
         return indicatorArrowSize;
@@ -740,7 +729,6 @@ public class SeekBar {
     public void setTypeface(Typeface typeFace) {
         paint.setTypeface(typeFace);
     }
-
 
     /**
      * when you touch or move, the thumb will scale, default not scale

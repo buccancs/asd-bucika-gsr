@@ -102,7 +102,6 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             @Override
             public void run() {
                 Looper.prepare();
-//                Log.e("发成异常","数据采集成功"+ex.getMessage());
                 Toast.makeText(mContext, "程序发生异常，即将重启", Toast.LENGTH_LONG)
                         .show();
                 Looper.loop();
@@ -160,7 +159,6 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 pw.println(field.get(null).toString());
             }
         } catch (Exception e) {
-            Log.i(TAG, "an error occured when collect crash info" + e);
         }
 
         // 打印堆栈信息

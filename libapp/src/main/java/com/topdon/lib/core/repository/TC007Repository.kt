@@ -53,10 +53,6 @@ object TC007Repository {
         .build()
         .create(TC007Service::class.java)
 
-
-
-
-
     /**
      * 获取产品信息
      */
@@ -97,7 +93,6 @@ object TC007Repository {
             false
         }
     }
-
 
     /**
      * 执行固件升级.
@@ -198,7 +193,6 @@ object TC007Repository {
             false
         }
     }
-
 
     /**
      * 获取测温属性参数
@@ -340,7 +334,6 @@ object TC007Repository {
         }
     }
 
-
     /**
      * 拍照
      */
@@ -348,7 +341,6 @@ object TC007Repository {
         try {
             getTC007Service().getPhoto()
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -360,7 +352,6 @@ object TC007Repository {
         try {
             getTC007Service().setMode(mode)
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -373,8 +364,6 @@ object TC007Repository {
         }
     }
 
-
-
     suspend fun setRatio(data: Any?) : TC007Response<Any?>? = withContext(Dispatchers.IO){
         if (data == null){
             return@withContext null
@@ -382,11 +371,9 @@ object TC007Repository {
         try {
             getTC007Service().setRatio(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
-
 
     suspend fun getRegistration(default : Boolean) : TC007Response<WifiAttributeBean?>? = withContext(Dispatchers.IO){
         try {
@@ -403,11 +390,9 @@ object TC007Repository {
         try {
             getTC007Service().setRegistration(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
-
 
     suspend fun setPallete(data: Any?) : TC007Response<Any?>? = withContext(Dispatchers.IO){
         if (data == null){
@@ -416,7 +401,6 @@ object TC007Repository {
         try {
             getTC007Service().setPallete(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -428,7 +412,6 @@ object TC007Repository {
         try {
             getTC007Service().setParam(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -440,7 +423,6 @@ object TC007Repository {
         try {
             getTC007Service().setFont(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -449,7 +431,6 @@ object TC007Repository {
         try {
             getTC007Service().setCorrection()
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }
@@ -461,7 +442,6 @@ object TC007Repository {
         try {
             getTC007Service().setIsotherm(data.toBody())
         } catch (e: Exception) {
-            XLog.e("请求异常：${e?.message}")
             null
         }
     }

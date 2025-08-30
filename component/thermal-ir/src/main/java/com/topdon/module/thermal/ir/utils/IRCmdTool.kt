@@ -31,7 +31,6 @@ object IRCmdTool {
         val snData = ByteArray(256)
         val dispData = ByteArray(5)//配准参数
         irCmd?.oemRead(CommonParams.ProductType.P2, oemInfo)
-        XLog.w("机芯数据加载成功", "数据读取完成:")
         val calibrationData = ByteArray(calibrationDataSize)
         val productTypeData = ByteArray(2)
         System.arraycopy(oemInfo, 0, calibrationData, 0, calibrationData.size)
@@ -49,9 +48,7 @@ object IRCmdTool {
             if (dispNumber < -20){
                 dispNumber = -20
             }
-            XLog.w("配准信息:", ""+dispNumber)
         }catch (e:Exception){
-            XLog.w("配准数据异常")
         }
         val snList = String(snData).split(";")
         val snStr = if (snList.isNotEmpty() && snList[0].contains("sn",true)){
@@ -73,13 +70,11 @@ object IRCmdTool {
                 `is` = am.open("dual_calibration_parameters2.bin")
                 length = `is`.available()
                 if (`is`.read(parameters) != length) {
-                    Log.e(TAG, "read file fail ")
                 }
                 parameters[length] = 1
                 //先从缓存中查找是否有保存的对齐数据，没有用初始化数据
                 val alignByte = SharedManager.getManualData(snStr)
                 System.arraycopy(alignByte, 0, parameters, calibrationDataSize + 1, alignByte.size)
-                XLog.w("机芯没存在校正数据，请联系厂商确认")
             } catch (e: IOException) {
                 e.printStackTrace()
             } finally {
@@ -106,7 +101,6 @@ object IRCmdTool {
         }
     }
 
-
     /**
      * 设置发射率 unit:cnt(128cnt = 1)
      * @param value 1 ~ 128
@@ -126,7 +120,6 @@ object IRCmdTool {
         val data = CommonParams.PropTPDParamsValue.NumberType(value.toString())
         setTpdParams(irCmd = irCmd, params = CommonParams.PropTPDParams.TPD_PROP_DISTANCE, value = data)
     }
-
 
     /**
      * 设置对比度
@@ -217,7 +210,6 @@ object IRCmdTool {
         return try {
             irCmd?.setPropTPDParams(params, value) ?: 0
         } catch (e: Exception) {
-            XLog.w("设置参数异常[${params.name}]: ${e.message}")
             0
         }
     }
@@ -229,7 +221,6 @@ object IRCmdTool {
         return try {
             irCmd?.setPropImageParams(params, value) ?: 0
         } catch (e: Exception) {
-            XLog.w("设置参数异常[${params.name}]: ${e.message}")
             0
         }
     }
@@ -247,7 +238,6 @@ object IRCmdTool {
                 0
             }
         } catch (e: Exception) {
-            XLog.w("设置配准异常[${value}]: ${e.message}")
             0
         }
     }

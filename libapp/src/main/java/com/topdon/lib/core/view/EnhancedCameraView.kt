@@ -126,7 +126,6 @@ class EnhancedCameraView @JvmOverloads constructor(
             } catch (e: InterruptedException) {
                 break
             } catch (e: Exception) {
-                Log.e(TAG, "Error in render loop", e)
                 onRenderingError?.invoke(e)
                 delay(100) // Brief pause on error
             }
@@ -177,7 +176,6 @@ class EnhancedCameraView @JvmOverloads constructor(
             }
             
         } catch (e: Exception) {
-            Log.e(TAG, "Error rendering frame", e)
             onRenderingError?.invoke(e)
         }
     }
@@ -201,7 +199,6 @@ class EnhancedCameraView @JvmOverloads constructor(
             renderFrame(processedBitmap)
             
         } catch (e: Exception) {
-            Log.e(TAG, "Error rendering transformed bitmap", e)
             onRenderingError?.invoke(e)
         }
     }
@@ -213,7 +210,6 @@ class EnhancedCameraView @JvmOverloads constructor(
         return try {
             currentBitmap?.copy(currentBitmap?.config ?: Bitmap.Config.ARGB_8888, false)
         } catch (e: Exception) {
-            Log.e(TAG, "Error capturing frame", e)
             null
         }
     }
@@ -232,7 +228,6 @@ class EnhancedCameraView @JvmOverloads constructor(
                 unlockCanvasAndPost(canvas)
             }
         } catch (e: Exception) {
-            Log.e(TAG, "Error clearing view", e)
         }
     }
 

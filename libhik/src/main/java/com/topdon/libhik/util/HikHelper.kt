@@ -64,7 +64,6 @@ object HikHelper {
      */
     private val streamCallBack = MyFStreamCallBack()
 
-
     /**
      * 根据指定 Activity 的生命周期执行相应初始化、开启码流、停止码流、回收资源操作.
      */
@@ -219,7 +218,6 @@ object HikHelper {
      */
     fun copyFrameData(): ByteArray = streamCallBack.copyFrameArray()
 
-
     private class MyFStreamCallBack : FStreamCallBack {
         /**
          * YUV 数组，YUY2 格式
@@ -259,17 +257,12 @@ object HikHelper {
         override fun invoke(handle: Int, frameInfo: USB_FRAME_INFO) {
             beforeFrameTime = System.currentTimeMillis()
             if (frameInfo.dwBufSize != 4640 + 256 * 192 * 4) {
-                XLog.w("数据长度不对！${frameInfo.dwBufSize}")
                 return
             }
             val dataArray: ByteArray = Arrays.copyOf(frameInfo.pBuf, frameInfo.dwBufSize)
 
-
             /*val frameHead = FrameHead(dataArray)
-            XLog.d(frameHead.toString())
             for (i in frameHead.tempRuleList.indices) {
-                XLog.v(frameHead.tempRuleList[i].toString())
-                XLog.v(dataArray.buildPrintStr(216 + i * 208, 88))
             }*/
 
             synchronized(this) {

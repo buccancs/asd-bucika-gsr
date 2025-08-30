@@ -99,12 +99,10 @@ class IRThermalHikActivity : BaseBindingActivity<ActivityIrThermalHikBinding>() 
      */
     private var customPseudoBean = CustomPseudoBean.loadFromShared()
 
-
     /**
      * 双光-融合度、设置-对比度、设置-锐度 PopupWindow，用于在点击其他操作时关掉.
      */
     private var popupWindow: PopupWindow? = null
-
 
     /**
      * 等温尺限制的低温值，单位摄氏度，MIN_VALUE 表示未设置。
@@ -132,7 +130,6 @@ class IRThermalHikActivity : BaseBindingActivity<ActivityIrThermalHikBinding>() 
      * 当前全图最高温，单位跟随用户设置。
      */
     private var currentMax: Float = 0f
-
 
     override fun initContentLayoutId(): Int = R.layout.activity_ir_thermal_hik
 
@@ -187,8 +184,6 @@ class IRThermalHikActivity : BaseBindingActivity<ActivityIrThermalHikBinding>() 
         binding.titleView.setRight2ClickListener {
             switchAmplify()
         }
-
-
 
         binding.timeDownView.onFinishListener = {
             if (!saveSetBean.isVideoMode) {
@@ -609,7 +604,6 @@ class IRThermalHikActivity : BaseBindingActivity<ActivityIrThermalHikBinding>() 
         binding.menuSecondView.isUnitF = SharedManager.getTemperature() == 0 //温度档位单位
     }
 
-
     /**
      * 当前 拍照/录像 状态.
      */
@@ -878,7 +872,6 @@ class IRThermalHikActivity : BaseBindingActivity<ActivityIrThermalHikBinding>() 
         binding.clPseudoBar.updateBitmap()
     }
 
-
     private val pseudoSetResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == RESULT_OK) {
             lifecycleScope.launch {
@@ -930,7 +923,6 @@ class IRThermalHikActivity : BaseBindingActivity<ActivityIrThermalHikBinding>() 
                         SupHelp.getInstance().initA4KCPP()
                     } catch (e: UnsatisfiedLinkError) {
                         SupHelp.getInstance().loadOpenclSuccess = false
-                        XLog.e("超分初始化失败")
                     }
                 }
                 if (!SupHelp.getInstance().loadOpenclSuccess) {
@@ -958,7 +950,6 @@ class IRThermalHikActivity : BaseBindingActivity<ActivityIrThermalHikBinding>() 
                 .create().show()
         }
     }
-
 
     /**
      * 显示材料发射率提示弹窗.

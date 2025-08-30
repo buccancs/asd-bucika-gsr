@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.Utils;
@@ -103,7 +102,6 @@ public class FileUtil {
             String fileName = fileTitle + new SimpleDateFormat("_HHmmss_yyMMdd").
                     format(new Date(System.currentTimeMillis())) + ".bin";
             File file = new File(fileSaveDir, fileName);
-            Log.i(TAG, "fileSaveDir=" + fileSaveDir + " fileName=" + fileName);
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(bytes);
             fos.close();
@@ -150,9 +148,7 @@ public class FileUtil {
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(toByteArray(bytes));
             fos.close();
-            Log.i(TAG, fileTitle + " 保存成功");
         } catch (IOException e) {
-            Log.e(TAG, fileTitle + " 保存失败："+e.getMessage());
         }
     }
 
@@ -240,7 +236,6 @@ public class FileUtil {
             boolean mkdirs = dirFile.mkdirs();
             boolean isSuccess = mkdirs || dirFile.exists();
             if (!isSuccess) {
-                Log.e("FileUtil", "createFileDir fail " + dirFile);
             }
             return isSuccess;
         }
@@ -256,7 +251,6 @@ public class FileUtil {
             File dirFile = new File(dirPath);
             if (!dirFile.exists()) {
                 if (!createFileDir(dirFile)) {
-                    Log.e(TAG, "createFile dirFile.mkdirs fail");
                     return null;
                 }
             } else if (!dirFile.isDirectory()) {
@@ -264,20 +258,17 @@ public class FileUtil {
                 if (delete) {
                     return createFile(dirPath, fileName);
                 } else {
-                    Log.e(TAG, "createFile dirFile !isDirectory and delete fail");
                     return null;
                 }
             }
             File file = new File(dirPath, fileName);
             if (!file.exists()) {
                 if (!file.createNewFile()) {
-                    Log.e(TAG, "createFile createNewFile fail");
                     return null;
                 }
             }
             return file;
         } catch (Exception e) {
-            Log.e(TAG, "createFile fail :" + e.getMessage());
             e.printStackTrace();
             return null;
         }
@@ -449,7 +440,6 @@ public class FileUtil {
         try {
             File file = new File(fileDir, fileTitle + ".bin");
             createOrExistsDir(file);
-            Log.i("TAG", "getAbsolutePath = " + file.getAbsolutePath());
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(toByteArray(bytes));
             fos.close();
@@ -544,14 +534,12 @@ public class FileUtil {
     public static void copyAssetsBigDataToSD(Context context, String srcFileName, String strOutFileName) {
         try {
             File file = new File(strOutFileName);
-            Log.i(TAG, "file.exists->getAbsolutePath = " + file.getAbsolutePath());
             if (file.exists()) {
                 // 如果文件存在则删除文件，重新创建，避免修改的内容不生效
                 file.delete();
             }
             //
             if (!file.createNewFile()) {
-                Log.e(TAG, "创建文件 " + srcFileName + " 失败");
                 return;
             }
 
@@ -579,7 +567,6 @@ public class FileUtil {
      * @return
      */
     public static String getISPConfigByGainStatus(CommonParams.GainStatus gainStatus) {
-//        Log.i(TAG, "INFISENSE_SAVE_DIR = " + MyApplication.getInstance().INFISENSE_SAVE_DIR);
         if (CommonParams.GainStatus.HIGH_GAIN == gainStatus) {
             return INFISENSE_SAVE_DIR() + File.separator + "isp_H.json";
         } else {
@@ -598,7 +585,6 @@ public class FileUtil {
             return INFISENSE_SAVE_DIR() + File.separator + "isp_L_encrypt_hex.json";
         }
     }
-
 
     static String INFISENSE_SAVE_DIR(){
        return Utils.getApp().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
@@ -734,7 +720,6 @@ public class FileUtil {
             file = new File(filePath + fileName);
             fc = new FileOutputStream(file, false).getChannel();
             if (fc == null) {
-                Log.e("FileUtils", "fc is null.");
             }
             fc.position(fc.size());
             fc.write(ByteBuffer.wrap(bytes));
@@ -820,7 +805,6 @@ public class FileUtil {
         int fbit = Float.floatToIntBits(num);
         for (int i = 0; i < 4; i++) {
             numbyte[i] = (byte) (fbit >> (i * 8)); //little-endian
-            Log.i(TAG, "numbyte[=" + i + "]=" + numbyte[i]);
         }
     }
 

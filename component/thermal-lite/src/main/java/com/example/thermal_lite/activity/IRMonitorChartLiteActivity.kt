@@ -60,7 +60,6 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
 
     override fun initContentView() = R.layout.activity_ir_monitor_chart_lite
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         selectBean = intent.getParcelableExtra("select")!!
@@ -125,9 +124,7 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
                     if (isFirstRead) {
                         if (result.maxTemperature > 200f || result.minTemperature < -200f) {
                             errorReadCount++
-                            XLog.w("第 $errorReadCount 次读取到异常数据，max = ${result.maxTemperature} min = ${result.minTemperature}")
                             if (errorReadCount > 10) {
-                                XLog.i("连续10次获取到异常数据，认为温度区域稳定")
                                 isFirstRead = false
                             }
                             continue
@@ -167,8 +164,6 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
         super.onPause()
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
-
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -223,7 +218,6 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
                     tv_time.text = TimeTool.showVideoLongTime(System.currentTimeMillis() - startTime)
                 }
             }
-            XLog.w("停止记录, 数据量:$time")
         }
     }
 
@@ -241,11 +235,9 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
         }
     }
 
-
     var config : DataBean ?= null
     val basicGainGetValue = IntArray(1)
     var basicGainGetTime = 0L
-
 
     override fun tempCorrectByTs(temp: Float?): Float {
         var tempNew = temp
@@ -266,7 +258,6 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
                     val basicGainGet: IrcmdError? = DeviceIrcmdControlManager.getInstance().getIrcmdEngine()
                         ?.basicGainGet(basicGainGetValue)
                 }catch (e : Exception){
-                    XLog.e("增益获取失败")
                 }
                 basicGainGetTime = System.currentTimeMillis()
             }
@@ -286,14 +277,12 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
                 params_array[5],
                 if (basicGainGetValue[0] == 0) GainStatus.LOW_GAIN else GainStatus.HIGH_GAIN
             )
-            Log.i(
                 TAG,
                 "temp correct,${basicGainGetValue[0]} oldTemp = " + params_array[0] + "newtemp = " + tempNew +
                         " ems = " + params_array[1] + " ta = " + params_array[2] + " " +
                         "distance = " + params_array[4] + " hum = " + params_array[5]
             )
         }catch (e : Exception){
-            XLog.e("$TAG--温度修正异常：${e.message}")
         }finally {
             return tempNew ?: 0f
         }

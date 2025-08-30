@@ -152,7 +152,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
        }
     }
 
-
     /**
      * 仅 TC007 页面时，刷新连接或未连接状态.
      */
@@ -176,7 +175,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
             item_setting_bottom_text.setText(R.string.setting_firmware_update_version)
         }
     }
-
 
     /**
      * 显示固件升级提示弹框.
@@ -228,14 +226,12 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
 
     private fun installFirmware(file: File) {
         lifecycleScope.launch {
-            XLog.d("TC007 固件升级 - 开始安装固件升级包")
             val installDialog = FirmwareInstallDialog(requireContext())
             installDialog.show()
 
             val isSuccess = TC007Repository.updateFirmware(file)
             installDialog.dismiss()
             if (isSuccess) {
-                XLog.d("TC007 固件升级 - 固件升级包发送往 TC007 成功，即将断开连接")
                 (requireActivity().application as BaseApplication).disconnectWebSocket()
                 TipDialog.Builder(requireContext())
                     .setTitleMessage(getString(R.string.app_tip))
@@ -249,7 +245,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
                     }
                     .create().show()
             } else {
-                XLog.w("TC007 固件升级 - 固件升级包发送往 TC007 失败!")
                 showReInstallDialog(file)
             }
         }
@@ -278,7 +273,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
         }
         dialog.show()
     }
-
 
     // Removed TC007-specific functions: restoreFactory and resetAll
     // since only TC001 is supported now

@@ -65,7 +65,6 @@ class TipWaterMarkDialog : Dialog {
             this.dialog!!.dismiss()
         }
 
-
         fun create(): TipWaterMarkDialog {
             if (dialog == null) {
                 dialog = TipWaterMarkDialog(context!!, R.style.InfoDialog)
@@ -104,7 +103,6 @@ class TipWaterMarkDialog : Dialog {
             view.switch_date_time.isChecked = watermarkBean.isAddTime
             view.ed_title.setText(watermarkBean.title.ifEmpty { SharedManager.watermarkBean.title })
             view.ed_address.setText(watermarkBean.address)
-
 
             dialog!!.addContentView(
                 view,
@@ -263,7 +261,6 @@ class TipWaterMarkDialog : Dialog {
                         location.latitude,
                         location.longitude, 1
                     )
-                    Log.v("TAG", "获取地址信息：$result")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
