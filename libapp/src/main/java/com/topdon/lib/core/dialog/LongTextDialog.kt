@@ -25,10 +25,10 @@ class LongTextDialog(context: Context, val title: String?, val content: String?)
         setCanceledOnTouchOutside(true)
 
         val rootView: View = LayoutInflater.from(context).inflate(R.layout.dialog_long_text, null)
-        rootView.tv_title.text = title
-        rootView.tv_text.text = content
+        rootView.findViewById<TextView>(R.id.tv_title).text = title
+        rootView.findViewById<TextView>(R.id.tv_text).text = content
         setContentView(rootView)
-        rootView.tv_i_know.setOnClickListener {
+        rootView.findViewById<TextView>(R.id.tv_i_know).setOnClickListener {
             dismiss()
         }
 

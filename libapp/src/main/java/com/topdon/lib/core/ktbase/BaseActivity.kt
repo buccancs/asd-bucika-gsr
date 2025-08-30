@@ -64,7 +64,7 @@ abstract class BaseActivity : RxAppCompatActivity() {
     }
 
     override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(AppLanguageUtils.attachBaseContext(newBase, SharedManager.getLanguage(newBase!!)))
+        super.attachBaseContext(AppLanguageUtils.attachBaseContext(newBase, SharedManager.getLanguage(newBase ?: this)))
     }
 
     override fun onStart() {

@@ -22,13 +22,13 @@ import androidx.recyclerview.widget.RecyclerView
 class LoadingDialog(context: Context) : Dialog(context, R.style.TransparentDialog) {
 
     fun setTips(@StringRes resId: Int) {
-        rootView.tv_tips.setText(resId)
-        rootView.tv_tips.isVisible = true
+        rootView.findViewById<TextView>(R.id.tv_tips).setText(resId)
+        rootView.findViewById<TextView>(R.id.tv_tips).isVisible = true
     }
 
     fun setTips(text: CharSequence?) {
-        rootView.tv_tips.text = text
-        rootView.tv_tips.isVisible = text?.isNotEmpty() == true
+        rootView.findViewById<TextView>(R.id.tv_tips).text = text
+        rootView.findViewById<TextView>(R.id.tv_tips).isVisible = text?.isNotEmpty() == true
     }
 
 

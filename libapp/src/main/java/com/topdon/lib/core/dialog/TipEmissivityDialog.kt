@@ -94,8 +94,8 @@ class TipEmissivityDialog : Dialog {
             val view = inflater.inflate(R.layout.dialog_tip_emissivity, null)
 
 
-            view.tv_environment_title.text = context!!.getString(R.string.thermal_config_environment) + ":"
-            view.tv_distance_title.text = context!!.getString(R.string.thermal_config_distance) + ":"
+            view.findViewById<TextView>(R.id.tv_environment_title).text = context!!.getString(R.string.thermal_config_environment) + ":"
+            view.findViewById<TextView>(R.id.tv_distance_title).text = context!!.getString(R.string.thermal_config_distance) + ":"
 
             view.findViewById<Button>(R.id.dialog_tip_success_btn).setOnClickListener {
                 dialog?.onDismissListener?.invoke(hasCheck)
@@ -108,10 +108,10 @@ class TipEmissivityDialog : Dialog {
                     .navigation(context)
                 dismiss()
             }
-            val tvEmissivity = view.tv_emissivity
-            val tvEmissivityMaterials = view.tv_emissivity_materials
-            val tvEnvironmentValue = view.tv_environment_value
-            val tvDistanceValue = view.tv_distance_value
+            val tvEmissivity = view.findViewById<TextView>(R.id.tv_emissivity)
+            val tvEmissivityMaterials = view.findViewById<TextView>(R.id.tv_emissivity_materials)
+            val tvEnvironmentValue = view.findViewById<TextView>(R.id.tv_environment_value)
+            val tvDistanceValue = view.findViewById<TextView>(R.id.tv_distance_value)
 
             if (text.isNotEmpty()){
                 tvEmissivityMaterials.text = text

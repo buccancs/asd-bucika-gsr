@@ -55,7 +55,7 @@ abstract class BaseBindingActivity<B : ViewDataBinding> : AppCompatActivity() {
     }
 
     override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(AppLanguageUtils.attachBaseContext(newBase, SharedManager.getLanguage(newBase!!)))
+        super.attachBaseContext(AppLanguageUtils.attachBaseContext(newBase, SharedManager.getLanguage(newBase ?: this)))
     }
 
 

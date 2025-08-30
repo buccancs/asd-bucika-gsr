@@ -69,7 +69,7 @@ class TipProgressDialog : Dialog {
             val inflater =
                 context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val view = inflater.inflate(R.layout.dialog_tip_progress, null)
-            messageText = view.dialog_tip_load_msg
+            messageText = view.findViewById<TextView>(R.id.dialog_tip_load_msg)
 
             dialog!!.addContentView(
                 view,

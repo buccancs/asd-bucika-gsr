@@ -147,11 +147,11 @@ object HexDump {
     }
 
     fun toHexString(f: Float): String {
-        return f.toHexString()
+        return f.toBits().toString(16)
     }
 
     fun toHexString(d: Double): String {
-        return d.toHexString()
+        return d.toBits().toString(16)
     }
 
     /**

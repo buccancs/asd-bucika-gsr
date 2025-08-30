@@ -23,45 +23,45 @@ class FirmwareUpDialog(context: Context) : Dialog(context, R.style.InfoDialog), 
      * 标题文字，如 “发现新版本 V3.50”
      */
     var titleStr: CharSequence?
-        get() = rootView.tv_title.text
+        get() = rootView.findViewById<TextView>(R.id.tv_title).text
         set(value) {
-            rootView.tv_title.text = value
+            rootView.findViewById<TextView>(R.id.tv_title).text = value
         }
 
     /**
      * 文件大小文字，如 “大小: 239.6MB”
      */
     var sizeStr: CharSequence?
-        get() = rootView.tv_size.text
+        get() = rootView.findViewById<TextView>(R.id.tv_size).text
         set(value) {
-            rootView.tv_size.text = value
+            rootView.findViewById<TextView>(R.id.tv_size).text = value
         }
 
     /**
      * 升级内容，一般直接扔从接口拿到的东西
      */
     var contentStr: CharSequence?
-        get() = rootView.tv_content.text
+        get() = rootView.findViewById<TextView>(R.id.tv_content).text
         set(value) {
-            rootView.tv_content.text = value
+            rootView.findViewById<TextView>(R.id.tv_content).text = value
         }
 
     /**
      * 是否显示底部设备重启提示，目前仅固件升级需要显示，默认隐藏(Gone).
      */
     var isShowRestartTips: Boolean
-        get() = rootView.tv_restart_tips.isVisible
+        get() = rootView.findViewById<TextView>(R.id.tv_restart_tips).isVisible
         set(value) {
-            rootView.tv_restart_tips.isVisible = value
+            rootView.findViewById<TextView>(R.id.tv_restart_tips).isVisible = value
         }
 
     /**
      * 是否显示取消按钮，默认显示.
      */
     var isShowCancel: Boolean
-        get() = rootView.tv_cancel.isVisible
+        get() = rootView.findViewById<TextView>(R.id.tv_cancel).isVisible
         set(value) {
-            rootView.tv_cancel.isVisible = value
+            rootView.findViewById<TextView>(R.id.tv_cancel).isVisible = value
         }
 
 
@@ -100,7 +100,7 @@ class FirmwareUpDialog(context: Context) : Dialog(context, R.style.InfoDialog), 
                 dismiss()
                 onCancelClickListener?.invoke()
             }
-            rootView.tv_confirm -> {//确认
+            rootView.findViewById<Button>(R.id.tv_confirm) -> {//确认
                 dismiss()
                 onConfirmClickListener?.invoke()
             }

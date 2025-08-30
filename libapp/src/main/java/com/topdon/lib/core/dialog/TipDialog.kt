@@ -119,11 +119,11 @@ class TipDialog : Dialog {
                 view.findViewById<Button>(R.id.dialog_tip_success_btn).text = positiveStr
             }
             if (!TextUtils.isEmpty(cancelStr)) {
-                view.space_margin.visibility = View.VISIBLE
+                view.findViewById<View>(R.id.space_margin).visibility = View.VISIBLE
                 view.findViewById<Button>(R.id.dialog_tip_cancel_btn).visibility = View.VISIBLE
                 view.findViewById<Button>(R.id.dialog_tip_cancel_btn).text = cancelStr
             } else {
-                view.space_margin.visibility = View.GONE
+                view.findViewById<View>(R.id.space_margin).visibility = View.GONE
                 view.findViewById<Button>(R.id.dialog_tip_cancel_btn).visibility = View.GONE
                 view.findViewById<Button>(R.id.dialog_tip_cancel_btn).text = ""
             }
@@ -137,13 +137,13 @@ class TipDialog : Dialog {
 
             //msg
             if (titleMessage != null) {
-                view.dialog_tip_title_msg_text.visibility = View.VISIBLE
-                view.dialog_tip_title_msg_text.setText(titleMessage, TextView.BufferType.NORMAL)
+                view.findViewById<TextView>(R.id.dialog_tip_title_msg_text).visibility = View.VISIBLE
+                view.findViewById<TextView>(R.id.dialog_tip_title_msg_text).setText(titleMessage, TextView.BufferType.NORMAL)
             } else {
-                view.dialog_tip_title_msg_text.visibility = View.GONE
+                view.findViewById<TextView>(R.id.dialog_tip_title_msg_text).visibility = View.GONE
             }
 
-            view.tv_restart_tips.isVisible = isShowRestartTips
+            view.findViewById<TextView>(R.id.tv_restart_tips).isVisible = isShowRestartTips
 
             dialog!!.setContentView(view)
             return dialog as TipDialog
