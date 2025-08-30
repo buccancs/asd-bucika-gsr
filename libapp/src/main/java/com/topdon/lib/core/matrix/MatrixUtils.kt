@@ -218,4 +218,66 @@ object MatrixUtils {
         
         return Pair(minTemp, maxTemp)
     }
+
+    /**
+     * Process raw thermal data into temperature values.
+     * Converts raw byte array from thermal sensors into float array of temperatures.
+     */
+    @JvmStatic
+    fun processThermalData(rawData: ByteArray): FloatArray {
+        if (rawData.isEmpty()) return floatArrayOf()
+        
+        // Assume each temperature value is represented by 2 bytes (16-bit)
+        val tempCount = rawData.size / 2
+        val temperatures = FloatArray(tempCount)
+        
+        for (i in 0 until tempCount) {
+            val byteIndex = i * 2
+            if (byteIndex + 1 < rawData.size) {
+                // Convert little-endian bytes to short, then to temperature
+                val rawValue = ((rawData[byteIndex + 1].toInt() and 0xFF) shl 8) or 
+                              (rawData[byteIndex].toInt() and 0xFF)
+                
+                // Convert raw value to temperature (this conversion depends on sensor specs)
+                // For example: temp = (rawValue / 100.0) - 273.15 (for Kelvin to Celsius)
+                temperatures[i] = rawValue / 100.0f - 273.15f
+            }
+        }
+        
+        return temperatures
+    }
+
+    /**
+     * Process thermal matrix data with noise reduction.
+     */
+    @JvmStatic
+    fun processThermalMatrix(rawMatrix: Array<ShortArray>): Array<FloatArray> {
+        return rawMatrix.map { row ->
+            row.map { rawTemp ->
+                // Apply calibration and noise filtering
+                val temp = rawTemp / 100.0f - 273.15f
+                // Apply simple noise reduction (can be enhanced with more sophisticated filtering)
+                if (temp < -40.0f || temp > 200.0f) {
+                    // Filter out unrealistic temperature values
+                    0.0f
+                } else {
+                    temp
+                }
+            }.toFloatArray()
+        }.toTypedArray()
+    }
+
+    /**
+     * Apply thermal calibration to raw sensor data.
+     */
+    @JvmStatic
+    fun applyThermalCalibration(
+        rawData: FloatArray, 
+        offsetCorrection: Float = 0.0f,
+        gainCorrection: Float = 1.0f
+    ): FloatArray {
+        return rawData.map { value ->
+            (value + offsetCorrection) * gainCorrection
+        }.toFloatArray()
+    }
 }

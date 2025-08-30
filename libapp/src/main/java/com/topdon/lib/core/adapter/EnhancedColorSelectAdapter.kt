@@ -289,4 +289,27 @@ open class EnhancedColorSelectAdapter(
             else -> String.format("#%08X", color)
         }
     }
+
+    /**
+     * Get selected color value (for single selection mode)
+     */
+    fun getSelectedColor(): Int? {
+        return if (selectedPosition != RecyclerView.NO_POSITION) {
+            colorList.getOrNull(selectedPosition)?.colorValue
+        } else null
+    }
+
+    /**
+     * Update colors with simple int list
+     */
+    fun updateColors(colors: List<Int>) {
+        val colorBeans = colors.map { color ->
+            ColorSelectBean().apply {
+                colorValue = color
+                colorName = getColorName(color)
+                isSelected = false
+            }
+        }
+        updateColors(colorBeans)
+    }
 }

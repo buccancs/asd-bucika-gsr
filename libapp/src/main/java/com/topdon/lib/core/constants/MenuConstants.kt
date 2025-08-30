@@ -15,6 +15,14 @@ enum class MenuType {
     Lite,
     TC007,
     GALLERY_EDIT,
+    COLOR,
+    FENCE,
+    SETTING,
+    TARGET,
+    TEMP_LEVEL,
+    TEMP_POINT,
+    TEMP_SOURCE,
+    TWO_LIGHT,
 }
 
 /**

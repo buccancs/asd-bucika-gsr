@@ -227,4 +227,24 @@ object GalleryRepository {
         return tc001Files.toTypedArray()
     }
 
+    /**
+     * Get available temperature sources for thermal devices
+     */
+    suspend fun getTemperatureSources(): List<String> = withContext(Dispatchers.IO) {
+        // Return default temperature sources for thermal cameras
+        listOf(
+            "Internal Sensor",
+            "External Probe",
+            "Ambient Temperature", 
+            "Target Temperature",
+            "Reference Temperature"
+        )
+    }
+
+    /**
+     * Get singleton instance
+     */
+    fun getInstance(context: android.content.Context): GalleryRepository {
+        return this
+    }
 }
