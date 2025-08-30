@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.topdon.lib.core.bean.ColorBean
+import com.topdon.lib.ui.bean.ColorBean
 
 /**
  * Enhanced color picker dialog consolidating libcom color dialog functionality.

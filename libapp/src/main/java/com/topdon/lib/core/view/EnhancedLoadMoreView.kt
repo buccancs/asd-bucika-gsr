@@ -50,7 +50,7 @@ class EnhancedLoadMoreView @JvmOverloads constructor(
         currentState = LoadState.LOADING
         onStateChangeListener?.invoke(currentState)
         
-        val view = holder.getView(getViewId(holder, "load_more_loading_view"))
+        val view = holder.getView<View>(getViewId(holder, "load_more_loading_view"))
         updateViewText(view, loadingText ?: DEFAULT_LOADING_TEXT)
         return view
     }
@@ -59,7 +59,7 @@ class EnhancedLoadMoreView @JvmOverloads constructor(
         currentState = LoadState.COMPLETE
         onStateChangeListener?.invoke(currentState)
         
-        val view = holder.getView(getViewId(holder, "load_more_load_complete_view"))
+        val view = holder.getView<View>(getViewId(holder, "load_more_load_complete_view"))
         updateViewText(view, completeText ?: DEFAULT_COMPLETE_TEXT)
         return view
     }
@@ -68,7 +68,7 @@ class EnhancedLoadMoreView @JvmOverloads constructor(
         currentState = LoadState.END
         onStateChangeListener?.invoke(currentState)
         
-        val view = holder.getView(getViewId(holder, "load_more_load_end_view"))
+        val view = holder.getView<View>(getViewId(holder, "load_more_load_end_view"))
         updateViewText(view, endText ?: DEFAULT_END_TEXT)
         return view
     }
@@ -77,7 +77,7 @@ class EnhancedLoadMoreView @JvmOverloads constructor(
         currentState = LoadState.FAIL
         onStateChangeListener?.invoke(currentState)
         
-        val view = holder.getView(getViewId(holder, "load_more_load_fail_view"))
+        val view = holder.getView<View>(getViewId(holder, "load_more_load_fail_view"))
         updateViewText(view, failText ?: DEFAULT_FAIL_TEXT)
         return view
     }

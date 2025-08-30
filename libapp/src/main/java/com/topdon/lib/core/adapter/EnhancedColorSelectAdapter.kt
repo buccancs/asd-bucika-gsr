@@ -18,7 +18,7 @@ class EnhancedColorSelectAdapter(
 ) : RecyclerView.Adapter<EnhancedColorSelectAdapter.ColorViewHolder>() {
 
     companion object {
-        private const val DEFAULT_COLORS = intArrayOf(
+        private val DEFAULT_COLORS = intArrayOf(
             0xFFFF0000.toInt(), // Red
             0xFF00FF00.toInt(), // Green  
             0xFF0000FF.toInt(), // Blue

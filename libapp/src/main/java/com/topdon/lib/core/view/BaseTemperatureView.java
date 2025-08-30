@@ -273,6 +273,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
         }
     }
 
+    protected void drawLines() {
         // Draw lines
         for (int i = 0; i < mLineList.size(); i++) {
             ThermalLine line = mLineList.get(i);
@@ -282,6 +283,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
             mCanvas.drawLine(line.startPoint.x, line.startPoint.y, 
                            line.endPoint.x, line.endPoint.y, mLinePaint);
         }
+    }
 
     protected void drawRectangles() {
         for (int i = 0; i < mRectangleList.size(); i++) {

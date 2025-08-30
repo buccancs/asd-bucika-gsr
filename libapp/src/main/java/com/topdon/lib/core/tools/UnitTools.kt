@@ -176,6 +176,22 @@ object UnitTools {
     }
 
     /**
+     * 摄氏度转华氏度
+     */
+    @JvmStatic
+    fun celsiusToFahrenheit(celsius: Float): Float {
+        return celsius * 1.8000f + 32.00f
+    }
+
+    /**
+     * 摄氏度转开氏度 (Kelvin)
+     */
+    @JvmStatic
+    fun celsiusToKelvin(celsius: Float): Float {
+        return celsius + 273.15f
+    }
+
+    /**
      * 输入摄氏度，返回保留1位小数不带单位字符的 String.
      *
      * @param float 温度值，单位摄氏度

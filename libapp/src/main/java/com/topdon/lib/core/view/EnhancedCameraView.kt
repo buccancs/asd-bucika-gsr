@@ -107,16 +107,22 @@ class EnhancedCameraView @JvmOverloads constructor(
         while (isRendering.get() && !Thread.currentThread().isInterrupted) {
             try {
                 syncImage?.let { sync ->
+                    var bitmapToRender: Bitmap? = null
+                    
                     synchronized(sync.viewLock) {
                         if (!sync.valid) {
                             sync.viewLock.wait(frameDelay)
                         }
                         
                         if (sync.valid && sync.bitmap != null) {
-                            withContext(Dispatchers.Main) {
-                                renderFrame(sync.bitmap!!)
-                            }
+                            bitmapToRender = sync.bitmap
                             sync.valid = false
+                        }
+                    }
+                    
+                    bitmapToRender?.let { bitmap ->
+                        withContext(Dispatchers.Main) {
+                            renderFrame(bitmap)
                         }
                     }
                 }

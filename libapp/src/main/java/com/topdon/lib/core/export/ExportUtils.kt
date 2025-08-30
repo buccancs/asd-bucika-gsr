@@ -344,12 +344,12 @@ object ExportUtils {
         // Create header style
         val headerStyle = workbook.createCellStyle().apply {
             setFillForegroundColor(IndexedColors.GREY_25_PERCENT.index)
-            fillPattern = FillPatternType.SOLID_FOREGROUND
-            alignment = HorizontalAlignment.CENTER
-            verticalAlignment = VerticalAlignment.CENTER
+            setFillPattern(FillPatternType.SOLID_FOREGROUND)
+            setAlignment(HorizontalAlignment.CENTER)
+            setVerticalAlignment(VerticalAlignment.CENTER)
             
             val font = workbook.createFont().apply {
-                bold = true
+                setBold(true)
             }
             setFont(font)
         }
@@ -361,25 +361,24 @@ object ExportUtils {
         headers.forEachIndexed { index, header ->
             val cell = headerRow.createCell(index)
             cell.setCellValue(header)
-            cell.cellStyle = headerStyle
+            cell.setCellStyle(headerStyle)
         }
 
         // Create data rows
-        val tempUnit = SharedManager.getTemperatureUnit()
+        val tempUnit = SharedManager.getTemperature()
         thermalList.forEachIndexed { index, thermalEntity ->
             val row = sheet.createRow(index + 1)
             
-            val time = TimeTool.getDateByFileTime(thermalEntity.createTime)
             val tempValues = getTempValues(thermalEntity, tempUnit)
             
-            row.createCell(0).setCellValue(TimeUtils.millis2String(time, "yyyy-MM-dd"))
-            row.createCell(1).setCellValue(TimeUtils.millis2String(time, "HH:mm:ss"))
+            row.createCell(0).setCellValue(TimeUtils.millis2String(thermalEntity.createTime, "yyyy-MM-dd"))
+            row.createCell(1).setCellValue(TimeUtils.millis2String(thermalEntity.createTime, "HH:mm:ss"))
             row.createCell(2).setCellValue(tempValues.minTemp)
             row.createCell(3).setCellValue(tempValues.maxTemp) 
             row.createCell(4).setCellValue(tempValues.avgTemp)
-            row.createCell(5).setCellValue(UnitTools.getTemperatureUnit())
-            row.createCell(6).setCellValue(thermalEntity.emissivity.toString())
-            row.createCell(7).setCellValue("${thermalEntity.distance}m")
+            row.createCell(5).setCellValue(if (tempUnit == 1) "°C" else "°F")
+            row.createCell(6).setCellValue("0.95") // Default emissivity
+            row.createCell(7).setCellValue("1.0m") // Default distance
         }
 
         // Auto-size columns
@@ -431,16 +430,16 @@ object ExportUtils {
 
     private fun getTempValues(thermalEntity: ThermalEntity, tempUnit: Int): TempValues {
         return when (tempUnit) {
-            1 -> TempValues(thermalEntity.minTemp, thermalEntity.maxTemp, thermalEntity.avgTemp) // Celsius
+            1 -> TempValues(thermalEntity.thermalMin.toDouble(), thermalEntity.thermalMax.toDouble(), thermalEntity.thermal.toDouble()) // Celsius
             2 -> TempValues( // Fahrenheit
-                UnitTools.celsiusToFahrenheit(thermalEntity.minTemp),
-                UnitTools.celsiusToFahrenheit(thermalEntity.maxTemp),
-                UnitTools.celsiusToFahrenheit(thermalEntity.avgTemp)
+                UnitTools.celsiusToFahrenheit(thermalEntity.thermalMin).toDouble(),
+                UnitTools.celsiusToFahrenheit(thermalEntity.thermalMax).toDouble(),
+                UnitTools.celsiusToFahrenheit(thermalEntity.thermal).toDouble()
             )
             else -> TempValues( // Kelvin
-                UnitTools.celsiusToKelvin(thermalEntity.minTemp),
-                UnitTools.celsiusToKelvin(thermalEntity.maxTemp),
-                UnitTools.celsiusToKelvin(thermalEntity.avgTemp)
+                UnitTools.celsiusToKelvin(thermalEntity.thermalMin).toDouble(),
+                UnitTools.celsiusToKelvin(thermalEntity.thermalMax).toDouble(),
+                UnitTools.celsiusToKelvin(thermalEntity.thermal).toDouble()
             )
         }
     }

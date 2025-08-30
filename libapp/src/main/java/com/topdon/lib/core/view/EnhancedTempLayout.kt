@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import com.topdon.lib.core.animation.BreatheInterpolator
+import com.topdon.lib.core.animation.AnimationUtils
 
 /**
  * Enhanced temperature layout with breathing animation for alarm visualization
@@ -33,7 +33,7 @@ class EnhancedTempLayout : LinearLayout {
 
     // Enhanced properties
     private var customAnimationDuration = 500L
-    private var customInterpolator = BreatheInterpolator()
+    private var customInterpolator: android.animation.TimeInterpolator = AnimationUtils.BreatheInterpolator()
     private var onAnimationStateListener: AnimationStateListener? = null
 
     constructor(context: Context) : this(context, null)

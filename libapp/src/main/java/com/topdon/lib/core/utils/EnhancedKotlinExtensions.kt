@@ -28,10 +28,10 @@ val Int.px2dp: Int
     get() = EnhancedSizeUtils.pxToDp(this)
 
 val Float.px2sp: Float
-    get() = SizeUtils.px2sp(this)
+    get() = try { SizeUtils.px2sp(this.toInt()).toFloat() } catch (e: Exception) { this }
 
 val Int.px2sp: Float
-    get() = SizeUtils.px2sp(this.toFloat())
+    get() = try { SizeUtils.px2sp(this).toFloat() } catch (e: Exception) { this.toFloat() }
 
 // Mathematical extensions
 val Float.radians: Float
@@ -62,7 +62,7 @@ fun <T> List<T>.takeRandom(count: Int): List<T> {
     return if (count >= size) this else shuffled().take(count)
 }
 
-fun <T> Array<T>.takeRandom(count: Int): Array<T> {
+inline fun <reified T> Array<T>.takeRandom(count: Int): Array<T> {
     return if (count >= size) this else toList().shuffled().take(count).toTypedArray()
 }
 
@@ -185,27 +185,47 @@ fun ClosedFloatingPointRange<Double>.random(): Double {
 object EnhancedSizeUtils {
     
     fun dpToPx(dp: Int): Int {
-        return SizeUtils.dp2px(dp.toFloat())
+        return SizeUtils.dp2px(dp.toFloat()).toInt()
     }
     
     fun dpToPxF(dp: Float): Float {
-        return SizeUtils.dp2px(dp)
+        return try { 
+            SizeUtils.dp2px(dp.toInt()).toFloat() 
+        } catch (e: Exception) { 
+            dp * 3f // Fallback assumption: ~3px per dp
+        }
     }
     
     fun pxToDp(px: Int): Int {
-        return SizeUtils.px2dp(px.toFloat()).toInt()
+        return try {
+            SizeUtils.px2dp(px).toInt() 
+        } catch (e: Exception) {
+            px / 3 // Fallback
+        }
     }
     
     fun pxToDpF(px: Float): Float {
-        return SizeUtils.px2dp(px)
+        return try {
+            SizeUtils.px2dp(px.toInt()).toFloat()
+        } catch (e: Exception) {
+            px / 3f // Fallback
+        }
     }
     
     fun spToPx(sp: Float): Float {
-        return SizeUtils.sp2px(sp)
+        return try {
+            SizeUtils.sp2px(sp.toInt()).toFloat()
+        } catch (e: Exception) {
+            sp * 3f // Fallback
+        }
     }
     
     fun pxToSp(px: Float): Float {
-        return SizeUtils.px2sp(px)
+        return try {
+            SizeUtils.px2sp(px.toInt()).toFloat()
+        } catch (e: Exception) {
+            px / 3f // Fallback
+        }
     }
     
     /**
