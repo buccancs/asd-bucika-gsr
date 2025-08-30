@@ -3,18 +3,19 @@ package com.infisense.usbir.view;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
+import android.widget.FrameLayout;
 
-import com.energy.iruvc.utils.SynchronizedBitmap;
 import com.topdon.lib.core.view.EnhancedCameraView;
 
 /**
  * Backward compatibility wrapper for CameraJpegView
  * Delegates to EnhancedCameraView in libapp.core with enhanced capabilities
  */
-public class CameraJpegView extends EnhancedCameraView {
+public class CameraJpegView extends FrameLayout {
     
     private String TAG = "CameraView";
     private Thread cameraThread;
+    private EnhancedCameraView enhancedCameraView;
 
     public CameraJpegView(Context context) {
         this(context, null, 0);
@@ -26,48 +27,25 @@ public class CameraJpegView extends EnhancedCameraView {
 
     public CameraJpegView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        
+        // Initialize the enhanced camera view
+        enhancedCameraView = new EnhancedCameraView(context, attrs, defStyleAttr);
+        addView(enhancedCameraView);
     }
 
     // Legacy API compatibility methods
-    public void setSyncimage(SynchronizedBitmap syncimage) {
-        if (syncimage != null) {
-            // Convert legacy SynchronizedBitmap to enhanced version
-            EnhancedCameraView.SynchronizedBitmap enhancedSync = new EnhancedCameraView.SynchronizedBitmap();
-            // Set up a bridge between old and new sync objects
-            setSyncImage(enhancedSync);
-            
-            // Start a thread to bridge the old sync mechanism
-            startLegacySyncBridge(syncimage, enhancedSync);
-        } else {
-            setSyncImage(null);
+    public void setSyncimage(EnhancedCameraView.SynchronizedBitmap syncimage) {
+        // Delegate to enhanced camera view
+        if (enhancedCameraView != null) {
+            enhancedCameraView.setSyncImage(syncimage);
         }
     }
-    
-    private void startLegacySyncBridge(SynchronizedBitmap oldSync, EnhancedCameraView.SynchronizedBitmap newSync) {
-        cameraThread = new Thread(() -> {
-            while (!Thread.currentThread().isInterrupted()) {
-                try {
-                    synchronized (oldSync.viewLock) {
-                        if (!oldSync.valid) {
-                            oldSync.viewLock.wait();
-                        }
-                        if (oldSync.valid && oldSync.bitmap != null) {
-                            newSync.updateBitmap(oldSync.bitmap);
-                            oldSync.valid = false;
-                        }
-                    }
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    break;
-                }
-            }
-        });
-        cameraThread.start();
-    }
+
 
     public void start() {
-        startContinuousRendering();
+        if (enhancedCameraView != null) {
+            enhancedCameraView.startContinuousRendering();
+        }
     }
 
     @Override

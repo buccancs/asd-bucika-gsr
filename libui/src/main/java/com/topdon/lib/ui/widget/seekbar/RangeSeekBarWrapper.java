@@ -10,20 +10,20 @@ import com.topdon.lib.core.widget.BaseRangeSeekBar;
  * 
  * @deprecated Use com.topdon.lib.core.widget.BaseRangeSeekBar directly for new code.
  */
-public class RangeSeekBar extends BaseRangeSeekBar {
+public class RangeSeekBarWrapper extends BaseRangeSeekBar {
 
     // Maintain original interface for backward compatibility
     private OnRangeChangedListener mOriginalListener;
 
-    public RangeSeekBar(Context context) {
+    public RangeSeekBarWrapper(Context context) {
         super(context);
     }
 
-    public RangeSeekBar(Context context, AttributeSet attrs) {
+    public RangeSeekBarWrapper(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public RangeSeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RangeSeekBarWrapper(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
