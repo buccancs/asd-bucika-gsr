@@ -7,9 +7,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,9 +17,6 @@ import com.topdon.lib.core.R
 import com.topdon.lib.core.bean.CarDetectBean
 import com.topdon.lib.core.bean.CarDetectChildBean
 import com.topdon.lib.core.common.SharedManager
-import android.widget.*
-import androidx.recyclerview.widget.RecyclerView
-// Removed synthetic imports - using findViewById instead
 // Removed synthetic imports - using findViewById instead
 // Removed synthetic imports - using findViewById instead
 // Removed synthetic imports - using findViewById instead
@@ -40,11 +35,11 @@ class CarDetectDialog(context: Context, val listener: ((bean: CarDetectChildBean
         val rootView: View = LayoutInflater.from(context).inflate(R.layout.dialog_car_detect, null)
         setContentView(rootView)
 
-        rootView.title_view.setLeftClickListener { dismiss() }
+        rootView.findViewById<View>(R.id.title_view).setOnClickListener { dismiss() }
 
-        rootView.rcy_detect.layoutManager =
-            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        rootView.rcy_detect?.adapter = CarDetectAdapter(context, getDetectList())
+        val recyclerView = rootView.findViewById<RecyclerView>(R.id.rcy_detect)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = CarDetectAdapter(context, getDetectList())
 
 
         /*window?.let {
@@ -268,8 +263,8 @@ class CarDetectDialog(context: Context, val listener: ((bean: CarDetectChildBean
         }
 
         inner class ItemView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val tvTitle: TextView = itemView.tv_title
-            val rcyDetectChild: RecyclerView = itemView.rcy_detect_child
+            val tvTitle: TextView = itemView.findViewById<TextView>(R.id.tv_title)
+            val rcyDetectChild: RecyclerView = itemView.findViewById<RecyclerView>(R.id.rcy_detect_child)
         }
     }
 
@@ -305,10 +300,10 @@ class CarDetectDialog(context: Context, val listener: ((bean: CarDetectChildBean
         }
 
         inner class ItemView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val rlyParent: RelativeLayout = itemView.rly_parent
-            val tvTitle: TextView = itemView.tv_name
-            val ivSelectState: ImageView = itemView.iv_select_state
-            val viewLine: View = itemView.view_line
+            val rlyParent: RelativeLayout = itemView.findViewById<RelativeLayout>(R.id.rly_parent)
+            val tvTitle: TextView = itemView.findViewById<TextView>(R.id.tv_name)
+            val ivSelectState: ImageView = itemView.findViewById<ImageView>(R.id.iv_select_state)
+            val viewLine: View = itemView.findViewById<View>(R.id.view_line)
         }
     }
 }

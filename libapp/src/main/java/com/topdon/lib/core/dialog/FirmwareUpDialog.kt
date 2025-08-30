@@ -90,17 +90,17 @@ class FirmwareUpDialog(context: Context) : Dialog(context, R.style.InfoDialog), 
             it.attributes = layoutParams
         }
 
-        rootView.tv_cancel.setOnClickListener(this)
-        rootView.tv_confirm.setOnClickListener(this)
+        rootView.findViewById<TextView>(R.id.tv_cancel).setOnClickListener(this)
+        rootView.findViewById<TextView>(R.id.tv_confirm).setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v) {
-            rootView.tv_cancel -> {//取消
+            rootView.findViewById<TextView>(R.id.tv_cancel) -> {//取消
                 dismiss()
                 onCancelClickListener?.invoke()
             }
-            rootView.findViewById<Button>(R.id.tv_confirm) -> {//确认
+            rootView.findViewById<TextView>(R.id.tv_confirm) -> {//确认
                 dismiss()
                 onConfirmClickListener?.invoke()
             }

@@ -302,7 +302,7 @@ open class EnhancedColorSelectAdapter(
     /**
      * Update colors with simple int list
      */
-    fun updateColors(colors: List<Int>) {
+    fun updateColorValues(colors: List<Int>) {
         val colorBeans = colors.map { color ->
             ColorSelectBean().apply {
                 colorValue = color
