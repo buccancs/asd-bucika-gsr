@@ -32,7 +32,7 @@ public class ExcelUtil {
     @Nullable
     public static String exportExcel(@NonNull String name, int width, int height, @NonNull byte[] norTempData, @Nullable Callback callback) {
         return ExportUtils.INSTANCE.exportThermalMatrix(name, width, height, norTempData, 
-            callback != null ? new ExportUtils.ProgressCallback() {
+            callback != null ? new ExportUtils.ThermalExportCallback() {
                 @Override
                 public void onOneCell(int current, int total) {
                     callback.onOneCell(current, total);
