@@ -1,7 +1,6 @@
 package com.topdon.module.thermal.ir.viewmodel
 
 import androidx.lifecycle.viewModelScope
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.ktbase.BaseViewModel
 import com.topdon.lib.core.utils.ByteUtils.bytesToInt
 import com.topdon.lib.core.utils.SingleLiveEvent

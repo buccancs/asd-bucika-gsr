@@ -168,11 +168,8 @@ public class PreUtil {
                 edit.commit();
             }
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
         }
     }
 
@@ -277,11 +274,8 @@ public class PreUtil {
                 }
             }
         } catch (InstantiationException e) {
-            e.printStackTrace();
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
         }
         return obj;
     }
@@ -295,7 +289,6 @@ public class PreUtil {
                 file.delete();
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

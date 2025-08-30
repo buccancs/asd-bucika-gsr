@@ -44,7 +44,6 @@ public class UnitUtils {
             }.getType());
             return unitDBBeanList;
         } catch (Exception e) {
-            e.printStackTrace();
             return new ArrayList<>();
         }
     }
@@ -71,7 +70,6 @@ public class UnitUtils {
                 hashMap.put(unitDBBean.getPreUnit().toLowerCase(), unitDBBean);
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return hashMap;
     }
@@ -115,14 +113,12 @@ public class UnitUtils {
                     try {
                         return new String[]{String.valueOf(getResult(Double.parseDouble(numericalValue) - 273.15)), unitDBBean.getAfterUnit()};
                     } catch (NumberFormatException e) {
-                        e.printStackTrace();
                         return new String[]{numericalValue, unitDBBean.getAfterUnit()};
                     }
                 } else if (preUnit.equals("deg.F")) {//华氏度
                     try {
                         return new String[]{String.valueOf(getResult((Double.parseDouble(numericalValue) - 32) / 1.8)), "°C"};
                     } catch (Exception e) {
-                        e.printStackTrace();
                         return new String[]{numericalValue, unitDBBean.getAfterUnit()};
                     }
                 }
@@ -135,21 +131,18 @@ public class UnitUtils {
                     try {
                         return new String[]{String.valueOf(getResult(32 + (Double.parseDouble(numericalValue) - 273.15) * 1.8)), unitDBBean.getAfterUnit()};
                     } catch (Exception e) {
-                        e.printStackTrace();
                         return new String[]{numericalValue, unitDBBean.getAfterUnit()};
                     }
                 } else if (preUnit.equalsIgnoreCase("deg.C")) {//华氏度
                     try {
                         return new String[]{String.valueOf(getResult(32 + Double.parseDouble(numericalValue) * 1.8)), "°F"};
                     } catch (Exception e) {
-                        e.printStackTrace();
                         return new String[]{numericalValue, unitDBBean.getAfterUnit()};
                     }
                 }
                 return new String[]{String.valueOf(getResult(Double.parseDouble(numericalValue) * Double.parseDouble(unitDBBean.getCalcFactor()))), unitDBBean.getAfterUnit()};
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
         if (unitDBBean == null) {
             return new String[]{numericalValue, preUnit};

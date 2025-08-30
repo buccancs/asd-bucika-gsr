@@ -1,11 +1,10 @@
-package com.energy.commoncomponent.utils;
+package com.infisense.usbir.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
@@ -14,17 +13,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
+
+import com.energy.iruvc.utils.CommonParams;
+
 import java.lang.reflect.Method;
 
-/*
- * @Description:
- * @Author:         brilliantzhao
- * @CreateDate:     2022.9.8 10:25
- * @UpdateUser:
- * @UpdateDate:     2022.9.8 10:25
- * @UpdateRemark:
- */
 public class ScreenUtils {
+
     private ScreenUtils() {
         /* cannot be instantiated */
         throw new UnsupportedOperationException("cannot be instantiated");
@@ -168,14 +163,9 @@ public class ScreenUtils {
      * 16dp - 48px
      * 17dp - 51px
      */
-    public static int dp2px(float dpValue) {
-        final float scale = Resources.getSystem().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-    public static int sp2px(final float spValue) {
-        final float fontScale = Resources.getSystem().getDisplayMetrics().scaledDensity;
-        return (int) (spValue * fontScale + 0.5f);
+    public static int dip2px(Context context, float dpValue) {
+        float scale = getScreenDendity(context);
+        return (int) ((dpValue * scale) + 0.5f);
     }
 
     /**
@@ -186,15 +176,13 @@ public class ScreenUtils {
     }
 
     /**
-     * @param context
      * @param info
+     * @setIcon 设置对话框图标
+     * @setTitle 设置对话框标题
+     * @setMessage 设置对话框消息提示
+     * setXXX方法返回Dialog对象，因此可以链式设置属性
      */
     public static Dialog showNormalDialog(Context context, String info, PopupWindow.OnDismissListener dismissListener) {
-        /* @setIcon 设置对话框图标
-         * @setTitle 设置对话框标题
-         * @setMessage 设置对话框消息提示
-         * setXXX方法返回Dialog对象，因此可以链式设置属性
-         */
         final AlertDialog.Builder normalDialog =
                 new AlertDialog.Builder(context);
         normalDialog.setTitle("Info");
@@ -210,6 +198,18 @@ public class ScreenUtils {
                 });
         // 显示
         return normalDialog.show();
+    }
+
+    /**
+     * 获取出图的帧率
+     *
+     * @return
+     */
+    public static int getPreviewFPSByDataFlowMode(CommonParams.DataFlowMode defaultDataFlowMode) {
+        if (defaultDataFlowMode == CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT) {
+            return 25;
+        }
+        return 50;
     }
 
 }

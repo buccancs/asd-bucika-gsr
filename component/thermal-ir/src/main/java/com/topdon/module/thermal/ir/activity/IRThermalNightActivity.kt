@@ -10,7 +10,6 @@ import android.graphics.Bitmap
 import android.graphics.drawable.ColorDrawable
 import android.hardware.SensorManager
 import android.provider.Settings
-import android.util.Log
 import android.view.*
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
@@ -27,7 +26,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.*
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.ircmd.IRCMD
 import com.energy.iruvc.ircmd.IRCMDType
 import com.energy.iruvc.ircmd.IRUtils
@@ -2033,11 +2031,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
             paramsArray[5],
             tempInfo,
             gainStatus
-        )
-            TAG,
-            "temp correct, oldTemp = " + paramsArray[0] + " ems = " + paramsArray[1] + " ta = " + paramsArray[2] + " " +
-                    "distance = " + paramsArray[4] + " hum = " + paramsArray[5] + " productType = ${CommonParams.ProductType.WN256}" + " " +
-                    "newtemp = " + newTemp
         )
         return newTemp
     }

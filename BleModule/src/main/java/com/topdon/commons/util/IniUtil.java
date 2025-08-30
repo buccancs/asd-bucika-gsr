@@ -44,7 +44,6 @@ public class IniUtil {
                 return "";
             return linkSection.get(LINK_NAME);
         } catch (Exception e) {
-            e.printStackTrace();
             return "";
         }
     }
@@ -89,7 +88,6 @@ public class IniUtil {
             } catch (java.io.FileNotFoundException e) {
             } catch (IOException e) {
             } catch (Exception e) {
-                e.printStackTrace();
             }
         }
         return name;
@@ -113,7 +111,6 @@ public class IniUtil {
                 return "";
             return versionSection.get(VERSION);
         } catch (Exception e) {
-            e.printStackTrace();
             return "";
         }
     }
@@ -134,7 +131,6 @@ public class IniUtil {
                 return "";
             return languageSection.get(language.toLowerCase());
         } catch (Exception e) {
-//            e.printStackTrace();
         }
         return "";
     }
@@ -292,7 +288,6 @@ public class IniUtil {
             } else hashMap.put("exhaust_processing", "0");
             return hashMap;
         } catch (Exception e) {
-            e.printStackTrace();
             return hashMap;
         }
     }
@@ -365,7 +360,6 @@ public class IniUtil {
 
             return hashMap;
         } catch (Exception e) {
-            e.printStackTrace();
             return hashMap;
         }
     }

@@ -4,7 +4,6 @@ import android.graphics.Point
 import android.graphics.Rect
 import android.net.Network
 import com.blankj.utilcode.util.EncryptUtils
-import com.elvishew.xlog.XLog
 import com.google.gson.Gson
 import com.topdon.lib.core.http.converter.StringConverterFactory
 import kotlinx.coroutines.Dispatchers

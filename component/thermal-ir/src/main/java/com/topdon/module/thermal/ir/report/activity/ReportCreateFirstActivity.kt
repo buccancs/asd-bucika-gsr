@@ -6,7 +6,6 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
@@ -234,7 +233,6 @@ class ReportCreateFirstActivity: BaseActivity(), View.OnClickListener {
                 )
             }
         } catch (e: Exception) {
-            e.printStackTrace()
         }
         var str = ""
         if (result!=null && result.isNotEmpty()){

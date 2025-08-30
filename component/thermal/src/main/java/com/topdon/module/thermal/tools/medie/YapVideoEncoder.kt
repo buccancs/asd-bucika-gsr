@@ -6,7 +6,6 @@ import android.graphics.Bitmap
 import android.media.*
 import android.os.Build
 import android.os.Looper
-import android.util.Log
 import java.io.File
 import java.io.IOException
 import java.nio.ByteBuffer
@@ -118,7 +117,6 @@ class YapVideoEncoder(
             }
             mediaMuxer = MediaMuxer(out.absolutePath, MediaMuxer.OutputFormat.MUXER_OUTPUT_MPEG_4)
         } catch (e: IOException) {
-            e.printStackTrace()
         }
         mediaCodec!!.configure(mediaFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE)
         mediaCodec!!.start()
@@ -157,7 +155,6 @@ class YapVideoEncoder(
                 }
             } catch (e: Exception) {
                 IProvider.progress(-1f)
-                e.printStackTrace()
             }
         }
     }
@@ -238,7 +235,6 @@ class YapVideoEncoder(
             try {
                 mediaCodec!!.signalEndOfInputStream()
             } catch (e: Exception) {
-                e.printStackTrace()
             }
         }
         while (true) {
@@ -276,7 +272,6 @@ class YapVideoEncoder(
                     try {
                         mediaMuxer!!.writeSampleData(mTrackIndex, outputBuffer, bufferInfo)
                     } catch (e: Exception) {
-                        e.printStackTrace()
                     }
                 }
                 mediaCodec!!.releaseOutputBuffer(encoderStatus, false)

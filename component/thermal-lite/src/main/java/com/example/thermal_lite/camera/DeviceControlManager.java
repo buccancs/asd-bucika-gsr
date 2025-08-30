@@ -1,5 +1,6 @@
 package com.example.thermal_lite.camera;
 
+
 import com.energy.iruvccamera.usb.USBMonitor;
 import com.example.thermal_lite.camera.task.DeviceControlWorker;
 import com.example.thermal_lite.camera.task.IDeviceConnectListener;

@@ -1,5 +1,6 @@
 package com.example.thermal_lite.camera.task;
 
+
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class DeviceControlWorker {
@@ -23,7 +24,6 @@ public class DeviceControlWorker {
                             try {
                                 mEventQueue.wait();
                             } catch (InterruptedException e) {
-                                e.printStackTrace();
                             }
                         }
                         task = mEventQueue.peek();
@@ -54,7 +54,6 @@ public class DeviceControlWorker {
                     }
                 }
             } catch (Exception e) {
-                e.printStackTrace();
             }
         }
     };
@@ -80,7 +79,6 @@ public class DeviceControlWorker {
                 mThread = null;
             } catch (Exception e) {
                 Thread.currentThread().interrupt();
-                e.printStackTrace();
             }
         }
     }

@@ -199,7 +199,6 @@ public class CameraView extends TextureView {
                 cameraThread.join();
             }
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 }

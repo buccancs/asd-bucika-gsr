@@ -300,6 +300,7 @@ public class IRUVCTC {
 
                                                 @Override
                                                 public void onAutoGainSwitchResult(CommonParams.PropTPDParamsValue.GAINSELStatus gainselStatus, int result) {
+                                                    // Logging removed
                                                 }
                                             });
                                 }
@@ -312,6 +313,7 @@ public class IRUVCTC {
                                             new AvoidOverexposureCallback() {
                                                 @Override
                                                 public void onAvoidOverexposureState(boolean avoidOverexpol) {
+                                                    // Logging removed
                                                 }
                                             });
                                 }
@@ -514,7 +516,6 @@ public class IRUVCTC {
                              */
                             Thread.sleep(1500);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
                         }
                         if (ircmd.startY16ModePreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                                 FileUtil.getY16SrcTypeByDataFlowMode(defaultDataFlowMode)) == 0) {
@@ -531,6 +532,7 @@ public class IRUVCTC {
                  * 红外+TNR出图,只能为25Hz
                  */
                 boolean isTempReplacedWithTNREnabled = ircmd.isTempReplacedWithTNREnabled(DeviceType.P2);
+                // Logging removed
                 if (isTempReplacedWithTNREnabled) {
                     /*
                      * 支持 红外+TNR 方式出图
@@ -555,7 +557,6 @@ public class IRUVCTC {
                                  */
                                 Thread.sleep(1500);
                             } catch (InterruptedException e) {
-                                e.printStackTrace();
                             }
                             if (ircmd.startY16ModePreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                                     FileUtil.getY16SrcTypeByDataFlowMode(CommonParams.DataFlowMode.TNR_OUTPUT)) == 0) {
@@ -585,7 +586,6 @@ public class IRUVCTC {
                                  */
                                 Thread.sleep(1500);
                             } catch (InterruptedException e) {
-                                e.printStackTrace();
                             }
                             if (ircmd.startY16ModePreview(CommonParams.PreviewPathChannel.PREVIEW_PATH0,
                                     FileUtil.getY16SrcTypeByDataFlowMode(defaultDataFlowMode)) == 0) {

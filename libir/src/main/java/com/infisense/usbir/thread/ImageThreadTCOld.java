@@ -5,7 +5,6 @@
 //import android.os.SystemClock;
 //import android.util.Log;
 //
-//import com.elvishew.xlog.XLog;
 //import com.infisense.iruvc.utils.SynchronizedBitmap;
 //import com.infisense.usbir.tools.BitmapTools;
 //import com.infisense.usbir.tools.ImageTools;

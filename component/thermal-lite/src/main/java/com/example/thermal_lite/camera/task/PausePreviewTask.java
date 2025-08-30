@@ -1,5 +1,6 @@
 package com.example.thermal_lite.camera.task;
 
+
 import com.example.thermal_lite.camera.CameraPreviewManager;
 
 /**

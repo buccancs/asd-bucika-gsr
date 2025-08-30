@@ -572,14 +572,12 @@ public class IRUVCTC {
                         BitmapUtils.saveShortFile(nuc_table_low, "nuc_table_low");
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
                 } finally {
                     try {
                         if (is != null) {
                             is.close();
                         }
                     } catch (IOException e) {
-                        e.printStackTrace();
                     }
                 }
 

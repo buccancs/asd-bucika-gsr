@@ -21,7 +21,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.Utils
-import com.elvishew.xlog.XLog
 import com.example.suplib.wrapper.SupHelp
 import com.example.thermal_lite.activity.IRThermalLiteActivity
 import com.hjq.permissions.OnPermissionCallback
@@ -238,7 +237,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             inputStream.close()
             outputStream.close()
         } catch (e: IOException) {
-            e.printStackTrace()
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.thermal_lite.camera;
 
+
 import com.energy.ac020library.IrcamEngine;
 import com.energy.ac020library.IrcmdEngine;
 import com.energy.ac020library.bean.IrcmdError;
@@ -105,6 +106,7 @@ public class DeviceIrcmdControlManager {
                             IrcmdError algorithmParametersReadGet = mIrcmdEngine
                                     .advAlgorithmParametersRead(reAddress, algorithmParametersReadData);
 
+
                             for (int j = 0; j < algorithmParametersReadData.length; j++) {
                             }
                         }
@@ -124,7 +126,6 @@ public class DeviceIrcmdControlManager {
 //                        }
 //                    }
                 } catch (JSONException e) {
-                    e.printStackTrace();
                 }
                 mSendFPGACommand = false;
             }
@@ -219,6 +220,7 @@ public class DeviceIrcmdControlManager {
             valueArrStr.append(String.format("%8s", Integer.toBinaryString(valueArray[i] & 0xFF)).replace(' ', '0'));
         }
 
+
         String orgValue = ispParamReadByteArrStr.substring(byteWidth * 8 - end - 1, byteWidth * 8 - begin);
                 " orgValueInt = " + Long.parseLong(orgValue, 2));
 
@@ -297,7 +299,6 @@ public class DeviceIrcmdControlManager {
                         }
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
                 }
                 mSendISPCommand = false;
                 ispParamPath = null;

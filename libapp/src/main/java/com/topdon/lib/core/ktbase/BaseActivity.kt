@@ -4,12 +4,12 @@ import android.content.*
 import android.content.pm.ActivityInfo
 import android.os.*
 import android.provider.MediaStore
-import android.util.Log
+
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import com.elvishew.xlog.XLog
+
 import com.google.gson.Gson
 import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.R

@@ -8,7 +8,6 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.os.SystemClock
-import android.util.Log
 import android.view.SurfaceView
 import android.view.View
 import android.widget.FrameLayout
@@ -308,7 +307,6 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
             mDualView!!.dualUVCCamera.setPseudocolor(CommonParams.PseudoColorUsbDualType.IRONBOW_MODE)
             `is`.close()
         } catch (e: IOException) {
-            e.printStackTrace()
         }
     }
 

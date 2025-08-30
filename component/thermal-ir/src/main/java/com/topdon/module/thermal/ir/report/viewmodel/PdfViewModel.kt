@@ -84,7 +84,6 @@ class PdfViewModel : BaseViewModel() {
                         TToast.shortToast(LMS.mContext, it)
                     }
                 } catch (e: Exception) {
-                    e.printStackTrace()
                 }
             }
         })

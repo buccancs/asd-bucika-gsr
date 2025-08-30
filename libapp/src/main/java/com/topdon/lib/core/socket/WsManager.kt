@@ -2,7 +2,6 @@ package com.topdon.lib.core.socket
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import okhttp3.*
 import okio.ByteString
 import java.util.Timer

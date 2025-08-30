@@ -35,7 +35,6 @@ public class TimeGMTUtils {
             Date d1 = sf.parse(time);
             return zone.useDaylightTime() && zone.inDaylightTime(d1);
         } catch (ParseException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -56,7 +55,6 @@ public class TimeGMTUtils {
             String gmt = TimeZone.getDefault().getDisplayName(isDaylight(TimeZone.getDefault(), time), TimeZone.SHORT, curLocale);
             return getDateToString(longTime, gmt, format);
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return "";
     }
@@ -85,7 +83,6 @@ public class TimeGMTUtils {
             dateFormat.setTimeZone(timeZone);
             date = dateFormat.parse(dateString);
         } catch (ParseException e) {
-            e.printStackTrace();
         }
         return date.getTime();
     }

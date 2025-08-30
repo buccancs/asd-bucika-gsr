@@ -98,7 +98,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             typedArray.recycle();
         }

@@ -14,7 +14,6 @@ import android.os.Environment;
 
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.ZipUtils;
-import com.elvishew.xlog.XLog;
 import com.topdon.lib.core.common.SharedManager;
 import com.topdon.lib.core.config.HttpConfig;
 import com.topdon.lib.core.dialog.TipDialog;
@@ -232,9 +231,7 @@ public class AppVersionUtil {
                 AppUtil.installApp(mContext, files.get(0));
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -297,12 +294,10 @@ public class AppVersionUtil {
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                ex.printStackTrace();
             }
 
             @Override
             public void onCancelled(CancelledException cex) {
-                cex.printStackTrace();
             }
 
             @Override
@@ -321,9 +316,7 @@ public class AppVersionUtil {
                 AppUtil.installApp(mContext, files.get(0));
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

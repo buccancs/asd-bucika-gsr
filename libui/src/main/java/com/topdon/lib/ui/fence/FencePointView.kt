@@ -107,6 +107,7 @@ class FencePointView : View {
                 invalidate()
             }
             MotionEvent.ACTION_UP -> {
+//                // Debug removed
                 startPoint[0] = mX.toInt()
                 startPoint[1] = mY.toInt()
                 result()
@@ -138,6 +139,7 @@ class FencePointView : View {
             //bottom
             point1[1] = height - destH / 2
         }
+        // Debug removed}")
         if (listener != null) {
             listener!!.callback(point1, intArrayOf(width, height))
         }

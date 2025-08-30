@@ -52,7 +52,6 @@ public class SystemIniUtils {
                 return 1;
             }
         } catch (Exception e) {
-            e.printStackTrace();
             return 1;
         }
     }

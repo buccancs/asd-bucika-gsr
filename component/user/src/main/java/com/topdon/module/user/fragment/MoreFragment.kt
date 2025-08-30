@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.ToastUtils
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.BaseApplication
 import com.topdon.lib.core.common.SaveSettingUtil
 import com.topdon.lib.core.common.SharedManager
@@ -146,6 +145,7 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
                ARouter.getInstance().build(RouterConfig.UNIT).navigation(requireContext())
            }
            setting_item_correction->{//锅盖校正
+
                ARouter.getInstance().build(RouterConfig.IR_CORRECTION).withBoolean(ExtraKeyConfig.IS_TC007, false).navigation(requireContext())
            }
            // Removed TC007-specific handlers since only TC001 is supported

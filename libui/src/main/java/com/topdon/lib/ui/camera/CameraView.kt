@@ -11,7 +11,6 @@ import android.media.ImageReader
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
-import android.util.Log
 import android.util.Size
 import android.view.*
 import android.widget.Button
@@ -224,7 +223,6 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                                 mCameraHandler
                             )
                         } catch (e: CameraAccessException) {
-                            e.printStackTrace()
                         }
                     }
 
@@ -234,7 +232,6 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                 }, mCameraHandler
             )
         } catch (e: CameraAccessException) {
-            e.printStackTrace()
         }
     }
 
@@ -247,6 +244,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
             ) {
                 // SurfaceTexture可用
                 // 设置相机参数并打开相机
+                // Debug removed
                 //w:h = 1 / 1.33
                 setUpCamera(width, height)
 //                openCamera()
@@ -281,6 +279,7 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
             mCameraManager = context.getSystemService(Context.CAMERA_SERVICE) as CameraManager?
             mCameraManager!!.openCamera(mCameraId, mStateCallback, mCameraHandler)
         } catch (e: Exception) {
+            // Debug removed
             ToastUtils.showShort("打开相机失败")
         }
     }
@@ -319,6 +318,8 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                 val w = 1000
                 val h = w * sizes[0].height / sizes[0].width
                 mCaptureSize = Size(w, h)
+                // Debug removed
+                // Debug removed
 //                mCaptureSize = Size(1000, 1000)
 //                mCaptureSize =
 //                    Collections.max(Arrays.asList(map.getOutputSizes(ImageFormat.JPEG))) { lhs, rhs ->
@@ -331,7 +332,6 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                 break
             }
         } catch (e: CameraAccessException) {
-            e.printStackTrace()
         }
     }
 

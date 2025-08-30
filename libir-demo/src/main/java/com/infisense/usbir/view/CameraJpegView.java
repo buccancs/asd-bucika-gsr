@@ -78,7 +78,6 @@ public class CameraJpegView extends TextureView {
                     try {
                         cameraThread.sleep(1);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
                         cameraThread.interrupt();
                     }
                 }
@@ -97,7 +96,6 @@ public class CameraJpegView extends TextureView {
         try {
             cameraThread.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 }

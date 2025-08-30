@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Matrix
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -226,7 +225,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
                 try {
                     mIrSurfaceView!!.doDraw(mIrBitmap, mGuideInterface!!.getImageStatus())
                 } catch (e: Exception) {
-                    e.printStackTrace()
                 }
                 if (rotateType == 1 || rotateType == 3) {
                     rawWidth = SRC_WIDTH
@@ -253,7 +251,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
                     mMaxTemp = maxBigDecimal.setScale(1, BigDecimal.ROUND_HALF_UP).toFloat()
                     mMinTemp = minBigDecimal.setScale(1, BigDecimal.ROUND_HALF_UP).toFloat()
                 } catch (e: Exception) {
-                    e.printStackTrace()
                 }
             }
 
@@ -394,7 +391,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
 //            try {
 //                tipDialog.dismiss()
 //            } catch (e: Exception) {
-//                e.printStackTrace()
 //            }
 //        }, 1500)
 //    }

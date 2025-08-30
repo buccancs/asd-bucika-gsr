@@ -3,7 +3,6 @@ package com.example.thermal_lite.camera;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -97,7 +96,6 @@ public class TempCompensation {
             nucT = byteToShort(nucTableHighByte);
         } else {
             readFlashData(CommonParams.SdFilePath.DEFAULT_DATA_NUC_T_HIGH, file.getPath(),
-                    progress -> Log.d(TAG, "getNucTData readFlashData DEFAULT_DATA_NUC_T_HIGH : " + progress));
             byte[] nucTableHighByte = FileUtil.readFile2BytesByStream(BaseApplication.instance.getApplicationContext(), file);
             nucT = byteToShort(nucTableHighByte);
         }
@@ -119,7 +117,6 @@ public class TempCompensation {
         try {
             result = ircamEngine.advFileRead(sdFilePath, localFilePath, iFileHandleCallback);
         } catch (IOException e) {
-            e.printStackTrace();
         }
         if (result != 0) {
         }

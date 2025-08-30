@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
+
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -35,7 +36,6 @@ import androidx.core.view.ViewPropertyAnimatorListenerAdapter;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.elvishew.xlog.XLog;
 import com.topdon.tc004.R;
 import com.topdon.tc004.util.FileUtil;
 import com.topdon.tc004.util.SPUtil;
@@ -387,7 +387,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                     "",
                     autoRecord ? FileUtil.getMovieName(mUrl).getPath() : null);
         } catch (Exception e) {
-            e.printStackTrace();
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
             return;
         }
@@ -475,9 +474,7 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                 }
             }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         } catch (OutOfMemoryError error) {
-            error.printStackTrace();
         } catch (IllegalStateException e) {
-            e.printStackTrace();
         }
     }
 
@@ -539,21 +536,17 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
                 try {
                     connection.connect();
                 } catch (Exception e) {
-                    e.printStackTrace();
                 }
 
                 mScanner = connection;
             }
         } catch (IOException e) {
-            e.printStackTrace();
         } catch (OutOfMemoryError error) {
-            error.printStackTrace();
         } finally {
             if (fos != null) {
                 try {
                     fos.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
         }

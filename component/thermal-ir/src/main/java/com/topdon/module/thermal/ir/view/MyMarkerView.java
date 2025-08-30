@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.elvishew.xlog.XLog;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.CandleEntry;
 import com.github.mikephil.charting.data.Entry;

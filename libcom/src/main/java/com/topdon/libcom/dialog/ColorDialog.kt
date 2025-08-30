@@ -90,7 +90,6 @@ class ColorDialog(color: Int) : DialogFragment() {
         try {
             super.show(manager, tag)
         } catch (e: Exception) {
-            e.printStackTrace()
         }
     }
 

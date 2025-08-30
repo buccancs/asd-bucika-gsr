@@ -117,7 +117,8 @@ dependencies {
 
     api Deps.utilcode
     api Deps.XXPermissions
-    api Deps.xlog
+    // Logging dependencies removed for simplification
+    // api Deps.xlog
     api Deps.PhotoView
     api Deps.android_pdf_viewr
     api Deps.lottie
@@ -127,6 +128,7 @@ dependencies {
     api Deps.refresh_header_classics
     api Deps.refresh_header_material
 
+    // Logging interceptor restored - provides essential OkHttp extensions beyond just logging
     api Deps.logging_interceptor
     api Deps.colorpickerview
     api Deps.MNImageBrowser
@@ -145,15 +147,9 @@ dependencies {
     //javacv
     api Deps.javacv
     api Deps.javacpp
-    
-    // Excel export dependencies (from libcom)
-    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
-    implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '3.1.0'
-    
-    // Note: Local AAR dependencies moved to app module to avoid AAR build issues
-    // api files('libs\\abtest-1.0.1.aar')
-    // api files('libs\\auth-number-2.13.2.1.aar')
-    // api files('libs\\lms_international-3.90.009.0.aar')
+    api files('libs\\abtest-1.0.1.aar')
+    api files('libs\\auth-number-2.13.2.1.aar')
+    api files('libs\\lms_international-3.90.009.0.aar')
     // api files('libs\\logger-2.2.1-release.aar')
-    // api files('libs\\main-2.2.1-release.aar')
+    api files('libs\\main-2.2.1-release.aar')
 }

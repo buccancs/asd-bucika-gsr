@@ -18,13 +18,10 @@ import java.util.List;
 
 public class TDatrsInIUtil {
 
-    /**
-     * Helper method to load and configure INI file
-     */
     private static Ini loadIniFile(String path) throws Exception {
         File file = new File(path + "T-darts.ini");
         if (!file.exists()) {
-            return null;
+            return "";
         }
         Config cfg = new Config();
         cfg.setLowerCaseOption(true);
@@ -49,13 +46,23 @@ public class TDatrsInIUtil {
                 return tDartSWSection.get("Version".toLowerCase());
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            return "";
         }
         return "";
     }
 
     public static HashMap<String, String> getTdarts(String path) {
         HashMap<String, String> hashMap = new HashMap<>();
+        File file = new File(path + "T-darts.ini");
+        if (!file.exists()) {
+            return hashMap;
+        }
+        Config cfg = new Config();
+        cfg.setLowerCaseOption(true);
+        cfg.setLowerCaseSection(true);
+        cfg.setMultiSection(true);
+        Ini ini = new Ini();
+        ini.setConfig(cfg);
         try {
             Ini ini = loadIniFile(path);
             if (ini == null) return hashMap;
@@ -72,18 +79,7 @@ public class TDatrsInIUtil {
                 addToMapIfNotEmpty(hashMap, libsSection, "N32S032-app");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return hashMap;
-    }
-
-    /**
-     * Helper method to add section value to map if not empty
-     */
-    private static void addToMapIfNotEmpty(HashMap<String, String> map, Profile.Section section, String key) {
-        String value = section.get(key.toLowerCase());
-        if (!TextUtils.isEmpty(value)) {
-            map.put(key, value);
+            return hashMap;
         }
     }
 

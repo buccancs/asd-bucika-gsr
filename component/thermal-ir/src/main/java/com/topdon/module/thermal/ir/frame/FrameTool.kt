@@ -2,7 +2,6 @@ package com.topdon.module.thermal.ir.frame
 
 import android.graphics.Bitmap
 import android.graphics.Rect
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.sdkisp.LibIRProcess
 import com.energy.iruvc.sdkisp.LibIRTemp
 import com.energy.iruvc.utils.CommonParams
@@ -38,7 +37,6 @@ class FrameTool {
             System.arraycopy(frame, 0, imageBytes, 0, scrImageLen)//图像数据 (192 x 256 x 2) yuv
             System.arraycopy(frame, scrImageLen, temperatureBytes, 0, srcTemperatureLen) //温度数据 (192 x 256 x 2)
         } catch (e: Exception) {
-            e.printStackTrace()
         }
     }
 

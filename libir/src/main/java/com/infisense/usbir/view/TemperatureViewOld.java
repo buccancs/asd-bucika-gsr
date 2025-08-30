@@ -19,7 +19,6 @@
 //import android.view.View;
 //
 //import com.blankj.utilcode.util.SizeUtils;
-//import com.elvishew.xlog.XLog;
 //import com.infisense.iruvc.sdkisp.Libirtemp;
 //import com.infisense.iruvc.sdkisp.Libirtemp.TemperatureSampleResult;
 //import com.infisense.iruvc.utils.Line;
@@ -1344,7 +1343,6 @@
 //        try {
 //            temperatureThread.join();
 //        } catch (InterruptedException e) {
-//            e.printStackTrace();
 //        }
 //    }
 //

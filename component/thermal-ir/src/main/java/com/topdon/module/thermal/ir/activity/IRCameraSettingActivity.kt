@@ -7,7 +7,6 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -265,7 +264,6 @@ class IRCameraSettingActivity : BaseActivity() {
                 )
             }
         } catch (e: Exception) {
-            e.printStackTrace()
         }
         var str = ""
         if (result!=null && result.isNotEmpty()){

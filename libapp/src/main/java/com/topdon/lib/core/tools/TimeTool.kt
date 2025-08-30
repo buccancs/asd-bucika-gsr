@@ -1,7 +1,6 @@
 package com.topdon.lib.core.tools
 
 import android.annotation.SuppressLint
-import android.util.Log
 import com.topdon.lib.core.common.SharedManager
 import com.topdon.lib.core.utils.CommUtils
 import java.io.File

@@ -19,7 +19,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.SizeUtils
 import com.blankj.utilcode.util.ToastUtils
-import com.elvishew.xlog.XLog
 import com.example.suplib.wrapper.SupHelp
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions

@@ -13,12 +13,11 @@ import android.net.NetworkInfo
 import android.os.Build
 import android.os.Process
 import android.text.TextUtils
-import android.util.Log
+
 import android.webkit.WebView
 import androidx.annotation.RequiresApi
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.LanguageUtils
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.bean.event.SocketMsgEvent
 import com.topdon.lib.core.broadcast.DeviceBroadcastReceiver
 import com.topdon.lib.core.common.SharedManager

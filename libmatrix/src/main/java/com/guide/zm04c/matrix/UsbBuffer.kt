@@ -1,6 +1,5 @@
 package com.guide.zm04c.matrix
 
-import android.util.Log
 import kotlin.experimental.and
 
 class UsbBuffer {
@@ -68,7 +67,6 @@ class UsbBuffer {
         }
         //当前存储的buffer长度要大于4帧，才开始取数据
         if (mRingBuffer.getUnReadLength() < mFrameSize * 4) {
-//            Logger.d(TAG, "RingBuffer <4");
             return false
         }
         while (findHeadFramePos == -1 && mRingBuffer.getUnReadLength() > mFrameSize * 2) {
@@ -105,7 +103,6 @@ class UsbBuffer {
                     lock.wait(100)//kotlin any没有wait()
                 }
             } catch (e: InterruptedException) {
-                e.printStackTrace()
             }
         }
         return false

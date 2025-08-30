@@ -2,7 +2,6 @@ package com.topdon.module.thermal.activity
 
 import android.graphics.Color
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.activity.viewModels
@@ -187,7 +186,6 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
                     bean.minTemp = minBigDecimal.setScale(1, BigDecimal.ROUND_HALF_UP).toFloat()
                     bean.createTime = System.currentTimeMillis()
                 } catch (e: Exception) {
-                    e.printStackTrace()
                 }
             }
 

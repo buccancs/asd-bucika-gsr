@@ -71,8 +71,6 @@ class PolicyActivity : BaseActivity() {
         // No online data loading - all policy documents are loaded locally
     }
 
-
-
     override fun httpErrorTip(text: String, requestUrl: String) {
         // No online functionality - this method is not needed
     }
@@ -106,6 +104,5 @@ class PolicyActivity : BaseActivity() {
             }
         }
     }
-
 
 }

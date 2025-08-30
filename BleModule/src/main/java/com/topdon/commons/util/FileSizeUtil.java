@@ -1,5 +1,6 @@
 package com.topdon.commons.util;
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.nio.channels.FileChannel;
@@ -31,7 +32,6 @@ public class FileSizeUtil {
                 blockSize = getFileSize(file);
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return FormetFileSize(blockSize, sizeType);
     }
@@ -72,7 +72,7 @@ public class FileSizeUtil {
                 blockSize = getFileSize(file);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("bcf获取文件大小--getFilesSize-2-获取失败!");
         }
         return blockSize;
     }
@@ -93,7 +93,6 @@ public class FileSizeUtil {
                 blockSize = getFileSize(file);
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return FormetFileSize(blockSize, sizeType) + getUnit(sizeType);
     }
@@ -114,7 +113,6 @@ public class FileSizeUtil {
                 blockSize = getFileSize(file);
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return FormetFileSize(blockSize);
     }
@@ -136,7 +134,7 @@ public class FileSizeUtil {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("bcf获取文件大小--getFilesSize-5-获取失败!");
         } finally {
             if (fc != null) {
                 fc.close();
@@ -236,7 +234,7 @@ public class FileSizeUtil {
             }
             return file.length();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("bcf--getFileSize获取文件大小--getFilesSize-5-获取失败!");
         }
         return 0;
     }

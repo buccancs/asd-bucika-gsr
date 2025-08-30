@@ -12,8 +12,6 @@ import android.os.Build;
 
 import androidx.core.content.FileProvider;
 
-import com.elvishew.xlog.XLog;
-
 import java.io.File;
 import java.util.List;
 
@@ -119,7 +117,6 @@ public class AppUtil {
             PackageInfo packInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
             return packInfo.versionName;
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return "";
     }
@@ -130,7 +127,6 @@ public class AppUtil {
             PackageInfo packInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
             return packInfo.versionCode;
         } catch (Exception e) {
-            e.printStackTrace();
         }
         return 0;
     }

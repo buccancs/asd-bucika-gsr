@@ -3,7 +3,6 @@ package com.topdon.module.thermal.ir.report.viewmodel
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.GsonUtils
 import com.blankj.utilcode.util.TimeUtils
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.ktbase.BaseViewModel
 import com.topdon.lib.core.utils.SingleLiveEvent
 import com.topdon.lms.sdk.LMS

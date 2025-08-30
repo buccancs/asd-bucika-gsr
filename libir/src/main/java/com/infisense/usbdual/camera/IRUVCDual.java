@@ -4,6 +4,7 @@ import android.content.Context;
 import android.hardware.usb.UsbDevice;
 import android.os.Handler;
 import android.os.SystemClock;
+
 import android.view.TextureView;
 
 import com.energy.iruvc.dual.DualUVCCamera;
@@ -627,6 +628,7 @@ public class IRUVCDual {
      */
     private int setPreviewSize(int cameraWidth, int cameraHeight) {
         if (uvcCamera != null) {
+            // Logging removed
             return uvcCamera.setUSBPreviewSize(cameraWidth, cameraHeight);
         }
         return -1;

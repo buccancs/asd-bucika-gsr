@@ -1,5 +1,6 @@
 package com.topdon.commons.observer;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

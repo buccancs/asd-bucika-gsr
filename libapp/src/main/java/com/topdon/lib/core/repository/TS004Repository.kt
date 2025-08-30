@@ -2,7 +2,7 @@ package com.topdon.lib.core.repository
 
 import android.net.Network
 import com.blankj.utilcode.util.EncryptUtils
-import com.elvishew.xlog.XLog
+
 import com.google.gson.Gson
 import com.topdon.lib.core.BuildConfig
 import kotlinx.coroutines.Dispatchers

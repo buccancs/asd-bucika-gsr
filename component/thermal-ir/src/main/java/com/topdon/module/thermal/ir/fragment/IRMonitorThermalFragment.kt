@@ -4,12 +4,10 @@ import android.graphics.Bitmap
 import android.graphics.Point
 import android.graphics.RectF
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.yt.jni.Usbcontorl
 import androidx.lifecycle.lifecycleScope
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.ircmd.IRCMD
 import com.energy.iruvc.utils.CommonParams
 import com.energy.iruvc.utils.CommonUtils
@@ -200,9 +198,6 @@ class IRMonitorThermalFragment : BaseFragment(),ITsTempListener {
                 }
 
                 override fun onIRCMDCreate(ircmd: IRCMD) {
-                        TAG,
-                        "ConnectCallback->onIRCMDCreate"
-                    )
                     this@IRMonitorThermalFragment.ircmd = ircmd
                     //重置镜像为非镜像
                     ircmd.setPropImageParams(

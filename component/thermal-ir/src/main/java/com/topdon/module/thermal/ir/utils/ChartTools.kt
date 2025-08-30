@@ -1,7 +1,6 @@
 package com.topdon.module.thermal.ir.utils
 
 import android.graphics.Point
-import android.util.Log
 import com.github.mikephil.charting.charts.LineChart
 import com.topdon.lib.core.tools.UnitTools
 import kotlin.math.abs

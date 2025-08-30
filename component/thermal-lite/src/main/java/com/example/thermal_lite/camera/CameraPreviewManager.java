@@ -10,7 +10,6 @@ import android.view.SurfaceView;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.Utils;
-import com.elvishew.xlog.XLog;
 import com.energy.ac020library.IrcamEngine;
 import com.energy.ac020library.IrcmdEngine;
 import com.energy.ac020library.bean.AutoGainImageRes;
@@ -535,6 +534,7 @@ public class CameraPreviewManager {
          * 部分分辨率或在部分机型上，会出现无法出图，或出图一段时间后卡顿的问题，需要配置对应的带宽
          */
         uvcHandleParam.setBandwidth(bandwidth);
+
 
         LibIRProcess.irprocessLogRegister(LogLevel.SDK_LOG_NO_PRINT);
         LibIRProcess.getIRProcessVersion();

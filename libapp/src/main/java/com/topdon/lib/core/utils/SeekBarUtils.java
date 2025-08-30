@@ -146,6 +146,7 @@ public class SeekBarUtils {
     }
 
     public static void log(Object o) {
+        // Logging removed
     }
 
     /**

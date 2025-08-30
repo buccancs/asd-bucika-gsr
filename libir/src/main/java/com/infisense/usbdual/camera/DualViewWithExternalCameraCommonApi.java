@@ -3,6 +3,7 @@ package com.infisense.usbdual.camera;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.SystemClock;
+
 import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
@@ -252,6 +253,7 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
                         fps = 100 * 1000 / (timeuse + 0.0);
                     }
                     timestart = currentTimeMillis;
+                    // Logging removed
                 }
                 System.arraycopy(frame, 0, mixData, 0, fusionLength);
                 System.arraycopy(frame, fusionLength, irData, 0, irSize * 2);
@@ -358,6 +360,7 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
 
                                     @Override
                                     public void onAutoGainSwitchResult(CommonParams.PropTPDParamsValue.GAINSELStatus gainselStatus, int result) {
+                                        // Logging removed
                                         auto_gain_switch_running = true;
                                     }
                                 });

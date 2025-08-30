@@ -2,14 +2,12 @@ package com.topdon.module.thermal.ir.activity
 
 import android.graphics.Bitmap
 import android.graphics.Rect
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.yt.jni.Usbcontorl
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.ircmd.IRCMD
 import com.energy.iruvc.ircmd.IRCMDType
 import com.energy.iruvc.ircmd.IRUtils
@@ -353,9 +351,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
                 }
 
                 override fun onIRCMDCreate(ircmd: IRCMD) {
-                        TAG,
-                        "ConnectCallback->onIRCMDCreate"
-                    )
                     this@IRMonitorChartActivity.ircmd = ircmd
                     // 需要等IRCMD初始化完成之后才可以调用
 //                    ircmd.setPseudoColor(
@@ -589,11 +584,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
             paramsArray[5],
             tempInfo,
             gainStatus
-        )
-            TAG,
-            "temp correct, oldTemp = " + paramsArray[0] + " ems = " + paramsArray[1] + " ta = " + paramsArray[2] + " " +
-                    "distance = " + paramsArray[4] + " hum = " + paramsArray[5] + " productType = ${CommonParams.ProductType.WN256_ADVANCED}" + " " +
-                    "newtemp = " + newTemp
         )
         return newTemp
     }

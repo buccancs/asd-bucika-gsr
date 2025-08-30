@@ -1,6 +1,7 @@
 package com.topdon.lib.core.utils;
 
 import android.content.Context;
+
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
@@ -182,7 +183,6 @@ public class EasyWifi {
                 try {
                     EasyWifi.this.getConnectivityManager().bindProcessToNetwork(network);
                 } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         });

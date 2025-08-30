@@ -311,7 +311,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
             stepsAutoBonding = t.getBoolean(R.styleable.RangeSeekBar_rsb_step_auto_bonding, true);
             t.recycle();
         } catch (Exception e) {
-            e.printStackTrace();
         }
 
     }
@@ -670,6 +669,7 @@ public class RangeSeekBar extends BaseRangeSeekBar {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (!isEnable) return false;
+//        // Logging removed
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 touchDownX = getEventX(event);
@@ -830,7 +830,6 @@ public class RangeSeekBar extends BaseRangeSeekBar {
             float currSelectedMax = ss.currSelectedMax;
             setProgress(currSelectedMin, currSelectedMax);
         } catch (Exception e) {
-            e.printStackTrace();
         }
 
     }
@@ -986,6 +985,7 @@ public class RangeSeekBar extends BaseRangeSeekBar {
 //            throw new IllegalArgumentException("setRange() interval must be less than (max - min) ! #minInterval:" + minInterval + " #max - min:" + (max - min));
 //        }
         if (maxProgress == max && min == minProgress){
+//            // Logging removed
             return;
         }
         maxProgress = max;
@@ -1014,6 +1014,7 @@ public class RangeSeekBar extends BaseRangeSeekBar {
 //            throw new IllegalArgumentException("setRange() interval must be less than (max - min) ! #minInterval:" + minInterval + " #max - min:" + (max - min));
 //        }
         if (maxProgress == max && min == minProgress){
+//            // Logging removed
             return;
         }
         maxProgress = max;

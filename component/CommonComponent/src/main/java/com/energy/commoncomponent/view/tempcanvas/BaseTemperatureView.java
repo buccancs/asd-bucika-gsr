@@ -199,6 +199,7 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
             @Override
             public boolean onDoubleTap(MotionEvent e) {
 
+
                 return super.onDoubleTap(e);
             }
 
@@ -558,7 +559,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
                     if (mTempThread != null) {
                         mTempThread.interrupt();
                     }
@@ -590,7 +590,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
 
                     doShapeDraw();
                 }catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         }
@@ -644,7 +643,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             if (canvas != null) {
                 mSurfaceHolder.unlockCanvasAndPost(canvas);
@@ -693,7 +691,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             if (canvas != null) {
                 mSurfaceHolder.unlockCanvasAndPost(canvas);

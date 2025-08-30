@@ -1,7 +1,6 @@
 package com.topdon.module.thermal.ir.report.activity
 
 import android.text.TextUtils
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -166,7 +165,6 @@ class PDFListActivity : BaseViewModelActivity<PdfViewModel>() {
                                             TToast.shortToast(LMS.mContext, it)
                                         }
                                     } catch (e: Exception) {
-                                        e.printStackTrace()
                                     }
                                 }
                             })

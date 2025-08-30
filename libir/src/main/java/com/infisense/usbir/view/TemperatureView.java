@@ -2,7 +2,10 @@ package com.infisense.usbir.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import com.topdon.lib.core.view.EnhancedTemperatureView;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
+import android.view.View;
 
 /**
  * Backward compatibility wrapper for TemperatureView.

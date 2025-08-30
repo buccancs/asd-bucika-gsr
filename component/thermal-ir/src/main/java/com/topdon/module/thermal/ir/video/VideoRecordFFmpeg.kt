@@ -20,7 +20,6 @@ import android.text.Layout
 import android.text.StaticLayout
 import android.text.TextPaint
 import android.text.TextUtils
-import android.util.Log
 import android.view.TextureView
 import android.view.View
 import android.view.View.VISIBLE
@@ -35,7 +34,6 @@ import com.blankj.utilcode.util.ThreadUtils
 import com.blankj.utilcode.util.Utils
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool
 import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool
-import com.elvishew.xlog.XLog
 import com.infisense.usbdual.camera.DualViewWithExternalCameraCommonApi
 import com.infisense.usbir.view.CameraView
 import com.infisense.usbir.view.TemperatureView
@@ -407,7 +405,6 @@ class VideoRecordFFmpeg(
 //            stopRecord()
             exportDisposable?.dispose()
             stopVideoRecordListener?.invoke(false)
-            e.printStackTrace()
         }
     }
 

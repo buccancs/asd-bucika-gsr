@@ -1,11 +1,9 @@
 package com.topdon.module.thermal.ir.fragment
 
 import android.graphics.Bitmap
-import android.util.Log
 import android.view.WindowManager
 import android.yt.jni.Usbcontorl
 import androidx.lifecycle.lifecycleScope
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.ircmd.IRCMD
 import com.energy.iruvc.utils.CommonParams
 import com.energy.iruvc.utils.SynchronizedBitmap
@@ -138,9 +136,6 @@ class IRCorrectionFragment : BaseFragment(),ITsTempListener{
                     }
 
                     override fun onIRCMDCreate(ircmd: IRCMD) {
-                            TAG,
-                            "ConnectCallback->onIRCMDCreate"
-                        )
                         this@IRCorrectionFragment.ircmd = ircmd
                         // 需要等IRCMD初始化完成之后才可以调用
 //                        ircmd.setPseudoColor(CommonParams.PreviewPathChannel.PREVIEW_PATH0,

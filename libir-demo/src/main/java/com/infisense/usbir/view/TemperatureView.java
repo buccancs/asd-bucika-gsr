@@ -1226,7 +1226,6 @@ public class TemperatureView extends SurfaceView implements SurfaceHolder.Callba
         try {
             temperatureThread.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 

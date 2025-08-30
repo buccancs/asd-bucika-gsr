@@ -4,9 +4,10 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
 
+
 import androidx.annotation.Nullable;
 
-import com.elvishew.xlog.XLog;
+
 import com.energy.iruvc.sdkisp.LibIRProcess;
 import com.energy.iruvc.utils.CommonParams;
 import com.energy.iruvc.utils.SynchronizedBitmap;
@@ -275,7 +276,6 @@ public class ImageThreadTC extends Thread {
                             }
                         }
                     }catch (Exception e){
-                        e.printStackTrace();
                     }
                     syncimage.valid = true;
                     syncimage.viewLock.notify();

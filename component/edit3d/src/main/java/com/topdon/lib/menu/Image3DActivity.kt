@@ -1,10 +1,8 @@
 package com.topdon.lib.menu
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.elvishew.xlog.XLog
 import com.example.opengl.IRSurfaceView
 import com.example.opengl.render.IROpen3DTools
 import com.example.opengl.render.IRRender

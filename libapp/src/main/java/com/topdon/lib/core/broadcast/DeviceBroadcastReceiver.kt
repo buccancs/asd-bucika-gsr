@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.hardware.usb.UsbDevice
 import android.hardware.usb.UsbManager
-import com.elvishew.xlog.XLog
 import com.topdon.lib.core.bean.event.device.DeviceConnectEvent
 import com.topdon.lib.core.config.DeviceConfig.isTcTsDevice
 import com.topdon.lib.core.tools.DeviceTools
@@ -27,10 +26,6 @@ class DeviceBroadcastReceiver : BroadcastReceiver() {
             return
         }
         when (intent.action) {
-            UsbManager.ACTION_USB_DEVICE_ATTACHED -> {}
-            UsbManager.ACTION_USB_DEVICE_DETACHED -> {}
-            ACTION_USB_PERMISSION -> {}
-            else -> {}
         }
 
         if (intent.action == ACTION_USB_PERMISSION) {
@@ -45,7 +40,6 @@ class DeviceBroadcastReceiver : BroadcastReceiver() {
         try {
             usbDevice = intent.extras!!["device"] as UsbDevice?
         } catch (e: Exception) {
-            e.printStackTrace()
             return
         }
         if (usbDevice == null) {

@@ -1,7 +1,6 @@
 package com.topdon.module.thermal.activity
 
 import android.graphics.Color
-import android.util.Log
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -9,7 +8,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.SizeUtils
-import com.elvishew.xlog.XLog
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis

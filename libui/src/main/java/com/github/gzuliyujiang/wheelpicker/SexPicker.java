@@ -92,7 +92,7 @@ public class SexPicker extends OptionPicker {
                 data.add(entity);
             }
         } catch (JSONException e) {
-            DialogLog.print(e);
+            Dialog// Logging removed
         }
         return data;
     }

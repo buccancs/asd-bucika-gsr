@@ -1,8 +1,25 @@
 package com.infisense.usbir.utils;
 
 import android.content.Context;
-import com.topdon.lib.core.utils.EnhancedFileUtils;
-import kotlinx.coroutines.*;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.AssetFileDescriptor;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.text.TextUtils;
+
+
+import com.blankj.utilcode.util.SizeUtils;
+import com.blankj.utilcode.util.Utils;
+import com.energy.iruvc.utils.CommonParams;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
@@ -181,7 +198,6 @@ public class FileUtil {
             fos.write(bytes);
             fos.close();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -202,7 +218,6 @@ public class FileUtil {
 //            fos.write(bytes);
 //            fos.close();
 //        } catch (IOException e) {
-//            e.printStackTrace();
 //        }
     }
 
@@ -243,7 +258,6 @@ public class FileUtil {
             fos.write(toByteArray(bytes));
             fos.close();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -344,7 +358,6 @@ public class FileUtil {
             }
             return file;
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }
@@ -368,7 +381,6 @@ public class FileUtil {
             fos.write(bytes2);
             fos.close();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -389,9 +401,7 @@ public class FileUtil {
             fos.write(bytes);
             fos.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -412,9 +422,7 @@ public class FileUtil {
             fos.write(bytes);
             fos.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -519,7 +527,6 @@ public class FileUtil {
             fos.write(toByteArray(bytes));
             fos.close();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -532,7 +539,6 @@ public class FileUtil {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }
@@ -576,24 +582,20 @@ public class FileUtil {
                 }
                 return os.toByteArray();
             } catch (IOException e) {
-                e.printStackTrace();
                 return null;
             } finally {
                 try {
                     is.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
                 try {
                     if (os != null) {
                         os.close();
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
             return null;
         }
     }
@@ -631,7 +633,6 @@ public class FileUtil {
             myInput.close();
             myOutput.close();
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -694,7 +695,6 @@ public class FileUtil {
             PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
             name = info.versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
         }
         return name;
     }
@@ -721,7 +721,6 @@ public class FileUtil {
             }
             return result;
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
         }
         return "";
     }
@@ -801,7 +800,6 @@ public class FileUtil {
             result = 0;
 
         } catch (IOException e) {
-            e.printStackTrace();
             result = -1;
         } finally {
             try {
@@ -810,7 +808,6 @@ public class FileUtil {
                 }
 
             } catch (IOException e) {
-                e.printStackTrace();
                 result = -1;
             }
             return result;
@@ -857,15 +854,12 @@ public class FileUtil {
             }
             in.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
         } finally {
             if (in != null) {
                 try {
                     in.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
         }

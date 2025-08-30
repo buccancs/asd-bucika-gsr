@@ -1,5 +1,6 @@
 package com.topdon.ble.util;
 
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -150,10 +151,8 @@ public class HexUtil {
             in.read(buffer);  //将文件中的数据读到buffer中
             return buffer;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
             return null;
         } catch (IOException e) {
-            e.printStackTrace();
             return null;
         } finally {
             try {

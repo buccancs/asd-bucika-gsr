@@ -1,8 +1,6 @@
 package com.topdon.module.thermal.ir.utils
 
-import android.util.Log
 import com.blankj.utilcode.util.Utils
-import com.elvishew.xlog.XLog
 import com.energy.iruvc.dual.DualUVCCamera
 import com.energy.iruvc.ircmd.IRCMD
 import com.energy.iruvc.utils.CommonParams
@@ -76,12 +74,10 @@ object IRCmdTool {
                 val alignByte = SharedManager.getManualData(snStr)
                 System.arraycopy(alignByte, 0, parameters, calibrationDataSize + 1, alignByte.size)
             } catch (e: IOException) {
-                e.printStackTrace()
             } finally {
                 try {
                     `is`?.close()
                 } catch (e: IOException) {
-                    e.printStackTrace()
                 }
             }
         }

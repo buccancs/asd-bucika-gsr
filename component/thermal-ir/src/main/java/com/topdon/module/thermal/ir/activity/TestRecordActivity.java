@@ -208,6 +208,7 @@ public class TestRecordActivity extends Activity{
     //---------------------------------------
     private void initRecorder() {
 
+
         if (RECORD_LENGTH > 0) {
             imagesIndex = 0;
             images = new Frame[RECORD_LENGTH * frameRate];
@@ -226,6 +227,7 @@ public class TestRecordActivity extends Activity{
         // Set in the surface changed method
         recorder.setFrameRate(frameRate);
 
+
         audioRecordRunnable = new AudioRecordRunnable();
         audioThread = new Thread(audioRecordRunnable);
         runAudioThread = true;
@@ -242,7 +244,6 @@ public class TestRecordActivity extends Activity{
             audioThread.start();
 
         } catch (FFmpegFrameRecorder.Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -252,7 +253,6 @@ public class TestRecordActivity extends Activity{
         try {
             audioThread.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
         audioRecordRunnable = null;
         audioThread = null;
@@ -295,7 +295,6 @@ public class TestRecordActivity extends Activity{
                         recorder.recordSamples(samples[i % samples.length]);
                     }
                 } catch (FFmpegFrameRecorder.Exception e) {
-                    e.printStackTrace();
                 }
             }
 
@@ -304,7 +303,6 @@ public class TestRecordActivity extends Activity{
                 recorder.stop();
                 recorder.release();
             } catch (FFmpegFrameRecorder.Exception e) {
-                e.printStackTrace();
             }
             recorder = null;
 
@@ -373,7 +371,6 @@ public class TestRecordActivity extends Activity{
                         if (RECORD_LENGTH <= 0) try {
                             recorder.recordSamples(audioData);
                         } catch (FFmpegFrameRecorder.Exception e) {
-                            e.printStackTrace();
                         }
                     }
                 }
@@ -438,6 +435,7 @@ public class TestRecordActivity extends Activity{
             }
             camParams.setPreviewSize(imageWidth, imageHeight);
 
+
             camParams.setPreviewFrameRate(frameRate);
 
             mCamera.setParameters(camParams);
@@ -490,7 +488,6 @@ public class TestRecordActivity extends Activity{
                     }
                     recorder.record(yuvImage);
                 } catch (FFmpegFrameRecorder.Exception e) {
-                    e.printStackTrace();
                 }
             }
         }
