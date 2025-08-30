@@ -284,9 +284,8 @@ class EnhancedAlarmSetDialog(
             updateColorIndicators()
         }
         
-        // Since we're in a Dialog context, we can't easily show a DialogFragment
-        // For now, let's skip the color dialog implementation or use a simple approach
-        // TODO: Implement proper color picker dialog integration
+        // For now, skip showing the dialog to avoid fragment manager issues
+        // TODO: Implement proper color picker integration
         updateColorIndicators()
     }
 

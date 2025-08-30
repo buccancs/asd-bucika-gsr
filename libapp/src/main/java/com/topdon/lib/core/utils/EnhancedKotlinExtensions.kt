@@ -28,10 +28,20 @@ val Int.px2dp: Int
     get() = EnhancedSizeUtils.pxToDp(this)
 
 val Float.px2sp: Float
-    get() = try { SizeUtils.px2sp(this.toInt()).toFloat() } catch (e: Exception) { this }
+    get() = try { 
+        val density = android.content.res.Resources.getSystem().displayMetrics.scaledDensity
+        this / density
+    } catch (e: Exception) { 
+        this / 3f  // Fallback conversion
+    }
 
 val Int.px2sp: Float
-    get() = try { SizeUtils.px2sp(this).toFloat() } catch (e: Exception) { this.toFloat() }
+    get() = try { 
+        val density = android.content.res.Resources.getSystem().displayMetrics.scaledDensity
+        this.toFloat() / density
+    } catch (e: Exception) { 
+        this.toFloat() / 3f  // Fallback conversion
+    }
 
 // Mathematical extensions
 val Float.radians: Float
@@ -190,7 +200,8 @@ object EnhancedSizeUtils {
     
     fun dpToPxF(dp: Float): Float {
         return try { 
-            SizeUtils.dp2px(dp.toInt()).toFloat() 
+            val density = android.content.res.Resources.getSystem().displayMetrics.density
+            dp * density
         } catch (e: Exception) { 
             dp * 3f // Fallback assumption: ~3px per dp
         }
@@ -198,7 +209,8 @@ object EnhancedSizeUtils {
     
     fun pxToDp(px: Int): Int {
         return try {
-            SizeUtils.px2dp(px).toInt() 
+            val density = android.content.res.Resources.getSystem().displayMetrics.density
+            (px / density).toInt()
         } catch (e: Exception) {
             px / 3 // Fallback
         }
@@ -206,7 +218,8 @@ object EnhancedSizeUtils {
     
     fun pxToDpF(px: Float): Float {
         return try {
-            SizeUtils.px2dp(px.toInt()).toFloat()
+            val density = android.content.res.Resources.getSystem().displayMetrics.density
+            px / density
         } catch (e: Exception) {
             px / 3f // Fallback
         }
@@ -214,7 +227,8 @@ object EnhancedSizeUtils {
     
     fun spToPx(sp: Float): Float {
         return try {
-            SizeUtils.sp2px(sp.toInt()).toFloat()
+            val density = android.content.res.Resources.getSystem().displayMetrics.scaledDensity
+            sp * density
         } catch (e: Exception) {
             sp * 3f // Fallback
         }
@@ -222,7 +236,8 @@ object EnhancedSizeUtils {
     
     fun pxToSp(px: Float): Float {
         return try {
-            SizeUtils.px2sp(px.toInt()).toFloat()
+            val density = android.content.res.Resources.getSystem().displayMetrics.scaledDensity
+            px / density
         } catch (e: Exception) {
             px / 3f // Fallback
         }

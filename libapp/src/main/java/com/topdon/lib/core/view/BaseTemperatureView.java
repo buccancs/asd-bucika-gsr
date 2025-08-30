@@ -223,9 +223,11 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
                     mCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                     
                     // Draw temperature bitmap if available
-                    Bitmap bitmap = mSynchronizedBitmap.getBitmap();
-                    if (bitmap != null && !bitmap.isRecycled()) {
-                        mCanvas.drawBitmap(bitmap, srcRect, destRect, null);
+                    if (mSynchronizedBitmap instanceof Bitmap) {
+                        Bitmap bitmap = (Bitmap) mSynchronizedBitmap;
+                        if (bitmap != null && !bitmap.isRecycled()) {
+                            mCanvas.drawBitmap(bitmap, srcRect, destRect, null);
+                        }
                     }
                     
                     // Draw overlays

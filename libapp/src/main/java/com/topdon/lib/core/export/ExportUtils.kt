@@ -424,7 +424,7 @@ object ExportUtils {
     }
 
     private fun generateDefaultFileName(): String {
-        val timestamp = TimeUtils.getNowString("yyyyMMdd_HHmmss")
+        val timestamp = java.text.SimpleDateFormat("yyyyMMdd_HHmmss", java.util.Locale.getDefault()).format(java.util.Date())
         return "thermal_export_$timestamp.xlsx"
     }
 

@@ -19,9 +19,9 @@ data class ColorSelectBean(
 ) {
     
     /**
-     * Get color as hex string
+     * Get color as hex string with fallback
      */
-    fun getColorHex(): String {
+    fun getColorHexString(): String {
         return colorHex ?: String.format("#%08X", colorValue)
     }
     
@@ -52,7 +52,7 @@ data class ColorSelectBean(
             0xFF000000.toInt() -> "Black"
             0xFFFFA500.toInt() -> "Orange"
             0xFF800080.toInt() -> "Purple"
-            else -> getColorHex()
+            else -> getColorHexString()
         }
     }
     
