@@ -105,12 +105,12 @@ class MenuFiveNightAdapter(val context: Context) : RecyclerView.Adapter<Recycler
 //            val layoutParams = itemView.item_menu_tab_fl.layoutParams
 //            layoutParams.width = imageSize
 //            layoutParams.height = imageSize
-//            itemView.item_menu_tab_fl.layoutParams = layoutParams
+//            itemView.findViewById<View>(R.id.item_menu_tab_fl).layoutParams = layoutParams
 //        }
-        val lay: View = itemView.item_menu_tab_lay
-        val img: ImageView = itemView.item_menu_tab_img
-        val name: TextView = itemView.item_menu_tab_text
-        val info: TextView = itemView.item_menu_tab_info_text
+        val lay: View = itemView.findViewById<View>(R.id.item_menu_tab_lay)
+        val img: ImageView = itemView.findViewById<View>(R.id.item_menu_tab_img)
+        val name: TextView = itemView.findViewById<View>(R.id.item_menu_tab_text)
+        val info: TextView = itemView.findViewById<View>(R.id.item_menu_tab_info_text)
     }
 
 }

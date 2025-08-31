@@ -12,6 +12,7 @@ import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -58,7 +59,8 @@ public abstract class Utils {
             // noinspection deprecation
             mMaximumFlingVelocity = ViewConfiguration.getMaximumFlingVelocity();
 
-            // Context object is null
+            Log.e("MPChartLib-Utils"
+                    , "Utils.init(...) PROVIDED CONTEXT OBJECT IS NULL");
 
         } else {
             ViewConfiguration viewConfiguration = ViewConfiguration.get(context);
@@ -100,7 +102,10 @@ public abstract class Utils {
 
         if (mMetrics == null) {
 
-            // Utils not initialized
+            Log.e("MPChartLib-Utils",
+                    "Utils NOT INITIALIZED. You need to call Utils.init(...) at least once before" +
+                            " calling Utils.convertDpToPixel(...). Otherwise conversion does not " +
+                            "take place.");
             return dp;
         }
 
@@ -118,7 +123,10 @@ public abstract class Utils {
 
         if (mMetrics == null) {
 
-            // Utils not initialized
+            Log.e("MPChartLib-Utils",
+                    "Utils NOT INITIALIZED. You need to call Utils.init(...) at least once before" +
+                            " calling Utils.convertPixelsToDp(...). Otherwise conversion does not" +
+                            " take place.");
             return px;
         }
 

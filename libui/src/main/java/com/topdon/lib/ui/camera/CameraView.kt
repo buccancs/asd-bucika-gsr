@@ -1,5 +1,6 @@
 package com.topdon.lib.ui.camera
 
+import android.view.View
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
@@ -67,8 +68,8 @@ class CameraView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener {
                 startX = event.x - mTextureView.x
                 startY = event.y - mTextureView.y
                 val view: View = mTextureView.parent as View
-                parentViewW = view.width.toFloat()
-                parentViewH = view.height.toFloat()
+                parentViewW = view.findViewById<View>(R.id.width).toFloat()
+                parentViewH = view.findViewById<View>(R.id.height).toFloat()
             }
             MotionEvent.ACTION_MOVE -> {
                 //滑动

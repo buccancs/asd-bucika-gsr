@@ -51,37 +51,37 @@ class MonitorSelectDialog(context: Context) : Dialog(context, R.style.InfoDialog
                         return@setOnClickListener
                     }
                     isFirstStep = false
-                    view.btn_cancel.visibility = View.VISIBLE
-                    view.cl_first_step.visibility = View.INVISIBLE
-                    view.cl_second_step.visibility = View.VISIBLE
-                    view.tv_title.text = context.getString(R.string.select_monitor_type_step2)
-                    view.btn_confirm_or_back.text = context.getString(R.string.select_monitor_return)
+                    view.findViewById<View>(R.id.btn_cancel).visibility = View.VISIBLE
+                    view.findViewById<View>(R.id.cl_first_step).visibility = View.INVISIBLE
+                    view.findViewById<View>(R.id.cl_second_step).visibility = View.VISIBLE
+                    view.findViewById<View>(R.id.tv_title).text = context.getString(R.string.select_monitor_type_step2)
+                    view.findViewById<View>(R.id.btn_confirm_or_back).text = context.getString(R.string.select_monitor_return)
                 } else {//步骤2->步骤1 逻辑为“返回”
                     isFirstStep = true
-                    view.btn_cancel.visibility = View.GONE
-                    view.cl_first_step.visibility = View.VISIBLE
-                    view.cl_second_step.visibility = View.GONE
-                    view.tv_title.text = context.getString(R.string.select_monitor_type_step1)
-                    view.btn_confirm_or_back.text = context.getString(R.string.app_confirm)
+                    view.findViewById<View>(R.id.btn_cancel).visibility = View.GONE
+                    view.findViewById<View>(R.id.cl_first_step).visibility = View.VISIBLE
+                    view.findViewById<View>(R.id.cl_second_step).visibility = View.GONE
+                    view.findViewById<View>(R.id.tv_title).text = context.getString(R.string.select_monitor_type_step1)
+                    view.findViewById<View>(R.id.btn_confirm_or_back).text = context.getString(R.string.app_confirm)
                 }
             }
 
-            view.btn_cancel.setOnClickListener {
+            view.findViewById<View>(R.id.btn_cancel).setOnClickListener {
                 dialog.dismiss()
             }
 
-            view.btn_select_location.setOnClickListener {
+            view.findViewById<View>(R.id.btn_select_location).setOnClickListener {
                 dialog.dismiss()
                 positiveClickListener?.invoke(monitorType)
             }
 
-            view.tv_point.setOnClickListener {
+            view.findViewById<View>(R.id.tv_point).setOnClickListener {
                 updateUI(view, 1)
             }
-            view.tv_line.setOnClickListener {
+            view.findViewById<View>(R.id.tv_line).setOnClickListener {
                 updateUI(view, 2)
             }
-            view.tv_rect.setOnClickListener {
+            view.findViewById<View>(R.id.tv_rect).setOnClickListener {
                 updateUI(view, 3)
             }
             return dialog
@@ -89,9 +89,9 @@ class MonitorSelectDialog(context: Context) : Dialog(context, R.style.InfoDialog
 
 
         private fun updateUI(view: View, index: Int) {
-            view.tv_point.isSelected = index == 1
-            view.tv_line.isSelected = index == 2
-            view.tv_rect.isSelected = index == 3
+            view.findViewById<View>(R.id.tv_point).isSelected = index == 1
+            view.findViewById<View>(R.id.tv_line).isSelected = index == 2
+            view.findViewById<View>(R.id.tv_rect).isSelected = index == 3
             monitorType = index
         }
     }

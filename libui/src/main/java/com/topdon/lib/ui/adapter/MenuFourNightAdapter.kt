@@ -281,9 +281,9 @@ class MenuFourNightAdapter(val context: Context) : RecyclerView.Adapter<Recycler
     }
 
     inner class ItemView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val lay: View = itemView.item_menu_tab_lay
-        val img: ImageView = itemView.item_menu_tab_img
-        val name: TextView = itemView.item_menu_tab_text
+        val lay: View = itemView.findViewById<View>(R.id.item_menu_tab_lay)
+        val img: ImageView = itemView.findViewById<View>(R.id.item_menu_tab_img)
+        val name: TextView = itemView.findViewById<View>(R.id.item_menu_tab_text)
     }
 
 

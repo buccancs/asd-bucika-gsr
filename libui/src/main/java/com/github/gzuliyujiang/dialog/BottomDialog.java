@@ -101,9 +101,9 @@ public abstract class BottomDialog extends BaseDialog {
                 return false;
             });
             activity.getWindowManager().addView(maskView, params);
-            Dialog// Logging removed
+            DialogLog.print("dialog add mask view");
         } catch (Exception e) {
-            Dialog// Logging removed
+            DialogLog.print(e);
         }
     }
 
@@ -115,14 +115,14 @@ public abstract class BottomDialog extends BaseDialog {
 
     protected void removeMaskView() {
         if (maskView == null) {
-            Dialog// Logging removed
+            DialogLog.print("mask view is null");
             return;
         }
         try {
             activity.getWindowManager().removeViewImmediate(maskView);
-            Dialog// Logging removed
+            DialogLog.print("dialog remove mask view");
         } catch (Exception e) {
-            Dialog// Logging removed
+            DialogLog.print(e);
         }
     }
 

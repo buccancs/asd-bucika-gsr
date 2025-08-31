@@ -5,7 +5,7 @@ import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
 
-
+import com.elvishew.xlog.XLog;
 import com.github.mikephil.charting.data.CandleEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.interfaces.datasets.IBubbleDataSet;
@@ -174,6 +174,7 @@ public class Transformer {
                                                  int min, int max) {
         //TODO java.lang.NegativeArraySizeException: -434
         if (max < min) {
+            XLog.w("generateTransformedValuesLine error: max:" + max + ", min:" + min + ", phaseX:" + phaseX);
             return new float[0];
         }
         final int count = ((int) ((max - min) * phaseX) + 1) * 2;

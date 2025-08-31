@@ -81,10 +81,10 @@ class MenuAIAdapter (val context: Context) : RecyclerView.Adapter<RecyclerView.V
 //            val layoutParams = itemView.item_menu_tab_img.layoutParams
 //            layoutParams.width = imageSize
 //            layoutParams.height = imageSize
-//            itemView.item_menu_tab_img.layoutParams = layoutParams
+//            itemView.findViewById<View>(R.id.item_menu_tab_img).layoutParams = layoutParams
 //        }
-        val lay: View = itemView.item_menu_tab_lay
-        val img: ImageView = itemView.item_menu_tab_img
-        val name: TextView = itemView.item_menu_tab_text
+        val lay: View = itemView.findViewById<View>(R.id.item_menu_tab_lay)
+        val img: ImageView = itemView.findViewById<View>(R.id.item_menu_tab_img)
+        val name: TextView = itemView.findViewById<View>(R.id.item_menu_tab_text)
     }
 }
