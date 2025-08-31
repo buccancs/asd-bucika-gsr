@@ -32,7 +32,6 @@ class PdfViewModel : BaseViewModel() {
 
     val listData = MutableLiveData<ReportData?>()
 
-
     //获取报告列表
     fun getReportData(isTC007: Boolean, page: Int){
         if (!NetworkUtil.isConnected(Utils.getApp())) {
@@ -45,7 +44,6 @@ class PdfViewModel : BaseViewModel() {
             listData.postValue(data)
         }
     }
-
 
     private suspend fun getReportDataRepository(isTC007: Boolean, page:Int) : ReportData? {
         var result: ReportData? = null

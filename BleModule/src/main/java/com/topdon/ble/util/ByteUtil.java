@@ -76,7 +76,6 @@ public class ByteUtil {
         return result;
     }
 
-
     public static byte[] LongToBytes(long values) {
         byte[] buffer = new byte[4];
         for (int i = 0; i < 4; i++) {
@@ -86,8 +85,6 @@ public class ByteUtil {
         }
         return buffer;
     }
-
-
 
     public static float bytesToFloat(byte[] bytes) {
         float value = Integer.valueOf(HexUtil.bytesToHexString(bytes), 16);

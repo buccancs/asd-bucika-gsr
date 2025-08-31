@@ -30,7 +30,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class App : BaseApplication() {
 
     init {
@@ -57,9 +56,6 @@ class App : BaseApplication() {
             initJPush()
         }
     }
-
-
-
 
     override fun getSoftWareCode(): String = BuildConfig.SOFT_CODE
 

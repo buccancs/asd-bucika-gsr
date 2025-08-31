@@ -59,7 +59,6 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.io.InputStream
 
-
 /**
  * 双光的初始化
  * 双光的
@@ -80,8 +79,6 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
      * 伪彩颜色模式，默认 IRONBOW_MODE(铁红)
      */
     protected var pseudoColorModeDual = CommonParams.PseudoColorUsbDualType.IRONBOW_MODE
-
-
 
     /**
      * 是否已开始可见光及红外的预览.
@@ -158,7 +155,6 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
      */
     private var vlUVCCamera: IRUVCDual? = null
 
-
     /**
      * 子类实现该方法，返回用于渲染画面的 SurfaceView
      */
@@ -173,7 +169,6 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
      * 子类实现该方法，在 USBMonitor 的 onConnect 阶段，执行创建 DualView 后的相应处理.
      */
     abstract suspend fun onDualViewCreate(dualView: DualViewWithExternalCameraCommonApi?)
-
 
     open fun initdata() {
 
@@ -228,8 +223,6 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         }
     }
 
-
-
     override fun onResume() {
         super.onResume()
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
@@ -247,7 +240,6 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
     abstract fun isDualIR() : Boolean
 
     abstract fun setTemperatureViewType()
-
 
     override fun initView() {
         if (isDualIR()){
@@ -279,7 +271,6 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         USBMonitorManager.getInstance().init(irPid, isUseIRISP, defaultDataFlowMode)
         USBMonitorManager.getInstance().addOnUSBConnectListener(this)
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -564,7 +555,6 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         }
     }
 
-
     open fun dualStop() {
         if (!isDualIR()){
             return
@@ -640,6 +630,5 @@ abstract class BaseIRPlushFragment : BaseFragment(), OnUSBConnectListener,ITsTem
         )
         return preIrARGBData
     }
-
 
 }

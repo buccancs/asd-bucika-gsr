@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.topdon.lib.ui.R
 import com.topdon.lib.ui.bean.ColorBean
 import com.topdon.lib.ui.config.CameraHelp
-import kotlinx.android.synthetic.main.ui_item_menu_second_view.view.*
+// Removed synthetic imports - using findViewById instead
 
 @Deprecated("旧的高低温点菜单，已重构过了")
 class MenuSecondNightAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -80,8 +80,8 @@ class MenuSecondNightAdapter(val context: Context) : RecyclerView.Adapter<Recycl
     }
 
     class ItemView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val lay: View = itemView.item_menu_tab_lay
-        val img: ImageView = itemView.item_menu_tab_img
-        val name: TextView = itemView.item_menu_tab_text
+        val lay: View = itemView.findViewById<View>(R.id.item_menu_tab_lay)
+        val img: ImageView = itemView.findViewById<View>(R.id.item_menu_tab_img)
+        val name: TextView = itemView.findViewById<View>(R.id.item_menu_tab_text)
     }
 }

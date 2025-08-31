@@ -5,7 +5,7 @@ internal object ByteArrayUtil {
      * 取指定数组的 `[index, index + 4)` 共 4 字节以小端方式转换成 Int.
      */
     internal fun ByteArray.toInt(index: Int): Int = try {
-        (this[index].toInt() and 0xff) or (this[index + 1].toInt() and 0xff shl 8) or (this[index + 2].toInt() and 0xff shl 16) or (this[index + 3].toInt() and 0xff shl 24)
+        (this[index].toInt() and 0xff) or (this[index + 1].toInt() and 0xff shl 8) or (this[index + 2].toInt() and 0xff  shl 16) or (this[index + 3].toInt() and 0xff shl 24)
     } catch (_: IndexOutOfBoundsException) {
         0
     }
@@ -36,7 +36,6 @@ internal object ByteArrayUtil {
     } catch (_: IndexOutOfBoundsException) {
         ""
     }
-
 
     /**
      * 将指定数组的 `[startIndex, startIndex + size)` 以 16 进制的形式输出

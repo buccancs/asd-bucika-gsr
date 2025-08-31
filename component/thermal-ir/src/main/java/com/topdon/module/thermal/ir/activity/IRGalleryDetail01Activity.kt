@@ -220,7 +220,6 @@ class IRGalleryDetail01Activity : BaseActivity(), View.OnClickListener {
         irViewModel.initData(irPath)
     }
 
-
     override fun onClick(v: View?) {
         when (v) {
             ll_ir_edit_2D -> {

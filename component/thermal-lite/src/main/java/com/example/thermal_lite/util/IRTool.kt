@@ -17,7 +17,6 @@ import kotlinx.coroutines.delay
 object IRTool {
     const val TAG: String = "IRTool"
 
-
     /**
      * 自动快门开关
      */
@@ -120,7 +119,6 @@ object IRTool {
         return ircmdError == IrcmdError.IRCMD_SUCCESS
     }
 
-
     /**
      * 高低增益模式下各做一组锅盖标定，如此模组的锅盖标定才是完整的流程
      */
@@ -134,7 +132,6 @@ object IRTool {
         delay(2000)
         return onceAuto()
     }
-
 
     /**
      * 开启机芯内部环境变量修正
@@ -162,7 +159,6 @@ object IRTool {
         DeviceIrcmdControlManager.getInstance().getIrcmdEngine()
             ?.advEnvCorrectTUSet(value);
     }
-
 
     /**
      * lite项目的温度修正
@@ -203,7 +199,5 @@ object IRTool {
 //        val ircmdError = DeviceIrcmdControlManager.getInstance().ircmdEngine
 //            .basicImageSceneModeSet(3)
     }
-
-
 
 }

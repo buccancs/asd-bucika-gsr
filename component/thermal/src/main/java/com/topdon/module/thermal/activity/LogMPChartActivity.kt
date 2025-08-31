@@ -272,7 +272,6 @@ class LogMPChartActivity : BaseActivity(), OnChartValueSelectedListener {
         }
     }
 
-
     override fun onValueSelected(e: Entry?, h: Highlight?) {
 
     }

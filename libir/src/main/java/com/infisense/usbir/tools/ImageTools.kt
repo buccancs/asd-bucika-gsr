@@ -110,7 +110,6 @@ object ImageTools {
         }
     }
 
-
     /**
      * 温度选取点
      *

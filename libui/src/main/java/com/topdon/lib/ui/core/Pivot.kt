@@ -16,16 +16,16 @@ class Pivot(
     fun setOn(view: View) {
         if (axis == AXIS_X) {
             when (pivotPoint) {
-                PIVOT_CENTER -> view.pivotX = view.width * 0.5f
-                PIVOT_MAX -> view.pivotX = view.width.toFloat()
+                PIVOT_CENTER -> view.pivotX = view.findViewById<View>(R.id.width) * 0.5f
+                PIVOT_MAX -> view.pivotX = view.findViewById<View>(R.id.width).toFloat()
                 else -> view.pivotX = pivotPoint.toFloat()
             }
             return
         }
         if (axis == AXIS_Y) {
             when (pivotPoint) {
-                PIVOT_CENTER -> view.pivotY = view.height * 0.5f
-                PIVOT_MAX -> view.pivotY = view.height.toFloat()
+                PIVOT_CENTER -> view.pivotY = view.findViewById<View>(R.id.height) * 0.5f
+                PIVOT_MAX -> view.pivotY = view.findViewById<View>(R.id.height).toFloat()
                 else -> view.pivotY = pivotPoint.toFloat()
             }
         }

@@ -18,12 +18,9 @@ class FenceView : View {
     private val rect: Rect = Rect(0, 0, 0, 0) //手动绘制矩形
     private val strokeWidth by lazy { SizeUtils.dp2px(2f).toFloat() } //线宽度
 
-
     constructor (context: Context) : super(context)
 
-
     constructor (context: Context, attrs: AttributeSet) : super(context, attrs)
-
 
     constructor (context: Context, attrs: AttributeSet, defStyle: Int) : super(
         context,
@@ -38,7 +35,6 @@ class FenceView : View {
         mPaint.strokeWidth = strokeWidth
         mPaint.alpha = 255
     }
-
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)

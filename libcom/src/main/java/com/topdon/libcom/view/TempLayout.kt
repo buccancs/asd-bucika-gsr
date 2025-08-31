@@ -1,8 +1,5 @@
 package com.topdon.libcom.view
 
-import android.animation.Animator
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -12,16 +9,20 @@ import com.topdon.libcom.R
 
 
 /**
- *
- * 高低温闪烁动画
- * @author: CaiSongL
- * @date: 2023/4/28 15:52
+ * Backward compatibility wrapper for TempLayout
+ * Delegates to EnhancedTempLayout in libapp.core
  */
-class TempLayout : LinearLayout {
-    companion object{
-        val TYPE_HOT = 1 //高温预警
-        val TYPE_LT = 2 //低温预警
-        val TYPE_A = 3  //高低温交叉预警
+class TempLayout : EnhancedTempLayout {
+    
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    
+    // Legacy constants maintained for compatibility
+    companion object {
+        val TYPE_HOT = EnhancedTempLayout.TYPE_HOT
+        val TYPE_LT = EnhancedTempLayout.TYPE_COLD  
+        val TYPE_A = EnhancedTempLayout.TYPE_ALTERNATE
     }
 
     private var alphaAnimator: ObjectAnimator? = null

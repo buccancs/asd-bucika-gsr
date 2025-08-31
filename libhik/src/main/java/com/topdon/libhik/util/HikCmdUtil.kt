@@ -32,7 +32,6 @@ object HikCmdUtil {
      */
     private const val TAG = "HikCmd"
 
-
     /**
      * 执行初始化.
      */
@@ -122,7 +121,6 @@ object HikCmdUtil {
         }
     }
 
-
     /**
      * 手动快门
      */
@@ -162,8 +160,6 @@ object HikCmdUtil {
         }
     }
 
-
-
     /**
      * 设置对比度.
      * @param contrast 取值范围 `[0,100]`
@@ -177,8 +173,6 @@ object HikCmdUtil {
         } else {
         }
     }
-
-
 
     /* ******************************  图像增强参数 ImageEnhancement  ****************************** */
     /**
@@ -199,8 +193,6 @@ object HikCmdUtil {
         } else {
         }
     }
-
-
 
     /* ******************************  视频调整参数 ImageVideoAdjust  ****************************** */
     /**
@@ -223,8 +215,6 @@ object HikCmdUtil {
         } else {
         }
     }
-
-
 
     /* ******************************  码流回调  ****************************** */
     /**
@@ -295,8 +285,6 @@ object HikCmdUtil {
             }
         }
     }
-
-
 
     /* ******************************  测温基本参数 ThermometryBasicParam  ****************************** */
     /**
@@ -370,12 +358,6 @@ object HikCmdUtil {
         }
         return if (range == 2.toByte()) "常温档" else "高温档"
     }
-
-
-
-
-
-
 
     private fun getCommandState(userId: Int): Int {
         val state = USB_COMMAND_STATE()

@@ -49,7 +49,6 @@ import java.io.InputStream
 class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     View.OnClickListener {
 
-
     override fun initContentView(): Int {
         return R.layout.activity_manual_step2
     }
@@ -396,7 +395,6 @@ class ManualStep2Activity : BaseActivity(), OnUSBConnectListener,
     override fun onClick(v: View) {
         onViewClicked(v)
     }
-
 
     var userStop = false
 

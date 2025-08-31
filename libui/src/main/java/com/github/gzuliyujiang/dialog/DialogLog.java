@@ -13,6 +13,7 @@
 
 package com.github.gzuliyujiang.dialog;
 
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -46,7 +47,7 @@ public final class DialogLog {
         if (!enable) {
             return;
         }
-        // Logging removed
+        Log.d(TAG, log.toString());
     }
 
 }

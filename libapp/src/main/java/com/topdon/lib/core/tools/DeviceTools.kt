@@ -107,7 +107,6 @@ object DeviceTools {
         return false
     }
 
-
     /**
      * 获取usb权限
      *
@@ -122,6 +121,5 @@ object DeviceTools {
         val pendingIntent = PendingIntent.getBroadcast(activity, requestCode, intent, flag)
         usbManager.requestPermission(device, pendingIntent)
     }
-
 
 }

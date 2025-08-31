@@ -13,7 +13,7 @@ import com.topdon.lib.ui.R
 import com.topdon.lib.ui.bean.ColorBean
 import com.topdon.lib.ui.config.CameraHelp
 import com.topdon.menu.constant.TargetType
-import kotlinx.android.synthetic.main.ui_item_menu_second_view.view.*
+// Removed synthetic imports - using findViewById instead
 
 @Deprecated("旧的标靶菜单，已重构过了")
 class MenuTargetAdapter (val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -99,9 +99,9 @@ class MenuTargetAdapter (val context: Context) : RecyclerView.Adapter<RecyclerVi
     }
 
     inner class ItemView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val lay: View = itemView.item_menu_tab_lay
-        val img: ImageView = itemView.item_menu_tab_img
-        val name: TextView = itemView.item_menu_tab_text
+        val lay: View = itemView.findViewById<View>(R.id.item_menu_tab_lay)
+        val img: ImageView = itemView.findViewById<View>(R.id.item_menu_tab_img)
+        val name: TextView = itemView.findViewById<View>(R.id.item_menu_tab_text)
         init {
 //            val canSeeCount = 4.5 //一屏占4个
 //            val with = (ScreenUtils.getScreenWidth() / canSeeCount).toInt()
@@ -110,7 +110,7 @@ class MenuTargetAdapter (val context: Context) : RecyclerView.Adapter<RecyclerVi
 //            val layoutParams = itemView.item_menu_tab_img.layoutParams
 //            layoutParams.width = imageSize
 //            layoutParams.height = imageSize
-//            itemView.item_menu_tab_img.layoutParams = layoutParams
+//            itemView.findViewById<View>(R.id.item_menu_tab_img).layoutParams = layoutParams
         }
     }
 }

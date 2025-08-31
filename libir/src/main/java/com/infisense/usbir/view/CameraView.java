@@ -42,7 +42,6 @@ public class CameraView extends TextureView {
 
     private boolean isOpenAmplify = false;
 
-
     public boolean isOpenAmplify() {
         return isOpenAmplify;
     }
@@ -190,7 +189,6 @@ public class CameraView extends TextureView {
         }
     }
 
-
     /**
      *
      */
@@ -204,7 +202,4 @@ public class CameraView extends TextureView {
         }
     }
 }
-
-
-
 

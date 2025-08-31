@@ -79,7 +79,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
 
     private var mGuideInterface: GuideInterface? = null
 
-
     override fun initView() {
         requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         rotateType = 3//默认旋转270度
@@ -201,7 +200,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
         onIrVideoStop()
     }
 
-
     /**
      * 开启视频流
      */
@@ -299,7 +297,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
         ToastTools.showShort("视频流停止完成")
     }
 
-
     fun onLowRangeBtnClick(view: View?) {
         if (mGuideInterface == null) {
             ToastTools.showShort("请先开启视频流")
@@ -358,7 +355,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
             .setCancelListener(R.string.app_cancel)
             .create().show()
     }
-
 
     //***************************************专家模式**********************************************
     /**
@@ -585,7 +581,6 @@ class ThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> {
         mIrSurfaceView!!.setMatrix(ThermalTool.getRotate(rotateType), 256f, 192f)
         ToastTools.showShort("旋转:${ThermalTool.getRotate(rotateType)}度")
     }
-
 
     //图像增强
     private fun enhance() {

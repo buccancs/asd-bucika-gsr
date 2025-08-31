@@ -70,8 +70,6 @@ public class OpencvTools {
         System.loadLibrary("opencv_java4");
     }
 
-
-
     private static Mat resultMat = new Mat();
     public static byte[] supImageMix(byte[] imageARGB, int width, int height, byte[] resulARGB) {
         // Step 1: Convert byte[] to Mat
@@ -100,7 +98,6 @@ public class OpencvTools {
         return resulARGB;
     }
 
-
     /**
      * 效果更好的超分，但是此函数耗时过长，应用于拍照
      * @param inBitmap
@@ -119,7 +116,6 @@ public class OpencvTools {
         dataOut.get(byteArray);
         return SupRUtils.INSTANCE.byteArrayToBitmap(byteArray);
     }
-
 
     public static byte[] supImageFourExToByte(byte[] imgByte) {
         long startTime = System.currentTimeMillis();
@@ -174,7 +170,6 @@ public class OpencvTools {
         return finalBitmap;
     }
 
-
     public static Bitmap supImageFourExToBitmap(Bitmap inBitmap) {
         long startTime = System.currentTimeMillis();
         // 将 Bitmap 转换为字节数组
@@ -205,7 +200,6 @@ public class OpencvTools {
         dstMat.release();
         return finalBitmap;
     }
-
 
     public static byte[] supImage(byte[] imageARGB, int width, int height, byte[] resulARGB){
         // Step 1: 将 byte[] 转换成 Mat 对象
@@ -248,8 +242,6 @@ public class OpencvTools {
         }
         return doubleByteImage;
     }
-
-
 
     /**
      * 温度转成开尔文
@@ -315,8 +307,6 @@ public class OpencvTools {
         }
         return map;
     }
-
-
 
     public static byte[] matToByteArray(Mat mat) {
         int rows = mat.rows();
@@ -442,7 +432,6 @@ public class OpencvTools {
         // waitKey(0);
         return im;
     }
-
 
     private static Mat draw_high_temp_edge_argb_pse(byte[] image, byte[] temperature, int cols, int rows, double high_t, int color_h, int type) throws IOException {
         double[] temp = new double[cols * rows];
@@ -751,7 +740,6 @@ public class OpencvTools {
 
     }
 
-
     /**
      * @param image   原图像YUV格式
      * @param image_w 图像宽度
@@ -809,9 +797,6 @@ public class OpencvTools {
         return dstBitmap;
     }
 
-
-
-
     public static Mat calcHU(Size size,double t2){
         Mat hu = new Mat(size,CV_32FC1);
         int row = hu.rows();
@@ -829,7 +814,6 @@ public class OpencvTools {
         homo.add(new Mat(hu.size(),CV_32FC1,new Scalar(0)));
         Mat hu2c = new Mat(size,CV_32FC2);
         Core.merge(homo,hu2c);
-        //System.out.println(hu.dump());
         return hu2c;
     }
 
@@ -839,7 +823,6 @@ public class OpencvTools {
         int dy = src.cols() / 2;
         float[] data = new float[dy];
 
-        //System.out.println(src.dump());
         if(src.rows() % 2 == 0) {
             if (src.cols() % 2 == 0) {
                 for(int i = 0; i < dx; i++){
@@ -860,10 +843,8 @@ public class OpencvTools {
                 }
 
             }else{
-                System.out.println("copy failed");
             }
         }
-        //System.out.println(dst.dump());
         return dst;
     }
 
@@ -904,8 +885,6 @@ public class OpencvTools {
         Mat hu2c = calcHU(image_padd.size(),t2);
         Core.mulSpectrums(image_padd, hu2c, image_padd_2c, 0);
         Core.idft(image_padd_2c,image_padd_2c,DFT_SCALE);
-        System.out.println(image_padd_2c.channels());
-
 
         Core.exp(image_padd_2c,image_padd_2c);
         Core.subtract(image_padd_2c,new Scalar(1),image_padd_2c);
@@ -936,7 +915,6 @@ public class OpencvTools {
         return result;
 
     }
-
 
     /**
      * 支持多颜色的伪彩条
@@ -1441,8 +1419,6 @@ public class OpencvTools {
         return result;
     }
 
-
-
     // 自定义比较器，用于比较双精度浮点数
     static class CustomComparator implements Comparator<Float> {
         @Override
@@ -1458,8 +1434,6 @@ public class OpencvTools {
         }
     }
 
-
-
     private static double calculateHistogram(Mat image1, Mat image2) {
         Mat hist1 = calculateHistogram(image1);
         Mat hist2 = calculateHistogram(image2);
@@ -1467,7 +1441,6 @@ public class OpencvTools {
         final double similarity = Imgproc.compareHist(hist1, hist2, Imgproc.CV_COMP_CORREL);
         return similarity;
     }
-
 
     private static double calculateMSE(Mat image1, Mat image2) {
         Mat diff = new Mat();
@@ -1638,15 +1611,12 @@ public class OpencvTools {
 //        Mat image2 = imread("E:/sharp/1696821354162.jpg");
         // 计算均方差（MSE）
 //        double mse = calculateMSE(image1, image2);
-        //System.out.println("均方差（MSE）: " + mse);
 
         // 计算结构相似性指数（SSIM）
 //        double ssim = calculateSSIM(image1, image2);
-        //System.out.println("结构相似性指数（SSIM）: " + ssim);
 
         // 计算峰值信噪比（PSNR）
 //        double psnr = calculatePSNR(image1, image2);
-        //System.out.println("峰值信噪比（PSNR）: " + psnr);
 
         // 计算直方图
         final double similarity = calculateHistogram(image1, image2);

@@ -24,7 +24,6 @@ import java.util.List;
 
 public class UnitUtils {
 
-
     /**
      * 根据类型获取单位数据
      *
@@ -48,7 +47,6 @@ public class UnitUtils {
             return new ArrayList<>();
         }
     }
-
 
     /**
      * 根据类型获取单位数据
@@ -76,7 +74,6 @@ public class UnitUtils {
         return hashMap;
     }
 
-
     /**
      * 计算结果
      *
@@ -89,7 +86,6 @@ public class UnitUtils {
         int unitType = "0".equals(unit) ? 0 : 1;
         return getCalcResult(unitType, hashMap, preUnit, numericalValue);
     }
-
 
     /**
      * 计算结果

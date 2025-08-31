@@ -84,7 +84,6 @@ class IRMonitorThermalFragment : BaseFragment(),ITsTempListener {
 
     }
 
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun action(event: ThermalActionEvent) {
         temperatureView.isEnabled = true
@@ -501,7 +500,6 @@ class IRMonitorThermalFragment : BaseFragment(),ITsTempListener {
         return tmp!!
     }
 
-
     /**
      * 单点修正过程
      */
@@ -510,7 +508,6 @@ class IRMonitorThermalFragment : BaseFragment(),ITsTempListener {
         gainStatus: CommonParams.GainStatus, tempInfo: Long
     ): Float {
         return temp
-
 
     }
 }

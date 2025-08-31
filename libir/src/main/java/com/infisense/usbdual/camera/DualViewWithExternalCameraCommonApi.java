@@ -30,7 +30,6 @@ import java.util.Locale;
 
 import static com.infisense.usbdual.camera.IFrameData.FRAME_LEN;
 
-
 /**
  * Created by fengjibo on 2023/9/20.
  */
@@ -85,7 +84,6 @@ public class DualViewWithExternalCameraCommonApi extends BaseDualView {
     private final byte[] amplifyIRRotateArray;//单红外的数据 256 * MULTIPLE * 192 * MULTIPLE
 
     public static final int MULTIPLE = 2;
-
 
     public boolean isOpenAmplify() {
         return isOpenAmplify;

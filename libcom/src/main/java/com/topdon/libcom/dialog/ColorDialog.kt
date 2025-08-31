@@ -43,7 +43,7 @@ class ColorDialog(color: Int) : DialogFragment() {
         val pView = view.findViewById<ColorPickerView>(R.id.color_picker_view)
         val colorAdapter = DColorSelectAdapter(requireContext())
         for (tmp in colorAdapter.colorBean){
-            if (Color.parseColor(tmp.color) == selColor){
+            if (tmp.colorValue == selColor){
                 colorAdapter.selected(colorAdapter.colorBean.indexOf(tmp))
                 break
             }

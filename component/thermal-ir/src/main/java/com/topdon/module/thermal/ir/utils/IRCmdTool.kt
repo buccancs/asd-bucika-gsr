@@ -97,7 +97,6 @@ object IRCmdTool {
         }
     }
 
-
     /**
      * 设置发射率 unit:cnt(128cnt = 1)
      * @param value 1 ~ 128
@@ -117,7 +116,6 @@ object IRCmdTool {
         val data = CommonParams.PropTPDParamsValue.NumberType(value.toString())
         setTpdParams(irCmd = irCmd, params = CommonParams.PropTPDParams.TPD_PROP_DISTANCE, value = data)
     }
-
 
     /**
      * 设置对比度

@@ -129,7 +129,6 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
             }
         }
 
-
         monitor_current_vol.text = getString(if (selectIndex!!.type == 1) R.string.chart_temperature else R.string.chart_temperature_high)
         monitor_real_vol.visibility = if (selectIndex!!.type == 1) View.GONE else View.VISIBLE
         monitor_real_img.visibility = if (selectIndex!!.type == 1) View.GONE else View.VISIBLE
@@ -252,12 +251,9 @@ open class IRMonitorLiteActivity : BaseActivity(), View.OnClickListener , ITsTem
         finish()
     }
 
-
-
     var config : DataBean?= null
     val basicGainGetValue = IntArray(1)
     var basicGainGetTime = 0L
-
 
     override fun tempCorrectByTs(temp: Float?): Float {
         var tempNew = temp

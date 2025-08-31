@@ -75,7 +75,6 @@ import java.util.*
 @Route(path = RouterConfig.IR_GALLERY_EDIT)
 class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListener {
 
-
     private var isShowC: Boolean = false
 
     /**
@@ -165,7 +164,6 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
             temperature_view.setImageSize(imageWidth, imageHeight)
         }
     }
-
 
     @SuppressLint("SetTextI18n")
     private fun showImage(capital: ByteArray, frame: ByteArray) {
@@ -646,7 +644,6 @@ class IRGalleryEditActivity : BaseActivity(), View.OnClickListener, ITsTempListe
 
         return ImageTempBean(full, pointList, lineList, rectList)
     }
-
 
     private fun saveImage() {
         TipDialog.Builder(this)

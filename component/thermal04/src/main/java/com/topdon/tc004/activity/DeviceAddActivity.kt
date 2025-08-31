@@ -107,7 +107,6 @@ class DeviceAddActivity : BaseActivity() {
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter = adapter
 
-
         requestPermission(2)
 
         LocationUtil.addBtStateListener(this) {
@@ -235,7 +234,6 @@ class DeviceAddActivity : BaseActivity() {
         stopBtScan()
     }
 
-
     private var openLocationDialog: TipDialog? = null
     /**
      * 显示开启位置信息开关提示弹框.
@@ -270,7 +268,6 @@ class DeviceAddActivity : BaseActivity() {
         openLocationDialog?.show()
     }
 
-
     private var openBtDialog: TipDialog? = null
     /**
      * 显示开启 WIFI 开关提示弹框，该方法只在权限申请通过后调用，故而理论上已拥有相应权限.
@@ -304,7 +301,6 @@ class DeviceAddActivity : BaseActivity() {
         }
         openBtDialog?.show()
     }
-
 
     private var openWifiDialog: TipDialog? = null
     /**
@@ -346,7 +342,6 @@ class DeviceAddActivity : BaseActivity() {
         }
         openWifiDialog?.show()
     }
-
 
     /**
      * 权限申请可能同时触发多次，用该变量进行控制。
@@ -422,7 +417,6 @@ class DeviceAddActivity : BaseActivity() {
             }
         })
     }
-
 
     private var timeoutEmptyJob: Job? = null
     /**

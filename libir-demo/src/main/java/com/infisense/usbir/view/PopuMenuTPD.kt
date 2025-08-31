@@ -12,7 +12,7 @@
 //import com.infisense.iruvc.sdkisp.Libircmd
 //import com.infisense.usbir.R
 //import com.infisense.usbir.camera.IRUVC
-//import kotlinx.android.synthetic.main.layout_tpd.view.*
+//// Removed synthetic imports - using findViewById instead
 //
 //
 ////长按[温度测量]弹出

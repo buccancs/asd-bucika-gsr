@@ -113,7 +113,6 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import kotlin.math.roundToInt
 
-
 @Route(path = RouterConfig.IR_FRAME)
 open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
 
@@ -124,7 +123,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
      * 且也没有切换数据流模式的需求和必要，故而此处写死为 图像+温度 复合数据模式。
      */
     protected val defaultDataFlowMode = CommonParams.DataFlowMode.IMAGE_AND_TEMP_OUTPUT
-
 
     /**
      * 目前对机芯进行一些配置如发射率、测温距离、自动快门重置，是在 start 调用后，另起一个协程，
@@ -267,7 +265,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         }
     }
 
-
      open fun initAmplify(show : Boolean){
         lifecycleScope.launch {
             if (show){
@@ -338,7 +335,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         tv_title_observe.setOnClickListener {
             switchTs001Mode(false)
         }
-
 
         view_car_detect.findViewById<LinearLayout>(R.id.ll_car_detect_info).setOnClickListener {
             LongTextDialog(this, SharedManager.getCarDetectInfo().item, SharedManager.getCarDetectInfo().description).show()
@@ -713,7 +709,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         }
     }
 
-
     private fun showEmissivityTips(){
         val config = ConfigRepository.readConfig(false)
         var text = ""
@@ -861,9 +856,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
 
     }
 
-
-
-
     /**
      * 最高最低温复原
      */
@@ -983,7 +975,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         }
         startISP()
 
-
         cameraView.bitmap = bitmap
         imageThread?.setBitmap(bitmap)
         runOnUiThread {
@@ -1033,7 +1024,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         }
         setCarDetectPrompt()
     }
-
 
     override fun onPause() {
         super.onPause()
@@ -1423,7 +1413,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         thermal_recycler_night.setPseudoColor(code)
     }
 
-
     private var tempAlarmSetDialog: TempAlarmSetDialog? = null
     /**
      * 显示温度报警设置弹框.
@@ -1465,7 +1454,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
             }
         }
     }
-
 
     private var defaultIsPortrait = DeviceConfig.IS_PORTRAIT //默认横屏
     private fun setSetting(type: SettingType, isSelected: Boolean) {
@@ -1772,7 +1760,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         }
     }
 
-
     /**
      * 初始数据
      */
@@ -1954,7 +1941,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
     private var nuc_table_low = ShortArray(8192)
     private var gainStatus = CommonParams.GainStatus.HIGH_GAIN
 
-
     //设置TS001的温度校正
     private fun setTsBin() {
         ircmd?.let {
@@ -2010,7 +1996,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
             }
         }
     }
-
 
     /**
      * 单点修正过程
@@ -2068,7 +2053,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         }
         thermal_recycler_night.setSettingSelected(SettingType.ALARM, alarmBean.isHighOpen || alarmBean.isLowOpen)
     }
-
 
     override fun onStop() {
         irStop()
@@ -2497,7 +2481,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
        return if (isTS001) {PRODUCT_NAME_TS} else {PRODUCT_NAME_TC}
     }
 
-
     protected var isVideo = false
 
     protected var videoRecord: VideoRecordFFmpeg? = null
@@ -2558,7 +2541,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         }
     }
 
-
     /**
      * 如果正在进行录像，则停止录像.
      */
@@ -2574,7 +2556,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
             }
         }
     }
-
 
     private var flow: Job? = null
 
@@ -2626,7 +2607,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         popupWindow = seekBarPopup
     }
 
-
     private fun getPopupWindowY(contentHeight: Int): Int {
         if (!saveSetBean.isRotatePortrait()) {
             return 0
@@ -2641,7 +2621,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
             thermal_lay.measuredHeight - contentHeight
         }
     }
-
 
     private var nowZoomLevel = 1
 
@@ -2695,11 +2674,9 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
         thermal_recycler_night.setTempLevel(CameraItemBean.TYPE_TMP_ZD)
     }
 
-
     open fun switchAutoGain(boolean: Boolean){
         iruvc?.auto_gain_switch = boolean
     }
-
 
     protected var configJob: Job? = null
     private var temperatureMode: Int = SaveSettingUtil.temperatureMode
@@ -2867,7 +2844,6 @@ open class IRThermalNightActivity : BaseIRActivity(), ITsTempListener {
             }
         }
     }
-
 
     /**
      * 记录设备信息

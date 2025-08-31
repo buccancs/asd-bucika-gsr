@@ -55,7 +55,6 @@ object IRImageUtil {
         }
     }
 
-
     /**
      * 伽马曲线
      * https://www.cnblogs.com/AlgrithmsRookie/p/13212369.html

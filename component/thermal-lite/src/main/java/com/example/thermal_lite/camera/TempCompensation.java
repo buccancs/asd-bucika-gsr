@@ -275,7 +275,6 @@ public class TempCompensation {
         return newTempFloat;
     }
 
-
     /**
      * 获取新温度值
      *

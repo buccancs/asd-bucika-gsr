@@ -92,7 +92,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
     protected var isPause = false
     protected var isPick = false
 
-
     companion object{
         fun newInstance(isPick: Boolean): IRMonitorLiteFragment {
             val fragment = IRMonitorLiteFragment()
@@ -102,7 +101,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
             return fragment
         }
     }
-
 
     override fun initContentView(): Int {
         return R.layout.fragment_lite_ir_monitor
@@ -186,8 +184,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
     suspend fun autoStart() : Boolean{
         return IRTool.autoStart()
     }
-
-
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun action(event: ThermalActionEvent) {
@@ -312,7 +308,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
         }
     }
 
-
     /**
      * 初始化USB连接相关类
      */
@@ -381,7 +376,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
         temperatureView.setMonitor(true)
         temperatureView.start()
     }
-
 
     private fun initCameraSize() {
         temperatureView.setTextSize(SaveSettingUtil.tempTextSize)
@@ -452,11 +446,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
         temperatureView.drawLine()
     }
 
-
-
-
-
-
     override fun onStart() {
         super.onStart()
     }
@@ -522,7 +511,6 @@ class IRMonitorLiteFragment : BaseFragment(), ITsTempListener {
     var config : DataBean?= null
     val basicGainGetValue = IntArray(1)
     var basicGainGetTime = 0L
-
 
     override fun tempCorrectByTs(temp: Float?): Float {
         var tempNew = temp

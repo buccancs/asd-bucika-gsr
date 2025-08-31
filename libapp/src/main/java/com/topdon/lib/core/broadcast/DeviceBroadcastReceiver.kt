@@ -21,7 +21,6 @@ class DeviceBroadcastReceiver : BroadcastReceiver() {
         const val ACTION_USB_PERMISSION = "com.topdon.topInfrared.USB_PERMISSION"
     }
 
-
     override fun onReceive(context: Context?, intent: Intent?) {
         if (intent == null) {
             return
@@ -35,7 +34,6 @@ class DeviceBroadcastReceiver : BroadcastReceiver() {
             handleUsbEvent(intent)
         }
     }
-
 
     private fun handleUsbEvent(intent: Intent) {
         val usbDevice: UsbDevice?

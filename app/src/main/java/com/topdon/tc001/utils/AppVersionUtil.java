@@ -176,7 +176,6 @@ public class AppVersionUtil {
         void version(String version);
     }
 
-
     // 开始下载指定序号的apk文件
     private void startDownload(String url) {
         completeReceiver = new DownloadCompleteReceiver();
@@ -206,7 +205,6 @@ public class AppVersionUtil {
         VersionTools.INSTANCE.setMDownloadId(mDownloadId);
     }
 
-
     // 定义一个下载完成的广播接收器。用于接收下载完成事件
     private class DownloadCompleteReceiver extends BroadcastReceiver {
         @Override
@@ -219,7 +217,6 @@ public class AppVersionUtil {
             }
         }
     }
-
 
     // 安装应用程序
     public void installApk() {

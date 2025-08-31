@@ -89,7 +89,6 @@ public class CameraPreviewManager {
     private boolean mShowDoubleImage = false;
     private IRImageHelp irImageHelp;
 
-
     private OnTempDataChangeCallback mOnTempDataChangeCallback;
 
     private CameraPreviewManager() {
@@ -133,7 +132,6 @@ public class CameraPreviewManager {
     public byte[] frameIrAndTempData = new byte[192 * 256 * 4];
     public byte[] takePhotoIrAndTempData = new byte[192 * 256 * 4];
 
-
     private boolean mIsShowFPS = true;
     private boolean mSaveData = false;
     private boolean mTakePhoto = false;
@@ -156,7 +154,6 @@ public class CameraPreviewManager {
     private AutoGainImageRes mAutoGainImageRes = new AutoGainImageRes();
     private AutoGainSwitchInfo mAutoGainSwitchInfo = new AutoGainSwitchInfo();
     private AutoGainSwitchParam mGainSwitchParam = new AutoGainSwitchParam();
-
 
     public int getPreviewWidth() {
         return mPreviewWidth;
@@ -209,7 +206,6 @@ public class CameraPreviewManager {
                     System.arraycopy(frame, 0, mIrData, 0, mIrLength);
                     //保存红外数据到frameIrAndTempData
                     System.arraycopy(mIrData, 0, frameIrAndTempData, 0, mIrLength);
-
 
                     //信息行处理
                     if (!mShowDoubleImage) {
@@ -296,7 +292,6 @@ public class CameraPreviewManager {
                     //处理图像旋转角度
                     mFinalImageWidth = 0;
                     mFinalImageHeight = 0;
-
 
                     handleSurfaceDisplay();
 

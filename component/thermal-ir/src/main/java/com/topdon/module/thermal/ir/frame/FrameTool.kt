@@ -30,16 +30,12 @@ class FrameTool {
     private val supImageData = ByteArray(imageWidth * imageHeight * 4 * 4)
     private var dstArgbBytes: ByteArray ?= null
 
-
     fun read(bytes: ByteArray) {
         try {
             val frame = ByteArray(bytes.size)
             System.arraycopy(bytes, 0, frame, 0, frame.size)
-            println("bs len: ${frame.size}")
             System.arraycopy(frame, 0, imageBytes, 0, scrImageLen)//图像数据 (192 x 256 x 2) yuv
             System.arraycopy(frame, scrImageLen, temperatureBytes, 0, srcTemperatureLen) //温度数据 (192 x 256 x 2)
-            println("imageBytes len: ${imageBytes.size}")
-            println("temperatureBytes len: ${temperatureBytes.size}")
         } catch (e: Exception) {
         }
     }
@@ -281,7 +277,6 @@ class FrameTool {
 //        val temperatureSampleEasyResult = irTemp.getTemperatureOfRect(Rect(0, 0, 256, 192))
 //    }
 
-
 //    fun getSrcTemp()：Libirt{
 //        // 获取全图最高温和最低温的数据
 //        val irTemp = Libirtemp(256, 192)
@@ -299,6 +294,5 @@ class FrameTool {
         irTemp.setTempData(temperatureBytes)
         return irTemp.getTemperatureOfRect(Rect(0, 0, imageWidth, imageHeight))
     }
-
 
 }

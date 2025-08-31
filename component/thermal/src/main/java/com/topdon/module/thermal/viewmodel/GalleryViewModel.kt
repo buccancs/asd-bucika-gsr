@@ -58,7 +58,6 @@ class GalleryViewModel : BaseViewModel() {
         return flow
     }
 
-
     private fun getVideoList(): Flow<ArrayList<String>> {
         val flow = flow {
             val path = galleryPath

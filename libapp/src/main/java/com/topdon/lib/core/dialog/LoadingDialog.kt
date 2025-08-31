@@ -10,7 +10,9 @@ import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import com.topdon.lib.core.R
 import com.topdon.lib.core.utils.ScreenUtil
-import kotlinx.android.synthetic.main.dialog_loading.view.*
+import android.widget.*
+import androidx.recyclerview.widget.RecyclerView
+// Removed synthetic imports - using findViewById instead
 
 /**
  * 新版 UI 的那个 LMS 的加载中弹框，由于 LMS 的弹框没有文字，只好自己再搞一个了。
@@ -20,13 +22,13 @@ import kotlinx.android.synthetic.main.dialog_loading.view.*
 class LoadingDialog(context: Context) : Dialog(context, R.style.TransparentDialog) {
 
     fun setTips(@StringRes resId: Int) {
-        rootView.tv_tips.setText(resId)
-        rootView.tv_tips.isVisible = true
+        rootView.findViewById<TextView>(R.id.tv_tips).setText(resId)
+        rootView.findViewById<TextView>(R.id.tv_tips).isVisible = true
     }
 
     fun setTips(text: CharSequence?) {
-        rootView.tv_tips.text = text
-        rootView.tv_tips.isVisible = text?.isNotEmpty() == true
+        rootView.findViewById<TextView>(R.id.tv_tips).text = text
+        rootView.findViewById<TextView>(R.id.tv_tips).isVisible = text?.isNotEmpty() == true
     }
 
 

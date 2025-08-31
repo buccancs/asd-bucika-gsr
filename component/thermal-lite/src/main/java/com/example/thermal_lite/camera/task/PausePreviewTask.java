@@ -3,7 +3,6 @@ package com.example.thermal_lite.camera.task;
 
 import com.example.thermal_lite.camera.CameraPreviewManager;
 
-
 /**
  * Created by fengjibo on 2024/4/3.
  */

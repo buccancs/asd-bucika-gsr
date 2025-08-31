@@ -1,5 +1,6 @@
 package com.topdon.lib.ui.camera
 
+import android.view.View
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
@@ -21,9 +22,8 @@ import com.blankj.utilcode.util.ToastUtils
 
 import com.topdon.lib.core.listener.BitmapViewListener
 import com.topdon.lib.ui.R
-import kotlinx.android.synthetic.main.camera_lay.view.*
+// Removed synthetic imports - using findViewById instead
 import java.util.*
-
 
 /**
  * 相机预览
@@ -59,8 +59,6 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
         onResumeView()
     }
 
-
-
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         isPreviewing = false
@@ -93,8 +91,8 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
                 startX = event.x - mTextureView.x
                 startY = event.y - mTextureView.y
                 val view: View = mTextureView.parent as View
-                parentViewW = view.width.toFloat()
-                parentViewH = view.height.toFloat()
+                parentViewW = view.findViewById<View>(R.id.width).toFloat()
+                parentViewH = view.findViewById<View>(R.id.height).toFloat()
             }
             MotionEvent.ACTION_MOVE -> {
                 //滑动
@@ -122,11 +120,9 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
 //                setupImageReader()
                 // 为摄像头赋值
                 mCameraId = cameraId
-                break
             }
-        } catch (e: CameraAccessException) {
-            // Debug removed
         }
+        return true
     }
 
     /**
@@ -218,6 +214,5 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
         mTextureView.scaleY = scale
         invalidate()
     }
-
 
 }

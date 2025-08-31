@@ -87,9 +87,7 @@ class WsManager(private val wsUrl: String, private val okHttpClient: OkHttpClien
         }
     }
 
-
     fun isConnect(): Boolean = status == State.CONNECTING || status == State.CONNECTED
-
 
     private var mLock = ReentrantLock()
     @Synchronized
@@ -158,7 +156,6 @@ class WsManager(private val wsUrl: String, private val okHttpClient: OkHttpClien
         return isSend
     }
 
-
     private val wsMainHandler = Handler(Looper.getMainLooper())
     private fun IWebSocketListener?.runMain(block: (IWebSocketListener) -> Unit) {
         if (this != null) {
@@ -171,7 +168,6 @@ class WsManager(private val wsUrl: String, private val okHttpClient: OkHttpClien
             }
         }
     }
-
 
     private class HeartBeatTimer(val wsManager: WsManager) : Timer() {
         var timeoutListener: (() -> Unit)? = null

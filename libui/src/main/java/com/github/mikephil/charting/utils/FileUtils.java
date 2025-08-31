@@ -3,6 +3,7 @@ package com.github.mikephil.charting.utils;
 
 import android.content.res.AssetManager;
 import android.os.Environment;
+import android.util.Log;
 
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
@@ -24,6 +25,8 @@ import java.util.List;
  * @author Philipp Jahoda
  */
 public class FileUtils {
+
+    private static final String LOG = "MPChart-FileUtils";
 
     /**
      * Loads a an Array of Entries from a textfile from the sd-card.
@@ -62,7 +65,7 @@ public class FileUtils {
                 }
             }
         } catch (IOException e) {
-            // Error reading file
+            Log.e(LOG, e.toString());
         }
 
         return entries;
@@ -89,7 +92,7 @@ public class FileUtils {
         // Integer.parseInt(split[1])));
         // }
         // } catch (IOException e) {
-        // // Error handling
+        // Log.e(LOG, e.toString());
         // }
         //
         // DataSet ds = new DataSet(entries, label);
@@ -133,7 +136,7 @@ public class FileUtils {
                 line = reader.readLine();
             }
         } catch (IOException e) {
-            // Error handling
+            Log.e(LOG, e.toString());
 
         } finally {
 
@@ -141,7 +144,7 @@ public class FileUtils {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    // Error handling
+                    Log.e(LOG, e.toString());
                 }
             }
         }
@@ -168,7 +171,7 @@ public class FileUtils {
         // line = reader.readLine();
         // }
         // } catch (IOException e) {
-        // // Error handling
+        // Log.e(LOG, e.toString());
         //
         // } finally {
         //
@@ -176,7 +179,7 @@ public class FileUtils {
         // try {
         // reader.close();
         // } catch (IOException e) {
-        // // Error handling
+        // Log.e(LOG, e.toString());
         // }
         // }
         // }
@@ -203,7 +206,7 @@ public class FileUtils {
                 saved.createNewFile();
             } catch (IOException e)
             {
-                // Error handling
+                Log.e(LOG, e.toString());
             }
         }
         try
@@ -220,7 +223,7 @@ public class FileUtils {
             buf.close();
         } catch (IOException e)
         {
-            // Error handling
+            Log.e(LOG, e.toString());
         }
     }
 
@@ -244,7 +247,7 @@ public class FileUtils {
                 line = reader.readLine();
             }
         } catch (IOException e) {
-            // Error handling
+            Log.e(LOG, e.toString());
 
         } finally {
 
@@ -252,7 +255,7 @@ public class FileUtils {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    // Error handling
+                    Log.e(LOG, e.toString());
                 }
             }
         }
@@ -279,7 +282,7 @@ public class FileUtils {
         // line = reader.readLine();
         // }
         // } catch (IOException e) {
-        // // Error handling
+        // Log.e(LOG, e.toString());
         //
         // } finally {
         //
@@ -287,7 +290,7 @@ public class FileUtils {
         // try {
         // reader.close();
         // } catch (IOException e) {
-        // // Error handling
+        // Log.e(LOG, e.toString());
         // }
         // }
         // }

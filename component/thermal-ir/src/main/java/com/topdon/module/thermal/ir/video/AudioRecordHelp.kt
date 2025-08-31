@@ -8,7 +8,6 @@ import org.bytedeco.javacv.FFmpegFrameRecorder
 import java.lang.ref.WeakReference
 import java.nio.ShortBuffer
 
-
 /**
  * 音频采集并且与视频合并一起
  * @author: CaiSongL
@@ -53,7 +52,6 @@ class AudioRecordHelp private constructor() {
         } catch (e: Exception) {
         }
     }
-
 
     private fun initRecorder(recorder: FFmpegFrameRecorder) {
         audioRecordRunnable = AudioRecordRunnable(recorder)

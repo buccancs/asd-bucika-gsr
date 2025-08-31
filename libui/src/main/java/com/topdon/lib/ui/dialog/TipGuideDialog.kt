@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.topdon.lib.ui.R
 import com.topdon.lib.ui.widget.IndicateView
-import kotlinx.android.synthetic.main.dialog_tip_guide.view.*
+// Removed synthetic imports - using findViewById instead
 import kotlin.collections.ArrayList
 
 class TipGuideDialog : DialogFragment() {
@@ -55,12 +55,12 @@ class TipGuideDialog : DialogFragment() {
             R.drawable.target_guide_pic_3,
             R.drawable.target_guide_pic_4,
         )
-        viewPager = view.view_pager
+        viewPager = view.findViewById<View>(R.id.view_pager)
         tvContent1 = view.tv_content_1
         tvContent2 = view.tv_content_2
         tvContent3 = view.tv_content_3
-        indicateView = view.indicate_view
-        ivTarget = view.iv_target
+        indicateView = view.findViewById<View>(R.id.indicate_view)
+        ivTarget = view.findViewById<View>(R.id.iv_target)
         val adapter = PageAdapter(childFragmentManager, imgList)
         indicateView.itemCount = adapter.count
         viewPager.adapter = adapter

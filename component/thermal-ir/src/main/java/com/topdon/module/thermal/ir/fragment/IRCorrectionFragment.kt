@@ -340,7 +340,6 @@ class IRCorrectionFragment : BaseFragment(),ITsTempListener{
         }
     }
 
-
     suspend fun autoStart() {
         withContext(Dispatchers.IO){
             //            ToastUtils.showShort("任务开始")

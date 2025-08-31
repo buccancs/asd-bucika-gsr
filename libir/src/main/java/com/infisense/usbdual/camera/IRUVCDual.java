@@ -648,7 +648,6 @@ public class IRUVCDual {
         }
     }
 
-
     public void setConnectCallback(ConnectCallback mConnectCallback) {
         this.mConnectCallback = mConnectCallback;
     }
@@ -696,6 +695,5 @@ public class IRUVCDual {
         }
 
     }
-
 
 }

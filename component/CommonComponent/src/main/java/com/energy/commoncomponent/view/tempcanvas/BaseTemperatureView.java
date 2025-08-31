@@ -595,7 +595,6 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
         }
     }
 
-
     /**
      * 图形绘制
      */
@@ -699,11 +698,9 @@ public abstract class BaseTemperatureView extends SurfaceView implements Surface
         }
     }
 
-
     public abstract CopyOnWriteArrayList<TempResultBean> generateViewData(LinkedList<PointDraw.PointView> pointViews,
                                           LinkedList<LineDraw.LineView> lineViews,
                                           LinkedList<RectDraw.RectView> rectViews);
-
 
     /**
      * 绘制温度数据

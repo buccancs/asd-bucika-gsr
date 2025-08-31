@@ -66,7 +66,6 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
      */
     private var irPid = 0x5830
 
-
     private var imageWidth = 0 // 经过旋转后的图像宽度
     private var imageHeight = 0 // 经过旋转后的图像高度
     private var syncimage = SynchronizedBitmap()
@@ -104,8 +103,6 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
      */
     private var vlUVCCamera: IRUVCDual? = null
 
-
-
     /**
      * 子类实现该方法，返回用于渲染画面的 SurfaceView
      */
@@ -123,13 +120,9 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
 
     abstract fun setTemperatureViewType()
 
-
     open fun setDispViewData(dualDisp : Int){
 
     }
-
-
-
 
     override fun initView() {
         super.initView()
@@ -488,7 +481,5 @@ abstract class BaseIRPlushActivity : IRThermalNightActivity(), OnUSBConnectListe
             dualView?.isOpenAmplify = isOpenAmplify
         }
     }
-
-
 
 }

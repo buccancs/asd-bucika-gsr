@@ -3,6 +3,7 @@ package com.github.mikephil.charting.charts;
 import android.content.Context;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.github.mikephil.charting.components.XAxis.XAxisPosition;
 import com.github.mikephil.charting.components.YAxis.AxisDependency;
@@ -114,7 +115,10 @@ public class HorizontalBarChart extends BarChart {
                 Math.max(minOffset, offsetBottom));
 
         if (mLogEnabled) {
-            // Debug logging removed
+            Log.i(LOG_TAG, "offsetLeft: " + offsetLeft + ", offsetTop: " + offsetTop + ", offsetRight: " +
+                    offsetRight + ", offsetBottom: "
+                    + offsetBottom);
+            Log.i(LOG_TAG, "Content: " + mViewPortHandler.getContentRect().toString());
         }
 
         prepareOffsetMatrix();
@@ -198,7 +202,7 @@ public class HorizontalBarChart extends BarChart {
 
         if (mData == null) {
             if (mLogEnabled)
-                // Logging removed
+                Log.e(LOG_TAG, "Can't select by touch. No data set.");
             return null;
         } else
             return getHighlighter().getHighlight(y, x); // switch x and y

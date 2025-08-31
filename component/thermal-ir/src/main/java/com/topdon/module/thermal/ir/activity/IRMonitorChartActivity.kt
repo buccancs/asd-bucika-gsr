@@ -93,7 +93,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         temperatureView.isEnabled = false
         temperatureView.setTextSize(SaveSettingUtil.tempTextSize)
 
-
         initDataIR()
     }
 
@@ -259,7 +258,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         }
     }
 
-
     private var imageThread: ImageThreadTC? = null
     private var bitmap: Bitmap? = null //不需要显示图像，可去掉
     private var iruvc: IRUVCTC? = null
@@ -313,7 +311,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         }
     }
 
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun iruvctc(event: PreviewComplete) {
         dealY16ModePreviewComplete()
@@ -342,7 +339,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         }catch (e : Exception){
         }
     }
-
 
     /**
      * @param isRestart 是否是重启模组
@@ -398,7 +394,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         iruvc!!.registerUSB()
 
     }
-
 
     /**
      *
@@ -555,7 +550,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         return tmp!!
     }
 
-
     /**
      * 单点修正过程
      */
@@ -593,7 +587,6 @@ class IRMonitorChartActivity : BaseActivity(),ITsTempListener {
         )
         return newTemp
     }
-
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun cameraEvent(event: DeviceCameraEvent) {

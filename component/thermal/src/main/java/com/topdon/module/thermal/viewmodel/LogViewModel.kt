@@ -413,7 +413,6 @@ class LogViewModel : BaseViewModel() {
         }
     }
 
-
     /**
      * @param type 1:秒 2:分 3:时 4:天
      */

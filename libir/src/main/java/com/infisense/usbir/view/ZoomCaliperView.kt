@@ -17,7 +17,6 @@ import com.infisense.usbir.R
 import com.infisense.usbir.utils.TargetUtils
 import com.topdon.lib.core.bean.ObserveBean
 
-
 /**
  * 缩放view基类
  */
@@ -125,7 +124,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
     var isCheckChildView = false
     var contentWith = 0
     var contentHeight = 0
-
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (canScale && isScale && event.action != MotionEvent.ACTION_UP) {
@@ -265,8 +263,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
     /**预览大小 */
     private var mPreviewSize: Size? = null
 
-
-
     fun setRotation(isReverse : Boolean){
         this.isReverse = isReverse
         updateRotation()
@@ -282,7 +278,6 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
 
     private fun onResumeView() {
     }
-
 
     val viewX: Float
         get() = mTextureView.x - (viewWidth - mTextureView.width)/2
@@ -430,6 +425,5 @@ class ZoomCaliperView : LinearLayout, ScaleGestureDetector.OnScaleGestureListene
             magnifier?.show(centerX, centerY)
         }
     }
-
 
 }

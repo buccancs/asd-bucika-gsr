@@ -421,7 +421,6 @@ class IRMonocularActivity : BaseWifiActivity() {
         }
     }
 
-
     private fun setPip() {
         lifecycleScope.launch {
             val isSuccess = TS004Repository.setPip(!isPip)

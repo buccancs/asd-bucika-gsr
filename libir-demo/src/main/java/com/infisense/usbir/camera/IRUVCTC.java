@@ -453,7 +453,6 @@ public class IRUVCTC {
         // 初始化之后可以自定义环境修正参数
         uvcCamera.setEnvCorrectParams(16384, 16384, 300 * 16, 300 * 16);
 
-
         // 设置当前的增益装填，不设置则默认为高增益
         uvcCamera.setGainStatus(gainStatus);
 
@@ -540,7 +539,6 @@ public class IRUVCTC {
                         BitmapUtils.saveShortFile(bt_high, "bt_high");
                         BitmapUtils.saveShortFile(bt_low, "bt_low");
                     }
-
 
                     if (isUseSaveData) {
                         // 直接从文件中读取

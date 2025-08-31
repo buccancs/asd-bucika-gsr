@@ -22,7 +22,6 @@ class FencePointView : View {
 
     constructor (context: Context, attrs: AttributeSet) : super(context, attrs)
 
-
     constructor (context: Context, attrs: AttributeSet, defStyle: Int) : super(
         context,
         attrs,
@@ -52,7 +51,6 @@ class FencePointView : View {
             null
         ) as BitmapDrawable
     }
-
 
     @SuppressLint("UseCompatLoadingForDrawables", "DrawAllocation")
     override fun onDraw(canvas: Canvas) {

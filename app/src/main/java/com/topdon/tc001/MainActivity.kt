@@ -66,7 +66,6 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
 
-
 @Route(path = RouterConfig.MAIN)
 class MainActivity : BaseActivity(), View.OnClickListener {
 
@@ -208,7 +207,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         resetTipsDialog?.show()
     }
 
-
     private var disconnectDialog: TipDialog? = null
     private fun dialogDisconnect(){
         if (resetTipsDialog?.isShowing == true) {
@@ -271,7 +269,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
-
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -361,8 +358,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         // Removed TS004-specific disconnection handling since only TC001 is supported
     }
 
-
-
     private class ViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
         override fun getItemCount() = 3
 
@@ -382,7 +377,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
-
 
     /**
      * 权限检测
@@ -528,7 +522,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 }
             })
     }
-
 
     fun jumpIRActivity(){
         when (checkPermissionType) {

@@ -1,31 +1,29 @@
 package com.guide.zm04c.matrix.utils
 
 import java.text.DecimalFormat
-import java.text.NumberFormat
 import java.util.*
 import kotlin.experimental.and
 
 /**
+ * Backward compatibility wrapper for BaseDataTypeConvertUtils.
+ * Delegates to enhanced MatrixUtils in libapp core.
  * created by liuhongwei gd02527 on 2018年07月27日
  */
+@Deprecated("Use MatrixUtils in libapp core instead", ReplaceWith("MatrixUtils"))
 class BaseDataTypeConvertUtils private constructor() {
 
     companion object {
         private val TAG = BaseDataTypeConvertUtils::class.java.simpleName
-        private var df: DecimalFormat ?= null
+        private var df: DecimalFormat? = null
 
+        @JvmStatic
         fun convertShort2LittleEndianByteArr(value: Short): ByteArray {
-            val shortByteArray = ByteArray(2)
-            shortByteArray[0] = (value and 0xff).toByte()
-            shortByteArray[1] = (value.toInt() ushr 8 and 0xff).toByte()
-            return shortByteArray
+            return MatrixUtils.convertShortToLittleEndianByteArray(value)
         }
 
+        @JvmStatic
         fun convertShort2BigEndianByteArr(value: Short): ByteArray {
-            val shortByteArray = ByteArray(2)
-            shortByteArray[0] = (value.toInt() ushr 8 and 0xff).toByte()
-            shortByteArray[1] = (value and 0xff).toByte()
-            return shortByteArray
+            return MatrixUtils.convertShortToBigEndianByteArray(value)
         }
 
         private fun convertShortArr2ByteArr(valueArr: ShortArray, convert: (Short) -> ByteArray): ByteArray {

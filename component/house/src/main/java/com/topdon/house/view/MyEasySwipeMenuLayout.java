@@ -102,7 +102,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
             typedArray.recycle();
         }
 
-
     }
 
     @Override
@@ -236,7 +235,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
             mRightView.layout(lLeft, lTop, lRight, lBottom);
         }
 
-
     }
 
     State result;
@@ -245,7 +243,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN: {
-             //   System.out.println(">>>>dispatchTouchEvent() ACTION_DOWN");
                 isSwipeing = false;
                 if (mLastP == null) {
                     mLastP = new PointF();
@@ -265,7 +262,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
                 break;
             }
             case MotionEvent.ACTION_MOVE: {
-             //   System.out.println(">>>>dispatchTouchEvent() ACTION_MOVE getScrollX:" + getScrollX());
                 float distanceX = mLastP.x - ev.getRawX();
                 float distanceY = mLastP.y - ev.getRawY();
                 if (Math.abs(distanceY) > mScaledTouchSlop  && Math.abs(distanceY) > Math.abs(distanceX)) {
@@ -304,22 +300,18 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
                 }
                 mLastP.set(ev.getRawX(), ev.getRawY());
 
-
                 break;
             }
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL: {
-              //     System.out.println(">>>>dispatchTouchEvent() ACTION_CANCEL OR ACTION_UP");
 
                 finalyDistanceX = mFirstP.x - ev.getRawX();
                 if (Math.abs(finalyDistanceX) > mScaledTouchSlop) {
-                  //  System.out.println(">>>>P");
 
                     isSwipeing = true;
                 }
                 result = isShouldOpen(getScrollX());
                 handlerSwipeMenu(result);
-
 
                 break;
             }
@@ -331,7 +323,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
         return super.dispatchTouchEvent(ev);
 
     }
-
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
@@ -389,7 +380,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
         invalidate();
     }
 
-
     @Override
     public void computeScroll() {
         //判断Scroller是否执行完毕：
@@ -399,7 +389,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
             invalidate();
         }
     }
-
 
     /**
      * 根据当前的scrollX的值判断松开手后应处于何种状态
@@ -446,7 +435,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
 
     }
 
-
     @Override
     protected void onDetachedFromWindow() {
         if (this == mViewCache) {
@@ -474,7 +462,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
             }
         }
     }
-
 
     public float getFraction() {
         return mFraction;
@@ -504,7 +491,6 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
         return mViewCache;
     }
 
-
     public static State getStateCache() {
         return mStateCache;
     }
@@ -525,6 +511,5 @@ public class MyEasySwipeMenuLayout extends ViewGroup {
         return distanceX < 0;
 
     }
-
 
 }

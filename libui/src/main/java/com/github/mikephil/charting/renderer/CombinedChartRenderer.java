@@ -1,6 +1,7 @@
 package com.github.mikephil.charting.renderer;
 
 import android.graphics.Canvas;
+import android.util.Log;
 
 import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.charts.Chart;
@@ -90,7 +91,7 @@ public class CombinedChartRenderer extends DataRenderer {
 
     @Override
     public void drawValue(Canvas c, String valueText, float x, float y, int color) {
-        // Logging removed
+        Log.e("MPAndroidChart", "Erroneous call to drawValue() in CombinedChartRenderer!");
     }
 
     @Override

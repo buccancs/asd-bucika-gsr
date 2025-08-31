@@ -51,7 +51,6 @@ object TimeTool {
         }
     }
 
-
     /**
      * @param type 1:秒 2:分 3:时 4:天
      */
@@ -126,7 +125,6 @@ object TimeTool {
             Formatter().format("%02d:%02d", minutes, seconds).toString()
         }
     }
-
 
     /**
      * 视频时长

@@ -150,7 +150,6 @@ public class RectDraw extends BaseDraw {
         mRectList.clear();
     }
 
-
     /**
      * 更新选中框的手势位置状态
      * @param startX

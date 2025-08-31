@@ -63,9 +63,9 @@ abstract class BaseActivity : RxAppCompatActivity() {
         // Removed login sync
     }
 
-
     override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(AppLanguageUtils.attachBaseContext(newBase, SharedManager.getLanguage(newBase!!)))
+        val context = newBase ?: this
+        super.attachBaseContext(AppLanguageUtils.attachBaseContext(context, SharedManager.getLanguage(context)))
     }
 
     override fun onStart() {
@@ -83,8 +83,6 @@ abstract class BaseActivity : RxAppCompatActivity() {
         super.onStop()
     }
 
-
-
     override fun onDestroy() {
         cameraDialog?.dismiss()
         super.onDestroy()
@@ -93,7 +91,6 @@ abstract class BaseActivity : RxAppCompatActivity() {
         }
         BaseApplication.instance.activitys.remove(this)
     }
-
 
     /**
      * 监听 USB 连接状态
@@ -113,9 +110,6 @@ abstract class BaseActivity : RxAppCompatActivity() {
 
     }
 
-
-
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onSocketConnectState(event: SocketStateEvent) {
         if (event.isConnect) {
@@ -130,7 +124,6 @@ abstract class BaseActivity : RxAppCompatActivity() {
     protected open fun onSocketDisConnected(isTS004: Boolean) {
 
     }
-
 
     /**
      * 新版 LMS 风格的加载中弹框.
@@ -155,7 +148,6 @@ abstract class BaseActivity : RxAppCompatActivity() {
     fun dismissLoadingDialog() {
         loadingDialog?.dismiss()
     }
-
 
     private var cameraDialog: TipCameraProgressDialog? = null
     fun showCameraLoading() {

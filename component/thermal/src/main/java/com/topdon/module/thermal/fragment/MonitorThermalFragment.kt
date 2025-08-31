@@ -75,7 +75,6 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
 
     private var mGuideInterface: GuideInterface? = null
 
-
     override fun initView() {
         requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         rotateType = 3//默认旋转270度
@@ -165,7 +164,6 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
         onIrVideoStop()
 
     }
-
 
     /**
      * 开启视频流
@@ -258,7 +256,6 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
         mGuideInterface = null
     }
 
-
     fun onLowRangeBtnClick(view: View?) {
         if (mGuideInterface == null) {
             ToastUtils.showShort("请先开启视频流")
@@ -302,7 +299,6 @@ class MonitorThermalFragment : BaseThermalFragment(), IYapVideoProvider<Bitmap> 
             }
         }
     }
-
 
     //***************************************专家模式**********************************************
     /**

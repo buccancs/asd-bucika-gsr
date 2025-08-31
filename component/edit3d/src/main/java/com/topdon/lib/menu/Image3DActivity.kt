@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
 
-
 /**
  * 热成像的3D界面
  * @author: CaiSongL
@@ -25,7 +24,6 @@ import java.io.File
  */
 @Route(path = RouterConfig.IR_GALLERY_3D)
 class Image3DActivity : BaseActivity() {
-
 
     private var ir_path  : String ?= null
     private var temp_high : Float = 0F
@@ -186,7 +184,6 @@ class Image3DActivity : BaseActivity() {
         }
     }
 
-
     private fun getXYZText(temp: Float, x : Float, y:Float):String{
         return "X ${(256 - (y * open3DTools.halfy + open3DTools.halfy)).toInt()}," +
                 "Y ${( 192 - (x * open3DTools.halfx + open3DTools.halfx)).toInt()}," +
@@ -205,6 +202,5 @@ class Image3DActivity : BaseActivity() {
 
     override fun initData() {
     }
-
 
 }

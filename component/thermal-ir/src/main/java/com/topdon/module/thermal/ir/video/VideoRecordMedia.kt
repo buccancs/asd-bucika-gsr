@@ -40,7 +40,6 @@ class VideoRecordMedia(
         }
     }
 
-
     override fun startRecord() {
 
         val downloadDir = FileConfig.lineGalleryDir

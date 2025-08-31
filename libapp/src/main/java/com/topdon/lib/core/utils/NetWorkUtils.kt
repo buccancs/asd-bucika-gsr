@@ -129,7 +129,6 @@ object NetWorkUtils {
         }
     }
 
-
     fun switchNetwork(isWifi: Boolean, listener: ((network: Network?) -> Unit)? = null) {
         if (Build.VERSION.SDK_INT < 29) {//低于 Android10
             return

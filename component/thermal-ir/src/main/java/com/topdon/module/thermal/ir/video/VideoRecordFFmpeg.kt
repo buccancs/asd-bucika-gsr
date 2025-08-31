@@ -73,7 +73,6 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicReference
 import java.util.concurrent.locks.ReentrantReadWriteLock
 
-
 /**
  * 软编吗
  * bitmap -> mp4
@@ -103,8 +102,6 @@ class VideoRecordFFmpeg(
         var VIDEO_CODEC = avcodec.AV_CODEC_ID_MPEG4
         const val SAMPLE_AUDIO_RETE_INHZ = 44100
         const val AUDIO_CHANNELS = 1
-
-
 
         /**
          * 内存检测
@@ -164,7 +161,6 @@ class VideoRecordFFmpeg(
     private val pixArray = ByteArray(width * height * 4)
     private val bufferRef: AtomicReference<ByteBuffer> =
         AtomicReference(ByteBuffer.allocate(pixArray.size))
-
 
     //    fun readByteBuffer(): ByteBuffer? {
 //        synchronized(lock) {
@@ -265,7 +261,6 @@ class VideoRecordFFmpeg(
         paint.isFilterBitmap = true
         paint.getTextBounds("占位高度文本", 0, "占位高度文本".length, rectText)
     }
-
 
     var startTime: Long = 0L
     override fun startRecord() {
@@ -490,7 +485,6 @@ class VideoRecordFFmpeg(
         return canStart
     }
 
-
     var queTime = 0L
 
     override fun stopRecord() {
@@ -566,7 +560,6 @@ class VideoRecordFFmpeg(
 
         }
     }
-
 
     /**
      * cameraViewBitmap是屏幕控件的实际宽高
@@ -686,7 +679,6 @@ class VideoRecordFFmpeg(
     private var cameraBitmap: Bitmap? = null
     private var tempBitmap: Bitmap? = null
 
-
     fun drawCenterLable(bmp: Bitmap, title: String, address: String, time: String?): Bitmap {
         //创建一样大小的图片
         val newBmp = Bitmap.createBitmap(bmp.width, bmp.height, Bitmap.Config.ARGB_8888)
@@ -750,7 +742,6 @@ class VideoRecordFFmpeg(
         }
         return newBmp
     }
-
 
     private fun refreshAlbum() {
         exportedFile?.let {

@@ -58,7 +58,6 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
 
     override fun initContentView() = R.layout.activity_ir_monitor_chart_lite
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         selectBean = intent.getParcelableExtra("select")!!
@@ -164,8 +163,6 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
 
-
-
     override fun onDestroy() {
         super.onDestroy()
         recordJob?.cancel()
@@ -236,11 +233,9 @@ class IRMonitorChartLiteActivity : BaseActivity(),ITsTempListener {
         }
     }
 
-
     var config : DataBean ?= null
     val basicGainGetValue = IntArray(1)
     var basicGainGetTime = 0L
-
 
     override fun tempCorrectByTs(temp: Float?): Float {
         var tempNew = temp

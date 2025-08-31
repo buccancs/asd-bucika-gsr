@@ -290,8 +290,6 @@ class ReportCreateFirstActivity: BaseActivity(), View.OnClickListener {
         )
     }
 
-
-
     /**
      * 当前设置的报告日期时间戳.
      */

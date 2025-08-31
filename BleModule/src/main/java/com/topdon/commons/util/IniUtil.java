@@ -63,7 +63,6 @@ public class IniUtil {
         return readFileInfo(path + "/Diag.ini");
     }
 
-
     /**
      * 读取文件
      *
@@ -93,7 +92,6 @@ public class IniUtil {
         }
         return name;
     }
-
 
     public static String getVersion(String path, String name) {
         File file = new File(path + "/Diag.ini");
@@ -136,7 +134,6 @@ public class IniUtil {
         }
         return "";
     }
-
 
     /**
      * 获取保养类型
@@ -294,7 +291,6 @@ public class IniUtil {
             return hashMap;
         }
     }
-
 
     /**
      * 获取保养类型

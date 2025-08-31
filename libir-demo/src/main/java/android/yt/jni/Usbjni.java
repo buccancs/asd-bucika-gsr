@@ -45,7 +45,6 @@ public class Usbjni {
         return usb3803_read_parameter(i);
     }
 
-
     static native int usb3803_mode_setting(int i);
 
     static native int usb3803_read_parameter(int i);

@@ -52,10 +52,6 @@ object TC007Repository {
         .build()
         .create(TC007Service::class.java)
 
-
-
-
-
     /**
      * 获取产品信息
      */
@@ -96,7 +92,6 @@ object TC007Repository {
             false
         }
     }
-
 
     /**
      * 执行固件升级.
@@ -197,7 +192,6 @@ object TC007Repository {
             false
         }
     }
-
 
     /**
      * 获取测温属性参数
@@ -339,7 +333,6 @@ object TC007Repository {
         }
     }
 
-
     /**
      * 拍照
      */
@@ -370,8 +363,6 @@ object TC007Repository {
         }
     }
 
-
-
     suspend fun setRatio(data: Any?) : TC007Response<Any?>? = withContext(Dispatchers.IO){
         if (data == null){
             return@withContext null
@@ -382,7 +373,6 @@ object TC007Repository {
             null
         }
     }
-
 
     suspend fun getRegistration(default : Boolean) : TC007Response<WifiAttributeBean?>? = withContext(Dispatchers.IO){
         try {
@@ -402,7 +392,6 @@ object TC007Repository {
             null
         }
     }
-
 
     suspend fun setPallete(data: Any?) : TC007Response<Any?>? = withContext(Dispatchers.IO){
         if (data == null){

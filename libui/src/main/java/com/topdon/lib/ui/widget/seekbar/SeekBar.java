@@ -30,7 +30,6 @@ import com.topdon.lib.ui.R;
 import java.text.DecimalFormat;
 import java.util.Locale;
 
-
 /**
  * ================================================
  * 作    者：JayGoo
@@ -182,7 +181,6 @@ public class SeekBar {
         bottom = y + getThumbHeight() / 2;
     }
 
-
     public void scaleThumb() {
         scaleThumbWidth = (int) getThumbScaleWidth();
         scaleThumbHeight = (int) getThumbScaleHeight();
@@ -243,7 +241,6 @@ public class SeekBar {
         }
         canvas.restore();
     }
-
 
     /**
      * 绘制按钮
@@ -324,9 +321,6 @@ public class SeekBar {
         }
         return text2Draw;
     }
-
-
-
 
     /**
      * This method will draw the indicator background dynamically according to the text.
@@ -441,7 +435,6 @@ public class SeekBar {
         return x > left + offset && x < right + offset && y > top && y < bottom;
     }
 
-
     protected void slide(float percent) {
         if (percent < 0) percent = 0;
         else if (percent > 1) percent = 1;
@@ -516,7 +509,6 @@ public class SeekBar {
             }
         }
     }
-
 
     public int getIndicatorArrowSize() {
         return indicatorArrowSize;
@@ -739,7 +731,6 @@ public class SeekBar {
     public void setTypeface(Typeface typeFace) {
         paint.setTypeface(typeFace);
     }
-
 
     /**
      * when you touch or move, the thumb will scale, default not scale

@@ -152,7 +152,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
        }
     }
 
-
     /**
      * 仅 TC007 页面时，刷新连接或未连接状态.
      */
@@ -176,7 +175,6 @@ class MoreFragment : BaseFragment(), View.OnClickListener {
             item_setting_bottom_text.setText(R.string.setting_firmware_update_version)
         }
     }
-
 
     /**
      * 显示固件升级提示弹框.

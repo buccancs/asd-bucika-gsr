@@ -14,7 +14,7 @@ import com.topdon.lib.core.config.RouterConfig
 import com.topdon.lib.core.tools.NumberTools
 import com.topdon.lib.core.tools.UnitTools
 import com.topdon.lib.core.utils.ScreenUtil
-import kotlinx.android.synthetic.main.dialog_tip_emissivity.view.*
+// Removed synthetic imports - using findViewById instead
 
 /**
  * 发射率的提示弹窗
@@ -94,24 +94,24 @@ class TipEmissivityDialog : Dialog {
             val view = inflater.inflate(R.layout.dialog_tip_emissivity, null)
 
 
-            view.tv_environment_title.text = context!!.getString(R.string.thermal_config_environment) + ":"
-            view.tv_distance_title.text = context!!.getString(R.string.thermal_config_distance) + ":"
+            view.findViewById<TextView>(R.id.tv_environment_title).text = context!!.getString(R.string.thermal_config_environment) + ":"
+            view.findViewById<TextView>(R.id.tv_distance_title).text = context!!.getString(R.string.thermal_config_distance) + ":"
 
-            view.dialog_tip_success_btn.setOnClickListener {
+            view.findViewById<Button>(R.id.dialog_tip_success_btn).setOnClickListener {
                 dialog?.onDismissListener?.invoke(hasCheck)
                 dismiss()
             }
-            view.dialog_tip_cancel_btn.setOnClickListener {
+            view.findViewById<Button>(R.id.dialog_tip_cancel_btn).setOnClickListener {
                 dialog?.onDismissListener?.invoke(hasCheck)
                 ARouter.getInstance().build(RouterConfig.IR_SETTING)
                     .withBoolean(ExtraKeyConfig.IS_TC007, isTC007)
                     .navigation(context)
                 dismiss()
             }
-            val tvEmissivity = view.tv_emissivity
-            val tvEmissivityMaterials = view.tv_emissivity_materials
-            val tvEnvironmentValue = view.tv_environment_value
-            val tvDistanceValue = view.tv_distance_value
+            val tvEmissivity = view.findViewById<TextView>(R.id.tv_emissivity)
+            val tvEmissivityMaterials = view.findViewById<TextView>(R.id.tv_emissivity_materials)
+            val tvEnvironmentValue = view.findViewById<TextView>(R.id.tv_environment_value)
+            val tvDistanceValue = view.findViewById<TextView>(R.id.tv_distance_value)
 
             if (text.isNotEmpty()){
                 tvEmissivityMaterials.text = text
@@ -124,10 +124,10 @@ class TipEmissivityDialog : Dialog {
             tvEnvironmentValue.text = UnitTools.showC(environment)
             tvDistanceValue.text = "${
                 NumberTools.to02(distance)}m"
-            titleText = view.tv_title
-            messageText = view.dialog_tip_msg_text
-            checkBox = view.dialog_tip_check
-            imgClose = view.img_close
+            titleText = view.findViewById<TextView>(R.id.tv_title)
+            messageText = view.findViewById<TextView>(R.id.dialog_tip_msg_text)
+            checkBox = view.findViewById<CheckBox>(R.id.dialog_tip_check)
+            imgClose = view.findViewById<ImageView>(R.id.img_close)
             dialog!!.addContentView(
                 view,
                 LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)

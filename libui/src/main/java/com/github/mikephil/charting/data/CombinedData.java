@@ -1,6 +1,7 @@
 
 package com.github.mikephil.charting.data;
 
+import android.util.Log;
 
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarLineScatterCandleBubbleDataSet;
@@ -242,21 +243,21 @@ public class CombinedData extends BarLineScatterCandleBubbleData<IBarLineScatter
     @Deprecated
     @Override
     public boolean removeDataSet(int index) {
-        // Logging removed
+        Log.e("MPAndroidChart", "removeDataSet(int index) not supported for CombinedData");
         return false;
     }
 
     @Deprecated
     @Override
     public boolean removeEntry(Entry e, int dataSetIndex) {
-        // Logging removed
+        Log.e("MPAndroidChart", "removeEntry(...) not supported for CombinedData");
         return false;
     }
 
     @Deprecated
     @Override
     public boolean removeEntry(float xValue, int dataSetIndex) {
-        // Logging removed
+        Log.e("MPAndroidChart", "removeEntry(...) not supported for CombinedData");
         return false;
     }
 }

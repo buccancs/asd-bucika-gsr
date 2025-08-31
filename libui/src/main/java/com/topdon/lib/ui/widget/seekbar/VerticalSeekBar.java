@@ -12,7 +12,6 @@ import android.util.AttributeSet;
 
 import com.topdon.lib.ui.R;
 
-
 /**
  * //                       _ooOoo_
  * //                      o8888888o

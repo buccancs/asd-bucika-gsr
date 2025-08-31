@@ -2,31 +2,21 @@ package com.infisense.usbir.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.util.AttributeSet;
 
 import android.view.TextureView;
 
-import com.energy.iruvc.utils.SynchronizedBitmap;
+import com.topdon.lib.core.view.EnhancedCameraView;
 
-
-public class CameraJpegView extends TextureView {
-
+/**
+ * Backward compatibility wrapper for CameraJpegView
+ * Delegates to EnhancedCameraView in libapp.core with enhanced capabilities
+ */
+public class CameraJpegView extends FrameLayout {
+    
     private String TAG = "CameraView";
-    private Bitmap bitmap;
-    private SynchronizedBitmap syncimage;
-    private Runnable runnable;
     private Thread cameraThread;
-
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-    }
-
-    public void setSyncimage(SynchronizedBitmap syncimage) {
-        this.syncimage = syncimage;
-    }
+    private EnhancedCameraView enhancedCameraView;
 
     public CameraJpegView(Context context) {
         this(context, null, 0);
@@ -100,5 +90,20 @@ public class CameraJpegView extends TextureView {
             cameraThread.join();
         } catch (InterruptedException e) {
         }
+    }
+
+
+    public void start() {
+        if (enhancedCameraView != null) {
+            enhancedCameraView.startContinuousRendering();
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        if (cameraThread != null) {
+            cameraThread.interrupt();
+        }
+        super.onDetachedFromWindow();
     }
 }

@@ -2,33 +2,27 @@ package com.topdon.lib.ui.dialog;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-
-import com.topdon.lib.core.ktbase.BaseFragment;
-import com.topdon.lib.ui.R;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import com.topdon.lib.core.dialog.BasePageFragment;
+import com.topdon.lib.ui.R;
 
-
-public class PageFragment extends BaseFragment {
-
+/**
+ * Backward compatibility wrapper for PageFragment functionality.
+ * Delegates to the consolidated BasePageFragment implementation.
+ * 
+ * This wrapper eliminates duplicate dialog fragment code while maintaining
+ * full backward compatibility with existing libui usage.
+ */
+public class PageFragment extends BasePageFragment {
 
     public static PageFragment newInstance(int res) {
-        PageFragment fragmentFirst = new PageFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("res",res);
-        fragmentFirst.setArguments(bundle);
-        return fragmentFirst;
+        return BasePageFragment.newInstance(PageFragment.class, res);
     }
 
-
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        ImageView imageView = view.findViewById(R.id.img);
-        int res = getArguments().getInt("res");
-        imageView.setImageResource(res);
+    protected int getImageViewId() {
+        return R.id.img;
     }
 
     @Override
@@ -38,10 +32,11 @@ public class PageFragment extends BaseFragment {
 
     @Override
     public void initView() {
+        // Original implementation preserved
     }
 
     @Override
     public void initData() {
-
+        // Original implementation preserved  
     }
 }

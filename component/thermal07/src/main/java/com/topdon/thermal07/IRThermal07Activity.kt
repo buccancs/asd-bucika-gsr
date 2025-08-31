@@ -118,7 +118,6 @@ import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
-
 /**
  * TC007 出图页面.
  *
@@ -195,11 +194,9 @@ class IRThermal07Activity : BaseWifiActivity() {
     private var realRightValue = -1f
     private var isShowC = false
 
-
     companion object {
         private const val RTSP_URL = "rtsp://192.168.40.1/stream0"
     }
-
 
     private var playFragment: PlayFragment? = null
 
@@ -209,7 +206,6 @@ class IRThermal07Activity : BaseWifiActivity() {
             sharpness = (saveSetBean.ddeConfig / 4f * 100).toInt()
         )
     }
-
 
     override fun initContentView(): Int = R.layout.activity_ir_thermal07
 
@@ -416,7 +412,6 @@ class IRThermal07Activity : BaseWifiActivity() {
         }
     }
 
-
     override fun initView() {
         AlarmHelp.getInstance(this).updateData(alarmBean)
         view_menu_first.onTabClickListener = {
@@ -567,7 +562,6 @@ class IRThermal07Activity : BaseWifiActivity() {
         }
         thermal_recycler_night.updateCameraModel()
     }
-
 
     override fun onSocketDisConnected(isTS004: Boolean) {
         if (!isTS004) {//TC007 的 Socket 断了
@@ -1040,7 +1034,6 @@ class IRThermal07Activity : BaseWifiActivity() {
 
     }
 
-
     private fun showBlendExtentPopup() {
         val seekBarPopup = SeekBarPopup(this, true)
         seekBarPopup.progress = cameraAlpha
@@ -1212,7 +1205,6 @@ class IRThermal07Activity : BaseWifiActivity() {
         }
     }
 
-
     private fun setPColor(index: Int, code: Int, isShowError: Boolean = false, netListener: (() -> Unit)? = null) {
         //伪彩颜色修改
         pseudoColorMode = code
@@ -1289,7 +1281,6 @@ class IRThermal07Activity : BaseWifiActivity() {
             }
         }
     }
-
 
     /**
      * 第 1 个菜单-拍照录像 各个操作的点击事件监听.
@@ -1481,7 +1472,6 @@ class IRThermal07Activity : BaseWifiActivity() {
         }
     }
 
-
     private fun initStoragePermission() {
         XXPermissions.with(this)
             .permission(
@@ -1526,7 +1516,6 @@ class IRThermal07Activity : BaseWifiActivity() {
                         ToastUtils.showShort(R.string.scan_ble_tip_authorize)
                     }
                 }
-
 
                 override fun onDenied(permissions: MutableList<String>, doNotAskAgain: Boolean) {
                     if (doNotAskAgain) {

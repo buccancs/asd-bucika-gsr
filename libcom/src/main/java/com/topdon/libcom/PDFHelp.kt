@@ -12,21 +12,25 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ScrollView
-import androidx.core.content.ContextCompat
-import com.blankj.utilcode.util.UriUtils
-import com.blankj.utilcode.util.Utils
-import com.topdon.lib.core.config.FileConfig
-import com.topdon.lib.core.utils.CommUtils
-import java.io.BufferedOutputStream
-import java.io.File
-import java.io.FileOutputStream
+import com.topdon.lib.core.export.ExportUtils
 
 /**
+ * Backward compatibility wrapper for PDFHelp.
+ * Delegates to enhanced ExportUtils in libapp core.
  * @author: CaiSongL
  * @date: 2023/5/5 17:41
  */
+@Deprecated("Use ExportUtils in libapp core instead")
 object PDFHelp {
 
+    /**
+     * Save PDF file from list view with watermark.
+     * @param name File name
+     * @param view ScrollView container
+     * @param viewList List of views to render
+     * @param watermarkView Watermark view
+     * @return File path
+     */
     fun savePdfFileByListView(name: String, view: ScrollView, viewList: MutableList<View>, watermarkView: View): String {
         val onePageHeight: Int = (view.width * 297f / 210f).toInt() // A4纸宽高比210:297
 
@@ -109,6 +113,4 @@ object PDFHelp {
             }
         }
     }
-
-
 }

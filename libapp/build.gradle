@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
     id 'kotlin-kapt'
 }
 
@@ -41,6 +41,7 @@ android {
     }
     buildFeatures{
         dataBinding = true
+        viewBinding = true
     }
 
     flavorDimensions 'app'
@@ -116,6 +117,8 @@ dependencies {
 
     api Deps.utilcode
     api Deps.XXPermissions
+    // Apache POI for Excel export functionality
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
     // Logging dependencies removed for simplification
     // api Deps.xlog
     api Deps.PhotoView

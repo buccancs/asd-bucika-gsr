@@ -5,12 +5,15 @@ import com.topdon.lib.core.utils.ByteUtils.bytesToInt
 import com.topdon.lib.core.utils.ByteUtils.descBytes
 
 /**
+ * Backward compatibility wrapper for BitmapTools.
+ * Delegates to enhanced EnhancedBitmapUtils in libapp core.
  * @author: CaiSongL
  * @date: 2023/4/13 9:33
  */
+@Deprecated("Use EnhancedBitmapUtils in libapp core instead", ReplaceWith("EnhancedBitmapUtils"))
 object BitmapTools {
 
-
+    // Add readTempValue function for temperature processing  
     private fun readTempValue(bytes: ByteArray): Float {
         val data: ByteArray = bytes.descBytes()
         val scale = 16
@@ -18,6 +21,7 @@ object BitmapTools {
         return (tempInt.toDouble() / scale.toDouble() - 273.15).toFloat()
     }
 
+    @JvmStatic
     fun replaceBitmapColor(
         imageBytes: ByteArray,
         tempBytes: ByteArray,

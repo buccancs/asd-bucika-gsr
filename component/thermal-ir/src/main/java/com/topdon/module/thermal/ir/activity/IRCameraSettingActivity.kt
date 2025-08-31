@@ -34,7 +34,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 
-
 /**
  * 摄像头属性值设置
  * @author: CaiSongL
@@ -49,7 +48,6 @@ class IRCameraSettingActivity : BaseActivity() {
 
     private var locationManager: LocationManager? = null
     private var locationProvider: String? = null
-
 
     private var watermarkBean: WatermarkBean = SharedManager.watermarkBean
     private var continuousBean: ContinuousBean = SharedManager.continuousBean
@@ -86,7 +84,6 @@ class IRCameraSettingActivity : BaseActivity() {
             continuousBean.count = progress
             SharedManager.continuousBean = continuousBean
         }
-
 
         switch_time.isChecked = watermarkBean.isAddTime
         switch_watermark.isChecked = watermarkBean.isOpen
@@ -294,8 +291,6 @@ class IRCameraSettingActivity : BaseActivity() {
         }
     }
 
-
-
     override fun onPause() {
         super.onPause()
         if (isTC007()){
@@ -309,10 +304,8 @@ class IRCameraSettingActivity : BaseActivity() {
         super.onDestroy()
     }
 
-
     override fun initData() {
     }
-
 
     private fun initLocationPermission() {
         XXPermissions.with(this@IRCameraSettingActivity)

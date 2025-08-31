@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -244,7 +245,8 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
         mViewPortHandler.restrainViewPort(offsetLeft, offsetTop, offsetRight, offsetBottom);
 
         if (mLogEnabled)
-            // Logging removed
+            Log.i(LOG_TAG, "offsetLeft: " + offsetLeft + ", offsetTop: " + offsetTop
+                    + ", offsetRight: " + offsetRight + ", offsetBottom: " + offsetBottom);
     }
 
     /**

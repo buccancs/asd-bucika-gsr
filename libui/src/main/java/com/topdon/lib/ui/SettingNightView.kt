@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.isVisible
-import kotlinx.android.synthetic.main.ui_setting_view.view.*
+// Removed synthetic imports - using findViewById instead
 
 class SettingNightView : LinearLayout {
 
@@ -89,6 +89,6 @@ class SettingNightView : LinearLayout {
         } else {
             endImg.visibility = View.GONE
         }
-        item_setting_line.visibility = if (lineShow) View.VISIBLE else View.GONE
+        findViewById<View>(R.id.item_setting_line).visibility = if (lineShow) View.VISIBLE else View.GONE
     }
 }

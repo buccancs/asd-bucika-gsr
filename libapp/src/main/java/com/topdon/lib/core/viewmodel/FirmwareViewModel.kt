@@ -65,7 +65,6 @@ class FirmwareViewModel(application: Application) : AndroidViewModel(application
          */
         private const val TC007_FIRMWARE_NAME = "TC007V4.06.zip"
 
-
         private const val USE_DEBUG_SN = false
         private const val TS004_DEBUG_SN = "1D003655A10016"
         private const val TS004_DEBUG_RANDOM_NUM = "8D2N01"
@@ -79,8 +78,6 @@ class FirmwareViewModel(application: Application) : AndroidViewModel(application
     @Volatile
     private var isRequest = false
 
-
-
     /**
      * 查询固件升级包成功 LiveData.
      * null表示查询成功但没有配固件升级包
@@ -91,7 +88,6 @@ class FirmwareViewModel(application: Application) : AndroidViewModel(application
      * true-设备已被其他用户绑定错误 false-普通错误
      */
     val failLD: MutableLiveData<Boolean> = MutableLiveData()
-
 
     /**
      * 一个固件升级包信息.
@@ -106,7 +102,6 @@ class FirmwareViewModel(application: Application) : AndroidViewModel(application
         val downUrl: String,
         val size: Long,
     )
-
 
     /**
      * 执行一次固件升级包查询，结果发送往：
@@ -156,7 +151,6 @@ class FirmwareViewModel(application: Application) : AndroidViewModel(application
                 val firmware = "V${productInfo.getVersionStr()}"
                 getInfoFromNetwork(false, sn, randomNum, firmware)
             }*/
-
 
             //由于双通道方案存在问题，V3.30临时使用 apk 内置固件升级包，以下为临时方案逻辑
             if (isTS004) {
@@ -373,7 +367,6 @@ class FirmwareViewModel(application: Application) : AndroidViewModel(application
     } catch (e: NumberFormatException) {
         0.0
     }
-
 
     /**
      * 用来解析 获取固件升级包列表 接口返回的数据.

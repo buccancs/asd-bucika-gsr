@@ -252,7 +252,6 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
         }
     }
 
-
     //MPChart
     private fun initChart() {
         chart.clear()
@@ -308,7 +307,6 @@ class MonitorChartActivity : BaseActivity(), View.OnClickListener, OnChartValueS
         startTime = System.currentTimeMillis()
         canUpdate = true//可以开始更新记录
     }
-
 
     /**
      * 分类处理更新图表数据

@@ -105,7 +105,6 @@ class Fence(var w: Int = 256, var h: Int = 192, val srcRect: IntArray, rotateTyp
         return pointToIndex(lineList)
     }
 
-
     fun pointToIndex(lineList: ArrayList<IntArray>): ArrayList<Int> {
         val indexList = arrayListOf<Int>()
         lineList.forEach {

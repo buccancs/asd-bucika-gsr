@@ -22,7 +22,6 @@ public class FileSizeUtil {
     public static final int SIZETYPE_MB = 3;//获取文件大小单位为MB的double值
     public static final int SIZETYPE_GB = 4;//获取文件大小单位为GB的double值
 
-
     public static double getFileOrFilesSize(String filePath, int sizeType) {
         File file = new File(filePath);
         long blockSize = 0;
@@ -97,7 +96,6 @@ public class FileSizeUtil {
         }
         return FormetFileSize(blockSize, sizeType) + getUnit(sizeType);
     }
-
 
     /**
      * 调用此方法自动计算指定文件或指定文件夹的大小
@@ -221,7 +219,6 @@ public class FileSizeUtil {
         return fileSizeLong;
     }
 
-
     /**
      * 获取文件大小
      * 写入日志读取
@@ -233,7 +230,6 @@ public class FileSizeUtil {
         try {
             File file = new File(filename);
             if (!file.exists() || !file.isFile()) {
-                System.out.println("bcf--getFileSize文件大小不存在");
                 return -1;
             }
             return file.length();

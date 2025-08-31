@@ -248,11 +248,11 @@ public abstract class ModalDialog extends BottomDialog implements View.OnClickLi
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.dialog_modal_cancel) {
-            Dialog// Logging removed
+            DialogLog.print("cancel clicked");
             onCancel();
             dismiss();
         } else if (id == R.id.dialog_modal_ok) {
-            Dialog// Logging removed
+            DialogLog.print("ok clicked");
             onOk();
             dismiss();
         }

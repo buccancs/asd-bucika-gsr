@@ -138,7 +138,6 @@ import kotlinx.coroutines.withContext
 import org.greenrobot.eventbus.EventBus
 import kotlin.math.abs
 
-
 /**
  * TC007 出图页面.
  *
@@ -152,7 +151,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
     private var mPreviewLayoutParams: RelativeLayout.LayoutParams? = null
     private var mOnUSBConnectListener: OnUSBConnectListener? = null
     private var mProgressDialog: ProgressDialog? = null
-
 
     private var pseudoColorMode = SaveSettingUtil.pseudoColorMode
 
@@ -797,7 +795,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
         }
     }
 
-
     /**
      * 显示融合度设置弹框
      */
@@ -816,7 +813,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
         seekBarPopup.show(thermal_lay, !saveSetBean.isRotatePortrait())
         popupWindow = seekBarPopup
     }
-
 
     private fun getProductName() : String{
         return ProductType.PRODUCT_NAME_TC001LITE
@@ -1070,7 +1066,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
                 }
             })
 
-
         temperatureView.setSyncimage(syncimage)
         temperatureView.setTemperature(temperatureBytes)
         temperatureView.setUseIRISP(false)
@@ -1133,7 +1128,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
             .addOnUSBConnectListener(IRThermalLiteActivity::class.java.name, mOnUSBConnectListener)
     }
 
-
     private fun showLoadingDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = ProgressDialog(this@IRThermalLiteActivity)
@@ -1153,9 +1147,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
         }
     }
 
-
-
-
     /**
      * 显示温度报警设置弹框.
      */
@@ -1171,7 +1162,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
         tempAlarmSetDialog?.alarmBean = alarmBean
         tempAlarmSetDialog?.show()
     }
-
 
     /**
      * 色带
@@ -1198,7 +1188,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
         seekBarPopup.show(thermal_lay, !saveSetBean.isRotatePortrait())
         popupWindow = seekBarPopup
     }
-
 
     private fun updateRotateAngle(rotateAngle: Int) {
         // 清除limit设置
@@ -1227,7 +1216,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
             thermal_recycler_night.setSettingRotate(rotateAngle)
         }
     }
-
 
     private fun setPColor(code: Int) {
         pseudoColorMode = code
@@ -2008,8 +1996,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
         }
     }
 
-
-
     override fun onDestroy() {
         TempCompensation.getInstance().stopTempCompensation(false)
         DeviceControlManager.getInstance().handleStopPreview()
@@ -2050,7 +2036,6 @@ class IRThermalLiteActivity : BaseIRActivity(), ITsTempListener, ILiteListener {
     var config : DataBean ?= null
     val basicGainGetValue = IntArray(1)
     var basicGainGetTime = 0L
-
 
     override fun tempCorrectByTs(temp: Float?): Float {
         if (isPause){

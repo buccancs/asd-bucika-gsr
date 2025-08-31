@@ -1,17 +1,13 @@
 package com.topdon.libcom.util
 
-import com.blankj.utilcode.util.SizeUtils
+// Import all enhanced Kotlin extensions from the consolidated library
+import com.topdon.lib.core.utils.*
 
 /**
- * @author : litao
- * @date   : 2023/2/22 14:38
+ * Backward compatibility for original utility extensions
+ * All functionality is now available through EnhancedKotlinExtensions in libapp.core
  */
-val Float.dp: Float
-    get() =  ColorUtils.dpToPxF(this)
-val Int.dp: Int
-    get() =  ColorUtils.dpToPx(this)
-val Float.sp : Float
-    get() = SizeUtils.sp2px(this).toFloat()
-val Int.sp : Float
-    get() = SizeUtils.sp2px(this.toFloat()).toFloat()
+
+// Original extensions are now available through the enhanced imports
+// No additional code needed - the enhanced extensions provide all original functionality plus more
 

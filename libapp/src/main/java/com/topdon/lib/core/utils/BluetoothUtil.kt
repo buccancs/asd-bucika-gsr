@@ -48,9 +48,6 @@ object BluetoothUtil {
         }
     }
 
-
-
-
     private val scanCallback = MyScanCallback()
 
     /**

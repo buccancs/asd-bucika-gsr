@@ -24,7 +24,6 @@ public class FolderUtil {
         mUserId = userId;
     }
 
-
     public static void init() {
         mUserId = PreUtil.getInstance(Topdon.getApp()).get("VCI_" + LMS.getInstance().getLoginName());
         setUserId(mUserId);
@@ -101,7 +100,6 @@ public class FolderUtil {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + "/s/";
     }
 
-
     public static String getDataBasePath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName;
     }
@@ -154,7 +152,6 @@ public class FolderUtil {
     public static String getVehicleTopScanPublicPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName;
     }
-
 
     public static String getShotPath() {
         return Topdon.getApp().getExternalFilesDir("").getAbsolutePath() + fileName + mUserId + "/Shot/";

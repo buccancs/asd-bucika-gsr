@@ -63,7 +63,6 @@ object HikHelper {
      */
     private val streamCallBack = MyFStreamCallBack()
 
-
     /**
      * 根据指定 Activity 的生命周期执行相应初始化、开启码流、停止码流、回收资源操作.
      */
@@ -218,7 +217,6 @@ object HikHelper {
      */
     fun copyFrameData(): ByteArray = streamCallBack.copyFrameArray()
 
-
     private class MyFStreamCallBack : FStreamCallBack {
         /**
          * YUV 数组，YUY2 格式
@@ -261,7 +259,6 @@ object HikHelper {
                 return
             }
             val dataArray: ByteArray = Arrays.copyOf(frameInfo.pBuf, frameInfo.dwBufSize)
-
 
             /*val frameHead = FrameHead(dataArray)
             for (i in frameHead.tempRuleList.indices) {

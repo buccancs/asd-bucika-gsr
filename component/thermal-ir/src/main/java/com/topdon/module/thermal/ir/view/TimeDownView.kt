@@ -143,8 +143,6 @@ public class TimeDownView : AppCompatTextView {
      */
     var onFinishListener: (() -> Unit)? = null
 
-
-
     var downTimeWatcher: DownTimeWatcher? = null
 
     /**

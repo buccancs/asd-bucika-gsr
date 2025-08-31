@@ -3,6 +3,7 @@ package com.github.mikephil.charting.charts;
 import android.content.Context;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -89,7 +90,7 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
     public Highlight getHighlightByTouchPoint(float x, float y) {
 
         if (mData == null) {
-            // Logging removed
+            Log.e(LOG_TAG, "Can't select by touch. No data set.");
             return null;
         } else {
             Highlight h = getHighlighter().getHighlight(x, y);

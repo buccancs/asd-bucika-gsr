@@ -337,5 +337,4 @@ public class PointDraw extends BaseDraw {
         return mPointList;
     }
 
-
 }

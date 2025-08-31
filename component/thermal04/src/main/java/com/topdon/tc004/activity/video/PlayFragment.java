@@ -50,7 +50,6 @@ import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.UUID;
 
-
 /**
  * 播放器Fragment
  */
@@ -654,7 +653,6 @@ public class PlayFragment extends Fragment implements TextureView.SurfaceTexture
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
 
     }
-
 
     public interface OnDoubleTapListener {
         void onDoubleTab(PlayFragment f);

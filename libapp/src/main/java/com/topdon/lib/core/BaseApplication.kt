@@ -66,7 +66,6 @@ abstract class BaseApplication : Application() {
      */
     abstract fun isDomestic(): Boolean
 
-
     override fun onCreate() {
         super.onCreate()
         instance = this
@@ -164,8 +163,6 @@ abstract class BaseApplication : Application() {
             }
         }
     }
-
-
 
     /**
      * 设置webview的android9以上系统的多进程兼容性处理
