@@ -13,6 +13,14 @@ import com.topdon.lib.core.utils.ByteUtils.descBytes
 @Deprecated("Use EnhancedBitmapUtils in libapp core instead", ReplaceWith("EnhancedBitmapUtils"))
 object BitmapTools {
 
+    // Add readTempValue function for temperature processing  
+    private fun readTempValue(bytes: ByteArray): Float {
+        val data: ByteArray = bytes.descBytes()
+        val scale = 16
+        val tempInt = data.bytesToInt() / 4
+        return (tempInt.toDouble() / scale.toDouble() - 273.15).toFloat()
+    }
+
     @JvmStatic
     fun replaceBitmapColor(
         imageBytes: ByteArray,

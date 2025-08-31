@@ -119,11 +119,9 @@ class CameraPreView : LinearLayout, ScaleGestureDetector.OnScaleGestureListener,
 //                setupImageReader()
                 // 为摄像头赋值
                 mCameraId = cameraId
-                break
             }
-        } catch (e: CameraAccessException) {
-            // Debug removed
         }
+        return true
     }
 
     /**

@@ -12,38 +12,38 @@ object IFrameData {
      * 融合图像数据长度，ARGB，故值为：
      * 融合图像输出宽度 x 融合图像输出高度 x 4.
      */
-    const val FUSION_LEN = Const.DUAL_WIDTH * Const.DUAL_HEIGHT * 4
+    val FUSION_LEN = Const.DUAL_WIDTH * Const.DUAL_HEIGHT * 4
     
     /**
      * 原始红外数据长度、原始温度数据长度，YUV-Y16，故值为：
      * 原始红外宽度 x 原始红外高度 x 2.
      */
-    const val ORIGINAL_LEN = Const.IR_WIDTH * Const.IR_HEIGHT * 2
+    val ORIGINAL_LEN = Const.IR_WIDTH * Const.IR_HEIGHT * 2
     
     /**
      * 缩放温度数据长度，YUV-422，故值为：
      * 融合图像输出宽度 x 融合图像输出高度 x 2.
      */
-    const val REMAP_TEMP_LEN = Const.DUAL_WIDTH * Const.DUAL_HEIGHT * 2
+    val REMAP_TEMP_LEN = Const.DUAL_WIDTH * Const.DUAL_HEIGHT * 2
     
     /**
      * 原始可见光数据长度，RGB24，故值为：
      * 原始可见光宽度 x 原始可见光高度 x 3.
      */
-    const val LIGHT_LEN = Const.VL_WIDTH * Const.VL_HEIGHT * 3
+    val LIGHT_LEN = Const.VL_WIDTH * Const.VL_HEIGHT * 3
     
     /**
      * 缩放可见光数据长度，ARGB，故值为：
      * 原始可见光宽度 x 原始可见光高度 x 4.
      */
-    const val P_IN_P_LEN = Const.DUAL_WIDTH * Const.DUAL_HEIGHT * 4
+    val P_IN_P_LEN = Const.DUAL_WIDTH * Const.DUAL_HEIGHT * 4
     
     /**
      * 一帧除画中画缩放缩放可见光数据之外的所有数据长度，
      * 包含 融合图像、原始红外、原始温度、缩放温度、原始可见光、画中画缩放可见光 数据.
      * 值为上述数据长度之和.
      */
-    const val FRAME_LEN = FUSION_LEN + ORIGINAL_LEN + ORIGINAL_LEN + REMAP_TEMP_LEN + LIGHT_LEN + P_IN_P_LEN
+    val FRAME_LEN = FUSION_LEN + ORIGINAL_LEN + ORIGINAL_LEN + REMAP_TEMP_LEN + LIGHT_LEN + P_IN_P_LEN
 
     /**
      * 将指定帧数据中 ARGB **融合图像数据** 复制到指定数组中.

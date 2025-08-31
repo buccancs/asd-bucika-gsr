@@ -113,7 +113,9 @@ object BitmapUtils {
         val b = baos.toByteArray()
         val newBitmap = BitmapFactory.decodeByteArray(b, 0, b.size)
         // 获取bitmap大小 是允许最大大小的多少倍
-        return scaleWithWH(newBitmap, width, width * newBitmap.height / newBitmap.width)
+        return newBitmap?.let { 
+            scaleWithWH(it, width, width * it.height / it.width)
+        } ?: bitmap
     }
 
     /**
